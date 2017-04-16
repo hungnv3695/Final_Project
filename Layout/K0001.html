@@ -13,6 +13,29 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="css/responsiveslides.css">
+<link rel="stylesheet" href="css/dropdownlist.css">
+<link rel="stylesheet" href="css/flexslider.css" media="screen" />
+<!-- jQuery -->
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+ <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.min.js">\x3C/script>')</script>
+<!-- FlexSlider -->
+ <script defer src="js/jquery.flexslider.js"></script>
+
+ 	<script type="text/javascript">
+    $(function(){
+      SyntaxHighlighter.all();
+    });
+    $(window).load(function(){
+      $('.flexslider').flexslider({
+        animation: "slide",
+        start: function(slider){
+          $('body').removeClass('loading');
+        }
+      });
+    });
+  </script>
+<!--End FlexSlider-->
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 <script src="js/jquery.min.js"></script>
 <script src="js/responsiveslides.min.js"></script>
 		  <script>
@@ -31,17 +54,31 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="header">
 				<div class="wrap">
 				<div class="logo">
-					<a href="index.html"><img src="images/logo.png" title="logo" /></a>
+					<a href="K0001.html"><img src="images/logo.png" title="logo" /></a>
 				</div>
+               	<div class="dropdown">
+                      <select name="one" class="dropdown-select">
+                        <option value="0">English</option>
+                        <option value="1">Japanese</option>
+                        <option value="2">Tiếng Việt</option>
+                      </select>
+                 </div>
 				<div class="top-nav">
 					<ul>
-						<li class="active"><a href="index.html">Home</a></li>
-						<li><a href="about.html">About</a></li>
+						<li class="active"><a href="K0001.html">Home</a></li>
+						<li><a href="rooms.html">Rooms</a></li>
 						<li><a href="services.html">Services</a></li>
-						<li><a href="plans.html">plans</a></li>
+						<li><a href="restaurant.html">Restaurant</a></li>
 						<li><a href="contact.html">Contact</a></li>
 					</ul>
 				</div>
+                <div class="log">
+            	<ul>
+                	<li><a href="#">Acount</a></li>
+                    <li><a href="#">Login</a></li>
+                    <li><a href="#">Logout</a></li>
+                </ul>
+            	</div>
 				<div class="clear"> </div>
 			</div>
 		</div>
@@ -127,40 +164,60 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			</div>
 		</div>
 		<!---End-content---->
-		<div class="clear"> </div>
-		<!---start-footer---->
-		<div class="footer">
+        <div class="clear"> </div>
+        <div class="footer-bar">
+            	<h3>Experience a wonderful life</h3>
+                <div class="footer-social">
+                	<a href="#"><img src="images/facebook-icon.png"></a>
+                    <a href="#"><img src="images/twister-icon.png"></a>
+                    <a href="#"><img src="images/in-icon.png"></a>
+                </div>
+        </div>
+        <div class="clear"> </div>
+        <!---start-footer---->
+		<div class="footer">       	
 			<div class="wrap">
 			<div class="footer-grids">
 				<div class="footer-grid">
-					<h3>EXTRAS</h3>
-					<p>Ut rutrum neque a mollis laoreet diam enim feuiat dui nec ulacoper quam felis id diam. Nunc ut tortor ligula eu petiu risus. Pelleesque conquat dignissim lacus quis altrcies.</p>
+					<h3 style="font-family:'Times New Roman', Times, serif">LOCATION, MAP</h3>
+					<p>XhaoLin hotel, 164-Ha Long-Quang Ninh</p><br>
+                    <div id="googleMap" style="width: 260px; height: 150px; border:#F90 solid 1px;">Google Map</div>
 				</div>
 				<div class="footer-grid">
-					<h3>RECENT POSTS</h3>
-					<ul>
-						<li><a href="#">Vestibulum felis</a></li>
-						<li><a href="#">Mauris at tellus</a></li>
-						<li><a href="#">Donec ut lectus</a></li>
-						<li><a href="#">vitae interdum</a></li>
-					</ul>
+					<h3 style="font-family:'Times New Roman', Times, serif;text-align:center;">REGISTER TO GET NOTIFICATIONS</h3>
+					<div class="footer-grid-email">
+                    	<a href="#"><h5>Email address</h5></a>
+                    </div>
+                    <div class="footer-grid-signup">
+                    	<a href="#"><h5>SIGN UP</h5></a>
+                    </div>
 				</div>
 				<div class="footer-grid">
-					<h3>USEFUL INFO</h3>
-					<ul>
-						<li><a href="#">Hendrerit quam</a></li>
-						<li><a href="#">Amet consectetur </a></li>
-						<li><a href="#">Iquam hendrerit</a></li>
-						<li><a href="#">Donec ut lectus </a></li>
-					</ul>
+					<h3 style="font-family:'Times New Roman', Times, serif; text-align:center;" >CETIFICATES</h3>
+					<div class="flexslider">
+                      <ul class="slides">
+                        <li>
+                            <img src="images/standard1.jpg" />
+                            </li>
+                            <li>
+                            <img src="images/standard2.jpg" />
+                            </li>
+                            <li>
+                            <img src="images/standard3.jpg" />
+                            </li>
+                            <li>
+                            <img src="images/standard4.jpg" />
+                            </li>
+                      </ul>
+                    </div>
 				</div>
 				<div class="footer-grid footer-lastgrid">
-					<h3>CONTACT US</h3>
-					<p>Pelleesque conquat dignissim lacus quis altrcies.</p>
+					<h3 style="font-family:'Times New Roman', Times, serif">CONTACT US</h3>
+					<p>Please contact us when you need to enjoy</p>
 					<div class="footer-grid-address">
-						<p>Tel.800-255-9999</p>
+						<p>Tel: +841662451994</p>
 						<p>Fax: 1234 568</p>
-						<p>Email:<a class="email-link" href="#">info(at)yourcompany.com</a></p>
+						<p>Email:<a class="email-link" href="#">xhaolinhotel@gmail.com</a></p>
 					</div>
 				</div>
 				<div class="clear"> </div>
@@ -170,7 +227,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<!---End-footer---->
 		<div class="clear"> </div>
 		<div class="copy-right">
-			<p>Design by <a href="http://w3layouts.com/">W3layouts</a></p>
+			<p style="text-transform:none">Design by <a href="https://www.facebook.com/groups/1207951515940541/">XhaolinLayout</a></p>
 		</div>
 	</body>
 </html>
