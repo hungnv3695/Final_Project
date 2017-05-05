@@ -5,13 +5,11 @@
 	<title>Ngha nghi</title>
 	<link rel="stylesheet" type="text/css" href="plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="plugins/font-awesome-4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="plugins/boostrap-datepicker/css/bootstrap-datepicker.min.css">
 	<link rel="stylesheet" type="text/css" href="plugins/animate/animate.css">
 	<link rel="stylesheet" type="text/css" href="css/index.css">
 	<script type="text/javascript" src="plugins/jquery/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="plugins/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="plugins/slide/jquery.slides.min.js"></script>
-	<script type="text/javascript" src="plugins/boostrap-datepicker/js/bootstrap-datepicker.min.js"></script>
 	<script type="text/javascript" src="js/myPlugin.js"></script>
 </head>
 </head>
@@ -53,69 +51,11 @@
 						</div><!-- /.navbar-collapse -->
 					</div><!-- /.container-fluid -->
 				</nav>
-				<div class="row book-container">
-					<div class="col-sm-4 datepicker-container">
-						<p>Check in</p>
-						<input id="arrivalDate" type="text" class="form-control">
-					</div>
-					<div class="col-sm-4 datepicker-container">
-						<p>Check out</p>
-						<input id="departureDate" type="text" class="form-control">
-					</div>
-					<div class="col-sm-4">
+				<div class="row">
+					<div class="col-sm-4 col-sm-offset-8 book-container">
 						<button class="btn" id="btn-book">Book now</button>
-						<!-- Hien thi book phong -->
-							<script type="text/javascript">
-								$('#btn-book').click(function(){
-									myPlugin.showRoomBook();
-								})
-							</script>
-						</div>
 					</div>
 				</div>
-				<div id="book-window" class="container" style="display: none">
-					<div class="row book-container" style="padding-top: 0px">
-						<div class="col-sm-4">
-							<p class="room-name"><i class="fa fa-home" aria-hidden="true"></i> Room 1</p>
-						</div>
-						<div class="col-sm-4">
-							<button class="btn">+</button>
-							<input class="room-input" type="text" value="1">
-							<button class="btn">-</button>
-							<p class="room-name">Adult</p>
-						</div>
-						<div class="col-sm-4">
-							<button class="btn">+</button>
-							<input class="room-input" type="text" value="1">
-							<button class="btn">-</button>
-							<p class="room-name">childrens</p>
-						</div>
-						<div>
-							<a href="#">Add room</a>
-						</div>
-					</div>
-				</div>
-				<!-- xu ly phan datepicker -->
-					<script type="text/javascript">
-						$( document ).ready(function() {
-							$('#arrivalDate').datepicker({
-								format: "dd/mm/yyyy",
-								startDate: myPlugin.todayddmmyyyy(),
-								language: "vi",
-								keyboardNavigation: false,
-								autoclose: true
-							});
-							$('#departureDate').datepicker({
-								format: "dd/mm/yyyy",
-								startDate: myPlugin.todayddmmyyyy(),
-								language: "vi",
-								keyboardNavigation: false,
-								autoclose: true
-							});
-						});
-						
-					</script>
-				<!--END-->
 			</div>
 		</div>
 		<div id="slides">
