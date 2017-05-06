@@ -458,3 +458,30 @@ hr.style12 {
 		height: 85px !important;
 	}
 }
+/*customizing tooltip color*/
+/*right tooltip*/
+.tooltip.right > .tooltip-arrow {
+  border-right-color: dodgerblue;
+}
+
+/*bottom tooltip*/
+.tooltip.bottom > .tooltip-arrow {
+  border-bottom-color: dodgerblue;
+}
+
+/*top tooltip*/
+.tooltip.top > .tooltip-arrow {
+  border-top-color: dodgerblue;
+}
+
+/*left tooltip*/
+.tooltip.left > .tooltip-arrow {
+  border-left-color: dodgerblue;
+}
+
+/*tooltip inner*/
+.tooltip > .tooltip-inner {
+  background-color: dodgerblue;
+  text-shadow: 0 1px 1px #000;
+  font-weight: normal;
+}
