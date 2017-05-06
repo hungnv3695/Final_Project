@@ -342,7 +342,6 @@ hr.style12 {
 
 .option-panel-container{
     background: url(../img/dots.gif) repeat #0c161f;
-    color: #fff;
     padding:10px 0px 5px 10px;
 }
 .option-panel-container a {
@@ -351,6 +350,7 @@ hr.style12 {
 .checkInOut-label{
 	font-weight: bold;
 	margin: 0;
+	color: #fff;
 }
 .disabled{
 	pointer-events: none;
@@ -368,6 +368,7 @@ hr.style12 {
 }
 .row-of-room{
 	margin-bottom: 15px;
+	color: #fff;
 }
 .top-rooms{
 	color: #fff;
