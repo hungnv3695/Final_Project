@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Book</title>
+	<link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="plugins/font-awesome-4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="plugins/animate/animate.css">
@@ -62,67 +63,71 @@
 			<div>
 				<img class="img-responsive" style="width: 100%" src="img/book.jpg">
 			</div>
-			<div class="container container-fluid-for-small-screen" ng-controller="bookCtr">
-				<div class="row">
-					<div class="col-xs-12 col-sm-3 col-sm-push-6 col-sm-offset-1">
-						<button class="btn-apply-criterial" ng-init="isApplyCriterial=false" ng-click="isApplyCriterial=true">Apply Criterial</button>
-					</div>
-					<div class="col-xs-12 col-sm-3 col-sm-pull-4">
-						 <p class="checkInOut-label">Check in date</p>
-						 <p class="input-group">
-							<input type="text" class="form-control disabled" uib-datepicker-popup="{{checkInDate.format}}" ng-model="checkInDate.value" is-open="checkInDate.isOpen" datepicker-options="checkInDate" ng-required="true" alt-input-formats="altInputFormats" />
-							<span class="input-group-btn">
-								<button type="button" class="btn btn-default" ng-click="checkInDate.open()"><i class="glyphicon glyphicon-calendar"></i></button>
-							</span>
-						</p>
-					</div>
-					<div class="col-xs-12 col-sm-3 col-sm-pull-4">
-						<p class="checkInOut-label">Check out date</p>
-					 	<p class="input-group">
-							<input type="text" class="form-control disabled" uib-datepicker-popup="{{checkOutDate.format}}" ng-model="checkOutDate.value" is-open="checkOutDate.isOpen" datepicker-options="checkOutDate" ng-required="true" alt-input-formats="altInputFormats" />
-							<span class="input-group-btn">
-								<button type="button" class="btn btn-default" ng-click="checkOutDate.open()"><i class="glyphicon glyphicon-calendar"></i></button>
-							</span>
-						</p>
+			<div ng-controller="bookCtr">
+				<div class="option-panel-container ">
+					<div class="container container-fluid-for-small-screen">
+						<div class="row">
+							<div class="col-xs-12 col-sm-3 col-sm-push-6 col-sm-offset-1">
+								<button class="btn-apply-criterial" ng-init="isApplyCriterial=false" ng-click="isApplyCriterial=true">Apply Criterial</button>
+							</div>
+							<div class="col-xs-12 col-sm-3 col-sm-pull-4">
+								 <p class="checkInOut-label">Check in date</p>
+								 <p class="input-group">
+									<input type="text" class="form-control disabled" uib-datepicker-popup="{{checkInDate.format}}" ng-model="checkInDate.value" is-open="checkInDate.isOpen" datepicker-options="checkInDate" ng-required="true" alt-input-formats="altInputFormats" />
+									<span class="input-group-btn">
+										<button type="button" class="btn btn-default" ng-click="checkInDate.open()"><i class="glyphicon glyphicon-calendar"></i></button>
+									</span>
+								</p>
+							</div>
+							<div class="col-xs-12 col-sm-3 col-sm-pull-4">
+								<p class="checkInOut-label">Check out date</p>
+							 	<p class="input-group">
+									<input type="text" class="form-control disabled" uib-datepicker-popup="{{checkOutDate.format}}" ng-model="checkOutDate.value" is-open="checkOutDate.isOpen" datepicker-options="checkOutDate" ng-required="true" alt-input-formats="altInputFormats" />
+									<span class="input-group-btn">
+										<button type="button" class="btn btn-default" ng-click="checkOutDate.open()"><i class="glyphicon glyphicon-calendar"></i></button>
+									</span>
+								</p>
+							</div>
+						</div>
+						<div>
+							<div class="row row-of-room" ng-repeat="room in roomsObj.rooms">
+								<div class="col-xs-12 col-sm-2">
+									<div><i class="fa fa-home" aria-hidden="true"></i> Room {{$index + 1}}</div>
+								</div>
+								<div class="col-xs-12 col-sm-5">
+									<div class="col-xs-6 updown">
+										<div class="input-group">
+											<span class="input-group-addon" ng-click="roomsObj.removeAdult($index)"><i class="fa fa-minus" aria-hidden="true"></i></span>
+											<input type="text" class="form-control disabled" ng-value="room.adults">
+											<span class="input-group-addon" ng-click="roomsObj.addAdult($index)"><i class="fa fa-plus" aria-hidden="true"></i></span>
+										</div>	
+									</div>
+									<div class="col-xs-6">
+										Adults
+									</div>
+								</div>
+								<div class="col-xs-12 col-sm-5">
+									<div class="col-xs-6 updown">
+										<div class="input-group">
+											<span class="input-group-addon" ng-click="roomsObj.removeChildren($index)"><i class="fa fa-minus" aria-hidden="true"></i></span>
+											<input type="text" class="form-control disabled" ng-value="room.childrens">
+											<span class="input-group-addon" ng-click="roomsObj.addChildren($index)"><i class="fa fa-plus" aria-hidden="true"></i></span>
+										</div>	
+									</div>
+									<div class="col-xs-6">
+										Childrens
+									</div>
+								</div>
+							</div>
+							<div ng-if="roomsObj.rooms.length > 1"><a href="javascript:void(0)" ng-click="roomsObj.deleteRoom()">Remove a room</a></div>
+							<div ng-if="roomsObj.rooms.length < resObj.maxRoom"><a href="javascript:void(0)" ng-click="roomsObj.addRoom()">Add room</a></div>
+						</div>
 					</div>
 				</div>
-				<div>
-					<div class="row row-of-room" ng-repeat="room in roomsObj.rooms">
-						<div class="col-xs-12 col-sm-2">
-							<div><i class="fa fa-home" aria-hidden="true"></i> Room {{$index + 1}}</div>
-						</div>
-						<div class="col-xs-12 col-sm-5">
-							<div class="col-xs-6 updown">
-								<div class="input-group">
-									<span class="input-group-addon" ng-click="roomsObj.removeAdult($index)"><i class="fa fa-minus" aria-hidden="true"></i></span>
-									<input type="text" class="form-control disabled" ng-value="room.adults">
-									<span class="input-group-addon" ng-click="roomsObj.addAdult($index)"><i class="fa fa-plus" aria-hidden="true"></i></span>
-								</div>	
-							</div>
-							<div class="col-xs-6">
-								Adults
-							</div>
-						</div>
-						<div class="col-xs-12 col-sm-5">
-							<div class="col-xs-6 updown">
-								<div class="input-group">
-									<span class="input-group-addon" ng-click="roomsObj.removeChildren($index)"><i class="fa fa-minus" aria-hidden="true"></i></span>
-									<input type="text" class="form-control disabled" ng-value="room.childrens">
-									<span class="input-group-addon" ng-click="roomsObj.addChildren($index)"><i class="fa fa-plus" aria-hidden="true"></i></span>
-								</div>	
-							</div>
-							<div class="col-xs-6">
-								Childrens
-							</div>
-						</div>
-					</div>
-					<div ng-if="roomsObj.rooms.length > 1"><a href="javascript:void(0)" ng-click="roomsObj.deleteRoom()">Remove a room</a></div>
-					<div ng-if="roomsObj.rooms.length < resObj.maxRoom"><a href="javascript:void(0)" ng-click="roomsObj.addRoom()">Add room</a></div>
-				</div>
-				<div ng-if="isApplyCriterial">
+				<div class="container container-fluid-for-small-screen" ng-if="isApplyCriterial" >
 					<div class="row">
 						<div class="col-xs-12 col-sm-5" ng-class="(roomsObj.selectRoom==-1)?'opacity':''">
-							<div ng-repeat="r in resObj.roomsSize" style="margin: 5px 0 15px 0;">
+							<div ng-repeat="r in resObj.roomsSize" style="margin: 0px 0 15px 0;">
 								<div class="col-xs-12 top-rooms">{{r.name}}</div>
 								<div><img ng-src="{{r.img}}" class="img-responsive"></div>
 								<div class="room-bottom">

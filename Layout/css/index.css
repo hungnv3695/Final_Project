@@ -1,3 +1,6 @@
+*{
+	font-family: 'Lora', serif;
+}
 .subtract-padding{
 	padding: 0px 0px !important;
 }
@@ -152,11 +155,9 @@ hr.style12 {
 }
 .sub-ct-col img{
 	width:100%;
-	height:180px;
 	transition:all 0.2s ease-in-out; 
 }
 .social-bar{
-	margin-top: 35px;
 	height: 35px;
 	font-size: 16px;
 	background-color: #147eb9
@@ -338,6 +339,15 @@ hr.style12 {
 
 }
 /*END*/
+
+.option-panel-container{
+    background: url(../img/dots.gif) repeat #0c161f;
+    color: #fff;
+    padding:10px 0px 5px 10px;
+}
+.option-panel-container a {
+	color: #F1FAEE;
+}
 .checkInOut-label{
 	font-weight: bold;
 	margin: 0;
@@ -412,6 +422,33 @@ hr.style12 {
 	}
 	.room-price-add{
 		text-align: left;
+	}
+	#btn-book{
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 40px;
+		font-size: 20px;
+	}
+	.book-container{
+		height: 0px;
+		width: 0px;
+		padding: 0;
+	}
+	.sub-ct-container > .col-xs-6{
+		margin-bottom: 15px;
+	}
+	.sub-ct-col > a, .i1 ,.i2{
+		font-size: 15px;
+		font-weight: bold;
+	}
+	.option-panel-container{
+		padding: 0px 0 5px 0;
+	}
+	#brand-img{
+		width: 100px;
+		height: 60px;
 	}
 }
 @media (min-width: 993px) {
