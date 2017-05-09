@@ -1,3 +1,6 @@
+*{
+	font-family: 'Lora', serif;
+}
 .subtract-padding{
 	padding: 0px 0px !important;
 }
@@ -61,6 +64,8 @@
 }
 .book-container{
 	background: rgba(30,87,153,0.2);
+	width: 230px;
+	height: 100px;
 	padding: 20px;
 }
 .book-container input{
@@ -150,11 +155,9 @@ hr.style12 {
 }
 .sub-ct-col img{
 	width:100%;
-	height:180px;
 	transition:all 0.2s ease-in-out; 
 }
 .social-bar{
-	margin-top: 35px;
 	height: 35px;
 	font-size: 16px;
 	background-color: #147eb9
@@ -336,3 +339,149 @@ hr.style12 {
 
 }
 /*END*/
+
+.option-panel-container{
+    background: url(../img/dots.gif) repeat #0c161f;
+    padding:10px 0px 5px 10px;
+}
+.option-panel-container a {
+	color: #F1FAEE;
+}
+.checkInOut-label{
+	font-weight: bold;
+	margin: 0;
+	color: #fff;
+}
+.disabled{
+	pointer-events: none;
+}
+.btn-apply-criterial{
+	background: #147eb9;
+	color: #fff;
+	font-weight: bold;
+	border: none;
+	padding: 17px;
+	width: 100%;
+}
+.updown{
+	width: 140px !important;
+}
+.row-of-room{
+	margin-bottom: 15px;
+	color: #fff;
+}
+.top-rooms{
+	color: #fff;
+	font-weight: bold;
+	padding: 12px;
+	background: #147eb9;
+}
+.room-price-add{
+	text-align: center;
+}
+.room-bottom{
+	height: 100px;
+	background: #E9EBEE;
+	font-weight: bold;
+}
+.btn-add-room{
+	width: 90px;
+	background: #147eb9;
+	font-weight: bold;
+}
+.room-select-detail{
+	border-top: 3px solid #147eb9;
+	height: 80px;
+}
+.room-select-detail-room, .room-select-detail-price{
+	font-weight: bold;
+}
+.room-select-choice{
+	border-left: 2px dotted #d0d1d5;
+	border-right: 2px dotted #d0d1d5;
+	border-top: 3px solid #d0d1d5;
+	text-align: center;
+	font-weight: bold;
+	padding: 25px 0;
+	font-size: 17px;
+	background: #F5F5F5;
+}
+.room-select-total{
+	border-top: 3px solid red;
+	padding-top: 10px;
+}
+.opacity{
+	opacity: 0.5;
+	pointer-events: none;
+}
+@media (max-width: 768px) {
+	.container-fluid-for-small-screen{
+		padding: 0;
+	}
+	.room-bottom{
+		height: 110px;
+	}
+	.room-price-add{
+		text-align: left;
+	}
+	#btn-book{
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 40px;
+		font-size: 20px;
+		background: #00aeef;
+	}
+	.book-container{
+		height: 0px;
+		width: 0px;
+		padding: 0;
+	}
+	.sub-ct-container > .col-xs-6{
+		margin-bottom: 15px;
+	}
+	.sub-ct-col > a, .i1 ,.i2{
+		font-size: 15px;
+		font-weight: bold;
+	}
+	.option-panel-container{
+		padding: 0px 0 5px 0;
+	}
+	#brand-img{
+		width: 100px;
+		height: 60px;
+	}
+}
+@media (min-width: 993px) {
+	.room-bottom{
+		height: 85px !important;
+	}
+}
+/*customizing tooltip color*/
+/*right tooltip*/
+.tooltip.right > .tooltip-arrow {
+  border-right-color: dodgerblue;
+}
+
+/*bottom tooltip*/
+.tooltip.bottom > .tooltip-arrow {
+  border-bottom-color: dodgerblue;
+}
+
+/*top tooltip*/
+.tooltip.top > .tooltip-arrow {
+  border-top-color: dodgerblue;
+}
+
+/*left tooltip*/
+.tooltip.left > .tooltip-arrow {
+  border-left-color: dodgerblue;
+}
+
+/*tooltip inner*/
+.tooltip > .tooltip-inner {
+  background-color: dodgerblue;
+  text-shadow: 0 1px 1px #000;
+  font-weight: normal;
+}
