@@ -1,0 +1,76 @@
+CREATE TABLE tbl_guest(
+	id serial PRIMARY KEY,
+    first_name varchar(40) NOT NULL,
+    last_name varchar(40),
+    email varchar(40),
+    phone integer,
+    country varchar(40)
+);
+
+CREATE TABLE tbl_reservation(
+	id serial PRIMARY KEY,
+    guest_id integer REFERENCES tbl_guest(id) NOT NULL,
+    adult integer NOT NULL,
+    childrent integer,
+    quantity_of_room integer NOT NULL,
+    date_in date NOT NULL,
+    date_out date NOT NULL
+);
+
+CREATE TABLE tbl_room_type(
+	id char(5) PRIMARY KEY,
+	type_name varchar(20) NOT NULL,
+    no_adult_max integer,
+    no_children_max integer,
+    room_price numeric,
+    total_room integer,
+    description varchar(200)
+);
+
+CREATE TABLE tbl_room_status(
+	id integer PRIMARY KEY NOT NULL,
+    status_name char(20),
+    description varchar(100)
+);
+
+CREATE TABLE tbl_room(
+	room_no char(6) PRIMARY KEY NOT NULL,
+    room_type char(5) REFERENCES tbl_room_type(id),
+    status integer REFERENCES tbl_room_status(id),
+    room_floor integer,
+    description varchar(200)
+);
+
+CREATE TABLE tbl_reserved_room (
+	id serial PRIMARY KEY NOT NULL,
+    room_type_id char(5) REFERENCES tbl_room_type(id),
+    reservation_id integer REFERENCES tbl_reservation(id),
+    description varchar(200)
+);
+
+CREATE TABLE tbl_occupied_room (
+	id serial PRIMARY KEY NOT NULL,
+    reservation_id integer REFERENCES tbl_reservation(id),
+    room_no char(6) REFERENCES tbl_room(room_no),
+    check_in timestamp DEFAULT current_timestamp,
+    check_out timestamp DEFAULT current_timestamp
+);
+
+CREATE TABLE tbl_resident(
+	id serial PRIMARY KEY NOT NULL,
+    occupied_id integer REFERENCES tbl_occupied_room(id),
+	guest_id integer REFERENCES tbl_guest(id),
+    fullname varchar(80) NOT NULL,
+    phone integer
+);
+
+CREATE TABLE tbl_manager(
+	id serial PRIMARY KEY NOT NULL,
+    username varchar(20) NOT NULL,
+    password varchar(20) NOT NULL,
+    first_name varchar(20),
+    last_name varchar(20),
+    email varchar(40),
+    phone integer,
+    role integer
+);

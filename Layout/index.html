@@ -3,15 +3,14 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Ngha nghi</title>
+	<link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="plugins/font-awesome-4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="plugins/boostrap-datepicker/css/bootstrap-datepicker.min.css">
 	<link rel="stylesheet" type="text/css" href="plugins/animate/animate.css">
 	<link rel="stylesheet" type="text/css" href="css/index.css">
 	<script type="text/javascript" src="plugins/jquery/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="plugins/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="plugins/slide/jquery.slides.min.js"></script>
-	<script type="text/javascript" src="plugins/boostrap-datepicker/js/bootstrap-datepicker.min.js"></script>
 	<script type="text/javascript" src="js/myPlugin.js"></script>
 </head>
 </head>
@@ -30,7 +29,7 @@
 								<span class="icon-bar"></span>
 							</button>
 							<a class="navbar-brand subtract-padding" href="#">
-								<img width="151" height="100" src="http://www.daewoohotel.com/templates/main/images/logo.svg?58f85f07944e1">
+								<img id="brand-img" width="151" height="100" src="http://www.daewoohotel.com/templates/main/images/logo.svg?58f85f07944e1">
 							</a>
 						</div>
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -53,69 +52,11 @@
 						</div><!-- /.navbar-collapse -->
 					</div><!-- /.container-fluid -->
 				</nav>
-				<div class="row book-container">
-					<div class="col-sm-4 datepicker-container">
-						<p>Check in</p>
-						<input id="arrivalDate" type="text" class="form-control">
-					</div>
-					<div class="col-sm-4 datepicker-container">
-						<p>Check out</p>
-						<input id="departureDate" type="text" class="form-control">
-					</div>
-					<div class="col-sm-4">
+				<div class="row">
+					<div class="col-sm-4 col-sm-offset-8 book-container">
 						<button class="btn" id="btn-book">Book now</button>
-						<!-- Hien thi book phong -->
-							<script type="text/javascript">
-								$('#btn-book').click(function(){
-									myPlugin.showRoomBook();
-								})
-							</script>
-						</div>
 					</div>
 				</div>
-				<div id="book-window" class="container" style="display: none">
-					<div class="row book-container" style="padding-top: 0px">
-						<div class="col-sm-4">
-							<p class="room-name"><i class="fa fa-home" aria-hidden="true"></i> Room 1</p>
-						</div>
-						<div class="col-sm-4">
-							<button class="btn">+</button>
-							<input class="room-input" type="text" value="1">
-							<button class="btn">-</button>
-							<p class="room-name">Adult</p>
-						</div>
-						<div class="col-sm-4">
-							<button class="btn">+</button>
-							<input class="room-input" type="text" value="1">
-							<button class="btn">-</button>
-							<p class="room-name">childrens</p>
-						</div>
-						<div>
-							<a href="#">Add room</a>
-						</div>
-					</div>
-				</div>
-				<!-- xu ly phan datepicker -->
-					<script type="text/javascript">
-						$( document ).ready(function() {
-							$('#arrivalDate').datepicker({
-								format: "dd/mm/yyyy",
-								startDate: myPlugin.todayddmmyyyy(),
-								language: "vi",
-								keyboardNavigation: false,
-								autoclose: true
-							});
-							$('#departureDate').datepicker({
-								format: "dd/mm/yyyy",
-								startDate: myPlugin.todayddmmyyyy(),
-								language: "vi",
-								keyboardNavigation: false,
-								autoclose: true
-							});
-						});
-						
-					</script>
-				<!--END-->
 			</div>
 		</div>
 		<div id="slides">
@@ -188,24 +129,32 @@ Hanoi Daewoo Hotel features the largest room inventory in the city, with 411 tas
 				<button class="btn btn-infomation i1">Read more</button>
 				<button class="btn btn-infomation i2" style="display: none">Close</button>
 			</div>
-			<div id="more"style="margin-top: 25px;" class="container">
-				<div class="row">
-					<div class="col-sm-4">
-						<div class="sub-ct-col">
-							<a href="#">Phòng ở</a>
-							<a href="#"><img src="img/tt.jpg"/></a>
+			<div  style="margin: 25px 0 25px 0;" >
+				<div id="more" class="container">
+					<div class="row sub-ct-container">
+						<div class="col-sm-3 col-xs-6">
+							<div class="sub-ct-col">
+								<a href="#">Phòng ở</a>
+								<a href="#"><img src="img/tt.jpg"/></a>
+							</div>
 						</div>
-					</div>
-					<div class="col-sm-4 sub-ct-col">
-						<div class="sub-ct-col">
-							<a href="#">Ẩm thực</a>
-							<a href="#"><img src="img/at.jpg"/></a>
+						<div class="col-sm-3 col-xs-6 sub-ct-col">
+							<div class="sub-ct-col">
+								<a href="#">Ẩm thực</a>
+								<a href="#"><img src="img/at.jpg"/></a>
+							</div>
 						</div>
-					</div>
-					<div class="col-sm-4 sub-ct-col">
-						<div class="sub-ct-col">
-							<a href="#">Tours</a>
-							<a href="#"><img src="img/ab.jpg"/></a>
+						<div class="col-sm-3 col-xs-6 sub-ct-col">
+							<div class="sub-ct-col">
+								<a href="#">Tours</a>
+								<a href="#"><img src="img/ab.jpg"/></a>
+							</div>
+						</div>
+						<div class="col-sm-3 col-xs-6 sub-ct-col">
+							<div class="sub-ct-col">
+								<a href="#">Tours</a>
+								<a href="#"><img src="img/ab.jpg"/></a>
+							</div>
 						</div>
 					</div>
 				</div>
