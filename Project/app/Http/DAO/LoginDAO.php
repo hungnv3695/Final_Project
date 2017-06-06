@@ -15,6 +15,7 @@ define("TIME_FORMAT","m/d/Y");
 class LoginDAO
 {
     public function checkAcc($userName,$password){
+
         $result = UserMaster::where('user_name',$userName)
             ->where('login_pwd',$password)
             ->where('delete_flg',0)

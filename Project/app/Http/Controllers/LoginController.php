@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Http\DAO\LoginDAO;
 
 define("ErrorLoginMesg", "Your username or password aren't correct. Please try again...");
-define("SuccessMegLogin", "Dang nhap thanh cong");
 
 class LoginController extends Controller
 {
