@@ -17,3 +17,9 @@ Route::get('/', function () {
 Route::get('viethung',function(){
     echo "Chao mung anh em";
 });
+
+Route::get('/','LoginController@View');
+Route::post('/','LoginController@CheckAcc');
+
+Route::get('/Login','LoginController@View');
+Route::post('/Login','LoginController@CheckAcc');
