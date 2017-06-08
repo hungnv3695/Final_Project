@@ -8,39 +8,59 @@
  */
 
 namespace App\Http\DAO;
+use App\Http\Common\Constants;
+use App\User;
 use App\UserGroup;
 use App\UserMaster;
 use Illuminate\Support\Facades\DB;
-define("TIME_FORMAT","m/d/Y");
+
 class LoginDAO
 {
-    public function checkAcc($userName,$password){
 
-        $result = UserMaster::where('user_name',$userName)
-            ->where('login_pwd',$password)
-            ->where('delete_flg',0)
-            ->count();
+    /**
+     * get user info
+     * @param $userName
+     * @return mixed
+     */
+    public function getLoginUserInfo($userID){
+        $result = User::where(Constants::TBL_USER_ID,$userID)
+                    -> get([Constants::TBL_USER_ID,
+                            Constants::TBL_USER_NAME,
+                            Constants::TBl_lOGIN_PWD,
+                            Constants::TBL_ACC_LOCK_FLAG]);
 
-        if ($result == 0){
+        return $result;
+    }
 
-           return false;
+
+    /**
+     * @param $userID
+     * @return bool
+     */
+    public function setAccLock($userID){
+        $result = User::where(Constants::TBL_USER_ID,$userID)
+                    ->update([Constants::TBL_ACC_LOCK_FLAG=>1]);
+
+        if ($result){
+            return true;
         } else{
-
-            return   true;
+            return false;
         }
     }
 
-    public function getUserInfo($userName,$password){
-        $result = DB::table('tbl_user_master')
-            ->join('tbl_user_group','tbl_user_master.user_id','=','tbl_user_group.user_id')
-            ->where('tbl_user_master.user_name',$userName)
-            ->where('tbl_user_master.login_pwd',$password)
-            ->get(['tbl_user_master.user_id','tbl_user_master.user_name','tbl_user_group.group_cd']);
+    /**
+     * @param $userID
+     * @return mixed
+     */
+    public function getUserInfo($userID){
+        $result = DB::table(Constants::USER_GROUP)
+                ->join(Constants::PERMISSION,
+                    Constants::USER_GROUP . '.' . Constants::TBL_GROUP_CD, '=',
+                    Constants::PERMISSION . ' . ' .Constants::TBL_GROUP_CD )
+                ->where(Constants::USER_GROUP . '.' . Constants::TBL_USER_ID ,$userID)
+                ->get([Constants::PERMISSION . ' . ' .Constants::TBL_SCREEN_ID,
+                    Constants::PERMISSION . ' . ' .Constants::TBL_USE_FLAG]);
 
-        if(sizeof($result) ==0 ){
-            return false;
-        }else{
-            return $result;
-        }
+        return  $result;
     }
 }
