@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ui.bootstrap']);
+var myApp = angular.module('myApp', ['ui.bootstrap','ngMessages']);
 (function(){
 	myApp.controller('bookCtr', bookCtr);
 	bookCtr.$inject = ['$scope'];
@@ -19,12 +19,18 @@ var myApp = angular.module('myApp', ['ui.bootstrap']);
 				id:0,
 				name:"Room king size bed",
 				description:"1 king size bed",
+				description2:"Classic room with city view",
+				description3:"Breakfast included: Free Breakfast",
+				description4:"Royal 3 day 2 night package with dinner",
 				img:"img/king.jpg",
 				price: 300
 			},{
 				id:1,
 				name:"Room Twins Bed",
 				description:"Twins bed",
+				description2:"1 king size bed",
+				description3:"Breakfast included: Free Breakfast",
+				description4:"Royal 3 day 2 night package with dinner",
 				img:"img/queen.jpg",
 				price: 200
 			}]
@@ -34,6 +40,7 @@ var myApp = angular.module('myApp', ['ui.bootstrap']);
 			selectRoom: 0,
 			nights: 1,
 			total:10,
+			vatPrice: 0.1,
 			addRoom: function(){
 				if(this.rooms.length >= $scope.resObj.maxRoom)	return;
 				this.rooms.push({
@@ -68,6 +75,8 @@ var myApp = angular.module('myApp', ['ui.bootstrap']);
 			chooseRoom: function(room){
 				this.rooms[this.selectRoom].name = room.name;
 				this.rooms[this.selectRoom].description = room.description;
+				this.rooms[this.selectRoom].description2 = room.description2;
+				this.rooms[this.selectRoom].description3 = room.description3;
 				this.rooms[this.selectRoom].price = room.price;
 				this.rooms[this.selectRoom].selected = true;
 				this.calTotal();
@@ -98,6 +107,20 @@ var myApp = angular.module('myApp', ['ui.bootstrap']);
 				this.total = t;
 			}
 		};
+		$scope.guest = {
+			firstName:'',
+			lastName:'',
+			label:'ss',
+			selectedPhoneRange:{},
+			phoneNumber:'',
+			phoneRangeCountry:[{
+					name:'China',
+					code:'+69'
+				},{
+					name:'VietNam',
+					code:'+84'
+			}]
+		}
 		$scope.checkInDate = {
 			format:'dd/MM/yyyy',
 			value: new Date(),
@@ -141,5 +164,7 @@ var myApp = angular.module('myApp', ['ui.bootstrap']);
 				$scope.roomsObj.calTotal();
 			}
 		);
+
+		$scope.next = function(){$scope.choiceRoomPanel=false}
 	}
 })();

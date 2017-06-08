@@ -2,6 +2,7 @@
 <html ng-app="myApp">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Book</title>
 	<link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css">
@@ -13,8 +14,10 @@
 	<script src="bower_components/moment/moment.js"></script>
 	<script src="bower_components/angular/angular.js"></script>
 	<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+	<script src="bower_components/angular-messages/angular-messages.js"></script>
 	<script src="js/myPlugin.js"></script>
 	<script src="js/Controller/bookCtr.js"></script>
+	<script src="js/directive/validateDirective.js"></script>
 </head>
 </head>
 <body>
@@ -62,106 +65,243 @@
 			<div>
 				<img class="img-responsive" style="width: 100%" src="img/book.jpg">
 			</div>
-			<div ng-controller="bookCtr">
-				<div class="option-panel-container ">
-					<div class="container container-fluid-for-small-screen">
-						<div class="row">
-							<div class="col-xs-12 col-sm-3 col-sm-push-6 col-sm-offset-1">
-								<button class="btn-apply-criterial" ng-init="isApplyCriterial=false" ng-click="isApplyCriterial=true">Apply Criterial</button>
+			<div ng-controller="bookCtr" ng-init="choiceRoomPanel=true">
+				<div ng-if="choiceRoomPanel">
+					<div class="option-panel-container ">
+						<div class="container container-fluid-for-small-screen">
+							<div class="row">
+								<div class="col-xs-12 col-sm-3 col-sm-push-6 col-sm-offset-1">
+									<button class="btn-apply-criterial" ng-init="isApplyCriterial=false" ng-click="isApplyCriterial=true">Apply Criterial</button>
+								</div>
+								<div class="col-xs-12 col-sm-3 col-sm-pull-4">
+									 <p class="checkInOut-label">Check in date</p>
+									 <p class="input-group">
+										<input type="text" class="form-control disabled" uib-datepicker-popup="{{checkInDate.format}}" ng-model="checkInDate.value" is-open="checkInDate.isOpen" datepicker-options="checkInDate" ng-required="true" alt-input-formats="altInputFormats" />
+										<span class="input-group-btn">
+											<button type="button" class="btn btn-default" ng-click="checkInDate.open()"><i class="glyphicon glyphicon-calendar"></i></button>
+										</span>
+									</p>
+								</div>
+								<div class="col-xs-12 col-sm-3 col-sm-pull-4">
+									<p class="checkInOut-label">Check out date</p>
+								 	<p class="input-group">
+										<input type="text" class="form-control disabled" uib-datepicker-popup="{{checkOutDate.format}}" ng-model="checkOutDate.value" is-open="checkOutDate.isOpen" datepicker-options="checkOutDate" ng-required="true" alt-input-formats="altInputFormats" />
+										<span class="input-group-btn">
+											<button type="button" class="btn btn-default" ng-click="checkOutDate.open()"><i class="glyphicon glyphicon-calendar"></i></button>
+										</span>
+									</p>
+								</div>
 							</div>
-							<div class="col-xs-12 col-sm-3 col-sm-pull-4">
-								 <p class="checkInOut-label">Check in date</p>
-								 <p class="input-group">
-									<input type="text" class="form-control disabled" uib-datepicker-popup="{{checkInDate.format}}" ng-model="checkInDate.value" is-open="checkInDate.isOpen" datepicker-options="checkInDate" ng-required="true" alt-input-formats="altInputFormats" />
-									<span class="input-group-btn">
-										<button type="button" class="btn btn-default" ng-click="checkInDate.open()"><i class="glyphicon glyphicon-calendar"></i></button>
-									</span>
-								</p>
-							</div>
-							<div class="col-xs-12 col-sm-3 col-sm-pull-4">
-								<p class="checkInOut-label">Check out date</p>
-							 	<p class="input-group">
-									<input type="text" class="form-control disabled" uib-datepicker-popup="{{checkOutDate.format}}" ng-model="checkOutDate.value" is-open="checkOutDate.isOpen" datepicker-options="checkOutDate" ng-required="true" alt-input-formats="altInputFormats" />
-									<span class="input-group-btn">
-										<button type="button" class="btn btn-default" ng-click="checkOutDate.open()"><i class="glyphicon glyphicon-calendar"></i></button>
-									</span>
-								</p>
+							<div>
+								<div class="row row-of-room" ng-repeat="room in roomsObj.rooms">
+									<div class="col-xs-12 col-sm-2">
+										<div><i class="fa fa-home" aria-hidden="true"></i> Room {{$index + 1}}</div>
+									</div>
+									<div class="col-xs-12 col-sm-5">
+										<div class="col-xs-6 updown">
+											<div class="input-group">
+												<span class="input-group-addon" ng-click="roomsObj.removeAdult($index)"><i class="fa fa-minus" aria-hidden="true"></i></span>
+												<input type="text" class="form-control disabled" ng-value="room.adults">
+												<span class="input-group-addon" ng-click="roomsObj.addAdult($index)"><i class="fa fa-plus" aria-hidden="true"></i></span>
+											</div>	
+										</div>
+										<div class="col-xs-6">
+											Adults
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-5">
+										<div class="col-xs-6 updown">
+											<div class="input-group">
+												<span class="input-group-addon" ng-click="roomsObj.removeChildren($index)"><i class="fa fa-minus" aria-hidden="true"></i></span>
+												<input type="text" class="form-control disabled" ng-value="room.childrens">
+												<span class="input-group-addon" ng-click="roomsObj.addChildren($index)"><i class="fa fa-plus" aria-hidden="true"></i></span>
+											</div>	
+										</div>
+										<div class="col-xs-6">
+											Childrens <i class="fa fa-exclamation-circle" aria-hidden="true" tooltip-placement="bottom" uib-tooltip="(0-12 years)"></i>
+										</div>
+									</div>
+								</div>
+								<div ng-if="roomsObj.rooms.length > 1"><a href="javascript:void(0)" ng-click="roomsObj.deleteRoom()">Remove a room</a></div>
+								<div ng-if="roomsObj.rooms.length < resObj.maxRoom"><a href="javascript:void(0)" ng-click="roomsObj.addRoom()">Add room</a></div>
 							</div>
 						</div>
-						<div>
-							<div class="row row-of-room" ng-repeat="room in roomsObj.rooms">
-								<div class="col-xs-12 col-sm-2">
-									<div><i class="fa fa-home" aria-hidden="true"></i> Room {{$index + 1}}</div>
-								</div>
-								<div class="col-xs-12 col-sm-5">
-									<div class="col-xs-6 updown">
-										<div class="input-group">
-											<span class="input-group-addon" ng-click="roomsObj.removeAdult($index)"><i class="fa fa-minus" aria-hidden="true"></i></span>
-											<input type="text" class="form-control disabled" ng-value="room.adults">
-											<span class="input-group-addon" ng-click="roomsObj.addAdult($index)"><i class="fa fa-plus" aria-hidden="true"></i></span>
-										</div>	
-									</div>
-									<div class="col-xs-6">
-										Adults
-									</div>
-								</div>
-								<div class="col-xs-12 col-sm-5">
-									<div class="col-xs-6 updown">
-										<div class="input-group">
-											<span class="input-group-addon" ng-click="roomsObj.removeChildren($index)"><i class="fa fa-minus" aria-hidden="true"></i></span>
-											<input type="text" class="form-control disabled" ng-value="room.childrens">
-											<span class="input-group-addon" ng-click="roomsObj.addChildren($index)"><i class="fa fa-plus" aria-hidden="true"></i></span>
-										</div>	
-									</div>
-									<div class="col-xs-6">
-										Childrens <i class="fa fa-exclamation-circle" aria-hidden="true" tooltip-placement="bottom" uib-tooltip="(0-12 years)"></i>
+					</div>
+					<div class="container container-fluid-for-small-screen" ng-if="isApplyCriterial" >
+						<div class="row">
+							<div class="col-xs-12 col-sm-5" ng-class="(roomsObj.selectRoom==-1)?'opacity':''">
+								<div ng-repeat="r in resObj.roomsSize" style="margin: 0px 0 15px 0;">
+									<div class="col-xs-12 top-rooms">{{r.name}}</div>
+									<div><img ng-src="{{r.img}}" class="img-responsive"></div>
+									<div class="room-bottom">
+										<div class="col-xs-12 col-sm-6">{{r.description}}</div>
+										<div class="col=sx-12 col-sm-6 room-price-add">
+											<div>{{roomsObj.nights * r.price}}$</div>
+											<div>{{roomsObj.nights}} nights, {{roomsObj.rooms[roomsObj.selectRoom].adults}} people</div>
+											<div><button class="btn btn-primary btn-add-room" ng-click="roomsObj.chooseRoom(r)">Add</button></div>
+										</div>
 									</div>
 								</div>
 							</div>
-							<div ng-if="roomsObj.rooms.length > 1"><a href="javascript:void(0)" ng-click="roomsObj.deleteRoom()">Remove a room</a></div>
-							<div ng-if="roomsObj.rooms.length < resObj.maxRoom"><a href="javascript:void(0)" ng-click="roomsObj.addRoom()">Add room</a></div>
+							<div class="col-xs-12 col-sm-3 col-sm-offset-2">
+								<div ng-repeat="room in roomsObj.rooms">
+									<div class="room-select-detail" ng-if="room.selected">
+										<div class="col-xs-8 room-select-detail-room"><i class="fa fa-home" aria-hidden="true"></i> Room {{$index + 1}}</div>
+										<div class="col-xs-4 room-select-detail-price">{{roomsObj.nights * room.price}}$</div>
+										<div class="col-xs-11 col-xs-offset-1 room-select-detail-des">{{roomsObj.nights}} nights, {{room.adults}} people</div>
+										<div class="col-xs-11 col-xs-offset-1 room-select-detail-des">{{room.description}}</div>
+										<div style="text-align: right"><a href="javascript:void(0)" ng-click="roomsObj.removeSelectRoom($index)"><i class="fa fa-times" aria-hidden="true"></i> Remove</a></div>
+									</div>
+								</div>
+								<div class="room-select-choice" ng-if="roomsObj.selectRoom >= 0 ">
+									<div>Select room {{roomsObj.selectRoom + 1}} </div>
+								</div>
+								<div class="room-select-total">
+									<div class="col-xs-8 room-select-detail-room">Total</div>
+									<div class="col-xs-4 room-select-detail-price">{{roomsObj.total}}$</div>
+									<div  ng-if="roomsObj.selectRoom < 0">
+										<button class="btn btn-primary btn-next-center" ng-click="next()">Next</button>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
-				<div class="container container-fluid-for-small-screen" ng-if="isApplyCriterial" >
-					<div class="row">
-						<div class="col-xs-12 col-sm-5" ng-class="(roomsObj.selectRoom==-1)?'opacity':''">
-							<div ng-repeat="r in resObj.roomsSize" style="margin: 0px 0 15px 0;">
-								<div class="col-xs-12 top-rooms">{{r.name}}</div>
-								<div><img ng-src="{{r.img}}" class="img-responsive"></div>
-								<div class="room-bottom">
-									<div class="col-xs-12 col-sm-6">{{r.description}}</div>
-									<div class="col=sx-12 col-sm-6 room-price-add">
-										<div>{{roomsObj.nights * r.price}}$</div>
-										<div>{{roomsObj.nights}} nights, {{roomsObj.rooms[roomsObj.selectRoom].adults}} people</div>
-										<div><button class="btn btn-primary btn-add-room" ng-click="roomsObj.chooseRoom(r)">Add</button></div>
+				<div class="payment-panel" ng-if="!choiceRoomPanel">
+					<div class="container">
+						<h4>Your reservation - from <span class="payment-date">{{checkInDate.value | date:'dd/MM/yyyy'}} </span> to <span class="payment-date">{{checkOutDate.value | date:'dd/MM/yyyy'}} </span> </h4>
+					</div>
+					<div class="container-fluid">
+						<div class="tit">
+				        	<div class="txt" style="background: url(../img/dots.gif) repeat #0c161f;"><h3>Anh Duong Hotel</h3></div>
+				        </div>
+						<!-- <h2>Anh Duong Hotel</h2> -->
+					</div>
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-xs-6 col-sm-4">Address</div>
+							<div class="col-xs-6 col-sm-4">Đảo Tuần Châu - Hạ Long</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-6 col-sm-4">Reception is open</div>
+							<div class="col-xs-6 col-sm-4">24/7</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-6 col-sm-4">Check-in from</div>
+							<div class="col-xs-6 col-sm-4">13h</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-6 col-sm-4">Check-out before</div>
+							<div class="col-xs-6 col-sm-4">12h</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-6 col-sm-4">Spoken languages</div>
+							<div class="col-xs-6 col-sm-4">Vietnamese</div>
+						</div>
+					</div>
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-sm-7 col-md-8">
+								<div ng-repeat="room in roomsObj.rooms">
+									<div class="tit2">
+							        	<div class="txt2" style="background: url(../img/dots.gif) repeat #0c161f;"><div>Room {{$index + 1}}</div></div>
+							        </div>
+									<div class="row">
+										<div class="col-xs-9 col-sm-10">{{room.description2}}</div>
+										<div class="col-xs-3 col-sm-2 text-pull-right">{{room.price}}$</div>
 									</div>
+									<div>Bedding options: {{room.description}}</div>
+									<div>{{room.description4}}</div>
+									<div>{{room.description3}}</div>
+									<div class="row">
+										<div class="col-xs-6 col-sm-7 text-pull-center">{{checkInDate.value | date:'dd/MM'}} - {{checkOutDate.value | date:'dd/MM'}}</div>
+										<div class="col-xs-6 col-sm-5 text-pull-right">{{roomsObj.nights * room.price}}$/{{roomsObj.nights}} days</div>
+									</div>
+									<!-- <div class="row">
+										<div class="col-xs-9 col-sm-7 col-sm-offset-3">09/06/2017</div>
+										<div class="col-xs-3 col-sm-2 text-pull-right">150$</div>
+									</div> -->
 								</div>
+								<hr style="border-top: 1px solid #fff;">
+								<div class="row">
+									<div class="col-xs-9 col-sm-10" style="font-weight: bold;font-size: 17px">Total</div>
+									<div class="col-xs-3 col-sm-2 text-pull-right">{{roomsObj.total}}$</div>
+								</div>
+								<div class="row">
+									<div class="col-xs-9 col-sm-7 col-sm-offset-3">Not included: VAT</div>
+									<div class="col-xs-3 col-sm-2 text-pull-right">{{roomsObj.vatPrice * roomsObj.total}}$</div>
+								</div>
+								<div class="row">
+									<div class="col-xs-9 col-sm-7 col-sm-offset-3">The total amount is:</div>
+									<div class="col-xs-3 col-sm-2 text-pull-right">{{roomsObj.total + roomsObj.total*roomsObj.vatPrice}}$</div>
+								</div>
+							</div>
+
+							<div class="col-sm-5 col-md-4">
+								<form name="guestForm">
+									<div class="guest-info">Guest Information</div>
+									<div class="form-group validate-input">
+										<label class="control-label" for="inputSuccess2">First name</label>
+										<input custom-validation type="text"  name="firstname" ng-model="guest.firstName" class="form-control" id="firstname" tooltip-enable="{{!guestForm.firstname.$valid}}" tooltip-placement="top" uib-tooltip-template="'validateFirstname.html'"  ng-required="true" ng-class="!guestForm.firstname.$valid?'err-input':''">
+										<script type="text/ng-template" id="validateFirstname.html">
+											<div ng-show="guestForm.firstname.$error.required">First name require</div>
+											<div ng-show="guestForm.firstname.$error.noSpecialCharacter">First name require  and not contain special character</div>
+											<div ng-show="guestForm.firstname.$error.no2space">First name not contain 2 space continuos</div>
+										</script>
+									</div>
+									<div class="form-group validate-input">
+										<label class="control-label" for="inputSuccess2">Last name</label>
+										<input custom-validation type="text"  name="lastname" ng-model="guest.lastName" class="form-control" id="lastname" tooltip-enable="{{!guestForm.lastname.$valid}}" tooltip-placement="top" uib-tooltip-template="'validatelastname.html'"  ng-required="true" ng-class="!guestForm.lastname.$valid?'err-input':''">
+										<script type="text/ng-template" id="validatelastname.html">
+											<div ng-show="guestForm.lastname.$error.required">Last name require</div>
+											<div ng-show="guestForm.lastname.$error.noSpecialCharacter">Last name require  and not contain special character</div>
+											<div ng-show="guestForm.lastname.$error.no2space">Last name not contain 2 space continuos</div>
+										</script>
+									</div>
+									<div class="btn-group mr-choice">
+								        <label class="btn btn-success" ng-model="guest.label" uib-btn-radio="'Mr'" uncheckable>Mr.</label>
+								        <label class="btn btn-success" ng-model="guest.label" uib-btn-radio="'Ms'" uncheckable>Ms.</label>
+								        <label class="btn btn-success" ng-model="guest.label" uib-btn-radio="'Mrs'" uib-uncheckable="uncheckable">Mrs.</label>
+								    </div>
+									<div class="form-group validate-input">
+										<label class="control-label" for="inputSuccess2">Email</label>
+										<input type="email"  name="email" ng-model="guest.email" class="form-control" id="email" tooltip-enable="{{!guestForm.email.$valid}}" tooltip-placement="top" uib-tooltip-template="'validateemail.html'"  ng-required="true" ng-class="!guestForm.email.$valid?'err-input':''">
+										<script type="text/ng-template" id="validateemail.html">
+											<div ng-show="guestForm.email.$error.required">Email require</div>
+											<div ng-show="guestForm.email.$error.email">Must be valid email</div>
+										</script>
+									</div>
+									<div class="form-group validate-input">
+										<label class="control-label" for="inputSuccess2">Phone number</label>
+										<div class="row">
+											<div class="col-xs-6">
+												<div class="form-group">
+													<select class="form-control" ng-model="selectedPhoneRange" ng-options="x.name +' '+ x.code for x in guest.phoneRangeCountry"></select>
+												</div>
+											</div>
+										</div>
+										<input custom-phone-validation type="text"  name="phoneNumber" ng-model="guest.phoneNumber" class="form-control" id="phoneNumber" tooltip-enable="{{!guestForm.phoneNumber.$valid}}" tooltip-placement="top" uib-tooltip-template="'validatephoneNumber.html'"  ng-required="true" ng-class="!guestForm.phoneNumber.$valid?'err-input':''">
+										<script type="text/ng-template" id="validatephoneNumber.html">
+											<div ng-show="guestForm.phoneNumber.$error.required">phoneNumber require</div>
+											<div ng-show="guestForm.phoneNumber.$error.phonenumber">Must be valid phone number</div>
+										</script>
+									</div>
+								</form>
 							</div>
 						</div>
-						<div class="col-xs-12 col-sm-3 col-sm-offset-2">
-							<div ng-repeat="room in roomsObj.rooms">
-								<div class="room-select-detail" ng-if="room.selected">
-									<div class="col-xs-8 room-select-detail-room"><i class="fa fa-home" aria-hidden="true"></i> Room {{$index + 1}}</div>
-									<div class="col-xs-4 room-select-detail-price">{{roomsObj.nights * room.price}}$</div>
-									<div class="col-xs-11 col-xs-offset-1 room-select-detail-des">{{roomsObj.nights}} nights, {{room.adults}} people</div>
-									<div class="col-xs-11 col-xs-offset-1 room-select-detail-des">{{room.description}}</div>
-									<div style="text-align: right"><a href="javascript:void(0)" ng-click="roomsObj.removeSelectRoom($index)"><i class="fa fa-times" aria-hidden="true"></i> Remove</a></div>
-								</div>
-							</div>
-							<div class="room-select-choice" ng-if="roomsObj.selectRoom >= 0 ">
-								<div>Select room {{roomsObj.selectRoom + 1}} </div>
-							</div>
-							<div class="room-select-total">
-								<div class="col-xs-8 room-select-detail-room">Total</div>
-								<div class="col-xs-4 room-select-detail-price">{{roomsObj.total}}$</div>
-
-							</div>
+						<hr style="border-top: 1px solid #fff;">
+						<div>
+							<button id="book-btn-ok" class="btn btn-primary btn-next-center" style="margin-bottom: 10px">Book</button>
 						</div>
 					</div>
 				</div>
 			</div>
 		</article>
+
+
+
+
+
 		<div class="social-bar">
 			<div class="container">
 				<a href="#"><i class="fa fa-2x fa-instagram" aria-hidden="true"></i></a>

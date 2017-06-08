@@ -485,3 +485,110 @@ hr.style12 {
   text-shadow: 0 1px 1px #000;
   font-weight: normal;
 }
+.payment-panel{
+	background: url(../img/dots.gif) repeat #0c161f;
+	color: #fff;
+}
+.tit, .tit2 {
+    position: relative;
+    margin: 10px 0;
+}
+.tit *, .tit2 *{
+	margin: 0;
+}
+
+.tit .txt {
+    position: relative;
+    width: 200px; 
+    background-color: #fff; 
+    margin: 0 auto; 
+    text-align: center; 
+    z-index: 2; 
+}
+
+.tit:before {
+    position: absolute;
+    top: 58%;
+    content: "";
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    z-index: 1; 
+}
+
+.tit2 .txt2 {
+    position: relative;
+    width: 60px; 
+    background-color: #fff; 
+    z-index: 2; 
+}
+
+.tit2:before {
+    position: absolute;
+    top: 58%;
+    content: "";
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    z-index: 1; 
+}
+.guest-info{
+	text-align: center;
+	font-size: 23px;
+	font-weight: bold;
+}
+.payment-date{
+	font-size: 22px;
+}
+.text-pull-right{
+	text-align: right;
+}
+.text-pull-center{
+	text-align: center;
+}
+.err-input{
+	border:2px solid red !important;
+}
+
+/*customizing tooltip color*/
+/*right tooltip*/
+.validate-input .tooltip.right > .tooltip-arrow {
+  border-right-color: red;
+}
+
+/*bottom tooltip*/
+.validate-input .tooltip.bottom > .tooltip-arrow {
+  border-bottom-color: red;
+}
+
+/*top tooltip*/
+.validate-input .tooltip.top > .tooltip-arrow {
+  border-top-color: red;
+}
+
+/*left tooltip*/
+.validate-input .tooltip.left > .tooltip-arrow {
+  border-left-color: red;
+}
+
+/*tooltip inner*/
+.validate-input .tooltip > .tooltip-inner {
+  background-color: red;
+  text-shadow: 0 1px 1px #000;
+  font-weight: normal;
+}
+
+.btn-next-center{
+	width: 100px;
+	margin: auto;
+	display: block;
+}
+
+#book-btn-ok{
+	background: #147eb9;
+	color: #fff;
+	border-radius: 0;
+	font-size: 20px;
+	font-weight: bold;
+	padding: 10px;
+}
