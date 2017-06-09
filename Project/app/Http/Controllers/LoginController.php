@@ -38,7 +38,7 @@ class LoginController extends Controller
 
         //User master．Account lock flag	＝”1”
         //➡	Hiển thị message lỗi và set focus vào Màn hình login．User No.
-        if(Constants::ONE.equalTo(array_get($userLoginInfo,Constants::TBL_ACC_LOCK_FLAG))){
+        if(Constants::ONE.equalTo(array_get($userLoginInfo,Constants::TBL_ACC_LOCK_FLG))){
             return Constants::MSG0002;
         }
 
@@ -49,7 +49,7 @@ class LoginController extends Controller
         }
 
         //Login screen．Login password ≠ ser master．Login password
-        if (!$password.equalTo(array_get($userLoginInfo,Constants::TBl_lOGIN_PWD))){
+        if (!$password.equalTo(array_get($userLoginInfo,Constants::TBL_LOGIN_PWD))){
             //➡	Trường hợp login thất bại 3 lần liên tiếp thì set ”１” cho User master．Account lock flag,																														Message ID：MSG0004
             //hiển thị message lỗi và set focus vào Màn hình login．User No.
 

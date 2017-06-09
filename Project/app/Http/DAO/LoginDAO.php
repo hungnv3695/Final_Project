@@ -18,28 +18,29 @@ class LoginDAO
 {
 
     /**
-     * get user info
-     * @param $userName
+     * get User Login infomation
+     * @param $userID
      * @return mixed
      */
     public function getLoginUserInfo($userID){
         $result = User::where(Constants::TBL_USER_ID,$userID)
                     -> get([Constants::TBL_USER_ID,
                             Constants::TBL_USER_NAME,
-                            Constants::TBl_lOGIN_PWD,
-                            Constants::TBL_ACC_LOCK_FLAG]);
+                            Constants::TBL_LOGIN_PWD,
+                            Constants::TBL_ACC_LOCK_FLG]);
 
         return $result;
     }
 
 
     /**
+     * set Account to lock
      * @param $userID
      * @return bool
      */
     public function setAccLock($userID){
         $result = User::where(Constants::TBL_USER_ID,$userID)
-                    ->update([Constants::TBL_ACC_LOCK_FLAG=>1]);
+                    ->update([Constants::TBL_ACC_LOCK_FLG=>1]);
 
         if ($result){
             return true;
@@ -49,6 +50,7 @@ class LoginDAO
     }
 
     /**
+     * Get User Permission
      * @param $userID
      * @return mixed
      */
@@ -59,7 +61,7 @@ class LoginDAO
                     Constants::PERMISSION . ' . ' .Constants::TBL_GROUP_CD )
                 ->where(Constants::USER_GROUP . '.' . Constants::TBL_USER_ID ,$userID)
                 ->get([Constants::PERMISSION . ' . ' .Constants::TBL_SCREEN_ID,
-                    Constants::PERMISSION . ' . ' .Constants::TBL_USE_FLAG]);
+                    Constants::PERMISSION . ' . ' .Constants::TBL_USE_FLG]);
 
         return  $result;
     }
