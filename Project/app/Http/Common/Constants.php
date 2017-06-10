@@ -11,10 +11,10 @@ namespace App\Http\Common;
 class Constants
 {
         const MANEGER_SCREENID = '3';
-        const MSG0001 = "";
-        const MSG0002 = "";
-        const MSG0003 = "";
-        const MSG0004 = "";
+        const MSG0001 = "MSG0001";
+        const MSG0002 = "MSG0002";
+        const MSG0003 = "MSG0003";
+        const MSG0004 = "MSG0004";
         const  ONE = '1';
 
         const TIME_FORMAT = "m/d/Y" ;

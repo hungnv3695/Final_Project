@@ -27,11 +27,25 @@ class LoginDAO
                     -> get([Constants::TBL_USER_ID,
                             Constants::TBL_USER_NAME,
                             Constants::TBL_LOGIN_PWD,
-                            Constants::TBL_ACC_LOCK_FLG]);
+                            Constants::TBL_ACC_LOCK_FLG,
+                            Constants::TBL_DELETE_FLG]);
 
-        return $result;
+        return $result->toArray();
     }
 
+    /**
+     * Get User Permission
+     * @param $userID
+     * @return mixed
+     */
+    public function getUserPermission($userID){
+        $result = DB::table('t_user_group')
+            ->join('t_permission', 't_user_group.group_cd', '=','t_permission.group_cd')
+            ->where('t_user_group.user_id',$userID)
+            ->get(['t_permission.screen_id', 't_permission.use_flg']);
+
+        return  $result->toArray();
+    }
 
     /**
      * set Account to lock
@@ -47,22 +61,5 @@ class LoginDAO
         } else{
             return false;
         }
-    }
-
-    /**
-     * Get User Permission
-     * @param $userID
-     * @return mixed
-     */
-    public function getUserInfo($userID){
-        $result = DB::table(Constants::USER_GROUP)
-                ->join(Constants::PERMISSION,
-                    Constants::USER_GROUP . '.' . Constants::TBL_GROUP_CD, '=',
-                    Constants::PERMISSION . ' . ' .Constants::TBL_GROUP_CD )
-                ->where(Constants::USER_GROUP . '.' . Constants::TBL_USER_ID ,$userID)
-                ->get([Constants::PERMISSION . ' . ' .Constants::TBL_SCREEN_ID,
-                    Constants::PERMISSION . ' . ' .Constants::TBL_USE_FLG]);
-
-        return  $result;
     }
 }
