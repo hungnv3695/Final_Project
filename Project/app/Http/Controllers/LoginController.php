@@ -17,11 +17,7 @@ class LoginController extends Controller
     }
 
 
-    public function CheckAcc($userID,$password){
-        //create session check number of login
-        If(!session()->has(SESSION_NUMBER_LOGIN)){
-            session([SESSION_NUMBER_LOGIN => 1]);
-        }
+    public function CheckAcc($userID , $password){
 
         //２．Thực hiện chứng thực login với user ID và password đã được đăng ký vào bảng user.
         $loginDAO = new LoginDAO();
@@ -36,32 +32,41 @@ class LoginController extends Controller
             return Constants::MSG0001;
         }
 
+
         //User master．Account lock flag	＝”1”
         //➡	Hiển thị message lỗi và set focus vào Màn hình login．User No.
-        if(Constants::ONE.equalTo(array_get($userLoginInfo,Constants::TBL_ACC_LOCK_FLAG))){
+        if(array_get($userLoginInfo[0],Constants::TBL_ACC_LOCK_FLG) == 1){
             return Constants::MSG0002;
         }
 
         //User master．delete_flg	＝　			”1”
         //➡	Hiển thị message thông báovà set focus vào Màn hình login．User No.
-        if(Constants::ONE.equalTo(array_get($userLoginInfo,Constants::TBL_DELETE_FLG))){
+        if(array_get($userLoginInfo[0],Constants::TBL_DELETE_FLG) == 1){
             return Constants::MSG0002;
         }
 
         //Login screen．Login password ≠ ser master．Login password
-        if (!$password.equalTo(array_get($userLoginInfo,Constants::TBl_lOGIN_PWD))){
+        if (strcmp($password,array_get($userLoginInfo[0],Constants::TBL_LOGIN_PWD)) <> 0){
             //➡	Trường hợp login thất bại 3 lần liên tiếp thì set ”１” cho User master．Account lock flag,																														Message ID：MSG0004
-            //hiển thị message lỗi và set focus vào Màn hình login．User No.
+            //hiển thị message lỗi và set focus vào Màn hình login．User N
 
             //Get number of login
             $numberLogin = session()->get(SESSION_NUMBER_LOGIN);
-            if($numberLogin > 3){
+
+            if ($numberLogin == null){
+                $numberLogin =1;
+            }
+
+            if($numberLogin >= 3){
 
                 $loginDAO->setAccLock($userID);
             } else{
 
                 //Set NUMBER_LOGIN increment
-                session(SESSION_NUMBER_LOGIN,$numberLogin + 1);
+                $numberLogin = $numberLogin + 1  ;
+                session()->forget(SESSION_NUMBER_LOGIN);
+                session()->put(SESSION_NUMBER_LOGIN,$numberLogin);
+
             }
 
             return Constants::MSG0004;
@@ -72,11 +77,9 @@ class LoginController extends Controller
 		//・Sử dụng common function lấy ra toàn bộ các màn hình mà user có thể sử dụng được và
         // quyền cao nhất của user với màn hình đấy.
         //Data lấy được lưu trong login user info.
-        $userInfo = $loginDAO->getUserInfo(array_get($userLoginInfo,Constants::TBL_USER_ID));
+        $userInfo = $loginDAO->getUserPermission(array_get($userLoginInfo[0],Constants::TBL_USER_ID));
+        session()->forget(SESSION_NUMBER_LOGIN);
         session(SESSION_USER_INFO_AUTH,$userInfo);
         session(SESSION_USER_INFO,$userLoginInfo);
-
-
-
     }
 }
