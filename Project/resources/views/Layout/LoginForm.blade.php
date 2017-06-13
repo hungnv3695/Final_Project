@@ -4,8 +4,6 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-
-
 <html>
     <head>
         <title>Login</title>
@@ -24,7 +22,7 @@ and open the template in the editor.
                 <tbody>
                     <tr>
                         <td>UserName</td>
-                        <td><input type="text" name="userName" value="" /></td>
+                        <td><input type="text" name="userID" value="" /></td>
                     </tr>
                     <tr>
                         <td>Password</td>
@@ -34,7 +32,7 @@ and open the template in the editor.
                         <td><input type="submit" value="Login" name="login" /></td>
                         <td><input type="reset" value="Reset" name="reset" /></td>
                     </tr>
-                </tbody>               
+                </tbody>
             </table>
 
         </form>

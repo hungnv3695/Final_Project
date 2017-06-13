@@ -12,7 +12,7 @@
 */
 
 Route::get('/','LoginController@View');
-Route::post('/','LoginController@CheckAcc');
+Route::post('/','LoginController@getLoginRequest');
 
 Route::get('/Login','LoginController@View');
-Route::post('/Login','LoginController@CheckAcc');
+Route::post('/Login','LoginController@getLoginRequest');
