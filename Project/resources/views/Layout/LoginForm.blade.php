@@ -22,7 +22,7 @@ and open the template in the editor.
                 <tbody>
                     <tr>
                         <td>UserName</td>
-                        <td><input type="text" name="userName" value="" /></td>
+                        <td><input type="text" name="userID" value="" /></td>
                     </tr>
                     <tr>
                         <td>Password</td>

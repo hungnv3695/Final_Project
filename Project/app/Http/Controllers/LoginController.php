@@ -22,8 +22,8 @@ class LoginController extends Controller
     public function getLoginRequest(Request $request){
         $userLogin = new User();
 
-        $userLogin->userID = $request->userID;
-        $userLogin->password = $request->password;
+        $userLogin->setUserID($request->userID) ;
+        $userLogin->setPassword($request->password);
 
         $result = $this->CheckAcc($userLogin);
 
@@ -31,12 +31,12 @@ class LoginController extends Controller
     }
 
 
-    public function CheckAcc($userLogin){
+    public function CheckAcc(User $userLogin){
 
         //２．Thực hiện chứng thực login với user ID và password đã được đăng ký vào bảng user.
         $loginDAO = new LoginDAO();
 
-        $userLoginInfo = $loginDAO->getLoginUserInfo($userLogin->userID);
+        $userLoginInfo = $loginDAO->getLoginUserInfo($userLogin->getUserID());
 
         //２．２．Xử lý check
 		//Thực hiện các check sau khi lấy xử lý ở trên.
@@ -60,7 +60,7 @@ class LoginController extends Controller
         }
 
         //Login screen．Login password ≠ ser master．Login password
-        if (strcmp($userLogin->password,array_get($userLoginInfo[0],Constants::TBL_LOGIN_PWD)) <> 0){
+        if (strcmp($userLogin->getPassword(),array_get($userLoginInfo[0],Constants::TBL_LOGIN_PWD)) <> 0){
             //➡	Trường hợp login thất bại 3 lần liên tiếp thì set ”１” cho User master．Account lock flag,																														Message ID：MSG0004
             //hiển thị message lỗi và set focus vào Màn hình login．User N
 
@@ -73,7 +73,7 @@ class LoginController extends Controller
 
             if($numberLogin >= 3){
 
-                $loginDAO->setAccLock($userLogin->userID);
+                $loginDAO->setAccLock($userLogin->getUserID());
             } else{
 
                 //Set NUMBER_LOGIN increment
