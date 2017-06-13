@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class User extends Model
 {
+
+    public $userID;
+    public $password;
+
     /**
      * The table associated with the model.
      *

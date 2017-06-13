@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Common\Constants;
+use App\User;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Http\Request;
 use App\Http\DAO\LoginDAO;
@@ -10,19 +11,32 @@ use App\Http\DAO\LoginDAO;
 define('SESSION_NUMBER_LOGIN', 'NUMBER_LOGIN');
 define('SESSION_USER_INFO_AUTH','USER_INFO_AUTH');
 define('SESSION_USER_INFO','USER_INFO');
+
+
 class LoginController extends Controller
 {
     public function View(){
         return view('Layout.LoginForm');
     }
 
+    public function getLoginRequest(Request $request){
+        $userLogin = new User();
 
-    public function CheckAcc($userID , $password){
+        $userLogin->userID = $request->userID;
+        $userLogin->password = $request->password;
+
+        $result = $this->CheckAcc($userLogin);
+
+        return $result;
+    }
+
+
+    public function CheckAcc($userLogin){
 
         //２．Thực hiện chứng thực login với user ID và password đã được đăng ký vào bảng user.
         $loginDAO = new LoginDAO();
 
-        $userLoginInfo = $loginDAO->getLoginUserInfo($userID);
+        $userLoginInfo = $loginDAO->getLoginUserInfo($userLogin->userID);
 
         //２．２．Xử lý check
 		//Thực hiện các check sau khi lấy xử lý ở trên.
@@ -46,7 +60,7 @@ class LoginController extends Controller
         }
 
         //Login screen．Login password ≠ ser master．Login password
-        if (strcmp($password,array_get($userLoginInfo[0],Constants::TBL_LOGIN_PWD)) <> 0){
+        if (strcmp($userLogin->password,array_get($userLoginInfo[0],Constants::TBL_LOGIN_PWD)) <> 0){
             //➡	Trường hợp login thất bại 3 lần liên tiếp thì set ”１” cho User master．Account lock flag,																														Message ID：MSG0004
             //hiển thị message lỗi và set focus vào Màn hình login．User N
 
@@ -59,7 +73,7 @@ class LoginController extends Controller
 
             if($numberLogin >= 3){
 
-                $loginDAO->setAccLock($userID);
+                $loginDAO->setAccLock($userLogin->userID);
             } else{
 
                 //Set NUMBER_LOGIN increment
