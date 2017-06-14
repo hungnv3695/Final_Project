@@ -137,10 +137,10 @@ form.login a:hover
                     ANH DUONG HOTEL</p>
             	<div class="col-md-4 col-md-offset-4">
             		<div class="panel panel-default" style="height: 270px";>
-		                <form class="login">
-		                <p class="form-title">
-		                    Sign In</p>
-		                <form class="login">
+		                <form class="login" action ="" name="Login" method="POST" >
+		                <p class="form-title">Sign In</p>
+		                <form class="login" method="POST" >
+						<input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
 		                <input type="text" placeholder="Username" />
 		                <input type="password" placeholder="Password" />
 		                <input type="submit" value="Sign In" class="btn btn-success btn-sm" />
@@ -158,6 +158,7 @@ form.login a:hover
 		                    </div>
 		                </div>
 		                </form>
+						</form>
 		            </div>
                 </div>
             </div>
@@ -165,6 +166,5 @@ form.login a:hover
     </div>
     <div class="posted-by">HOTEL : <a style="text-decoration: none;" href="index.blade.php">HOME</a></div>
 </div>
-</script>
 </body>
 </html>
