@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Common\Constants;
+use App\Http\Common\User;
+use App\Http\Common\user_Model;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Http\Request;
 use App\Http\DAO\LoginDAO;
+use Illuminate\Support\Facades\Auth;
 
 define('SESSION_NUMBER_LOGIN', 'NUMBER_LOGIN');
 define('SESSION_USER_INFO_AUTH','USER_INFO_AUTH');
@@ -13,11 +16,15 @@ define('SESSION_USER_INFO','USER_INFO');
 class LoginController extends Controller
 {
     public function View(){
-        return view('Layout.LoginForm');
+        return view('Layout.Login');
     }
 
 
-    public function CheckAcc($userID , $password){
+    public function CheckAcc(Request $request){
+
+        $password = $request->password;
+        $userID = $request->userID;
+        dd($password,$userID);
 
         //２．Thực hiện chứng thực login với user ID và password đã được đăng ký vào bảng user.
         $loginDAO = new LoginDAO();
