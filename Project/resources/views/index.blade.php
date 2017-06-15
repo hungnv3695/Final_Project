@@ -54,7 +54,7 @@
 				</nav>
 				<div class="row">
 					<div class="col-sm-4 col-sm-offset-8 book-container">
-						<button class="btn" id="btn-book">Book now</button>
+						<a href="book.blade.php"><button class="btn" id="btn-book">Book now</button></a>
 					</div>
 				</div>
 			</div>

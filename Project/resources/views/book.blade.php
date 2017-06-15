@@ -47,7 +47,7 @@
 								</li>
 							</ul>
 							<ul class="nav navbar-nav navbar-right">
-								<li><a href="#">Trang chủ</a></li>
+								<li><a href="index.blade.php">Trang chủ</a></li>
 								<li><a href="#">Phòng</a></li>
 								<li><a href="#">Ảnh</a></li>
 							</ul>
