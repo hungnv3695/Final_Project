@@ -29,7 +29,7 @@ class LoginController extends Controller
 
         return $result;
     }
-    
+
     public function CheckAcc(User $userLogin){
 
         //２．Thực hiện chứng thực login với user ID và password đã được đăng ký vào bảng user.

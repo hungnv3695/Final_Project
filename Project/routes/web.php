@@ -16,3 +16,7 @@ Route::post('/','LoginController@getLoginRequest');
 
 Route::get('/Login','LoginController@View');
 Route::post('/Login','LoginController@getLoginRequest');
+
+Route::get('/index',function(){
+    return view('index');
+});
