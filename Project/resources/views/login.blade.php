@@ -9,7 +9,7 @@
     <style type="text/css">
         body
 {
-    background:url(../assets/img/IMG_3151.JPG) fixed;
+    background:url( {{asset( '/img/IMG_3151.JPG ' )}}) fixed;
     background-size: cover;
     padding: 0;
     margin: 0;

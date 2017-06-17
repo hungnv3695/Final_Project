@@ -3,16 +3,16 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Sub-Restaurant3</title>
-	<link rel="stylesheet" type="text/css" href="../assets/plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="../assets/plugins/font-awesome-4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="../assets/plugins/boostrap-datepicker/css/bootstrap-datepicker.min.css">
-	<link rel="stylesheet" type="text/css" href="../assets/plugins/animate/animate.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/index.css">
-	<script type="text/javascript" src="../assets/plugins/jquery/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="../assets/plugins/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="../assets/plugins/slide/jquery.slides.min.js"></script>
-	<script type="text/javascript" src="../assets/plugins/boostrap-datepicker/js/bootstrap-datepicker.min.js"></script>
-	<script type="text/javascript" src="../assets/js/myPlugin.js"></script>
+	<link rel="stylesheet" type="text/css" href=" {{asset( '/plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css ' )}}">
+	<link rel="stylesheet" type="text/css" href=" {{asset( '/plugins/font-awesome-4.7.0/css/font-awesome.min.css ')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('/plugins/boostrap-datepicker/css/bootstrap-datepicker.min.css  ')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset( '/plugins/animate/animate.css  ')}}">
+	<link rel="stylesheet" type="text/css" href=" {{asset( '/css/index.css  ')}}">
+	<script type="text/javascript" src="{{asset(  '/plugins/jquery/jquery-3.2.1.min.js ' )}}"></script>
+	<script type="text/javascript" src="{{asset('/plugins/bootstrap-3.3.7-dist/js/bootstrap.min.js ')}}"></script>
+	<script type="text/javascript" src=" {{asset('/plugins/slide/jquery.slides.min.js ' )}}"></script>
+	<script type="text/javascript" src="{{asset('/plugins/boostrap-datepicker/js/bootstrap-datepicker.min.js ')}}"></script>
+	<script type="text/javascript" src="{{asset('/js/myPlugin.js ' )}}"></script>
 </head>
 </head>
 <body>
@@ -45,7 +45,7 @@
                                     </li>
                                 </ul>
                                 <ul class="nav navbar-nav navbar-right">
-                                    <li><a href="index.blade.php">Trang chủ</a></li>
+                                    <li><a href="{!! url('/view') !!}">Trang chủ</a></li>
                                     <li><a href="#">Phòng</a></li>
                                     <li><a href="#">Ảnh</a></li>
                                     <li><a href="#">Đăng nhập</a></li>
@@ -56,7 +56,7 @@
                 </div>
             </div>
             <div>
-				<img class="img-responsive" style="width: 100%" src="../assets/img/book.jpg">
+				<img class="img-responsive" style="width: 100%" src="{{asset('/img/book.jpg' )}}">
 			</div>
             
             <div id="restaurant-title" class="container">
@@ -67,7 +67,7 @@
         	<div id="more" style="margin-top: 25px;" class="container">
 					<div class="col-sm-4">
 						<div class="restaurant-item">
-							<img src="../assets/img/restaurant-img1.jpg"/>
+							<img src="{{asset('/img/restaurant-img1.jpg')}}"/>
 						</div>
 					</div>
                     <div class="detail-information">
@@ -94,32 +94,32 @@ The accompanying vegetables were pretty unimaginative - steamed carrots, brocoll
                     </div>
                     <div class="col-sm-4">
 						<div class="lobster-restaurant">
-							<a href="#"><img src="../assets/img/lob1.jpg"/></a>
+							<a href="#"><img src="{{asset( '/img/lob1.jpg' )}}"/></a>
 						</div>
 					</div>
                     <div class="col-sm-4">
 						<div class="lobster-restaurant">
-							<a href="#"><img src="../assets/img/lob2.jpg"/></a>
+							<a href="#"><img src="{{asset( '/img/lob2.jpg' )}}"/></a>
 						</div>
 					</div>
                     <div class="col-sm-4">
 						<div class="lobster-restaurant">
-							<a href="#"><img src="../assets/img/lob3.jpg"/></a>
+							<a href="#"><img src="{{asset( '/img/lob3.jpg' )}}"/></a>
 						</div>
 					</div>
                     <div class="col-sm-4">
 						<div class="lobster-restaurant">
-							<a href="#"><img src="../assets/img/lob4.jpg"/></a>
+							<a href="#"><img src="{{asset( '/img/lob4.jpg' )}}"/></a>
 						</div>
 					</div>
                     <div class="col-sm-4">
 						<div class="lobster-restaurant">
-							<a href="#"><img src="../assets/img/lob5.jpg"/></a>
+							<a href="#"><img src="{{asset( '/img/lob5.jpg' )}}"/></a>
 						</div>
 					</div>
                     <div class="col-sm-4">
 						<div class="lobster-restaurant">
-							<a href="#"><img src="../assets/img/lob6.jpg"/></a>
+							<a href="#"><img src="{{asset( '/img/lob6.jpg' )}}"/></a>
 						</div>
 					</div>
 			</div>

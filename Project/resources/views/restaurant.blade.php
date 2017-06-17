@@ -3,16 +3,16 @@
 <head>
 	<meta charset="UTF-8">
 	<title>restaurant</title>
-	<link rel="stylesheet" type="text/css" href="../assets/plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="../assets/plugins/font-awesome-4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="../assets/plugins/boostrap-datepicker/css/bootstrap-datepicker.min.css">
-	<link rel="stylesheet" type="text/css" href="../assets/plugins/animate/animate.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/index.css">
-	<script type="text/javascript" src="../assets/plugins/jquery/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="../assets/plugins/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="../assets/plugins/slide/jquery.slides.min.js"></script>
-	<script type="text/javascript" src="../assets/plugins/boostrap-datepicker/js/bootstrap-datepicker.min.js"></script>
-	<script type="text/javascript" src="../assets/js/myPlugin.js"></script>
+	<link rel="stylesheet" type="text/css" href=" {{asset( '/plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css ' )}}">
+	<link rel="stylesheet" type="text/css" href=" {{asset( '/plugins/font-awesome-4.7.0/css/font-awesome.min.css ')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('/plugins/boostrap-datepicker/css/bootstrap-datepicker.min.css  ')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset( '/plugins/animate/animate.css  ')}}">
+    <link rel="stylesheet" type="text/css" href=" {{asset( '/css/index.css  ')}}">
+	<script type="text/javascript" src="{{asset(  '/plugins/jquery/jquery-3.2.1.min.js ' )}}"></script>
+	<script type="text/javascript" src="{{asset('/plugins/bootstrap-3.3.7-dist/js/bootstrap.min.js ')}}"></script>
+	<script type="text/javascript" src=" {{asset('/plugins/slide/jquery.slides.min.js ' )}}"></script>
+	<script type="text/javascript" src="{{asset('/plugins/boostrap-datepicker/js/bootstrap-datepicker.min.js ')}}"></script>
+	<script type="text/javascript" src="{{asset('/js/myPlugin.js ' )}}"></script>
 </head>
 </head>
 <body>
@@ -56,7 +56,7 @@
                 </div>
             </div>
             <div>
-				<img class="img-responsive" style="width: 100%" src="../assets/img/book.jpg">
+				<img class="img-responsive" style="width: 100%" src="{{asset('/img/book.jpg ' )}}">
 			</div>
             <div id="restaurant-title" class="container">
             	<h1>Restaurant</h1>
@@ -66,7 +66,7 @@
         	<div id="more" style="margin-top: 25px;" class="container">
 					<div class="col-sm-4">
 						<div class="restaurant-item">
-							<a href="sub-restaurant1.blade.php"><img src="../assets/img/restaurant-img1.jpg"/></a>
+							<a href="sub-restaurant1.blade.php"><img src="{{asset('/img/restaurant-img1.jpg')}}"/></a>
 						</div>
 					</div>
                     <div class="detail-information">
@@ -76,7 +76,7 @@
             <div id="more" style="margin-top: 25px;" class="container">
 					<div class="col-sm-4">
 						<div class="restaurant-item">
-							<a href="sub-restaurant2.blade.php"><img src="../assets/img/restaurant-img2.jpg"/></a>
+							<a href="sub-restaurant2.blade.php"><img src="{{ asset( ' /img/restaurant-img2.jpg ')}}"/></a>
 						</div>
 					</div>
                     <div class="detail-information">
@@ -86,7 +86,7 @@
             <div id="more" style="margin-top: 25px;" class="container">
 					<div class="col-sm-4">
 						<div class="restaurant-item">
-							<a href="sub-restaurant3.blade.php"><img src="../assets/img/restaurant-img3.jpg"/></a>
+							<a href="sub-restaurant3.blade.php"><img src="{{asset('/img/restaurant-img3.jpg')}}"/></a>
 						</div>
 					</div>
                     <div class="detail-information">

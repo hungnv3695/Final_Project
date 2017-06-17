@@ -248,3 +248,5 @@ Hanoi Daewoo Hotel features the largest room inventory in the city, with 411 tas
 	</div>
 </body>
 </html>
+
+

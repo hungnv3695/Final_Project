@@ -4,17 +4,17 @@
 	<meta charset="UTF-8">
 	<title>Book</title>
 	<link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="../assets/plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="../assets/plugins/font-awesome-4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="../assets/plugins/animate/animate.css">
-	<link rel="stylesheet" type="text/css" href="../assets/css/index.css">
-	<script src="../assets/plugins/jquery/jquery-3.2.1.min.js"></script>
-	<script src="../assets/plugins/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-	<script src="../assets/bower_components/moment/moment.js"></script>
-	<script src="../assets/bower_components/angular/angular.js"></script>
-	<script src="../assets/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-	<script src="../assets/js/myPlugin.js"></script>
-	<script src="../assets/js/Controller/bookCtr.js"></script>
+	<link rel="stylesheet" type="text/css" href="{{asset( '/plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css') }}">
+	<link rel="stylesheet" type="text/css" href=" {{ asset('/plugins/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{asset( ' /plugins/animate/animate.cs' )}}s">
+	<link rel="stylesheet" type="text/css" href=" {{asset('/css/index.css')}}">
+	<script src="{{asset('/plugins/jquery/jquery-3.2.1.min.js')}}"></script>
+	<script src="{{asset( '/plugins/bootstrap-3.3.7-dist/js/bootstrap.min.js' ) }}"></script>
+	<script src=" {{asset('/bower_components/moment/moment.js')}}"></script>
+	<script src="{{ asset('/bower_components/angular/angular.js') }}"></script>
+	<script src="{{asset(' /bower_components/angular-bootstrap/ui-bootstrap-tpls.js ' )}}"></script>
+	<script src=" {{asset('/js/myPlugin.js') }}"></script>
+	<script src=" {{asset('/js/Controller/bookCtr.js' )}}"></script>
 </head>
 </head>
 <body>
@@ -60,7 +60,7 @@
 	<div id="content">
 		<article>
 			<div>
-				<img class="img-responsive" style="width: 100%" src="../assets/img/book.jpg">
+				<img class="img-responsive" style="width: 100%" src=" {{asset( '/img/book.jpg' ) }}">
 			</div>
 			<div ng-controller="bookCtr">
 				<div class="option-panel-container ">
