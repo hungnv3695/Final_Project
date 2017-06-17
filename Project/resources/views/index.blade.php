@@ -4,14 +4,14 @@
 	<meta charset="UTF-8">
 	<title>Ngha nghi</title>
 	<link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="../assets/plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="../assets/plugins/font-awesome-4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="../assets/plugins/animate/animate.css">
-	<link rel="stylesheet" type="text/css" href="../assets/css/index.css">
-	<script type="text/javascript" src="../assets/plugins/jquery/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="../assets/plugins/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="../assets/plugins/slide/jquery.slides.min.js"></script>
-	<script type="text/javascript" src="../assets/js/myPlugin.js"></script>
+	<link rel="stylesheet" type="text/css" href="{{ asset( '/plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css' )   }}">
+	<link rel="stylesheet" type="text/css" href="{{asset('/plugins/font-awesome-4.7.0/css/font-awesome.min.css' ) }}">
+	<link rel="stylesheet" type="text/css" href="{{asset('/plugins/animate/animate.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('/css/index.css')}}">
+	<script type="text/javascript" src="{{ asset('/plugins/jquery/jquery-3.2.1.min.js') }}"></script>
+	<script type="text/javascript" src="{{asset( '/plugins/bootstrap-3.3.7-dist/js/bootstrap.min.js' )}}"></script>
+	<script type="text/javascript" src="{{ asset('/plugins/slide/jquery.slides.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('/js/myPlugin.js') }}"></script>
 </head>
 </head>
 <body>
@@ -60,9 +60,9 @@
 			</div>
 		</div>
 		<div id="slides">
-			<img class="img-responsive" src="../assets/img/example-slide-4.jpg">
-			<img class="img-responsive" src="../assets/img/example-slide-2.jpg">
-			<img class="img-responsive" src="../assets/img/IMG_9828.jpg">
+			<img class="img-responsive" src="{{ asset("/img/example-slide-4.jpg") }}">
+			<img class="img-responsive" src="{{ asset("/img/example-slide-2.jpg") }}">
+			<img class="img-responsive" src="{{ asset("/img/IMG_9828") }}">
 			<a id="scrollTo" href="#" class="slidesjs-next slidesjs-navigation slides-center"><i class="fa fa-2x fa-arrow-circle-down" aria-hidden="true"></i></a>
 			
 			<a href="#" class="slidesjs-previous slidesjs-navigation slides-left"><i class="fa fa-3x fa-angle-left" aria-hidden="true"></i></a>
@@ -135,25 +135,25 @@ Hanoi Daewoo Hotel features the largest room inventory in the city, with 411 tas
 						<div class="col-sm-3 col-xs-6">
 							<div class="sub-ct-col">
 								<a href="#">Phòng ở</a>
-								<a href="#"><img src="../assets/img/tt.jpg"/></a>
+								<a href="#"> <img src='{{ asset("/img/tt.jpg ") }}' /> </a>
 							</div>
 						</div>
 						<div class="col-sm-3 col-xs-6 sub-ct-col">
 							<div class="sub-ct-col">
 								<a href="restaurant.blade.php">Ẩm Thực</a>
-								<a href="restaurant.blade.php"><img src="../assets/img/at.jpg"/></a>
+								<a href="restaurant.blade.php"><img src="{{ asset("/img/at.jpg ") }}"/></a>
 							</div>
 						</div>
 						<div class="col-sm-3 col-xs-6 sub-ct-col">
 							<div class="sub-ct-col">
 								<a href="#">Tours</a>
-								<a href="#"><img src="../assets/img/ab.jpg"/></a>
+								<a href="#"><img src="{{ asset("/img/ab.jpg ") }}"/></a>
 							</div>
 						</div>
 						<div class="col-sm-3 col-xs-6 sub-ct-col">
 							<div class="sub-ct-col">
 								<a href="#">Tours</a>
-								<a href="#"><img src="../assets/img/ab.jpg"/></a>
+								<a href="#"><img src="{{ asset("/img/ab.jpg ") }}"/></a>
 							</div>
 						</div>
 					</div>
