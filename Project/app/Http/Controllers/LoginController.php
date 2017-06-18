@@ -19,6 +19,10 @@ class LoginController extends Controller
         return view('login');
     }
 
+    /**
+     * @param Request $request
+     * @return bool|\Illuminate\Contracts\View\Factory|\Illuminate\View\View|string
+     */
     public function getLoginRequest(Request $request){
         $userLogin = new User();
 
@@ -27,9 +31,29 @@ class LoginController extends Controller
 
         $result = $this->CheckAcc($userLogin);
 
-        return $result;
+        if($result != true ){
+            return $result;
+        }else{
+            //２．４．　Sau khi thực hiện các xử lý check phía trên, nếu không có error xảy ra:
+            //・Sử dụng common function lấy ra toàn bộ các màn hình mà user có thể sử dụng được và
+            // quyền cao nhất của user với màn hình đấy.
+            //Data lấy được lưu trong login user info.
+            $loginDAO = new LoginDAO();
+            $userAuthInfo = $loginDAO->getUserPermission($userLogin->getUserID());
+
+            session()->forget(SESSION_NUMBER_LOGIN);
+            session(SESSION_USER_INFO_AUTH,$userAuthInfo);
+            session(SESSION_USER_INFO,$userLogin->getUserID());
+
+            return view('index');
+        }
+
     }
 
+    /**
+     * @param User $userLogin
+     * @return bool|string
+     */
     public function CheckAcc(User $userLogin){
 
         //２．Thực hiện chứng thực login với user ID và password đã được đăng ký vào bảng user.
@@ -85,14 +109,6 @@ class LoginController extends Controller
             return Constants::MSG0004;
         }
 
-
-        //２．４．　Sau khi thực hiện các xử lý check phía trên, nếu không có error xảy ra:
-		//・Sử dụng common function lấy ra toàn bộ các màn hình mà user có thể sử dụng được và
-        // quyền cao nhất của user với màn hình đấy.
-        //Data lấy được lưu trong login user info.
-        $userInfo = $loginDAO->getUserPermission(array_get($userLoginInfo[0],Constants::TBL_USER_ID));
-        session()->forget(SESSION_NUMBER_LOGIN);
-        session(SESSION_USER_INFO_AUTH,$userInfo);
-        session(SESSION_USER_INFO,$userLoginInfo);
+        return true;
     }
 }
