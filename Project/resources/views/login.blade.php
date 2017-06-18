@@ -141,8 +141,8 @@ form.login a:hover
 		                <p class="form-title">Sign In</p>
 		                <form class="login" method="POST" >
 						<input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
-		                <input type="text" placeholder="Username" />
-		                <input type="password" placeholder="Password" />
+		                <input type="text"  name = "userID" placeholder="Username" />
+		                <input type="password" name="password" placeholder="Password" />
 		                <input type="submit" value="Sign In" class="btn btn-success btn-sm" />
 		                <div class="remember-forgot">
 		                    <div class="row">
