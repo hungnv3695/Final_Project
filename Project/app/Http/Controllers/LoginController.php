@@ -3,33 +3,63 @@
 namespace App\Http\Controllers;
 
 use App\Http\Common\Constants;
-use App\Http\Common\User;
-use App\Http\Common\user_Model;
+use App\User;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Http\Request;
 use App\Http\DAO\LoginDAO;
-use Illuminate\Support\Facades\Auth;
 
 define('SESSION_NUMBER_LOGIN', 'NUMBER_LOGIN');
 define('SESSION_USER_INFO_AUTH','USER_INFO_AUTH');
 define('SESSION_USER_INFO','USER_INFO');
+
+
 class LoginController extends Controller
 {
     public function View(){
-        return view('Layout.Login');
+        return view('login');
     }
 
+    /**
+     * @param Request $request
+     * @return bool|\Illuminate\Contracts\View\Factory|\Illuminate\View\View|string
+     */
+    public function getLoginRequest(Request $request){
+        $userLogin = new User();
 
-    public function CheckAcc(Request $request){
+        $userLogin->setUserID($request->userID) ;
+        $userLogin->setPassword($request->password);
 
-        $password = $request->password;
-        $userID = $request->userID;
-        dd($password,$userID);
+        $result = $this->CheckAcc($userLogin);
+
+        if($result != true ){
+            return $result;
+        }else{
+            //２．４．　Sau khi thực hiện các xử lý check phía trên, nếu không có error xảy ra:
+            //・Sử dụng common function lấy ra toàn bộ các màn hình mà user có thể sử dụng được và
+            // quyền cao nhất của user với màn hình đấy.
+            //Data lấy được lưu trong login user info.
+            $loginDAO = new LoginDAO();
+            $userAuthInfo = $loginDAO->getUserPermission($userLogin->getUserID());
+
+            session()->forget(SESSION_NUMBER_LOGIN);
+            session(SESSION_USER_INFO_AUTH,$userAuthInfo);
+            session(SESSION_USER_INFO,$userLogin->getUserID());
+
+            return view('index');
+        }
+
+    }
+
+    /**
+     * @param User $userLogin
+     * @return bool|string
+     */
+    public function CheckAcc(User $userLogin){
 
         //２．Thực hiện chứng thực login với user ID và password đã được đăng ký vào bảng user.
         $loginDAO = new LoginDAO();
 
-        $userLoginInfo = $loginDAO->getLoginUserInfo($userID);
+        $userLoginInfo = $loginDAO->getLoginUserInfo($userLogin->getUserID());
 
         //２．２．Xử lý check
 		//Thực hiện các check sau khi lấy xử lý ở trên.
@@ -53,7 +83,7 @@ class LoginController extends Controller
         }
 
         //Login screen．Login password ≠ ser master．Login password
-        if (strcmp($password,array_get($userLoginInfo[0],Constants::TBL_LOGIN_PWD)) <> 0){
+        if (strcmp($userLogin->getPassword(),array_get($userLoginInfo[0],Constants::TBL_LOGIN_PWD)) <> 0){
             //➡	Trường hợp login thất bại 3 lần liên tiếp thì set ”１” cho User master．Account lock flag,																														Message ID：MSG0004
             //hiển thị message lỗi và set focus vào Màn hình login．User N
 
@@ -66,7 +96,7 @@ class LoginController extends Controller
 
             if($numberLogin >= 3){
 
-                $loginDAO->setAccLock($userID);
+                $loginDAO->setAccLock($userLogin->getUserID());
             } else{
 
                 //Set NUMBER_LOGIN increment
@@ -79,14 +109,6 @@ class LoginController extends Controller
             return Constants::MSG0004;
         }
 
-
-        //２．４．　Sau khi thực hiện các xử lý check phía trên, nếu không có error xảy ra:
-		//・Sử dụng common function lấy ra toàn bộ các màn hình mà user có thể sử dụng được và
-        // quyền cao nhất của user với màn hình đấy.
-        //Data lấy được lưu trong login user info.
-        $userInfo = $loginDAO->getUserPermission(array_get($userLoginInfo[0],Constants::TBL_USER_ID));
-        session()->forget(SESSION_NUMBER_LOGIN);
-        session(SESSION_USER_INFO_AUTH,$userInfo);
-        session(SESSION_USER_INFO,$userLoginInfo);
+        return true;
     }
 }
