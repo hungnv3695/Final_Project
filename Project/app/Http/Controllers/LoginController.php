@@ -7,10 +7,12 @@ use App\User;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Http\Request;
 use App\Http\DAO\LoginDAO;
+use Illuminate\Support\Facades\Input;
 
 define('SESSION_NUMBER_LOGIN', 'NUMBER_LOGIN');
 define('SESSION_USER_INFO_AUTH','USER_INFO_AUTH');
 define('SESSION_USER_INFO','USER_INFO');
+define('LOGIN_ERROR_MSG','LoginErroMsg');
 
 
 class LoginController extends Controller
@@ -31,23 +33,35 @@ class LoginController extends Controller
 
         $result = $this->CheckAcc($userLogin);
 
-        if($result != true ){
-            return $result;
-        }else{
-            //２．４．　Sau khi thực hiện các xử lý check phía trên, nếu không có error xảy ra:
-            //・Sử dụng common function lấy ra toàn bộ các màn hình mà user có thể sử dụng được và
-            // quyền cao nhất của user với màn hình đấy.
-            //Data lấy được lưu trong login user info.
-            $loginDAO = new LoginDAO();
-            $userAuthInfo = $loginDAO->getUserPermission($userLogin->getUserID());
+        switch ($result){
+            case 1:
+                return back()->withInput()->with(LOGIN_ERROR_MSG,Constants::MSG0001);
+                break;
+            case 2:
+                return back()->withInput()->with(LOGIN_ERROR_MSG,Constants::MSG0002);
+                break;
+            case 3:
+                return back()->withInput()->with(LOGIN_ERROR_MSG,Constants::MSG0003);
+                break;
+            case 4:
+                return back()->withInput()->with(LOGIN_ERROR_MSG,Constants::MSG0003);
+                break;
+            case 5:
+                //２．４．　Sau khi thực hiện các xử lý check phía trên, nếu không có error xảy ra:
+                //・Sử dụng common function lấy ra toàn bộ các màn hình mà user có thể sử dụng được và
+                // quyền cao nhất của user với màn hình đấy.
+                //Data lấy được lưu trong login user info.
+                $loginDAO = new LoginDAO();
+                $userAuthInfo = $loginDAO->getUserPermission($userLogin->getUserID());
 
-            session()->forget(SESSION_NUMBER_LOGIN);
-            session(SESSION_USER_INFO_AUTH,$userAuthInfo);
-            session(SESSION_USER_INFO,$userLogin->getUserID());
+                session()->forget(SESSION_NUMBER_LOGIN);
+                session(SESSION_USER_INFO_AUTH,$userAuthInfo);
+                session(SESSION_USER_INFO,$userLogin->getUserID());
 
-            return view('index');
+                return view('index');
+
+                break;
         }
-
     }
 
     /**
@@ -66,20 +80,20 @@ class LoginController extends Controller
 		//・	Màn hình login．User No.　≠　User ID	　≠　User master．　User ID
 		//	➡	Hiển thị message lỗi và set focus vào Màn hình login．User No.
         if (sizeof($userLoginInfo) == 0){
-            return Constants::MSG0001;
+            return 1;
         }
 
 
         //User master．Account lock flag	＝”1”
         //➡	Hiển thị message lỗi và set focus vào Màn hình login．User No.
         if(array_get($userLoginInfo[0],Constants::TBL_ACC_LOCK_FLG) == 1){
-            return Constants::MSG0002;
+            return 2;
         }
 
         //User master．delete_flg	＝　			”1”
         //➡	Hiển thị message thông báovà set focus vào Màn hình login．User No.
         if(array_get($userLoginInfo[0],Constants::TBL_DELETE_FLG) == 1){
-            return Constants::MSG0002;
+            return 3;
         }
 
         //Login screen．Login password ≠ ser master．Login password
@@ -106,9 +120,9 @@ class LoginController extends Controller
 
             }
 
-            return Constants::MSG0004;
+            return 4;
         }
 
-        return true;
+        return 5;
     }
 }
