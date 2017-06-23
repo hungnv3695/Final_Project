@@ -3,10 +3,8 @@
     <meta charset="UTF-8">
     <title>Bootstrap 3 Simple Tables</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../assets/plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../assets/css/index.css">
     <style type="text/css">
 	body
 	{
@@ -25,15 +23,9 @@
 		text-transform: uppercase;
 		letter-spacing: 4px;
 	}
-	.posted-by
+	.btn:hover
 	{
-		position: absolute;
-		bottom: 26px;
-		margin: 0 auto;
-		color: #FFF;
-		background-color: rgba(0, 0, 0, 0.66);
-		padding: 10px;
-		left: 45%;
+		background-color:rgb(194,194,194);
 	}
 	</style>
 </head>
@@ -155,10 +147,10 @@
 					</div>
 				</div>
 				<div class="col-md-12" style="background-color:rgb(236,236,236);">
-						<div class="col-md-4 col-md-offset-8" style="margin-top:10px; margin-bottom:10px;">
-							<button value="checkinBtn" name="checkinBtn"><b>Check-in</b></button>
-							<button value="checkoutBtn" name="checkoutBtn"><b>Check-out</b></button>
-							<button value="roomBtn" name="roomBtn"><b>Phòng</b></button>
+						<div class="col-md-6 col-md-offset-7" style="margin-top:10px; margin-bottom:10px;">
+							<div class="col-md-3"><button class="btn btn-default" value="checkinBtn" name="checkinBtn" ><b>Check-in</b></button></div>
+							<div class="col-md-3"><button class="btn btn-default" value="checkoutBtn" name="checkoutBtn"><b>Check-out</b></button></div>
+							<div class="col-md-3"><button class="btn btn-default" value="roomBtn" name="roomBtn"><b>Phòng</b></button></div>
 						</div>
 				</div>
             </div>
