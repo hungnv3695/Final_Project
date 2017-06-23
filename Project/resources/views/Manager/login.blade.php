@@ -136,13 +136,18 @@ form.login a:hover
             	<p class="brand-title">
                     ANH DUONG HOTEL</p>
             	<div class="col-md-4 col-md-offset-4">
-            		<div class="panel panel-default" style="height: 270px";>
+            		<div class="panel panel-default" style="height: 290px";>
 		                <form class="login" action ="" name="Login" method="POST" >
 		                <p class="form-title">Sign In</p>
 		                <form class="login" method="POST" >
 						<input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
 		                <input type="text"  name = "userID" placeholder="Username" value="{!! old('userID') !!}"/>
 		                <input type="password" name="password" placeholder="Password" />
+							<div class="Error">
+								@if(Session::has('LoginErroMsg'))
+									<p style="color:red;" >{!! Session::get('LoginErroMsg') !!} </p>
+								@endif
+							</div>
 		                <input type="submit" value="Sign In" class="btn btn-success btn-sm" />
 		                <div class="remember-forgot">
 		                    <div class="row">
@@ -157,11 +162,7 @@ form.login a:hover
 		                        
 		                    </div>
 		                </div>
-							<div class="Error">
-								@if(Session::has('LoginErroMsg'))
-									<p>{!! Session::get('LoginErroMsg') !!} </p>
-								@endif
-							</div>
+
 		                </form>
 						</form>
 		            </div>
