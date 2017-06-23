@@ -159,7 +159,7 @@ form.login a:hover
 		                </div>
 							<div class="Error">
 								@if(Session::has('LoginErroMsg'))
-									<p>{!! Session::get('LoginErroMsg') !!} </p>
+									<p color="red" >{!! Session::get('LoginErroMsg') !!} </p>
 								@endif
 							</div>
 		                </form>
