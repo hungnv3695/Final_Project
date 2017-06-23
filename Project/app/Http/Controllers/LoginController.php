@@ -4,10 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Common\Constants;
 use App\User;
-use Illuminate\Auth\Access\Response;
 use Illuminate\Http\Request;
 use App\Http\DAO\LoginDAO;
-use Illuminate\Support\Facades\Input;
 
 define('SESSION_NUMBER_LOGIN', 'NUMBER_LOGIN');
 define('SESSION_USER_INFO_AUTH','USER_INFO_AUTH');
@@ -17,13 +15,17 @@ define('LOGIN_ERROR_MSG','LoginErroMsg');
 
 class LoginController extends Controller
 {
+    /**
+     * show Login Form
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function View(){
-        return view('login');
+        return view('Manager.login');
     }
 
     /**
      * @param Request $request
-     * @return bool|\Illuminate\Contracts\View\Factory|\Illuminate\View\View|string
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
      */
     public function getLoginRequest(Request $request){
         $userLogin = new User();
@@ -58,15 +60,16 @@ class LoginController extends Controller
                 session(SESSION_USER_INFO_AUTH,$userAuthInfo);
                 session(SESSION_USER_INFO,$userLogin->getUserID());
 
-                return view('index');
+                return view('Guest.index');
 
                 break;
         }
     }
 
     /**
+     * check UserID and Password is correct
      * @param User $userLogin
-     * @return bool|string
+     * @return int
      */
     public function CheckAcc(User $userLogin){
 
