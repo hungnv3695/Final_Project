@@ -6,6 +6,28 @@ use Illuminate\Database\Eloquent\Model;
 
 class User extends Model
 {
+
+    private  $userID;
+    private  $password;
+
+    public function getUserID(){
+        return $this->userID;
+    }
+
+    public function setUserID($userID){
+        $this->userID = $userID;
+    }
+
+
+    public function getPassword(){
+        return $this->password;
+    }
+
+    public function setPassword($password){
+        $this->password = $password;
+    }
+
+
     /**
      * The table associated with the model.
      *
