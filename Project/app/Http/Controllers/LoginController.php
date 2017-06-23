@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Common\Constants;
+use App\Http\Common\Message;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\DAO\LoginDAO;
@@ -37,16 +38,16 @@ class LoginController extends Controller
 
         switch ($result){
             case 1:
-                return back()->withInput()->with(LOGIN_ERROR_MSG,Constants::MSG0001);
+                return back()->withInput()->with(LOGIN_ERROR_MSG,Message::MSG0001);
                 break;
             case 2:
-                return back()->withInput()->with(LOGIN_ERROR_MSG,Constants::MSG0002);
+                return back()->withInput()->with(LOGIN_ERROR_MSG,Message::MSG0002);
                 break;
             case 3:
-                return back()->withInput()->with(LOGIN_ERROR_MSG,Constants::MSG0003);
+                return back()->withInput()->with(LOGIN_ERROR_MSG,Message::MSG0003);
                 break;
             case 4:
-                return back()->withInput()->with(LOGIN_ERROR_MSG,Constants::MSG0003);
+                return back()->withInput()->with(LOGIN_ERROR_MSG,Message::MSG0004);
                 break;
             case 5:
                 //２．４．　Sau khi thực hiện các xử lý check phía trên, nếu không có error xảy ra:
