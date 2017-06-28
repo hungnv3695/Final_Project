@@ -46,7 +46,10 @@ class LoginDAO
 
         return  $result->toArray();
     }
-
+    public function getGuest(){
+        $result = DB::table('tbl_guest')->get(['id','first_name','last_name','phone','country']);
+        return $result->toArray();
+    }
     /**
      * set Account to lock
      * @param $userID

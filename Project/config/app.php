@@ -227,5 +227,6 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
     ],
-
+    'GridRender' => 'Mgallegos\LaravelJqgrid\Facades\GridRender',
+    'GridEncoder' => 'Mgallegos\LaravelJqgrid\Facades\GridEncoder',
 ];

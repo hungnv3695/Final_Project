@@ -15,7 +15,12 @@ Route::get('/','LoginController@View');
 Route::post('/','LoginController@getLoginRequest');
 
 Route::get('/Login','LoginController@View');
-Route::post('/Login','LoginController@getLoginRequest');
+Route::post('/Login','LoginController@getUserInfor');
+
+
+Route::get('/K003','K003Controller@View');
+Route::get('/K003/Id','K003Controller@getUserInfor');
+Route::post('/K003','K003Controller@postUserInfor');
 
 Route::get('/index',function(){
     return view('index');
