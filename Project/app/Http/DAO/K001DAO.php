@@ -14,7 +14,7 @@ use App\UserGroup;
 use App\UserMaster;
 use Illuminate\Support\Facades\DB;
 
-class LoginDAO
+class K001DAO
 {
 
     /**
