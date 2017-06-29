@@ -57,7 +57,7 @@ class K001Controller extends Controller
                 // quyền cao nhất của user với màn hình đấy.
                 //Data lấy được lưu trong login user info.
                 $loginDAO = new K001DAO();
-                $userInfo = $loginDAO->getLoginUserInfo($userLogin->getUserID());
+                $userInfo = $loginDAO->getUserInfo($userLogin->getUserID());
 
                 session()->forget(SESSION_NUMBER_LOGIN);
                 session(SESSION_USER_INFO,$userInfo);
