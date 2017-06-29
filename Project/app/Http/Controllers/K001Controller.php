@@ -7,10 +7,8 @@ use App\Http\Common\Message;
 use App\Http\DAO\K001DAO;
 use App\User;
 use Illuminate\Http\Request;
-use App\Http\DAO\LoginDAO;
 
 define('SESSION_NUMBER_LOGIN', 'NUMBER_LOGIN');
-define('SESSION_USER_INFO_AUTH','USER_INFO_AUTH');
 define('SESSION_USER_INFO','USER_INFO');
 define('LOGIN_ERROR_MSG','LoginErroMsg');
 
@@ -59,14 +57,16 @@ class K001Controller extends Controller
                 // quyền cao nhất của user với màn hình đấy.
                 //Data lấy được lưu trong login user info.
                 $loginDAO = new K001DAO();
-                $userAuthInfo = $loginDAO->getUserPermission($userLogin->getUserID());
+                $userInfo = $loginDAO->getLoginUserInfo($userLogin->getUserID());
 
                 session()->forget(SESSION_NUMBER_LOGIN);
-                session(SESSION_USER_INFO_AUTH,$userAuthInfo);
-                session(SESSION_USER_INFO,$userLogin->getUserID());
+                session(SESSION_USER_INFO,$userInfo);
 
-                //TODO: get group roi chuyen trang
-                return view('Guest.index');
+                if(array_get($userInfo[0],Constants::TBL_GROUP_CD) ==1 ){
+                    return view('Manager.K002_1');
+                } elseif(array_get($userInfo[0],Constants::TBL_GROUP_CD) ==2 ) {
+                    return view('Reception.K002_1');
+                }
 
                 break;
         }

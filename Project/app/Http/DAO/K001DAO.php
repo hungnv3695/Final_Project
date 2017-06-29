@@ -38,18 +38,14 @@ class K001DAO
      * @param $userID
      * @return mixed
      */
-    public function getUserPermission($userID){
-        $result = DB::table('t_user_group')
-            ->join('t_permission', 't_user_group.group_cd', '=','t_permission.group_cd')
-            ->where('t_user_group.user_id',$userID)
-            ->get(['t_permission.screen_id', 't_permission.use_flg']);
+    public function getUserInfo($userID){
+        $result = DB::table('t_user')
+            ->join('t_user_group', 't_user.user_id', '=','t_user_group.user_id')
+            ->where('t_user.user_id',$userID)
+            ->get(['t_user.user_id', 't_user.user_name' , 't_user_group.group_cd']);
+            return  $result->toArray();
+    }
 
-        return  $result->toArray();
-    }
-    public function getGuest(){
-        $result = DB::table('tbl_guest')->get(['id','first_name','last_name','phone','country']);
-        return $result->toArray();
-    }
     /**
      * set Account to lock
      * @param $userID
