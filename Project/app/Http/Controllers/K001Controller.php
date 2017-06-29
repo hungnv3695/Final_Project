@@ -14,7 +14,10 @@ define('SESSION_USER_INFO_AUTH','USER_INFO_AUTH');
 define('SESSION_USER_INFO','USER_INFO');
 define('LOGIN_ERROR_MSG','LoginErroMsg');
 
-
+/**
+ * Class K001Controller
+ * @package App\Http\Controllers
+ */
 class K001Controller extends Controller
 {
     /**
