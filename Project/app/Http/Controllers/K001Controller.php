@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Common\Constants;
 use App\Http\Common\Message;
+use App\Http\DAO\K001DAO;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\DAO\LoginDAO;
@@ -54,7 +55,7 @@ class K001Controller extends Controller
                 //・Sử dụng common function lấy ra toàn bộ các màn hình mà user có thể sử dụng được và
                 // quyền cao nhất của user với màn hình đấy.
                 //Data lấy được lưu trong login user info.
-                $loginDAO = new LoginDAO();
+                $loginDAO = new K001DAO();
                 $userAuthInfo = $loginDAO->getUserPermission($userLogin->getUserID());
 
                 session()->forget(SESSION_NUMBER_LOGIN);
@@ -76,7 +77,7 @@ class K001Controller extends Controller
     public function CheckAcc(User $userLogin){
 
         //２．Thực hiện chứng thực login với user ID và password đã được đăng ký vào bảng user.
-        $loginDAO = new LoginDAO();
+        $loginDAO = new K001DAO();
 
         $userLoginInfo = $loginDAO->getLoginUserInfo($userLogin->getUserID());
 
