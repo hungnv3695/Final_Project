@@ -20,6 +20,7 @@ Route::post('/K001','K001Controller@getLoginRequest');
 
 Route::get('/K003','K003Controller@View');
 Route::get('/K003/Id','K003Controller@getUserInfor');
+//Route::post('/K003/Id','K003Controller@getUserInfor');
 Route::post('/K003','K003Controller@postUserInfor');
 
 Route::get('/index',function(){

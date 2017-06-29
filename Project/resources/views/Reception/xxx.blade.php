@@ -11,62 +11,40 @@
 	<script type="text/ecmascript" src="{{asset('jqgrid/js/jquery.jqGrid.min.js')}}"></script>
 	<!-- This is the localization file of the grid controlling messages, labels, etc.
     <!-- A link to a jQuery UI ThemeRoller theme, more than 22 built-in and many more custom -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="{{asset('bootstrap-3.3.4-dist/css/bootstrap.min.css')}}" />
 	<!-- The link to the CSS that the grid needs -->
 	<link rel="stylesheet" type="text/css" media="screen" href="{{asset('jqgrid/css/ui.jqgrid-bootstrap.css')}}" />
 	<script>
-        $.jgrid.defaults.width = 780;
 	</script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script type="text/ecmascript" src="{{asset('bootstrap-3.3.4-dist/js/bootstrap.min.js') }}"></script>
 	<meta charset="utf-8" />
 
 	<title>jqGrid Loading Data - Million Rows from a REST service</title>
-	<!--<script>
-        body
-        {
-            background:url(img/IMG_3151.JPG) fixed;
-            background-size: cover;
-            padding: 0;
-            margin: 0;
-        }
-        p.brand-title
-        {
-            font-family: 'Open Sans' , sans-serif;
-            font-size: 30px;
-            font-weight: 600;
-            text-align: center;
-            color:rgb(16,54,103);
-            text-transform: uppercase;
-            letter-spacing: 4px;
-        }
-        .btn:hover
-        {
-            background-color:rgb(194,194,194);
-        }
-	</script>-->
+
 </head>
 <body>
 
 <div class="container">
 
-	<form id="1">
-
 
 		<div class="row">
-			<div class="col-md-12" style="margin-top:5%;background-color:rgb(236,236,236);">
 				<p class="brand-title"><h2>Reservation List</h2></p>
-			</div>
 
-			<div class="col-md-12" style="background-color:rgb(215,215,215);">
+
 				<button id="btnSearch" type="button">Search</button>
-				<table id="jqGrid" style="boder:10px"> </table>
-				<div id="jqGridPager"></div>
-			</div>
-			<div class="col-md-12" style="background-color:rgb(236,236,236);">
 
-			</div>
 		</div>
-	</form>
+		<div>
+			<input id="txtFName" name="txtFName" type="text" class="form-control input-md" style="width:200px">
+			<input id="txtLName" name="txtLName" type="text" class="form-control input-md" style="width:200px">
+		</div>
+
+		<div style="margin-left:20px">
+			<table id="jqGrid"></table>
+			<div id="jqGridPager" style="height:40px;"></div>
+		</div>
+
+
 
 </div>
 
@@ -87,10 +65,9 @@
                 { index:'Phone', name: 'item4', width: 150 },
                 { index:'Country', name: 'item5', width: 150 }
             ],
-            viewrecords: false,
-            height: 250,
-            rowNum: 20,
-            //pager: "#jqGridPager",
+            viewrecords: true,
+            height:400,
+            rowNum: 10,
             pager: "#jqGridPager",
 
 
@@ -108,6 +85,9 @@
         });
         //jQuery("#jqGrid").jqGrid('filterToolbar',{autosearch : false});
 		var jList = [];
+        $('#jqGrid').jqGrid('setGridWidth', '800');
+
+
 
 		function addData(result){
 
@@ -126,35 +106,40 @@
             jQuery("#jqGrid").trigger("reloadGrid");
 		}
 
-
-        $("#btnSearch").click(function(){
-            jQuery("#jqGrid").jqGrid("clearGridData");
-            jQuery("#jqGrid")[0].refreshIndex();
-            jQuery("#jqGrid").trigger("reloadGrid");
+		function searchData(fname,lname) {
             jList = [];
             $.ajax({
 
                 url: 'K003/Id',
                 method: 'GET',
                 cache: false,
+                data:{
+                    fname: fname,
+					lname: lname
+				},
                 dataType: 'json',
 
 
                 contentType: 'application/json; charset=utf-8',
                 success: function (response) {
                     console.log(response);
-
                     addData($.parseJSON(response));
                     //addDataTable(guest);
                 },
                 error: function(){
-                    alert('fff');
+                    console.log( $('#txtFName').val());
+                    alert('error');
                 }
 
             });
-
-
-
+        }
+        $("#btnSearch").click(function(){
+            $fname = $('#txtFName').val()
+            $lname = $('#txtLName').val()
+            jQuery("#jqGrid").jqGrid("clearGridData");
+            jQuery("#jqGrid")[0].refreshIndex();
+            jQuery("#jqGrid").trigger("reloadGrid");
+            searchData($fname,$lname);
 		});
     });
 
