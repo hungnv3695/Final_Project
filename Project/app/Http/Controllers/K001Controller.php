@@ -14,14 +14,14 @@ define('SESSION_USER_INFO','USER_INFO');
 define('LOGIN_ERROR_MSG','LoginErroMsg');
 
 
-class LoginController extends Controller
+class K001Controller extends Controller
 {
     /**
      * show Login Form
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function View(){
-        return view('Manager.login');
+        return view('Login.K008_1');
     }
 
     /**
@@ -61,6 +61,7 @@ class LoginController extends Controller
                 session(SESSION_USER_INFO_AUTH,$userAuthInfo);
                 session(SESSION_USER_INFO,$userLogin->getUserID());
 
+                //TODO: get group roi chuyen trang
                 return view('Guest.index');
 
                 break;

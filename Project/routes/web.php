@@ -14,8 +14,8 @@
 Route::get('/','LoginController@View');
 Route::post('/','LoginController@getLoginRequest');
 
-Route::get('/Login','LoginController@View');
-Route::post('/Login','LoginController@getLoginRequest');
+Route::get('/K001','K001Controller@View');
+Route::post('/K001','K001Controller@getLoginRequest');
 
 
 Route::get('/K003','K003Controller@View');
