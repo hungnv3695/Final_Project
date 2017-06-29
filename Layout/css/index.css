@@ -493,7 +493,6 @@ h1{
 }
 .restaurant-item{
 	width:300px;
-	float:left;
 }
 .restaurant-item img{
 	width:110%;
@@ -515,5 +514,33 @@ h1{
 	height:180px;
 	margin-bottom:20px;
 	transform:scale(1.1);
+}
+p.brand-title{
+	font-family: 'Open Sans' , sans-serif;
+	font-size: 30px;
+	font-weight: 600;
+	text-align: center;
+	color:rgb(16,54,103);
+	text-transform: uppercase;
+	letter-spacing: 4px;
+	height:80px;
+	line-height:80px;
+}
+hr{
+	border-color:gray;
+}
+.button {
+    background-color:rgb(220,220,220); /* Green */
+    border: none;
+    color: black;
+    padding: 7px 20px;	
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+	width: 100px;
+}
+.button:hover{
+    background-color:rgb(215,215,215); /* Green */
 }
 /*end restaurant*/
