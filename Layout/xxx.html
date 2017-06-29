@@ -38,6 +38,10 @@
 		height:80px;
 		line-height:80px;
 	}
+	hr
+	{
+		border-color:gray;
+	}
 	</style>
 </head>
 <body>
@@ -46,7 +50,7 @@
 			<div class="col-md-12 col-xs-12" style="margin-top:1%;background-color:rgb(245,245,245);">
 						<p class="brand-title">Reservation List</p>
 			</div>
-			<div class="col-md-12 col-xs-12" style="background-color:rgb(236,236,236); height:85%;">
+			<div class="col-md-12 col-xs-12" style="background-color:rgb(236,236,236);">
 				<div class="col-md-4 col-xs-7" style="margin-top:20px;">
 					<form class="form-horizontal">
 						<fieldset>
@@ -72,11 +76,17 @@
 					</form>
 				</div>
 				<div class="col-md-3 col-md-offset-1 col-xs-7" style="margin-top:20px;">					
-									<button id="btnSearch" class="btn btn-default" type="button">Search</button>						
+					<button id="btnSearch" class="btn btn-default" type="button">Search</button>						
 				</div>
-				<div class="col-md-12">
+				<div class="col-md-12 col-xs-12"><hr></div>
+				<div class="col-md-12 col-xs-12">
 					<table id="jqGrid" style="border:1px solid gray;"></table>
 					<div id="jqGridPager" style="height:40px;"></div>
+				</div>
+			</div>
+			<div class="col-md-12 col-xs-12" style="background-color:rgb(245,245,245);">
+				<div class="col-md-3 col-md-offset-9 col-xs-7" style="margin-top:10px;margin-bottom:10px;">					
+					<button id="btnBack" class="btn btn-default" type="button">Back</button>						
 				</div>
 			</div>
 				
