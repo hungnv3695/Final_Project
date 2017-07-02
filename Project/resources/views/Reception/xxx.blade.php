@@ -20,135 +20,91 @@
 	<meta charset="utf-8" />
 
 	<title>jqGrid Loading Data - Million Rows from a REST service</title>
-
-</head>
-<body>
-
-<div class="container">
-
-
-		<div class="row">
-				<p class="brand-title"><h2>Reservation List</h2></p>
-
-
-				<button id="btnSearch" type="button">Search</button>
-
-		</div>
-		<div>
-			<input id="txtFName" name="txtFName" type="text" class="form-control input-md" style="width:200px">
-			<input id="txtLName" name="txtLName" type="text" class="form-control input-md" style="width:200px">
-		</div>
-
-		<div style="margin-left:20px">
-			<table id="jqGrid"></table>
-			<div id="jqGridPager" style="height:40px;"></div>
-		</div>
-
-
-
-</div>
-
-
-<script type="text/javascript">
-
-    $(document).ready(function () {
-        $("#jqGrid").jqGrid({
-            datatype: "local",
-            mtype: "GET",
-
-            styleUI : 'Bootstrap',
-            colNames:['Id','Fist name', 'Last name', 'Phone','Country'],
-            colModel: [
-                { index:'Id', name: 'item1', key: true, width: 75 },
-                { index:'Fist name', name: 'item2', width: 150 },
-                { index:'Last name', name: 'item3', width: 150 },
-                { index:'Phone', name: 'item4', width: 150 },
-                { index:'Country', name: 'item5', width: 150 }
-            ],
-            viewrecords: true,
-            height:400,
-            rowNum: 10,
-            pager: "#jqGridPager",
-
-
-            ondblClickRow: function(rowId) {
-                var rowData = jQuery(this).getRowData(rowId);
-                var OrderID = rowData['CustomerID'];
-
-                var aQryStr = "OrderID= " + OrderID ;
-                alert(aQryStr)
-
-            },
-            loadComplete: function(){
-
-			}
-        });
-        //jQuery("#jqGrid").jqGrid('filterToolbar',{autosearch : false});
-		var jList = [];
-        $('#jqGrid').jqGrid('setGridWidth', '800');
-
-
-
-		function addData(result){
-
-		    for(var i = 0; i< result.length; i++){
-		        var x ={
-					item1: result[i].id,
-						item2: result[i].first_name,
-						item3: result[i].last_name,
-						item4: result[i].phone,
-						item5: result[i].country
-				};
-		        jList.push(x);
-			}
-            jQuery("#jqGrid").setGridParam({data: jList });
-            jQuery("#jqGrid")[0].refreshIndex();
-            jQuery("#jqGrid").trigger("reloadGrid");
+	<style type="text/css">
+		body
+		{
+			padding: 0;
+			margin: 0;
+		}
+		p.brand-title
+		{
+			font-family: 'Open Sans' , sans-serif;
+			font-size: 30px;
+			font-weight: 600;
+			text-align: center;
+			color:rgb(16,54,103);
+			text-transform: uppercase;
+			letter-spacing: 4px;
+			height:80px;
+			line-height:80px;
+		}
+		hr
+		{
+			border-color:gray;
 		}
 
-		function searchData(fname,lname) {
-            jList = [];
-            $.ajax({
+	</style>
+</head>
+<body>
+<form id="myForm">
+    <div class="col-md-8 col-md-offset-2">
+        <div class="row">
+            <div class="col-md-12 col-xs-12" style="margin-top:1%;background-color:rgb(245,245,245);">
+                <p class="brand-title">Reservation List</p>
+            </div>
+            <div class="col-md-12 col-xs-12" style="background-color:rgb(236,236,236);">
+                <div class="col-md-4 col-xs-7" style="margin-top:20px;">
+                    <form class="form-horizontal">
+                        <fieldset>
+                            <div class="form-group">
+                                <label class="col-md-5 control-label" for="">Guest name:</label>
+                                <div class="col-md-7">
+                                    <input id="txtFName" name="txtFName" type="text" class="form-control input-md">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-5 control-label" for="">Status:</label>
+                                <div class="col-md-7">
+                                    <select id="cboStatus" name="cboStatus" class="form-control input-md">
+                                    </select>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="col-md-4 col-xs-7" style="margin-top:20px;">
+                    <form class="form-horizontal">
+                        <fieldset>
+                            <div class="form-group">
+                                <label class="col-md-5 control-label" for="">Identity:</label>
+                                <div class="col-md-7">
+                                    <input id="txtIdCard" name="txtIdCard" type="text" class="form-control input-md">
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="col-md-3 col-md-offset-1 col-xs-7" style="margin-top:20px;">
+                    <button id="btnSearch" class="button" type="button">Search</button>
+                </div>
+                <div class="col-md-12 col-xs-12"><hr></div>
+                <div class="col-md-12 col-xs-12">
+                    <table id="jqGrid" style="border:1px solid gray;"></table>
+                    <div id="jqGridPager" style="height:40px;"></div>
+                </div>
+            </div>
+            <div class="col-md-12 col-xs-12" style="background-color:rgb(245,245,245);">
+                <div class="col-md-3 col-md-offset-9 col-xs-7" style="margin-top:10px;margin-bottom:10px;">
+                    <button id="btnBack" class="button" type="button">Back</button>
+                </div>
+            </div>
 
-                url: 'K003/Id',
-                method: 'GET',
-                cache: false,
-                data:{
-                    fname: fname,
-					lname: lname
-				},
-                dataType: 'json',
+        </div>
+    </div>
+</form>
 
-
-                contentType: 'application/json; charset=utf-8',
-                success: function (response) {
-                    console.log(response);
-                    addData($.parseJSON(response));
-                    //addDataTable(guest);
-                },
-                error: function(){
-                    console.log( $('#txtFName').val());
-                    alert('error');
-                }
-
-            });
-        }
-        $("#btnSearch").click(function(){
-            $fname = $('#txtFName').val()
-            $lname = $('#txtLName').val()
-            jQuery("#jqGrid").jqGrid("clearGridData");
-            jQuery("#jqGrid")[0].refreshIndex();
-            jQuery("#jqGrid").trigger("reloadGrid");
-            searchData($fname,$lname);
-		});
-    });
-
-</script>
-<script type="text/javascript">
-    $.ajaxSetup({
-        headers: { 'X-CSRF-Token' : $('meta[name=_token]').attr('content') }
-    });
-</script>
 
 </body>
+
+<script src="{{asset('Scripts/K003/K003_1.js')}}"></script>
 </html>
