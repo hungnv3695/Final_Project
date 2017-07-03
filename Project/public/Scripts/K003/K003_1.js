@@ -30,9 +30,18 @@ $(document).ready(function () {
         mtype: "GET",
 
         styleUI : 'Bootstrap',
-        colNames:['ID','Amount','Status', 'Customer Name', 'Check-in','Check-out',
-        'Email','Phone','Company','Quantity Room', 'Room 1', 'Room Type 1',
-        'Room 2', 'Room Type 2', 'Room 3', 'Room Type 3', 'Identity Card'],
+        colNames:['Reservation ID',
+            'Customer Name',
+            'Identity Card',
+            'Check-in',
+            'Check-out',
+            'Quantity room',
+            'Email',
+            'Company',
+            'Phone',
+            'Status',
+            'Paid Status'
+        ],
         colModel: [
             { name: 'item0',  width: 75 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
             { name: 'item1',  width: 150, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
@@ -44,13 +53,7 @@ $(document).ready(function () {
             { name: 'item7',  width: 150, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
             { name: 'item8',  width: 150, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
             { name: 'item9',  width: 150, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
-            { name: 'item10', width: 150, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
-            { name: 'item11', width: 150, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
-            { name: 'item12', width: 150, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
-            { name: 'item13', width: 150, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
-            { name: 'item14', width: 150, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
-            { name: 'item15', width: 150, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
-            { name: 'item16', width: 150, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }}
+            { name: 'item9',  width: 150, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }}
         ],
         rownumbers: true,
         viewrecords: true,
@@ -86,10 +89,9 @@ $(document).ready(function () {
 
         for(var i = 0; i< result.length; i++){
             var x ={
-                item0: result[i].res_id, item2: result[i].status, item3: result[i].fullname,
-                item4: result[i].checkin, item5: result[i].checkout, item6: result[i].email, item7: result[i].phone,
-                item9: result[i].quantity,
-                item16:  result[i].identity_card
+                item0: result[i].res_id, item1: result[i].fullname, item2: result[i].identity_card,
+                item3: result[i].checkin, item4: result[i].checkout, item5: result[i].quantity, item6: result[i].email,
+                item7: result[i].company,item8: result[i].phone, item9: result[i].status, item9: result[i].paid_status
             };
             jList.push(x);
         }

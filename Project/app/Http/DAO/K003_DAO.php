@@ -23,6 +23,7 @@ class K003_DAO{
         $strSQL = 'SELECT ';
         $strSQL .=  'g.id as "guest_id", ';
         $strSQL .=  'r.id as "res_id", ';
+        $strSQL .=  'r.paid_status, ';
         $strSQL .=  'g.fullname "fullname", ';
         $strSQL .=  'COUNT(r.id) "quantity", ';
         $strSQL .=  'r.checkin, ';
@@ -30,6 +31,7 @@ class K003_DAO{
         $strSQL .=  'g.email, ';
         $strSQL .=  'g.phone, ';
         $strSQL .=  'g.identity_card, ';
+        $strSQL .=  'g.company, ';
         $strSQL .=  'rs.status as "status", ';
         $strSQL .=  'rs.id as "status_id" ';
 
@@ -42,7 +44,7 @@ class K003_DAO{
         $strSQL .= strcmp($idCard, "") == 0 ? "" : 'AND '. $t2 . ' ';
         $strSQL .= strcmp($status, "") == 0 ? "" : 'AND '. $t3 . ' ';
 
-        $strSQL .= ' GROUP BY g.id, r.id, g.fullname, rs.status, rs.id';
+        $strSQL .= ' GROUP BY g.id, r.id, g.fullname, rs.status, rs.id ORDER BY r.id DESC';
         
         //$sqlStr .= strcmp($lname,"") == 0 ? "":' AND ' . $t2;
 
