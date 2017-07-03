@@ -543,4 +543,20 @@ hr{
 .button:hover{
     background-color:rgb(215,215,215); /* Green */
 }
+.managerBnt{
+	background-color:rgb(220,220,220); /* Green */
+    border: none;
+    color: black;
+    padding: 7px 20px;	
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+	width: 280px;
+	height:40px;
+	border-radius:10px;
+}
+.managerBnt:hover{
+    background-color:rgb(215,215,215); /* Green */
+}
 /*end restaurant*/
