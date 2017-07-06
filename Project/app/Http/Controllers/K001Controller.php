@@ -11,6 +11,8 @@ use Illuminate\Http\Request;
 define('SESSION_NUMBER_LOGIN', 'NUMBER_LOGIN');
 define('SESSION_USER_INFO','USER_INFO');
 define('LOGIN_ERROR_MSG','LoginErroMsg');
+define('GROUP_MANAGER' , 'G01');
+define('GROUP_RECEPTIONIST' , 'G02');
 
 /**
  * Class K001Controller
@@ -23,7 +25,8 @@ class K001Controller extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function View(){
-        return view('Login.K008_1');
+
+        return view('Login.K001_1');
     }
 
     /**
@@ -60,11 +63,11 @@ class K001Controller extends Controller
                 $userInfo = $loginDAO->getUserInfo($userLogin->getUserID());
 
                 session()->forget(SESSION_NUMBER_LOGIN);
-                session(SESSION_USER_INFO,$userInfo);
+                session(SESSION_USER_INFO,$userInfo[0]);
 
-                if(array_get($userInfo[0],Constants::TBL_GROUP_CD) ==1 ){
+                if( strcmp($userInfo[0]->group_cd,  str_pad(GROUP_MANAGER,7)  ) == 0 ){
                     return view('Manager.K002_1');
-                } elseif(array_get($userInfo[0],Constants::TBL_GROUP_CD) ==2 ) {
+                } elseif( strcmp( $userInfo[0]->group_cd, str_pad(GROUP_MANAGER,7) ) == 0 ) {
                     return view('Reception.K002_1');
                 }
 
