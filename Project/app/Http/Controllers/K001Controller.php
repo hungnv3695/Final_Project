@@ -63,7 +63,7 @@ class K001Controller extends Controller
                 $userInfo = $loginDAO->getUserInfo($userLogin->getUserID());
 
                 session()->forget(SESSION_NUMBER_LOGIN);
-                session(SESSION_USER_INFO,$userInfo[0]);
+                session()->put(SESSION_USER_INFO,$userInfo[0]);
 
                 if( strcmp($userInfo[0]->group_cd,  str_pad(GROUP_MANAGER,7)  ) == 0 ){
                     return view('Manager.K002_1');

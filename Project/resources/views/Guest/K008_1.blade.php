@@ -1,3 +1,4 @@
+<meta name="_token" content="{!! csrf_token() !!}"/>
 <!DOCTYPE html>
 <html>
 <head>

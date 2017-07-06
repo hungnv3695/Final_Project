@@ -22,16 +22,16 @@
 						<form class="form-horizontal" style="margin-top:40px;margin-bottom:40px;">
 							<fieldset>
 								<div class="form-group">
-								  <div class="col-md-4 col-xs-4 col-md-offset-1"><button class="managerBnt" value="romm-sttBtn" name="romm-sttBtn"  onclick="window.location='{{ url("/K003") }}'"  disabled><b>Room Status</b></button></div>
+								  <div class="col-md-4 col-xs-4 col-md-offset-1"><button type="button"  class="managerBnt" value="romm-sttBtn" name="romm-sttBtn"  onclick="window.location='{{ url("/K003") }}'"  disabled ><b>Room Status</b></button></div>
 								</div>
 								<div class="form-group">
-								  <div class="col-md-4 col-xs-4 col-md-offset-1"><button class="managerBnt" value="re-detailBnt" name="re-detailBnt"  onclick="window.location='{{ url("/K003") }}'"  disabled ><b>Reservation Detail</b></button></div>
+								  <div class="col-md-4 col-xs-4 col-md-offset-1"><button type="button"  class="managerBnt" value="re-detailBnt" name="re-detailBnt"  onclick="window.location='{{ url("/K003") }}'"  disabled  ><b>Reservation Detail</b></button></div>
 								</div>
 								<div class="form-group">
-								  <div class="col-md-4 col-xs-4 col-md-offset-1"><button class="managerBnt" value="room-mngBnt" name="room-mngBnt" onclick="window.location='{{ url("/K003") }}'" ><b>Room Management</b></button></div>
+								  <div class="col-md-4 col-xs-4 col-md-offset-1"><button type="button"  class="managerBnt" value="room-mngBnt" name="room-mngBnt" onclick="window.location='{{ url("/K003") }}'" ><b>Room Management</b></button></div>
 								</div>
 								<div class="form-group">
-								  <div class="col-md-4 col-xs-4 col-md-offset-1"><button class="managerBnt" value="serviceBnt" name="serviceBnt"   onclick="window.location='{{ url("/K003") }}'"   disabled ><b>Service</b></button></div>
+								  <div class="col-md-4 col-xs-4 col-md-offset-1"><button type="button"  class="managerBnt" value="serviceBnt" name="serviceBnt"   onclick="window.location='{{ url("/K003") }}'"  disabled   ><b>Service</b></button></div>
 								</div>
 								<div class="form-group">
 								  <div class="col-md-4 col-xs-4 col-md-offset-1"><button type="button" class="managerBnt" value="accoutingBnt" name="accoutingBnt" onclick="window.location='{{ url("/K003") }}'" disabled ><b>Accouting</b></button></div>
