@@ -17,7 +17,12 @@ Route::get('/K001','K001Controller@View');
 Route::post('/K001','K001Controller@getLoginRequest');
 
 
-Route::get('/K003','K003Controller@View');
-Route::get('/K003/searchReservation','K003Controller@getReservation');
-Route::get('/K003/GetStatus','K003Controller@getReservationStatus');
-Route::post('/K003','K003Controller@postUserInfor');
+Route::get('/K004_1','K004Controller@K004_1_View');
+Route::get('/K004_1/searchReservation','K004Controller@getReservation');
+Route::get('/K004_1/GetStatus','K004Controller@getReservationStatus');
+Route::post('/K004','K004Controller@postUserInfor');
+
+Route::get('/K004_1/K004_2/View','K004Controller@K004_2_View');
+Route::get('/K004_1/K004_2','K004Controller@GetReservationDetail');
+
+Route::get('/Menu','K002Controller@K002_1_View');

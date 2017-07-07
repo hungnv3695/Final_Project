@@ -4,7 +4,7 @@
 $(document).ready(function () {
     $.ajax({
 
-        url: 'K003/GetStatus',
+        url: 'K004_1/GetStatus',
         method: 'GET',
         cache: false,
         dataType: 'json',
@@ -53,7 +53,7 @@ $(document).ready(function () {
             { name: 'item7',  width: 150, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
             { name: 'item8',  width: 150, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
             { name: 'item9',  width: 150, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
-            { name: 'item9',  width: 150, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }}
+            { name: 'item10',  width: 150, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }}
         ],
         rownumbers: true,
         viewrecords: true,
@@ -70,28 +70,26 @@ $(document).ready(function () {
 
         ondblClickRow: function(rowId) {
             var rowData = jQuery(this).getRowData(rowId);
-            var OrderID = rowData['CustomerID'];
-
-            var aQryStr = "OrderID= " + OrderID ;
-
-            window.open('K003', '_blank');
+            var res_id = rowData['item0'];
+            window.open('K004_1/K004_2/?res_id=' + res_id , '_blank');
 
         },
         loadComplete: function(){
-
+            //set color for even row
+            $("tr.jqgrow:even").css("background", "#DDDDDC");
         }
+
     });
+
     //jQuery("#jqGrid").jqGrid('filterToolbar',{autosearch : false});
     var jList = [];
-    //$('#jqGrid').jqGrid('setGridWidth', '50');
-
     function addData(result){
 
         for(var i = 0; i< result.length; i++){
             var x ={
                 item0: result[i].res_id, item1: result[i].fullname, item2: result[i].identity_card,
                 item3: result[i].checkin, item4: result[i].checkout, item5: result[i].quantity, item6: result[i].email,
-                item7: result[i].company,item8: result[i].phone, item9: result[i].status, item9: result[i].paid_status
+                item7: result[i].company,item8: result[i].phone, item9: result[i].status, item10: result[i].paid_status
             };
             jList.push(x);
         }
@@ -104,7 +102,7 @@ $(document).ready(function () {
         jList = [];
         $.ajax({
 
-            url: 'K003/searchReservation',
+            url: 'K004_1/searchReservation',
             method: 'GET',
             cache: false,
             data:{
