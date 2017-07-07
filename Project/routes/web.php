@@ -21,13 +21,17 @@ Route::post('/K001','K001Controller@getLoginRequest');
 //Router  Group for Manager
 Route::middleware(['manager'])->group(function () {
 
-});
 
+});
 
 //Router Group for Receptionist
 Route::middleware(['receptionist'])->group(function () {
-    Route::get('/K003','K003Controller@View');
-    Route::get('/K003/searchReservation','K003Controller@getReservation');
-    Route::get('/K003/GetStatus','K003Controller@getReservationStatus');
-    Route::post('/K003','K003Controller@postUserInfor');
+Route::get('/K004_1/GetStatus','K004Controller@getReservationStatus');
+Route::post('/K004','K004Controller@postUserInfor');
+
+Route::get('/K004_1/K004_2/View','K004Controller@K004_2_View');
+Route::get('/K004_1/K004_2','K004Controller@GetReservationDetail');
+
+
 });
+

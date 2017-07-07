@@ -1,20 +1,25 @@
 <?php
 namespace App\Http\Controllers;
-use App\Http\DAO\K003_DAO;
+use App\Http\DAO\K004_DAO;
 use App\Models\Reservation_Model;
 use Illuminate\Http\Request;
 use App\User;
 use Symfony\Component\HttpFoundation\Response;
+use App\Http\Common\DateTimeUtil;
 
-class K003Controller extends Controller{
-    public function View(){
+class K004Controller extends Controller{
+    public function K004_1_View(){
 
         return view('Reception.xxx');
     }
 
+    public function K004_2_View(){
+
+        return view('Reception.K004-2');
+    }
     public function getReservationStatus(){
-        $K003_DAO = new K003_DAO();
-        $status = $K003_DAO->getStatus();
+        $K004_DAO = new K004_DAO();
+        $status = $K004_DAO->getStatus();
         //$status = json_encode($status);
 
         return response()->json($status);
@@ -26,8 +31,8 @@ class K003Controller extends Controller{
         $idCard = $request->idCard;
         $status = $request->status;
         //dd($idCard);
-        $K003_DAO = new K003_DAO();
-        $resList = $K003_DAO->selectReservation($fname,$idCard,$status);
+        $K004_DAO = new K004_DAO();
+        $resList = $K004_DAO->selectReservation($fname,$idCard,$status);
         //$resModel = new Reservation_Model();
         $result = json_encode($resList);
         //dd($resModel->getId());
@@ -51,6 +56,27 @@ class K003Controller extends Controller{
 //        dd($Result);
 
         return response()->json($result);
+
+    }
+
+    public function getReservationDetail(Request $request){
+        $res_id = $request->res_id;
+        $K004_DAO = new K004_DAO();
+        $resList = $K004_DAO->getReservationDetail($res_id);
+        //dd($resList);
+
+
+
+        return view("Reception.K004-2")->with([
+            'name' => $resList[0]->fullname,
+            'email' => $resList[0]->email,
+            'phone' => $resList[0]->phone,
+            'checkin' => DateTimeUtil::ConvertStringToDate($resList[0]->checkin),
+            'checkout' => DateTimeUtil::ConvertStringToDate($resList[0]->checkout),
+            'idCard' => $resList[0]->identity_card,
+            'address' => $resList[0]->address,
+            'company' => $resList[0]->company
+        ]);
 
     }
 }

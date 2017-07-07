@@ -14,7 +14,7 @@ use App\UserGroup;
 use App\UserMaster;
 use Illuminate\Support\Facades\DB;
 
-class K003_DAO{
+class K004_DAO{
     public function selectReservation($fname,$idCard,$status){
 
         $t1 = 'UPPER(g.fullname) LIKE \'%' . strtoupper(trim($fname)) . '%\'';
@@ -23,6 +23,7 @@ class K003_DAO{
         $strSQL = 'SELECT ';
         $strSQL .=  'g.id as "guest_id", ';
         $strSQL .=  'r.id as "res_id", ';
+        $strSQL .=  'r.paid_status, ';
         $strSQL .=  'g.fullname "fullname", ';
         $strSQL .=  'COUNT(r.id) "quantity", ';
         $strSQL .=  'r.checkin, ';
@@ -30,6 +31,7 @@ class K003_DAO{
         $strSQL .=  'g.email, ';
         $strSQL .=  'g.phone, ';
         $strSQL .=  'g.identity_card, ';
+        $strSQL .=  'g.company, ';
         $strSQL .=  'rs.status as "status", ';
         $strSQL .=  'rs.id as "status_id" ';
 
@@ -42,7 +44,7 @@ class K003_DAO{
         $strSQL .= strcmp($idCard, "") == 0 ? "" : 'AND '. $t2 . ' ';
         $strSQL .= strcmp($status, "") == 0 ? "" : 'AND '. $t3 . ' ';
 
-        $strSQL .= ' GROUP BY g.id, r.id, g.fullname, rs.status, rs.id';
+        $strSQL .= ' GROUP BY g.id, r.id, g.fullname, rs.status, rs.id ORDER BY r.id DESC';
         
         //$sqlStr .= strcmp($lname,"") == 0 ? "":' AND ' . $t2;
 
@@ -55,6 +57,41 @@ class K003_DAO{
 
         $strSQL= "Select * From reservation_status";
         $result = DB::select(DB::raw($strSQL));
+        return $result;
+    }
+
+    public function getReservationDetail($res_id){
+        $t1 = 'r.id = \'' . trim($res_id) . '\'';
+        $strSQL = 'SELECT ';
+        $strSQL .=  'g.id as "guest_id", ';
+        $strSQL .=  'r.id as "res_id", ';
+        $strSQL .=  'r.paid_status, ';
+        $strSQL .=  'g.fullname "fullname", ';
+        $strSQL .=  'COUNT(r.id) "quantity", ';
+        $strSQL .=  'r.checkin, ';
+        $strSQL .=  'r.checkout, ';
+        $strSQL .=  'g.email, ';
+        $strSQL .=  'g.phone, ';
+        $strSQL .=  'g.identity_card, ';
+        $strSQL .=  'g.address, ';
+        $strSQL .=  'g.company, ';
+        $strSQL .=  'rs.status as "status", ';
+        $strSQL .=  'rs.id as "status_id" ';
+
+        $strSQL .= 'FROM tbl_guest g JOIN tbl_reservation r ON g.id = r.guest_id ';
+        $strSQL .= 'JOIN reservation_status rs ON rs.id = r.status ';
+        $strSQL .= 'JOIN tbl_reservation_detail rd ON r.id = rd.res_id ';
+        $strSQL .= 'WHERE NOT r.id = \'0\' ';
+
+        $strSQL .= strcmp($res_id, "") == 0 ? "" : 'AND '. $t1 . ' ';
+
+
+        $strSQL .= ' GROUP BY g.id, r.id, g.fullname, rs.status, rs.id ORDER BY r.id DESC';
+
+        //$sqlStr .= strcmp($lname,"") == 0 ? "":' AND ' . $t2;
+
+        $result = DB::select(DB::raw($strSQL));
+
         return $result;
     }
 }

@@ -140,6 +140,7 @@ return [
         /*
          * Laravel Framework Service Providers...
          */
+
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
@@ -163,6 +164,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+        Laravel\Scout\ScoutServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -229,4 +231,6 @@ return [
     ],
     'GridRender' => 'Mgallegos\LaravelJqgrid\Facades\GridRender',
     'GridEncoder' => 'Mgallegos\LaravelJqgrid\Facades\GridEncoder',
+
+
 ];
