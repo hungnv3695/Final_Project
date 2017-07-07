@@ -1,3 +1,4 @@
+<meta name="_token" content="{!! csrf_token() !!}"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,7 +48,7 @@
 								<li><a href="#">Trang chủ</a></li>
 								<li><a href="#">Phòng</a></li>
 								<li><a href="#">Ảnh</a></li>
-								<li><a href="#">Đăng nhập</a></li>
+								<li><a href="{!! url('/K001') !!}">Đăng nhập</a></li>
 							</ul>
 						</div><!-- /.navbar-collapse -->
 					</div><!-- /.container-fluid -->
