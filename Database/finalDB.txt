@@ -1,0 +1,176 @@
+CREATE TABLE tbl_function(			
+    func_id varchar(7),		
+    screen_id varchar(7),		
+    screen_name varchar(50)  ,		
+    screen_url varchar(1000) ,		
+    register_ymd varchar(8),		
+    register_cd varchar(7) ,		
+    register_nm varchar(20),		
+    last_update_ymd varchar(8),		
+    last_register_cd varchar(7),		
+    last_register_name varchar(20),	
+	PRIMARY KEY( func_id , screen_id) 
+);
+
+
+CREATE TABLE tbl_permission(			
+    role_seq serial PRIMARY KEY ,		
+    group_cd varchar(7),		
+    screen_id varchar(7),		
+    use_flg varchar(1),		
+    register_ymd varchar(8),		
+    register_cd varchar(7),		
+    register_nm varchar(20),		
+    last_update_ymd varchar(8),		
+    last_register_cd varchar(7),		
+    last_register_nm varchar(20)	
+);		
+
+CREATE TABLE tbl_group(		
+    group_cd char(7) PRIMARY KEY ,		
+    group_name varchar(50) ,		
+    register_ymd varchar(8) ,		
+    register_cd varchar(7) ,		
+    register_nm varchar(20),		
+    last_update_ymd varchar(8),		
+    last_register_cd varchar(7),		
+    last_register_nm varchar(20)	
+);		
+
+CREATE TABLE tbl_user(			
+    user_id varchar(20) PRIMARY KEY,		
+    user_name varchar(50),		
+    login_pwd varchar(50),		
+    pwd_regs_ymd varchar(8),		
+    acc_lock_flg varchar(1),		
+    delete_flg varchar(1),		
+    register_ymd varchar(8)  ,		
+    register_cd varchar(7),		
+    register_nm varchar(20),		
+    last_update_ymd varchar(8),		
+    last_register_cd varchar(7),		
+    last_register_nm varchar(20)		
+);		
+
+CREATE TABLE tbl_user_group(			
+    seq_no serial PRIMARY KEY,		
+    user_id varchar(7),		
+    group_cd varchar(7) ,		
+    register_ymd varchar(8) ,		
+    register_cd varchar(7),		
+    register_nm varchar(20),		
+    last_update_ymd varchar(8),		
+    last_register_cd varchar(7),		
+    last_register_nm varchar(20)	
+);		
+
+CREATE TABLE tbl_room_type(
+	room_typeID varchar(5) PRIMARY KEY,
+    type_name varchar(30) ,
+	description varchar(100) ,
+	price numeric(11,2)
+);
+
+CREATE TABLE tbl_room(
+	room_id varchar(5) PRIMARY KEY,
+	managerID varchar(20),
+	room_typeID varchar(5),
+	floor integer ,
+	status integer ,
+	room_number varchar(5) ,
+	FOREIGN KEY (room_typeID) REFERENCES tbl_room_type(room_typeID),
+	FOREIGN KEY (managerID) REFERENCES tbl_user(user_id)
+);
+
+
+
+
+CREATE TABLE tbl_room_accessory(
+	id serial PRIMARY KEY,
+	room_ID varchar(5),
+	accessory_name varchar(20) ,
+	quanlity integer  ,
+	price numeric(11,2)  ,
+	description varchar(100) ,
+	FOREIGN KEY (room_ID) REFERENCES tbl_room(room_id)
+);
+
+CREATE TABLE tbl_reservation_status(
+	id serial PRIMARY KEY,
+	status_name varchar(50),
+	description varchar(255) 
+);
+
+CREATE TABLE tbl_reservation(
+	id serial PRIMARY KEY,
+	status integer,
+	check_in varchar(8) ,
+	check_out varchar(8) ,
+	number_of_room integer,
+	number_of_adult integer ,
+	number_of_children integer ,
+	create_ymd varchar(8) ,
+	FOREIGN KEY (status) REFERENCES tbl_reservation_status(id)
+	
+);
+
+CREATE TABLE tbl_reservation_detail(
+	reservation_ID integer,
+	room_ID varchar(5),
+	create_ymd varchar(8),
+	PRIMARY KEY (reservation_ID,room_ID ),
+	FOREIGN KEY (reservation_ID) REFERENCES tbl_reservation(id),
+	FOREIGN KEY (room_ID) REFERENCES tbl_room(room_id)
+);
+
+CREATE TABLE tbl_guest(
+	id serial PRIMARY KEY,
+	name varchar(50) ,
+	phone varchar(20) ,
+	mail varchar(50) ,
+	identity_card varchar(12) ,
+	company varchar(50) ,
+	address varchar(100) ,
+	company_phone varchar(20),
+	country varchar(50)
+);
+
+CREATE TABLE tbl_payment_type(
+	id serial PRIMARY KEY,
+	type_name varchar(50) 
+);
+
+
+CREATE TABLE tbl_invoice(
+	id serial PRIMARY KEY,
+	payment_typeID integer,
+	accountant_ID varchar(20),
+	receptionist_ID varchar(20),
+	guest_ID integer,
+	tax_code varchar(10), 
+	create_ymd varchar(8),
+	amount numeric(11,2),	
+	FOREIGN KEY (payment_typeID) REFERENCES tbl_payment_type(id),
+	FOREIGN KEY (accountant_ID) REFERENCES tbl_user(user_id),
+	FOREIGN KEY (receptionist_ID) REFERENCES tbl_user(user_id),
+	FOREIGN KEY (guest_ID) REFERENCES tbl_guest(id)
+);
+
+CREATE TABLE tbl_room_invoice(
+	room_ID varchar(5),
+	invoice_ID integer,
+	create_by integer,
+	PRIMARY KEY(room_ID,invoice_ID),
+	FOREIGN KEY (room_ID) REFERENCES tbl_room(room_id),
+	FOREIGN KEY (invoice_ID) REFERENCES tbl_invoice(id)
+);
+
+CREATE TABLE tbl_service_bill(
+	id serial PRIMARY KEY,
+	invoice_ID integer,
+	service_name varchar(50) ,
+	unit varchar(20) ,
+	quanlity integer,
+	unit_price numeric(11,2),
+	FOREIGN KEY (invoice_ID) REFERENCES tbl_invoice(id)
+);
