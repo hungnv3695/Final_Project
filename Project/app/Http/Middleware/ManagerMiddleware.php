@@ -25,7 +25,7 @@ class ManagerMiddleware
             $groupcd = session()->get(SESSION_USER_INFO)->group_cd;
 
             //TODO: add 1 page loi de redirect
-            if(strcmp($groupcd,str_pad(GROUP_MANAGER,7)) != 0){
+            if(strcmp($groupcd,GROUP_MANAGER) != 0){
                 return redirect('AccessDeny');
             }
         }

@@ -33,7 +33,7 @@ class User extends Model
      *
      * @var string
      */
-    protected $table = 't_user';
+    protected $table = 'tbl_user';
 
     /**
      * setting primary key

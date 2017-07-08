@@ -39,10 +39,10 @@ class K001DAO
      * @return mixed
      */
     public function getUserInfo($userID){
-        $result = DB::table('t_user')
-            ->join('t_user_group', 't_user.user_id', '=','t_user_group.user_id')
-            ->where('t_user.user_id',$userID)
-            ->get(['t_user.user_id', 't_user.user_name' , 't_user_group.group_cd']);
+        $result = DB::table('tbl_user')
+            ->join('tbl_user_group', 'tbl_user.user_id', '=','tbl_user_group.user_id')
+            ->where('tbl_user.user_id',$userID)
+            ->get(['tbl_user.user_id', 'tbl_user.user_name' , 'tbl_user_group.group_cd']);
             return  $result->toArray();
     }
 
