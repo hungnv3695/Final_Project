@@ -15,6 +15,7 @@ Route::get('AccessDeny',function (){
 });
 
 Route::get('/','K008Controller@View');
+
 Route::get('/K001','K001Controller@View');
 Route::post('/K001','K001Controller@getLoginRequest');
 
