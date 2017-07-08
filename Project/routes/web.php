@@ -25,13 +25,20 @@ Route::middleware(['manager'])->group(function () {
 });
 
 //Router Group for Receptionist
-Route::middleware(['receptionist'])->group(function () {
+//Route::middleware(['receptionist'])->group(function () {
+//    Route::get('/K004_1/GetStatus','K004Controller@getReservationStatus');
+//    Route::post('/K004','K004Controller@postUserInfor');
+//
+//    Route::get('/K004_1/K004_2/View','K004Controller@K004_2_View');
+//    Route::get('/K004_1/K004_2','K004Controller@GetReservationDetail');
+//
+//
+//});
+Route::get('/K004_1','K004Controller@K004_1_View');
 Route::get('/K004_1/GetStatus','K004Controller@getReservationStatus');
 Route::post('/K004','K004Controller@postUserInfor');
 
-Route::get('/K004_1/K004_2/View','K004Controller@K004_2_View');
-Route::get('/K004_1/K004_2','K004Controller@GetReservationDetail');
-
-
-});
-
+Route::get('/K004_1/K004_2','K004Controller@K004_2_View');
+Route::get('/K004_1/K004_2','K004Controller@GetGuest');
+Route::get('/K004_1/K004_2/GetReservationDetail','K004Controller@GetReservationDetail');
+Route::get('/K004_1/K004_2/GetRoomFree','K004Controller@GetRoomFree');

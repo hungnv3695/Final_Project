@@ -59,24 +59,59 @@ class K004Controller extends Controller{
 
     }
 
-    public function getReservationDetail(Request $request){
+    public function GetGuest(Request $request){
         $res_id = $request->res_id;
         $K004_DAO = new K004_DAO();
-        $resList = $K004_DAO->getReservationDetail($res_id);
+        $guest = $K004_DAO->GetGuestData($res_id);
+        $room = $K004_DAO->GetReservationDetail($res_id);
+        $result = array_merge($guest,$room);
+        dd($result);
+
+        if ($result == []){
+            return view("Reception.K004-2")->with([
+                'id' => "1",
+                'check_in' => "20170205",
+                'check_out' => "20170205",
+                'number_of_room'=>"4",
+                'name' => "Nguyen Viet Hung",
+                'phone' => "1212121212",
+                'email' => "hng@gmail",
+                'idCard' => "1212121",
+                'company' => "fpt",
+                'address' => "to hieu",
+                'company_phone'=>"32323232" ,
+                'country' => "Viet Nam"
+            ]);
+        }
+        else{
+            return view("Reception.K004-2")->with([
+                'id' => $result[0]->id,
+                'check_in' => DateTimeUtil::ConvertStringToDate($result[0]->check_in),
+                'check_out' => DateTimeUtil::ConvertStringToDate($result[0]->check_out),
+                'number_of_room' => $result[0]-> number_of_room,
+                'name' => $result[0]->name,
+                'phone' => $result[0]->phone,
+                'email' => $result[0]->mail,
+                'idCard' => $result[0]->identity_card,
+                'company' => $result[0]->company,
+                'address' => $result[0]->address,
+                'company_phone' => $result[0]-> company_phone,
+                'country' => $result[0]-> country
+            ]);
+        }
+
+    }
+
+    public function GetRoomFree(){
+
+    }
+
+    public function GetReservationDetail(Request $request){
+        $res_id = $request->res_id;
+        $K004_DAO = new K004_DAO();
+        $result = $K004_DAO->GetReservationDetail($res_id);
         //dd($resList);
-
-
-
-        return view("Reception.K004-2")->with([
-            'name' => $resList[0]->fullname,
-            'email' => $resList[0]->email,
-            'phone' => $resList[0]->phone,
-            'checkin' => DateTimeUtil::ConvertStringToDate($resList[0]->checkin),
-            'checkout' => DateTimeUtil::ConvertStringToDate($resList[0]->checkout),
-            'idCard' => $resList[0]->identity_card,
-            'address' => $resList[0]->address,
-            'company' => $resList[0]->company
-        ]);
+        return \response($result);
 
     }
 }

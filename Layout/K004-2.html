@@ -3,8 +3,22 @@
     <meta charset="UTF-8">
     <title>Bootstrap 3 Simple Tables</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="css/index.css">
+<!-- The jQuery library is a prerequisite for all jqSuite products -->
+	<script type="text/ecmascript" src="jqgrid/js/jquery-1.11.0.min.js"></script>
+<!--<script type="text/ecmascript" src="{{asset('jqgrid/js/jquery-3.2.1.min.js') }}"></script>-->
+	<!-- We support more than 40 localizations -->
+	<script type="text/ecmascript" src="jqgrid/js/i18n/grid.locale-en.js"></script>
+	<!-- This is the Javascript file of jqGrid -->
+	<script type="text/ecmascript" src="jqgrid/js/jquery.jqGrid.min.js"></script>
+	<!-- This is the localization file of the grid controlling messages, labels, etc.
+    <!-- A link to a jQuery UI ThemeRoller theme, more than 22 built-in and many more custom -->
+	<link rel="stylesheet" type="text/css" media="screen" href="bootstrap-3.3.4-dist/css/bootstrap.min.css" />
+	<!-- The link to the CSS that the grid needs -->
+	<link rel="stylesheet" type="text/css" media="screen" href="jqgrid/css/ui.jqgrid-bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="css/index.css" />
+	<script>
+	</script>
+	<script type="text/ecmascript" src="bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
     <style type="text/css">
 	body
 	{
@@ -17,53 +31,54 @@
         <div class="container">
             <div class="row">
 				<div class="col-md-12 col-xs-12" style="margin-top:2%;background-color:rgb(236,236,236);">
-					<p class="brand-title">Đặt phòng trước</p>
+					<p class="brand-title">Reservation Detail</p>
 				</div>
 				<div class="col-md-12 col-xs-12" style="background-color:rgb(215,215,215);">
+					<!--Left-->
 					<div class="col-md-7 col-xs-12" style="left:-40px;border-right:1px solid rgb(194,194,194);">
 						<div class="col-md-6 col-xs-7" style="margin-top:10px;">
 							<form class="form-horizontal">
 								<fieldset>
 								<div class="form-group">
 								  <label class="col-md-5 control-label" for="">Ngày vào:</label>  
-								  <div class="col-md-5">
-								  <input id="checkin" name="checkin" type="text" class="form-control input-md">
+								  <div class="col-md-6">
+								  <input id="checkin" name="checkin" type="text" class="form-control input-md" maxlength ="10">
 								  </div>
 								</div>
 								<div class="form-group">
 								  <label class="col-md-5 control-label" for="">Ngày ra:</label>  
-								  <div class="col-md-5">
-								  <input id="checkout" name="checkout" type="text" class="form-control input-md">
+								  <div class="col-md-6">
+								  <input id="checkout" name="checkout" type="text" class="form-control input-md" maxlength ="10">
 								  </div>
 								</div>
 								<div class="form-group">
 								  <label class="col-md-5 control-label" for="">Tên khách hàng:</label>  
 								  <div class="col-md-7">
-								  <input id="cusName" name="cusName" type="text" class="form-control input-md">
+								  <input id="cusName" name="cusName" type="text" class="form-control input-md" maxlength ="20">
 								  </div>
 								</div>
 								<div class="form-group">
 								  <label class="col-md-5 control-label" for="">CMND:</label>  
 								  <div class="col-md-7">
-								  <input id="cmnd" name="cmnd" type="text" class="form-control input-md">
+								  <input id="cmnd" name="cmnd" type="text" class="form-control input-md" maxlength ="12">
 								  </div>
 								</div>
 								<div class="form-group">
 								  <label class="col-md-5 control-label" for="">Điện thoại:</label>  
 								  <div class="col-md-7">
-								  <input id="phone" name="phone" type="text" class="form-control input-md">
+								  <input id="phone" name="phone" type="text" class="form-control input-md" maxlength ="15">
 								  </div>
 								</div>
 								<div class="form-group">
 								  <label class="col-md-5 control-label" for="">Email:</label>  
 								  <div class="col-md-7">
-								  <input id="email" name="email" type="email" placeholder="xxx@gmail.com" class="form-control input-md">
+								  <input id="email" name="email" type="email" placeholder="xxx@gmail.com" class="form-control input-md" maxlength ="20">
 								  </div>
 								</div>
 								<div class="form-group">
 								  <label class="col-md-5 control-label" for="">Địa chỉ:</label>  
 								  <div class="col-md-7">
-								  <input id="address" name="address" type="text" class="form-control input-md">
+								  <input id="address" name="address" type="text" class="form-control input-md" maxlength ="30">
 								  </div>
 								</div>
 								<div class="form-group">
@@ -79,15 +94,15 @@
 							<form class="form-horizontal">
 								<fieldset>
 								<div class="form-group">
-								  <label class="col-md-4 control-label" for="">Cơ quan:</label>  
+								  <label class="col-md-4 control-label" for="">Ngày cấp:</label>  
 								  <div class="col-md-8">
-								  <input id="comName" name="comName" type="text" class="form-control input-md">
+								  <input id="proDate" name="proDate" type="text" class="form-control input-md" maxlength ="10">
 								  </div>
 								</div>
 								<div class="form-group">
-								  <label class="col-md-4 control-label" for="">Ngày cấp:</label>  
+								  <label class="col-md-4 control-label" for="">Cơ quan:</label>  
 								  <div class="col-md-8">
-								  <input id="proDate" name="proDate" type="text" class="form-control input-md">
+								  <input id="comName" name="comName" type="text" class="form-control input-md" maxlength ="15">
 								  </div>
 								</div>
 								<div class="form-group">
@@ -105,6 +120,49 @@
 							</form>
 						</div>
 					</div>
+					<!--End left-->
+					<!--Right-->
+						<div class="col-md-5">
+							<form class="form-inline" style="margin-top:10px;">
+								<div class="form-group">
+										<label>Room 1:</label>
+										<input id="room1txt" name="room1txt" type="text" class="form-control input-md" readonly="readonly" size="5">
+										<input id="double1txt" name="double1txt" type="text" class="form-control input-md" readonly="readonly" placeholder="Double" size="8">	
+										<input id="price1txt" name="price1txt" type="text" class="form-control input-md" dir="rtl" maxlength ="10" size="8">
+										<button class="btn btn-default" value="editBtn1" name="editBtn1"><b>Edit</b></button>
+								</div>
+							</form>
+							<form class="form-inline" style="margin-top:5px;">
+								<div class="form-group">
+										<label>Room 2:</label>
+										<input id="room2txt" name="room2txt" type="text" class="form-control input-md" readonly="readonly" size="5">
+										<input id="double2txt" name="double2txt" type="text" class="form-control input-md" readonly="readonly" placeholder="Double" size="8">	
+										<input id="price2txt" name="price2txt" type="text" class="form-control input-md" dir="rtl" maxlength ="10" size="8">
+										<button class="btn btn-default" value="editBtn2" name="editBtn2"><b>Edit</b></button>
+								</div>
+							</form>
+							<form class="form-inline" style="margin-top:5px;">
+								<div class="form-group">
+										<label>Room 3:</label>
+										<input id="room3txt" name="room3txt" type="text" class="form-control input-md" readonly="readonly" size="5">
+										<input id="double3txt" name="double3txt" type="text" class="form-control input-md" readonly="readonly" placeholder="Double" size="8">	
+										<input id="price3txt" name="price3txt" type="text" class="form-control input-md" dir="rtl" maxlength ="10" size="8">
+										<button class="btn btn-default" value="editBtn3" name="editBtn3"><b>Edit</b></button>
+								</div>
+							</form>
+							<form class="form-inline" style="margin-top:5px;">
+								<div class="form-group">
+										<label>Room 4:</label>
+										<input id="room4txt" name="room4txt" type="text" class="form-control input-md" readonly="readonly" size="5">
+										<input id="double4txt" name="double4txt" type="text" class="form-control input-md" readonly="readonly" placeholder="Double" size="8">	
+										<input id="price4txt" name="price4txt" type="text" class="form-control input-md" dir="rtl" maxlength ="10" size="8">
+										<button class="btn btn-default" value="editBtn4" name="editBtn4"><b>Edit</b></button>
+								</div>
+							</form>
+							<table id="jqGrid" style="border:1px solid gray;"></table>
+							<div id="jqGridPager" style="height:40px;"></div>
+						</div>
+					<!--End Right-->
 				</div>
 				<div class="col-md-12 col-xs-12" style="background-color:rgb(236,236,236);">
 						<div class="col-md-6 col-md-offset-7" style="margin-top:10px; margin-bottom:10px;">
@@ -116,4 +174,46 @@
             </div>
         </div>
 </body>
+<script>
+$("#jqGrid").jqGrid({
+        datatype: "local",
+        mtype: "GET",
+
+        styleUI : 'Bootstrap',
+        colNames:['No.Room',
+            'Room type',
+            'Price',
+           
+        ],
+        colModel: [
+            { name: 'item0',  width: 120 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
+            { name: 'item1',  width: 120, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
+            { name: 'item2',  width: 120, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }}
+           
+        ],
+        rownumbers: true,
+        height: 150,
+        rowNum: 10,
+        pager: "#jqGridPager",
+        autowidth: true,
+        autoheight: true,
+        loadonce: true,
+        resizable: true,
+        forceFit: true,
+        shrinkToFit: false,
+
+
+        ondblClickRow: function(rowId) {
+            var rowData = jQuery(this).getRowData(rowId);
+            var res_id = rowData['item0'];
+            window.open('K004_1/K004_2/?res_id=' + res_id , '_blank');
+
+        },
+        loadComplete: function(){
+            //set color for even row
+            $("tr.jqgrow:even").css("background", "#DDDDDC");
+        }
+
+    });
+</script>
 </html>
