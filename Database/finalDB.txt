@@ -95,6 +95,18 @@ CREATE TABLE tbl_room_accessory(
 	FOREIGN KEY (room_ID) REFERENCES tbl_room(room_id)
 );
 
+CREATE TABLE tbl_guest(
+	id serial PRIMARY KEY,
+	name varchar(50) ,
+	phone varchar(20) ,
+	mail varchar(50) ,
+	identity_card varchar(12) ,
+	company varchar(50) ,
+	address varchar(100) ,
+	company_phone varchar(20),
+	country varchar(50)
+);
+
 CREATE TABLE tbl_reservation_status(
 	id serial PRIMARY KEY,
 	status_name varchar(50),
@@ -104,13 +116,15 @@ CREATE TABLE tbl_reservation_status(
 CREATE TABLE tbl_reservation(
 	id serial PRIMARY KEY,
 	status integer,
+	guest_id integer,
 	check_in varchar(8) ,
 	check_out varchar(8) ,
 	number_of_room integer,
 	number_of_adult integer ,
 	number_of_children integer ,
 	create_ymd varchar(8) ,
-	FOREIGN KEY (status) REFERENCES tbl_reservation_status(id)
+	FOREIGN KEY (status) REFERENCES tbl_reservation_status(id),
+	FOREIGN KEY (guest_id) REFERENCES tbl_guest(id)
 	
 );
 
@@ -123,17 +137,7 @@ CREATE TABLE tbl_reservation_detail(
 	FOREIGN KEY (room_ID) REFERENCES tbl_room(room_id)
 );
 
-CREATE TABLE tbl_guest(
-	id serial PRIMARY KEY,
-	name varchar(50) ,
-	phone varchar(20) ,
-	mail varchar(50) ,
-	identity_card varchar(12) ,
-	company varchar(50) ,
-	address varchar(100) ,
-	company_phone varchar(20),
-	country varchar(50)
-);
+
 
 CREATE TABLE tbl_payment_type(
 	id serial PRIMARY KEY,
