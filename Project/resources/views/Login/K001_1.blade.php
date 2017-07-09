@@ -156,7 +156,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="posted-by">HOTEL : <a style="text-decoration: none;" href="{!! URL('/index') !!}">HOME</a></div>
+	<div class="posted-by">HOTEL : <a style="text-decoration: none;" href="{!! URL('/') !!}">HOME</a></div>
 </div>
 </body>
 </html>

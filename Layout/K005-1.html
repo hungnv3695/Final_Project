@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>K005-1</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The jQuery library is a prerequisite for all jqSuite products -->
+	<script type="text/ecmascript" src="jqgrid/js/jquery-1.11.0.min.js"></script>
+<!--<script type="text/ecmascript" src="{{asset('jqgrid/js/jquery-3.2.1.min.js') }}"></script>-->
+	<!-- We support more than 40 localizations -->
+	<script type="text/ecmascript" src="jqgrid/js/i18n/grid.locale-en.js"></script>
+	<!-- This is the Javascript file of jqGrid -->
+	<script type="text/ecmascript" src="jqgrid/js/jquery.jqGrid.min.js"></script>
+	<!-- This is the localization file of the grid controlling messages, labels, etc.
+    <!-- A link to a jQuery UI ThemeRoller theme, more than 22 built-in and many more custom -->
+	<link rel="stylesheet" type="text/css" media="screen" href="bootstrap-3.3.4-dist/css/bootstrap.min.css" />
+	<!-- The link to the CSS that the grid needs -->
+	<link rel="stylesheet" type="text/css" media="screen" href="jqgrid/css/ui.jqgrid-bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="css/index.css" />
+	<script>
+	</script>
+	<script type="text/ecmascript" src="bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
+    <style type="text/css">
+	body
+	{
+		padding: 0;
+		margin: 0;
+	}
+	</style>
+</head>
+<body>
+        <div class="container">
+            <div class="row">
+				<div class="col-md-8 col-xs-8 col-md-offset-2" style="margin-top:2%;background-color:rgb(236,236,236);">
+					<p class="brand-title">List room</p>
+				</div>
+				<div class="col-md-8 col-xs-8 col-md-offset-2" style="background-color:rgb(215,215,215);">
+					<div class="col-md-12" style="margin-top:30px;">
+						<table id="jqGrid" style="border:1px solid gray;"></table>
+						<div id="jqGridPager" style="height:40px;"></div>
+					</div>
+				</div>
+				<div class="col-md-8 col-xs-8 col-md-offset-2" style="background-color:rgb(236,236,236);">
+						<div class="col-md-2 col-md-offset-9" style="margin-top:10px; margin-bottom:10px;">
+							<button class="button" value="backBtn" name="backBtn" ><b>Back</b></button>
+						</div>
+				</div>
+            </div>
+        </div>
+		<script>
+		$("#jqGrid").jqGrid({
+				datatype: "local",
+				mtype: "GET",
+
+				styleUI : 'Bootstrap',
+				colNames:['No.Room',
+					'Room type',
+					'Price',
+				   
+				],
+				colModel: [
+					{ name: 'item0',  width: 210 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
+					{ name: 'item1',  width: 210, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
+					{ name: 'item2',  width: 210, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }}
+				   
+				],
+				rownumbers: true,
+				height: 350,
+				rowNum: 10,
+				pager: "#jqGridPager",
+				autowidth: true,
+				autoheight: true,
+				loadonce: true,
+				resizable: true,
+				forceFit: true,
+				shrinkToFit: false,
+
+
+				ondblClickRow: function(rowId) {
+					var rowData = jQuery(this).getRowData(rowId);
+					var res_id = rowData['item0'];
+					window.open('K004_1/K004_2/?res_id=' + res_id , '_blank');
+
+				},
+				loadComplete: function(){
+					//set color for even row
+					$("tr.jqgrow:even").css("background", "#DDDDDC");
+				}
+
+			});
+		</script>
+</body>
+</html>

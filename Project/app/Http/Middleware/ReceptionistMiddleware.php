@@ -23,7 +23,7 @@ class ReceptionistMiddleware
             $groupcd = session()->get(SESSION_USER_INFO)->group_cd;
 
 
-            if(strcmp($groupcd,str_pad(GROUP_RECEPTIONIST,7)) != 0){
+            if(strcmp($groupcd,GROUP_RECEPTIONIST) != 0){
                 return redirect('AccessDeny');
             }
         }
