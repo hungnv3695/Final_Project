@@ -17,34 +17,33 @@ use Illuminate\Support\Facades\DB;
 class K004_DAO{
     public function selectReservation($fname,$idCard,$status){
 
-        $t1 = 'UPPER(g.fullname) LIKE \'%' . strtoupper(trim($fname)) . '%\'';
+        $t1 = 'UPPER(g.name) LIKE \'%' . strtoupper(trim($fname)) . '%\'';
         $t2 = 'UPPER(g.identity_card) LIKE \'%' . strtoupper(trim($idCard)) . '%\'';
         $t3 = 'rs.id = ' . trim($status) ;
         $strSQL = 'SELECT ';
-        $strSQL .=  'g.id as "guest_id", ';
-        $strSQL .=  'r.id as "res_id", ';
-        $strSQL .=  'r.paid_status, ';
-        $strSQL .=  'g.fullname "fullname", ';
-        $strSQL .=  'COUNT(r.id) "quantity", ';
-        $strSQL .=  'r.checkin, ';
-        $strSQL .=  'r.checkout, ';
-        $strSQL .=  'g.email, ';
+        $strSQL .=  'r.id, ';
+        $strSQL .=  'r.number_of_room, ';
+        $strSQL .=  'r.check_in, ';
+        $strSQL .=  'r.check_out, ';
+        $strSQL .=  'g.name,  ';
+        $strSQL .=  'g.mail, ';
         $strSQL .=  'g.phone, ';
         $strSQL .=  'g.identity_card, ';
         $strSQL .=  'g.company, ';
-        $strSQL .=  'rs.status as "status", ';
-        $strSQL .=  'rs.id as "status_id" ';
+        $strSQL .=  'rs.status_name ';
 
-        $strSQL .= 'FROM tbl_guest g JOIN tbl_reservation r ON g.id = r.guest_id ';
-        $strSQL .= 'JOIN reservation_status rs ON rs.id = r.status ';
-        $strSQL .= 'JOIN tbl_reservation_detail rd ON r.id = rd.res_id ';
+
+        $strSQL .= 'FROM tbl_guest g join tbl_reservation r ' ;
+        $strSQL .= 'ON g.id = r.guest_id join tbl_reservation_status rs ';
+        $strSQL .= 'ON r.status = rs.id join tbl_reservation_detail rd ';
+        $strSQL .= 'ON r.id = rd.reservation_ID ';
         $strSQL .= 'WHERE NOT r.id = \'0\' ';
 
         $strSQL .= strcmp($fname, "") == 0 ? "" : 'AND '. $t1 . ' ';
         $strSQL .= strcmp($idCard, "") == 0 ? "" : 'AND '. $t2 . ' ';
         $strSQL .= strcmp($status, "") == 0 ? "" : 'AND '. $t3 . ' ';
 
-        $strSQL .= ' GROUP BY g.id, r.id, g.fullname, rs.status, rs.id ORDER BY r.id DESC';
+        $strSQL .= ' GROUP BY g.id, r.id, g.name, rs.status_name, rs.id ORDER BY r.id DESC';
         
         //$sqlStr .= strcmp($lname,"") == 0 ? "":' AND ' . $t2;
 
@@ -55,8 +54,10 @@ class K004_DAO{
 
     public function getStatus(){
 
-        $strSQL= "Select * From reservation_status";
+        $strSQL= "Select * From tbl_reservation_status";
+
         $result = DB::select(DB::raw($strSQL));
+
         return $result;
     }
 

@@ -30,9 +30,9 @@ $(document).ready(function () {
         mtype: "GET",
 
         styleUI : 'Bootstrap',
-        colNames:['Reservation ID',
-            'Customer Name',
-            'Identity Card',
+        colNames:['Id',
+            'Customer name',
+            'Identity card',
             'Check-in',
             'Check-out',
             'Quantity room',
@@ -40,7 +40,7 @@ $(document).ready(function () {
             'Company',
             'Phone',
             'Status',
-            'Paid Status'
+            'Paid status'
         ],
         colModel: [
             { name: 'item0',  width: 75 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
@@ -66,6 +66,7 @@ $(document).ready(function () {
         resizable: true,
         forceFit: true,
         shrinkToFit: false,
+        ignoreCase: true,
 
 
         ondblClickRow: function(rowId) {
@@ -102,7 +103,7 @@ $(document).ready(function () {
         jList = [];
         $.ajax({
 
-            url: 'K004_1/searchReservation',
+            url: 'K004_1/SearchReservation',
             method: 'GET',
             cache: false,
             data:{
@@ -113,6 +114,9 @@ $(document).ready(function () {
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
             success: function (response) {
+                if(response.length = ""){
+                    alert("No Data");
+                }
                 console.log(response);
                 addData($.parseJSON(response));
                 //addDataTable(guest);

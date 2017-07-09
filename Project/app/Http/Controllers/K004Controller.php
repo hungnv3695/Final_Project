@@ -20,6 +20,10 @@ class K004Controller extends Controller{
     public function getReservationStatus(){
         $K004_DAO = new K004_DAO();
         $status = $K004_DAO->getStatus();
+        if($status==[]){
+            $status = "";
+            return response()->json($status);
+        }
         //$status = json_encode($status);
 
         return response()->json($status);
@@ -36,7 +40,10 @@ class K004Controller extends Controller{
         //$resModel = new Reservation_Model();
         $result = json_encode($resList);
         //dd($resModel->getId());
-
+        if($result==[]){
+            $result="";
+            return response()->json($result);
+        }
 //
 //        foreach ( $resList as $key => $value )
 //        {
@@ -60,6 +67,22 @@ class K004Controller extends Controller{
     }
 
     public function GetGuest(Request $request){
+        if($request->res_id ==""){
+            return view("Reception.K004-2")->with([
+                'id' => "",
+                'check_in' => "",
+                'check_out' => "",
+                'number_of_room'=>"",
+                'name' => "",
+                'phone' => "",
+                'email' => "",
+                'idCard' => "",
+                'company' => "",
+                'address' => "",
+                'company_phone'=>"" ,
+                'country' => ""
+            ]);
+        }
         $res_id = $request->res_id;
         $K004_DAO = new K004_DAO();
         $guest = $K004_DAO->GetGuestData($res_id);
@@ -102,7 +125,7 @@ class K004Controller extends Controller{
 
     }
 
-    public function GetRoomFree(){
+        public function GetRoomFree(){
 
     }
 

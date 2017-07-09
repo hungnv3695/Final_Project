@@ -28,6 +28,7 @@ $(document).ready(function () {
     });
     //JqGrid START
     $("#jqGrid").jqGrid({
+        url:'K004_1/K004_2/GetRoomFree',
         datatype: "local",
         mtype: "GET",
 
