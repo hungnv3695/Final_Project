@@ -20,6 +20,7 @@
 	<script type="text/ecmascript" src="{{asset('bootstrap-3.3.4-dist/js/bootstrap.min.js') }}"></script>
 
     <link rel="stylesheet" type="text/css" href="{{asset('css/index.css')}}">
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-8">
     <meta charset="utf-8" />
 	<title>jqGrid Loading Data - Million Rows from a REST service</title>
 

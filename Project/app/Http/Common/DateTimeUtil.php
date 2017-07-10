@@ -12,4 +12,10 @@ class DateTimeUtil{
         return (empty($str)|| strlen($str)!==8) ? "":
             (substr($str, 6, 2) . "/" . substr($str, 4, 2). "/" . substr($str, 0, 4));
     }
+
+    public static function ConvertDateToString($str){
+        $str = (empty($str))?"":str_replace("/","",$str);
+        return  (substr($str, 4, 4) .  substr($str, 2, 2).  substr($str, 0, 2));
+
+    }
 }

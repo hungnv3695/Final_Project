@@ -2,36 +2,12 @@
  * Created by Nguyen Viet Hung on 6/29/2017.
  */
 $(document).ready(function () {
-    $.ajax({
-        url: 'K004_1/K004_2/GetReservationDetail',
-        method: 'GET',
-        cache: false,
-        data:{
-            res_id: $('#res_id').val(),
-        },
-        dataType: 'json',
-        contentType: 'application/json; charset=utf-8',
-        success: function (result) {
-            $('#room1txt').val('1');
-            $('#double1txt').val('2');
-            // $('#price1txt').val(result[x].type_name);
-            // for(var x=0; x<=result.length; x++){
-            //     $('#room1txt').val(result[x].room_id);
-            //     $('#double1txt').val(result[x].type_name);
-            //     $('#price1txt').val(result[x].type_name);
-            // }
 
-        },
-        error: function(){
-            alert('error GetReservationDetail');
-        }
-    });
     //JqGrid START
     $("#jqGrid").jqGrid({
-        url:'K004_1/K004_2/GetRoomFree',
-        datatype: "local",
+        //url:'K004_1/K004_2/GetRoomFree',
+        dataType: "json",
         mtype: "GET",
-
         styleUI : 'Bootstrap',
         colNames:['No.Room',
             'Room type',
@@ -58,6 +34,7 @@ $(document).ready(function () {
         loadComplete: function(){
             //set color for even row
             $("tr.jqgrow:even").css("background", "#DDDDDC");
+            $('#jqGrid').jqGrid('setGridParam', { postData: { result: "" }});
         }
 
     });
@@ -88,12 +65,22 @@ $(document).ready(function () {
     //Display number of room END
     //$('#id').val('')
     $( "#editBtn1" ).click(function() {
+        //alert('fd');
+        //jQuery("#jqGrid").setGridParam({data: jList });
+        //jQuery("#jqGrid")[0].refreshIndex();
+        //jQuery("#jqGrid").trigger("reloadGrid");
+        $check_in = $('#checkin').val();
+        $check_out = $('#checkout').val();
+        $type_name = $('#double1txt').val();
+        console.log($check_in,$check_out,$type_name);
         $.ajax({
-            url: 'K004_1/K004_2/GetRoomFree',
+            url: 'GetRoomFree',
             method: 'GET',
             cache: false,
             data:{
-                res_id: $('#id').val(),
+                check_in:  $check_in ,
+                check_out: $check_out,
+                type_name: $type_name
             },
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',

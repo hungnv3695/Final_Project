@@ -120,6 +120,10 @@
 						<div class="col-md-1 control-label" style="display: none;">
 							<input id="res_id" name="res_id" type="text" value="{{$id}}" maxlength ="10">
 							<input id="number_of_room" name="number_of_room" type="text" value="{{$number_of_room}}" maxlength ="10">
+							<input id="room_id1" name="room_id1" type="text" value="{{$room_id1}}" maxlength ="10">
+							<input id="room_id2" name="room_id2" type="text" value="{{$room_id2}}" maxlength ="10">
+							<input id="room_id3" name="room_id3" type="text" value="{{$room_id3}}" maxlength ="10">
+							<input id="room_id4" name="room_id4" type="text" value="{{$room_id4}}" maxlength ="10">
 						</div>
 					</form>
 				</div>
@@ -130,36 +134,38 @@
 				<form class="form-inline" style="margin-top:10px;">
 					<div class="form-group" id="room1" >
 						<label>Room 1:</label>
-						<input id="room1txt" name="room1txt" type="text" class="form-control input-md" readonly="readonly" size="5">
-						<input id="double1txt" name="double1txt" type="text" class="form-control input-md" readonly="readonly" placeholder="Double" size="8">
-						<input id="price1txt" name="price1txt" type="text" class="form-control input-md" dir="rtl" maxlength ="10" size="8">
-						<button class="btn btn-default" id="editBtn1" name="editBtn1"><b>Edit</b></button>
+						<input id="room1txt"   value="{{$room1txt}}"   name="room1txt" type="text" class="form-control input-md" readonly="readonly" size="5">
+						<input id="double1txt" value="{{$double1txt}}" name="double1txt" type="text" class="form-control input-md" readonly="readonly" size="8">
+						<input id="price1txt"  value="{{$price1txt}}"  name="price1txt" type="text" class="form-control input-md" dir="rtl" maxlength ="10" size="8">
+
 					</div>
+
 				</form>
+				<button class="btn btn-default" id="editBtn1" name="editBtn1"><b>Edit</b></button>
 				<form class="form-inline" style="margin-top:5px;">
 					<div class="form-group" id="room2">
 						<label>Room 2:</label>
-						<input id="room2txt" name="room2txt" type="text" class="form-control input-md" readonly="readonly" size="5">
-						<input id="double2txt" name="double2txt" type="text" class="form-control input-md" readonly="readonly" placeholder="Double" size="8">
-						<input id="price2txt" name="price2txt" type="text" class="form-control input-md" dir="rtl" maxlength ="10" size="8">
+						<input id="room2txt"   value="{{$room2txt}}"   name="room2txt" type="text" class="form-control input-md" readonly="readonly" size="5">
+						<input id="double2txt" value="{{$double2txt}}" name="double2txt" type="text" class="form-control input-md" readonly="readonly" size="8">
+						<input id="price2txt"  value="{{$price2txt}}"  name="price2txt" type="text" class="form-control input-md" dir="rtl" maxlength ="10" size="8">
 						<button class="btn btn-default" id="editBtn2" name="editBtn2"><b>Edit</b></button>
 					</div>
 				</form>
 				<form class="form-inline" style="margin-top:5px;">
 					<div class="form-group" id="room3">
 						<label>Room 3:</label>
-						<input id="room3txt" name="room3txt" type="text" class="form-control input-md" readonly="readonly" size="5">
-						<input id="double3txt" name="double3txt" type="text" class="form-control input-md" readonly="readonly" placeholder="Double" size="8">
-						<input id="price3txt" name="price3txt" type="text" class="form-control input-md" dir="rtl" maxlength ="10" size="8">
+						<input id="room3txt"   value="{{$room3txt}}"   name="room3txt" type="text" class="form-control input-md" readonly="readonly" size="5">
+						<input id="double3txt" value="{{$double3txt}}" name="double3txt" type="text" class="form-control input-md" readonly="readonly"  size="8">
+						<input id="price3txt"  value="{{$price3txt}}"  name="price3txt" type="text" class="form-control input-md" dir="rtl" maxlength ="10" size="8">
 						<button class="btn btn-default" id="editBtn3" name="editBtn3"><b>Edit</b></button>
 					</div>
 				</form>
 				<form class="form-inline" style="margin-top:5px;">
 					<div class="form-group" id="room4">
 						<label>Room 4:</label>
-						<input id="room4txt" name="room4txt" type="text" class="form-control input-md" readonly="readonly" size="5">
-						<input id="double4txt" name="double4txt" type="text" class="form-control input-md" readonly="readonly" placeholder="Double" size="8">
-						<input id="price4txt" name="price4txt" type="text" class="form-control input-md" dir="rtl" maxlength ="10" size="8">
+						<input id="room4txt"   value="{{$room4txt}}"   name="room4txt" type="text" class="form-control input-md" readonly="readonly" size="5">
+						<input id="double4txt" value="{{$double4txt}}" name="double4txt" type="text" class="form-control input-md" readonly="readonly" size="8">
+						<input id="price4txt"  value="{{$price4txt}}"   name="price4txt" type="text" class="form-control input-md" dir="rtl" maxlength ="10" size="8">
 						<button class="btn btn-default" id="editBtn4" name="editBtn4"><b>Edit</b></button>
 					</div>
 				</form>

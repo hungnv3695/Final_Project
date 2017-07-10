@@ -12,14 +12,12 @@ $(document).ready(function () {
         success: function (result) {
             $("#cboStatus").empty();
             $("#cboStatus").append($('<option></option>').val("").html(""));
-            console.log(result);
             for (i=0; i < result.length; i++){
                 //add data for status combobox
-                $("#cboStatus").append($('<option></option>').val(result[i].id).html(result[i].status));
+                $("#cboStatus").append($('<option></option>').val(result[i].status_id).html(result[i].status_name));
             }
         },
         error: function(){
-            console.log( $('#txtFName').val());
             alert('error');
         }
 
@@ -81,16 +79,16 @@ $(document).ready(function () {
         }
 
     });
-
+    $( ".ui-th-div" ).append( "<p>No.</p>" );
     //jQuery("#jqGrid").jqGrid('filterToolbar',{autosearch : false});
     var jList = [];
     function addData(result){
-
+        console.log(result);
         for(var i = 0; i< result.length; i++){
             var x ={
-                item0: result[i].res_id, item1: result[i].fullname, item2: result[i].identity_card,
-                item3: result[i].checkin, item4: result[i].checkout, item5: result[i].quantity, item6: result[i].email,
-                item7: result[i].company,item8: result[i].phone, item9: result[i].status, item10: result[i].paid_status
+                item0: result[i].id, item1: result[i].name, item2: result[i].identity_card,
+                item3: result[i].check_in, item4: result[i].check_out, item5: result[i].number_of_room, item6: result[i].mail,
+                item7: result[i].company,item8: result[i].phone, item9: result[i].status_name, item10: result[i].paid_status
             };
             jList.push(x);
         }
@@ -114,15 +112,14 @@ $(document).ready(function () {
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
             success: function (response) {
-                if(response.length = ""){
+                if(response.length == ""){
                     alert("No Data");
                 }
-                console.log(response);
-                addData($.parseJSON(response));
-                //addDataTable(guest);
+
+                addData(response);
             },
             error: function(){
-                console.log( $('#txtFName').val());
+
                 alert('error');
             }
 
