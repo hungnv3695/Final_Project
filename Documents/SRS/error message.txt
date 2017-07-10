@@ -1,0 +1,10 @@
+MSG0001	Username is invalid
+MSG0002	Your account is not existed
+MSG0003	Password is required
+MSG0004	Password is invalid and will be locked after 3 times
+MSG0005	Required fields are not blank
+MSG0006	Please choose the payment method
+MSG0007	Please choose answer
+MSG0008	Please check on confirmation checkbox(UC005)
+MSG0009	Password must not be similar to 2 most recent passwords
+MSG0010	Entered information are not corrected(UC009)
