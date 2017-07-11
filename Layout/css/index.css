@@ -533,18 +533,15 @@ hr{
 	border-color:gray;
 }
 .button {
-    background-color:rgb(220,220,220); /* Green */
-    border: none;
-    color: black;
-    padding: 7px 20px;	
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
+    background-color:white;
+	color:gray;
 	width: 115px;
+	height:34px;
+	border-radius:5px;
 }
 .button:hover{
-    background-color:rgb(215,215,215); /* Green */
+    background-color:rgb(215,215,215);
+	color:black;
 }
 .managerBnt{
 	background-color:rgb(220,220,220); /* Green */
@@ -561,5 +558,16 @@ hr{
 }
 .managerBnt:hover{
     background-color:rgb(215,215,215); /* Green */
+}
+.roomlistBnt{
+	background-color:white;
+	color:gray;
+	width: 80px;
+	height:34px;
+	border-radius:5px;
+}
+.roomlistBnt:hover{
+	background-color:rgb(236,236,236);
+	color:black;
 }
 /*end restaurant*/
