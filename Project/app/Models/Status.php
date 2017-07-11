@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: SonDC
- * Date: 7/8/2017
- * Time: 9:26 PM
+ * Date: 7/11/2017
+ * Time: 10:00 PM
  */
 
 namespace App\Models;
@@ -11,20 +11,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class RoomType extends Model
+class Status extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'tbl_room_type';
+    protected $table = 'tbl_status';
 
     /**
      * setting primary key
      * @var string
      */
-    protected $primaryKey = 'room_type_id';
+    protected $primaryKey = 'status_id';
 
     /**
      * setting use increment number or not

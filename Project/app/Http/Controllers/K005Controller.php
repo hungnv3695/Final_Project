@@ -7,7 +7,10 @@
  */
 
 namespace App\Http\Controllers;
+use App\Http\Common\Constants;
+use App\Http\Common\Message;
 use App\Http\DAO\K005DAO;
+use App\Models\Accessory;
 use App\Models\Room;
 use Illuminate\Http\Request;
 
@@ -52,24 +55,52 @@ class K005Controller extends Controller
 
     }
 
-
-
     public function GetViewRoomDetailRequest($roomID){
         $k005DAO = new K005DAO();
 
         $roomDetail = $k005DAO->getRoomDetail($roomID);
+        $accessory =  $k005DAO->getAccessoryDetail($roomID);
+        $roomtype = $k005DAO->getRoomType();
+        $status = $k005DAO->getStatus();
 
-        return view('Manager.K005_2',compact('roomDetail'));
+        return view('Manager.K005_2',compact('roomDetail', 'accessory','roomtype','status'));
     }
 
 
-    public function UpdateRoomRequest(Request $request){
+    public function UpdateRoomRequest(Request $request,$roomID){
 
+        $room = new Room();
+        $room->setRoomID($roomID);
+        $room->setRoomTypeId($request->roomtype);
+        $room->setFloor($request->floortxt);
+        $room->setStatusId($request->status);
+        $room->setRoomNumber($request->roomtxt);
+
+        $accessory = array(
+            Constants::ACCESSORY_BAN=>$request->table,
+            Constants::ACCESSORY_DIEU_HOA => $request->aircondition,
+            Constants::ACCESSORY_GIUONG => $request->bed,
+            Constants::ACCESSORY_QUAT => $request->fan,
+            Constants::ACCESSORY_TIVI => $request->tivi,
+            Constants::ACCESSORY_TU_LANH => $request->friger
+        );
+
+        $result =  $this->UpdateRoom($room,$accessory);
+
+        if($result == true){
+            return redirect('/K005_1');
+        }else{
+            return Message::MSG0004;
+        }
 
     }
 
-    private function UpdateRoom(Room $room){
+    private function UpdateRoom(Room $room , $accessory ){
+        $k005DAO = new K005DAO();
 
+        $result = $k005DAO->UpdateRoom($room,$accessory);
+
+        return $result;
     }
 
 }
