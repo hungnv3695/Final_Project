@@ -18,19 +18,43 @@ use Illuminate\Http\Request;
 class K005Controller extends Controller
 {
     public function ViewRoom(){
-        return view('Manager.K005_1');
+
+        $room = $this->getRoomRequest();
+
+        return view('Manager.K005_1',compact('room'));
     }
 
-    public function getRoomRequest(){
+    public function GetRoomRequest(Request $request = null){
+
         $k005DAO = new K005DAO();
 
-        $room = json_encode($k005DAO->getRoom()) ;
+        switch ($request){
+
+            case null:
+                $room = $k005DAO->getRoom();
+                return $room;
+                break;
+
+            case isset($request->searchBnt) :
+                $searchStr = $request->searchtxt;
+                $room = $k005DAO->getRoom($searchStr);
+
+                return view('Manager.K005_1',compact('room','searchStr'));
+                break;
+
+            case isset($request->listallBnt):
+                $room = $k005DAO->getRoom();
+
+                return view('Manager.K005_1',compact('room'));
+                break;
+        }
 
 
-        return response()->json($room);
     }
 
-    public function getViewRoomDetailRequest($roomID){
+
+
+    public function GetViewRoomDetailRequest($roomID){
         $k005DAO = new K005DAO();
 
         $roomDetail = $k005DAO->getRoomDetail($roomID);

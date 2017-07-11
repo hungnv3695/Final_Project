@@ -19,7 +19,9 @@ Route::get('/','K008Controller@View');
 Route::get('/K001','K001Controller@View');
 Route::post('/K001','K001Controller@getLoginRequest');
 
-Route::get('/K005_1','K005Controller@getRoomRequest');
+Route::get('/K005_1','K005Controller@ViewRoom');
+Route::post('/K005_1' , 'K005Controller@GetRoomRequest' );
+
 Route::get('/K005_1/K005_2/{roomId}','K005Controller@getViewRoomDetailRequest');
 
 
