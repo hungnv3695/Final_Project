@@ -19,7 +19,7 @@
 				<div class="col-md-10 col-md-offset-1" style="margin-top:3%;background-color:rgb(236,236,236);">
 					<p class="brand-title">Room Detail</p>
 				</div>
-				<form  class="login" method="POST" >
+				<form  class="editroom" method="POST" >
 					<div class="col-md-10 col-md-offset-1" style="background-color:rgb(215,215,215);">
 						<div class="col-md-7 form-horizontal" style="border-right:1px solid rgb(236,236,236);">
 							<div class="form-group" style="margin-top:45px;">
