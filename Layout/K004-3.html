@@ -30,52 +30,25 @@
 <body>
         <div class="container">
             <div class="row">
-				<div class="col-md-12" style="margin-top:1%;background-color:rgb(236,236,236);">
-					<p class="brand-title">Reservation Detail</p>
-				</div>
-				<div class="col-md-12" style="background-color:rgb(215,215,215);">
-						<!--left-->
-						<div class="col-md-6 form-horizontal" style="border-right:1px solid rgb(236,236,236);">
-							<div class="col-md-12" style="border:5px solid rgb(200,200,200);margin:10px 0px 10px;">
-								
-							</div>
+				<div class="col-md-8 col-md-offset-2" style="background-color:rgb(215,215,215);margin-top:5%;">					
+					<div class="col-md-8 form-horizontal col-md-offset-2" style="border:1px solid rgb(194,194,194); background-color:white;margin-top:20px;margin-bottom:20px; height:450px;">
+						<div class="col-md-10 col-md-offset-1" style="margin-top:20px;">
+							<label class="col-md-4 control-label">Kiểu phòng:</label>  
+							<div class="col-md-5"><input id="roomtypetxt" name="roomtypetxt" type="text" class="form-control" readonly></div>
 						</div>
-						<!--right-->
-						<div class="col-md-5 form-horizontal" style="width:550px;margin:10px 0px 10px 10px;border: 5px solid rgb(200,200,200);">
-							<label>Danh sách phòng: </label>
+						<div class="col-md-10 col-md-offset-1" style="margin-top:20px;">
+							<label class="col-md-4 control-label">Số lượng:</label>  
+							<div class="col-md-5"><input id="quantitytxt" name="quantitytxt" type="text" class="form-control" readonly></div>
+						</div>
+						<div class="col-md-12" style="margin-top:20px;">
 							<table id="jqGrid" style="border:1px solid gray;"></table>
 							<div id="jqGridPager" style="height:40px;"></div>
-							<div class="col-md-7 col-md-offset-2" style="margin-top:10px;">
-								<label class="col-md-5 control-label">Tổng tiền:</label>  
-								<div class="col-md-7"><input id="pricetotaltxt" name="pricetotaltxt" type="text" class="form-control" readonly></div>
-							</div>
-							<label style="margin-top:10px;">Thông tin thanh toán: </label>
-							<div class="col-md-12" style="border: 2px solid rgb(200,200,200);">
-								<div class="col-md-10" style="margin-top:10px;">
-									<label class="col-md-5 control-label">Người thanh toán:</label>  
-									<div class="col-md-7"><input id="payertxt" name="payertxt" type="text" class="form-control" readonly></div>
-								</div>
-								<div class="col-md-10" style="margin-top:10px;">
-									<label class="col-md-5 control-label">Ngày thanh toán:</label>  
-									<div class="col-md-7"><input id="paymentdatetxt" name="paymentdatetxt" type="text" class="form-control" readonly></div>
-								</div>
-								<div class="col-md-10" style="margin-top:10px;margin-bottom:10px;">
-									<label class="col-md-5 control-label">Vào tài khoản:</label>  
-									<div class="col-md-7"><input id="accounttxt" name="accounttxt" type="text" class="form-control" readonly></div>
-								</div>
-							</div>
-							<div class="col-md-12" style="margin:20px 0px 10px 0px;">
-								<label class="col-md-3 control-label">Trạng thái: </label> 
-								<select class="col-md-5 form-control input-md" id="country" name="country" style="width:130px;">
-								<option value="">Thần</option>
-								<option value="">Linh</option>
-								<option value="">Ơi</option>
-								<option value="waitprogress" selected>Chờ xử lý</option>
-								</select>
-								<button class="roomlistBnt" value="saveBnt" name="searchBnt" style="margin-left:20px;"><b>Save</b></button>
-								<button class="roomlistBnt" value="closeBnt" name="searchBnt" style="margin-left:10px;"><b>Close</b></button>
-							</div>							
 						</div>
+						<div class="col-md-8 col-md-offset-6" style="margin-top:20px;">
+							<button class="roomlistBnt" value="saveBnt" name="searchBnt"><b>Save</b></button>
+							<button class="roomlistBnt" value="backBnt" name="backBnt" style="margin-left:10px;"><b>Back</b></button>
+						</div>	
+					</div>
 				</div>
             </div>
         </div>
@@ -91,13 +64,13 @@
 				   
 				],
 				colModel: [
-					{ name: 'item0',  width: 150 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
-					{ name: 'item1',  width: 150, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
-					{ name: 'item2',  width: 150, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }}
+					{ name: 'item0',  width: 130 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
+					{ name: 'item1',  width: 130, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
+					{ name: 'item2',  width: 130, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }}
 				   
 				],
 				rownumbers: true,
-				height: 100,
+				height: 150,
 				rowNum: 10,
 				pager: "#jqGridPager",
 				autowidth: true,
