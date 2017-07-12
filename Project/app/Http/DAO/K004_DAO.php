@@ -103,13 +103,17 @@ class K004_DAO{
     }
 
     public function SelectRoomFree($type_name,$check_in,$check_out){
-        $strSQL = 'select ro.room_number,rt.room_type_id ,rt.price from ';
+        $strSQL = 'select ro.room_number,rt.room_type_id ,rt.price, rt.type_name from ';
         $strSQL .='tbl_room ro join tbl_room_type rt ';
         $strSQL .='ON ro.room_type_id = rt.room_type_id ';
         $strSQL .='where rt.type_name = \'' .$type_name. '\' AND NOT ro.room_id IN (select rd.room_id from ';
         $strSQL .='tbl_reservation r join tbl_reservation_detail rd ON ';
         $strSQL .='r.id = rd.reservation_id where  (r.check_in BETWEEN \''.$check_in.'\' AND \'' .$check_out. '\') ';
         $strSQL .='OR (r.check_out BETWEEN \'' .$check_in. '\' AND \'' .$check_out .'\')) ';
-        dd($strSQL);
+
+        $result = DB::select(DB::raw($strSQL));
+
+        return $result;
+
     }
 }
