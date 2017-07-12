@@ -2,7 +2,7 @@
  * Created by Nguyen Viet Hung on 6/29/2017.
  */
 $(document).ready(function () {
-
+    var roList=[];
     var count=jQuery("#jqGrid").jqGrid('getGridParam', 'records');
     //JqGrid START
     $("#jqGrid").jqGrid({
@@ -52,6 +52,9 @@ $(document).ready(function () {
                 jQuery(this).find('#'+id+' input[type=checkbox]').prop('checked',false);
             } else {
                 jQuery(this).find('#'+id+' input[type=checkbox]').prop('checked',true);
+                selRowId = $('#jqGrid').jqGrid ('getGridParam', 'selrow');
+                celValue = $('#jqGrid').jqGrid ('getCell', selRowId, 'item2');
+                roList.push(celValue);
             }
             if(count_checked > 2){
                 return;
@@ -62,13 +65,10 @@ $(document).ready(function () {
                     jQuery(this).find('#'+id+' input[type=checkbox]').prop('checked',false);
                 }
             }
-
-            selRowId = $('#jqGrid').jqGrid ('getGridParam', 'selrow');
-            celValue = $('#jqGrid').jqGrid ('getCell', selRowId, 'item2');
         }
 
     });
-
+    console.log(roList);
     $( ".ui-th-div" ).append( "<p>No.</p>" );
     //Jqgrid END
     function addCheckbox(id) {
