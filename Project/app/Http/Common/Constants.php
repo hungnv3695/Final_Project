@@ -38,9 +38,24 @@ class Constants
         const	TBL_LAST_UPDATE_YMD	=	'last_update_ymd';
         const	TBL_LAST_REGISTER_CD	=	'last_register_cd';
         const	TBL_LAST_REGISTER_NM	=	'last_register_nm';
+        const   TBL_ROOM_ID = 'room_id';
+        const   TBL_ROOM_TYPE_ID = 'room_type_id';
+        const   TBL_TYPE_NAME = 'type_name';
+        const TBL_STATUS_ID = 'status_id';
+        const TBL_STATUS_NAME = 'status_name';
 
-
+        const   TBL_STATUS_TYPE = 'status_type';
+        const   TBL_ACCESSORY_NAME = 'accessory_name';
+        const   TBL_QUANLITY = 'quanlity';
         const  USER_GROUP = "t_user_group";
         const  PERMISSION = " t_permission " ;
+
+        const ACCESSORY_BAN = "Bàn";
+        const ACCESSORY_DIEU_HOA = "Điều Hòa";
+        const ACCESSORY_GIUONG = "Giường";
+        const ACCESSORY_QUAT= "Quạt";
+        const ACCESSORY_TIVI = "TiVi";
+        const ACCESSORY_TU_LANH = "Tủ Lạnh";
+
 
 }
