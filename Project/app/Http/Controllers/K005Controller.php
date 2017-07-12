@@ -27,6 +27,15 @@ class K005Controller extends Controller
         return view('Manager.K005_1',compact('room'));
     }
 
+    public  function ViewAddRoom(){
+        $k005DAO = new K005DAO();
+
+        $roomtype = $k005DAO->getRoomType();
+        $status = $k005DAO->getStatus();
+
+        return view('Manager.K005_3',compact('roomtype','status'));
+    }
+
     public function GetRoomRequest(Request $request = null){
 
         $k005DAO = new K005DAO();
@@ -99,6 +108,53 @@ class K005Controller extends Controller
         $k005DAO = new K005DAO();
 
         $result = $k005DAO->UpdateRoom($room,$accessory);
+
+        return $result;
+    }
+
+    public function AddRoomRequest(Request $request){
+
+
+        $k005DAO = new K005DAO();
+
+        $checkKey= $k005DAO->checkRoomKey($request->roomid);
+
+        if($checkKey == false){
+            return back()->withInput();
+        } else{
+
+            $room = new Room();
+            $room->setRoomID($request->roomid);
+            $room->setRoomTypeId($request->roomtype);
+            $room->setFloor($request->floortxt);
+            $room->setStatusId($request->status);
+            $room->setRoomNumber($request->roomtxt);
+
+            $accessory = array(
+                Constants::ACCESSORY_BAN=>$request->table,
+                Constants::ACCESSORY_DIEU_HOA => $request->aircondition,
+                Constants::ACCESSORY_GIUONG => $request->bed,
+                Constants::ACCESSORY_QUAT => $request->fan,
+                Constants::ACCESSORY_TIVI => $request->tivi,
+                Constants::ACCESSORY_TU_LANH => $request->friger
+            );
+
+            $result =  $this->AddRoom($room,$accessory);
+
+            if($result == true){
+                return redirect('/K005_1');
+            }else{
+                return Message::MSG0004;
+            }
+
+        }
+
+    }
+
+    private function AddRoom($room,$accessory){
+        $k005DAO = new K005DAO();
+
+        $result = $k005DAO->addRoom($room,$accessory);
 
         return $result;
     }

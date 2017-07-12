@@ -43,7 +43,8 @@ class Constants
         const   TBL_TYPE_NAME = 'type_name';
         const TBL_STATUS_ID = 'status_id';
         const TBL_STATUS_NAME = 'status_name';
-
+        const TBL_DESCRIPTION = 'description';
+        const TBL_PRICE = 'price';
         const   TBL_STATUS_TYPE = 'status_type';
         const   TBL_ACCESSORY_NAME = 'accessory_name';
         const   TBL_QUANLITY = 'quanlity';

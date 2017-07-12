@@ -24,7 +24,7 @@
                         <input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
 						<input id="searchtxt" name="searchtxt" type="text" class="form-control input-md" size="8" value="{!! isset($searchStr)?$searchStr:'' !!}">
 						<button class="btn btn-default" value="searchBnt" name="searchBnt"><b>Search</b></button>
-						<button class="btn btn-default" value="addBnt" name="addBnt"> <b>Add</b></button>
+						<button class="btn btn-default"  type="button"  value="addBnt" name="addBnt" onclick="window.location='{{ url("/K005_1/K005_3") }}'" > <b>Add</b></button>
 						<button class="btn btn-default" value="listallBnt" name="listallBnt"><b>List all</b></button>
 					</form>
 						<label> {!! 'Kết quả: '. sizeof($room) . ' bản ghi' !!} </label>
