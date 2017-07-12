@@ -22,7 +22,7 @@
 				<div class="col-md-8 col-xs-8 col-md-offset-2" style="background-color:rgb(215,215,215);">
 					<form class="form-inline col-md-offset-7" style="margin-top:10px;margin-bottom:20px;" method="POST" >
                         <input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
-						<input id="searchtxt" name="searchtxt" type="text" class="form-control input-md" size="8">
+						<input id="searchtxt" name="searchtxt" type="text" class="form-control input-md" size="8" value="{!! isset($searchStr)?$searchStr:'' !!}">
 						<button class="btn btn-default" value="searchBnt" name="searchBnt"><b>Search</b></button>
 						<button class="btn btn-default" value="addBnt" name="addBnt"> <b>Add</b></button>
 						<button class="btn btn-default" value="listallBnt" name="listallBnt"><b>List all</b></button>
