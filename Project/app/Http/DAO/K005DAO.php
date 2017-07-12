@@ -8,49 +8,48 @@
 
 namespace App\Http\DAO;
 use App\Http\Common\Constants;
+use App\Http\Common\StringUtil;
 use App\Models\Accessory;
 use App\Models\Room;
 use App\Models\RoomType;
 use App\Models\Status;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 define('ROOM_STATUS','RO');
 
 class K005DAO
 {
-    public function getRoom($searchStr = null){
+    public function getRoom($searchStr = null,$searchFloor = null){
+        $searchStr =  StringUtil::Trim($searchStr);
 
-        if ( $searchStr == null ){
-            $result = DB::table('tbl_room_type')
-                ->join('tbl_room', 'tbl_room_type.room_type_id', '=','tbl_room.room_type_id')
-                ->join('tbl_status', 'tbl_room.status_id', '=','tbl_status.status_id')
-                ->get([
-                    'tbl_room.room_id',
-                    'tbl_room.room_number',
-                    'tbl_room_type.type_name' ,
-                    'tbl_room.floor',
-                    'tbl_room_type.price',
-                    'tbl_room_type.description',
-                    'tbl_status.status_name'
-                ]);
-        } else{
-            $result = DB::table('tbl_room_type')
-                ->join('tbl_room', 'tbl_room_type.room_type_id', '=','tbl_room.room_type_id')
-                ->join('tbl_status', 'tbl_room.status_id', '=','tbl_status.status_id')
-                ->where('tbl_room.room_number','like','%' . $searchStr . '%' )
-                ->orWhere('tbl_room_type.type_name','like','%' . $searchStr . '%' )
-                ->distinct()
-                ->get([
-                    'tbl_room.room_id',
-                    'tbl_room.room_number',
-                    'tbl_room_type.type_name' ,
-                    'tbl_room.floor',
-                    'tbl_room_type.price',
-                    'tbl_room_type.description',
-                    'tbl_status.status_name'
-                ]);
+        $query = DB::table('tbl_room_type')
+            ->join('tbl_room', 'tbl_room_type.room_type_id', '=','tbl_room.room_type_id')
+            ->join('tbl_status', 'tbl_room.status_id', '=','tbl_status.status_id');
+
+        if ($searchStr !=  null){
+            $query->where('tbl_room.room_number','like','%' . $searchStr . '%' )
+                ->orWhere('tbl_room_type.type_name','ILIKE','%' . $searchStr . '%' );
         }
 
+        if ($searchFloor != null && $searchFloor!= 0){
+            $query->where('tbl_room.floor',$searchFloor );
+        }
+
+        $query->distinct()
+            ->orderBy( Constants::TBL_FLOOR)
+            ->orderBy( Constants::TBL_ROOM_NUMBER);
+
+        $result = $query->get([
+            'tbl_room_type.room_type_id',
+            'tbl_room.room_id',
+            'tbl_room.room_number',
+            'tbl_room_type.type_name' ,
+            'tbl_room.floor',
+            'tbl_room_type.price',
+            'tbl_room_type.description',
+            'tbl_status.status_name'
+        ]);
 
         return  $result->toArray();
     }
@@ -64,7 +63,7 @@ class K005DAO
                 ->get([
                     'tbl_room.room_id',
                     'tbl_room.room_number',
-                    'tbl_room_type.type_name' ,
+                    'tbl_room_type.type_name',
                     'tbl_room.floor',
                     'tbl_room_type.price',
                     'tbl_room_type.description',
@@ -72,6 +71,18 @@ class K005DAO
             ]);
 
         return  $result->toArray();
+    }
+
+    public function getRoomTypeValue($roomTypeID){
+        $result = RoomType::where(Constants::TBL_ROOM_TYPE_ID,$roomTypeID)
+            ->get([
+                Constants::TBL_ROOM_TYPE_ID,
+                Constants::TBL_TYPE_NAME,
+                Constants::TBL_DESCRIPTION,
+                Constants::TBL_PRICE
+        ]);
+
+        return $result->toArray();
     }
 
     public function getAccessoryDetail($roomID){
@@ -100,8 +111,8 @@ class K005DAO
         $result = RoomType::get([
            Constants::TBL_ROOM_TYPE_ID,
            Constants::TBL_TYPE_NAME,
-                Constants::TBL_DESCRIPTION,
-        Constants::TBL_PRICE
+           Constants::TBL_DESCRIPTION,
+           Constants::TBL_PRICE
         ]);
 
         return $result->toArray();
@@ -231,7 +242,7 @@ class K005DAO
             $result = $accessoryAdd->save();
 
             $accessoryAdd = new Accessory();
-            
+
             $accessoryAdd->room_id = $roomID;
             $accessoryAdd->accessory_name = Constants::ACCESSORY_TIVI;
             $accessoryAdd->quanlity = array_get($accessory,Constants::ACCESSORY_TIVI);

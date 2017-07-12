@@ -48,6 +48,10 @@ class Constants
         const   TBL_STATUS_TYPE = 'status_type';
         const   TBL_ACCESSORY_NAME = 'accessory_name';
         const   TBL_QUANLITY = 'quanlity';
+
+        const TBL_FLOOR = 'floor';
+        const TBL_ROOM_NUMBER = 'room_number';
+
         const  USER_GROUP = "t_user_group";
         const  PERMISSION = " t_permission " ;
 

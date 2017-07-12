@@ -16,7 +16,7 @@
 <body>
         <div class="container">
             <div class="row">
-				<div class="col-md-10 col-md-offset-1" style="margin-top:3%;background-color:rgb(236,236,236);">
+				<div class="col-md-10 col-md-offset-1" style="margin-top:2%;background-color:rgb(236,236,236);">
 					<p class="brand-title">Room Detail</p>
 				</div>
 				<form  class="editroom" method="POST" >
@@ -30,10 +30,10 @@
 							</div>
 							<div class="form-group">
 								<label class="col-md-3 col-xs-4 control-label" for="">Kiểu phòng:</label>
-								<div class="col-md-5 col-xs-6">
-									<select class="selectpicker" name = ' roomtype'>
+								<div class="col-md-3 col-xs-6">
+									<select class="selectpicker form-control" name = ' roomtype' id="roomtype">
 										@foreach($roomtype as $data)
-											<option value="{!! array_get($data,'room_type_id') !!}"  {!! array_get($data,'type_name') == $roomDetail[0]->type_name ? 'selected':''  !!}> {!! array_get($data,'type_name') !!}</option>
+											<option value="{!! array_get($data,'room_type_id') !!}"  {!!( array_get($data,'type_name') == array_get($roomTypeSelect[0],'type_name') )? 'selected':''  !!}  > {!! array_get($data,'type_name') !!}</option>
 										@endforeach
 									</select>
 								</div>
@@ -47,14 +47,14 @@
 							<div class="form-group">
 								<label class="col-md-3 col-xs-4 control-label" for="">Giá:</label>
 								<div class="col-md-5 col-xs-6">
-									<input id="daypricetxt" name="daypricetxt" type="text" class="form-control input-md" value="{!! $roomDetail[0]->price !!}" >
+									<input id="daypricetxt" name="daypricetxt" type="text" class="form-control input-md" value="{!! array_get($roomTypeSelect[0],'price') !!}" readonly>
 								</div>
 								<label class="control-label">/đêm</label>
 							</div>
 							<div class="form-group">
 								<label class="col-md-3 col-xs-4 control-label" for="">Trạng thái:</label>
-								<div class="col-md-4 col-xs-5">
-									<select class="selectpicker" name = ' status' >
+								<div class="col-md-3 col-xs-5">
+									<select class="selectpicker form-control" name = ' status' >
 										@foreach($status as $data)
 											<option value="{!! array_get($data,'status_id') !!}"  {!! array_get($data,'status_name') == $roomDetail[0]->status_name ? 'selected':''  !!}> {!! array_get($data,'status_name') !!}</option>
 										@endforeach
@@ -64,7 +64,7 @@
 							<div class="form-group" style="margin-bottom:45px;">
 								<label class="col-md-3 col-xs-4 control-label" for="">Miêu tả:</label>
 								<div class="col-md-6 col-xs-6">
-									<textarea rows="3" cols="30" id="descriptiontxt" name="descriptiontxt" autofocus maxlength="300"> {!! $roomDetail[0]->description !!}</textarea>
+									<textarea rows="3" cols="30" id="descriptiontxt" name="descriptiontxt" autofocus maxlength="300" readonly style="background-color: rgb(230,230,230);"> {!! array_get($roomTypeSelect[0],'description') !!}</textarea>
 								</div>
 							</div>
 						</div>
@@ -117,10 +117,9 @@
 
 					</div>
 					<div class="col-md-10 col-md-offset-1" style="background-color:rgb(236,236,236);">
-						<div class="col-md-offset-7" style="margin-top:10px; margin-bottom:10px;">
+						<div class="col-md-offset-9" style="margin-top:10px; margin-bottom:10px;">
 							<button class="button" value="saveBtn" name="saveBtn" ><b>Save</b></button>
 							<button class="button" value="cancelBtn" name="cancelBtn" ><b>Cancel</b></button>
-							<button class="button" value="deleteBtn" name="deleteBtn" ><b>Delete</b></button>
 						</div>
 					</div>
 					<input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
@@ -129,5 +128,14 @@
 
             </div>
         </div>
+
+		<script>
+            var select = document.getElementById('roomtype');
+            select.onchange = function(){
+                Route = "{!!url('/K005_1/K005_2/'. $roomDetail[0]->room_id)!!}" +'?roomTypeID='+ select.value ;
+				window.location = Route
+            };
+		</script>
+
 </body>
 </html>

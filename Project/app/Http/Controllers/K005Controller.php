@@ -21,19 +21,32 @@ use Illuminate\Http\Request;
 class K005Controller extends Controller
 {
     public function ViewRoom(){
-
-        $room = $this->getRoomRequest();
+        $room = $this->GetRoomRequest();
 
         return view('Manager.K005_1',compact('room'));
     }
 
-    public  function ViewAddRoom(){
+    public  function ViewAddRoom(Request $request){
+        $roomTypeID = $request->roomTypeID;
+
+
+
         $k005DAO = new K005DAO();
 
         $roomtype = $k005DAO->getRoomType();
+
+        if (strcmp($roomTypeID,'0') == 0 ){
+            $roomTypeID = array_get($roomtype[0],Constants::TBL_ROOM_TYPE_ID);
+        }
+
+        $roomTypeSelect = $k005DAO->getRoomTypeValue($roomTypeID);
+
+
+
         $status = $k005DAO->getStatus();
 
-        return view('Manager.K005_3',compact('roomtype','status'));
+        return view('Manager.K005_3',compact('roomtype','status','roomTypeSelect')) ;
+
     }
 
     public function GetRoomRequest(Request $request = null){
@@ -47,32 +60,38 @@ class K005Controller extends Controller
                 return $room;
                 break;
 
-            case isset($request->searchBnt) :
-                $searchStr = $request->searchtxt;
-                $room = $k005DAO->getRoom($searchStr);
-
-                return view('Manager.K005_1',compact('room','searchStr'));
-                break;
-
             case isset($request->listallBnt):
                 $room = $k005DAO->getRoom();
 
                 return view('Manager.K005_1',compact('room'));
                 break;
+
+            case isset($request->searchBnt) || isset($request->searchfloor):
+                $searchStr = $request->searchtxt;
+                $searchFloor = $request->searchfloor;
+
+                $room = $k005DAO->getRoom($searchStr,$searchFloor);
+
+                return view('Manager.K005_1',compact('room','searchStr','searchFloor'));
+                break;
         }
-
-
     }
 
-    public function GetViewRoomDetailRequest($roomID){
-        $k005DAO = new K005DAO();
+    public function GetViewRoomDetailRequest(Request $request, $roomID){
+            $roomTypeID = $request->roomTypeID;
 
-        $roomDetail = $k005DAO->getRoomDetail($roomID);
-        $accessory =  $k005DAO->getAccessoryDetail($roomID);
-        $roomtype = $k005DAO->getRoomType();
-        $status = $k005DAO->getStatus();
+            $k005DAO = new K005DAO();
 
-        return view('Manager.K005_2',compact('roomDetail', 'accessory','roomtype','status'));
+            $roomDetail = $k005DAO->getRoomDetail($roomID);
+            $roomTypeSelect = $k005DAO->getRoomTypeValue($roomTypeID);
+            $accessory =  $k005DAO->getAccessoryDetail($roomID);
+            $roomtype = $k005DAO->getRoomType();
+            $status = $k005DAO->getStatus();
+
+            return view('Manager.K005_2',compact('roomDetail', 'accessory','roomtype','status','roomTypeSelect'));
+
+
+
     }
 
 
@@ -97,7 +116,7 @@ class K005Controller extends Controller
         $result =  $this->UpdateRoom($room,$accessory);
 
         if($result == true){
-            return redirect('/K005_1');
+            return redirect('/K005_1')->with(['listallBnt','True']);
         }else{
             return Message::MSG0004;
         }
@@ -158,5 +177,6 @@ class K005Controller extends Controller
 
         return $result;
     }
+
 
 }
