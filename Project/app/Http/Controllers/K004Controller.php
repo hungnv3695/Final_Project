@@ -40,6 +40,11 @@ class K004Controller extends Controller{
         $resList = $K004_DAO->selectReservation($fname,$idCard,$status);
        // $resModel = new Reservation_Model();
         //dd($resList);
+        $count=count($resList);
+            for($i =0; $i<$count; $i++){
+                $resList[$i]->check_in= DateTimeUtil::ConvertStringToDate($resList[$i]->check_in);
+                $resList[$i]->check_out= DateTimeUtil::ConvertStringToDate($resList[$i]->check_out);
+            }
         $result = json_encode($resList);
         //dd($resModel->getId());
         if($result==[]){
@@ -245,6 +250,7 @@ class K004Controller extends Controller{
         $check_out=DateTimeUtil::ConvertDateToString($request->check_out);
         $K004_DAO = new K004_DAO();
         $roomFree = $K004_DAO->SelectRoomFree($type_name,$check_in,$check_out);
+        return response()->json($roomFree);
     }
 
 

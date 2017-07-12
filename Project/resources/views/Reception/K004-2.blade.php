@@ -131,17 +131,17 @@
 			<!--End left-->
 			<!--Right-->
 			<div class="col-md-5">
-				<form class="form-inline" style="margin-top:10px;">
-					<div class="form-group" id="room1" >
+
+					<div class="form-group" >
 						<label>Room 1:</label>
 						<input id="room1txt"   value="{{$room1txt}}"   name="room1txt" type="text" class="form-control input-md" readonly="readonly" size="5">
 						<input id="double1txt" value="{{$double1txt}}" name="double1txt" type="text" class="form-control input-md" readonly="readonly" size="8">
 						<input id="price1txt"  value="{{$price1txt}}"  name="price1txt" type="text" class="form-control input-md" dir="rtl" maxlength ="10" size="8">
 
 					</div>
+					<button class="btn btn-default" id="editBtn1" name="editBtn1">Edit</button>
 
-				</form>
-				<button class="btn btn-default" id="editBtn1" name="editBtn1"><b>Edit</b></button>
+
 				<form class="form-inline" style="margin-top:5px;">
 					<div class="form-group" id="room2">
 						<label>Room 2:</label>
@@ -178,7 +178,7 @@
 			<div class="col-md-6 col-md-offset-7" style="margin-top:10px; margin-bottom:10px;">
 				<div class="col-md-3 col-xs-3"><button class="button" value="saveBtn" name="saveBtn" ><b>Save</b></button></div>
 				<div class="col-md-3 col-xs-3"><button class="button" value="cancelBnt" name="cancelBnt" style="background-color:red;"><b>Hủy đơn</b></button></div>
-				<div class="col-md-3 col-xs-3"><button class="button" value="closeBtn" name="closeBtn"><b>Close</b></button></div>
+				<div class="col-md-3 col-xs-3"><button class="button"id="closeBtn" value="closeBtn" name="closeBtn"><b>Close</b></button></div>
 			</div>
 		</div>
 	</div>
