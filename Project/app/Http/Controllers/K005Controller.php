@@ -108,6 +108,8 @@ class K005Controller extends Controller
 
             $roomDetail = $k005DAO->getRoomDetail($roomID);
             $roomTypeSelect = $k005DAO->getRoomTypeValue($roomTypeID);
+
+
             $accessory =  $k005DAO->getAccessoryDetail($roomTypeID);
             $roomtype = $k005DAO->getRoomType();
             $status = $k005DAO->getStatus();
@@ -131,16 +133,9 @@ class K005Controller extends Controller
         $room->setStatusId($request->status);
         $room->setRoomNumber($request->roomtxt);
 
-        $accessory = array(
-            Constants::ACCESSORY_BAN=>$request->table,
-            Constants::ACCESSORY_DIEU_HOA => $request->aircondition,
-            Constants::ACCESSORY_GIUONG => $request->bed,
-            Constants::ACCESSORY_QUAT => $request->fan,
-            Constants::ACCESSORY_TIVI => $request->tivi,
-            Constants::ACCESSORY_TU_LANH => $request->friger
-        );
 
-        $result =  $this->UpdateRoom($room,$accessory);
+
+        $result =  $this->UpdateRoom($room);
 
         if($result == true){
             return redirect('/K005_1')->with(['listallBnt','True']);
@@ -156,10 +151,10 @@ class K005Controller extends Controller
      * @param $accessory
      * @return bool
      */
-    private function UpdateRoom(Room $room , $accessory ){
+    private function UpdateRoom(Room $room ){
         $k005DAO = new K005DAO();
 
-        $result = $k005DAO->UpdateRoom($room,$accessory);
+        $result = $k005DAO->UpdateRoom($room);
 
         return $result;
     }
@@ -187,16 +182,8 @@ class K005Controller extends Controller
             $room->setStatusId($request->status);
             $room->setRoomNumber($request->roomtxt);
 
-            $accessory = array(
-                Constants::ACCESSORY_BAN=>$request->table,
-                Constants::ACCESSORY_DIEU_HOA => $request->aircondition,
-                Constants::ACCESSORY_GIUONG => $request->bed,
-                Constants::ACCESSORY_QUAT => $request->fan,
-                Constants::ACCESSORY_TIVI => $request->tivi,
-                Constants::ACCESSORY_TU_LANH => $request->friger
-            );
 
-            $result =  $this->AddRoom($room,$accessory);
+            $result =  $this->AddRoom($room);
 
             if($result == true){
                 return redirect('/K005_1');
@@ -214,10 +201,10 @@ class K005Controller extends Controller
      * @param $accessory
      * @return bool
      */
-    private function AddRoom($room,$accessory){
+    private function AddRoom($room){
         $k005DAO = new K005DAO();
 
-        $result = $k005DAO->addRoom($room,$accessory);
+        $result = $k005DAO->addRoom($room);
 
         return $result;
     }

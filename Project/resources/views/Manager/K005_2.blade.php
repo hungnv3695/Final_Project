@@ -123,17 +123,29 @@
 									<thead>
 									  <tr>
 										<th class="colStt">Stt</th>
-										<th class="colRoNo">RoomNumber</th>
-										<th class="colRoType">RoomType</th>
+										<th class="colRoNo">Accessory Name</th>
+										<th class="colRoType">Quanlity</th>
+										  <th class="colRoType">Price</th>
 									  </tr>
 									</thead>
-									<tbody>
-									  <tr>
-										<td class="colStt">1</td>
-										<td class="colRoNo">101</td>
-										<td class="colRoType">Double</td>
-									  </tr>
-									</tbody>
+									@if(isset($accessory))
+
+										<tbody>
+										<?php $i = 1?>
+										@foreach($accessory as $data)
+											<tr>
+												<td class="colStt">{!! $i !!}</td>
+												<td class="colRoNo">{!! array_get($data,'accessory_name') !!}</td>
+												<td class="colRoNo">{!! array_get($data,'quanlity') !!}</td>
+												<td class="colRoNo">{!! array_get($data,'price') !!}</td>
+
+											</tr>
+                                         <?php $i++?>
+										@endforeach
+										</tbody>
+
+									@endif
+
 								</table>
 								<label class="control-label" for="">Miêu tả:</label>
 							    <textarea rows="4" cols="56" id="descriptiontxt" name="descriptiontxt" autofocus maxlength="300" readonly style="background-color: rgb(230,230,230);"> {!! array_get($roomTypeSelect[0],'description') !!}</textarea>

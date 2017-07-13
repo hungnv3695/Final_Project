@@ -86,11 +86,12 @@ class K005DAO
     }
 
     public function getAccessoryDetail($roomTypeID){
-        $result = Accessory::where(Constants::TBL_ROOM_ID,$roomTypeID)
+        $result = Accessory::where(Constants::TBL_ROOM_TYPE_ID,$roomTypeID)
             ->orderBy( Constants::TBL_ACCESSORY_NAME)
             ->get([
                 Constants::TBL_ACCESSORY_NAME,
-                Constants::TBL_QUANLITY
+                Constants::TBL_QUANLITY,
+                Constants::TBL_PRICE
             ]);
 
         return $result->toArray();
@@ -118,7 +119,7 @@ class K005DAO
         return $result->toArray();
     }
 
-    public function  UpdateRoom(Room $room,$accessory){
+    public function  UpdateRoom(Room $room){
 
         $roomUpdate = Room::find($room->getRoomID());
 
@@ -130,59 +131,10 @@ class K005DAO
 
         $result = $roomUpdate->save();
 
-        $result = $this->UpdateAccessory($accessory,$room->getRoomID());
-
-
-        return $result;
-
-    }
-
-    public function UpdateAccessory($accessory,$roomID){
-
-        try {
-           $result = Accessory::where(Constants::TBL_ROOM_ID,$roomID)
-                ->where(Constants::TBL_ACCESSORY_NAME,Constants::ACCESSORY_BAN)
-                ->update([
-                    Constants::TBL_QUANLITY => array_get($accessory,Constants::ACCESSORY_BAN)
-                ]);
-           $result = Accessory::where(Constants::TBL_ROOM_ID,$roomID)
-                ->where(Constants::TBL_ACCESSORY_NAME,Constants::ACCESSORY_DIEU_HOA)
-                ->update([
-                    Constants::TBL_QUANLITY => array_get($accessory,Constants::ACCESSORY_DIEU_HOA)
-                ]);
-
-
-            $result = Accessory::where(Constants::TBL_ROOM_ID,$roomID)
-                ->where(Constants::TBL_ACCESSORY_NAME,Constants::ACCESSORY_GIUONG)
-                ->update([
-                    Constants::TBL_QUANLITY => array_get($accessory,Constants::ACCESSORY_GIUONG)
-                ]);
-
-            $result = Accessory::where(Constants::TBL_ROOM_ID,$roomID)
-                ->where(Constants::TBL_ACCESSORY_NAME,Constants::ACCESSORY_QUAT)
-                ->update([
-                    Constants::TBL_QUANLITY => array_get($accessory,Constants::ACCESSORY_QUAT)
-                ]);
-
-            $result =  Accessory::where(Constants::TBL_ROOM_ID,$roomID)
-                ->where(Constants::TBL_ACCESSORY_NAME,Constants::ACCESSORY_TIVI)
-                ->update([
-                    Constants::TBL_QUANLITY => array_get($accessory,Constants::ACCESSORY_TIVI)
-                ]);
-
-            $result = Accessory::where(Constants::TBL_ROOM_ID,$roomID)
-                ->where(Constants::TBL_ACCESSORY_NAME,Constants::ACCESSORY_TU_LANH)
-                ->update([
-                    Constants::TBL_QUANLITY => array_get($accessory,Constants::ACCESSORY_TU_LANH)
-                ]);
-        } catch (Exception $e) {
-            $result = false;
-        }
-
         return $result;
     }
 
-    public function addRoom(Room $room, $accessory){
+    public function addRoom(Room $room){
         $roomAdd = new Room();
 
         $roomAdd->room_id = $room->getRoomID();
@@ -198,60 +150,6 @@ class K005DAO
         }else{
             $result = $this->addAccessory($accessory,$room->getRoomID());
         }
-
-        return $result;
-    }
-
-    public function addAccessory($accessory,$roomID){
-
-        try{
-
-            $accessoryAdd = new Accessory();
-
-            $accessoryAdd->room_id = $roomID;
-            $accessoryAdd->accessory_name = Constants::ACCESSORY_BAN;
-            $accessoryAdd->quanlity = array_get($accessory,Constants::ACCESSORY_BAN);
-            $result = $accessoryAdd->save();
-
-            $accessoryAdd = new Accessory();
-
-            $accessoryAdd->room_id = $roomID;
-            $accessoryAdd->accessory_name = Constants::ACCESSORY_DIEU_HOA;
-            $accessoryAdd->quanlity = array_get($accessory,Constants::ACCESSORY_DIEU_HOA);
-            $result = $accessoryAdd->save();
-
-            $accessoryAdd = new Accessory();
-
-            $accessoryAdd->room_id = $roomID;
-            $accessoryAdd->accessory_name = Constants::ACCESSORY_TU_LANH;
-            $accessoryAdd->quanlity = array_get($accessory,Constants::ACCESSORY_TU_LANH);
-            $result = $accessoryAdd->save();
-
-            $accessoryAdd = new Accessory();
-
-            $accessoryAdd->room_id = $roomID;
-            $accessoryAdd->accessory_name = Constants::ACCESSORY_GIUONG;
-            $accessoryAdd->quanlity = array_get($accessory,Constants::ACCESSORY_GIUONG);
-            $result= $accessoryAdd->save();
-
-            $accessoryAdd = new Accessory();
-
-            $accessoryAdd->room_id = $roomID;
-            $accessoryAdd->accessory_name = Constants::ACCESSORY_QUAT;
-            $accessoryAdd->quanlity = array_get($accessory,Constants::ACCESSORY_QUAT);
-            $result = $accessoryAdd->save();
-
-            $accessoryAdd = new Accessory();
-
-            $accessoryAdd->room_id = $roomID;
-            $accessoryAdd->accessory_name = Constants::ACCESSORY_TIVI;
-            $accessoryAdd->quanlity = array_get($accessory,Constants::ACCESSORY_TIVI);
-            $result = $accessoryAdd->save();
-
-        }catch (Exception $e){
-            $result = false;
-        }
-
 
         return $result;
     }
