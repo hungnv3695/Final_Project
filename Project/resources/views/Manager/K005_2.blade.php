@@ -32,7 +32,7 @@
 	}
 
 	tbody {
-		height: 185px;
+		height: 110px;
 		overflow-y: auto;
 	}
 
@@ -40,19 +40,24 @@
 		/* fallback */
 	}
 
-	.colStt
+	.col1
 	{
-		width: 20%;
+		width: 10%;
 		float:left;
 	}
-	.colRoNo
+	.col2
 	{
 		width: 40%;
 		float:left;
 	}
-	.colRoType
+	.col3
 	{
-		width: 40%;
+		width: 25%;
+		float:left;
+	}
+	.col4
+	{
+		width: 25%;
 		float:left;
 	}
 	</style>
@@ -61,104 +66,137 @@
         <div class="container">
             <div class="row">
 				<div class="col-md-10 col-md-offset-1" style="margin-top:3%;background-color:rgb(236,236,236);">
-					<p class="brand-title">Room Detail</p>
+					<p class="brand-title">Chi tiết phòng</p>
 				</div>
 				<form  class="editroom" method="POST" >
 					<div class="col-md-10 col-md-offset-1" style="background-color:rgb(215,215,215);">
-						<div class="col-md-6 form-horizontal" style="border-right:1px solid rgb(236,236,236);">
-							<div class="col-md-12" style="border:2px solid rgb(200,200,200);margin:10px 0px 10px;">
+						<div class="col-md-5 form-horizontal" style="border-right:1px solid rgb(236,236,236);">
+							<div class="col-md-12 form-horizontal" style="border:2px solid rgb(200,200,200);margin:10px 0px 20px; height:310px;">
 								<div class="form-group" style="margin-top:20px;">
-									<label class="col-md-3 col-xs-4 control-label" for="">Phòng:</label>
-									<div class="col-md-3 col-xs-3">
-										<input id="roomtxt" name="roomtxt" type="text" class="form-control input-md" value="{!! $roomDetail[0]->room_number !!}" >
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-md-3 col-xs-4 control-label" for="">Kiểu phòng:</label>
-									<div class="col-md-4 col-xs-4">
-										<select class="selectpicker form-control" name = ' roomtype' id="roomtype">
-											@foreach($roomtype as $data)
-												<option value="{!! array_get($data,'room_type_id') !!}"  {!!( array_get($data,'type_name') == array_get($roomTypeSelect[0],'type_name') )? 'selected':''  !!}  > {!! array_get($data,'type_name') !!}</option>
-											@endforeach
-										</select>
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-md-3 col-xs-4 control-label" for="">Tầng:</label>
-									<div class="col-md-4 col-xs-5">
-										<input id="floortxt" name="floortxt" type="text" class="form-control input-md" value="{!! $roomDetail[0]->floor !!}" >
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-md-3 col-xs-4 control-label" for="">Giá:</label>
+									<label class="col-md-4 col-xs-4 control-label" for="">Kiểu phòng: </label>  
 									<div class="col-md-5 col-xs-5">
-										<input id="daypricetxt" name="daypricetxt" type="text" class="form-control input-md" value="{!! array_get($roomTypeSelect[0],'price') !!}" readonly>
-									</div>
-									<label class="control-label">/đêm</label>
-								</div>
-								<div class="form-group">
-									<label class="col-md-3 col-xs-4 control-label" for="">Trạng thái:</label>
-									<div class="col-md-4 col-xs-4">
-										<select class="selectpicker form-control" name = ' status' >
-											@foreach($status as $data)
-												<option value="{!! array_get($data,'status_id') !!}"  {!! array_get($data,'status_name') == $roomDetail[0]->status_name ? 'selected':''  !!}> {!! array_get($data,'status_name') !!}</option>
-											@endforeach
+										<select id="txtRoomtype" name="txtRoomtype" class="form-control input-md" style="width:140px;">
+										<option value="Double">Double</option>
+										<option value="Single">Single</option>
 										</select>
 									</div>
 								</div>
-								<div class="form-group" style="margin-bottom:50px;">
-
-									<label class=" col-md-3 col-xs-4 control-label">Ghi chú: </label>
-									<div class="col-md-6 col-xs-6">
-										<textarea rows="3" cols="30" id="notetxt" name="notetxt" autofocus maxlength="300"></textarea>
+								<div class="form-group" style="margin-top:10px;">
+									<label class="col-md-4 col-xs-4 control-label" for="">Số phòng: </label>  
+									<div class="col-md-5 col-xs-5">
+										<input id="txtRoomNo" name="txtRoomNo" type="text" class="form-control input-md">
 									</div>
-
-
 								</div>
+								<div class="form-group" style="margin-top:10px;">
+									<label class="col-md-4 col-xs-4 control-label" for="">Tầng: </label>  
+									<div class="col-md-5 col-xs-5">
+										<input id="floortxt" name="floortxt" type="text" class="form-control input-md">
+									</div>
+								</div>
+								<div class="form-group" style="margin-top:10px;">
+									<label class="col-md-4 col-xs-4 control-label" for="">Trạng thái: </label>  
+									<div class="col-md-5 col-xs-5">
+										<select id="txtStatus" name="txtStatus" class="form-control input-md" style="width:140px;">
+										<option value="">Vãi</option>
+										<option value="">Cả</option>
+										<option value="">Lồn</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group" style="margin-top:10px;">
+									<label class="col-md-4 col-xs-4 control-label" for="">Ghi chú: </label>  
+									<div class="col-md-4 col-xs-4">
+										<textarea rows="3" cols="25" id="txtNote" name="txtNote" autofocus maxlength="200"></textarea>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-7 col-md-offset-6" style="margin-top:55px;margin-bottom:10px;">
+								<button class="roomlistBnt" value="bntAdd" name="bntSave"><b>Save</b></button>
+								<button class="roomlistBnt" value="backAdd" name="backCancel" style="margin-left:5px;"><b>Cancel</b></button>
 							</div>
 						</div>
 
-						<div class="col-md-5 form-horizontal" style="margin:10px 0px 10px 10px;border: 2px solid rgb(200,200,200);width:450px;">
-								<table class="table table-hover" style="margin-top:10px;" readonly>
+						<div class="col-md-6">
+							<div class="col-md-12 form-horizontal" style="width:530px;margin:10px 0px 10px;border: 2px solid rgb(200,200,200);">
+								<div class="form-group" style="margin-top:20px;">
+									<label class="col-md-4 col-xs-4 control-label" for="">Giá: </label>  
+									<div class="col-md-3 col-xs-3">
+										<input id="txtPrice" name="txtPrice" type="text" class="form-control input-md" readonly>
+									</div>
+									<label class="control-label" for="">/đêm</label>  
+								</div>
+								<div class="form-group" style="margin-top:10px;">
+									<label class="col-md-4 col-xs-4 control-label" for="">Người lớn: </label>  
+									<div class="col-md-3 col-xs-3">
+										<input id="txtAdult" name="txtAdult" type="text" class="form-control input-md" readonly>
+									</div>
+									<label class="control-label" for="">/người</label>  
+								</div>
+								<div class="form-group" style="margin-top:10px;">
+									<label class="col-md-4 col-xs-4 control-label" for="">Trẻ em: </label>  
+									<div class="col-md-3 col-xs-3">
+										<input id="txtAdult" name="txtAdult" type="text" class="form-control input-md" readonly>
+									</div>
+									<label class="control-label" for="">/người</label>  
+								</div>
+								<div class="form-group" style="margin-top:10px;">
+									<label class="col-md-4 col-xs-4 control-label" for="">Miêu tả: </label>  
+									<div class="col-md-4 col-xs-4">
+										<textarea rows="3" cols="30" id="txtDescription" name="notetxt" autofocus maxlength="200" style="background-color: rgb(236,236,236);" readonly></textarea>
+									</div>
+								</div>
+								<table class="table table-hover">
 									<thead>
 									  <tr>
-										<th class="colStt">Stt</th>
-										<th class="colRoNo">Accessory Name</th>
-										<th class="colRoType">Quanlity</th>
-										  <th class="colRoType">Price</th>
+										<th class="col1">Stt</th>
+										<th class="col2">RoomNumber</th>
+										<th class="col3">RoomType</th>
+										<th class="col4">RoomType</th>
 									  </tr>
 									</thead>
-									@if(isset($accessory))
-
-										<tbody>
-										<?php $i = 1?>
-										@foreach($accessory as $data)
-											<tr>
-												<td class="colStt">{!! $i !!}</td>
-												<td class="colRoNo">{!! array_get($data,'accessory_name') !!}</td>
-												<td class="colRoNo">{!! array_get($data,'quanlity') !!}</td>
-												<td class="colRoNo">{!! array_get($data,'price') !!}</td>
-
-											</tr>
-                                         <?php $i++?>
-										@endforeach
-										</tbody>
-
-									@endif
-
+									<tbody>
+									  <tr>
+										<td class="col1">1</td>
+										<td class="col2">101</td>
+										<td class="col3">Double</td>
+										<td class="col4">Double</td>
+									  </tr>
+									  <tr>
+										<td class="col1">1</td>
+										<td class="col2">101</td>
+										<td class="col3">Double</td>
+										<td class="col4">Double</td>
+									  </tr>
+									  <tr>
+										<td class="col1">1</td>
+										<td class="col2">101</td>
+										<td class="col3">Double</td>
+										<td class="col4">Double</td>
+									  </tr>
+									  <tr>
+										<td class="col1">1</td>
+										<td class="col2">101</td>
+										<td class="col3">Double</td>
+										<td class="col4">Double</td>
+									  </tr>
+									  <tr>
+										<td class="col1">1</td>
+										<td class="col2">101</td>
+										<td class="col3">Double</td>
+										<td class="col4">Double</td>
+									  </tr>
+									  <tr>
+										<td class="col1">1</td>
+										<td class="col2">101</td>
+										<td class="col3">Double</td>
+										<td class="col4">Double</td>
+									  </tr>
+									</tbody>
 								</table>
-								<label class="control-label" for="">Miêu tả:</label>
-							    <textarea rows="4" cols="56" id="descriptiontxt" name="descriptiontxt" autofocus maxlength="300" readonly style="background-color: rgb(230,230,230);"> {!! array_get($roomTypeSelect[0],'description') !!}</textarea>
+							</div>
 						</div>
 
 					</div>
-					<div class="col-md-10 col-md-offset-1" style="background-color:rgb(236,236,236);">
-						<div class="col-md-offset-9" style="margin-top:10px; margin-bottom:10px;">
-							<button class="button" value="saveBtn" name="saveBtn" ><b>Save</b></button>
-							<button class="button" value="cancelBtn" name="cancelBtn" ><b>Cancel</b></button>
-						</div>
-					</div>
-					<input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
 				</form>
 
 
