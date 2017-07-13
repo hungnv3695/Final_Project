@@ -51,4 +51,8 @@ Route::post('/K004','K004Controller@postUserInfor');
 Route::get('/K004_1/K004_2','K004Controller@K004_2_View');
 Route::get('/K004_1/K004_2','K004Controller@GetGuest');
 Route::get('/K004_1/K004_2/GetReservationDetail','K004Controller@GetReservationDetail');
-Route::get('/K004_1/K004_2/GetRoomFree','K004Controller@GetRoomFree');
+//Route::get('/K004_1/K004_2/GetRoomFree','K004Controller@GetRoomFree');
+
+Route::get('/K004_1/K004_2/K004_3','K004Controller@K004_3_View');
+Route::get('/K004_1/K004_2/K004_3/GetRoomFree','K004Controller@GetRoomFree');
+Route::get('/K004_1/K004_2/K004_3/CheckRoom','K004Controller@CheckRoom');
