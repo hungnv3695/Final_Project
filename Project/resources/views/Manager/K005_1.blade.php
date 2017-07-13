@@ -12,6 +12,7 @@
 			}
 			table {
 				width: 100%;
+				border:1px solid rgb(200,200,200);
 			}
 
 			thead, tbody, tr, td, th { display: block; }
@@ -48,13 +49,14 @@
 <body>
         <div class="container">
             <div class="row">
-				<div class="col-md-8 col-xs-8 col-md-offset-2" style="margin-top:2%;background-color:rgb(236,236,236);">
+				<div class="col-md-8 col-xs-8 col-md-offset-2" style="margin-top:3%;background-color:rgb(236,236,236);">
 					<p class="brand-title">List room</p>
 				</div>
 				<div class="col-md-8 col-xs-8 col-md-offset-2" style="background-color:rgb(215,215,215);">
-					<form class="form-inline col-md-offset-7" style="margin-top:10px;margin-bottom:20px;" method="POST" >
+					<form class="form-inline col-md-offset-4" style="margin-top:20px;margin-bottom:20px;" method="POST" >
                         <input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
-						<select class="form-inline col-md-offset-7" name = 'searchfloor'>
+						<label class="label1 control-label">Tầng:</label>
+						<select id="searchfloor" name="searchfloor" style="width:56px;" class="form-control input-md">
 							<option value="0" {!!  (isset($searchFloor) && $searchFloor == 0) ? 'selected':''  !!}>  </option>
 							<option value="1" {!!  (isset($searchFloor) && $searchFloor == 1) ? 'selected':''  !!} > 1 </option>
 							<option value="2" {!!  (isset($searchFloor) && $searchFloor == 2) ? 'selected':''  !!} > 2 </option>
@@ -68,10 +70,11 @@
 						</select>
 
 						<input id="searchtxt" name="searchtxt" type="text" class="form-control input-md" size="8" value="{!! isset($searchStr)?$searchStr:'' !!}">
-						<button class="btn btn-default" value="searchBnt" name="searchBnt"><b>Search</b></button>
-						<button class="btn btn-default"  type="button"  value="addBnt" name="addBnt" onclick="window.location='{{ url("/K005_1/K005_3?roomTypeID=" . '0') }}'" > <b>Add</b></button>
-						<button class="btn btn-default" value="listallBnt" name="listallBnt"><b>List all</b></button>
+						<button class="roomlistBnt" value="searchBnt" name="searchBnt"><b>Search</b></button>
+						<button class="roomlistBnt"  type="button"  value="addBnt" name="addBnt" onclick="window.location='{{ url("/K005_1/K005_3?roomTypeID=" . '0') }}'" > <b>Add</b></button>
+						<button class="roomlistBnt" value="listallBnt" name="listallBnt"><b>List all</b></button>
 					</form>
+					<hr style="border-top: 1px solid gray;">
 						@if(isset($room))
 						<label> {!! 'Kết quả: '. sizeof($room) . ' bản ghi' !!} </label>
 						@endif
@@ -107,7 +110,7 @@
 					 </table>
 				</div>
 				<div class="col-md-8 col-xs-8 col-md-offset-2" style="background-color:rgb(236,236,236);">
-						<div class="col-md-2 col-md-offset-9" style="margin-top:10px; margin-bottom:10px;margin-left:617px;">
+						<div class="col-md-2 col-md-offset-8" style="margin-top:10px; margin-bottom:10px;margin-left:580px;">
 							<button class="button" value="backBtn" name="backBtn" onclick="window.history.back();" ><b>Back</b></button>
 						</div>
 				</div>
