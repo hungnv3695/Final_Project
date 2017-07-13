@@ -85,8 +85,8 @@ class K005DAO
         return $result->toArray();
     }
 
-    public function getAccessoryDetail($roomID){
-        $result = Accessory::where(Constants::TBL_ROOM_ID,$roomID)
+    public function getAccessoryDetail($roomTypeID){
+        $result = Accessory::where(Constants::TBL_ROOM_ID,$roomTypeID)
             ->orderBy( Constants::TBL_ACCESSORY_NAME)
             ->get([
                 Constants::TBL_ACCESSORY_NAME,

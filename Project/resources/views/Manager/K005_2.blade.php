@@ -107,10 +107,13 @@
 									</div>
 								</div>
 								<div class="form-group" style="margin-bottom:50px;">
-									<label class="col-md-3 col-xs-4 control-label" for="">Miêu tả:</label>
+
+									<label class=" col-md-3 col-xs-4 control-label">Ghi chú: </label>
 									<div class="col-md-6 col-xs-6">
-										<textarea rows="3" cols="30" id="descriptiontxt" name="descriptiontxt" autofocus maxlength="300" readonly style="background-color: rgb(230,230,230);"> {!! array_get($roomTypeSelect[0],'description') !!}</textarea>
+										<textarea rows="3" cols="30" id="notetxt" name="notetxt" autofocus maxlength="300"></textarea>
 									</div>
+
+
 								</div>
 							</div>
 						</div>
@@ -130,45 +133,10 @@
 										<td class="colRoNo">101</td>
 										<td class="colRoType">Double</td>
 									  </tr>
-									  <tr>
-										<td class="colStt">1</td>
-										<td class="colRoNo">101</td>
-										<td class="colRoType">Double</td>
-									  </tr>
-									  <tr>
-										<td class="colStt">1</td>
-										<td class="colRoNo">101</td>
-										<td class="colRoType">Double</td>
-									  </tr>
-									  <tr>
-										<td class="colStt">1</td>
-										<td class="colRoNo">101</td>
-										<td class="colRoType">Double</td>
-									  </tr>
-									  <tr>
-										<td class="colStt">1</td>
-										<td class="colRoNo">101</td>
-										<td class="colRoType">Double</td>
-									  </tr>
-									  <tr>
-										<td class="colStt">1</td>
-										<td class="colRoNo">101</td>
-										<td class="colRoType">Double</td>
-									  </tr>
-									  <tr>
-										<td class="colStt">1</td>
-										<td class="colRoNo">101</td>
-										<td class="colRoType">Double</td>
-									  </tr>
-									  <tr>
-										<td class="colStt">1</td>
-										<td class="colRoNo">101</td>
-										<td class="colRoType">Double</td>
-									  </tr>
 									</tbody>
 								</table>
-								<label class="control-label">Ghi chú: </label> 
-								<textarea rows="4" cols="56" id="notetxt" name="notetxt" autofocus maxlength="300" style="background-color:rgb(235,235,235); margin-bottom:20px;"></textarea>
+								<label class="control-label" for="">Miêu tả:</label>
+							    <textarea rows="4" cols="56" id="descriptiontxt" name="descriptiontxt" autofocus maxlength="300" readonly style="background-color: rgb(230,230,230);"> {!! array_get($roomTypeSelect[0],'description') !!}</textarea>
 						</div>
 
 					</div>

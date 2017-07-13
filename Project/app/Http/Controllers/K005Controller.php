@@ -20,12 +20,21 @@ use Illuminate\Http\Request;
  */
 class K005Controller extends Controller
 {
+    /**
+     * View Room List
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function ViewRoom(){
         $room = $this->GetRoomRequest();
 
         return view('Manager.K005_1',compact('room'));
     }
 
+    /**
+     * View Add Room Page
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public  function ViewAddRoom(Request $request){
         $roomTypeID = $request->roomTypeID;
 
@@ -49,23 +58,32 @@ class K005Controller extends Controller
 
     }
 
+    /**
+     * Get room request from RoomList Page or Router
+     * @param Request|null $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function GetRoomRequest(Request $request = null){
 
         $k005DAO = new K005DAO();
 
         switch ($request){
 
+            //Neu goi tu Router thi Return All Room
             case null:
                 $room = $k005DAO->getRoom();
                 return $room;
                 break;
 
+            //Neu nguoi dung click vao listall thi return ra All Room
             case isset($request->listallBnt):
                 $room = $k005DAO->getRoom();
 
                 return view('Manager.K005_1',compact('room'));
                 break;
 
+            // Neu nguoi dung chon search button hoac
+            //search floor thi se return ra room tuong ung
             case isset($request->searchBnt) || isset($request->searchfloor):
                 $searchStr = $request->searchtxt;
                 $searchFloor = $request->searchfloor;
@@ -77,6 +95,12 @@ class K005Controller extends Controller
         }
     }
 
+    /**
+     * View Room Detail
+     * @param Request $request
+     * @param $roomID
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function GetViewRoomDetailRequest(Request $request, $roomID){
             $roomTypeID = $request->roomTypeID;
 
@@ -84,17 +108,20 @@ class K005Controller extends Controller
 
             $roomDetail = $k005DAO->getRoomDetail($roomID);
             $roomTypeSelect = $k005DAO->getRoomTypeValue($roomTypeID);
-            $accessory =  $k005DAO->getAccessoryDetail($roomID);
+            $accessory =  $k005DAO->getAccessoryDetail($roomTypeID);
             $roomtype = $k005DAO->getRoomType();
             $status = $k005DAO->getStatus();
 
             return view('Manager.K005_2',compact('roomDetail', 'accessory','roomtype','status','roomTypeSelect'));
-
-
-
     }
 
 
+    /**
+     *  get Request Update Room
+     * @param Request $request
+     * @param $roomID
+     * @return \Illuminate\Http\RedirectResponse|string
+     */
     public function UpdateRoomRequest(Request $request,$roomID){
 
         $room = new Room();
@@ -123,6 +150,12 @@ class K005Controller extends Controller
 
     }
 
+    /**
+     * Update room
+     * @param Room $room
+     * @param $accessory
+     * @return bool
+     */
     private function UpdateRoom(Room $room , $accessory ){
         $k005DAO = new K005DAO();
 
@@ -131,6 +164,11 @@ class K005Controller extends Controller
         return $result;
     }
 
+    /**
+     * get Add room Request
+     * @param Request $request
+     * @return $this|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|string
+     */
     public function AddRoomRequest(Request $request){
 
 
@@ -170,6 +208,12 @@ class K005Controller extends Controller
 
     }
 
+    /**
+     * Add room
+     * @param $room
+     * @param $accessory
+     * @return bool
+     */
     private function AddRoom($room,$accessory){
         $k005DAO = new K005DAO();
 
