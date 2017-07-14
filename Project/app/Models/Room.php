@@ -14,10 +14,10 @@ use Illuminate\Database\Eloquent\Model;
 class Room extends Model
 {
     private $roomID;
-    private $room_type_id;
+    private $roomTypeID;
     private $floor;
-    private $status_id;
-    private $room_number;
+    private $statusID;
+    private $roomNumber;
 
     /**
      * @return mixed
@@ -29,28 +29,26 @@ class Room extends Model
 
     /**
      * @param mixed $roomID
-     * @return Room
      */
     public function setRoomID($roomID)
     {
         $this->roomID = $roomID;
-        return $this;
     }
 
     /**
      * @return mixed
      */
-    public function getRoomTypeId()
+    public function getRoomTypeID()
     {
-        return $this->room_type_id;
+        return $this->roomTypeID;
     }
 
     /**
-     * @param mixed $room_type_id
+     * @param mixed $roomTypeID
      */
-    public function setRoomTypeId($room_type_id)
+    public function setRoomTypeID($roomTypeID)
     {
-        $this->room_type_id = $room_type_id;
+        $this->roomTypeID = $roomTypeID;
     }
 
     /**
@@ -72,17 +70,17 @@ class Room extends Model
     /**
      * @return mixed
      */
-    public function getStatusId()
+    public function getStatusID()
     {
-        return $this->status_id;
+        return $this->statusID;
     }
 
     /**
-     * @param mixed $status_id
+     * @param mixed $statusID
      */
-    public function setStatusId($status_id)
+    public function setStatusID($statusID)
     {
-        $this->status_id = $status_id;
+        $this->statusID = $statusID;
     }
 
     /**
@@ -90,16 +88,19 @@ class Room extends Model
      */
     public function getRoomNumber()
     {
-        return $this->room_number;
+        return $this->roomNumber;
     }
 
     /**
-     * @param mixed $room_number
+     * @param mixed $roomNumber
      */
-    public function setRoomNumber($room_number)
+    public function setRoomNumber($roomNumber)
     {
-        $this->room_number = $room_number;
+        $this->roomNumber = $roomNumber;
     }
+
+
+
 
 
 

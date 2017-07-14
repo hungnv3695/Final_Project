@@ -8,49 +8,48 @@
 
 namespace App\Http\DAO;
 use App\Http\Common\Constants;
+use App\Http\Common\StringUtil;
 use App\Models\Accessory;
 use App\Models\Room;
 use App\Models\RoomType;
 use App\Models\Status;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 define('ROOM_STATUS','RO');
 
 class K005DAO
 {
-    public function getRoom($searchStr = null){
+    public function getRoom($searchStr = null,$searchFloor = null){
+        $searchStr =  StringUtil::Trim($searchStr);
 
-        if ( $searchStr == null ){
-            $result = DB::table('tbl_room_type')
-                ->join('tbl_room', 'tbl_room_type.room_type_id', '=','tbl_room.room_type_id')
-                ->join('tbl_status', 'tbl_room.status_id', '=','tbl_status.status_id')
-                ->get([
-                    'tbl_room.room_id',
-                    'tbl_room.room_number',
-                    'tbl_room_type.type_name' ,
-                    'tbl_room.floor',
-                    'tbl_room_type.price',
-                    'tbl_room_type.description',
-                    'tbl_status.status_name'
-                ]);
-        } else{
-            $result = DB::table('tbl_room_type')
-                ->join('tbl_room', 'tbl_room_type.room_type_id', '=','tbl_room.room_type_id')
-                ->join('tbl_status', 'tbl_room.status_id', '=','tbl_status.status_id')
-                ->where('tbl_room.room_number','like','%' . $searchStr . '%' )
-                ->orWhere('tbl_room_type.type_name','like','%' . $searchStr . '%' )
-                ->distinct()
-                ->get([
-                    'tbl_room.room_id',
-                    'tbl_room.room_number',
-                    'tbl_room_type.type_name' ,
-                    'tbl_room.floor',
-                    'tbl_room_type.price',
-                    'tbl_room_type.description',
-                    'tbl_status.status_name'
-                ]);
+        $query = DB::table('tbl_room_type')
+            ->join('tbl_room', 'tbl_room_type.room_type_id', '=','tbl_room.room_type_id')
+            ->join('tbl_status', 'tbl_room.status_id', '=','tbl_status.status_id');
+
+        if ($searchStr !=  null){
+            $query->where('tbl_room.room_number','like','%' . $searchStr . '%' )
+                ->orWhere('tbl_room_type.type_name','ILIKE','%' . $searchStr . '%' );
         }
 
+        if ($searchFloor != null && $searchFloor!= 0){
+            $query->where('tbl_room.floor',$searchFloor );
+        }
+
+        $query->distinct()
+            ->orderBy( Constants::TBL_FLOOR)
+            ->orderBy( Constants::TBL_ROOM_NUMBER);
+
+        $result = $query->get([
+            'tbl_room_type.room_type_id',
+            'tbl_room.room_id',
+            'tbl_room.room_number',
+            'tbl_room_type.type_name' ,
+            'tbl_room.floor',
+            'tbl_room_type.price',
+            'tbl_room_type.description',
+            'tbl_status.status_name'
+        ]);
 
         return  $result->toArray();
     }
@@ -64,7 +63,7 @@ class K005DAO
                 ->get([
                     'tbl_room.room_id',
                     'tbl_room.room_number',
-                    'tbl_room_type.type_name' ,
+                    'tbl_room_type.type_name',
                     'tbl_room.floor',
                     'tbl_room_type.price',
                     'tbl_room_type.description',
@@ -74,12 +73,27 @@ class K005DAO
         return  $result->toArray();
     }
 
-    public function getAccessoryDetail($roomID){
-        $result = Accessory::where(Constants::TBL_ROOM_ID,$roomID)
+    public function getRoomTypeValue($roomTypeID){
+        $result = RoomType::where(Constants::TBL_ROOM_TYPE_ID,$roomTypeID)
+            ->get([
+                Constants::TBL_ROOM_TYPE_ID,
+                Constants::TBL_TYPE_NAME,
+                Constants::TBL_DESCRIPTION,
+                Constants::TBL_PRICE,
+                Constants::TBL_ADULT,
+                Constants::TBL_CHILDREN
+        ]);
+
+        return $result->toArray();
+    }
+
+    public function getAccessoryDetail($roomTypeID){
+        $result = Accessory::where(Constants::TBL_ROOM_TYPE_ID,$roomTypeID)
             ->orderBy( Constants::TBL_ACCESSORY_NAME)
             ->get([
                 Constants::TBL_ACCESSORY_NAME,
-                Constants::TBL_QUANLITY
+                Constants::TBL_QUANLITY,
+                Constants::TBL_PRICE
             ]);
 
         return $result->toArray();
@@ -100,14 +114,16 @@ class K005DAO
         $result = RoomType::get([
            Constants::TBL_ROOM_TYPE_ID,
            Constants::TBL_TYPE_NAME,
-                Constants::TBL_DESCRIPTION,
-        Constants::TBL_PRICE
+           Constants::TBL_DESCRIPTION,
+           Constants::TBL_PRICE
         ]);
 
         return $result->toArray();
     }
 
-    public function  UpdateRoom(Room $room,$accessory){
+    public function  UpdateRoom(Room $room){
+
+
 
         $roomUpdate = Room::find($room->getRoomID());
 
@@ -119,59 +135,10 @@ class K005DAO
 
         $result = $roomUpdate->save();
 
-        $result = $this->UpdateAccessory($accessory,$room->getRoomID());
-
-
-        return $result;
-
-    }
-
-    public function UpdateAccessory($accessory,$roomID){
-
-        try {
-           $result = Accessory::where(Constants::TBL_ROOM_ID,$roomID)
-                ->where(Constants::TBL_ACCESSORY_NAME,Constants::ACCESSORY_BAN)
-                ->update([
-                    Constants::TBL_QUANLITY => array_get($accessory,Constants::ACCESSORY_BAN)
-                ]);
-           $result = Accessory::where(Constants::TBL_ROOM_ID,$roomID)
-                ->where(Constants::TBL_ACCESSORY_NAME,Constants::ACCESSORY_DIEU_HOA)
-                ->update([
-                    Constants::TBL_QUANLITY => array_get($accessory,Constants::ACCESSORY_DIEU_HOA)
-                ]);
-
-
-            $result = Accessory::where(Constants::TBL_ROOM_ID,$roomID)
-                ->where(Constants::TBL_ACCESSORY_NAME,Constants::ACCESSORY_GIUONG)
-                ->update([
-                    Constants::TBL_QUANLITY => array_get($accessory,Constants::ACCESSORY_GIUONG)
-                ]);
-
-            $result = Accessory::where(Constants::TBL_ROOM_ID,$roomID)
-                ->where(Constants::TBL_ACCESSORY_NAME,Constants::ACCESSORY_QUAT)
-                ->update([
-                    Constants::TBL_QUANLITY => array_get($accessory,Constants::ACCESSORY_QUAT)
-                ]);
-
-            $result =  Accessory::where(Constants::TBL_ROOM_ID,$roomID)
-                ->where(Constants::TBL_ACCESSORY_NAME,Constants::ACCESSORY_TIVI)
-                ->update([
-                    Constants::TBL_QUANLITY => array_get($accessory,Constants::ACCESSORY_TIVI)
-                ]);
-
-            $result = Accessory::where(Constants::TBL_ROOM_ID,$roomID)
-                ->where(Constants::TBL_ACCESSORY_NAME,Constants::ACCESSORY_TU_LANH)
-                ->update([
-                    Constants::TBL_QUANLITY => array_get($accessory,Constants::ACCESSORY_TU_LANH)
-                ]);
-        } catch (Exception $e) {
-            $result = false;
-        }
-
         return $result;
     }
 
-    public function addRoom(Room $room, $accessory){
+    public function addRoom(Room $room){
         $roomAdd = new Room();
 
         $roomAdd->room_id = $room->getRoomID();
@@ -181,66 +148,6 @@ class K005DAO
         $roomAdd->room_number = $room->getRoomNumber();
 
         $result = $roomAdd->save();
-
-        if($result == false){
-            return $result;
-        }else{
-            $result = $this->addAccessory($accessory,$room->getRoomID());
-        }
-
-        return $result;
-    }
-
-    public function addAccessory($accessory,$roomID){
-
-        try{
-
-            $accessoryAdd = new Accessory();
-
-            $accessoryAdd->room_id = $roomID;
-            $accessoryAdd->accessory_name = Constants::ACCESSORY_BAN;
-            $accessoryAdd->quanlity = array_get($accessory,Constants::ACCESSORY_BAN);
-            $result = $accessoryAdd->save();
-
-            $accessoryAdd = new Accessory();
-
-            $accessoryAdd->room_id = $roomID;
-            $accessoryAdd->accessory_name = Constants::ACCESSORY_DIEU_HOA;
-            $accessoryAdd->quanlity = array_get($accessory,Constants::ACCESSORY_DIEU_HOA);
-            $result = $accessoryAdd->save();
-
-            $accessoryAdd = new Accessory();
-
-            $accessoryAdd->room_id = $roomID;
-            $accessoryAdd->accessory_name = Constants::ACCESSORY_TU_LANH;
-            $accessoryAdd->quanlity = array_get($accessory,Constants::ACCESSORY_TU_LANH);
-            $result = $accessoryAdd->save();
-
-            $accessoryAdd = new Accessory();
-
-            $accessoryAdd->room_id = $roomID;
-            $accessoryAdd->accessory_name = Constants::ACCESSORY_GIUONG;
-            $accessoryAdd->quanlity = array_get($accessory,Constants::ACCESSORY_GIUONG);
-            $result= $accessoryAdd->save();
-
-            $accessoryAdd = new Accessory();
-
-            $accessoryAdd->room_id = $roomID;
-            $accessoryAdd->accessory_name = Constants::ACCESSORY_QUAT;
-            $accessoryAdd->quanlity = array_get($accessory,Constants::ACCESSORY_QUAT);
-            $result = $accessoryAdd->save();
-
-            $accessoryAdd = new Accessory();
-            
-            $accessoryAdd->room_id = $roomID;
-            $accessoryAdd->accessory_name = Constants::ACCESSORY_TIVI;
-            $accessoryAdd->quanlity = array_get($accessory,Constants::ACCESSORY_TIVI);
-            $result = $accessoryAdd->save();
-
-        }catch (Exception $e){
-            $result = false;
-        }
-
 
         return $result;
     }

@@ -5,7 +5,6 @@ CREATE TABLE tbl_status(
 	description varchar(255) 
 ); 
 
-
 CREATE TABLE tbl_function(			
     func_id varchar(7),		
     screen_id varchar(7),		
@@ -74,6 +73,8 @@ CREATE TABLE tbl_user_group(
 CREATE TABLE tbl_room_type(
 	room_type_id varchar(5) PRIMARY KEY,
     type_name varchar(30) ,
+	adult integer,
+	children integer,
 	description varchar(100) ,
 	price numeric(11,2)
 );
@@ -84,18 +85,19 @@ CREATE TABLE tbl_room(
 	floor integer ,
 	status_id varchar(10) ,
 	room_number varchar(5) ,
+	note varchar, 
 	FOREIGN KEY (room_type_id) REFERENCES tbl_room_type(room_type_id),
 	FOREIGN KEY (status_id) REFERENCES tbl_status(status_id)
 );
 
 CREATE TABLE tbl_room_accessory(
 	id serial PRIMARY KEY,
-	room_id varchar(5),
+	room_type_id varchar(5),
 	accessory_name varchar(20) ,
 	quanlity integer  ,
 	price numeric(11,2)  ,
 	description varchar(100) ,
-	FOREIGN KEY (room_id) REFERENCES tbl_room(room_id)
+	FOREIGN KEY (room_type_id) REFERENCES tbl_room_type(room_type_id)
 );
 
 CREATE TABLE tbl_guest(
@@ -112,7 +114,7 @@ CREATE TABLE tbl_guest(
 
 CREATE TABLE tbl_reservation(
 	id serial PRIMARY KEY,
-	status_id varchar(10),
+	status_id varchar(10), 
 	guest_id integer,
 	check_in varchar(8) ,
 	check_out varchar(8) ,
@@ -127,13 +129,12 @@ CREATE TABLE tbl_reservation(
 CREATE TABLE tbl_reservation_detail(
 	reservation_id integer,
 	room_id varchar(5),
+	price numeric(11,2),
 	create_ymd varchar(8),
 	PRIMARY KEY (reservation_id,room_id ),
 	FOREIGN KEY (reservation_id) REFERENCES tbl_reservation(id),
 	FOREIGN KEY (room_id) REFERENCES tbl_room(room_id)
 );
-
-
 
 CREATE TABLE tbl_payment_type(
 	id serial PRIMARY KEY,

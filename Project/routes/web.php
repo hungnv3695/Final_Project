@@ -23,6 +23,8 @@ Route::get('/K005_1','K005Controller@ViewRoom');
 Route::post('/K005_1' , 'K005Controller@GetRoomRequest' );
 
 Route::get('/K005_1/K005_2/{roomId}','K005Controller@getViewRoomDetailRequest');
+Route::get('/K005_1/K005_2/{roomId}/{roomType}','K005Controller@getChangeRTRequest');
+
 Route::post('/K005_1/K005_2/{roomId}','K005Controller@UpdateRoomRequest');
 Route::get('/K005_1/K005_3','K005Controller@ViewAddRoom');
 Route::post('/K005_1/K005_3','K005Controller@AddRoomRequest');
