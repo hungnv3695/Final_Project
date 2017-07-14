@@ -124,4 +124,18 @@ class K004_DAO{
         $result = DB::select(DB::raw($strSQL));
         return $result;
     }
+
+    public function UpdateRoomNumber($detail_id, $room_id, $count){
+        $a = 0;
+        for ($i = 0; $i < $count; $i++) {
+            $strSQL = 'UPDATE public.tbl_reservation_detail ';
+            $strSQL .= 'SET room_id=\'' . $room_id[$i] . '\' ';
+            $strSQL .= 'WHERE id = \''. $detail_id[$i] .'\'';
+            $result = DB::select(DB::raw($strSQL));
+            $a += 1;
+        }
+
+        return $a;
+    }
+
 }

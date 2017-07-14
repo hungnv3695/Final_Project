@@ -2,6 +2,7 @@
  * Created by Nguyen Viet Hung on 7/12/2017.
  */
 $(document).ready(function () {
+    $('#btnSave').attr("disabled", true);
     var roList = [];
     $res_id = $('#txtResId').val();
     var detail_id=[];
@@ -11,7 +12,7 @@ $(document).ready(function () {
 
         styleUI : 'Bootstrap',
         colNames:[
-            ' ',
+            '*',
             'No.Room',
             ' '
         ],
@@ -119,14 +120,13 @@ $(document).ready(function () {
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
             success: function (result) {
+                detail_id=[];
                 var count=jQuery("#jqGrid").jqGrid('getGridParam', 'records');
                 for(var j = 0; j< count; j++){
                 var celValue = $('#jqGrid').jqGrid ('getCell', j+1 , 'item2');
-                    console.log(celValue);
-                    detail_id=[];
                     for(var i = 0; i < result.length; i++){
-                            detail_id.push(result[i].id);
                             if(celValue == result[i].room_id){
+                                detail_id.push(result[i].id);
                                 var a = j + 1;
                                 jQuery("#jqGrid").find('#'+ a +' input[type=checkbox]').prop('checked',true);
                                 break;
@@ -140,9 +140,17 @@ $(document).ready(function () {
             }
         });
     }
-    btnSave
+
     $("#btnSave").click(function() {
-        var ch =  jQuery("#jqGrid").find('#'+id+' input[type=checkbox]').prop('checked',true);
+        var count=jQuery("#jqGrid").jqGrid('getGridParam', 'records');
+
+        var celValue= [];
+        for(var i = 1; i<=count; i++){
+
+            if(jQuery("#jqGrid").find('#'+ i +' input[type=checkbox]').is(':checked')){
+                celValue.push($('#jqGrid').jqGrid ('getCell', i , 'item2'));
+            }
+        }
 
         $.ajax({
             url: '/K004_1/K004_2/K004_3/SaveRoom',
@@ -150,21 +158,27 @@ $(document).ready(function () {
             cache: false,
             data:{
                 res_id: $res_id,
-                check_in:  $check_in ,
-                check_out: $check_out,
-                type_name: $type_name
+                detail_id: detail_id,
+                room_id: celValue
+
             },
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
             success: function (result) {
-
-                addData(result);
+                if(result == detail_id.length){
+                    alert('Update Successfuly');
+                };
+                window.open('/K004_1/K004_2?res_id=' + $res_id, "_self");
 
             },
             error: function(){
-                alert('error');
+                alert('Update Error');
             }
         });
+    });
+
+    $("#btnBack").click(function () {
+        window.open('/K004_1/K004_2?res_id=' + $res_id, "_self");
     });
 
     $("#btnSearch").click(function() {
@@ -177,5 +191,6 @@ $(document).ready(function () {
         jQuery("#jqGrid")[0].refreshIndex();
         jQuery("#jqGrid").trigger("reloadGrid");
         searchData($res_id,$check_in,$check_out,$type_name);
+        $('#btnSave').attr("disabled", false);
     });
 });

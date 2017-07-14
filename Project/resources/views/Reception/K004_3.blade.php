@@ -38,7 +38,7 @@
 						<div class="col-md-10 col-md-offset-1" style="margin-top:20px;">
 							<label class="col-md-4 control-label">Số lượng:</label>  
 							<div class="col-md-5"><input id="txtRoomNo" name="txtRoomNo" value="{{$txtRoomNo}}" type="text" class="form-control" readonly></div>
-							<button class="roomlistBnt" id="btnSearch" name="btnSearch"><b>Search</b></button>
+							<button class="roomlistBnt" id="btnSearch"  name="btnSearch"><b>Search</b></button>
 						</div>
 						<div><input id="txtResId" name="txtResId" value="{{$txtResId}}" type="text" class="form-control" style="display: none;"></div>
 						<div><input id="txtCheckIn" name="txtCheckIn" value="{{$txtCheckIn}}" type="text" class="form-control" style="display: none;"></div>
@@ -49,7 +49,7 @@
 						</div>
 						<div class="col-md-8 col-md-offset-6" style="margin-top:20px;">
 							<button class="roomlistBnt" id="btnSave" value="saveBnt" name="searchBnt"><b>Save</b></button>
-							<button class="roomlistBnt" value="backBnt" name="backBnt" style="margin-left:10px;"><b>Back</b></button>
+							<button class="roomlistBnt" id="btnBack" value="backBnt" name="backBnt" style="margin-left:10px;"><b>Back</b></button>
 						</div>	
 					</div>
 				</div>

@@ -276,5 +276,15 @@ class K004Controller extends Controller{
 
     }
 
+    public function SaveRoom(Request $request){
+        $res_id = $request -> res_id;
+        $detail_id = $request -> detail_id;
+        $room_id = $request -> room_id;
+        $count = count($detail_id);
+        $K004_DAO = new K004_DAO();
+        $result = $K004_DAO->UpdateRoomNumber($detail_id, $room_id, $count);
+        return \response($result);
+    }
+
 
 }
