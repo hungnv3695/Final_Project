@@ -49,12 +49,10 @@ class K005Controller extends Controller
         }
 
         $roomTypeSelect = $k005DAO->getRoomTypeValue($roomTypeID);
-
-
-
         $status = $k005DAO->getStatus();
+        $accessory =  $k005DAO->getAccessoryDetail($roomTypeID);
 
-        return view('Manager.K005_3',compact('roomtype','status','roomTypeSelect')) ;
+            return view('Manager.K005_3',compact('roomtype','status','roomTypeSelect','accessory')) ;
 
     }
 
@@ -108,8 +106,6 @@ class K005Controller extends Controller
 
             $roomDetail = $k005DAO->getRoomDetail($roomID);
             $roomTypeSelect = $k005DAO->getRoomTypeValue($roomTypeID);
-
-
             $accessory =  $k005DAO->getAccessoryDetail($roomTypeID);
             $roomtype = $k005DAO->getRoomType();
             $status = $k005DAO->getStatus();
@@ -128,12 +124,10 @@ class K005Controller extends Controller
 
         $room = new Room();
         $room->setRoomID($roomID);
-        $room->setRoomTypeId($request->roomtype);
+        $room->setRoomTypeId($request->txtRoomtype);
         $room->setFloor($request->floortxt);
-        $room->setStatusId($request->status);
-        $room->setRoomNumber($request->roomtxt);
-
-
+        $room->setStatusId($request->txtStatus);
+        $room->setRoomNumber($request->txtRoomNo);
 
         $result =  $this->UpdateRoom($room);
 
@@ -169,18 +163,18 @@ class K005Controller extends Controller
 
         $k005DAO = new K005DAO();
 
-        $checkKey= $k005DAO->checkRoomKey($request->roomid);
+        $checkKey= $k005DAO->checkRoomKey($request->txtRoomID);
 
         if($checkKey == false){
             return back()->withInput();
         } else{
 
             $room = new Room();
-            $room->setRoomID($request->roomid);
-            $room->setRoomTypeId($request->roomtype);
+            $room->setRoomID($request->txtRoomID);
+            $room->setRoomTypeId($request->txtroomType);
             $room->setFloor($request->floortxt);
-            $room->setStatusId($request->status);
-            $room->setRoomNumber($request->roomtxt);
+            $room->setStatusId($request->txtStatus);
+            $room->setRoomNumber($request->txtRoomNo);
 
 
             $result =  $this->AddRoom($room);
