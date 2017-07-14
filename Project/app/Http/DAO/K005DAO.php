@@ -79,7 +79,9 @@ class K005DAO
                 Constants::TBL_ROOM_TYPE_ID,
                 Constants::TBL_TYPE_NAME,
                 Constants::TBL_DESCRIPTION,
-                Constants::TBL_PRICE
+                Constants::TBL_PRICE,
+                Constants::TBL_ADULT,
+                Constants::TBL_CHILDREN
         ]);
 
         return $result->toArray();
@@ -121,6 +123,8 @@ class K005DAO
 
     public function  UpdateRoom(Room $room){
 
+
+
         $roomUpdate = Room::find($room->getRoomID());
 
         $roomUpdate->room_id = $room->getRoomID();
@@ -144,12 +148,6 @@ class K005DAO
         $roomAdd->room_number = $room->getRoomNumber();
 
         $result = $roomAdd->save();
-
-        if($result == false){
-            return $result;
-        }else{
-            $result = $this->addAccessory($accessory,$room->getRoomID());
-        }
 
         return $result;
     }

@@ -75,31 +75,33 @@
 								<div class="form-group" style="margin-top:20px;">
 									<label class="col-md-4 col-xs-4 control-label" for="">Kiểu phòng: </label>  
 									<div class="col-md-5 col-xs-5">
-										<select id="txtRoomtype" name="txtRoomtype" class="form-control input-md" style="width:140px;">
-										<option value="Double">Double</option>
-										<option value="Single">Single</option>
+										<select id="roomtype" name="roomtype" class="form-control input-md" style="width:140px;">
+											@foreach($roomtype as $data)
+												<option value="{!! array_get($data,'room_type_id') !!}"  {!!( array_get($data,'type_name') == array_get($roomTypeSelect[0],'type_name') )? 'selected':''  !!}  > {!! array_get($data,'type_name') !!}</option>
+											@endforeach
 										</select>
+										<input id="txtroomType" name="txtroomType" type="hidden" class="form-control input-md"  value = "">
 									</div>
 								</div>
 								<div class="form-group" style="margin-top:10px;">
 									<label class="col-md-4 col-xs-4 control-label" for="">Số phòng: </label>  
 									<div class="col-md-5 col-xs-5">
-										<input id="txtRoomNo" name="txtRoomNo" type="text" class="form-control input-md">
+										<input id="txtRoomNo" name="txtRoomNo" type="text" class="form-control input-md" value="{!! $roomDetail[0]->room_number !!}" >
 									</div>
 								</div>
 								<div class="form-group" style="margin-top:10px;">
 									<label class="col-md-4 col-xs-4 control-label" for="">Tầng: </label>  
 									<div class="col-md-5 col-xs-5">
-										<input id="floortxt" name="floortxt" type="text" class="form-control input-md">
+										<input id="floortxt" name="floortxt" type="text" class="form-control input-md" value="{!! $roomDetail[0]->floor !!}"  >
 									</div>
 								</div>
 								<div class="form-group" style="margin-top:10px;">
 									<label class="col-md-4 col-xs-4 control-label" for="">Trạng thái: </label>  
 									<div class="col-md-5 col-xs-5">
 										<select id="txtStatus" name="txtStatus" class="form-control input-md" style="width:140px;">
-										<option value="">Vãi</option>
-										<option value="">Cả</option>
-										<option value="">Lồn</option>
+											@foreach($status as $data)
+												<option value="{!! array_get($data,'status_id') !!}"  {!! array_get($data,'status_name') == $roomDetail[0]->status_name ? 'selected':''  !!}> {!! array_get($data,'status_name') !!}</option>
+											@endforeach
 										</select>
 									</div>
 								</div>
@@ -114,84 +116,62 @@
 								<button class="roomlistBnt" value="bntAdd" name="bntSave"><b>Save</b></button>
 								<button class="roomlistBnt" value="backAdd" name="backCancel" style="margin-left:5px;"><b>Cancel</b></button>
 							</div>
+							<input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
 						</div>
 
+						<!--right-->
 						<div class="col-md-6">
 							<div class="col-md-12 form-horizontal" style="width:530px;margin:10px 0px 10px;border: 2px solid rgb(200,200,200);">
 								<div class="form-group" style="margin-top:20px;">
-									<label class="col-md-4 col-xs-4 control-label" for="">Giá: </label>  
+									<label class="col-md-4 col-xs-4 control-label" for="">Giá: </label>
 									<div class="col-md-3 col-xs-3">
-										<input id="txtPrice" name="txtPrice" type="text" class="form-control input-md" readonly>
+										<input id="txtPrice" name="txtPrice" type="text" class="form-control input-md"  value = "{!! array_get($roomTypeSelect[0],'price') !!}" readonly>
 									</div>
-									<label class="control-label" for="">/đêm</label>  
+									<label class="control-label" for="">/đêm</label>
 								</div>
 								<div class="form-group" style="margin-top:10px;">
-									<label class="col-md-4 col-xs-4 control-label" for="">Người lớn: </label>  
+									<label class="col-md-4 col-xs-4 control-label" for="">Người lớn: </label>
 									<div class="col-md-3 col-xs-3">
-										<input id="txtAdult" name="txtAdult" type="text" class="form-control input-md" readonly>
+										<input id="txtAdult" name="txtAdult" type="text" class="form-control input-md" value="{!! array_get($roomTypeSelect[0],'adult') !!}" readonly>
 									</div>
-									<label class="control-label" for="">/người</label>  
+									<label class="control-label" for="">/người</label>
 								</div>
 								<div class="form-group" style="margin-top:10px;">
-									<label class="col-md-4 col-xs-4 control-label" for="">Trẻ em: </label>  
+									<label class="col-md-4 col-xs-4 control-label" for="">Trẻ em: </label>
 									<div class="col-md-3 col-xs-3">
-										<input id="txtAdult" name="txtAdult" type="text" class="form-control input-md" readonly>
+										<input id="txtAdult" name="txtAdult" type="text" class="form-control input-md" value="{!! array_get($roomTypeSelect[0],'children') !!}" readonly>
 									</div>
-									<label class="control-label" for="">/người</label>  
+									<label class="control-label" for="">/người</label>
 								</div>
 								<div class="form-group" style="margin-top:10px;">
-									<label class="col-md-4 col-xs-4 control-label" for="">Miêu tả: </label>  
+									<label class="col-md-4 col-xs-4 control-label" for="">Miêu tả: </label>
 									<div class="col-md-4 col-xs-4">
-										<textarea rows="3" cols="30" id="txtDescription" name="notetxt" autofocus maxlength="200" style="background-color: rgb(236,236,236);" readonly></textarea>
+										<textarea rows="3" cols="30" id="txtDescription" name="notetxt" autofocus maxlength="200" style="background-color: rgb(236,236,236);"   readonly>{!! array_get($roomTypeSelect[0],'description') !!} </textarea>
 									</div>
 								</div>
 								<table class="table table-hover">
 									<thead>
-									  <tr>
+									<tr>
 										<th class="col1">Stt</th>
-										<th class="col2">RoomNumber</th>
-										<th class="col3">RoomType</th>
-										<th class="col4">RoomType</th>
-									  </tr>
+										<th class="col2">Accessory Name</th>
+										<th class="col3">Quanlity</th>
+										<th class="col4">Price </th>
+									</tr>
 									</thead>
-									<tbody>
-									  <tr>
-										<td class="col1">1</td>
-										<td class="col2">101</td>
-										<td class="col3">Double</td>
-										<td class="col4">Double</td>
-									  </tr>
-									  <tr>
-										<td class="col1">1</td>
-										<td class="col2">101</td>
-										<td class="col3">Double</td>
-										<td class="col4">Double</td>
-									  </tr>
-									  <tr>
-										<td class="col1">1</td>
-										<td class="col2">101</td>
-										<td class="col3">Double</td>
-										<td class="col4">Double</td>
-									  </tr>
-									  <tr>
-										<td class="col1">1</td>
-										<td class="col2">101</td>
-										<td class="col3">Double</td>
-										<td class="col4">Double</td>
-									  </tr>
-									  <tr>
-										<td class="col1">1</td>
-										<td class="col2">101</td>
-										<td class="col3">Double</td>
-										<td class="col4">Double</td>
-									  </tr>
-									  <tr>
-										<td class="col1">1</td>
-										<td class="col2">101</td>
-										<td class="col3">Double</td>
-										<td class="col4">Double</td>
-									  </tr>
-									</tbody>
+									@if(isset($accessory))
+										<tbody>
+                                        <?php $i = 1?>
+										@foreach($accessory as $data)
+											<tr>
+												<td class="col1">{!! $i !!}</td>
+												<td class="col2">{!! array_get($data,'accessory_name') !!}</td>
+												<td class="col3">{!! array_get($data,'quanlity') !!}</td>
+												<td class="col4">{!! array_get($data,'price') !!}</td>
+											</tr>
+                                            <?php $i++?>
+										@endforeach
+										</tbody>
+									@endif
 								</table>
 							</div>
 						</div>
@@ -205,10 +185,18 @@
 
 		<script>
             var select = document.getElementById('roomtype');
+            var roomID = document.getElementById('txtRoomNo');
+
             select.onchange = function(){
                 Route = "{!!url('/K005_1/K005_2/'. $roomDetail[0]->room_id)!!}" +'?roomTypeID='+ select.value ;
 				window.location = Route
             };
+
+            roomID.onclick = function () {
+                select.disabled = true;
+                document.getElementById('txtroomType').value = select.value;
+            }
+
 		</script>
 
 </body>
