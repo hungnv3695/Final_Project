@@ -50,6 +50,11 @@ class Constants
         const   TBL_QUANLITY = 'quanlity';
         const   TBL_ADULT = 'adult';
         const  TBL_CHILDREN = 'children';
+        const TBL_NOTE = 'note';
+
+        const NAME_ACC = 'txtNameAcc';
+        const QUANLITY_ACC = 'txtquanlityAcc';
+        const PRICE_ACC = 'txtPriceAcc';
 
         const TBL_FLOOR = 'floor';
         const TBL_ROOM_NUMBER = 'room_number';

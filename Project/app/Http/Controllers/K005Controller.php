@@ -121,13 +121,13 @@ class K005Controller extends Controller
      * @return \Illuminate\Http\RedirectResponse|string
      */
     public function UpdateRoomRequest(Request $request,$roomID){
-
         $room = new Room();
         $room->setRoomID($roomID);
-        $room->setRoomTypeId($request->txtRoomtype);
+        $room->setRoomTypeId($request->txtroomType);
         $room->setFloor($request->floortxt);
         $room->setStatusId($request->txtStatus);
         $room->setRoomNumber($request->txtRoomNo);
+        $room->setNote($request->txtNote);
 
         $result =  $this->UpdateRoom($room);
 

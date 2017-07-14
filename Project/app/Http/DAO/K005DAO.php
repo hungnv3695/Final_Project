@@ -65,6 +65,7 @@ class K005DAO
                     'tbl_room.room_number',
                     'tbl_room_type.type_name',
                     'tbl_room.floor',
+                    'tbl_room.note',
                     'tbl_room_type.price',
                     'tbl_room_type.description',
                     'tbl_status.status_name'
@@ -123,8 +124,6 @@ class K005DAO
 
     public function  UpdateRoom(Room $room){
 
-
-
         $roomUpdate = Room::find($room->getRoomID());
 
         $roomUpdate->room_id = $room->getRoomID();
@@ -132,6 +131,7 @@ class K005DAO
         $roomUpdate->floor = $room->getFloor();
         $roomUpdate->status_id = $room->getStatusId();
         $roomUpdate->room_number = $room->getRoomNumber();
+        $roomUpdate->note = $room->getNote();
 
         $result = $roomUpdate->save();
 
@@ -147,7 +147,7 @@ class K005DAO
         $roomAdd->status_id = $room->getStatusId();
         $roomAdd->room_number = $room->getRoomNumber();
 
-        $result = $roomAdd->save();
+        $result = $roomAdd->saveOrFail();
 
         return $result;
     }

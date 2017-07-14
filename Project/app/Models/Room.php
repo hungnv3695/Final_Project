@@ -18,6 +18,25 @@ class Room extends Model
     private $floor;
     private $statusID;
     private $roomNumber;
+    private $note;
+
+    /**
+     * @return mixed
+     */
+    public function getNote()
+    {
+        return $this->note;
+    }
+
+    /**
+     * @param mixed $note
+     */
+    public function setNote($note)
+    {
+        $this->note = $note;
+    }
+
+
 
     /**
      * @return mixed
