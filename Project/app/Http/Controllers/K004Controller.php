@@ -11,13 +11,29 @@ use App\Http\Common\DateTimeUtil;
 class K004Controller extends Controller{
     public function K004_1_View(){
 
-        return view('Reception.xxx');
+        return view('Reception.K004_1');
     }
 
     public function K004_2_View(){
 
-        return view('Reception.K004-2');
+        return view('Reception.K004_2');
     }
+
+    public function K004_3_View(Request $request){
+        $res_id = $request->res_id;
+        $check_in= DateTimeUtil::ConvertDateToString($request->check_in);
+        $check_out=DateTimeUtil::ConvertDateToString($request->check_out);
+        $type_name = $request->type_name;
+        $no_room = $request->no_room;
+        return view("Reception.K004_3")->with([
+            'txtRoomType' => $type_name,
+            'txtRoomNo' => $no_room,
+            'txtResId' => $res_id,
+            'txtCheckOut' => $check_out,
+            'txtCheckIn' => $check_in
+        ]);
+    }
+
     public function getReservationStatus(){
         $K004_DAO = new K004_DAO();
         $status = $K004_DAO->getStatus();
@@ -85,7 +101,7 @@ class K004Controller extends Controller{
 
     public function GetGuest(Request $request){
         if($request->res_id ==""){
-            return view("Reception.K004-2")->with([
+            return view("Reception.K004_2")->with([
                 'id' => "",
                 'check_in' => "",
                 'check_out' => "",
@@ -111,7 +127,7 @@ class K004Controller extends Controller{
         $result = array_merge($guest,$room);
        //dd($result);
         if (count($result)==2){
-            return view("Reception.K004-2")->with([
+            return view("Reception.K004_2")->with([
                 'id' => $result[0]->id,
                 'check_in' => DateTimeUtil::ConvertStringToDate($result[0]->check_in),
                 'check_out' => DateTimeUtil::ConvertStringToDate($result[0]->check_out),
@@ -143,7 +159,7 @@ class K004Controller extends Controller{
             ]);
         }
         else if(count($result)==3){
-            return view("Reception.K004-2")->with([
+            return view("Reception.K004_2")->with([
                 'id' => $result[0]->id,
                 'check_in' => DateTimeUtil::ConvertStringToDate($result[0]->check_in),
                 'check_out' => DateTimeUtil::ConvertStringToDate($result[0]->check_out),
@@ -176,7 +192,7 @@ class K004Controller extends Controller{
         }
         else if(count($result)==4){
             //dd('111');
-            return view("Reception.K004-2")->with([
+            return view("Reception.K004_2")->with([
                 'id' => $result[0]->id,
                 'check_in' => DateTimeUtil::ConvertStringToDate($result[0]->check_in),
                 'check_out' => DateTimeUtil::ConvertStringToDate($result[0]->check_out),
@@ -208,7 +224,7 @@ class K004Controller extends Controller{
             ]);
         }
         else if(count($result)==5){
-            return view("Reception.K004-2")->with([
+            return view("Reception.K004_2")->with([
                 'id' => $result[0]->id,
                 'check_in' => DateTimeUtil::ConvertStringToDate($result[0]->check_in),
                 'check_out' => DateTimeUtil::ConvertStringToDate($result[0]->check_out),
@@ -242,15 +258,32 @@ class K004Controller extends Controller{
 
 
     }
-
-    public function GetRoomFree(Request $request){
-        //dd('d');
-        $type_name = $request->type_name;
-        $check_in= DateTimeUtil::ConvertDateToString($request->check_in);
-        $check_out=DateTimeUtil::ConvertDateToString($request->check_out);
+    public function CheckRoom(Request $request){
+        $res_id = $request->res_id;
         $K004_DAO = new K004_DAO();
-        $roomFree = $K004_DAO->SelectRoomFree($type_name,$check_in,$check_out);
-        return response()->json($roomFree);
+        $resRoom = $K004_DAO->SelectRoomOfReservation($res_id);
+        return \response($resRoom);
+    }
+    public function GetRoomFree(Request $request){
+        $type_name = $request->type_name;
+        $res_id = $request->res_id;
+        $check_in= $request->check_in;
+        $check_out=$request->check_out;
+        $K004_DAO = new K004_DAO();
+        $roomFree = $K004_DAO->SelectRoomFree($res_id,$type_name,$check_in,$check_out);
+        //dd($roomFree);
+        return \response($roomFree);
+
+    }
+
+    public function SaveRoom(Request $request){
+        $res_id = $request -> res_id;
+        $detail_id = $request -> detail_id;
+        $room_id = $request -> room_id;
+        $count = count($detail_id);
+        $K004_DAO = new K004_DAO();
+        $result = $K004_DAO->UpdateRoomNumber($detail_id, $room_id, $count);
+        return \response($result);
     }
 
 

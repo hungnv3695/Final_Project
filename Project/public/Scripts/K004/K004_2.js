@@ -12,6 +12,7 @@ $(document).ready(function () {
         styleUI : 'Bootstrap',
         colNames:[
             '',
+            '',
             'No.room',
             'Room type',
             'Price'
@@ -21,7 +22,8 @@ $(document).ready(function () {
             { name: 'item0',  width: 50 , align: "left", sorttype: "text", sortable: false, formatter: function (cellvalue, options) {
                 return addCheckbox(options.rowId);
             }},
-            { name: 'item0',  width: 120 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
+            { name: 'item0',  width: 50 , align: "left",  sortable: false, formatter: editLink},
+            { name: 'item0',  width: 50 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
             { name: 'item1',  width: 120, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
             { name: 'item2',  width: 120, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }}
 
@@ -73,6 +75,10 @@ $(document).ready(function () {
     //Jqgrid END
     function addCheckbox(id) {
         return "<input type='checkbox' id='"+ id + "' disabled='disabled'>" ;
+    }
+    function editLink(cellValue, options, rowdata, action)
+    {
+        return "<a href='/K004_1' class='ui-icon ui-icon-pencil' >hung</a>";
     }
     //Display number of room START
     $number_of_room = $('#number_of_room').val();
