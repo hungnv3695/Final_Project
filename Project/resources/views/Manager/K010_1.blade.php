@@ -129,7 +129,7 @@
 				<div class="col-md-5">
 					<div class="col-md-12 form-horizontal" style="width:450px;border: 2px solid rgb(200,200,200);margin-top:20px;margin-bottom:50px;">
 						<div class="col-md-12" style="margin-top:30px;margin-bottom:10px;">
-							<label>Trang Thiết Bị: </label>
+							<label>Thiết Bị: </label>
 						</div>
 						<table class="table table-hover" style="margin-bottom:56px;" id="table">
 							<thead>
@@ -144,8 +144,8 @@
 							<tr>
 								<td class="col1">1</td>
 								<td class="col2"> <input id="txtNameAcc1" name="txtNameAcc" type="text" class="form-control input-md"></td>
-								<td class="col3"> <input id="txtQuanlityAcc1" name="txtquanlityAcc" type="number" class="form-control input-md"></td>
-								<td class="col4"> <input id="txtPriceAcc1" name="txtPriceAcc" type="number" class="form-control input-md"></td>
+								<td class="col3"> <input id="txtQuanlityAcc1" name="txtquanlityAcc" type="number" value="0" class="form-control input-md"></td>
+								<td class="col4"> <input id="txtPriceAcc1" name="txtPriceAcc" type="number" value="0" class="form-control input-md"></td>
 							</tr>
 							</tbody>
 						</table>
@@ -157,7 +157,7 @@
 			<div class="col-md-10 col-md-offset-1" style="background-color:rgb(236,236,236);">
 				<div class="col-md-5 col-md-offset-9" style="margin-top:10px; margin-bottom:10px;">
 					<button type="submit" class="roomlistBnt" id="bntAddType" value="bntAddType" name="bntAddType"><b>Add-Type</b></button>
-					<button  type="buttoô" class="roomlistBnt" value="bntBack" name="bntBack"><b>Back</b></button>
+					<button  type="button" class="roomlistBnt" value="bntBack" name="bntBack"><b>Back</b></button>
 				</div>
 			</div>
 		</div>

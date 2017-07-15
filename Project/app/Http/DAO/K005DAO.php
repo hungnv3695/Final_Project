@@ -133,7 +133,7 @@ class K005DAO
         $roomUpdate->room_number = $room->getRoomNumber();
         $roomUpdate->note = $room->getNote();
 
-        $result = $roomUpdate->save();
+        $result = $roomUpdate->saveOrFail();
 
         return $result;
     }

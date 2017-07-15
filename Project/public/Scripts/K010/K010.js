@@ -25,13 +25,13 @@ function addAccessory() {
     var inp2 = new_row.cells[2].getElementsByTagName('input')[0];
     inp2.id += len;
     inp2.name += len-1;
-    inp2.value = '';
+    inp2.value = '0';
 
     // grab the input from the first cell and update its ID and value
     var inp3 = new_row.cells[3].getElementsByTagName('input')[0];
     inp3.name += len-1;
     inp3.id += len;
-    inp3.value = '';
+    inp3.value = '0';
 
     var tbody = table.getElementsByTagName('tbody')[0];
 
