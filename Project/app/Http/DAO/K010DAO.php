@@ -12,7 +12,6 @@ namespace App\Http\DAO;
 use App\Http\Common\Constants;
 use App\Models\Accessory;
 use App\Models\RoomType;
-use League\Flysystem\Exception;
 
 class K010DAO
 {
@@ -64,6 +63,7 @@ class K010DAO
 
         return $result;
     }
+
     public function  updateAccessory($roomTypeID , $accessory , $count){
            Accessory::where(Constants::TBL_ROOM_TYPE_ID,$roomTypeID)->delete();
            $result = $this->addAccessory($roomTypeID,$accessory,$count);

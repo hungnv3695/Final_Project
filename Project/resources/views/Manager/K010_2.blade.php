@@ -69,7 +69,7 @@
 </head>
 <body>
 <div class="container">
-	<form class="editRoomType" method="post">
+	<form class="editRoomType" method="post" id="editRoomType" onsubmit="return checkvalue();" >
 		<div class="row">
 			<div class="col-md-10 col-md-offset-1" style="margin-top:3%;background-color:rgb(236,236,236);">
 				<p class="brand-title">Xem kiểu phòng</p>
@@ -84,7 +84,8 @@
 						@endforeach
 					</select>
 					<input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
-					<button type="button" class="roomlistBnt" value="bntEdit" id = "bntEdit" name="bntEdit"><b>Edit</b></button>
+					<button type="button" class="roomlistBnt" value="bntEdit" id = "bntEdit" name="bntEdit"><b>Sửa</b></button>
+					<button type="button" class="roomlistBnt" value="btnAddNew" id = "btnAdd" name="btnAdd" onclick="window.location='{{ url("/K010_1") }}'" ><b>Thêm Mới</b></button>
 					<hr style="border-top: 1px solid gray;">
 				</div>
 
@@ -94,7 +95,7 @@
 						<div class="form-group" style="margin-top:30px;">
 							<label class="col-md-4 col-xs-4 control-label" for="">ID: </label>
 							<div class="col-md-4 col-xs-4">
-								<input id="txtRoomTypeID" name="txtRoomTypeID" type="text" class="form-control input-md" value= " {!! isset($roomTypeSelect[0])? array_get($roomTypeSelect[0],'room_type_id'):"" !!} " readonly>
+								<input id="txtRoomTypeID" name="txtRoomTypeID" type="text" class="form-control input-md" value= " {!! isset($roomTypeSelect[0])? array_get($roomTypeSelect[0],'room_type_id'):"" !!} " readonly >
 							</div>
 						</div>
 						<div class="form-group" style="margin-top:10px;">
@@ -166,8 +167,8 @@
 							@endif
 							</tbody>
 						</table>
-						<button type="button" class="roomlistBnt col-md-offset-10" value="bntAdd" name="bntAdd" onclick="addAccessory()"><b>Add</b></button>
-						<button type="button" class="roomlistBnt col-md-offset-10" value="bntDelete" name="bntDelete" onclick="deleteAccessory()"><b>Delete</b></button>
+						<button type="button" class="roomlistBnt col-md-offset-10" value="bntAdd" name="bntAdd" onclick="addAccessory()" ><b>Add</b></button>
+						<button type="button" class="roomlistBnt col-md-offset-10" value="bntDelete" name="bntDelete" onclick="deleteAccessory()" ><b>Delete</b></button>
 					</div>
 				</div>
 
@@ -176,7 +177,7 @@
 			<input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
 			<div class="col-md-10 col-md-offset-1" style="background-color:rgb(236,236,236);">
 				<div class="col-md-5 col-md-offset-9" style="margin-top:10px; margin-bottom:10px;">
-					<button type="submit" class="roomlistBnt" value="bntAddType" id="bntAddType" name="bntSave"><b>Save</b></button>
+					<button type="submit" class="roomlistBnt" value="bntAddType" id="bntAddType" name="bntSave" ><b>Save</b></button>
 					<button type="button" class="roomlistBnt" value="bntBack" name="bntBack"><b>Back</b></button>
 				</div>
 			</div>
@@ -193,7 +194,22 @@
 	btn.onclick = function () {
 		Route = "{!!url('/K010_2')!!}" +"?roomTypeID=" + select.value ;
         window.location = Route
+
+		return true;
     }
+
+    function checkvalue() {
+        var selectValue = document.getElementById('txtRoomTypeID').value;
+
+        if(selectValue.trim() ==""){
+            alert("Vui lòng chọn loại phòng và edit");
+            return false;
+        }else{
+            return true;
+		}
+    }
+
+
 </script>
 
 </body>

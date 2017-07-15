@@ -85,7 +85,7 @@
 						<div class="form-group" style="margin-top:30px;">
 							<label class="col-md-4 col-xs-4 control-label" for="">ID: </label>
 							<div class="col-md-4 col-xs-4">
-								<input id="txtRoomTypeID" name="txtRoomTypeID" type="text" class="form-control input-md" required>
+								<input id="txtRoomTypeID" name="txtRoomTypeID" type="text" class="form-control input-md" maxlength="5" required>
 							</div>
 						</div>
 						<div class="form-group" style="margin-top:10px;">
@@ -98,7 +98,7 @@
 						<div class="form-group" style="margin-top:10px;">
 							<label class="col-md-4 col-xs-4 control-label" for="">Giá: </label>
 							<div class="col-md-4 col-xs-4">
-								<input id="txtPrice" name="txtPrice" type="number" class="form-control input-md" required >
+								<input id="txtPrice" name="txtPrice" type="numberic" class="form-control input-md" required >
 							</div>
 							<label class="control-label" for="">/đêm</label>
 						</div>

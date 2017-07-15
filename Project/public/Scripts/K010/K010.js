@@ -54,3 +54,6 @@ btnAddRoomType.onclick =  function () {
     document.getElementById('count').value = table.rows.length - 1;
 }
 
+
+
+
