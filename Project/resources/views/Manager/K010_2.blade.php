@@ -37,7 +37,7 @@
 		}
 
 		tbody {
-			height: 190px;
+			height: 200px;
 			overflow-y: auto;
 		}
 
