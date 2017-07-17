@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
-    <title>Bootstrap 3 Simple Tables</title>
+    <title>Edit reservation's room</title>
 	<script type="text/ecmascript" src="{{asset('jqgrid/js/jquery-1.11.0.min.js') }}"></script>
 
 	<!-- We support more than 40 localizations -->

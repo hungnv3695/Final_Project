@@ -33,7 +33,7 @@ $(document).ready(function () {
             'Identity card',
             'Check-in',
             'Check-out',
-            'Quantity room',
+            'No.room',
             'Email',
             'Company',
             'Phone',
@@ -41,17 +41,17 @@ $(document).ready(function () {
             'Paid status'
         ],
         colModel: [
-            { name: 'item0',  width: 75 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
-            { name: 'item1',  width: 150, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
-            { name: 'item2',  width: 150, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
-            { name: 'item3',  width: 150, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
-            { name: 'item4',  width: 150, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
-            { name: 'item5',  width: 150, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
+            { name: 'item0', hidden: true,  width: 75 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
+            { name: 'item1',  width: 156, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
+            { name: 'item2',  width: 95, align: "right", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
+            { name: 'item3',  width: 95, align: "center", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
+            { name: 'item4',  width: 95, align: "center", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
+            { name: 'item5',  hidden: true, width: 70, align: "right", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
             { name: 'item6',  width: 150, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
-            { name: 'item7',  width: 150, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
-            { name: 'item8',  width: 150, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
-            { name: 'item9',  width: 150, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
-            { name: 'item10',  width: 150, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }}
+            { name: 'item7',  hidden: true, width: 100, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
+            { name: 'item8',  width: 100, align: "right", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
+            { name: 'item9',  width: 120, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
+            { name: 'item10', hidden: true,  width: 150, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }}
         ],
         rownumbers: true,
         viewrecords: true,
@@ -70,12 +70,12 @@ $(document).ready(function () {
         ondblClickRow: function(rowId) {
             var rowData = jQuery(this).getRowData(rowId);
             var res_id = rowData['item0'];
-            window.open('K004_1/K004_2/?res_id=' + res_id , '_blank');
+            window.open('K004_1/K004_2/?res_id=' + res_id , '_self');
 
         },
         loadComplete: function(){
             //set color for even row
-            $("tr.jqgrow:even").css("background", "#DDDDDC");
+            $("tr.jqgrow:even").css("background", "#DDDDDE");
         }
 
     });

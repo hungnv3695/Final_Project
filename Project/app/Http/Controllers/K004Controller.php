@@ -105,7 +105,7 @@ class K004Controller extends Controller{
                 'id' => "",
                 'check_in' => "",
                 'check_out' => "",
-                'number_of_room'=>"",
+                'noroom'=>"",
                 'name' => "",
                 'phone' => "",
                 'email' => "",
@@ -114,10 +114,12 @@ class K004Controller extends Controller{
                 'address' => "",
                 'company_phone'=>"" ,
                 'country' => "",
-                'room_id1' => "",
-                'room_id2' => "",
-                'room_id3' => "",
-                'room_id4' => ""
+                'nopeople' => "",
+                'note'=>""
+//                'room_id1' => "",
+//                'room_id2' => "",
+//                'room_id3' => "",
+//                'room_id4' => ""
             ]);
         }
         $res_id = $request->res_id;
@@ -125,13 +127,14 @@ class K004Controller extends Controller{
         $guest = $K004_DAO->GetGuestData($res_id);
         $room = $K004_DAO->GetReservationDetail($res_id);
         $result = array_merge($guest,$room);
-       //dd($result);
-        if (count($result)==2){
+
+    //        if (count($result)==2){
             return view("Reception.K004_2")->with([
                 'id' => $result[0]->id,
+                'guest_id' =>$result[0]->guest_id,
                 'check_in' => DateTimeUtil::ConvertStringToDate($result[0]->check_in),
                 'check_out' => DateTimeUtil::ConvertStringToDate($result[0]->check_out),
-                'number_of_room' => $result[0]-> number_of_room,
+                'noroom' => $result[0]-> number_of_room,
                 'name' => $result[0]->name,
                 'phone' => $result[0]->phone,
                 'email' => $result[0]->mail,
@@ -140,124 +143,171 @@ class K004Controller extends Controller{
                 'address' => $result[0]->address,
                 'company_phone' => $result[0]-> company_phone,
                 'country' => $result[0]-> country,
-                'room1txt' => $result[1]->room_number,
-                'double1txt' => $result[1]->type_name,
-                'price1txt' => $result[1]->price,
-                'room_id1' => $result[1]->room_id,
-                'room_id2' => "",
-                'room_id3' => "",
-                'room_id4' => "",
-                'room2txt' => "",
-                'double2txt' =>"",
-                'price2txt' => "",
-                'room3txt' => "",
-                'double3txt' =>"",
-                'price3txt' => "",
-                'room4txt' => "",
-                'double4txt' =>"",
-                'price4txt' => ""
+                'status' => $result[0]->status_id,
+                'nopeople' => $result[0]->number_of_adult,
+                'note'=>""
+//                'room1txt' => $result[1]->room_number,
+//                'double1txt' => $result[1]->type_name,
+//                'price1txt' => $result[1]->price,
+//                'room_id1' => $result[1]->room_id,
+//                'room_id2' => "",
+//                'room_id3' => "",
+//                'room_id4' => "",
+//                'room2txt' => "",
+//                'double2txt' =>"",
+//                'price2txt' => "",
+//                'room3txt' => "",
+//                'double3txt' =>"",
+//                'price3txt' => "",
+//                'room4txt' => "",
+//                'double4txt' =>"",
+//                'price4txt' => ""
             ]);
-        }
-        else if(count($result)==3){
-            return view("Reception.K004_2")->with([
-                'id' => $result[0]->id,
-                'check_in' => DateTimeUtil::ConvertStringToDate($result[0]->check_in),
-                'check_out' => DateTimeUtil::ConvertStringToDate($result[0]->check_out),
-                'number_of_room' => $result[0]-> number_of_room,
-                'name' => $result[0]->name,
-                'phone' => $result[0]->phone,
-                'email' => $result[0]->mail,
-                'idCard' => $result[0]->identity_card,
-                'company' => $result[0]->company,
-                'address' => $result[0]->address,
-                'company_phone' => $result[0]-> company_phone,
-                'country' => $result[0]-> country,
-                'room1txt' => $result[1]->room_number,
-                'double1txt' => $result[1]->type_name,
-                'price1txt' => $result[1]->price,
-                'room2txt' => $result[2]->room_number,
-                'double2txt' => $result[2]->type_name,
-                'price2txt' => $result[2]->price,
-                'room_id1' => $result[1]->room_id,
-                'room_id2' => $result[2]->room_id,
-                'room_id3' => "",
-                'room_id4' => "",
-                'room3txt' => "",
-                'double3txt' =>"",
-                'price3txt' => "",
-                'room4txt' => "",
-                'double4txt' =>"",
-                'price4txt' => ""
-            ]);
-        }
-        else if(count($result)==4){
-            //dd('111');
-            return view("Reception.K004_2")->with([
-                'id' => $result[0]->id,
-                'check_in' => DateTimeUtil::ConvertStringToDate($result[0]->check_in),
-                'check_out' => DateTimeUtil::ConvertStringToDate($result[0]->check_out),
-                'number_of_room' => $result[0]-> number_of_room,
-                'name' => $result[0]->name,
-                'phone' => $result[0]->phone,
-                'email' => $result[0]->mail,
-                'idCard' => $result[0]->identity_card,
-                'company' => $result[0]->company,
-                'address' => $result[0]->address,
-                'company_phone' => $result[0]-> company_phone,
-                'country' => $result[0]-> country,
-                'room1txt' => $result[1]->room_number,
-                'double1txt' => $result[1]->type_name,
-                'price1txt' => $result[1]->price,
-                'room2txt' =>   $result[2]->room_number,
-                'double2txt' => $result[2]->type_name,
-                'price2txt' =>  $result[2]->price,
-                'room3txt' =>  $result[3]->room_number,
-                'double3txt' =>$result[3]->type_name,
-                'price3txt' => $result[3]->price,
-                'room_id1' => $result[1]->room_id,
-                'room_id2' => $result[2]->room_id,
-                'room_id3' => $result[3]->room_id,
-                'room_id4' => "",
-                'room4txt' => "",
-                'double4txt' =>"",
-                'price4txt' => ""
-            ]);
-        }
-        else if(count($result)==5){
-            return view("Reception.K004_2")->with([
-                'id' => $result[0]->id,
-                'check_in' => DateTimeUtil::ConvertStringToDate($result[0]->check_in),
-                'check_out' => DateTimeUtil::ConvertStringToDate($result[0]->check_out),
-                'number_of_room' => $result[0]-> number_of_room,
-                'name' => $result[0]->name,
-                'phone' => $result[0]->phone,
-                'email' => $result[0]->mail,
-                'idCard' => $result[0]->identity_card,
-                'company' => $result[0]->company,
-                'address' => $result[0]->address,
-                'company_phone' => $result[0]-> company_phone,
-                'country' => $result[0]-> country,
-                'room1txt' => $result[1]->room_number,
-                'double1txt' => $result[1]->type_name,
-                'price1txt' => $result[1]->price,
-                'room2txt' =>   $result[2]->room_number,
-                'double2txt' => $result[2]->type_name,
-                'price2txt' =>  $result[2]->price,
-                'room3txt' =>  $result[3]->room_number,
-                'double3txt' =>$result[3]->type_name,
-                'price3txt' => $result[3]->price,
-                'room_id1' => $result[1]->room_id,
-                'room_id2' => $result[2]->room_id,
-                'room_id3' => $result[3]->room_id,
-                'room_id4' => $result[4]->room_id,
-                'room4txt' => $result[4]->room_number,
-                'double4txt' =>$result[4]->type_name,
-                'price4txt' => $result[4]->price
-            ]);
-        }
+//        }
+//        else if(count($result)==3){
+//            return view("Reception.K004_2")->with([
+//                'id' => $result[0]->id,
+//                'check_in' => DateTimeUtil::ConvertStringToDate($result[0]->check_in),
+//                'check_out' => DateTimeUtil::ConvertStringToDate($result[0]->check_out),
+//                'number_of_room' => $result[0]-> number_of_room,
+//                'name' => $result[0]->name,
+//                'phone' => $result[0]->phone,
+//                'email' => $result[0]->mail,
+//                'idCard' => $result[0]->identity_card,
+//                'company' => $result[0]->company,
+//                'address' => $result[0]->address,
+//                'company_phone' => $result[0]-> company_phone,
+//                'country' => $result[0]-> country,
+////                'room1txt' => $result[1]->room_number,
+////                'double1txt' => $result[1]->type_name,
+////                'price1txt' => $result[1]->price,
+////                'room2txt' => $result[2]->room_number,
+////                'double2txt' => $result[2]->type_name,
+////                'price2txt' => $result[2]->price,
+////                'room_id1' => $result[1]->room_id,
+////                'room_id2' => $result[2]->room_id,
+////                'room_id3' => "",
+////                'room_id4' => "",
+////                'room3txt' => "",
+////                'double3txt' =>"",
+////                'price3txt' => "",
+////                'room4txt' => "",
+////                'double4txt' =>"",
+////                'price4txt' => ""
+//            ]);
+//        }
+//        else if(count($result)==4){
+//            //dd('111');
+//            return view("Reception.K004_2")->with([
+//                'id' => $result[0]->id,
+//                'check_in' => DateTimeUtil::ConvertStringToDate($result[0]->check_in),
+//                'check_out' => DateTimeUtil::ConvertStringToDate($result[0]->check_out),
+//                'number_of_room' => $result[0]-> number_of_room,
+//                'name' => $result[0]->name,
+//                'phone' => $result[0]->phone,
+//                'email' => $result[0]->mail,
+//                'idCard' => $result[0]->identity_card,
+//                'company' => $result[0]->company,
+//                'address' => $result[0]->address,
+//                'company_phone' => $result[0]-> company_phone,
+//                'country' => $result[0]-> country,
+////                'room1txt' => $result[1]->room_number,
+////                'double1txt' => $result[1]->type_name,
+////                'price1txt' => $result[1]->price,
+////                'room2txt' =>   $result[2]->room_number,
+////                'double2txt' => $result[2]->type_name,
+////                'price2txt' =>  $result[2]->price,
+////                'room3txt' =>  $result[3]->room_number,
+////                'double3txt' =>$result[3]->type_name,
+////                'price3txt' => $result[3]->price,
+////                'room_id1' => $result[1]->room_id,
+////                'room_id2' => $result[2]->room_id,
+////                'room_id3' => $result[3]->room_id,
+////                'room_id4' => "",
+////                'room4txt' => "",
+////                'double4txt' =>"",
+////                'price4txt' => ""
+//            ]);
+//        }
+//        else if(count($result)==5){
+//            return view("Reception.K004_2")->with([
+//                'id' => $result[0]->id,
+//                'check_in' => DateTimeUtil::ConvertStringToDate($result[0]->check_in),
+//                'check_out' => DateTimeUtil::ConvertStringToDate($result[0]->check_out),
+//                'number_of_room' => $result[0]-> number_of_room,
+//                'name' => $result[0]->name,
+//                'phone' => $result[0]->phone,
+//                'email' => $result[0]->mail,
+//                'idCard' => $result[0]->identity_card,
+//                'company' => $result[0]->company,
+//                'address' => $result[0]->address,
+//                'company_phone' => $result[0]-> company_phone,
+//                'country' => $result[0]-> country,
+////                'room1txt' => $result[1]->room_number,
+////                'double1txt' => $result[1]->type_name,
+////                'price1txt' => $result[1]->price,
+////                'room2txt' =>   $result[2]->room_number,
+////                'double2txt' => $result[2]->type_name,
+////                'price2txt' =>  $result[2]->price,
+////                'room3txt' =>  $result[3]->room_number,
+////                'double3txt' =>$result[3]->type_name,
+////                'price3txt' => $result[3]->price,
+////                'room_id1' => $result[1]->room_id,
+////                'room_id2' => $result[2]->room_id,
+////                'room_id3' => $result[3]->room_id,
+////                'room_id4' => $result[4]->room_id,
+////                'room4txt' => $result[4]->room_number,
+////                'double4txt' =>$result[4]->type_name,
+////                'price4txt' => $result[4]->price
+//            ]);
+//        }
 
 
     }
+    public function LoadBookedRoom(Request $request){
+        $res_id = $request -> res_id;
+        $K004_DAO = new K004_DAO();
+        $room_type = $K004_DAO->LoadRoomType($res_id);
+//        $arr = json_decode($room_type, true);
+//        $room_number = $K004_DAO->LoadRoomNumber($res_id);
+//        array_push($arr[0],$room_number[0] );
+//        dd($arr);
+        return \response($room_type);
+    }
+
+    public function UpdateReservation(Request $request){
+        //update guest information
+        $guest_id   = $request-> guest_id;
+        $fullname   = $request-> fullname;
+        $address    = $request-> address ;
+        $idcard     = $request-> idcard  ;
+        $country    = $request-> country ;
+        $phonetxt   = $request-> phonetxt;
+        $company    = $request-> company ;
+        $email      = $request-> email   ;
+
+        //update reservation
+        $res_id     = $request->res_id;
+        $check_in   = DateTimeUtil::ConvertDateToString($request->check_in) ;
+        $check_out  = DateTimeUtil::ConvertDateToString($request->check_out);
+        $numpeople  = $request->numpeople;
+        $noroom     = $request->noroom ;
+        $status     = $request->status;
+
+        $K004_DAO = new K004_DAO();
+        $update_guest = $K004_DAO->UpdateGuest($guest_id,$fullname,$address,$idcard,$country,$phonetxt,$company,$email);
+
+        if($update_guest == 1){
+            $update_reservation = $K004_DAO->UpdateReservation($res_id,$check_in,$check_out,$numpeople,$noroom,$status);
+            if($update_reservation == 1){
+                return \response('1');
+            }
+        }
+
+        return \response('1');
+    }
+
+
     public function CheckRoom(Request $request){
         $res_id = $request->res_id;
         $K004_DAO = new K004_DAO();

@@ -20,169 +20,121 @@
 
 	<link rel="stylesheet" type="text/css" href="{{asset('css/index.css')}}">
     <style type="text/css">
-	body
-	{
-		padding: 0;
-		margin: 0;
-	}
+		body
+		{
+			padding: 0;
+			margin: 0;
+		}
+		.label1
+		{
+			width : 80px;
+			text-align:right;
+		}
+		.label2
+		{
+			width : 120px;
+			text-align:right;
+		}
 	</style>
+	<title>Reservation detail</title>
 </head>
 <body>
 <div class="container">
 	<div class="row">
-		<div class="col-md-12 col-xs-12" style="margin-top:2%;background-color:rgb(236,236,236);">
+		<div class="col-md-12" style="margin-top:1%;background-color:rgb(236,236,236);">
 			<p class="brand-title">Reservation Detail</p>
 		</div>
-		<div class="col-md-12 col-xs-12" style="background-color:rgb(215,215,215);">
-			<!--Left-->
-			<div class="col-md-7 col-xs-12" style="left:-40px;border-right:1px solid rgb(194,194,194);">
-				<div class="col-md-6 col-xs-7" style="margin-top:10px;">
-					<form class="form-horizontal">
-						<fieldset>
-							<div class="form-group">
-								<label class="col-md-5 control-label" for="">Ngày vào:</label>
-								<div class="col-md-6">
-									<input id="checkin" name="checkin" type="text" value="{{$check_in}}" class="form-control input-md" maxlength ="10">
-
-								</div>
-
-							</div>
-							<div class="form-group">
-								<label class="col-md-5 control-label" for="">Ngày ra:</label>
-								<div class="col-md-6">
-									<input id="checkout" name="checkout" type="text" value="{{$check_out}}" class="form-control input-md" maxlength ="10">
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-md-5 control-label" for="">Tên khách hàng:</label>
-								<div class="col-md-7">
-									<input id="cusName" name="cusName" type="text" value="{{$name}}" class="form-control input-md" maxlength ="20">
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-md-5 control-label" for="">CMND:</label>
-								<div class="col-md-7">
-									<input id="cmnd" name="cmnd" type="text" value="{{$idCard}}" class="form-control input-md" maxlength ="12">
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-md-5 control-label" for="">Điện thoại:</label>
-								<div class="col-md-7">
-									<input id="phone" name="phone" type="text" value="{{$phone}}" class="form-control input-md" maxlength ="15">
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-md-5 control-label" for="">Email:</label>
-								<div class="col-md-7">
-									<input id="email" name="email" type="email" value="{{$email}}" placeholder="@gmail.com" class="form-control input-md" maxlength ="20">
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-md-5 control-label" for="">Địa chỉ:</label>
-								<div class="col-md-7">
-									<input id="address" name="address" type="text" value="{{$address}}" class="form-control input-md" maxlength ="30">
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-md-5 control-label" for="">Ghi chú:</label>
-								<div class="col-md-7">
-									<textarea rows="3" cols="30" id="note" name="note" autofocus maxlength="300"></textarea>
-								</div>
-							</div>
-						</fieldset>
-					</form>
+		<div class="col-md-12" style="background-color:rgb(215,215,215);">
+			<!--left-->
+			<div class="col-md-6" style="border-right:1px solid rgb(236,236,236);">
+				<div class="col-md-12" style="border:5px solid rgb(200,200,200);margin:10px 0px 10px;">
+					<div class="form-inline" style="margin-top:20px;">
+						<label class="label1">Họ tên:</label>
+						<input id="fullnametxt" value="{{$name}}" name="fullnametxt" type="text" class="form-control input-md" size="15">
+						<label class="label1">Địa chỉ:</label>
+						<input id="addresstxt" value="{{$address}}" name="addresstxt" type="text" class="form-control input-md" size="15">
+					</div>
+					<div class="form-inline" style="margin-top:10px;">
+						<label class="label1">CMT:</label>
+						<input id="idcardtxt" value="{{$idCard}}"  name="idcardtxt" type="text" class="form-control input-md" size="15">
+						<label class="label1">Quốc tịch:</label>
+						<select id="countrytxt" name="countrytxt"  style="width:161px;" class="form-control input-md">
+							<option value="England">England</option>
+							<option value="Korea">Korea</option>
+							<option value="Japan">Japan</option>
+							<option value="VietNam" selected>Việt Nam</option>
+						</select>
+					</div>
+					<div class="form-inline" style="margin-top:10px;">
+						<label class="label1">Điện thoại:</label>
+						<input id="phonetxt" name="phonetxt" value="{{$phone}}" type="text" class="form-control input-md" size="15">
+						<label class="label1">Công ty:</label>
+						<input id="companytxt" name="companytxt" value="{{$company}}" type="text" class="form-control input-md" size="15">
+					</div>
+					<div class="form-inline" style="margin-top:10px; margin-bottom:20px;">
+						<label class="label1">Email:</label>
+						<input id="emailtxt" name="emailtxt" value="{{$email}}" type="text" class="form-control input-md" size="15">
+					</div>
 				</div>
-
-				<div class="col-md-6 col-xs-7" style="margin-top:157px;">
-					<form class="form-horizontal">
-						<fieldset>
-
-							<div class="form-group">
-								<label class="col-md-4 control-label" for="">Ngày cấp:</label>
-								<div class="col-md-8">
-									<input id="proDate" name="proDate" type="text" class="form-control input-md" maxlength ="10">
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-md-4 control-label" for="">Cơ quan:</label>
-								<div class="col-md-8">
-									<input id="comName" name="comName" type="text" value="{{$company}}" class="form-control input-md" maxlength ="15">
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-md-4 control-label" for="">Quốc tịch:</label>
-								<div class="col-md-6">
-									<select id="country" name="country" style="width:155px;" class="form-control input-md">
-									</select>
-								</div>
-							</div>
-						</fieldset>
-						<div class="col-md-1 control-label" style="display: none;">
-							<input id="res_id" name="res_id" type="text" value="{{$id}}" maxlength ="10">
-							<input id="number_of_room" name="number_of_room" type="text" value="{{$number_of_room}}" maxlength ="10">
-							<input id="room_id1" name="room_id1" type="text" value="{{$room_id1}}" maxlength ="10">
-							<input id="room_id2" name="room_id2" type="text" value="{{$room_id2}}" maxlength ="10">
-							<input id="room_id3" name="room_id3" type="text" value="{{$room_id3}}" maxlength ="10">
-							<input id="room_id4" name="room_id4" type="text" value="{{$room_id4}}" maxlength ="10">
-						</div>
-					</form>
+				<div class="col-md-12" style="border:5px solid rgb(200,200,200);margin:10px 0px 10px;">
+					<div class="form-inline" style="margin-top:30px;">
+						<label class="label1">Check-in:</label>
+						<input id="checkintxt" name="checkintxt" value="{{$check_in}}" type="text" class="form-control input-md" size="15">
+						<label class="label1">Check-out:</label>
+						<input id="checkouttxt" name="checkouttxt" value="{{$check_out}}" type="text" class="form-control input-md" size="15">
+					</div>
+					<div class="form-inline" style="margin-top:20px;">
+						<label class="label1">Số người:</label>
+						<input id="numofpeopletxt" name="numofpeopletxt" value="{{$nopeople}}" type="number" min="1" class="form-control input-md" size="15" style="width: 160px;">
+						<label class="label1">Số phòng:</label>
+						<input id="noroomtxt" name="noroomtxt" value="{{$noroom}}" type="text" class="form-control input-md" size="15" readonly>
+					</div>
+					<label class="label1" style="margin-top:20px;">Ghi chú:</label>
+					<div class="col-md-12 form-inline" style="margin-top:5px; margin-left:7px;">
+						<textarea rows="4" cols="64" id="notetxt" value="{{$note}}" name="notetxt" autofocus maxlength="300"></textarea>
+					</div>
 				</div>
 			</div>
-			<!--End left-->
-			<!--Right-->
-			<div class="col-md-5">
-
-					<div class="form-group" >
-						<label>Room 1:</label>
-						<input id="room1txt"   value="{{$room1txt}}"   name="room1txt" type="text" class="form-control input-md" readonly="readonly" size="5">
-						<input id="double1txt" value="{{$double1txt}}" name="double1txt" type="text" class="form-control input-md" readonly="readonly" size="8">
-						<input id="price1txt"  value="{{$price1txt}}"  name="price1txt" type="text" class="form-control input-md" dir="rtl" maxlength ="10" size="8">
-
-					</div>
-					<button class="btn btn-default" id="editBtn1" name="editBtn1">Edit</button>
-
-
-				<form class="form-inline" style="margin-top:5px;">
-					<div class="form-group" id="room2">
-						<label>Room 2:</label>
-						<input id="room2txt"   value="{{$room2txt}}"   name="room2txt" type="text" class="form-control input-md" readonly="readonly" size="5">
-						<input id="double2txt" value="{{$double2txt}}" name="double2txt" type="text" class="form-control input-md" readonly="readonly" size="8">
-						<input id="price2txt"  value="{{$price2txt}}"  name="price2txt" type="text" class="form-control input-md" dir="rtl" maxlength ="10" size="8">
-						<button class="btn btn-default" id="editBtn2" name="editBtn2"><b>Edit</b></button>
-					</div>
-				</form>
-				<form class="form-inline" style="margin-top:5px;">
-					<div class="form-group" id="room3">
-						<label>Room 3:</label>
-						<input id="room3txt"   value="{{$room3txt}}"   name="room3txt" type="text" class="form-control input-md" readonly="readonly" size="5">
-						<input id="double3txt" value="{{$double3txt}}" name="double3txt" type="text" class="form-control input-md" readonly="readonly"  size="8">
-						<input id="price3txt"  value="{{$price3txt}}"  name="price3txt" type="text" class="form-control input-md" dir="rtl" maxlength ="10" size="8">
-						<button class="btn btn-default" id="editBtn3" name="editBtn3"><b>Edit</b></button>
-					</div>
-				</form>
-				<form class="form-inline" style="margin-top:5px;">
-					<div class="form-group" id="room4">
-						<label>Room 4:</label>
-						<input id="room4txt"   value="{{$room4txt}}"   name="room4txt" type="text" class="form-control input-md" readonly="readonly" size="5">
-						<input id="double4txt" value="{{$double4txt}}" name="double4txt" type="text" class="form-control input-md" readonly="readonly" size="8">
-						<input id="price4txt"  value="{{$price4txt}}"   name="price4txt" type="text" class="form-control input-md" dir="rtl" maxlength ="10" size="8">
-						<button class="btn btn-default" id="editBtn4" name="editBtn4"><b>Edit</b></button>
-					</div>
-				</form>
+			<!--right-->
+			<div class="col-md-5" style="width:550px;margin:10px 0px 10px 10px;border: 5px solid rgb(200,200,200);">
+				<label>Danh sách phòng: </label>
 				<table id="jqGrid" style="border:1px solid gray;"></table>
-				<div id="jqGridPager" style="height:40px;"></div>
-			</div>
-			<!--End Right-->
-		</div>
-		<div class="col-md-12 col-xs-12" style="background-color:rgb(236,236,236);">
-			<div class="col-md-6 col-md-offset-7" style="margin-top:10px; margin-bottom:10px;">
-				<div class="col-md-3 col-xs-3"><button class="button" value="saveBtn" name="saveBtn" ><b>Save</b></button></div>
-				<div class="col-md-3 col-xs-3"><button class="button" value="cancelBnt" name="cancelBnt" style="background-color:red;"><b>Hủy đơn</b></button></div>
-				<div class="col-md-3 col-xs-3"><button class="button"id="closeBtn" value="closeBtn" name="closeBtn"><b>Close</b></button></div>
+
+
+				<label style="margin-top:10px;">Thông tin thanh toán: </label>
+				<div class="col-md-12" style="border: 2px solid rgb(200,200,200);">
+					<div class="col-md-10 form-inline" style="margin-top:10px;">
+						<label class="label2">Người thanh toán:</label>
+						<input id="payertxt" name="payertxt" type="text" class="form-control" readonly>
+					</div>
+					<div class="col-md-10 form-inline" style="margin-top:10px;">
+						<label class="label2">Ngày thanh toán:</label>
+						<input id="paymentdatetxt" name="paymentdatetxt" type="text" class="form-control" readonly>
+					</div>
+					<div class="col-md-10 form-inline" style="margin-top:10px;margin-bottom:10px;">
+						<label class="label2">Vào tài khoản:</label>
+						<input id="accounttxt" name="accounttxt" type="text" class="form-control" readonly>
+					</div>
+				</div>
+				<div class="col-md-12 form-inline" style="margin:20px 0px 10px 0px;">
+					<label class="label1">Trạng thái: </label>
+					<select class="form-control input-md" id="cboStatus" name="statuscbo" style="width:130px;">
+
+					</select>
+					<button class="roomlistBnt" value="btnSave" name="btnSave" id="btnSave" style="margin-left:20px;"><b>Lưu</b></button>
+					<button class="roomlistBnt" value="btnBack" name="btnBack" id="btnBack" style="margin-left:5px;"><b>Quay Lại</b></button>
+					<button class="roomlistBnt" type="button" name="loadTable" id="btnTable" style="display:none"></button>
+					<input id="res_id" name="res_id" type="text" value="{{$id}}" maxlength ="10" style="display:none">
+					<input id="guest_id" name="guest_id" type="text" value="{{$guest_id}}" maxlength ="10" style="display:none">
+					<input id="status" name="status" type="text" value="{{$status}}" maxlength ="10" style="display:none">
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
+<script>
+
+</script>
 </body>
 <script src="{{asset('Scripts/K004/K004_2.js')}}"></script>
 

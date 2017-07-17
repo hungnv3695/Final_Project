@@ -22,7 +22,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/index.css')}}">
     <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-8">
     <meta charset="utf-8" />
-	<title>jqGrid Loading Data - Million Rows from a REST service</title>
+	<title>Reservation list</title>
 
 </head>
 <body>

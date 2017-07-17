@@ -45,17 +45,23 @@ Route::middleware(['manager'])->group(function () {
 //
 //
 //});
+//K004_1: Reservation_List
 Route::get('/K004_1','K004Controller@K004_1_View');
 Route::get('/K004_1/GetStatus','K004Controller@getReservationStatus');
 Route::get('/K004_1/SearchReservation','K004Controller@getReservation');
 Route::post('/K004','K004Controller@postUserInfor');
 
+//K004_2: Reservation_Detail
 Route::get('/K004_1/K004_2','K004Controller@K004_2_View');
 Route::get('/K004_1/K004_2','K004Controller@GetGuest');
 Route::get('/K004_1/K004_2/GetReservationDetail','K004Controller@GetReservationDetail');
-//Route::get('/K004_1/K004_2/GetRoomFree','K004Controller@GetRoomFree');
+Route::get('/K004_1/K004_2/LoadBookedRoom','K004Controller@LoadBookedRoom');
+Route::get('/K004_1/K004_2/GetStatus','K004Controller@getReservationStatus');
+Route::get('/K004_1/K004_2/UpdateReservation','K004Controller@UpdateReservation');
 
+//K004_3: Change Room Booked
 Route::get('/K004_1/K004_2/K004_3','K004Controller@K004_3_View');
 Route::get('/K004_1/K004_2/K004_3/GetRoomFree','K004Controller@GetRoomFree');
 Route::get('/K004_1/K004_2/K004_3/CheckRoom','K004Controller@CheckRoom');
 Route::get('/K004_1/K004_2/K004_3/SaveRoom','K004Controller@SaveRoom');
+

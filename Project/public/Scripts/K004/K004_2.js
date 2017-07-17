@@ -2,151 +2,136 @@
  * Created by Nguyen Viet Hung on 6/29/2017.
  */
 $(document).ready(function () {
-    var roList=[];
-    var count=jQuery("#jqGrid").jqGrid('getGridParam', 'records');
+    var res_id = $('#res_id').val();
+    var check_in = $('#checkintxt').val();
+    var check_out = $('#checkouttxt').val();
     //JqGrid START
     $("#jqGrid").jqGrid({
-        //url:'K004_1/K004_2/GetRoomFree',
         datatype: "local",
         mtype: "GET",
+
         styleUI : 'Bootstrap',
-        colNames:[
-            '',
-            '',
+        colNames:['Room type',
             'No.room',
-            'Room type',
-            'Price'
+            'Price',
+            'Room',
+
 
         ],
         colModel: [
-            { name: 'item0',  width: 50 , align: "left", sorttype: "text", sortable: false, formatter: function (cellvalue, options) {
-                return addCheckbox(options.rowId);
-            }},
-            { name: 'item0',  width: 50 , align: "left",  sortable: false, formatter: editLink},
-            { name: 'item0',  width: 50 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
-            { name: 'item1',  width: 120, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
-            { name: 'item2',  width: 120, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }}
+            { name: 'item0',  width: 130 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
+            { name: 'item1',  width: 70, align: "right", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
+            { name: 'item2',  width: 100, align: "right", formatter:'currency', formatoptions:{decimalSeparator:".", thousandsSeparator: ",", decimalPlaces: 2, prefix: "$ "}},
+            { name: 'item3',  width: 170, align: "right", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }}
 
         ],
         rownumbers: true,
-        height: 150,
+        height: 145,
         rowNum: 10,
-        pager: "#jqGridPager",
+        //pager: "#jqGridPager",
         autowidth: true,
         autoheight: true,
         loadonce: true,
         resizable: true,
         forceFit: true,
         shrinkToFit: false,
-        ignoreCase: true,
+        footerrow: true,
+        userDataOnFooter: true,
+        altRows : true,
+
+
+        ondblClickRow: function(rowId) {
+            var rowData = jQuery(this).getRowData(rowId);
+            var type_name = rowData['item0'];
+            var no_room = rowData['item1'];
+            window.open('/K004_1/K004_2/K004_3?res_id=' + res_id + '&type_name=' + type_name + '&no_room=' + no_room
+                +"&check_in=" + check_in + "&check_out=" + check_out
+                , '_self');
+
+        },
         loadComplete: function(){
             //set color for even row
             $("tr.jqgrow:even").css("background", "#DDDDDC");
-            //$('#jqGrid').jqGrid('setGridParam', { postData: { result: "" }});
+            $(".jqGrid_item1").append("<p>Total: </p>")
+            var $grid = $('#jqGrid');
+            var colSum = $grid.jqGrid('getCol', 'item2', false, 'sum');
+            $grid.jqGrid('footerData', 'set', { 'item2' : colSum });
+            $grid.jqGrid('footerData', 'set', { 'item1' : "Total:" });
 
-        },
-
-        onSelectRow: function(id,status){
-            var count_checked = jQuery("#jqGrid").find('input[type=checkbox]:checked').length;
-
-            var ch =  jQuery(this).find('#'+id+' input[type=checkbox]').prop('checked');
-            if(ch) {
-                jQuery(this).find('#'+id+' input[type=checkbox]').prop('checked',false);
-            } else {
-                jQuery(this).find('#'+id+' input[type=checkbox]').prop('checked',true);
-                selRowId = $('#jqGrid').jqGrid ('getGridParam', 'selrow');
-                celValue = $('#jqGrid').jqGrid ('getCell', selRowId, 'item2');
-                roList.push(celValue);
-            }
-            if(count_checked > 2){
-                return;
-            }else if(count_checked == 2){
-
-                var ch =  jQuery(this).find('#'+id+' input[type=checkbox]').prop('checked',false);
-                if(ch) {
-                    jQuery(this).find('#'+id+' input[type=checkbox]').prop('checked',false);
-                }
-            }
         }
 
     });
-    console.log(roList);
+
+
     $( ".ui-th-div" ).append( "<p>No.</p>" );
     //Jqgrid END
-    function addCheckbox(id) {
-        return "<input type='checkbox' id='"+ id + "' disabled='disabled'>" ;
-    }
-    function editLink(cellValue, options, rowdata, action)
-    {
-        return "<a href='/K004_1' class='ui-icon ui-icon-pencil' >hung</a>";
-    }
-    //Display number of room START
-    $number_of_room = $('#number_of_room').val();
-    console.log($number_of_room);
-    display_room();
-    function display_room() {
-            switch($number_of_room) {
-                case "1":
-                    $("#room2").css("display", "none");
-                    $("#room3").css("display", "none");
-                    $("#room4").css("display", "none");
-                    break;
-                case "2":
-                    $("#room3").css("display", "none");
-                    $("#room4").css("display", "none");
-                    break;
-                case "3":
-                    $("#room4").css("display", "none");
-                    break;
-                default:
-                    break;
-            }
-    }
-    //Display number of room END
-    //$('#id').val('')
-    function  searchData(check_in,check_out,type_name) {
 
-        console.log($check_in,$check_out,$type_name);
+    var res_id = $('#res_id').val();
+    searchData(res_id);
+    loadStatus();
+    function loadStatus() {
+        var status = $('#status').val();
         $.ajax({
-            url: 'GetRoomFree',
+
+            url: 'GetStatus',
             method: 'GET',
             cache: false,
-            data:{
-                check_in:  $check_in ,
-                check_out: $check_out,
-                type_name: $type_name
-            },
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
             success: function (result) {
+                $("#cboStatus").empty();
+                $("#cboStatus").append($('<option></option>').val("").html(""));
+                for (i=0; i < result.length; i++){
+                    //add data for status combobox
+                    if(result[i].status_id == status){
+                        $("#cboStatus").append($('<option selected></option>').val(result[i].status_id).html(result[i].status_name));
+                    }
+                    else{
+                        $("#cboStatus").append($('<option></option>').val(result[i].status_id).html(result[i].status_name));
+                    }
 
-                addData(result);
-
+                }
             },
             error: function(){
                 alert('error');
             }
+
         });
+
     }
-    $( "#editBtn1" ).click(function() {
-        //jQuery("#jqGrid").jqGrid("clearGridData");
-        $check_in = $('#checkin').val();
-        $check_out = $('#checkout').val();
-        $type_name = $('#double1txt').val();
+    function  searchData(res_id) {
+
+
         jQuery("#jqGrid").jqGrid("clearGridData");
         jQuery("#jqGrid")[0].refreshIndex();
         jQuery("#jqGrid").trigger("reloadGrid");
-        searchData($check_in,$check_out,$type_name);
-
-    });
-
+        var total = 0;
+        $.ajax({
+            url: '/K004_1/K004_2/LoadBookedRoom',
+            method: 'GET',
+            cache: false,
+            data:{
+                res_id: res_id
+            },
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8',
+            success: function (result) {
+                addData(result);
+            },
+            error: function(){
+                alert('Update Error');
+            }
+        });
+    }
     function addData(result){
         var jList=[];
         for(var i = 0; i< result.length; i++){
             var x ={
-                item0: result[i].room_number,
-                item1: result[i].type_name,
-                item2: result[i].price
+                item0: result[i].type_name,
+                item1: result[i].count,
+                item2: result[i].price,
+                item3: result[i].list_room
+
 
             };
             jList.push(x);
@@ -157,8 +142,67 @@ $(document).ready(function () {
         jQuery("#jqGrid").trigger("reloadGrid");
     }
 
-    $( "#closeBtn" ).click(function(){
-       close();
+    $("#btnSave").click(function () {
+        //Guest Information
+        var guest_id  = $('#guest_id').val();
+        var fullname  = $("#fullnametxt").val();
+        var address   = $("#addresstxt").val();
+        var idcard    = $("#idcardtxt").val();
+        var country   = $("#countrytxt").val();
+        var phonetxt  = $("#phonetxt").val();
+        var company   = $("#companytxt").val();
+        var email     = $("#emailtxt").val();
+        //Reservation Information
+        var res_id      = $("#res_id").val();
+        var check_in    = $("#checkintxt").val();
+        var check_out   = $("#checkouttxt").val();
+        var numpeople   = $("#numofpeopletxt").val();
+        var noroom      = $("#noroomtxt").val();
+        var status      = $("#cboStatus").val();
+
+
+
+        console.log(numpeople);
+        $.ajax({
+            url: '/K004_1/K004_2/UpdateReservation',
+            method: 'GET',
+            cache: false,
+            data:{
+                guest_id: guest_id,
+                fullname: fullname,
+                address: address ,
+                idcard: idcard  ,
+                country: country ,
+                phonetxt: phonetxt,
+                company: company ,
+                email: email,
+
+                res_id   : res_id,
+                check_in : check_in  ,
+                check_out: check_out ,
+                numpeople: numpeople ,
+                noroom   : noroom    ,
+                status   : status
+
+            },
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8',
+            success: function (result) {
+                if(result == '1'){
+                    alert('Update Successfully');
+                }else if (result == '0'){
+                    alert('Update Fail');
+                }
+
+            },
+            error: function(){
+                alert('Update Error');
+            }
+        });
+    });
+
+    $( "#btnBack" ).click(function(){
+        window.open('/K004_1','_self')
 
     });
 });

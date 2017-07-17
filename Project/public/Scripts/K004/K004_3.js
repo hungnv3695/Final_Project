@@ -4,6 +4,7 @@
 $(document).ready(function () {
     $('#btnSave').attr("disabled", true);
     var roList = [];
+    var room_number = $('#txtRoomNo').val();
     $res_id = $('#txtResId').val();
     var detail_id=[];
     $("#jqGrid").jqGrid({
@@ -46,9 +47,9 @@ $(document).ready(function () {
                 celValue = $('#jqGrid').jqGrid ('getCell', selRowId, 'item2');
                 roList.push(celValue);
             }
-            if(count_checked > 2){
+            if(count_checked > room_number){
                 return;
-            }else if(count_checked == 2){
+            }else if(count_checked == room_number){
 
                 var ch =  jQuery(this).find('#'+id+' input[type=checkbox]').prop('checked',false);
                 if(ch) {
@@ -143,38 +144,51 @@ $(document).ready(function () {
 
     $("#btnSave").click(function() {
         var count=jQuery("#jqGrid").jqGrid('getGridParam', 'records');
-
+        var checkroom = 0;
         var celValue= [];
+
         for(var i = 1; i<=count; i++){
 
             if(jQuery("#jqGrid").find('#'+ i +' input[type=checkbox]').is(':checked')){
                 celValue.push($('#jqGrid').jqGrid ('getCell', i , 'item2'));
+                checkroom = checkroom + 1;
             }
         }
+        if(checkroom == 0 ){
+            alert('You need choose room for reservation')
+            return;
+        }
+        else if(checkroom < room_number  ){
+            alert('You need choose ' + room_number + ' room for reservation')
+            return;
+        }
+        else {
+            $.ajax({
+                url: '/K004_1/K004_2/K004_3/SaveRoom',
+                method: 'GET',
+                cache: false,
+                data:{
+                    res_id: $res_id,
+                    detail_id: detail_id,
+                    room_id: celValue
 
-        $.ajax({
-            url: '/K004_1/K004_2/K004_3/SaveRoom',
-            method: 'GET',
-            cache: false,
-            data:{
-                res_id: $res_id,
-                detail_id: detail_id,
-                room_id: celValue
+                },
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                success: function (result) {
+                    if(result == detail_id.length){
+                        alert('Update Successfuly');
+                    };
+                    window.open('/K004_1/K004_2?res_id=' + $res_id, "_self");
 
-            },
-            dataType: 'json',
-            contentType: 'application/json; charset=utf-8',
-            success: function (result) {
-                if(result == detail_id.length){
-                    alert('Update Successfuly');
-                };
-                window.open('/K004_1/K004_2?res_id=' + $res_id, "_self");
+                },
+                error: function(){
+                    alert('Update Error');
+                }
+            });
+        }
 
-            },
-            error: function(){
-                alert('Update Error');
-            }
-        });
+
     });
 
     $("#btnBack").click(function () {
