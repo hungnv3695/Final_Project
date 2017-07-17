@@ -94,25 +94,25 @@
                         <div class="form-group" style="margin-top:10px;">
                             <label class="col-md-4 col-xs-4 control-label" for="">ID: </label>
                             <div class="col-md-5 col-xs-5">
-                                <input id="txtRoomID" name="txtRoomID" type="text" class="form-control input-md">
+                                <input id="txtRoomID" name="txtRoomID" type="text" class="form-control input-md" onclick="setDisableRoomType()">
                             </div>
                         </div>
                         <div class="form-group" style="margin-top:10px;">
                             <label class="col-md-4 col-xs-4 control-label" for="">Số phòng: </label>
                             <div class="col-md-5 col-xs-5">
-                                <input id="txtRoomNo" name="txtRoomNo" type="text" class="form-control input-md">
+                                <input id="txtRoomNo" name="txtRoomNo" type="text" class="form-control input-md" onclick="setDisableRoomType()">
                             </div>
                         </div>
                         <div class="form-group" style="margin-top:10px;">
                             <label class="col-md-4 col-xs-4 control-label" for="">Tầng: </label>
                             <div class="col-md-5 col-xs-5">
-                                <input id="floortxt" name="floortxt" type="text" class="form-control input-md">
+                                <input id="floortxt" name="floortxt" type="text" class="form-control input-md" onclick="setDisableRoomType()">
                             </div>
                         </div>
                         <div class="form-group" style="margin-top:10px;">
                             <label class="col-md-4 col-xs-4 control-label" for="">Trạng thái: </label>
                             <div class="col-md-5 col-xs-5">
-                                <select id="txtStatus" name="txtStatus" class="form-control input-md" style="width:140px;">
+                                <select id="txtStatus" name="txtStatus" class="form-control input-md" style="width:140px;" onclick="setDisableRoomType()">
                                     @foreach($status as $data)
                                         <option value="{!! array_get($data,'status_id') !!}"> {!! array_get($data,'status_name') !!}</option>
                                     @endforeach
@@ -121,7 +121,7 @@
                         </div>
                     </div>
                     <div class="col-md-7 col-md-offset-6" style="margin-top:60px;margin-bottom:10px;">
-                        <button class="roomlistBnt" value="bntAdd" name="bntAdd"><b>Add</b></button>
+                        <button class="roomlistBnt" value="bntAdd" name="bntAdd" onclick="setDisableRoomType()"><b>Add</b></button>
                         <button class="roomlistBnt" value="backAdd" name="backAdd" style="margin-left:5px;"><b>Back</b></button>
                     </div>
                 </div>
@@ -189,14 +189,12 @@
 </div>
 <script >
     var select = document.getElementById('roomtype');
-    var roomID = document.getElementById('txtRoomID');
-
     select.onchange = function(){
         Route = "{!!url('/K005_1/K005_3/')!!}" +"?roomTypeID=" + select.value ;
         window.location = Route
     };
 
-    roomID.onclick = function () {
+    function setDisableRoomType() {
         select.disabled = true;
         document.getElementById('txtroomType').value = select.value;
     }

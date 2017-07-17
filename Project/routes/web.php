@@ -29,6 +29,12 @@ Route::post('/K005_1/K005_2/{roomId}','K005Controller@UpdateRoomRequest');
 Route::get('/K005_1/K005_3','K005Controller@ViewAddRoom');
 Route::post('/K005_1/K005_3','K005Controller@AddRoomRequest');
 
+Route::get('/K010_1','K010Controller@ViewAddRoomType');
+Route::post('/K010_1','K010Controller@AddRoomTypeRequest');
+
+Route::get('/K010_2','K010Controller@ViewRoomType');
+Route::post('/K010_2','K010Controller@UpdateRoomTypeRequest');
+
 //Router  Group for Manager
 Route::middleware(['manager'])->group(function () {
 

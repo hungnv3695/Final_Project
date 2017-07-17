@@ -86,19 +86,19 @@
 								<div class="form-group" style="margin-top:10px;">
 									<label class="col-md-4 col-xs-4 control-label" for="">Số phòng: </label>  
 									<div class="col-md-5 col-xs-5">
-										<input id="txtRoomNo" name="txtRoomNo" type="text" class="form-control input-md" value="{!! $roomDetail[0]->room_number !!}" >
+										<input id="txtRoomNo" name="txtRoomNo" type="text" class="form-control input-md" value="{!! $roomDetail[0]->room_number !!}" onclick="setDisableRoomType()">
 									</div>
 								</div>
 								<div class="form-group" style="margin-top:10px;">
 									<label class="col-md-4 col-xs-4 control-label" for="">Tầng: </label>  
 									<div class="col-md-5 col-xs-5">
-										<input id="floortxt" name="floortxt" type="text" class="form-control input-md" value="{!! $roomDetail[0]->floor !!}"  >
+										<input id="floortxt" name="floortxt" type="text" class="form-control input-md" value="{!! $roomDetail[0]->floor !!}"  onclick="setDisableRoomType()" >
 									</div>
 								</div>
 								<div class="form-group" style="margin-top:10px;">
 									<label class="col-md-4 col-xs-4 control-label" for="">Trạng thái: </label>  
 									<div class="col-md-5 col-xs-5">
-										<select id="txtStatus" name="txtStatus" class="form-control input-md" style="width:140px;">
+										<select id="txtStatus" name="txtStatus" class="form-control input-md" style="width:140px;" onclick="setDisableRoomType()" >
 											@foreach($status as $data)
 												<option value="{!! array_get($data,'status_id') !!}"  {!! array_get($data,'status_name') == $roomDetail[0]->status_name ? 'selected':''  !!}> {!! array_get($data,'status_name') !!}</option>
 											@endforeach
@@ -108,12 +108,12 @@
 								<div class="form-group" style="margin-top:10px;">
 									<label class="col-md-4 col-xs-4 control-label" for="">Ghi chú: </label>  
 									<div class="col-md-4 col-xs-4">
-										<textarea rows="3" cols="25" id="txtNote" name="txtNote" autofocus maxlength="200"></textarea>
+										<textarea rows="3" cols="25" id="txtNote" name="txtNote" autofocus maxlength="200" onclick="setDisableRoomType()"  onkeydown="setDisableRoomType()"> {!! $roomDetail[0]->note !!}</textarea>
 									</div>
 								</div>
 							</div>
 							<div class="col-md-7 col-md-offset-6" style="margin-top:55px;margin-bottom:10px;">
-								<button class="roomlistBnt" value="bntAdd" name="bntSave"><b>Save</b></button>
+								<button class="roomlistBnt" value="bntAdd" name="bntSave" onclick="setDisableRoomType()"><b>Save</b></button>
 								<button class="roomlistBnt" value="backAdd" name="backCancel" style="margin-left:5px;"><b>Cancel</b></button>
 							</div>
 							<input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
@@ -185,14 +185,12 @@
 
 		<script>
             var select = document.getElementById('roomtype');
-            var roomID = document.getElementById('txtRoomNo');
-
             select.onchange = function(){
                 Route = "{!!url('/K005_1/K005_2/'. $roomDetail[0]->room_id)!!}" +'?roomTypeID='+ select.value ;
 				window.location = Route
             };
 
-            roomID.onclick = function () {
+			function setDisableRoomType() {
                 select.disabled = true;
                 document.getElementById('txtroomType').value = select.value;
             }

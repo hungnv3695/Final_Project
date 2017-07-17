@@ -76,6 +76,7 @@ CREATE TABLE tbl_room_type(
 	adult integer,
 	children integer,
 	description varchar(100) ,
+	 image_url varchar(100),
 	price numeric(11,2)
 );
 
@@ -121,17 +122,20 @@ CREATE TABLE tbl_reservation(
 	number_of_room integer,
 	number_of_adult integer ,
 	number_of_children integer ,
+	note varchar(200),
+	editer varchar(50),
+	update_ymd timestamp,
 	create_ymd varchar(8) ,
 	FOREIGN KEY (status_id) REFERENCES tbl_status(status_id),
 	FOREIGN KEY (guest_id) REFERENCES tbl_guest(id)	
 );
 
 CREATE TABLE tbl_reservation_detail(
+	id serial PRIMARY KEY,
 	reservation_id integer,
 	room_id varchar(5),
 	price numeric(11,2),
 	create_ymd varchar(8),
-	PRIMARY KEY (reservation_id,room_id ),
 	FOREIGN KEY (reservation_id) REFERENCES tbl_reservation(id),
 	FOREIGN KEY (room_id) REFERENCES tbl_room(room_id)
 );
