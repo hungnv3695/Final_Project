@@ -116,8 +116,6 @@ class K010Controller extends Controller
         }else{
             back()->withInput();
         }
-
-
     }
 
 
