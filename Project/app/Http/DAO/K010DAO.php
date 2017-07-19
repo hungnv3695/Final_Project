@@ -25,6 +25,16 @@ class K010DAO
         }
     }
 
+    public function checkName($roomTypeName){
+        $result = RoomType::where(Constants::TBL_TYPE_NAME ,$roomTypeName)->count();
+
+        if($result!=0){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
     public function addRoomType(RoomType $roomType,$accessory,$count){
        $roomTypeAdd = new RoomType();
        $roomTypeAdd->room_type_id = $roomType->getRoomTypeID();
@@ -44,7 +54,7 @@ class K010DAO
 
     }
 
-    public  function updateRoomType(RoomType $roomType,$accessory,$count){
+    public function updateRoomType(RoomType $roomType,$accessory,$count){
         $roomTypeUpdate = RoomType::find($roomType->getRoomTypeID());
         $roomTypeUpdate->room_type_id = $roomType->getRoomTypeID();
         $roomTypeUpdate->type_name = $roomType->getName();
@@ -53,13 +63,13 @@ class K010DAO
         $roomTypeUpdate->description = $roomType->getDescription();
         $roomTypeUpdate->price = $roomType->getPrice();
 
-
         $result = $roomTypeUpdate->saveOrFail();
+        if($result == false){
+            return false;
+        }
 
         //Them Accessory
         $result = $this->updateAccessory($roomType->getRoomTypeID(),$accessory,$count);
-
-
 
         return $result;
     }
@@ -104,6 +114,10 @@ class K010DAO
         ]);
 
         return $result->toArray();
+    }
+
+    public function checkAvaileblaRoom($roomID){
+
     }
 
     public function getRoomTypeValue($roomTypeID){
