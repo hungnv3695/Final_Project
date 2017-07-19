@@ -11,8 +11,8 @@ use Illuminate\Http\Request;
 define('SESSION_NUMBER_LOGIN', 'NUMBER_LOGIN');
 define('SESSION_USER_INFO','USER_INFO');
 define('LOGIN_ERROR_MSG','LoginErroMsg');
-define('GROUP_MANAGER' , 'GR01');
-define('GROUP_RECEPTIONIST' , 'GR01');
+define('GROUP_MANAGER' , 'G01');
+define('GROUP_RECEPTIONIST' , 'G02');
 
 /**
  * Class K001Controller

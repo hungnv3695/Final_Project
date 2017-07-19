@@ -16,8 +16,10 @@
 		}
 		.label1
 		{
-			width : 80px;
-			text-align:right;
+			width:80px;
+			text-align:left;
+			height:30px;
+			line-height:35px;
 		}
 		table {
 			width: 100%;
@@ -50,22 +52,27 @@
 
 		.col1
 		{
-			width: 10%;
+			width: 8%;
 			float:left;
 		}
 		.col2
 		{
-			width: 40%;
+			width: 35%;
 			float:left;
 		}
 		.col3
 		{
-			width: 25%;
+			width: 18%;
 			float:left;
 		}
 		.col4
 		{
-			width: 25%;
+			width: 24%;
+			float:left;
+		}
+		.col5
+		{
+			width: 10%;
 			float:left;
 		}
 	</style>
@@ -75,13 +82,13 @@
 	<form class="addRoomType" method="POST">
 
 		<div class="row">
-			<div class="col-md-10 col-md-offset-1" style="margin-top:3%;background-color:rgb(236,236,236);">
+			<div class="col-md-12" style="margin-top:2%;background-color:rgb(236,236,236);">
 				<p class="brand-title">Thêm kiểu phòng</p>
 			</div>
-			<div class="col-md-10 col-md-offset-1" style="background-color:rgb(215,215,215);">
+			<div class="col-md-12" style="background-color:rgb(215,215,215);">
 				<!--left-->
 				<div class="col-md-6" style="border-right:1px solid rgb(236,236,236);">
-					<div class="col-md-12 form-horizontal" style="border:2px solid rgb(200,200,200);margin-top:20px;margin-bottom:50px;">
+					<div class="col-md-12 form-horizontal" style="border:2px solid rgb(200,200,200);margin-top:20px;margin-bottom:20px;">
 						<div class="form-group" style="margin-top:30px;">
 							<label class="col-md-4 col-xs-4 control-label" for="">ID: </label>
 							<div class="col-md-4 col-xs-4">
@@ -89,7 +96,7 @@
 							</div>
 						</div>
 						<div class="form-group" style="margin-top:10px;">
-							<label class="col-md-4 col-xs-4 control-label" for="">Tên Loại Phòng:</label>
+							<label class="col-md-4 col-xs-4 control-label" for="">Tên loại phòng:</label>
 							<div class="col-md-6 col-xs-6">
 								<input id="txtFullname" name="txtFullname" type="text" class="form-control input-md" required>
 							</div>
@@ -117,7 +124,7 @@
 							</div>
 							<label class="control-label" for="">/người</label>
 						</div>
-						<div class="form-group" style="margin-bottom:50px;">
+						<div class="form-group" style="margin-bottom:60px;">
 							<label class="col-md-4 col-xs-4 control-label" for="">Miêu tả:</label>
 							<div class="col-md-6 col-xs-6">
 								<textarea rows="3" cols="30" id="descriptiontxt" name="descriptiontxt" autofocus maxlength="300" required></textarea>
@@ -127,16 +134,16 @@
 				</div>
 				<!--right-->
 				<div class="col-md-5">
-					<div class="col-md-12 form-horizontal" style="width:450px;border: 2px solid rgb(200,200,200);margin-top:20px;margin-bottom:50px;">
+					<div class="col-md-12 form-horizontal" style="width:550px;border: 2px solid rgb(200,200,200);margin-top:20px;margin-bottom:20px;">
 						<div class="col-md-12" style="margin-top:30px;margin-bottom:10px;">
-							<label>Thiết Bị: </label>
+							<label>Thiết bị: </label>
 						</div>
 						<table class="table table-hover" style="margin-bottom:56px;" id="table">
 							<thead>
 							<tr>
-								<th class="col1">Stt</th>
-								<th class="col2">Tên Thiết bị</th>
-								<th class="col3">Số Lượng</th>
+								<th class="col1">STT</th>
+								<th class="col2">Tên thiết bị</th>
+								<th class="col3">Số lượng</th>
 								<th class="col4">Giá</th>
 							</tr>
 							</thead>
@@ -146,17 +153,20 @@
 								<td class="col2"> <input id="txtNameAcc1" name="txtNameAcc" type="text" class="form-control input-md"></td>
 								<td class="col3"> <input id="txtQuanlityAcc1" name="txtquanlityAcc" type="number" value="0" class="form-control input-md"></td>
 								<td class="col4"> <input id="txtPriceAcc1" name="txtPriceAcc" type="number" value="0" class="form-control input-md"></td>
+								<td class="col5"><label class="label1">.000(VND)</label></td>
 							</tr>
 							</tbody>
 						</table>
-						<button type="button" class="roomlistBnt col-md-offset-10" value="bntAdd" name="bntAdd" onclick="addAccessory()"><b>Add</b></button>
-						<button type="button" class="roomlistBnt col-md-offset-10" value="bntDelete" name="bntDelete" onclick="deleteAccessory()"><b>Delete</b></button>
+						<div class="col-md-6 col-md-offset-8" style="margin-bottom:20px;">
+							<button type="button" class="roomlistBnt" value="bntAdd" name="bntAdd" onclick="addAccessory()"><b>Add</b></button>
+							<button type="button" class="roomlistBnt" value="bntDelete" name="bntDelete" onclick="deleteAccessory()"><b>Delete</b></button>
+						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-md-10 col-md-offset-1" style="background-color:rgb(236,236,236);">
-				<div class="col-md-5 col-md-offset-9" style="margin-top:10px; margin-bottom:10px;">
-					<button type="submit" class="roomlistBnt" id="bntAddType" value="bntAddType" name="bntAddType"><b>Add-Type</b></button>
+			<div class="col-md-12" style="background-color:rgb(236,236,236);">
+				<div class="col-md-6 col-md-offset-9" style="margin-top:10px; margin-bottom:10px;">
+					<button type="submit" class="roomlistBnt col-md-offset-2" id="bntAddType" value="bntAddType" name="bntAddType"><b>Add-Type</b></button>
 					<button  type="button" class="roomlistBnt" value="bntBack" name="bntBack"><b>Back</b></button>
 				</div>
 			</div>
