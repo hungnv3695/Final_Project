@@ -54,7 +54,6 @@ class K005DAO
         return  $result->toArray();
     }
 
-
     public function getRoomDetail($roomID){
         $result = DB::table('tbl_room_type')
             ->join('tbl_room', 'tbl_room_type.room_type_id', '=','tbl_room.room_type_id')

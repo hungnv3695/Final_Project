@@ -50,8 +50,7 @@ class K004Controller extends Controller{
             $status = "";
             return response()->json($status);
         }
-        //dd(json_encode($status));
-        //$status = json_encode($status);
+
         return response()->json($status);
     }
 
@@ -96,7 +95,7 @@ class K004Controller extends Controller{
      * @param Request $request
      * @return $this
      */
-    public function GetGuest(Request $request){
+    public function getGuest(Request $request){
         if($request->res_id ==""){
             return view("Reception.K004_2")->with([
                 'id' => "",
@@ -118,8 +117,8 @@ class K004Controller extends Controller{
         }
         $res_id = $request->res_id;
         $K004_DAO = new K004_DAO();
-        $guest = $K004_DAO->GetGuestData($res_id);
-        $room = $K004_DAO->GetReservationDetail($res_id);
+        $guest = $K004_DAO->getGuestData($res_id);
+        $room = $K004_DAO->getReservationDetail($res_id);
         $result = array_merge($guest,$room);
 
         return view("Reception.K004_2")->with([
@@ -151,10 +150,10 @@ class K004Controller extends Controller{
      * @param Request $request
      * @return \Illuminate\Contracts\Routing\ResponseFactory|Response
      */
-    public function LoadBookedRoom(Request $request){
+    public function loadBookedRoom(Request $request){
         $res_id = $request -> res_id;
         $K004_DAO = new K004_DAO();
-        $room_type = $K004_DAO->LoadRoomType($res_id);
+        $room_type = $K004_DAO->loadRoomType($res_id);
 
         return \response($room_type);
     }
@@ -164,7 +163,7 @@ class K004Controller extends Controller{
      * @param Request $request
      * @return \Illuminate\Contracts\Routing\ResponseFactory|Response
      */
-    public function UpdateReservation(Request $request){
+    public function updateReservation(Request $request){
         //update guest information
         $guest_id   = $request-> guest_id;
         $fullname   = $request-> fullname;
@@ -184,10 +183,10 @@ class K004Controller extends Controller{
         $status     = $request->status;
 
         $K004_DAO = new K004_DAO();
-        $update_guest = $K004_DAO->UpdateGuest($guest_id,$fullname,$address,$idcard,$country,$phonetxt,$company,$email);
+        $update_guest = $K004_DAO->updateGuest($guest_id,$fullname,$address,$idcard,$country,$phonetxt,$company,$email);
 
         if($update_guest == 1){
-            $update_reservation = $K004_DAO->UpdateReservation($res_id,$check_in,$check_out,$numpeople,$noroom,$status);
+            $update_reservation = $K004_DAO->updateReservation($res_id,$check_in,$check_out,$numpeople,$noroom,$status);
             if($update_reservation == 1){
                 return \response('1');
             }
@@ -203,10 +202,10 @@ class K004Controller extends Controller{
      * @param Request $request
      * @return \Illuminate\Contracts\Routing\ResponseFactory|Response
      */
-    public function CheckRoom(Request $request){
+    public function checkRoom(Request $request){
         $res_id = $request->res_id;
         $K004_DAO = new K004_DAO();
-        $resRoom = $K004_DAO->SelectRoomOfReservation($res_id);
+        $resRoom = $K004_DAO->selectRoomOfReservation($res_id);
         return \response($resRoom);
     }
 
@@ -215,13 +214,13 @@ class K004Controller extends Controller{
      * @param Request $request
      * @return \Illuminate\Contracts\Routing\ResponseFactory|Response
      */
-    public function GetRoomFree(Request $request){
+    public function getRoomFree(Request $request){
         $type_name = $request->type_name;
         $res_id = $request->res_id;
         $check_in= $request->check_in;
         $check_out=$request->check_out;
         $K004_DAO = new K004_DAO();
-        $roomFree = $K004_DAO->SelectRoomFree($res_id,$type_name,$check_in,$check_out);
+        $roomFree = $K004_DAO->selectRoomFree($res_id,$type_name,$check_in,$check_out);
         //dd($roomFree);
         return \response($roomFree);
 
@@ -232,13 +231,13 @@ class K004Controller extends Controller{
      * @param Request $request
      * @return \Illuminate\Contracts\Routing\ResponseFactory|Response
      */
-    public function SaveRoom(Request $request){
+    public function saveRoom(Request $request){
         $res_id = $request -> res_id;
         $detail_id = $request -> detail_id;
         $room_id = $request -> room_id;
         $count = count($detail_id);
         $K004_DAO = new K004_DAO();
-        $result = $K004_DAO->UpdateRoomNumber($detail_id, $room_id, $count);
+        $result = $K004_DAO->updateRoomNumber($detail_id, $room_id, $count);
         return \response($result);
     }
     //endregion

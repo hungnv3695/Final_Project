@@ -60,7 +60,7 @@ class K004_DAO{
         return $result;
     }
 
-    public function GetGuestData($res_id){
+    public function getGuestData($res_id){
         $strSQL = 'SELECT ';
         $strSQL .= 'r.id, ';
         $strSQL .= 'r.check_in, ';
@@ -87,7 +87,7 @@ class K004_DAO{
         return $result;
     }
 
-    public function LoadRoomType($res_id){
+    public function loadRoomType($res_id){
         $strSQL = 'SELECT ';
         $strSQL .='rd.reservation_id, rt.type_name, COUNT(rt.room_type_id) "count", ';
         $strSQL .='sum (rt.price) "price", ';
@@ -102,7 +102,7 @@ class K004_DAO{
         return $result;
     }
 
-    public function LoadRoomNumber($res_id){
+    public function loadRoomNumber($res_id){
         $strSQL = 'select ';
         $strSQL .='ro.room_number from tbl_reservation_detail rd ';
         $strSQL .='join tbl_room ro on rd.room_id = ro.room_id ';
@@ -111,7 +111,7 @@ class K004_DAO{
         $result = DB::select(DB::raw($strSQL));
         return $result;
     }
-    public function GetReservationDetail($res_id){
+    public function getReservationDetail($res_id){
         $strSQL = 'SELECT ';
 	    $strSQL .= 'r.id, ';
         $strSQL .= 'ro.room_id, ';
@@ -134,7 +134,7 @@ class K004_DAO{
         return $result;
     }
 
-    public function UpdateGuest($guest_id,$fullname,$address,$idcard,$country,$phonetxt,$company,$email){
+    public function updateGuest($guest_id,$fullname,$address,$idcard,$country,$phonetxt,$company,$email){
         $strSQL  = 'UPDATE public.tbl_guest ';
 	    $strSQL .= 'SET name= \'' . $fullname . '\', ';
         $strSQL .= 'phone= \'' . $phonetxt . '\', ';
@@ -149,7 +149,7 @@ class K004_DAO{
         return 1;
     }
 
-    public function UpdateReservation($res_id,$check_in,$check_out,$numpeople,$noroom,$status){
+    public function updateReservation($res_id,$check_in,$check_out,$numpeople,$noroom,$status){
         $strSQL  = 'UPDATE public.tbl_reservation ';
         $strSQL .= 'SET status_id= \'' .$status . '\', ';
         $strSQL .='check_in= \'' .$check_in. '\', ';
@@ -163,7 +163,7 @@ class K004_DAO{
         return 1;
     }
 
-    public function SelectRoomFree($res_id,$type_name,$check_in,$check_out){
+    public function selectRoomFree($res_id,$type_name,$check_in,$check_out){
         $strSQL = 'select ro.room_id, ro.room_number, rt.room_type_id , rt.type_name from ';
         $strSQL .='tbl_room ro join tbl_room_type rt ';
         $strSQL .='ON ro.room_type_id = rt.room_type_id ';
@@ -180,13 +180,13 @@ class K004_DAO{
 
     }
 
-    public function  SelectRoomOfReservation($res_id){
+    public function  selectRoomOfReservation($res_id){
         $strSQL= 'select room_id, id from tbl_reservation_detail where reservation_id = '  . $res_id;
         $result = DB::select(DB::raw($strSQL));
         return $result;
     }
 
-    public function UpdateRoomNumber($detail_id, $room_id, $count){
+    public function updateRoomNumber($detail_id, $room_id, $count){
         $a = 0;
         for ($i = 0; $i < $count; $i++) {
             $strSQL = 'UPDATE public.tbl_reservation_detail ';
