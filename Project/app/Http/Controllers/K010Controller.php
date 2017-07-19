@@ -8,7 +8,6 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Http\Common\Constants;
 use App\Http\DAO\K010DAO;
 use App\Models\RoomType;
@@ -16,11 +15,11 @@ use Illuminate\Http\Request;
 
 class K010Controller extends Controller
 {
-    public function ViewAddRoomType(){
+    public function viewAddRoomType(){
         return view('Manager.K010_1');
     }
 
-    public function ViewRoomType(Request $request){
+    public function viewRoomType(Request $request){
         $roomTypeID = $request->roomTypeID;
         $k010Dao = new K010DAO();
 
@@ -39,7 +38,7 @@ class K010Controller extends Controller
 
     }
 
-    public function UpdateRoomTypeRequest(Request $request){
+    public function updateRoomTypeRequest(Request $request){
         $k010Dao = new K010DAO();
 
         $roomType = new RoomType();
@@ -73,7 +72,7 @@ class K010Controller extends Controller
         return redirect('/K010_2');
     }
 
-    public function AddRoomTypeRequest(Request $request){
+    public function addRoomTypeRequest(Request $request){
 
         $k010Dao = new K010DAO();
 

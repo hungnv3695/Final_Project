@@ -14,26 +14,26 @@ Route::get('AccessDeny',function (){
     return view('AccessDeny');
 });
 
-Route::get('/','K008Controller@View');
+Route::get('/','K008Controller@view');
 
 Route::get('/K001','K001Controller@View');
 Route::post('/K001','K001Controller@getLoginRequest');
 
-Route::get('/K005_1','K005Controller@ViewRoom');
-Route::post('/K005_1' , 'K005Controller@GetRoomRequest' );
+Route::get('/K005_1','K005Controller@viewRoom');
+Route::post('/K005_1' , 'K005Controller@getRoomRequest' );
 
 Route::get('/K005_1/K005_2/{roomId}','K005Controller@getViewRoomDetailRequest');
 Route::get('/K005_1/K005_2/{roomId}/{roomType}','K005Controller@getChangeRTRequest');
 
-Route::post('/K005_1/K005_2/{roomId}','K005Controller@UpdateRoomRequest');
-Route::get('/K005_1/K005_3','K005Controller@ViewAddRoom');
-Route::post('/K005_1/K005_3','K005Controller@AddRoomRequest');
+Route::post('/K005_1/K005_2/{roomId}','K005Controller@updateRoomRequest');
+Route::get('/K005_1/K005_3','K005Controller@viewAddRoom');
+Route::post('/K005_1/K005_3','K005Controller@addRoomRequest');
 
-Route::get('/K010_1','K010Controller@ViewAddRoomType');
-Route::post('/K010_1','K010Controller@AddRoomTypeRequest');
+Route::get('/K010_1','K010Controller@viewAddRoomType');
+Route::post('/K010_1','K010Controller@addRoomTypeRequest');
 
-Route::get('/K010_2','K010Controller@ViewRoomType');
-Route::post('/K010_2','K010Controller@UpdateRoomTypeRequest');
+Route::get('/K010_2','K010Controller@viewRoomType');
+Route::post('/K010_2','K010Controller@updateRoomTypeRequest');
 
 //Router  Group for Manager
 Route::middleware(['manager'])->group(function () {

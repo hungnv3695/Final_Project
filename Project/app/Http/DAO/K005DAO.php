@@ -122,7 +122,7 @@ class K005DAO
         return $result->toArray();
     }
 
-    public function  UpdateRoom(Room $room){
+    public function  updateRoom(Room $room){
 
         $roomUpdate = Room::find($room->getRoomID());
 
