@@ -24,8 +24,8 @@ class K005Controller extends Controller
      * View Room List
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function ViewRoom(){
-        $room = $this->GetRoomRequest();
+    public function viewRoom(){
+        $room = $this->getRoomRequest();
 
         return view('Manager.K005_1',compact('room'));
     }
@@ -35,7 +35,7 @@ class K005Controller extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public  function ViewAddRoom(Request $request){
+    public  function viewAddRoom(Request $request){
         $roomTypeID = $request->roomTypeID;
 
 
@@ -61,7 +61,7 @@ class K005Controller extends Controller
      * @param Request|null $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function GetRoomRequest(Request $request = null){
+    public function getRoomRequest(Request $request = null){
 
         $k005DAO = new K005DAO();
 
@@ -99,7 +99,7 @@ class K005Controller extends Controller
      * @param $roomID
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function GetViewRoomDetailRequest(Request $request, $roomID){
+    public function getViewRoomDetailRequest(Request $request, $roomID){
             $roomTypeID = $request->roomTypeID;
 
             $k005DAO = new K005DAO();
@@ -120,7 +120,7 @@ class K005Controller extends Controller
      * @param $roomID
      * @return \Illuminate\Http\RedirectResponse|string
      */
-    public function UpdateRoomRequest(Request $request,$roomID){
+    public function updateRoomRequest(Request $request,$roomID){
         $room = new Room();
         $room->setRoomID($roomID);
         $room->setRoomTypeId($request->txtroomType);
@@ -129,7 +129,7 @@ class K005Controller extends Controller
         $room->setRoomNumber($request->txtRoomNo);
         $room->setNote($request->txtNote);
 
-        $result =  $this->UpdateRoom($room);
+        $result =  $this->updateRoom($room);
 
         if($result == true){
             return redirect('/K005_1')->with(['listallBnt','True']);
@@ -145,10 +145,10 @@ class K005Controller extends Controller
      * @param $accessory
      * @return bool
      */
-    private function UpdateRoom(Room $room ){
+    private function updateRoom(Room $room ){
         $k005DAO = new K005DAO();
 
-        $result = $k005DAO->UpdateRoom($room);
+        $result = $k005DAO->updateRoom($room);
 
         return $result;
     }
@@ -158,7 +158,7 @@ class K005Controller extends Controller
      * @param Request $request
      * @return $this|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|string
      */
-    public function AddRoomRequest(Request $request){
+    public function addRoomRequest(Request $request){
 
 
         $k005DAO = new K005DAO();
@@ -177,7 +177,7 @@ class K005Controller extends Controller
             $room->setRoomNumber($request->txtRoomNo);
 
 
-            $result =  $this->AddRoom($room);
+            $result =  $this->addRoom($room);
 
             if($result == true){
                 return redirect('/K005_1');
@@ -195,7 +195,7 @@ class K005Controller extends Controller
      * @param $accessory
      * @return bool
      */
-    private function AddRoom($room){
+    private function addRoom($room){
         $k005DAO = new K005DAO();
 
         $result = $k005DAO->addRoom($room);

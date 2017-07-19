@@ -11,7 +11,7 @@ namespace App\Http\Controllers;
 
 class K008Controller extends Controller
 {
-    public function View(){
+    public function view(){
         return view('Guest.K008_1');
     }
 }
