@@ -98,7 +98,7 @@
 			<!--right-->
 			<div class="col-md-5" style="width:550px;margin:10px 0px 10px 10px;border: 5px solid rgb(200,200,200);">
 				<label>Danh sách phòng: </label>
-				<table id="jqGrid" style="border:1px solid gray;"></table>
+				<table id="jqGrid" style="border:1px solid black;"></table>
 
 
 				<label style="margin-top:10px;">Thông tin thanh toán: </label>

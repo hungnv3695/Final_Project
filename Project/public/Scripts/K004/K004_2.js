@@ -11,17 +11,17 @@ $(document).ready(function () {
         mtype: "GET",
 
         styleUI : 'Bootstrap',
-        colNames:['Room type',
-            'No.room',
-            'Price',
-            'Room',
+        colNames:['Kiểu phòng',
+            'Số lượng',
+            'Giá',
+            'Phòng',
 
 
         ],
         colModel: [
             { name: 'item0',  width: 130 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
             { name: 'item1',  width: 70, align: "right", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
-            { name: 'item2',  width: 100, align: "right", formatter:'currency', formatoptions:{decimalSeparator:".", thousandsSeparator: ",", decimalPlaces: 2, prefix: "$ "}},
+            { name: 'item2',  width: 100, align: "right", formatter:'currency', formatoptions:{decimalSeparator:".", thousandsSeparator: ",", decimalPlaces: 2}},
             { name: 'item3',  width: 170, align: "right", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }}
 
         ],
@@ -63,7 +63,7 @@ $(document).ready(function () {
     });
 
 
-    $( ".ui-th-div" ).append( "<p>No.</p>" );
+    $( ".ui-th-div" ).append("<p>No</p>");
     //Jqgrid END
 
     var res_id = $('#res_id').val();

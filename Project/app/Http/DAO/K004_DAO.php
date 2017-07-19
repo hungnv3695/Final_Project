@@ -9,6 +9,7 @@
 
 namespace App\Http\DAO;
 use App\Http\Common\Constants;
+use App\Models\Status;
 use App\User;
 use App\UserGroup;
 use App\UserMaster;
@@ -53,11 +54,19 @@ class K004_DAO{
 
     public function getStatus(){
 
-        $strSQL= "Select * From tbl_status Where status_type = 'RS'";
+//        $strSQL= "Select * From tbl_status Where status_type = 'RS'";
+//
+//        $result = DB::select(DB::raw($strSQL));
+//
+//        return $result;
 
-        $result = DB::select(DB::raw($strSQL));
+        $result = Status::where(Constants::TBL_STATUS_TYPE,'=','RS')->get([
+            Constants::TBL_STATUS_ID,
+            Constants::TBL_STATUS_NAME,
+            Constants::TBL_STATUS_ID
+        ]);
 
-        return $result;
+        return $result->toArray();
     }
 
     public function getGuestData($res_id){
