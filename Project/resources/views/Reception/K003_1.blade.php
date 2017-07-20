@@ -42,6 +42,17 @@
             height:30px;
             line-height:30px;
         }
+		.bnt1{
+            background-color:rgb(210,210,210);
+            width: 80px;
+            height:34px;
+            border-radius:5px;
+			font-weight:bold;
+        }
+        .bnt1:hover{
+            background-color:rgb(194,194,194);
+            color:black;
+        }
         .bntRoomstatus {
             background-color:SILVER;
             width: 60px;
@@ -71,25 +82,18 @@
         <div class="col-md-8 col-md-offset-2" style="margin-top:4%;background-color:rgb(236,236,236);">
             <p class="brand-title">Trạng thái phòng</p>
         </div>
-    </div>
-
-        <form method="post" onsubmit="return checkDate();">
-            <div class="form-group"> <!-- Date input -->
-                <label class="control-label" for="date">Check-In</label>
-                <input class="form-control" id="date" name="checkin" placeholder="MM/DD/YYY" type="text"/>
-            </div>
-            <div class="form-group"> <!-- Date input -->
-                <label class="control-label" for="date">Check-Out</label>
-                <input class="form-control" id="date" name="checkout" placeholder="MM/DD/YYY" type="text"/>
-            </div>
-            <button type = "submit" value="bnt101">View</button>
-            <input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
-        </form>
-
-
-
         <div class="col-md-8 col-md-offset-2" style="background-color:rgb(215,215,215);">
             <div class="col-md-12" style="border:3px solid rgb(200,200,200); margin:20px 0px 20px 0px;">
+				<form method="post" onsubmit="return checkDate();" style="margin-top:10px;">
+					<div class="col-md-12 form-inline">
+						<label class="control-label" for="date">Check-In:</label>
+						<input class="form-control" id="date" name="checkin" placeholder="MM/DD/YYY" type="text"/>
+						<label class="control-label" for="date" style="margin-left:20px;">Check-Out:</label>
+						<input class="form-control" id="date" name="checkout" placeholder="MM/DD/YYY" type="text"/>
+						<button class="bnt1" type = "submit" value="bnt101">View</button>
+						<input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
+					</div>	
+				</form>
                 <div class="col-md-12 form-inline" style="margin-top:10px;">
                     <label class="label1">Tầng 5:</label>
                     <button class="bntRoomstatus" value="bnt501" id="501">501</button>
