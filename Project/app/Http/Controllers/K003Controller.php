@@ -19,6 +19,7 @@ class K003Controller extends Controller
     }
 
     public function getRoomStatusRequest(Request $request){
+        dd($request);
         $checkIn = $request->checkin;
         $checkOut = $request->checkout;
 

@@ -6,6 +6,17 @@
     <link rel="stylesheet" type="text/css" href=" {!! asset('plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css') !!} ">
     <link rel="stylesheet" type="text/css" href=" {!! asset('css/index.css') !!}">
 
+    <!--  jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <!-- Isolated Version of Bootstrap, not needed if your site already uses Bootstrap -->
+    <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
+
+    <!-- Bootstrap Date-Picker Plugin -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+
     <style type="text/css">
         body
         {
@@ -62,12 +73,20 @@
         </div>
     </div>
 
-        <form method="post">
-            <input type="text" name="checkin" value="2017/07/18">
-            <input type="text"  name="checkout" value="2017/07/20">
+        <form method="post" onsubmit="return checkDate();">
+            <div class="form-group"> <!-- Date input -->
+                <label class="control-label" for="date">Check-In</label>
+                <input class="form-control" id="date" name="checkin" placeholder="MM/DD/YYY" type="text"/>
+            </div>
+            <div class="form-group"> <!-- Date input -->
+                <label class="control-label" for="date">Check-Out</label>
+                <input class="form-control" id="date" name="checkout" placeholder="MM/DD/YYY" type="text"/>
+            </div>
             <button type = "submit" value="bnt101">View</button>
             <input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
         </form>
+
+
 
         <div class="col-md-8 col-md-offset-2" style="background-color:rgb(215,215,215);">
             <div class="col-md-12" style="border:3px solid rgb(200,200,200); margin:20px 0px 20px 0px;">
@@ -149,7 +168,20 @@
 </div>
 
 <script>
-    var roomStatus = {!!  isset($roomStatus)?json_encode($roomStatus ):""  !!};
+    $(document).ready(function(){
+        var date_input=$('input[id="date"]'); //our date input has the name "date"
+        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+        var options={
+            format: 'mm/dd/yyyy',
+            container: container,
+            todayHighlight: true,
+            autoclose: true,
+        };
+        date_input.datepicker(options);
+    })
+</script>
+<script>
+    var roomStatus = {!!  isset($roomStatus)?json_encode($roomStatus ):" "  !!};
 
 
     for (i = 0; i < roomStatus.length; i++) {
@@ -176,6 +208,23 @@
         }
 
     }
+
+
+</script>
+<script>
+    function checkDate() {
+        var checkin = document.getElementsByName('checkin')[0].value;
+        var checkout = document.getElementsByName('checkout')[0].value;
+
+        if(new Date(checkin).getDate() > new Date(checkout).getDate() ){
+            console.log(checkin,checkout);
+            alert("Check-in phải nhỏ hơn hoặc bằng Check-out");
+            return false;
+        }else{
+            return true;
+        }
+    }
+
 
 
 </script>
