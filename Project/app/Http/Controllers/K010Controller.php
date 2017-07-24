@@ -29,13 +29,12 @@ class K010Controller extends Controller
         } else{
 
             $roomtype = $k010Dao->getRoomType();
+
             $roomTypeSelect = $k010Dao->getRoomTypeValue($roomTypeID);
             $accessory =  $k010Dao->getAccessoryDetail($roomTypeID);
 
             return view('Manager.K010_2',compact('roomtype','roomTypeSelect','accessory'));
         }
-
-
     }
 
     public function updateRoomTypeRequest(Request $request){
@@ -67,6 +66,11 @@ class K010Controller extends Controller
             $accessory += array($str3 => ($request->$str3 ==null)?'0':$request->$str3 );
         }
 
+        //Neu ten ton tai thi hien thi la message loi
+        if(!$k010Dao->checkName($request->txtFullname)){
+            return back()->withInput();
+        }
+
         $result = $k010Dao->updateRoomType($roomType,$accessory,$count);
 
         return redirect('/K010_2');
@@ -78,7 +82,9 @@ class K010Controller extends Controller
 
         if(!$k010Dao->checkKey($request->txtRoomTypeID)){
             return back()->withInput();
-        }else{
+        }else if(!$k010Dao->checkName($request->txtFullname)){
+            return back()->withInput();
+        } else{
 
             $roomType = new RoomType();
             $roomType->setRoomTypeID($request->txtRoomTypeID);
@@ -116,6 +122,4 @@ class K010Controller extends Controller
             back()->withInput();
         }
     }
-
-
 }
