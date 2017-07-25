@@ -17,7 +17,7 @@
         <div class="container">
             <div class="row">
 				<div class="col-md-12 col-xs-12" style="background-color:rgb(215,215,215);margin-top:5%;">					
-						<p class="brand-title" style="font-size:25px;">Hotel management</p>
+						<p class="brand-title" style="font-size:25px;">Quản Lý Khách Sạn</p>
 					<div class="col-md-4 col-xs-12 col-md-offset-4" style="border:1px solid rgb(194,194,194); background-color:white;margin-top:20px;margin-bottom:70px;">
 						<form class="form-horizontal" style="margin-top:40px;margin-bottom:40px;">
 							<fieldset>
@@ -31,7 +31,10 @@
 								  <div class="col-md-4 col-xs-4 col-md-offset-1"><button type="button"  class="managerBnt" value="serviceBnt" name="serviceBnt"   onclick="window.location='{{ url("/K003") }}'"><b>Quản Lý Dịch Vụ</b></button></div>
 								</div>
 								<div class="form-group">
-								  <div class="col-md-4 col-xs-4 col-md-offset-1"><button type="button" class="managerBnt" value="accoutingBnt" name="accoutingBnt" onclick="window.location='{{ url("/K003") }}'" ><b>Thống Kê</b></button></div>
+									<div class="col-md-4 col-xs-4 col-md-offset-1"><button type="button"  class="managerBnt" value="pageBnt" name="pageBnt"  ><b>Quản lý Trang</b></button></div>
+								</div>
+								<div class="form-group">
+								  <div class="col-md-4 col-xs-4 col-md-offset-1"><button type="button" class="managerBnt" value="accoutBnt" name="accoutBnt" ><b>Quản lý tài khoản</b></button></div>
 								</div>
 							</fieldset>
 						</form>
