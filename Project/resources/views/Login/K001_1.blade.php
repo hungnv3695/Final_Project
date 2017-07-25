@@ -141,8 +141,8 @@
 							<p class="form-title">Sign In</p>
 							<form class="login" method="POST" >
 								<input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
-								<input type="text"  name = "userID" placeholder="Username" value="{!! old('userID') !!}"/>
-								<input type="password" name="password" placeholder="Password" />
+								<input type="text"  name = "userID" placeholder="Username" value="{!! old('userID') !!}" required/>
+								<input type="password" name="password" placeholder="Password"  required />
 								<div class="Error">
 									@if(Session::has('LoginErroMsg'))
 										<p style="color:red;" >{!! Session::get('LoginErroMsg') !!} </p>

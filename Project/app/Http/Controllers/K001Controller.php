@@ -67,7 +67,7 @@ class K001Controller extends Controller
 
                 if( strcmp($userInfo[0]->group_cd, GROUP_MANAGER  ) == 0 ){
                     return view('Manager.K002_1');
-                } elseif( strcmp( $userInfo[0]->group_cd, GROUP_MANAGER) == 0 ) {
+                } elseif( strcmp( $userInfo[0]->group_cd, GROUP_RECEPTIONIST) == 0 ) {
                     return view('Reception.K002_1');
                 }
 

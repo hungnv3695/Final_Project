@@ -19,7 +19,7 @@
     <div class="row">
         <div class="col-md-12 col-xs-12" style="background-color:rgb(215,215,215);margin-top:5%;">
             <div class="col-md-12 col-xs-12">
-                <p class="brand-title" style="font-size:25px;">Hotel management</p>
+                <p class="brand-title" style="font-size:25px;">Reception List</p>
             </div>
             <div class="col-md-4 col-xs-12 col-md-offset-4" style="border:1px solid rgb(194,194,194); background-color:white;margin-top:20px;margin-bottom:70px;">
                 <form class="form-horizontal" style="margin-top:40px;margin-bottom:40px;">
