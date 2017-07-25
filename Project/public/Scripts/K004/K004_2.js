@@ -191,8 +191,8 @@ $(document).ready(function () {
             success: function (result) {
                 if(result == '1'){
                     alert('Update Successfully');
-                }else if (result == '0'){
-                    alert('Update Fail');
+                }else {
+                    alert(result);
                 }
 
             },

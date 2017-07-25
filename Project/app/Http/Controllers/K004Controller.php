@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Symfony\Component\HttpFoundation\Response;
 use App\Http\Common\DateTimeUtil;
+use Illuminate\Support\Facades\DB;
 
 class K004Controller extends Controller{
 
@@ -34,6 +35,11 @@ class K004Controller extends Controller{
             'txtCheckOut' => $check_out,
             'txtCheckIn' => $check_in
         ]);
+    }
+
+    public function K004_4_View(){
+
+        return view('Reception.K004_4');
     }
     //endregion
 
@@ -159,9 +165,11 @@ class K004Controller extends Controller{
     }
 
     //K004_2: Update Reservation
+
     /**
      * @param Request $request
      * @return \Illuminate\Contracts\Routing\ResponseFactory|Response
+     * @throws \Exception
      */
     public function updateReservation(Request $request){
         //update guest information
@@ -183,15 +191,22 @@ class K004Controller extends Controller{
         $status     = $request->status;
 
         $K004_DAO = new K004_DAO();
-        $update_guest = $K004_DAO->updateGuest($guest_id,$fullname,$address,$idcard,$country,$phonetxt,$company,$email);
+        try{
+            DB::beginTransaction();
+            $update_guest = $K004_DAO->updateGuest($guest_id,$fullname,$address,$idcard,$country,$phonetxt,$company,$email);
 
-        if($update_guest == 1){
-            $update_reservation = $K004_DAO->updateReservation($res_id,$check_in,$check_out,$numpeople,$noroom,$status);
-            if($update_reservation == 1){
-                return \response('1');
-            }
+                $update_reservation = $K004_DAO->updateReservation($res_id,$check_in,$check_out,$numpeople,$noroom,$status);
+                if($update_reservation == 1){
+                    DB::commit();
+                    return \response('1');
+                }
+
+        } catch (\Exception $e){
+            DB::rollback();
+            //dd($e->getMessage());
+            return \response($e->getMessage());
+
         }
-
         return \response('1');
     }
     //endregion
@@ -237,10 +252,41 @@ class K004Controller extends Controller{
         $room_id = $request -> room_id;
         $count = count($detail_id);
         $K004_DAO = new K004_DAO();
-        $result = $K004_DAO->updateRoomNumber($detail_id, $room_id, $count);
-        return \response($result);
+
+        try{
+
+            DB::beginTransaction();
+            $result = $K004_DAO->updateRoomNumber($detail_id, $room_id, $count);
+            DB::commit();
+            return \response($result);
+
+        }catch (Exception $e){
+
+            DB::rollback();
+            return \response($result);
+            throw $e;
+
+        }
+
+
     }
     //endregion
 
 
+    public function getRoomType(){
+        $K004_DAO = new K004_DAO();
+        $room_type = $K004_DAO->getRoomType();
+
+        return \response($room_type);
+
+    }
+
+    public function searchRoomFree(Request $request){
+        $check_in = DateTimeUtil::ConvertDateToString($request->check_in);
+        $check_out = DateTimeUtil::ConvertDateToString($request->check_out);
+        $K004_DAO = new K004_DAO();
+        $result = $K004_DAO->getRoomFree($check_in,$check_out);
+        //dd($result);
+        return \response($result);
+    }
 }

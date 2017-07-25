@@ -178,6 +178,9 @@ $(document).ready(function () {
                 success: function (result) {
                     if(result == detail_id.length){
                         alert('Update Successfuly');
+                    }
+                    else {
+                        alert('Update Failed');
                     };
                     window.open('/K004_1/K004_2?res_id=' + $res_id, "_self");
 

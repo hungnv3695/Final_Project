@@ -9,14 +9,24 @@
 
 namespace App\Http\DAO;
 use App\Http\Common\Constants;
+use App\Models\RoomType;
 use App\Models\Status;
 use App\User;
 use App\UserGroup;
 use App\UserMaster;
+//use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\ServiceProvider;
+
 
 class K004_DAO{
-    public function selectReservation($fname,$idCard,$status){
+    /**
+     * @param $fname
+     * @param $idCard
+     * @param $status
+     * @return mixed
+     */
+    public function selectReservation($fname, $idCard, $status){
         $t1 = 'UPPER(g.name) LIKE \'%' . mb_strtoupper(trim($fname)) . '%\'';
         $t2 = 'UPPER(g.identity_card) LIKE \'%' . strtoupper(trim($idCard)) . '%\'';
         $t3 = 's.status_id = \'' . trim($status). '\'' ;
@@ -155,7 +165,6 @@ class K004_DAO{
 	    $strSQL .= 'WHERE id = \'' . $guest_id . '\'';
 
         DB::select(DB::raw($strSQL));
-        return 1;
     }
 
     public function updateReservation($res_id,$check_in,$check_out,$numpeople,$noroom,$status){
@@ -208,4 +217,29 @@ class K004_DAO{
         return $a;
     }
 
+    //K004_4
+    public function getRoomType(){
+        $result = RoomType::get([
+            Constants::TBL_ROOM_TYPE_ID,
+            Constants::TBL_TYPE_NAME,
+        ]);
+        return $result->toArray();
+    }
+
+    public function getRoomFree($check_in,$check_out){
+        $strSQL = 'select ro.room_id, ro.room_number, rt.room_type_id , rt.type_name from ';
+        $strSQL .='tbl_room ro join tbl_room_type rt ';
+        $strSQL .='ON ro.room_type_id = rt.room_type_id ';
+        $strSQL .='where ro.room_type_id <> \'RO04\' AND ';
+        $strSQL .=' NOT ro.room_id IN (select rd.room_id from ';
+        $strSQL .='tbl_reservation r join tbl_reservation_detail rd ON ';
+        $strSQL .='r.id = rd.reservation_id where  ';
+        $strSQL .= '((r.check_in BETWEEN \'' . $check_in . '\' AND \'' .$check_out. '\') ';
+        $strSQL .='OR (r.check_out BETWEEN \'' .$check_in. '\' AND \'' .$check_out .'\'))) ';
+        $strSQL .='ORDER BY ro.room_number ASC';
+
+        $result = DB::select(DB::raw($strSQL));
+
+        return $result;
+    }
 }
