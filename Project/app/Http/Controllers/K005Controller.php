@@ -25,9 +25,7 @@ class K005Controller extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function viewRoom(){
-        $room = $this->getRoomRequest();
-
-        return view('Manager.K005_1',compact('room'));
+        return view('Manager.K005_1');
     }
 
     /**
@@ -64,6 +62,7 @@ class K005Controller extends Controller
     public function getRoomRequest(Request $request = null){
 
         $k005DAO = new K005DAO();
+        //dd($request);
 
         switch ($request){
 
@@ -113,7 +112,6 @@ class K005Controller extends Controller
             return view('Manager.K005_2',compact('roomDetail', 'accessory','roomtype','status','roomTypeSelect'));
     }
 
-
     /**
      *  get Request Update Room
      * @param Request $request
@@ -132,7 +130,8 @@ class K005Controller extends Controller
         $result =  $this->updateRoom($room);
 
         if($result == true){
-            return redirect('/K005_1')->with(['listallBnt','True']);
+            $room = $this->getRoomRequest();
+            return view('Manager.K005_1',compact('room'));
         }else{
             return Message::MSG0004;
         }
@@ -180,7 +179,8 @@ class K005Controller extends Controller
             $result =  $this->addRoom($room);
 
             if($result == true){
-                return redirect('/K005_1');
+                $room = $this->getRoomRequest();
+                return view('Manager.K005_1',compact('room'));
             }else{
                 return Message::MSG0004;
             }

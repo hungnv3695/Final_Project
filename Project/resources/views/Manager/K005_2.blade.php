@@ -99,9 +99,12 @@
 									<div class="form-inline" style="margin-top:20px;">
 										<label class="label1" for="">Trạng thái: </label>  
 											<select id="txtStatus" name="txtStatus" class="form-control input-md" style="width:140px;" onclick="setDisableRoomType()" >
-												@foreach($status as $data)
-													<option value="{!! array_get($data,'status_id') !!}"  {!! array_get($data,'status_name') == $roomDetail[0]->status_name ? 'selected':''  !!}> {!! array_get($data,'status_name') !!}</option>
-												@endforeach
+													@if( ($roomDetail[0]->status_id == 'RO01') || ($roomDetail[0]->status_id == 'RO03')  )
+														<option value="RO01" {!! $roomDetail[0]->status_id == 'RO01' ? 'selected':'' !!} > Phòng Trống </option>
+														<option value="RO03" {!! $roomDetail[0]->status_id == 'RO03' ? 'selected':'' !!}>  Bảo Trì </option>
+												    @else
+													<option value="{!! $roomDetail[0]->status_id !!}" >  {!!$roomDetail[0]->status_name  !!} </option>
+													@endif
 											</select>
 									</div>
 									<div class="form-inline" style="margin-top:20px;margin-bottom:20px;">
@@ -179,7 +182,6 @@
                 select.disabled = true;
                 document.getElementById('txtroomType').value = select.value;
             }
-
 		</script>
 
 </body>
