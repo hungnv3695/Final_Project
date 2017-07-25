@@ -20,8 +20,8 @@ $(document).ready(function () {
         ],
         colModel: [
             { name: 'item0',  width: 130 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
-            { name: 'item1',  width: 70, align: "right", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
-            { name: 'item2',  width: 100, align: "right", formatter:'currency', formatoptions:{decimalSeparator:".", thousandsSeparator: ",", decimalPlaces: 2}},
+            { name: 'item1',  width: 70, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
+            { name: 'item2',  width: 100, align: "left", formatter:'currency', formatoptions:{decimalSeparator:".", thousandsSeparator: ",", decimalPlaces: 2}},
             { name: 'item3',  width: 170, align: "right", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }}
 
         ],
@@ -38,6 +38,7 @@ $(document).ready(function () {
         footerrow: true,
         userDataOnFooter: true,
         altRows : true,
+        //gridview: true,
 
 
         ondblClickRow: function(rowId) {
@@ -190,8 +191,8 @@ $(document).ready(function () {
             success: function (result) {
                 if(result == '1'){
                     alert('Update Successfully');
-                }else if (result == '0'){
-                    alert('Update Fail');
+                }else {
+                    alert(result);
                 }
 
             },

@@ -74,3 +74,7 @@ Route::get('/K004_1/K004_2/K004_3/GetRoomFree','K004Controller@getRoomFree');
 Route::get('/K004_1/K004_2/K004_3/CheckRoom','K004Controller@checkRoom');
 Route::get('/K004_1/K004_2/K004_3/SaveRoom','K004Controller@saveRoom');
 
+Route::get('/K004_4','K004Controller@K004_4_View');
+Route::get('/K004_4/GetRoomType','K004Controller@getRoomType');
+Route::get('/K004_4/SearchRoomFree','K004Controller@searchRoomFree');
+
