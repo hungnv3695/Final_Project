@@ -61,6 +61,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2" style="margin-top:4%;background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
 			<div class="row">
+				<a href="#" class="col-md-offset-11" style="display:block;margin-top:10px;"><b>Log-out</b></a>
 				<p class="brand-title">Trạng thái phòng</p>
 			</div>
         </div>

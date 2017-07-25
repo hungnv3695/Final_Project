@@ -86,11 +86,12 @@
             <div class="row">
 				<div class="col-md-8 col-md-offset-2" style="margin-top:3%;background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
 					<div class="row">
-						<p class="brand-title">List room</p>
+						<a href="#" class="col-md-offset-11" style="display:block;margin-top:10px;"><b>Log-out</b></a>
+						<p class="brand-title">Danh sách phòng</p>
 					</div>
 				</div>
 				<div class="col-md-8 col-md-offset-2" style="border:1px solid rgb(215,215,215); border-top:none;border-bottom:none;">
-						<form class="form-inline col-md-offset-5" style="margin-top:20px;margin-bottom:20px;" method="POST" >
+						<form class="form-inline col-md-offset-5" style="margin-top:20px;margin-bottom:20px;" method="POST" >	
 							<input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
 							<label class="label1 control-label">Tầng:</label>
 							<select id="searchfloor" name="searchfloor" style="width:56px;" class="form-control input-md">

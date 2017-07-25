@@ -41,6 +41,7 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1" style="margin-top:1%;background-color:rgb(245,245,245);border:1px solid rgb(215,215,215);">
 				<div class="row">
+					<a href="#" class="col-md-offset-11" style="display:block;margin-top:10px;"><b>Log-out</b></a>
 					<p class="brand-title" style="font-size:25px;">Reservation List</p>
 				</div>
             </div>
