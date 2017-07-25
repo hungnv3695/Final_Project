@@ -22,11 +22,11 @@
 						<form class="form-horizontal" style="margin-top:40px;margin-bottom:40px;">
 							<fieldset>
 								<div class="form-group">
-									<div class="col-md-4 col-xs-4 col-md-offset-1"><button type="button"  class="managerBnt" value="re-detailBnt" name="re-detailBnt"  onclick="window.location='{{ url("/K005_1") }}'" ><b>Quản Lý Phòng </b></button></div>
+									<div class="col-md-4 col-xs-4 col-md-offset-1"><button type="button"  class="managerBnt" value="romm-sttBtn" name="romm-sttBtn"  onclick="window.location='{{ url("/K010_2") }}'" ><b>Quản Lý Loại Phòng</b></button></div>
 								</div>
 
 								<div class="form-group">
-								  <div class="col-md-4 col-xs-4 col-md-offset-1"><button type="button"  class="managerBnt" value="romm-sttBtn" name="romm-sttBtn"  onclick="window.location='{{ url("/K010_2") }}'" ><b>Quản Lý Loại Phòng</b></button></div>
+									<div class="col-md-4 col-xs-4 col-md-offset-1"><button type="button"  class="managerBnt" value="re-detailBnt" name="re-detailBnt"  onclick="window.location='{{ url("/K005_1") }}'" ><b>Quản Lý Phòng </b></button></div>
 								</div>
 
 								<div class="form-group">
