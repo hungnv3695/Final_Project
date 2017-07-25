@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/index.css">
+
     <style type="text/css">
 	body
 	{
@@ -52,6 +53,65 @@
 		border-radius:5px;
 	}
 	</style>
+	
+<style>
+
+* {
+  font-family: arial;
+}
+ul {
+  list-style: none;
+}
+li {
+  max-width:300px;
+  border-bottom: thin solid gray;
+  padding: 4px;
+}
+.tooltip {
+  transform: translateX(-50%);
+  width: 140px;
+  visibility: hidden;
+  background-color: #373739;
+  color: #fff;
+  font-size: 12px;
+  font-family: Helvetica,Arial,sans-serif;
+  cursor: default;
+  text-shadow: none;
+  text-align: center;
+  overflow: visible;
+  padding: 10px 15px;
+  border: 1px solid #6d6e71;
+  border-top-color: #373739;
+  box-shadow: 1px 1px 2px rgba(0,0,0,.15);
+  -webkit-transition: opacity .3s ease-in .3s;
+  transition: opacity .3s ease-in .3s;  
+  position: absolute;
+  overflow: hidden;
+  opacity: 0;
+}
+.tooltip:after {
+  content: ' ';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  display: block;
+  height: 0;
+  width: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #373739;
+  margin-left: -10px;
+}
+
+button:hover + .tooltip,
+button:focus + .tooltip,
+button:active + .tooltip {
+    visibility: visible;
+    opacity: 1;
+    margin-top:20px;
+}
+</style>
+
 </head>
 <body>
         <div class="container">
@@ -63,9 +123,18 @@
 					<div class="col-md-12" style="border:3px solid rgb(200,200,200); margin:20px 0px 20px 0px;">
 						<div class="col-md-12 form-inline" style="margin-top:10px;">
 							<label class="label1">Tầng 5:</label>
-							<button class="bntRoomstatus" value="bnt501">501</button>
+							<div>
+							<button class="bntRoomstatus" value="bnt502">501</button>
+							<span class="tooltip">Double</span>
+							</div>
+							<div>
 							<button class="bntRoomstatus" value="bnt502">502</button>
+							<span class="tooltip">Single</span>
+							</div>
+							<div>
 							<button class="bntRoomstatus" value="bnt503">503</button>
+							<span class="tooltip">Royal</span>
+							</div>
 							<button class="bntRoomstatus" value="bnt504">504</button>
 							<button class="bntRoomstatus" value="bnt505">505</button>
 							<button class="bntRoomstatus" value="bnt506">506</button>
