@@ -51,7 +51,7 @@
             float:left;
             height:30px;
             width:30px;
-            border:none;
+            border:1px solid gray;
             border-radius:5px;
         }
     </style>
@@ -134,7 +134,7 @@
                 </div>
                 <div class="col-md-12 form-inline" style="margin-bottom:20px;">
                     <div class="col-md-3">
-                        <div class="Roomstatus" style="background-color:rgb(240,240,240);"></div>
+                        <div class="Roomstatus" style="background-color:white;"></div>
                         <label class="label2">Phòng trống</label>
                     </div>
                     <div class="col-md-3">
