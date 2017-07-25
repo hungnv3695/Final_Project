@@ -69,15 +69,15 @@
 <body>
         <div class="container">
             <div class="row">
-				<div class="col-md-10 col-md-offset-1" style="margin-top:3%;background-color:rgb(236,236,236);">
+				<div class="col-md-10 col-md-offset-1" style="margin-top:3%;background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
 					<div class="row">
 						<p class="brand-title">Chi tiết phòng</p>
 					</div>
 				</div>
 				<form  class="editroom" method="POST" >
-					<div class="col-md-10 col-md-offset-1" style="background-color:rgb(215,215,215);">
+					<div class="col-md-10 col-md-offset-1" style="border:1px solid rgb(215,215,215); border-top:none;">
 						<div class="row">
-							<div class="col-md-5 form-horizontal" style="margin:10px 30px 10px;border: 2px solid rgb(200,200,200);">
+							<div class="col-md-5 form-horizontal" style="margin:10px 30px 10px;border: 2px solid rgb(236,236,236);">
 									<div class="form-inline" style="margin-top:20px;">
 										<label class="label1" for="">Kiểu phòng: </label>  
 											<select id="roomtype" name="roomtype" class="form-control input-md" style="width:140px;">
@@ -114,7 +114,7 @@
 									<input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
 							</div>
 						<!--right-->
-							<div class="col-md-6 form-horizontal" style="margin:10px 0px 10px;border: 2px solid rgb(200,200,200);">
+							<div class="col-md-6 form-horizontal" style="margin:10px 0px 10px;border: 2px solid rgb(236,236,236);">
 									<div class="form-inline" style="margin-top:20px;">
 										<label class="label1" for="">Giá: </label>
 										<input id="txtPrice" name="txtPrice" type="text" class="form-control input-md" size="15" value = "{!! array_get($roomTypeSelect[0],'price') !!}" readonly>
