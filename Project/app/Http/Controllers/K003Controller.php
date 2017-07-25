@@ -15,7 +15,11 @@ use Illuminate\Http\Request;
 class K003Controller extends Controller
 {
     public function view(){
-        return view('Reception.K003_1');
+
+        $k003 = new K003DAO();
+        $roomStatus = $k003->getStatusToDay(date("Y/m/d"));
+
+        return view('Reception.K003_1',compact('roomStatus'));
     }
 
     public function getRoomStatusRequest(Request $request){

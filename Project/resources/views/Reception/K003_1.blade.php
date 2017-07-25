@@ -113,6 +113,7 @@
                     <button class="btn btn-default active" value="bnt308" id="308" >308</button>
                     <button class="btn btn-default active" value="bnt309" id="309" >309</button>
                 </div>
+
                 <div class="col-md-12 form-inline">
                     <label class="label1">Tầng 2:</label>
                     <button class="btn btn-default active" value="bnt201" id="201" >201</button>
@@ -170,7 +171,6 @@
 <script>
     var roomStatus = {!!  isset($roomStatus)?json_encode($roomStatus ):" "  !!};
 
-
     for (i = 0; i < roomStatus.length; i++) {
         var id = roomStatus[i].room_number;
         var status =  roomStatus[i].max;
@@ -198,6 +198,8 @@
 
 
 </script>
+
+
 <script>
     function checkDate() {
         var checkin = document.getElementsByName('checkin')[0].value;
