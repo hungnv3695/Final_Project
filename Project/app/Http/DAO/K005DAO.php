@@ -27,18 +27,27 @@ class K005DAO
             ->join('tbl_room', 'tbl_room_type.room_type_id', '=','tbl_room.room_type_id')
             ->join('tbl_status', 'tbl_room.status_id', '=','tbl_status.status_id');
 
+        // search by search string
         if ($searchStr !=  null){
-            $query->where('tbl_room.room_number','like','%' . $searchStr . '%' )
-                ->orWhere('tbl_room_type.type_name','ILIKE','%' . $searchStr . '%' );
+            $query->where(function ($query) use ($searchStr){
+                return $query->where('tbl_room.room_number','like','%' . $searchStr . '%' )
+                    ->orwhere('tbl_room_type.type_name','ILIKE','%' . $searchStr . '%' );
+            } );
         }
 
+        //search by floor
         if ($searchFloor != null && $searchFloor!= 0){
-            $query->where('tbl_room.floor',$searchFloor );
+            //$query->where('tbl_room.floor',$searchFloor );
+            $query->where(function ($query) use ($searchFloor){
+                return $query->where('tbl_room.floor',$searchFloor );
+            } );
         }
 
         $query->distinct()
             ->orderBy( Constants::TBL_FLOOR)
             ->orderBy( Constants::TBL_ROOM_NUMBER);
+
+        //dd($query);
 
         $result = $query->get([
             'tbl_room_type.room_type_id',
@@ -67,7 +76,8 @@ class K005DAO
                     'tbl_room.note',
                     'tbl_room_type.price',
                     'tbl_room_type.description',
-                    'tbl_status.status_name'
+                    'tbl_status.status_name',
+                    'tbl_status.status_id'
             ]);
 
         return  $result->toArray();
