@@ -116,9 +116,6 @@ class K010DAO
         return $result->toArray();
     }
 
-    public function checkAvaileblaRoom($roomID){
-
-    }
 
     public function getRoomTypeValue($roomTypeID){
         $result = RoomType::where(Constants::TBL_ROOM_TYPE_ID,$roomTypeID)

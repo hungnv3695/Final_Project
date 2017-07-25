@@ -12,9 +12,9 @@ namespace App\Http\Common;
 class Message
 {
     //Error message for login
-    const MSG0001 = "Tên đang nhập không đúng";
-    const MSG0002 = "Tài khoản của bạn không tồn tại";
-    const MSG0003 = "Hãy nhập mật khẩu";
+    const MSG0001 = "Tên đăng nhập không đúng";
+    const MSG0002 = "Tài khoản của bạn đã bị khóa";
+    const MSG0003 = "Tài khoản không tồn tại";
     const MSG0004 = "Mật khẩu sai, tài khoản sẽ bị khóa nếu đăng nhập sai 3 lần";
     //-------------------------------------------
     const MSG0005 = "Các mục bắt buộc không được trống";

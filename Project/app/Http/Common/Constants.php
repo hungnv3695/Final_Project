@@ -62,12 +62,5 @@ class Constants
         const  USER_GROUP = "t_user_group";
         const  PERMISSION = " t_permission " ;
 
-        const ACCESSORY_BAN = "Bàn";
-        const ACCESSORY_DIEU_HOA = "Điều Hòa";
-        const ACCESSORY_GIUONG = "Giường";
-        const ACCESSORY_QUAT= "Quạt";
-        const ACCESSORY_TIVI = "TiVi";
-        const ACCESSORY_TU_LANH = "Tủ Lạnh";
-
 
 }
