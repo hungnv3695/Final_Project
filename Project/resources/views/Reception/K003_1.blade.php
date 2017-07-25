@@ -79,11 +79,13 @@
 <body>
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2" style="margin-top:4%;background-color:rgb(236,236,236);">
-            <p class="brand-title">Trạng thái phòng</p>
+        <div class="col-md-8 col-md-offset-2" style="margin-top:4%;background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
+			<div class="row">
+				<p class="brand-title">Trạng thái phòng</p>
+			</div>
         </div>
-        <div class="col-md-8 col-md-offset-2" style="background-color:rgb(215,215,215);">
-            <div class="col-md-12" style="border:3px solid rgb(200,200,200); margin:20px 0px 20px 0px;">
+        <div class="col-md-8 col-md-offset-2" style="border:1px solid rgb(215,215,215); border-top:none;">
+            <div class="col-md-12" style="border:3px solid rgb(200,200,200); margin:20px 0px 20px 0px;border: 2px solid rgb(236,236,236);">
 				<form method="post" onsubmit="return checkDate();" style="margin-top:10px;">
 					<div class="col-md-12 form-inline">
 						<label class="control-label" for="date">Check-In:</label>
