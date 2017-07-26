@@ -103,7 +103,7 @@
 
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">Giá: </label>
-								<input id="txtPrice" name="txtPrice" type="numberic" class="form-control input-md" required >
+								<input id="txtPrice" name="txtPrice" type="number" class="form-control input-md" required >
 								<label class="control-label" for="">/đêm</label>
 							</div>
 
@@ -119,7 +119,7 @@
 							</div>
 							<div class="form-inline" style="margin-top:20px;margin-bottom:40px;">
 								<label class="label1" for="">Miêu tả:</label>
-								<textarea rows="3" cols="30" id="descriptiontxt" name="descriptiontxt" class="form-control" maxlength="300" required></textarea>
+								<textarea rows="3" cols="30" id="descriptiontxt" name="descriptiontxt" class="form-control" maxlength="100" required></textarea>
 							</div>
 					</div>
 					<!--right-->
