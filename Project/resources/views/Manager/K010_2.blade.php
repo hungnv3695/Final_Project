@@ -105,28 +105,28 @@
 							</div>
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">Tên loại Phòng:</label>
-								<input id="txtFullname" name="txtFullname" type="text" class="form-control input-md" size="15" value= " {!! isset($roomTypeSelect[0])? array_get($roomTypeSelect[0],'type_name'):"" !!} " required>
+								<input id="txtFullname" name="txtFullname" type="text" class="form-control input-md" size="15" value= " {!! isset($roomTypeSelect[0])? array_get($roomTypeSelect[0],'type_name'):"" !!} " oninvalid="InvalidMsg(this);" required>
 							</div>
 
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">Giá: </label>
-								<input id="txtPrice" name="txtPrice" type="number" class="form-control input-md" value= "{!!isset($roomTypeSelect[0])?(int)array_get($roomTypeSelect[0],'price'):'0'!!}" required >
+								<input id="txtPrice" name="txtPrice" type="number" class="form-control input-md" default="0" min="0" value= "{!!isset($roomTypeSelect[0])?(int)array_get($roomTypeSelect[0],'price'):'0'!!}" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required >
 								<label class="control-label" for="">/đêm</label>
 							</div>
 
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">Người lớn: </label>
-								<input id="txtAdult" name="txtAdult" type="number" class="form-control input-md" value= "{!! isset($roomTypeSelect[0])?(int) array_get($roomTypeSelect[0],'adult'):'0'!!}" required>
+								<input id="txtAdult" name="txtAdult" type="number" class="form-control input-md" min="1" value= "{!! isset($roomTypeSelect[0])?(int) array_get($roomTypeSelect[0],'adult'):'0'!!}" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);" required>
 								<label class="control-label" for="">/người</label>
 							</div>
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">Trẻ em: </label>
-								<input id="txtChildren" name="txtChildren" type="number" class="form-control input-md" value= "{!!isset($roomTypeSelect[0])?(int) array_get($roomTypeSelect[0],'children'):'0'!!}" required>
+								<input id="txtChildren" name="txtChildren" type="number" class="form-control input-md" min="1" value= "{!!isset($roomTypeSelect[0])?(int) array_get($roomTypeSelect[0],'children'):'0'!!}" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);" required>
 								<label class="control-label" for="">/người</label>
 							</div>
 							<div class="form-inline" style="margin-top:20px;margin-bottom:43px;">
 								<label class="label1" for="">Miêu tả:</label>
-								<textarea rows="3" cols="30" id="descriptiontxt" class="form-control" name="descriptiontxt" maxlength="300" required> {!! isset($roomTypeSelect[0])? array_get($roomTypeSelect[0],'description'):"" !!} </textarea>
+								<textarea rows="3" cols="30" id="descriptiontxt" class="form-control" name="descriptiontxt" maxlength="100"  > {!! isset($roomTypeSelect[0])? array_get($roomTypeSelect[0],'description'):"" !!} </textarea>
 							</div>
 					</div>
 					<!--right-->
@@ -151,9 +151,9 @@
 											<?php ($i==1)?$str="":$str=$i-1; ?>
 
 											<td class="col1">{!! $i !!}</td>
-											<td class="col2"> <input id="txtNameAcc1" name="{!! "txtNameAcc" . $str !!}"   type="text" class="form-control input-md" value=" {!!array_get($data,'accessory_name')!!}" ></td>
-											<td class="col3"> <input id="txtQuanlityAcc1" name="{!! "txtquanlityAcc" . $str !!}" type="number" class="form-control input-md" value="{!!(int)array_get($data,'quanlity') !!}" ></td>
-											<td class="col4"> <input id="txtPriceAcc1" name="{!! "txtPriceAcc" . $str !!}" type="number" class="form-control input-md" value="{!! (int)array_get($data,'price') !!}"  ></td>
+											<td class="col2"> <input id="txtNameAcc1" name="{!! "txtNameAcc" . $str !!}"   type="text" class="form-control input-md" value=" {!!array_get($data,'accessory_name')!!}"  oninvalid="InvalidMsg(this);" required ></td>
+											<td class="col3"> <input id="txtQuanlityAcc1" name="{!! "txtquanlityAcc" . $str !!}" type="number" class="form-control input-md" value="{!!(int)array_get($data,'quanlity') !!}" min="0" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required ></td>
+											<td class="col4"> <input id="txtPriceAcc1" name="{!! "txtPriceAcc" . $str !!}" type="number" class="form-control input-md" value="{!! (int)array_get($data,'price') !!}" min="1" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required  ></td>
 										</tr>
 										<?php $i++?>
 									@endforeach
@@ -205,8 +205,8 @@
 		}
     }
 
-
 </script>
 
+<script src="Scripts/FrontCheck/CheckError.js"> </script>
 </body>
 </html>

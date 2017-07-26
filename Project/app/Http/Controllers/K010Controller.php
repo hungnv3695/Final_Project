@@ -105,7 +105,7 @@ class K010Controller extends Controller
 
                 $str1 = Constants::NAME_ACC . $i;
                 $str2 = Constants::PRICE_ACC .$i ;
-                $str3 = Constants::QUANLITY_ACC . $i;
+                    $str3 = Constants::QUANLITY_ACC . $i;
 
                 $accessory += array($str1 => $request->$str1 );
                 $accessory += array($str2 => $request->$str2 );
