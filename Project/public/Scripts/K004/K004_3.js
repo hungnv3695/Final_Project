@@ -58,7 +58,8 @@ $(document).ready(function () {
             }
         },
         loadComplete: function(){
-            $("tr.jqgrow:even").css("background", "#DDDDDC");
+            $("tr.jqgrow:even").css("background", "#F5F5F5");
+            $("tr.jqgrow:odd").css("background", "#EEE8AA");
             checkroom($res_id);
         }
 

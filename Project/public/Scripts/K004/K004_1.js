@@ -75,7 +75,8 @@ $(document).ready(function () {
         },
         loadComplete: function(){
             //set color for even row
-            $("tr.jqgrow:even").css("background", "#DDDDDE");
+            $("tr.jqgrow:even").css("background", "#F5F5F5");
+            $("tr.jqgrow:odd").css("background", "#EEE8AA");
         }
 
     });
