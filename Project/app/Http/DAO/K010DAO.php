@@ -25,12 +25,21 @@ class K010DAO
         }
     }
 
-    public function checkName($roomTypeName){
-        $result = RoomType::where(Constants::TBL_TYPE_NAME ,$roomTypeName)->count();
+    public function checkName($roomTypeName,$roomTypeID){
+        $result = RoomType::where(Constants::TBL_TYPE_NAME ,$roomTypeName)
+            ->where(Constants::TBL_ROOM_TYPE_ID ,$roomTypeID)
+            ->count();
 
-        if($result!=0){
-            return false;
-        }else{
+        if($result == 0){
+            $result = RoomType::where(Constants::TBL_TYPE_NAME ,$roomTypeName)->count();
+
+            if($result!=0){
+                return false;
+            }else{
+                return true;
+            }
+
+        } else{
             return true;
         }
     }
@@ -108,10 +117,11 @@ class K010DAO
     }
 
     public function getRoomType(){
-        $result = RoomType::get([
-            Constants::TBL_ROOM_TYPE_ID,
-            Constants::TBL_TYPE_NAME
-        ]);
+        $result = RoomType::orderBy(Constants::TBL_TYPE_NAME)
+            ->get([
+                Constants::TBL_ROOM_TYPE_ID,
+                Constants::TBL_TYPE_NAME
+            ]);
 
         return $result->toArray();
     }

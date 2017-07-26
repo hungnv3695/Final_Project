@@ -67,7 +67,7 @@ class K010Controller extends Controller
         }
 
         //Neu ten ton tai thi hien thi la message loi
-        if(!$k010Dao->checkName($request->txtFullname)){
+        if(!$k010Dao->checkName($request->txtFullname,$request->txtRoomTypeID)){
             return back()->withInput();
         }
 
@@ -82,7 +82,7 @@ class K010Controller extends Controller
 
         if(!$k010Dao->checkKey($request->txtRoomTypeID)){
             return back()->withInput();
-        }else if(!$k010Dao->checkName($request->txtFullname)){
+        }else if(!$k010Dao->checkName($request->txtFullname,$request->txtRoomTypeID)){
             return back()->withInput();
         } else{
 
