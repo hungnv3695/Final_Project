@@ -31,7 +31,7 @@ function addAccessory() {
     var inp3 = new_row.cells[3].getElementsByTagName('input')[0];
     inp3.name += len-1;
     inp3.id += len;
-    inp3.value = '0';
+    inp3.value = '1';
 
     var tbody = table.getElementsByTagName('tbody')[0];
 

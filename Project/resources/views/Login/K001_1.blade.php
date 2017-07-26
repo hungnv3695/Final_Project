@@ -140,9 +140,10 @@
 						<form class="login" action ="" name="Login" method="POST" >
 							<p class="form-title">Sign In</p>
 							<form class="login" method="POST" >
-								<input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
-								<input type="text"  name = "userID" placeholder="Username" value="{!! old('userID') !!}" required/>
-								<input type="password" name="password" placeholder="Password"  required />
+								<input type="hidden" name = "_token" value="{!! csrf_token() !!}"    />
+								<input type="text"  name = "userID" placeholder="Username" value="{!! old('userID') !!}" oninvalid="InvalidMsg(this);" required/>
+
+								<input type="password" name="password" placeholder="Password"  oninvalid="InvalidMsg(this);" required  />
 								<div class="Error">
 									@if(Session::has('LoginErroMsg'))
 										<p style="color:red;" >{!! Session::get('LoginErroMsg') !!} </p>
@@ -158,5 +159,7 @@
 	</div>
 	<div class="posted-by">HOTEL : <a style="text-decoration: none;" href="{!! URL('/') !!}">HOME</a></div>
 </div>
+
+<script src="Scripts/FrontCheck/CheckError.js"> </script>
 </body>
 </html>

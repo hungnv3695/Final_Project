@@ -164,6 +164,7 @@
             container: container,
             todayHighlight: true,
             autoclose: true,
+            startDate: '+0d'
         };
         date_input.datepicker(options);
     })
