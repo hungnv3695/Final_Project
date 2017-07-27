@@ -168,9 +168,10 @@
 							<label class="label1">Số phòng:</label>
 							<input id="txtNumroom" name="txtNumroom" type="number" min="1" value="1" class="form-control input-md" size="5" style="width: 100px;">
                             <div class="col-md-10 col-md-offset-4">
-                                <button class="Bnt " id="btnSearch" value="bntAddRoom" name="bntAddRoom" style="margin-top:20px;"><b>Search</b></button>
-                            </div>
-                            <div class="col-md-10" style="margin:10px 30px 10px;border: 2px solid rgb(200,200,200);">
+                                <button class="roomlistBnt" id="btnSearch" value="bntAddRoom" name="bntAddRoom" style="margin-top:20px;"><b>Search</b></button>
+
+                            </div >
+                            <div class="col-md-10" style="margin:20px 30px 10px;border: 2px solid rgb(200,200,200);">
                                 <table id="jqGrid" style="border:1px solid gray;"></table>
                             </div>
                         </div>
@@ -178,7 +179,7 @@
 					</div>
 
 					<div class="form-inline col-md-offset-7">
-						<button class="roomlistBnt" value="bntSave" name="bntSave" style="margin-top:10px;"><b>Đặt phòng</b></button>
+						<button class="roomlistBnt" id="btnSave" value="btnSave" name="btnSave" style="margin-top:10px;"><b>Đặt phòng</b></button>
 						<button class="roomlistBnt" value="bntClose" name="bntClose" style="margin-top:10px;"><b>Quay lại</b></button>
 					</div>
 				</div>

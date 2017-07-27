@@ -318,8 +318,32 @@ $(document).ready(function () {
         jQuery("#jqGrid").trigger("reloadGrid");
         e.preventDefault();
         checkroom(check_in,check_out);
-    });
 
+    });
+    $('#btnSave').click(function(event){
+
+        event.preventDefault();
+
+        $.ajax({
+            url: '/K004_4/insertResInfor',
+            method: 'GET',
+            cache: false,
+            dataType: 'json',
+            data: $("input").serialize(),
+
+
+
+            contentType: 'application/json; charset=utf-8',
+            success: function (result) {
+                addData(result);
+            },
+            error: function(){
+                alert('error');
+            }
+        });
+        e.preventDefault();
+
+    });
 
 
 });

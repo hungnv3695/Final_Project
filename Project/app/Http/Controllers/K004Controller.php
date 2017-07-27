@@ -289,4 +289,9 @@ class K004Controller extends Controller{
         //dd($result);
         return \response($result);
     }
+
+    public function insertResInfor(Request $request){
+        dd($request);
+        //dd($request);
+    }
 }

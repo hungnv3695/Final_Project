@@ -67,6 +67,7 @@ Route::get('/K004_1/K004_2/GetReservationDetail','K004Controller@getReservationD
 Route::get('/K004_1/K004_2/LoadBookedRoom','K004Controller@loadBookedRoom');
 Route::get('/K004_1/K004_2/GetStatus','K004Controller@getReservationStatus');
 Route::get('/K004_1/K004_2/UpdateReservation','K004Controller@updateReservation');
+Route::get('/K004_1/K004_2/ChangeSttToProcessing', 'K004Controller@changeSttToProcessing');
 
 //K004_3: Change Room Booked
 Route::get('/K004_1/K004_2/K004_3','K004Controller@K004_3_View');
@@ -74,7 +75,9 @@ Route::get('/K004_1/K004_2/K004_3/GetRoomFree','K004Controller@getRoomFree');
 Route::get('/K004_1/K004_2/K004_3/CheckRoom','K004Controller@checkRoom');
 Route::get('/K004_1/K004_2/K004_3/SaveRoom','K004Controller@saveRoom');
 
+//K004_4: Reservation Offline
 Route::get('/K004_4','K004Controller@K004_4_View');
 Route::get('/K004_4/GetRoomType','K004Controller@getRoomType');
 Route::get('/K004_4/SearchRoomFree','K004Controller@searchRoomFree');
+Route::get('/K004_4/insertResInfor','K004Controller@insertResInfor');
 
