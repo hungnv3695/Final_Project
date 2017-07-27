@@ -17,9 +17,16 @@
         <div class="container">
             <div class="row">
 				<div class="col-md-8 col-md-offset-2" style="margin-top:5%;background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
-					<div class="row">					
-						<a href="#" class="col-md-offset-11" style="display:block;margin-top:10px;"><b>Log-out</b></a>
-						<p class="brand-title" style="font-size:25px;">Quản Lý Khách Sạn</p>
+					<div class="row">
+						<div class="col-md-offset-9" style="margin:10px 10px 0px 0px;float:right;">
+							@if(Session::has('USER_INFO'))
+								<p class="account">{!! "Xin chào " . Session::get('USER_INFO')->user_name !!} </p>
+							@endif					
+							<a href="{!! url('/K001/LogOut') !!}"><b>| Log-out</b></a>
+						</div>
+						<div class="col-md-12">
+							<p class="brand-title" style="font-size:25px;">Quản Lý Khách Sạn</p>
+						</div>
 					</div>
 				</div>
 					<div class="col-md-8 col-md-offset-2" style="background-color:rgb(230,230,230);border:1px solid rgb(215,215,215); border-top:none;">
