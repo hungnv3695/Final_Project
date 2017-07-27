@@ -76,7 +76,7 @@
 					@if(Session::has('USER_INFO'))
 					<p class="account">{!! "Xin chào " . Session::get('USER_INFO')->user_name !!} </p>
 					@endif
-					<a href="{!! url('/K001/LogOut') !!}"><b>| Log-out</b></a>
+					<b>|</b><a href="{!! url('/K001/LogOut') !!}"><b> Log-out</b></a>
 				</div>
 				<div class="col-md-12">
 					<p class="brand-title">Thêm phòng</p>
@@ -120,7 +120,7 @@
 							</div>
 						<div class="form-inline col-md-offset-7" style="margin-top:115px;margin-bottom:20px;">
 							<button class="btn btn-primary" value="bntAdd" name="bntAdd" onclick="setDisableRoomType()"><b>Add</b></button>
-							<button type="button" class="btn btn-danger" value="bntBack" name="bntBack" style="margin-left:5px;" onclick="window.location='{{ url("/K005_1") }}'"><b>Back</b></button>
+							<button type="button" class="btn btn-danger" value="bntCancel" name="bntCancel" style="margin-left:5px;" onclick="window.location='{{ url("/K005_1") }}'"><b>Cancel</b></button>
 						</div>
 					</div>
 					<input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
