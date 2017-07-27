@@ -90,7 +90,7 @@
 							@if(Session::has('USER_INFO'))
 								<p class="account">{!! "Xin chào " . Session::get('USER_INFO')->user_name !!} </p>
 							@endif
-							<a href="{!! url('/K001/LogOut') !!}"><b>| Log-out</b></a>
+							<b>|</b><a href="{!! url('/K001/LogOut') !!}"><b> Log-out</b></a>
 						</div>
 						<div class="col-md-12">
 							<p class="brand-title">Danh sách phòng</p>
@@ -156,7 +156,7 @@
 				</div>
 				<div class="col-md-8 col-md-offset-2" style="background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
 					<div class="col-md-2 col-md-offset-10" style="margin-top:10px; margin-bottom:10px;">
-						<button type="button" class="btn btn-danger col-md-offset-2" value="BtnBack" name="BtnBack" onclick="window.location='{{ url("/K002") }}'" ><b>Back</b></button>
+						<button type="button" class="btn btn-danger col-md-offset-2" value="btnBack" name="btnBack" onclick="window.location='{{ url("/K002") }}'" ><b>Back</b></button>
 					</div>
 				</div>
             </div>

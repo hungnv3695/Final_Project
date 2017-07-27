@@ -75,7 +75,7 @@
 							@if(Session::has('USER_INFO'))
 								<p class="account">{!! "Xin chào " . Session::get('USER_INFO')->user_name !!} </p>
 							@endif
-							<a href="{!! url('/K001/LogOut') !!}"><b>| Log-out</b></a>
+							<b>|</b><a href="{!! url('/K001/LogOut') !!}"><b> Log-out</b></a>
 						</div>
 						<div class="col-md-12">
 							<p class="brand-title">Chi tiết phòng</p>
@@ -119,8 +119,8 @@
 										<textarea rows="3" cols="25" id="txtNote" class="form-control" name="txtNote" maxlength="100" onclick="setDisableRoomType()"  onkeydown="setDisableRoomType()"> {!! $roomDetail[0]->note !!}</textarea>
 									</div>
 									<div class="form-inline col-md-offset-6" style="margin-top:75px;margin-bottom:20px;">
-										<button class="btn btn-primary" value="bntAdd" name="bntSave" onclick="setDisableRoomType()"><b>Save</b></button>
-										<button type="button" class="btn btn-danger" value="backAdd" name="backCancel" style="margin-left:5px;" onclick="window.location='{{ url("/K005_1") }}'"><b>Cancel</b></button>
+										<button class="btn btn-primary" value="bntSave" name="bntSave" onclick="setDisableRoomType()"><b>Save</b></button>
+										<button type="button" class="btn btn-danger" value="bntCancel" name="bntCancel" style="margin-left:5px;" onclick="window.location='{{ url("/K005_1") }}'"><b>Cancel</b></button>
 									</div>
 									<input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
 							</div>
