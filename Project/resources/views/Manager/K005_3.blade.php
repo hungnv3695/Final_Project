@@ -72,7 +72,10 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1" style="margin-top:3%;background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
 			<div class="row">
-				<a href="#" class="col-md-offset-11" style="display:block;margin-top:10px;"><b>Log-out</b></a>
+				@if(Session::has('USER_INFO'))
+					<p>{!! "Xin chào " . Session::get('USER_INFO')->user_name !!} </p>
+				@endif
+				<a href="{!! url('/K001/LogOut') !!}" class="col-md-offset-11" style="display:block;margin-top:10px;"><b>Log-out</b></a>
 				<p class="brand-title">Thêm phòng</p>
 			</div>
         </div>
@@ -113,7 +116,7 @@
 							</div>
 						<div class="form-inline col-md-offset-7" style="margin-top:115px;margin-bottom:20px;">
 							<button class="btn btn-primary" value="bntAdd" name="bntAdd" onclick="setDisableRoomType()"><b>Add</b></button>
-							<button class="btn btn-danger" value="bntBack" name="bntBack" style="margin-left:5px;"><b>Back</b></button>
+							<button class="btn btn-danger" value="bntBack" name="bntBack" style="margin-left:5px;" onclick="javascript:history.go(-1)" ><b>Back</b></button>
 						</div>
 					</div>
 					<input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />

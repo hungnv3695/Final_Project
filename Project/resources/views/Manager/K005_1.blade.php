@@ -86,7 +86,10 @@
             <div class="row">
 				<div class="col-md-8 col-md-offset-2" style="margin-top:3%;background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
 					<div class="row">
-						<a href="#" class="col-md-offset-11" style="display:block;margin-top:10px;"><b>Log-out</b></a>
+						@if(Session::has('USER_INFO'))
+							<p>{!! "Xin chào " . Session::get('USER_INFO')->user_name !!} </p>
+						@endif
+						<a href="{!! url('/K001/LogOut') !!}" class="col-md-offset-11" style="display:block;margin-top:10px;"><b>Log-out</b></a>
 						<p class="brand-title">Danh sách phòng</p>
 					</div>
 				</div>
@@ -149,7 +152,7 @@
 				</div>
 				<div class="col-md-8 col-md-offset-2" style="background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
 					<div class="col-md-2 col-md-offset-10" style="margin-top:10px; margin-bottom:10px;">
-						<button class="btn btn-danger col-md-offset-2" value="backBtn" name="backBtn" onclick="window.history.back();" ><b>Back</b></button>
+						<button class="btn btn-danger col-md-offset-2" value="backBtn" name="backBtn" onclick="javascript:history.go(-1)" ><b>Back</b></button>
 					</div>
 				</div>
             </div>

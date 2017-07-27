@@ -24,9 +24,14 @@ class K001Controller extends Controller
      * show Login Form
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function View(){
+    public function view(){
 
         return view('Login.K001_1');
+    }
+
+    public function logOut(){
+        session()->flush();
+        return redirect('/K001');
     }
 
     /**
@@ -65,11 +70,13 @@ class K001Controller extends Controller
                 session()->forget(SESSION_NUMBER_LOGIN);
                 session()->put(SESSION_USER_INFO,$userInfo[0]);
 
-                if( strcmp($userInfo[0]->group_cd, GROUP_MANAGER  ) == 0 ){
-                    return view('Manager.K002_1');
-                } elseif( strcmp( $userInfo[0]->group_cd, GROUP_RECEPTIONIST) == 0 ) {
-                    return view('Reception.K002_1');
-                }
+                //if( strcmp($userInfo[0]->group_cd, GROUP_MANAGER  ) == 0 ){
+                 //   return view('Manager.K002_1');
+                //} elseif( strcmp( $userInfo[0]->group_cd, GROUP_RECEPTIONIST) == 0 ) {
+               //     return view('Reception.K002_1');
+                //}
+
+                return redirect('/K002');
 
                 break;
         }

@@ -16,8 +16,11 @@ Route::get('AccessDeny',function (){
 
 Route::get('/','K008Controller@view');
 
-Route::get('/K001','K001Controller@View');
+Route::get('/K001','K001Controller@view');
 Route::post('/K001','K001Controller@getLoginRequest');
+
+Route::get('/K001/LogOut','K001Controller@logOut');
+Route::get('/K002', 'K002Controller@view');
 
 Route::get('/K005_1','K005Controller@viewRoom');
 Route::post('/K005_1' , 'K005Controller@getRoomRequest' );
