@@ -93,11 +93,11 @@
 
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">ID: </label>
-								<input id="txtRoomID" name="txtRoomID" type="text" class="form-control input-md" onclick="setDisableRoomType()">
+								<input id="txtRoomID" name="txtRoomID" type="text" class="form-control input-md" maxlength="5" onclick="setDisableRoomType()">
 							</div>
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">Số phòng: </label>
-								<input id="txtRoomNo" name="txtRoomNo" type="text" class="form-control input-md" onclick="setDisableRoomType()">
+								<input id="txtRoomNo" name="txtRoomNo" type="text" class="form-control input-md" maxlength="5" onclick="setDisableRoomType()">
 							</div>
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">Tầng: </label>

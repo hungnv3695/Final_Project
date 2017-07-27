@@ -101,11 +101,11 @@
 					<div class="col-md-5 form-horizontal" style="margin:10px 30px 10px;border: 2px solid rgb(220,220,220);border-radius:10px;" id="leftDiv">
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">ID: </label>
-								<input id="txtRoomTypeID" name="txtRoomTypeID" type="text" class="form-control input-md" size="10" value= " {!! isset($roomTypeSelect[0])? array_get($roomTypeSelect[0],'room_type_id'):"" !!} " readonly >
+								<input id="txtRoomTypeID" name="txtRoomTypeID" type="text" class="form-control input-md" size="10" maxlength="5" value= " {!! isset($roomTypeSelect[0])? array_get($roomTypeSelect[0],'room_type_id'):"" !!} " readonly >
 							</div>
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">Tên loại Phòng:</label>
-								<input id="txtFullname" name="txtFullname" type="text" class="form-control input-md" size="15" value= " {!! isset($roomTypeSelect[0])? array_get($roomTypeSelect[0],'type_name'):"" !!} " oninvalid="InvalidMsg(this);" required>
+								<input id="txtFullname" name="txtFullname" type="text" class="form-control input-md" size="15" maxlength="30" value= " {!! isset($roomTypeSelect[0])? array_get($roomTypeSelect[0],'type_name'):"" !!} " oninvalid="InvalidMsg(this);" required>
 							</div>
 
 							<div class="form-inline" style="margin-top:20px;">

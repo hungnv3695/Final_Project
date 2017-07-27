@@ -49,9 +49,9 @@
 				<div class="row">
 					<div class="form-inline col-md-offset-1" style="margin-top:20px;">
 						<label class="label1" for="">Customer name:</label>
-						<input id="txtFName" name="txtFName" type="text" class="form-control input-md">
+						<input id="txtFName" name="txtFName" type="text" class="form-control input-md" maxlength="50">
 						<label class="label1 col-md-offset-1" for="">Identity card:</label>
-						<input id="txtIdCard" name="txtIdCard" type="text" class="form-control input-md">
+						<input id="txtIdCard" name="txtIdCard" type="text" class="form-control input-md" maxlength="12">
 						<button id="btnSearch" class="btn btn-default col-md-offset-1" type="button"><b>Search</b></button>
 					</div>
 					<div class="form-inline col-md-offset-1" style="margin-top:20px;">
