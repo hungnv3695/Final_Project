@@ -90,7 +90,7 @@
 						<p class="brand-title">Danh sách phòng</p>
 					</div>
 				</div>
-				<div class="col-md-8 col-md-offset-2" style="border:1px solid rgb(215,215,215); border-top:none;border-bottom:none;">
+				<div class="col-md-8 col-md-offset-2" style="background-color:rgb(230,230,230);border:1px solid rgb(215,215,215); border-top:none;border-bottom:none;">
 						<form class="form-inline col-md-offset-5" style="margin-top:20px;margin-bottom:20px;" method="POST" >	
 							<input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
 							<label class="label1 control-label">Tầng:</label>

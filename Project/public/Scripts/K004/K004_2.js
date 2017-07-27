@@ -5,6 +5,30 @@ $(document).ready(function () {
     var res_id = $('#res_id').val();
     var check_in = $('#checkintxt').val();
     var check_out = $('#checkouttxt').val();
+    var PROCESSING = "RS02";
+
+    //Start: HungNV : Update reservation status -> Processing
+    $.ajax({
+        url: 'K004_1/K004_2/ChangeSttToProcessing',
+        method: 'GET',
+        cache: false,
+        dataType: 'json',
+        data: {
+            res_id: res_id,
+            status: PROCESSING
+
+        },
+        contentType: 'application/json; charset=utf-8',
+        success: function (result) {
+
+        },
+        error: function(){
+            alert('error');
+        }
+
+    });
+    //End: Update reservation status -> Processing
+
     //JqGrid START
     $("#jqGrid").jqGrid({
         datatype: "local",

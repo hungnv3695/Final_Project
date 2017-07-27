@@ -76,11 +76,11 @@
 				<p class="brand-title">Thêm phòng</p>
 			</div>
         </div>
-        <div class="col-md-10 col-md-offset-1" style="border:1px solid rgb(215,215,215); border-top:none;">
+        <div class="col-md-10 col-md-offset-1" style="background-color:rgb(230,230,230);border:1px solid rgb(215,215,215); border-top:none;">
 			<div class="row">
 				<!--left-->
 				<form class="addroom" method="POST" >
-					<div class="col-md-5 form-horizontal" style="margin:10px 30px 10px;border: 2px solid rgb(236,236,236);">
+					<div class="col-md-5 form-horizontal" style="margin:10px 30px 10px;border: 2px solid rgb(220,220,220);border-radius:10px;">
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">Kiểu phòng: </label>
 								<select id="roomtype" name = "roomtype" class="form-control input-md" style="width:140px;">
@@ -93,11 +93,11 @@
 
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">ID: </label>
-								<input id="txtRoomID" name="txtRoomID" type="text" class="form-control input-md" onclick="setDisableRoomType()">
+								<input id="txtRoomID" name="txtRoomID" type="text" class="form-control input-md" maxlength="5" onclick="setDisableRoomType()">
 							</div>
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">Số phòng: </label>
-								<input id="txtRoomNo" name="txtRoomNo" type="text" class="form-control input-md" onclick="setDisableRoomType()">
+								<input id="txtRoomNo" name="txtRoomNo" type="text" class="form-control input-md" maxlength="5" onclick="setDisableRoomType()">
 							</div>
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">Tầng: </label>
@@ -120,7 +120,7 @@
 				</form>
 
 				<!--right-->
-				<div class="col-md-6 form-horizontal" style="margin:10px 0px 10px;border: 2px solid rgb(236,236,236);">
+				<div class="col-md-6 form-horizontal" style="margin:10px 0px 10px;border: 2px solid rgb(220,220,220);border-radius:10px;">
 						<div class="form-inline" style="margin-top:20px;">
 							<label class="label1" for="">Giá: </label>
 							<input id="txtPrice" name="txtPrice" type="text" class="form-control input-md"  value = "{!! array_get($roomTypeSelect[0],'price') !!}" readonly>

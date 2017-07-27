@@ -109,130 +109,93 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12" style="margin-top:3%;background-color:rgb(236,236,236);">
-				<p class="brand-title">Đặt phòng trực tiếp</p>
+				<div class="row">
+					<a href="#" class="col-md-offset-11" style="display:block;margin-top:10px;"><b>Log-out</b></a>
+					<p class="brand-title">Đặt phòng trực tiếp</p>
+				</div>
 			</div>
-			<div class="col-md-12" style="background-color:rgb(215,215,215);">
-				<!--left-->
-				<div class="col-md-7" style="border-right:1px solid rgb(236,236,236);">
-					<label class="col-md-4 control-label" style="margin:5px 0px 0px -15px;">Thông tin khách hàng: </label>
-					<div class="col-md-12" style="border:2px solid rgb(200,200,200);margin:10px 0px 20px;">
-						<div class="form-inline" style="margin-top:20px;">
-							<label class="label1">Họ tên:</label>
-							<input id="txtFullname" name="txtFullname" type="text" class="form-control input-md" size="15">
-							<label class="label1">Email:</label>
-							<input id="txtEmail" name="txtEmail" type="text" class="form-control input-md" size="15">
-						</div>
-						<div class="form-inline" style="margin-top:10px;">
-							<label class="label1">CMT:</label>
-							<input id="txtCmt" name="txtCmt" type="text" class="form-control input-md" size="15">
-							<label class="label1">Địa chỉ:</label>
-							<input id="txtAddress" name="txtAddress" type="text" class="form-control input-md" size="15">
-						</div>
-						<div class="form-inline" style="margin-top:10px;margin-bottom:25px;">
-							<label class="label1">Điện thoại:</label>
-							<input id="txtPhone" name="txtPhone" type="text" class="form-control input-md" size="15">
-							<label class="label1">Công ty:</label>
-							<input id="txtCompany" name="txtCompany" type="text" class="form-control input-md" size="15">
+			<div class="col-md-12" style="background-color:rgb(230,230,230);">
+				<div class="row">
+					<!--left-->
+					<div class="col-md-5">
+						<label class="control-label" style="margin-top:10px;">Thông tin đặt phòng</label>
+						<div class="col-md-12" style="width:450px;margin:0px 0px 10px;border: 2px solid rgb(220,220,220);border-radius:10px;">
+							<div class="row">
+								<div class="form-inline" style="margin-top:20px;">
+									<label class="label1">Check-in:</label>
+									<input id="txtCheckin" name="txtCheckin" type="text" class="form-control input-md" size="20" >
+								</div>
+								<div class="form-inline" style="margin-top:10px;">
+									<label class="label1">Check-out:</label>
+									<input id="txtCheckout" name="txtCheckout" type="text" class="form-control input-md" size="20" >
+								</div>
+								<div class="form-inline" style="margin-top:10px;margin-bottom:20px;">
+									<label class="label1">Số người:</label>
+									<input id="txtNumpeople" name="txtNumpeople" type="number" min="1" class="form-control input-md" size="5" style="width: 100px;">
+									<label class="label1">Số phòng:</label>
+									<input id="txtNumroom" name="txtNumroom" type="number" min="1" value="1" class="form-control input-md" size="5" style="width: 100px;">
+									<div class="col-md-10 col-md-offset-4">
+										<button class="roomlistBnt" id="btnSearch" value="bntAddRoom" name="bntAddRoom" style="margin-top:20px;"><b>Search</b></button>
+
+									</div >
+									<div class="col-md-10" style="margin:20px 30px 75px;border: 2px solid rgb(200,200,200);">
+										<table id="jqGrid" style="border:1px solid gray;"></table>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
-					<label class="col-md-3 control-label" style="margin:5px 0px 0px -15px;">Chi tiết phòng: </label>
-					<table class="table table-hover">
-						<thead>
-						<tr>
-							<th class="col1">STT</th>
-							<th class="col2">Kiểu phòng</th>
-							<th class="col3">Số lượng</th>
-							<th class="col4">Giá</th>
-							<th class="col5">Phòng số</th>
-						</tr>
-						</thead>
-						<tbody>
-						<tr>
-							<td class="col1">1</td>
-							<td class="col2">Double</td>
-							<td class="col3">2</td>
-							<td class="col4">100000</td>
-							<td class="col5">101</td>
-						</tr>
-						<tr>
-							<td class="col1">1</td>
-							<td class="col2">Double</td>
-							<td class="col3">2</td>
-							<td class="col4">100000</td>
-							<td class="col5">101</td>
-						</tr>
-						<tr>
-							<td class="col1">1</td>
-							<td class="col2">Double</td>
-							<td class="col3">2</td>
-							<td class="col4">100000</td>
-							<td class="col5">101</td>
-						</tr>
-						<tr>
-							<td class="col1">1</td>
-							<td class="col2">Double</td>
-							<td class="col3">2</td>
-							<td class="col4">100000</td>
-							<td class="col5">101</td>
-						</tr>
-						<tr>
-							<td class="col1">1</td>
-							<td class="col2">Double</td>
-							<td class="col3">2</td>
-							<td class="col4">100000</td>
-							<td class="col5">101</td>
-						</tr>
-						<tr>
-							<td class="col1">1</td>
-							<td class="col2">Double</td>
-							<td class="col3">2</td>
-							<td class="col4">100000</td>
-							<td class="col5">101</td>
-						</tr>
-						</tbody>
-					</table>
-					<div class="form-inline" style="margin-top:10px;margin-bottom:20px;">
-						<label class="label1 col-md-offset-3">Tổng tiền:</label>
-						<input id="txtTotalprice" name="txtTotalprice" type="text" class="form-control input-md" size="15">
+					<!--right-->
+					<div class="col-md-7">
+						<label class="col-md-4 control-label" style="margin:10px 0px 0px -15px;">Thông tin khách hàng: </label>
+						<div class="col-md-12" style="border: 2px solid rgb(220,220,220);border-radius:10px;margin:5px 0px 20px 0px;">
+							<div class="row">
+								<div class="form-inline" style="margin-top:20px;">
+									<label class="label1">Họ tên:</label>
+									<input id="txtFullname" name="txtFullname" type="text" class="form-control input-md" size="15">
+									<label class="label1">Email:</label>
+									<input id="txtEmail" name="txtEmail" type="text" class="form-control input-md" size="15">
+								</div>
+								<div class="form-inline" style="margin-top:10px;">
+									<label class="label1">CMT:</label>
+									<input id="txtCmt" name="txtCmt" type="text" class="form-control input-md" size="15">
+									<label class="label1">Địa chỉ:</label>
+									<input id="txtAddress" name="txtAddress" type="text" class="form-control input-md" size="15">
+								</div>
+								<div class="form-inline" style="margin-top:10px;margin-bottom:25px;">
+									<label class="label1">Điện thoại:</label>
+									<input id="txtPhone" name="txtPhone" type="text" class="form-control input-md" size="15">
+									<label class="label1">Công ty:</label>
+									<input id="txtCompany" name="txtCompany" type="text" class="form-control input-md" size="15">
+								</div>
+							</div>
+						</div>
+
+
+						<div class="form-inline"  class="col-md-12" style="border: 2px solid rgb(220,220,220);border-radius:10px;margin:250px 0px 20px;">
+							<div class="row">
+								<label class="control-label" style="margin-top:-50px;">Xác nhận đặt phòng:</label>
+								<div class="form-inline" id="infor" class="col-md-12" >
+
+								</div>
+								<div class="form-inline" class="col-md-12" style="margin-top: 20px;margin-bottom: 10px;">
+									<div class="row">
+										<label class="label1 col-md-offset-3">Tổng tiền:</label>
+										<input id="txtTotalprice" name="txtTotalprice" style="text-align: right" type="text" class="form-control input-md " size="15">
+									</div>
+								</div>
+							</div>
+						</div>
+
+
 					</div>
 				</div>
-				<!--right-->
-				<div class="col-md-5">
-					<label class="control-label" style="margin-top:5px;">Thông tin đặt phòng</label>
-					<div class="col-md-12" style="width:450px;margin:10px 0px 10px;border: 2px solid rgb(200,200,200);">
-						<div class="form-inline" style="margin-top:20px;">
-							<label class="label1">Check-in:</label>
-							<input id="txtCheckin" name="txtCheckin" type="text" class="form-control input-md" size="20" >
-						</div>
-						<div class="form-inline" style="margin-top:10px;">
-							<label class="label1">Check-out:</label>
-							<input id="txtCheckout" name="txtCheckout" type="text" class="form-control input-md" size="20" >
-						</div>
-						<div class="form-inline" style="margin-top:10px;margin-bottom:20px;">
-							<label class="label1">Số người:</label>
-							<input id="txtNumpeople" name="txtNumpeople" type="number" min="1" class="form-control input-md" size="5" style="width: 100px;">
-							<label class="label1">Số phòng:</label>
-							<input id="txtNumroom" name="txtNumroom" type="number" min="1" value="1" class="form-control input-md" size="5" style="width: 100px;">
-                            <div><button class="Bnt " id="btnSearch" value="bntAddRoom" name="bntAddRoom" style="margin-top:20px;"><b>Search</b></button></div>
-						</div>
-
-					</div>
-					<div class="col-md-12" style="width:450px;margin:10px 0px 10px;border: 2px solid rgb(200,200,200);">
-						<div class="col-md-2 form-horizontal" style="margin-top:20px;margin-bottom:15px;">
-							<label class="label1 col-md-offset-2" style="display:none">Kiểu phòng:</label>
-							<select id="cboRoomtype" name="cboRoomtype" class="form-control input-md" style="width:140px; display:none">
-
-							</select>
-
-
-						</div>
-						<div class="col-md-10" style="margin:10px 0px 10px;border: 2px solid rgb(200,200,200);">
-							<table id="jqGrid" style="border:1px solid gray;"></table>
-						</div>
-					</div>
-					<div class="form-inline col-md-offset-7">
-						<button class="roomlistBnt" value="bntSave" name="bntSave" style="margin-top:10px;"><b>Save</b></button>
-						<button class="roomlistBnt" value="bntClose" name="bntClose" style="margin-top:10px;"><b>Close</b></button>
+			</div>
+			<div class="col-md-12" style="background-color:rgb(236,236,236);">
+				<div class="row">
+					<div class="col-md-6 col-md-offset-9" style="margin-top:10px; margin-bottom:10px;">
+						<button class="btn btn-primary col-md-offset-2" id="btnSave" value="btnSave" name="btnSave"><b>Đặt phòng</b></button>
+						<button class="btn btn-danger" value="bntClose" name="bntClose"><b>Quay lại</b></button>
 					</div>
 				</div>
 			</div>

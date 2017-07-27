@@ -76,9 +76,9 @@
 					</div>
 				</div>
 				<form  class="editroom" method="POST" >
-					<div class="col-md-10 col-md-offset-1" style="border:1px solid rgb(215,215,215); border-top:none;">
+					<div class="col-md-10 col-md-offset-1" style="background-color:rgb(230,230,230);border:1px solid rgb(215,215,215); border-top:none;">
 						<div class="row">
-							<div class="col-md-5 form-horizontal" style="margin:10px 30px 10px;border: 2px solid rgb(236,236,236);">
+							<div class="col-md-5 form-horizontal" style="margin:10px 30px 10px;border: 2px solid rgb(220,220,220);border-radius:10px;">
 									<div class="form-inline" style="margin-top:20px;">
 										<label class="label1" for="">Kiểu phòng: </label>  
 											<select id="roomtype" name="roomtype" class="form-control input-md" style="width:140px;">
@@ -90,7 +90,7 @@
 									</div>
 									<div class="form-inline" style="margin-top:20px;">
 										<label class="label1" for="">Số phòng: </label>  
-										<input id="txtRoomNo" name="txtRoomNo" type="text" class="form-control input-md" size="10" value="{!! $roomDetail[0]->room_number !!}" onclick="setDisableRoomType()">
+										<input id="txtRoomNo" name="txtRoomNo" type="text" class="form-control input-md" size="10" maxlength="5" value="{!! $roomDetail[0]->room_number !!}" onclick="setDisableRoomType()">
 									</div>
 									<div class="form-inline" style="margin-top:20px;">
 										<label class="label1" for="">Tầng: </label>  
@@ -109,7 +109,7 @@
 									</div>
 									<div class="form-inline" style="margin-top:20px;margin-bottom:20px;">
 										<label class="label1" for="">Ghi chú: </label>  
-										<textarea rows="3" cols="25" id="txtNote" class="form-control" name="txtNote" autofocus maxlength="200" onclick="setDisableRoomType()"  onkeydown="setDisableRoomType()"> {!! $roomDetail[0]->note !!}</textarea>
+										<textarea rows="3" cols="25" id="txtNote" class="form-control" name="txtNote" maxlength="100" onclick="setDisableRoomType()"  onkeydown="setDisableRoomType()"> {!! $roomDetail[0]->note !!}</textarea>
 									</div>
 									<div class="form-inline col-md-offset-6" style="margin-top:75px;margin-bottom:20px;">
 										<button class="btn btn-primary" value="bntAdd" name="bntSave" onclick="setDisableRoomType()"><b>Save</b></button>
@@ -118,7 +118,7 @@
 									<input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
 							</div>
 						<!--right-->
-							<div class="col-md-6 form-horizontal" style="margin:10px 0px 10px;border: 2px solid rgb(236,236,236);">
+							<div class="col-md-6 form-horizontal" style="margin:10px 0px 10px;border: 2px solid rgb(220,220,220);border-radius:10px;">
 									<div class="form-inline" style="margin-top:20px;">
 										<label class="label1" for="">Giá: </label>
 										<input id="txtPrice" name="txtPrice" type="text" class="form-control input-md" size="15" value = "{!! array_get($roomTypeSelect[0],'price') !!}" readonly>

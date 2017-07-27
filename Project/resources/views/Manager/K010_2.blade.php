@@ -81,7 +81,7 @@
 					<p class="brand-title">Xem kiểu phòng</p>
 				</div>
 			</div>
-			<div class="col-md-12" style="border:1px solid rgb(215,215,215); border-top:none;border-bottom:none;">
+			<div class="col-md-12" style="background-color:rgb(230,230,230);border:1px solid rgb(215,215,215); border-top:none;border-bottom:none;">
 				<div class="row">
 					<div class="col-md-12 form-inline" style="margin-top:20px;margin-bottom:10px;">
 						<label class="control-label">Chọn Kiểu phòng:</label>
@@ -98,14 +98,14 @@
 					</div>
 
 					<!--left-->
-					<div class="col-md-5 form-horizontal" style="margin:10px 30px 10px;border: 2px solid rgb(236,236,236);" id="leftDiv">
+					<div class="col-md-5 form-horizontal" style="margin:10px 30px 10px;border: 2px solid rgb(220,220,220);border-radius:10px;" id="leftDiv">
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">ID: </label>
-								<input id="txtRoomTypeID" name="txtRoomTypeID" type="text" class="form-control input-md" size="10" value= " {!! isset($roomTypeSelect[0])? array_get($roomTypeSelect[0],'room_type_id'):"" !!} " readonly >
+								<input id="txtRoomTypeID" name="txtRoomTypeID" type="text" class="form-control input-md" size="10" maxlength="5" value= " {!! isset($roomTypeSelect[0])? array_get($roomTypeSelect[0],'room_type_id'):"" !!} " readonly >
 							</div>
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">Tên loại Phòng:</label>
-								<input id="txtFullname" name="txtFullname" type="text" class="form-control input-md" size="15" value= " {!! isset($roomTypeSelect[0])? array_get($roomTypeSelect[0],'type_name'):"" !!} " oninvalid="InvalidMsg(this);" required>
+								<input id="txtFullname" name="txtFullname" type="text" class="form-control input-md" size="15" maxlength="30" value= " {!! isset($roomTypeSelect[0])? array_get($roomTypeSelect[0],'type_name'):"" !!} " oninvalid="InvalidMsg(this);" required>
 							</div>
 
 							<div class="form-inline" style="margin-top:20px;">
@@ -130,7 +130,7 @@
 							</div>
 					</div>
 					<!--right-->
-					<div class="col-md-6 form-horizontal" style="margin:10px 0px 10px;border: 2px solid rgb(236,236,236);">
+					<div class="col-md-6 form-horizontal" style="margin:10px 0px 10px;border: 2px solid rgb(220,220,220);border-radius:10px;">
 							<div class="col-md-12" style="margin-top:30px;margin-bottom:10px;">
 								<label>Thiết Bị: </label>
 							</div>

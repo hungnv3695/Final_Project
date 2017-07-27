@@ -88,17 +88,17 @@
 					<p class="brand-title">Thêm kiểu phòng</p>
 				</div>
 			</div>
-			<div class="col-md-12" style="border:1px solid rgb(215,215,215); border-top:none;border-bottom:none;">
+			<div class="col-md-12" style="background-color:rgb(230,230,230);border:1px solid rgb(215,215,215); border-top:none;border-bottom:none;">
 				<div class="row">
 					<!--left-->
-					<div class="col-md-5 form-horizontal" style="margin:10px 30px 10px;border: 2px solid rgb(236,236,236);">
+					<div class="col-md-5 form-horizontal" style="margin:10px 30px 10px;border: 2px solid rgb(220,220,220);border-radius:10px;">
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">ID: </label>
 								<input id="txtRoomTypeID" name="txtRoomTypeID" type="text" size="10" class="form-control input-md" maxlength="5" required>
 							</div>
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">Tên loại phòng:</label>
-								<input id="txtFullname" name="txtFullname" type="text" size="15" class="form-control input-md" required>
+								<input id="txtFullname" name="txtFullname" type="text" size="15" class="form-control input-md" maxlength="30" required>
 							</div>
 
 							<div class="form-inline" style="margin-top:20px;">
@@ -123,7 +123,7 @@
 							</div>
 					</div>
 					<!--right-->
-					<div class="col-md-6 form-horizontal" style="margin:10px 0px 10px;border: 2px solid rgb(236,236,236);">
+					<div class="col-md-6 form-horizontal" style="margin:10px 0px 10px;border: 2px solid rgb(220,220,220);border-radius:10px;">
 							<div class="col-md-12" style="margin-top:30px;margin-bottom:10px;">
 								<label>Thiết bị: </label>
 							</div>
@@ -139,7 +139,7 @@
 								<tbody>
 								<tr>
 									<td class="col1">1</td>
-									<td class="col2"> <input id="txtNameAcc1" name="txtNameAcc" type="text" class="form-control input-md"></td>
+									<td class="col2"> <input id="txtNameAcc1" name="txtNameAcc" type="text" class="form-control input-md" maxlength="20"></td>
 									<td class="col3"> <input id="txtQuanlityAcc1" name="txtquanlityAcc" type="number" value="0" class="form-control input-md"></td>
 									<td class="col4"> <input id="txtPriceAcc1" name="txtPriceAcc" type="number" value="0" class="form-control input-md"></td>
 									<td class="col5"><label class="label2">.000(VND)</label></td>
