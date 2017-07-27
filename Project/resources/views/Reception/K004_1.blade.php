@@ -45,7 +45,7 @@
 					<p class="brand-title" style="font-size:25px;">Reservation List</p>
 				</div>
             </div>
-            <div class="col-md-10 col-md-offset-1" style="border:1px solid rgb(215,215,215); border-top:none;border-bottom:none;">
+            <div class="col-md-10 col-md-offset-1" style="background-color:rgb(230,230,230);border:1px solid rgb(215,215,215); border-top:none;border-bottom:none;">
 				<div class="row">
 					<div class="form-inline col-md-offset-1" style="margin-top:20px;">
 						<label class="label1" for="">Customer name:</label>
