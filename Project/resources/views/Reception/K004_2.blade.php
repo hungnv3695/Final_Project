@@ -47,7 +47,7 @@
 					@if(Session::has('USER_INFO'))
 					<p class="account">{!! "Xin chào " . Session::get('USER_INFO')->user_name !!} </p>
 					@endif
-					<a href="{!! url('/K001/LogOut') !!}"><b>| Log-out</b></a>
+					<b>|</b><a href="{!! url('/K001/LogOut') !!}"><b> Log-out</b></a>
 				</div>
 				<div class="col-md-12">
 					<p class="brand-title">Reservation Detail</p>
@@ -137,8 +137,8 @@
 							<select class="form-control input-md" id="cboStatus" name="statuscbo" style="width:130px;">
 
 							</select>
-							<button class="btn btn-primary" value="btnSave" name="btnSave" id="btnSave" style="margin-left:20px;"><b>Lưu</b></button>
-							<button class="btn btn-danger" value="btnBack" name="btnBack" id="btnBack" style="margin-left:5px;"><b>Quay Lại</b></button>
+							<button class="btn btn-primary" value="btnSave" name="btnSave" id="btnSave" style="margin-left:20px;"><b>Save</b></button>
+							<button class="btn btn-danger" value="btnBack" name="btnBack" id="btnBack" style="margin-left:5px;"><b>Cancel</b></button>
 							<button class="roomlistBnt" type="button" name="loadTable" id="btnTable" style="display:none"></button>
 							<input id="res_id" name="res_id" type="text" value="{{$id}}" maxlength ="10" style="display:none">
 							<input id="guest_id" name="guest_id" type="text" value="{{$guest_id}}" maxlength ="10" style="display:none">

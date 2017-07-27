@@ -53,7 +53,7 @@
 						</div>
 						<div class="col-md-5 col-md-offset-7" style="margin-top:20px;margin-bottom:20px;">
 							<button class="btn btn-primary col-md-offset-1" id="btnSave" value="btnSave" name="btnSave"><b>Save</b></button>
-							<button class="btn btn-danger" id="btnBack" value="btnBack" name="btnBack"><b>Back</b></button>
+							<button class="btn btn-danger" id="btnBack" value="btnBack" name="btnBack"><b>Cancel</b></button>
 						</div>	
 					</div>
 				</div>
