@@ -16,33 +16,22 @@
 <body>
         <div class="container">
             <div class="row">
-				<div class="col-md-12 col-xs-12" style="background-color:rgb(215,215,215);margin-top:5%;">					
+				<div class="col-md-8 col-md-offset-2" style="margin-top:5%;background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
+					<div class="row">					
+						<a href="#" class="col-md-offset-11" style="display:block;margin-top:10px;"><b>Log-out</b></a>
 						<p class="brand-title" style="font-size:25px;">Quản Lý Khách Sạn</p>
-					<div class="col-md-4 col-xs-12 col-md-offset-4" style="border:1px solid rgb(194,194,194); background-color:white;margin-top:20px;margin-bottom:70px;">
-						<form class="form-horizontal" style="margin-top:40px;margin-bottom:40px;">
-							<fieldset>
-								<div class="form-group">
-									<div class="col-md-4 col-xs-4 col-md-offset-1"><button type="button"  class="managerBnt" value="romm-sttBtn" name="romm-sttBtn"  onclick="window.location='{{ url("/K010_2") }}'" ><b>Quản Lý Loại Phòng</b></button></div>
-								</div>
-
-								<div class="form-group">
-									<div class="col-md-4 col-xs-4 col-md-offset-1"><button type="button"  class="managerBnt" value="re-detailBnt" name="re-detailBnt"  onclick="window.location='{{ url("/K005_1") }}'" ><b>Quản Lý Phòng </b></button></div>
-								</div>
-
-								<div class="form-group">
-									<div class="col-md-4 col-xs-4 col-md-offset-1"><button type="button" class="managerBnt" value="accoutBnt" name="accoutBnt" ><b>Quản Lý Tài Khoản</b></button></div>
-								</div>
-
-								<div class="form-group">
-								  <div class="col-md-4 col-xs-4 col-md-offset-1"><button type="button"  class="managerBnt" value="serviceBnt" name="serviceBnt"   onclick="window.location='{{ url("/K003") }}'"><b>Quản Lý Dịch Vụ</b></button></div>
-								</div>
-
-								<div class="form-group">
-									<div class="col-md-4 col-xs-4 col-md-offset-1"><button type="button"  class="managerBnt" value="pageBnt" name="pageBnt"  ><b>Quản lý Trang</b></button></div>
-								</div>
-
-							</fieldset>
-						</form>
+					</div>
+				</div>
+					<div class="col-md-8 col-md-offset-2" style="background-color:rgb(230,230,230);border:1px solid rgb(215,215,215); border-top:none;">
+						<div class="row">
+							<div class="col-md-6 form-inline col-md-offset-3" style="border:3px solid rgb(220,220,220);border-radius:10px; background-color:white;margin-top:50px;margin-bottom:50px;">
+								<div class="col-md-8 col-md-offset-2" style="margin-top:20px;"><button type="button"  class="btn btn-primary btn-block" value="btnRoomtypeManagement" name="btnRoomtypeManagement"  onclick="window.location='{{ url("/K010_2") }}'" ><b>Quản Lý Loại Phòng</b></button></div>
+								<div class="col-md-8 col-md-offset-2" style="margin-top:20px;"><button type="button"  class="btn btn-primary btn-block" value="btnRoomManagement" name="btnRoomManagement"  onclick="window.location='{{ url("/K005_1") }}'" ><b>Quản Lý Phòng </b></button></div>								
+								<div class="col-md-8 col-md-offset-2" style="margin-top:20px;"><button type="button" class="btn btn-primary btn-block" value="btnAccoutManagement" name="btnAccoutManagement" ><b>Quản Lý Tài Khoản</b></button></div>							
+								<div class="col-md-8 col-md-offset-2" style="margin-top:20px;"><button type="button"  class="btn btn-primary btn-block" value="bntServiceManagement" name="bntServiceManagement"   onclick="window.location='{{ url("/K003") }}'"><b>Quản Lý Dịch Vụ</b></button></div>							
+								<div class="col-md-8 col-md-offset-2" style="margin-top:20px;margin-bottom:20px;"><button type="button"  class="btn btn-primary btn-block" value="bntPageManagement" name="bntPageManagement"  ><b>Quản lý Trang</b></button></div>						
+							</div>
+						</div>
 					</div>
 				</div>
             </div>
