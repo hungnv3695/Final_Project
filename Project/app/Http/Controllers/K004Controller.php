@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 use App\Http\DAO\K004_DAO;
+use App\Models\Reservation;
 use App\Models\Reservation_Model;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
@@ -215,8 +216,15 @@ class K004Controller extends Controller{
         $res_id = $request->res_id;
         $status = $request->status;
         $K004_DAO = new K004_DAO();
+        $res = new Reservation();
+        $res->setStatusId($status);
+        $res->setEditer('Hungnv');
+        $res->setId($res_id);
 
-
+        $result = $K004_DAO->updateSttProcessing($res);
+        if($result){
+            dd('ssasdasdsa');
+        }
     }
     //endregion
 

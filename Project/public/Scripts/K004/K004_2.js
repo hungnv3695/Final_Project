@@ -9,7 +9,7 @@ $(document).ready(function () {
 
     //Start: HungNV : Update reservation status -> Processing
     $.ajax({
-        url: 'K004_1/K004_2/ChangeSttToProcessing',
+        url: 'ChangeSttToProcessing',
         method: 'GET',
         cache: false,
         dataType: 'json',
@@ -108,7 +108,7 @@ $(document).ready(function () {
                 $("#cboStatus").append($('<option></option>').val("").html(""));
                 for (i=0; i < result.length; i++){
                     //add data for status combobox
-                    if(result[i].status_id == status){
+                    if(result[i].status_id == PROCESSING){
                         $("#cboStatus").append($('<option selected></option>').val(result[i].status_id).html(result[i].status_name));
                     }
                     else{

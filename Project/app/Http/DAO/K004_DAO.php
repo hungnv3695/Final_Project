@@ -9,6 +9,7 @@
 
 namespace App\Http\DAO;
 use App\Http\Common\Constants;
+use App\Models\Reservation;
 use App\Models\RoomType;
 use App\Models\Status;
 use App\User;
@@ -17,6 +18,7 @@ use App\UserMaster;
 //use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
+use Carbon\Carbon;
 
 
 class K004_DAO{
@@ -181,8 +183,15 @@ class K004_DAO{
         return 1;
     }
 
-    public function updateSttProcessing(){
-        
+    public function updateSttProcessing(Reservation $res){
+        $reservationUpdate = Reservation::find($res->getId());
+
+        $reservationUpdate->editer = $res->getEditer();
+        $reservationUpdate->status_id = $res->getStatusId();
+        $reservationUpdate->update_ymd = Carbon::now();
+        $result = $reservationUpdate->saveOrFail();
+        return $result;
+
     }
     public function selectRoomFree($res_id,$type_name,$check_in,$check_out){
         $strSQL = 'select ro.room_id, ro.room_number, rt.room_type_id , rt.type_name from ';
