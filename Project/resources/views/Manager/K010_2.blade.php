@@ -158,9 +158,9 @@
 											<?php ($i==1)?$str="":$str=$i-1; ?>
 
 											<td class="col1">{!! $i !!}</td>
-											<td class="col2"> <input id="txtNameAcc1" name="{!! "txtNameAcc" . $str !!}"   type="text" class="form-control input-md" value=" {!!array_get($data,'accessory_name')!!}"  oninvalid="InvalidMsg(this);" required ></td>
-											<td class="col3"> <input id="txtQuanlityAcc1" name="{!! "txtquanlityAcc" . $str !!}" type="number" class="form-control input-md" value="{!!(int)array_get($data,'quanlity') !!}" min="0" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required ></td>
-											<td class="col4"> <input id="txtPriceAcc1" name="{!! "txtPriceAcc" . $str !!}" type="number" class="form-control input-md" value="{!! (int)array_get($data,'price') !!}" min="1" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required  ></td>
+											<td class="col2"> <input id="txtNameAcc1" name="{!! "txtNameAcc" . $str !!}"   type="text" class="form-control input-md" maxlength="20"  value=" {!!array_get($data,'accessory_name')!!}"  oninvalid="InvalidMsg(this);" required ></td>
+											<td class="col3"> <input id="txtQuanlityAcc1" name="{!! "txtquanlityAcc" . $str !!}" type="number" class="form-control input-md" value="{!!(int)array_get($data,'quanlity') !!}" min="1" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required ></td>
+											<td class="col4"> <input id="txtPriceAcc1" name="{!! "txtPriceAcc" . $str !!}" type="number" class="form-control input-md" value="{!! (int)array_get($data,'price') !!}" min="0" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required  ></td>
 										</tr>
 										<?php $i++?>
 									@endforeach
@@ -191,7 +191,6 @@
 <script src="{{asset('Scripts/K010/K010.js')}}"> </script>
 
 <script>
-
 	var btn = document.getElementById('bntEdit');
 	var select = document.getElementById('txtRoomtype');
 	btn.onclick = function () {
@@ -214,6 +213,6 @@
 
 </script>
 
-<script src="Scripts/FrontCheck/CheckError.js"> </script>
+<script src="{!! asset('Scripts/FrontCheck/CheckError.js') !!}"> </script>
 </body>
 </html>

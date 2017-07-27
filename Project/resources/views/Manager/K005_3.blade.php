@@ -100,19 +100,19 @@
 
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">ID: </label>
-								<input id="txtRoomID" name="txtRoomID" type="text" class="form-control input-md" maxlength="5" onclick="setDisableRoomType()">
+								<input id="txtRoomID" name="txtRoomID" type="text" class="form-control input-md" maxlength="5" onclick="setDisableRoomType()" oninvalid="InvalidMsg(this);" required  >
 							</div>
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">Số phòng: </label>
-								<input id="txtRoomNo" name="txtRoomNo" type="text" class="form-control input-md" maxlength="5" onclick="setDisableRoomType()">
+								<input id="txtRoomNo" name="txtRoomNo" type="text" class="form-control input-md" maxlength="5" onclick="setDisableRoomType()" oninvalid="InvalidMsg(this);" required >
 							</div>
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">Tầng: </label>
-								<input id="floortxt" name="floortxt" type="text" class="form-control input-md" onclick="setDisableRoomType()">
+								<input id="floortxt" name="floortxt" type="text" class="form-control input-md" onclick="setDisableRoomType()" oninvalid="InvalidMsg(this);" required  >
 							</div>
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">Trạng thái: </label>
-								<select id="txtStatus" name="txtStatus" class="form-control input-md" style="width:140px;" onclick="setDisableRoomType()">
+								<select id="txtStatus" name="txtStatus" class="form-control input-md" style="width:140px;" onclick="setDisableRoomType()"  >
 									@foreach($status as $data)
 										<option value="{!! array_get($data,'status_id') !!}"> {!! array_get($data,'status_name') !!}</option>
 									@endforeach
@@ -188,5 +188,7 @@
         document.getElementById('txtroomType').value = select.value;
     }
 </script>
+
+<script src="{!! asset('Scripts/FrontCheck/CheckError.js') !!}"> </script>
 </body>
 </html>

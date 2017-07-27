@@ -97,11 +97,11 @@
 									</div>
 									<div class="form-inline" style="margin-top:20px;">
 										<label class="label1" for="">Số phòng: </label>  
-										<input id="txtRoomNo" name="txtRoomNo" type="text" class="form-control input-md" size="10" maxlength="5" value="{!! $roomDetail[0]->room_number !!}" onclick="setDisableRoomType()">
+										<input id="txtRoomNo" name="txtRoomNo" type="text" class="form-control input-md" size="10" maxlength="5" value="{!! $roomDetail[0]->room_number !!}" onclick="setDisableRoomType()" oninvalid="InvalidMsg(this);" required  >
 									</div>
 									<div class="form-inline" style="margin-top:20px;">
 										<label class="label1" for="">Tầng: </label>  
-										<input id="floortxt" name="floortxt" type="text" class="form-control input-md" size="10" value="{!! $roomDetail[0]->floor !!}"  onclick="setDisableRoomType()" >
+										<input id="floortxt" name="floortxt" type="text" class="form-control input-md" size="10" value="{!! $roomDetail[0]->floor !!}"  onclick="setDisableRoomType()" oninvalid="InvalidMsg(this);" required  >
 									</div>
 									<div class="form-inline" style="margin-top:20px;">
 										<label class="label1" for="">Trạng thái: </label>  
@@ -190,6 +190,7 @@
                 document.getElementById('txtroomType').value = select.value;
             }
 		</script>
+		<script src="{!! asset('Scripts/FrontCheck/CheckError.js') !!}"> </script>
 
 </body>
 </html>
