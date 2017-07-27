@@ -115,9 +115,9 @@
 							</select>
 
 							<input id="searchtxt" name="searchtxt" type="text" class="form-control input-md" size="8" value="{!! isset($searchStr)?$searchStr:'' !!}">
-							<button class="btn btn-default" value="searchBnt" name="searchBnt"><b>Search</b></button>
-							<button class="btn btn-default"  type="button"  value="addBnt" name="addBnt" onclick="window.location='{{ url("/K005_1/K005_3?roomTypeID=" . '0') }}'" > <b>Add</b></button>
-							<button class="btn btn-default" value="listallBnt" name="listallBnt"><b>List all</b></button>
+							<button class="btn btn-default" value="btnSearch" name="btnSearch"><b>Search</b></button>
+							<button class="btn btn-default"  type="button"  value="btnAdd" name="btnAdd" onclick="window.location='{{ url("/K005_1/K005_3?roomTypeID=" . '0') }}'" > <b>Add</b></button>
+							<button class="btn btn-default" value="btnListall" name="btnListall"><b>List all</b></button>
 						</form>
 						<hr style="border-top: 1px solid gray;">
 							@if(isset($room))
@@ -156,7 +156,7 @@
 				</div>
 				<div class="col-md-8 col-md-offset-2" style="background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
 					<div class="col-md-2 col-md-offset-10" style="margin-top:10px; margin-bottom:10px;">
-						<button type="button" class="btn btn-danger col-md-offset-2" value="backBtn" name="backBtn" onclick="window.location='{{ url("/K002") }}'" ><b>Back</b></button>
+						<button type="button" class="btn btn-danger col-md-offset-2" value="BtnBack" name="BtnBack" onclick="window.location='{{ url("/K002") }}'" ><b>Back</b></button>
 					</div>
 				</div>
             </div>
