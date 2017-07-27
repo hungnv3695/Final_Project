@@ -98,7 +98,7 @@
 							</div>
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">Tên loại phòng:</label>
-								<input id="txtFullname" name="txtFullname" type="text" size="15" class="form-control input-md" required>
+								<input id="txtFullname" name="txtFullname" type="text" size="15" class="form-control input-md" maxlength="30" required>
 							</div>
 
 							<div class="form-inline" style="margin-top:20px;">
@@ -139,7 +139,7 @@
 								<tbody>
 								<tr>
 									<td class="col1">1</td>
-									<td class="col2"> <input id="txtNameAcc1" name="txtNameAcc" type="text" class="form-control input-md"></td>
+									<td class="col2"> <input id="txtNameAcc1" name="txtNameAcc" type="text" class="form-control input-md" maxlength="20"></td>
 									<td class="col3"> <input id="txtQuanlityAcc1" name="txtquanlityAcc" type="number" value="0" class="form-control input-md"></td>
 									<td class="col4"> <input id="txtPriceAcc1" name="txtPriceAcc" type="number" value="0" class="form-control input-md"></td>
 									<td class="col5"><label class="label2">.000(VND)</label></td>
