@@ -110,8 +110,15 @@
 		<div class="row">
 			<div class="col-md-12" style="margin-top:3%;background-color:rgb(236,236,236);">
 				<div class="row">
-					<a href="#" class="col-md-offset-11" style="display:block;margin-top:10px;"><b>Log-out</b></a>
-					<p class="brand-title">Đặt phòng trực tiếp</p>
+					<div class="col-md-offset-9" style="margin:10px 10px 0px 0px;float:right;">
+						@if(Session::has('USER_INFO'))
+						<p class="account">{!! "Xin chào " . Session::get('USER_INFO')->user_name !!} </p>
+						@endif
+						<a href="{!! url('/K001/LogOut') !!}"><b>| Log-out</b></a>
+					</div>
+					<div class="col-md-12">
+						<p class="brand-title">Đặt phòng trực tiếp</p>
+					</div>
 				</div>
 			</div>
 			<div class="col-md-12" style="background-color:rgb(230,230,230);">
