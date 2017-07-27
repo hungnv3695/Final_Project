@@ -24,32 +24,36 @@
 		padding: 0;
 		margin: 0;
 	}
+	.label1
+	{
+		width : 100px;
+		text-align:right;
+	}
 	</style>
 </head>
 <body>
         <div class="container">
             <div class="row">
-				<div class="col-md-8 col-md-offset-2" style="background-color:rgb(215,215,215);margin-top:5%;">					
-					<div class="col-md-8 form-horizontal col-md-offset-2" style="border:1px solid rgb(194,194,194); background-color:white;margin-top:20px;margin-bottom:20px; height:450px;">
-						<div class="col-md-10 col-md-offset-1" style="margin-top:20px;">
-							<label class="col-md-4 control-label">Kiểu phòng:</label>  
-							<div class="col-md-5"><input id="txtRoomType" name="txtRoomType" value="{{$txtRoomType}}" type="text" class="form-control" readonly></div>
+				<div class="col-md-10 col-md-offset-1" style="background-color:rgb(230,230,230);margin-top:5%;">					
+					<div class="col-md-6 form-horizontal col-md-offset-3" style="border: 2px solid rgb(220,220,220);border-radius:10px; background-color:white;margin-top:20px;margin-bottom:20px;">
+						<div class="form-inline col-md-offset-1" style="margin-top:20px;">
+							<label class="label1" for="">Kiểu phòng:</label>  
+							<input id="txtRoomType" name="txtRoomType" value="{{$txtRoomType}}" type="text" size="15" class="form-control" readonly>
 						</div>
-						<div class="col-md-10 col-md-offset-1" style="margin-top:20px;">
-							<label class="col-md-4 control-label">Số lượng:</label>  
-							<div class="col-md-5"><input id="txtRoomNo" name="txtRoomNo" value="{{$txtRoomNo}}" type="text" class="form-control" readonly></div>
-							<button class="roomlistBnt" id="btnSearch"  name="btnSearch"><b>Search</b></button>
+						<div class="form-inline col-md-offset-1" style="margin-top:20px;">
+							<label class="label1" for="">Số lượng:</label>  
+							<input id="txtRoomNo" name="txtRoomNo" value="{{$txtRoomNo}}" type="text" size="15" class="form-control" readonly>
+							<button class="btn btn-primary col-md-offset-1" id="btnSearch"  name="btnSearch"><b>Search</b></button>
 						</div>
-						<div><input id="txtResId" name="txtResId" value="{{$txtResId}}" type="text" class="form-control" style="display: none;"></div>
-						<div><input id="txtCheckIn" name="txtCheckIn" value="{{$txtCheckIn}}" type="text" class="form-control" style="display: none;"></div>
-						<div><input id="txtCheckOut" name="txtCheckIn" value="{{$txtCheckOut}}" type="text" class="form-control" style="display: none;"></div>
-						<div class="col-md-12" style="margin-top:20px;margin-left:100px;">
+						<input id="txtResId" name="txtResId" value="{{$txtResId}}" type="text" class="form-control" style="display: none;">
+						<input id="txtCheckIn" name="txtCheckIn" value="{{$txtCheckIn}}" type="text" class="form-control" style="display: none;">
+						<input id="txtCheckOut" name="txtCheckIn" value="{{$txtCheckOut}}" type="text" class="form-control" style="display: none;">
+						<div class="col-md-offset-3" style="margin-top:20px;">
 							<table id="jqGrid" style="border:1px solid gray;"></table>
-
 						</div>
-						<div class="col-md-8 col-md-offset-6" style="margin-top:20px;">
-							<button class="roomlistBnt" id="btnSave" value="saveBnt" name="searchBnt"><b>Save</b></button>
-							<button class="roomlistBnt" id="btnBack" value="backBnt" name="backBnt" style="margin-left:10px;"><b>Back</b></button>
+						<div class="col-md-5 col-md-offset-7" style="margin-top:20px;margin-bottom:20px;">
+							<button class="btn btn-primary col-md-offset-1" id="btnSave" value="btnSave" name="btnSave"><b>Save</b></button>
+							<button class="btn btn-danger" id="btnBack" value="btnBack" name="btnBack"><b>Back</b></button>
 						</div>	
 					</div>
 				</div>
