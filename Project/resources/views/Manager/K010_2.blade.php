@@ -177,12 +177,10 @@
 			<input type="hidden"  id="count" name = "count" value=""  />
 			<input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
 			<div class="col-md-12" style="background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
-				<div class="row">
 					<div class="col-md-6 col-md-offset-9" style="margin-top:10px; margin-bottom:10px;">
 						<button type="submit" class="btn btn-success col-md-offset-2" value="bntSave" id="bntSave" name="bntSave" ><b>Save</b></button>
-						<button type="button" class="btn btn-danger" value="bntBack" name="bntBack" onclick="window.location='{{ url("/K002") }}'" ><b>Back</b></button>
+						<button type="button" class="btn btn-danger" value="bntCancel" name="bntCancel" onclick="window.location='{{ url("/K002") }}'" ><b>Cancel</b></button>
 					</div>
-				</div>
 			</div>
 		</div>
 	</form>

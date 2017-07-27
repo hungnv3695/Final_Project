@@ -161,8 +161,8 @@
 				</div>
 			</div>
 			<div class="col-md-12" style="background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
-				<div class="col-md-7 col-md-offset-8" style="margin-top:10px; margin-bottom:10px;">
-					<button type="submit" class="btn btn-success col-md-offset-3" id="bntSave" value="bntSave" name="bntSave"><b>Save</b></button>
+				<div class="col-md-6 col-md-offset-9" style="margin-top:10px; margin-bottom:10px;">
+					<button type="submit" class="btn btn-success col-md-offset-2" id="bntSave" value="bntSave" name="bntSave"><b>Save</b></button>
 					<button  type="button" class="btn btn-danger" value="bntCancel" name="bntCancel" onclick="window.location='{{ url("/K010_2") }}'" ><b>Cancel</b></button>
 				</div>
 			</div>
