@@ -209,6 +209,15 @@ class K004Controller extends Controller{
         }
         return \response('1');
     }
+
+
+    public function changeSttToProcessing(Request $request){
+        $res_id = $request->res_id;
+        $status = $request->status;
+        $K004_DAO = new K004_DAO();
+
+
+    }
     //endregion
 
     //region K004_3

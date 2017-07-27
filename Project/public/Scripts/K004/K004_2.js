@@ -5,6 +5,7 @@ $(document).ready(function () {
     var res_id = $('#res_id').val();
     var check_in = $('#checkintxt').val();
     var check_out = $('#checkouttxt').val();
+    var PROCESSING = "RS02";
 
     //Start: HungNV : Update reservation status -> Processing
     $.ajax({
@@ -12,6 +13,11 @@ $(document).ready(function () {
         method: 'GET',
         cache: false,
         dataType: 'json',
+        data: {
+            res_id: res_id,
+            status: PROCESSING
+
+        },
         contentType: 'application/json; charset=utf-8',
         success: function (result) {
 

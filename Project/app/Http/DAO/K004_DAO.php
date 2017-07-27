@@ -181,6 +181,9 @@ class K004_DAO{
         return 1;
     }
 
+    public function updateSttProcessing(){
+        
+    }
     public function selectRoomFree($res_id,$type_name,$check_in,$check_out){
         $strSQL = 'select ro.room_id, ro.room_number, rt.room_type_id , rt.type_name from ';
         $strSQL .='tbl_room ro join tbl_room_type rt ';
