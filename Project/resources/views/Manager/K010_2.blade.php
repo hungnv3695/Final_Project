@@ -176,7 +176,7 @@
 				<div class="row">
 					<div class="col-md-6 col-md-offset-9" style="margin-top:10px; margin-bottom:10px;">
 						<button type="submit" class="btn btn-success col-md-offset-2" value="bntSave" id="bntSave" name="bntSave" ><b>Save</b></button>
-						<button type="button" class="btn btn-danger" value="bntBack" name="bntBack" onclick="javascript:history.go(-1)" ><b>Back</b></button>
+						<button type="button" class="btn btn-danger" value="bntBack" name="bntBack" onclick="window.location='{{ url("/K002") }}'" ><b>Back</b></button>
 					</div>
 				</div>
 			</div>

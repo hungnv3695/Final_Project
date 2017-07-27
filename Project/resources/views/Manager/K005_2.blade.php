@@ -116,7 +116,7 @@
 									</div>
 									<div class="form-inline col-md-offset-6" style="margin-top:75px;margin-bottom:20px;">
 										<button class="btn btn-primary" value="bntAdd" name="bntSave" onclick="setDisableRoomType()"><b>Save</b></button>
-										<button class="btn btn-danger" value="backAdd" name="backCancel" style="margin-left:5px;"><b>Cancel</b></button>
+										<button type="button" class="btn btn-danger" value="backAdd" name="backCancel" style="margin-left:5px;" onclick="window.location='{{ url("/K005_1") }}'"><b>Cancel</b></button>
 									</div>
 									<input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
 							</div>

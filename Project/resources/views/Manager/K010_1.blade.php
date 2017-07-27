@@ -159,7 +159,7 @@
 			<div class="col-md-12" style="background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
 				<div class="col-md-7 col-md-offset-8" style="margin-top:10px; margin-bottom:10px;">
 					<button type="submit" class="btn btn-success col-md-offset-3" id="bntAddType" value="bntAddType" name="bntAddType"><b>Add-Type</b></button>
-					<button  type="button" class="btn btn-danger" value="bntBack" name="bntBack" onclick="javascript:history.go(-1)" ><b>Back</b></button>
+					<button  type="button" class="btn btn-danger" value="bntBack" name="bntBack" onclick="window.location='{{ url("/K010_2") }}'" ><b>Back</b></button>
 				</div>
 			</div>
 		</div>
