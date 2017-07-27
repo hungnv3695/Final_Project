@@ -570,4 +570,10 @@ hr{
 	background-color:rgb(236,236,236);
 	color:black;
 }
+p.account{
+	float:left;
+	margin-right:10px;
+	color:rgb(66,110,180);
+	font-weight: bold;
+}
 /*end restaurant*/
