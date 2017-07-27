@@ -88,10 +88,10 @@
 					<p class="brand-title">Thêm kiểu phòng</p>
 				</div>
 			</div>
-			<div class="col-md-12" style="border:1px solid rgb(215,215,215); border-top:none;border-bottom:none;">
+			<div class="col-md-12" style="background-color:rgb(230,230,230);border:1px solid rgb(215,215,215); border-top:none;border-bottom:none;">
 				<div class="row">
 					<!--left-->
-					<div class="col-md-5 form-horizontal" style="margin:10px 30px 10px;border: 2px solid rgb(236,236,236);">
+					<div class="col-md-5 form-horizontal" style="margin:10px 30px 10px;border: 2px solid rgb(220,220,220);border-radius:10px;">
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">ID: </label>
 								<input id="txtRoomTypeID" name="txtRoomTypeID" type="text" size="10" class="form-control input-md" maxlength="5" required>
@@ -123,7 +123,7 @@
 							</div>
 					</div>
 					<!--right-->
-					<div class="col-md-6 form-horizontal" style="margin:10px 0px 10px;border: 2px solid rgb(236,236,236);">
+					<div class="col-md-6 form-horizontal" style="margin:10px 0px 10px;border: 2px solid rgb(220,220,220);border-radius:10px;">
 							<div class="col-md-12" style="margin-top:30px;margin-bottom:10px;">
 								<label>Thiết bị: </label>
 							</div>
