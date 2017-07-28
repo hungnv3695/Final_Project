@@ -1,7 +1,7 @@
     <!DOCTYPE html>
     <head>
     <meta charset="UTF-8">
-    <title>K005-1</title>
+    <title>Danh sách phòng</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="{{asset('plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css')}}">
 	<link rel="stylesheet" type="text/css" href=" {{asset('css/index.css')}}">
@@ -51,22 +51,22 @@
 			}
 			.col2
 			{
-				width: 20%;
+				width: 15%;
 				float:left;
 			}
 			.col3
 			{
-				width: 17%;
+				width: 15%;
 				float:left;
 			}
 			.col4
 			{
-				width: 10%;
+				width: 15%;
 				float:left;
 			}
 			.col5
 			{
-				width: 17%;
+				width: 15%;
 				float:left;
 			}
 			.col6
@@ -76,7 +76,7 @@
 			}
 			.col7
 			{
-				width: 10%;
+				width: 15%;
 				float:left;
 			}
 		</style>
@@ -90,7 +90,7 @@
 							@if(Session::has('USER_INFO'))
 								<p class="account">{!! "Xin chào " . Session::get('USER_INFO')->user_name !!} </p>
 							@endif
-							<b>|</b><a href="{!! url('/K001/LogOut') !!}"><b> Log-out</b></a>
+							<b>|</b><a href="{!! url('/K001/LogOut') !!}"><b> Đăng suất</b></a>
 						</div>
 						<div class="col-md-12">
 							<p class="brand-title">Danh sách phòng</p>
@@ -98,9 +98,9 @@
 					</div>
 				</div>
 				<div class="col-md-8 col-md-offset-2" style="background-color:rgb(230,230,230);border:1px solid rgb(215,215,215); border-top:none;border-bottom:none;">
-						<form class="form-inline col-md-offset-5" style="margin-top:20px;margin-bottom:20px;" method="POST" >	
+						<form class="form-inline col-md-offset-4" style="margin-top:20px;margin-bottom:20px;" method="POST" >	
 							<input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
-							<label class="label1 control-label">Tầng:</label>
+							<label class="control-label">Tầng:</label>
 							<select id="searchfloor" name="searchfloor" style="width:56px;" class="form-control input-md">
 								<option value="0" {!!  (isset($searchFloor) && $searchFloor == 0) ? 'selected':''  !!}>  </option>
 								<option value="1" {!!  (isset($searchFloor) && $searchFloor == 1) ? 'selected':''  !!} > 1 </option>
@@ -114,10 +114,10 @@
 								<option value="9" {!!  (isset($searchFloor) && $searchFloor == 9) ? 'selected':''  !!} > 9 </option>
 							</select>
 
-							<input id="searchtxt" name="searchtxt" type="text" class="form-control input-md" size="8" value="{!! isset($searchStr)?$searchStr:'' !!}">
-							<button class="btn btn-default" value="btnSearch" name="btnSearch"><b>Search</b></button>
-							<button class="btn btn-default"  type="button"  value="btnAdd" name="btnAdd" onclick="window.location='{{ url("/K005_1/K005_3?roomTypeID=" . '0') }}'" > <b>Add</b></button>
-							<button class="btn btn-default" value="btnListall" name="btnListall"><b>List all</b></button>
+							<input id="searchtxt" name="searchtxt" type="text" class="form-control input-md" size="12" value="{!! isset($searchStr)?$searchStr:'' !!}">
+							<button class="btn btn-default" value="btnSearch" name="btnSearch"><b>Tìm</b></button>
+							<button class="btn btn-default"  type="button"  value="btnAdd" name="btnAdd" onclick="window.location='{{ url("/K005_1/K005_3?roomTypeID=" . '0') }}'" > <b>Thêm mới</b></button>
+							<button class="btn btn-default" value="btnListall" name="btnListall"><b>Danh sách</b></button>
 						</form>
 						<hr style="border-top: 1px solid gray;">
 							@if(isset($room))
@@ -128,12 +128,12 @@
 							<thead>
 							  <tr>
 								<th class="col1">Stt</th>
-								<th class="col2">RoomNumber</th>
-								<th class="col3">RoomType</th>
-								<th class="col4">Floor</th>
-								<th class="col5">Price</th>
-								<th class="col6">Description</th>
-								<th class="col7">Status</th>
+								<th class="col2">Số phòng</th>
+								<th class="col3">Loại phòng</th>
+								<th class="col4">Tầng</th>
+								<th class="col5">Giá</th>
+								<th class="col6">Miêu tả</th>
+								<th class="col7">Trạng thái</th>
 							  </tr>
 							</thead>
 							<tbody>
@@ -155,8 +155,8 @@
 						</table>
 				</div>
 				<div class="col-md-8 col-md-offset-2" style="background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
-					<div class="col-md-2 col-md-offset-10" style="margin-top:10px; margin-bottom:10px;">
-						<button type="button" class="btn btn-danger col-md-offset-2" value="btnBack" name="btnBack" onclick="window.location='{{ url("/K002") }}'" ><b>Back</b></button>
+					<div class="col-md-3 col-md-offset-9" style="margin-top:10px; margin-bottom:10px;">
+						<button type="button" class="btn btn-danger col-md-offset-6" value="btnBack" name="btnBack" onclick="window.location='{{ url("/K002") }}'" ><b>Quay lại</b></button>
 					</div>
 				</div>
             </div>
