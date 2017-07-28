@@ -76,7 +76,7 @@
 					@if(Session::has('USER_INFO'))
 					<p class="account">{!! "Xin chào " . Session::get('USER_INFO')->user_name !!} </p>
 					@endif
-					<b>|</b><a href="{!! url('/K001/LogOut') !!}"><b> Đăng suất</b></a>
+					<b>|</b><a href="{!! url('/K001/LogOut') !!}"><b> Đăng xuất</b></a>
 				</div>
 				<div class="col-md-12">
 					<p class="brand-title">Thêm phòng</p>
