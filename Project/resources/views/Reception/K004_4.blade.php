@@ -114,7 +114,7 @@
 						@if(Session::has('USER_INFO'))
 						<p class="account">{!! "Xin chào " . Session::get('USER_INFO')->user_name !!} </p>
 						@endif
-						<a href="{!! url('/K001/LogOut') !!}"><b>| Log-out</b></a>
+						<b>|</b><a href="{!! url('/K001/LogOut') !!}"><b> Log-out</b></a>
 					</div>
 					<div class="col-md-12">
 						<p class="brand-title">Đặt phòng trực tiếp</p>
@@ -201,8 +201,8 @@
 			<div class="col-md-12" style="background-color:rgb(236,236,236);">
 				<div class="row">
 					<div class="col-md-6 col-md-offset-9" style="margin-top:10px; margin-bottom:10px;">
-						<button class="btn btn-primary col-md-offset-2" id="btnSave" value="btnSave" name="btnSave"><b>Đặt phòng</b></button>
-						<button class="btn btn-danger" value="bntClose" name="bntClose"><b>Quay lại</b></button>
+						<button class="btn btn-primary col-md-offset-2" id="btnBook" value="btnBook" name="btnSave"><b>Book now</b></button>
+						<button class="btn btn-danger" value="bntBack" name="bntBack"><b>Back</b></button>
 					</div>
 				</div>
 			</div>
