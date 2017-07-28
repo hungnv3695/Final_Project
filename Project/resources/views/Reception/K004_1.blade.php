@@ -56,7 +56,7 @@
 				<div class="row">
 					<div class="form-inline col-md-offset-1" style="margin-top:20px;">
 						<label class="label1" for="">Tên khách hàng:</label>
-						<input id="txtFName" name="txtFName" type="text" class="form-control input-md" maxlength="50">
+						<input id="txtFName" name="txtFName" type="text" class="form-control input-md" maxlength="50" autofocus>
 						<label class="label1 col-md-offset-1" for="">CMND:</label>
 						<input id="txtIdCard" name="txtIdCard" type="text" class="form-control input-md" maxlength="12">
 						<button id="btnSearch" class="btn btn-default col-md-offset-1" type="button"><b>Tìm</b></button>

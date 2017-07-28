@@ -101,7 +101,7 @@
 						<form class="form-inline col-md-offset-4" style="margin-top:20px;margin-bottom:20px;" method="POST" >	
 							<input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
 							<label class="control-label">Tầng:</label>
-							<select id="searchfloor" name="searchfloor" style="width:56px;" class="form-control input-md">
+							<select id="searchfloor" name="searchfloor" style="width:56px;" class="form-control input-md" autofocus>
 								<option value="0" {!!  (isset($searchFloor) && $searchFloor == 0) ? 'selected':''  !!}>  </option>
 								<option value="1" {!!  (isset($searchFloor) && $searchFloor == 1) ? 'selected':''  !!} > 1 </option>
 								<option value="2" {!!  (isset($searchFloor) && $searchFloor == 2) ? 'selected':''  !!} > 2 </option>
@@ -127,7 +127,7 @@
 						<table class="table table-hover">
 							<thead>
 							  <tr>
-								<th class="col1">Stt</th>
+								<th class="col1">STT</th>
 								<th class="col2">Số phòng</th>
 								<th class="col3">Loại phòng</th>
 								<th class="col4">Tầng</th>

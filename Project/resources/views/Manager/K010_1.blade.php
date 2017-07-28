@@ -101,7 +101,7 @@
 					<div class="col-md-5 form-horizontal" style="margin:10px 30px 10px;border: 2px solid rgb(220,220,220);border-radius:10px;">
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">Mã: </label>
-								<input id="txtRoomTypeID" name="txtRoomTypeID" type="text" size="10" class="form-control input-md" maxlength="5" oninvalid="InvalidMsg(this);" required>
+								<input id="txtRoomTypeID" name="txtRoomTypeID" type="text" size="10" class="form-control input-md" maxlength="5" autofocus oninvalid="InvalidMsg(this);" required>
 							</div>
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">Tên loại phòng:</label>
@@ -137,7 +137,7 @@
 							<table class="table table-hover" style="margin-bottom:56px;" id="table">
 								<thead>
 								<tr>
-									<th class="col1">Stt</th>
+									<th class="col1">STT</th>
 									<th class="col2">Tên thiết bị</th>
 									<th class="col3">Số lượng</th>
 									<th class="col4">Giá</th>

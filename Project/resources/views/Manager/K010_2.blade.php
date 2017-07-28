@@ -97,7 +97,7 @@
 				<div class="row">
 					<div class="col-md-12 form-inline" style="margin-top:20px;margin-bottom:10px;">
 						<label class="control-label">Chọn kiểu phòng:</label>
-						<select id="txtRoomtype" name="txtRoomtype" class="form-control input-md" style="width:140px;">
+						<select id="txtRoomtype" name="txtRoomtype" class="form-control input-md" style="width:140px;" autofocus>
 							<option value="0">{!! " " !!}</option>
 							@foreach($roomtype as $data)
 								<option value="{!! array_get($data,'room_type_id') !!}" {!!(isset($roomTypeSelect[0]) && array_get($data,'type_name') == array_get($roomTypeSelect[0],'type_name') )? 'selected':''  !!} > {!! array_get($data,'type_name') !!}</option>
@@ -149,7 +149,7 @@
 							<table class="table table-hover" style="margin-bottom:56px;" id="table">
 								<thead>
 								<tr>
-									<th class="col1">Stt</th>
+									<th class="col1">STT</th>
 									<th class="col2">Tên Thiết bị</th>
 									<th class="col3">Số Lượng</th>
 									<th class="col4">Giá</th>

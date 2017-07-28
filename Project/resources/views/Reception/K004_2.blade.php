@@ -62,13 +62,13 @@
 						<div class="row">
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1">Họ tên:</label>
-								<input id="fullnametxt" value="{{$name}}" name="fullnametxt" type="text" class="form-control input-md" size="15">
+								<input id="fullnametxt" value="{{$name}}" name="fullnametxt" type="text" class="form-control input-md" size="15" maxlength="50" autofocus>
 								<label class="label1">Địa chỉ:</label>
-								<input id="addresstxt" value="{{$address}}" name="addresstxt" type="text" class="form-control input-md" size="15">
+								<input id="addresstxt" value="{{$address}}" name="addresstxt" type="text" class="form-control input-md" size="15" maxlength="100">
 							</div>
 							<div class="form-inline" style="margin-top:10px;">
 								<label class="label1">CMND:</label>
-								<input id="idcardtxt" value="{{$idCard}}"  name="idcardtxt" type="text" class="form-control input-md" size="15">
+								<input id="idcardtxt" value="{{$idCard}}"  name="idcardtxt" type="text" class="form-control input-md" size="15" maxlength="12">
 								<label class="label1">Quốc tịch:</label>
 								<select id="countrytxt" name="countrytxt"  style="width:161px;" class="form-control input-md">
 									<option value="England">Tiếng Anh</option>
@@ -79,13 +79,13 @@
 							</div>
 							<div class="form-inline" style="margin-top:10px;">
 								<label class="label1">Điện thoại:</label>
-								<input id="phonetxt" name="phonetxt" value="{{$phone}}" type="text" class="form-control input-md" size="15">
+								<input id="phonetxt" name="phonetxt" value="{{$phone}}" type="text" class="form-control input-md" size="15" maxlength="20">
 								<label class="label1">Công ty:</label>
-								<input id="companytxt" name="companytxt" value="{{$company}}" type="text" class="form-control input-md" size="15">
+								<input id="companytxt" name="companytxt" value="{{$company}}" type="text" class="form-control input-md" size="15" maxlength="50">
 							</div>
 							<div class="form-inline" style="margin-top:10px; margin-bottom:20px;">
 								<label class="label1">Email:</label>
-								<input id="emailtxt" name="emailtxt" value="{{$email}}" type="text" class="form-control input-md" size="15">
+								<input id="emailtxt" name="emailtxt" value="{{$email}}" type="text" class="form-control input-md" size="15" maxlength="50">
 							</div>
 						</div>
 					</div>

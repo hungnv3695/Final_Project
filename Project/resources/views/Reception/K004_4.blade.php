@@ -130,11 +130,11 @@
 							<div class="row">
 								<div class="form-inline" style="margin-top:20px;">
 									<label class="label1">Nhận phòng:</label>
-									<input id="txtCheckin" name="txtCheckin" type="text" class="form-control input-md" size="20" >
+									<input id="txtCheckin" name="txtCheckin" type="text" placeholder="MM/DD/YYY" class="form-control input-md" size="20" autofocus>
 								</div>
 								<div class="form-inline" style="margin-top:10px;">
 									<label class="label1">Trả phòng:</label>
-									<input id="txtCheckout" name="txtCheckout" type="text" class="form-control input-md" size="20" >
+									<input id="txtCheckout" name="txtCheckout" type="text" placeholder="MM/DD/YYY" class="form-control input-md" size="20" >
 								</div>
 								<div class="form-inline" style="margin-top:10px;margin-bottom:20px;">
 									<label class="label1">Số người:</label>
@@ -159,21 +159,21 @@
 							<div class="row">
 								<div class="form-inline" style="margin-top:20px;">
 									<label class="label1">Họ tên:</label>
-									<input id="txtFullname" name="txtFullname" type="text" class="form-control input-md" size="15">
+									<input id="txtFullname" name="txtFullname" type="text" class="form-control input-md" size="15" maxlength="50">
 									<label class="label1">Email:</label>
-									<input id="txtEmail" name="txtEmail" type="text" class="form-control input-md" size="15">
+									<input id="txtEmail" name="txtEmail" type="text" class="form-control input-md" size="15" maxlength="50">
 								</div>
 								<div class="form-inline" style="margin-top:10px;">
 									<label class="label1">CMND:</label>
-									<input id="txtCmt" name="txtCmt" type="text" class="form-control input-md" size="15">
+									<input id="txtCmt" name="txtCmt" type="text" class="form-control input-md" size="15" maxlength="12">
 									<label class="label1">Địa chỉ:</label>
-									<input id="txtAddress" name="txtAddress" type="text" class="form-control input-md" size="15">
+									<input id="txtAddress" name="txtAddress" type="text" class="form-control input-md" size="15" maxlength="100">
 								</div>
 								<div class="form-inline" style="margin-top:10px;margin-bottom:25px;">
 									<label class="label1">Điện thoại:</label>
-									<input id="txtPhone" name="txtPhone" type="text" class="form-control input-md" size="15">
+									<input id="txtPhone" name="txtPhone" type="text" class="form-control input-md" size="15" maxlength="20">
 									<label class="label1">Công ty:</label>
-									<input id="txtCompany" name="txtCompany" type="text" class="form-control input-md" size="15">
+									<input id="txtCompany" name="txtCompany" type="text" class="form-control input-md" size="15" maxlength="50">
 								</div>
 							</div>
 						</div>
