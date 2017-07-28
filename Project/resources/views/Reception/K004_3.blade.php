@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
-    <title>Edit reservation's room</title>
+    <title>Sửa thông tin phòng đặt</title>
 	<script type="text/ecmascript" src="{{asset('jqgrid/js/jquery-1.11.0.min.js') }}"></script>
 
 	<!-- We support more than 40 localizations -->
@@ -43,7 +43,7 @@
 						<div class="form-inline col-md-offset-1" style="margin-top:20px;">
 							<label class="label1" for="">Số lượng:</label>  
 							<input id="txtRoomNo" name="txtRoomNo" value="{{$txtRoomNo}}" type="text" size="15" class="form-control" readonly>
-							<button class="btn btn-primary col-md-offset-1" id="btnSearch"  name="btnSearch"><b>Search</b></button>
+							<button class="btn btn-primary col-md-offset-1" id="btnSearch"  name="btnSearch"><b>Tìm</b></button>
 						</div>
 						<input id="txtResId" name="txtResId" value="{{$txtResId}}" type="text" class="form-control" style="display: none;">
 						<input id="txtCheckIn" name="txtCheckIn" value="{{$txtCheckIn}}" type="text" class="form-control" style="display: none;">
@@ -51,9 +51,9 @@
 						<div class="col-md-offset-3" style="margin-top:20px;">
 							<table id="jqGrid" style="border:1px solid gray;"></table>
 						</div>
-						<div class="col-md-5 col-md-offset-7" style="margin-top:20px;margin-bottom:20px;">
-							<button class="btn btn-primary col-md-offset-1" id="btnSave" value="btnSave" name="btnSave"><b>Save</b></button>
-							<button class="btn btn-danger" id="btnBack" value="btnBack" name="btnBack"><b>Cancel</b></button>
+						<div class="col-md-5 col-md-offset-6" style="margin-top:30px;margin-bottom:20px;">
+							<button class="btn btn-primary col-md-offset-2" id="btnSave" value="btnSave" name="btnSave"><b>Lưu</b></button>
+							<button class="btn btn-danger" id="btnBack" value="btnBack" name="btnBack"><b>Hủy bỏ</b></button>
 						</div>	
 					</div>
 				</div>
