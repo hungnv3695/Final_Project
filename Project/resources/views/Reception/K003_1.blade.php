@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
-    <title>K003_1</title>
+    <title>Trạng thái phòng</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href=" {!! asset('plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css') !!} ">
     <link rel="stylesheet" type="text/css" href=" {!! asset('css/index.css') !!}">
@@ -65,7 +65,7 @@
 					@if(Session::has('USER_INFO'))
 					<p class="account">{!! "Xin chào " . Session::get('USER_INFO')->user_name !!} </p>
 					@endif
-					<b>|</b><a href="{!! url('/K001/LogOut') !!}"><b> Log-out</b></a>
+					<b>|</b><a href="{!! url('/K001/LogOut') !!}"><b> Đăng suất</b></a>
 				</div>
 				<div class="col-md-12">
 					<p class="brand-title">Trạng thái phòng</p>
@@ -76,11 +76,11 @@
             <div class="col-md-12" style="border:3px solid rgb(200,200,200); margin:20px 0px 20px 0px;border: 2px solid rgb(220,220,220);border-radius:10px;">
 				<form method="post" onsubmit="return checkDate();" style="margin-top:10px;">
 					<div class="col-md-12 form-inline">
-						<label class="control-label" for="date">Check-In:</label>
+						<label class="control-label" for="date">Nhận phòng:</label>
 						<input class="form-control" id="date" name="checkin" placeholder="MM/DD/YYY" type="text"/>
-						<label class="control-label" for="date" style="margin-left:20px;">Check-Out:</label>
+						<label class="control-label" for="date" style="margin-left:15px;">Trả phòng:</label>
 						<input class="form-control" id="date" name="checkout" placeholder="MM/DD/YYY" type="text"/>
-						<button class="btn btn-default" type = "submit" value="bnt101">View</button>
+						<button class="btn btn-default" type = "submit" value="bnt101">Xem</button>
 						<input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
 					</div>	
 				</form>

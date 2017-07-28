@@ -2,7 +2,7 @@
 <meta name="_token" content="{!! csrf_token() !!}"/>
 <head>
 	<meta charset="UTF-8">
-	<title>Add Room type</title>
+	<title>Thêm kiểu phòng</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="{!! asset('plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css') !!} ">
 	<link rel="stylesheet" type="text/css" href="{!! asset('css/index.css') !!} ">
@@ -88,7 +88,7 @@
 						@if(Session::has('USER_INFO'))
 						<p class="account">{!! "Xin chào " . Session::get('USER_INFO')->user_name !!} </p>
 						@endif
-						<b>|</b><a href="{!! url('/K001/LogOut') !!}"><b> Log-out</b></a>
+						<b>|</b><a href="{!! url('/K001/LogOut') !!}"><b> Đăng suất</b></a>
 					</div>
 					<div class="col-md-12">
 						<p class="brand-title">Thêm kiểu phòng</p>
@@ -100,7 +100,7 @@
 					<!--left-->
 					<div class="col-md-5 form-horizontal" style="margin:10px 30px 10px;border: 2px solid rgb(220,220,220);border-radius:10px;">
 							<div class="form-inline" style="margin-top:20px;">
-								<label class="label1" for="">ID: </label>
+								<label class="label1" for="">Mã: </label>
 								<input id="txtRoomTypeID" name="txtRoomTypeID" type="text" size="10" class="form-control input-md" maxlength="5" oninvalid="InvalidMsg(this);" required>
 							</div>
 							<div class="form-inline" style="margin-top:20px;">
@@ -137,7 +137,7 @@
 							<table class="table table-hover" style="margin-bottom:56px;" id="table">
 								<thead>
 								<tr>
-									<th class="col1">STT</th>
+									<th class="col1">Stt</th>
 									<th class="col2">Tên thiết bị</th>
 									<th class="col3">Số lượng</th>
 									<th class="col4">Giá</th>
@@ -153,17 +153,17 @@
 								</tr>
 								</tbody>
 							</table>
-							<div class="form-inline col-md-offset-8" style="margin-bottom:15px;">
-								<button type="button" class="btn btn-primary col-md-offset-3" value="bntAdd" name="bntAdd" onclick="addAccessory()"><b>Add</b></button>
-								<button type="button" class="btn btn-danger" value="bntDelete" name="bntDelete" onclick="deleteAccessory()"><b>Delete</b></button>
+							<div class="form-inline col-md-offset-7" style="margin-bottom:15px;">
+								<button type="button" class="btn btn-primary col-md-offset-3" value="bntAdd" name="bntAdd" onclick="addAccessory()"><b>Thêm thiết bị</b></button>
+								<button type="button" class="btn btn-danger" value="bntDelete" name="bntDelete" onclick="deleteAccessory()"><b>Xóa</b></button>
 							</div>
 					</div>
 				</div>
 			</div>
 			<div class="col-md-12" style="background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
 				<div class="col-md-6 col-md-offset-9" style="margin-top:10px; margin-bottom:10px;">
-					<button type="submit" class="btn btn-success col-md-offset-2" id="bntSave" value="bntSave" name="bntSave"><b>Save</b></button>
-					<button  type="button" class="btn btn-danger" value="bntCancel" name="bntCancel" onclick="window.location='{{ url("/K010_2") }}'" ><b>Cancel</b></button>
+					<button type="submit" class="btn btn-success col-md-offset-2" id="bntSave" value="bntSave" name="bntSave"><b>Thêm</b></button>
+					<button  type="button" class="btn btn-danger" value="bntCancel" name="bntCancel" onclick="window.location='{{ url("/K010_2") }}'" ><b>Hủy bỏ</b></button>
 				</div>
 			</div>
 		</div>

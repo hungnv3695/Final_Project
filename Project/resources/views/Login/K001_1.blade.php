@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
-	<title>Full Page Sign In - Bootsnipp.com</title>
+	<title>Đăng nhập</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
 	<style type="text/css">
@@ -133,13 +133,11 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="wrap">
-				<p class="brand-title">
-					ANH DUONG HOTEL</p>
+				<p class="brand-title">Khách sạn Ánh Dương</p>
 				<div class="col-md-4 col-md-offset-4">
 					<div class="panel panel-default" style="height: 290px";>
 						<form class="login" action ="" name="Login" method="POST" >
-							<p class="form-title">Sign In</p>
-							<form class="login" method="POST" >
+							<form class="login" method="POST">
 								<input type="hidden" name = "_token" value="{!! csrf_token() !!}"    />
 								<input type="text"  name = "userID" placeholder="Username" value="{!! old('userID') !!}" oninvalid="InvalidMsg(this);" required/>
 
@@ -149,7 +147,7 @@
 										<p style="color:red;" >{!! Session::get('LoginErroMsg') !!} </p>
 									@endif
 								</div>
-								<input type="submit" value="Sign In" class="btn btn-success btn-sm" />
+								<input type="submit" value="Đăng nhập" class="btn btn-success btn-sm" />
 							</form>
 						</form>
 					</div>
