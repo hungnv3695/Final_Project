@@ -36,8 +36,6 @@ class K005Controller extends Controller
     public  function viewAddRoom(Request $request){
         $roomTypeID = $request->roomTypeID;
 
-
-
         $k005DAO = new K005DAO();
 
         $roomtype = $k005DAO->getRoomType();
