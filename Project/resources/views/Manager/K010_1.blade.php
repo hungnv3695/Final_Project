@@ -110,18 +110,18 @@
 
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">Giá: </label>
-								<input id="txtPrice" name="txtPrice" type="number" class="form-control input-md" min="0"  oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required >
+								<input id="txtPrice" name="txtPrice" type="number" class="form-control input-md" min="0" value="0"  oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required >
 								<label class="control-label" for="">/đêm</label>
 							</div>
 
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">Người lớn: </label>
-								<input id="txtAdult" name="txtAdult" type="number" class="form-control input-md" min="1" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required>
+								<input id="txtAdult" name="txtAdult" type="number" class="form-control input-md" min="1" value="1" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required>
 								<label class="control-label" for="">/người</label>
 							</div>
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">Trẻ em: </label>
-								<input id="txtChildren" name="txtChildren" type="number" min="1" class="form-control input-md" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required>
+								<input id="txtChildren" name="txtChildren" type="number" min="1" class="form-control input-md" value="1" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required>
 								<label class="control-label" for="">/người</label>
 							</div>
 							<div class="form-inline" style="margin-top:20px;margin-bottom:40px;">

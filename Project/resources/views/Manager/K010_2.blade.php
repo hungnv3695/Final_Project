@@ -69,6 +69,11 @@
 			width: 25%;
 			float:left;
 		}
+		.col5
+		{
+			width: 10%;
+			float:left;
+		}
 	</style>
 </head>
 <body>
@@ -123,12 +128,12 @@
 
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">Người lớn: </label>
-								<input id="txtAdult" name="txtAdult" type="number" class="form-control input-md" min="1" value= "{!! isset($roomTypeSelect[0])?(int) array_get($roomTypeSelect[0],'adult'):'0'!!}" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);" required>
+								<input id="txtAdult" name="txtAdult" type="number" class="form-control input-md" min="1" value= "{!! isset($roomTypeSelect[0])?(int) array_get($roomTypeSelect[0],'adult'):'1'!!}" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);" required>
 								<label class="control-label" for="">/người</label>
 							</div>
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">Trẻ em: </label>
-								<input id="txtChildren" name="txtChildren" type="number" class="form-control input-md" min="1" value= "{!!isset($roomTypeSelect[0])?(int) array_get($roomTypeSelect[0],'children'):'0'!!}" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);" required>
+								<input id="txtChildren" name="txtChildren" type="number" class="form-control input-md" min="1" value= "{!!isset($roomTypeSelect[0])?(int) array_get($roomTypeSelect[0],'children'):'1'!!}" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);" required>
 								<label class="control-label" for="">/người</label>
 							</div>
 							<div class="form-inline" style="margin-top:20px;margin-bottom:43px;">
@@ -161,6 +166,7 @@
 											<td class="col2"> <input id="txtNameAcc1" name="{!! "txtNameAcc" . $str !!}"   type="text" class="form-control input-md" maxlength="20"  value=" {!!array_get($data,'accessory_name')!!}"  oninvalid="InvalidMsg(this);" required ></td>
 											<td class="col3"> <input id="txtQuanlityAcc1" name="{!! "txtquanlityAcc" . $str !!}" type="number" class="form-control input-md" value="{!!(int)array_get($data,'quanlity') !!}" min="1" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required ></td>
 											<td class="col4"> <input id="txtPriceAcc1" name="{!! "txtPriceAcc" . $str !!}" type="number" class="form-control input-md" value="{!! (int)array_get($data,'price') !!}" min="0" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required  ></td>
+											<td class="col5"><label class="label2">.000(VND)</label></td>
 										</tr>
 										<?php $i++?>
 									@endforeach
