@@ -104,7 +104,7 @@
 							@endforeach
 						</select>
 						<input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
-						<button type="button" class="btn btn-default" value="bntEdit" id = "bntEdit" name="bntEdit"><b>Sửa</b></button>
+						<button type="button" class="btn btn-default" value="bntEdit" id = "bntEdit" name="bntEdit"><b>Xem</b></button>
 						<button type="button" class="btn btn-default" value="btnAddNew" id = "btnAdd" name="btnAdd" onclick="window.location='{{ url("/K010_1") }}'" ><b>Thêm mới</b></button>
 						<hr style="border-top: 1px solid gray;">
 					</div>
