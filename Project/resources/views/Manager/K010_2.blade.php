@@ -164,7 +164,7 @@
 
 											<td class="col1">{!! $i !!}</td>
 											<td class="col2"> <input id="txtNameAcc1" name="{!! "txtNameAcc" . $str !!}"   type="text" class="form-control input-md" maxlength="20"  value=" {!!array_get($data,'accessory_name')!!}"  oninvalid="InvalidMsg(this);" required ></td>
-											<td class="col3"> <input id="txtQuanlityAcc1" name="{!! "txtquanlityAcc" . $str !!}" type="number" class="form-control input-md" value="{!!(int)array_get($data,'quanlity') !!}" min="1" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required ></td>
+											<td class="col3"> <input id="txtQuanlityAcc1" name="{!! "txtquantityAcc" . $str !!}" type="number" class="form-control input-md" value="{!!(int)array_get($data,'quantity') !!}" min="1" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required ></td>
 											<td class="col4"> <input id="txtPriceAcc1" name="{!! "txtPriceAcc" . $str !!}" type="number" class="form-control input-md" value="{!! (int)array_get($data,'price') !!}" min="0" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required  ></td>
 											<td class="col5"><label class="label2">.000(VND)</label></td>
 										</tr>
@@ -184,7 +184,7 @@
 			<input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
 			<div class="col-md-12" style="background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
 					<div class="col-md-6 col-md-offset-9" style="margin-top:10px; margin-bottom:10px;">
-						<button type="submit" class="btn btn-success col-md-offset-2" value="bntSave" id="bntSave" name="bntSave" ><b>Lưu</b></button>
+						<button type="submit" class="btn btn-success col-md-offset-2" value="bntSave" id="bntAddType" name="bntSave" ><b>Lưu</b></button>
 						<button type="button" class="btn btn-danger" value="bntCancel" name="bntCancel" onclick="window.location='{{ url("/K002") }}'" ><b>Hủy bỏ</b></button>
 					</div>
 			</div>

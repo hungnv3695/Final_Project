@@ -15,11 +15,27 @@ class Accessory extends Model
 
     private $room_id;
     private $accessory_name;
-    private $quanlity;
+    private $quantity;
     private $price;
     private $description;
-
     private $accessory_list = array();
+
+    /**
+     * @return mixed
+     */
+    public function getQuantity()
+    {
+        return $this->quantity;
+    }
+
+    /**
+     * @param mixed $quantity
+     */
+    public function setQuantity($quantity)
+    {
+        $this->quantity = $quantity;
+    }
+
 
     /**
      * @return array
@@ -69,22 +85,6 @@ class Accessory extends Model
     public function setAccessoryName($accessory_name)
     {
         $this->accessory_name = $accessory_name;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getQuanlity()
-    {
-        return $this->quanlity;
-    }
-
-    /**
-     * @param mixed $quanlity
-     */
-    public function setQuanlity($quanlity)
-    {
-        $this->quanlity = $quanlity;
     }
 
     /**

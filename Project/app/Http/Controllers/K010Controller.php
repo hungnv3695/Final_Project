@@ -51,7 +51,7 @@ class K010Controller extends Controller
         $count = $request->count;
         $accessory = array(
             Constants::NAME_ACC => $request->txtNameAcc,
-            Constants::QUANLITY_ACC => ($request->txtquanlityAcc == null) ? '0':$request->txtquanlityAcc,
+            Constants::QUANTITY_ACC => ($request->txtquantityAcc == null) ? '0':$request->txtquantityAcc,
             Constants::PRICE_ACC =>  ($request-> txtPriceAcc ==null) ? '0':$request-> txtPriceAcc
         );
 
@@ -59,7 +59,7 @@ class K010Controller extends Controller
 
             $str1 = Constants::NAME_ACC . $i;
             $str2 = Constants::PRICE_ACC .$i ;
-            $str3 = Constants::QUANLITY_ACC . $i;
+            $str3 = Constants::QUANTITY_ACC . $i;
 
             $accessory += array($str1 => $request->$str1 );
             $accessory += array($str2 => ($request->$str2 ==null)?'0':$request->$str2 );
@@ -97,7 +97,7 @@ class K010Controller extends Controller
             $count = $request->count;
             $accessory = array(
                 Constants::NAME_ACC => $request->txtNameAcc,
-                Constants::QUANLITY_ACC => $request->txtquanlityAcc,
+                Constants::QUANTITY_ACC => $request->txtquantityAcc,
                 Constants::PRICE_ACC => $request-> txtPriceAcc
             );
 
@@ -105,8 +105,7 @@ class K010Controller extends Controller
 
                 $str1 = Constants::NAME_ACC . $i;
                 $str2 = Constants::PRICE_ACC .$i ;
-                    $str3 = Constants::QUANLITY_ACC . $i;
-
+                $str3 = Constants::QUANTITY_ACC . $i;
                 $accessory += array($str1 => $request->$str1 );
                 $accessory += array($str2 => $request->$str2 );
                 $accessory += array($str3 => $request->$str3 );
