@@ -9,7 +9,9 @@
 
 namespace App\Http\DAO;
 use App\Http\Common\Constants;
+use App\Models\Guest;
 use App\Models\Reservation;
+use App\Models\ReservationDetail;
 use App\Models\RoomType;
 use App\Models\Status;
 use App\User;
@@ -19,6 +21,7 @@ use App\UserMaster;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
 use Carbon\Carbon;
+use Mockery\Exception;
 
 
 class K004_DAO{
@@ -190,6 +193,7 @@ class K004_DAO{
         $reservationUpdate->status_id = $res->getStatusId();
         $reservationUpdate->update_ymd = Carbon::now();
         $result = $reservationUpdate->saveOrFail();
+
         return $result;
 
     }
@@ -203,7 +207,7 @@ class K004_DAO{
         $strSQL .='r.id = rd.reservation_id where  r.id <> \'' . $res_id . '\' AND ';
         $strSQL .= '((r.check_in BETWEEN \'' . $check_in . '\' AND \'' .$check_out. '\') ';
         $strSQL .='OR (r.check_out BETWEEN \'' .$check_in. '\' AND \'' .$check_out .'\'))) ';
-
+        //dd($strSQL);
         $result = DB::select(DB::raw($strSQL));
 
         return $result;
@@ -242,16 +246,79 @@ class K004_DAO{
         $strSQL = 'select ro.room_id, ro.room_number, rt.room_type_id , rt.type_name, rt.price from ';
         $strSQL .='tbl_room ro join tbl_room_type rt ';
         $strSQL .='ON ro.room_type_id = rt.room_type_id ';
-        $strSQL .='where ro.room_type_id <> \'RO04\' AND ';
+        $strSQL .='where ro.status_id <> \'RO04\' AND ';
         $strSQL .=' NOT ro.room_id IN (select rd.room_id from ';
         $strSQL .='tbl_reservation r join tbl_reservation_detail rd ON ';
         $strSQL .='r.id = rd.reservation_id where  ';
         $strSQL .= '((r.check_in BETWEEN \'' . $check_in . '\' AND \'' .$check_out. '\') ';
         $strSQL .='OR (r.check_out BETWEEN \'' .$check_in. '\' AND \'' .$check_out .'\'))) ';
         $strSQL .='ORDER BY ro.room_number ASC';
-
+        dd($strSQL);
         $result = DB::select(DB::raw($strSQL));
 
         return $result;
+    }
+
+    public function createReservation(Guest $guest, Reservation $res,ReservationDetail $resdetail, $roomIdList){
+        $guestInsert = new Guest();
+        $resInsert = new Reservation();
+
+
+        $guestInsert->name = $guest->getName();
+        $guestInsert->identity_card = $guest->getIdentityCard();
+        $guestInsert->phone = $guest->getPhone();
+        $guestInsert->mail = $guest->getMail();
+        $guestInsert->address = $guest->getAddress();
+        $guestInsert->company = $guest->getCompany();
+
+        $countRoom = count($roomIdList);
+
+        DB::beginTransaction();
+
+        try{
+
+            $guestInsert->save();
+
+
+            $resInsert->check_in = $res->getCheckIn();
+            $resInsert->check_out = $res->getCheckOut();
+            $resInsert->number_of_adult = $res->getNumberOfAdult();
+            $resInsert->number_of_room = $res->getNumberOfRoom();
+            $resInsert->guest_id = $guestInsert->id;
+
+            $resInsert->status_id = $res->getStatusId();
+            $resInsert->create_ymd = Carbon::now();
+
+            $resInsert->editer = $res->getEditer();
+
+            $resInsert->save();
+
+
+
+
+
+
+        }catch(\Exception $e){
+            DB::rollback();
+            return 0;
+        }
+        $resdetail->setReservationId($resInsert->id);
+        $resdetail->setCreateYmd(Carbon::now());
+        //dd($resdetail->getRoomId());
+
+        foreach ($roomIdList as $value){
+
+            $resDetailInsert = new ReservationDetail();
+            $resDetailInsert->create_ymd = $resdetail->getCreateYmd();
+            $resDetailInsert->room_id = trim($value);
+            $resDetailInsert->reservation_id = $resdetail->getReservationId();
+            //dd($resDetailInsert->create_ymd,$resDetailInsert->room_id,$resDetailInsert->reservation_id);
+
+            $resDetailInsert->save();
+        }
+
+        DB::commit();
+        return 1;
+
     }
 }

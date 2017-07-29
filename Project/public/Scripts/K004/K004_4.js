@@ -10,6 +10,7 @@ $(document).ready(function () {
     var noroom = 0;//số lượng phòng đã chọn
     var price  = 0;//Giá tiền
     var total_price = 0//Tổng tiền
+    var PROCESSED = "RS03";
 
     //START: Set datetimepicker
     jQuery('#txtCheckin').datetimepicker({
@@ -320,28 +321,52 @@ $(document).ready(function () {
         checkroom(check_in,check_out);
 
     });
-    $('#btnSave').click(function(event){
-
+    $('#btnBook').click(function(event){
         event.preventDefault();
 
+        if($('#txtFullname').val().trim() == ""){
+            alert('Nhập tên của khách hàng');
+            return;
+        }else if($('#txtCmt').val().trim() == ""){
+            alert('Nhập chứng minh thư của khách hàng');
+            return;
+        }else if($('#txtPhone').val().trim() == ""){
+            alert('Nhập số điện thoại của khách hàng');
+            return;
+        }
+
+        if(($("#txtCheckin").val()== "") || ($("#txtCheckout").val()== "") || ($("#txtNumpeople").val()== "") || ($("#txtNumroom").val()== "")){
+            alert('Làm ơn hoàn thành thông tin đặt phòng');
+            return;
+        }
+        if($("#txtNumroom").val()!= cList.length){
+            alert('Số lượng phòng chưa được chọn đủ');
+            return;
+        }
+
         $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
             url: '/K004_4/insertResInfor',
             method: 'GET',
             cache: false,
             dataType: 'json',
-            data: $("input").serialize(),
-
-
-
-            contentType: 'application/json; charset=utf-8',
+            data: $("#myForm").serialize() + "&cList=" + cList + "&status=" + PROCESSED ,
+            contentType: 'application/x-www-form-urlencoded',
             success: function (result) {
-                addData(result);
+                if(result==1){
+                    alert('Đơn đặt phòng đã được tạo thành công');
+                }
+                else if(result==0){
+                    alert('Xảy ra lỗi khi tạo đơn đặt phòng');
+                }
             },
             error: function(){
                 alert('error');
             }
         });
-        e.preventDefault();
+        event.preventDefault();
 
     });
 

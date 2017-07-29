@@ -1,8 +1,10 @@
 <?php
 namespace App\Http\Controllers;
 use App\Http\DAO\K004_DAO;
+use App\Models\Guest;
 use App\Models\Reservation;
 use App\Models\Reservation_Model;
+use App\Models\ReservationDetail;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use App\User;
@@ -213,18 +215,29 @@ class K004Controller extends Controller{
 
 
     public function changeSttToProcessing(Request $request){
+        $userid = $request->session()->get('USER_INFO')->user_id;
+        //dd($userid);
         $res_id = $request->res_id;
         $status = $request->status;
-        $K004_DAO = new K004_DAO();
+
         $res = new Reservation();
         $res->setStatusId($status);
-        $res->setEditer('Hungnv');
+        $res->setEditer($userid);
         $res->setId($res_id);
 
-        $result = $K004_DAO->updateSttProcessing($res);
-        if($result){
-            dd('ssasdasdsa');
+        $K004_DAO = new K004_DAO();
+
+        try{
+            $result = $K004_DAO->updateSttProcessing($res);
+            if($result){
+
+                return \response('1');
+            }
+        }catch(Exception $e){
+
+            return \response('2');
         }
+
     }
     //endregion
 
@@ -290,6 +303,7 @@ class K004Controller extends Controller{
     //endregion
 
 
+    //region K004_4
     public function getRoomType(){
         $K004_DAO = new K004_DAO();
         $room_type = $K004_DAO->getRoomType();
@@ -308,7 +322,33 @@ class K004Controller extends Controller{
     }
 
     public function insertResInfor(Request $request){
-        dd($request);
-        //dd($request);
+        $roomselect = $request->cList;
+        $roomIdList = explode(',', $roomselect);
+
+        $guest = new Guest();
+        $guest->setName($request->txtFullname);
+        $guest->setIdentityCard($request->txtCmt);
+        $guest->setPhone($request->txtPhone);
+        $guest->setMail($request->txtEmail);
+        $guest->setAddress($request->txtAddress);
+        $guest->setAddress($request->txtCompany);
+
+        $res = new Reservation();
+        $res->setCheckIn(DateTimeUtil::ConvertDateToString($request->txtCheckin));
+        $res->setCheckOut(DateTimeUtil::ConvertDateToString($request->txtCheckout));
+        $res->setNumberOfRoom($request->txtNumroom);
+        $res->setNumberOfAdult($request->txtNumpeople);
+        $res->setStatusId($request->status);
+        $res->setEditer($request->session()->get('USER_INFO')->user_id);
+
+        $resdetail = new ReservationDetail();
+
+        $K004_DAO = new K004_DAO();
+        $result = $K004_DAO->createReservation($guest,$res,$resdetail,$roomIdList);
+
+        return \response($result);
+
     }
+    //endregion
+
 }

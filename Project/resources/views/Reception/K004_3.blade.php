@@ -34,7 +34,17 @@
 <body>
         <div class="container">
             <div class="row">
-				<div class="col-md-10 col-md-offset-1" style="background-color:rgb(230,230,230);margin-top:5%;">					
+
+				<div class="col-md-10 col-md-offset-1" style="background-color:rgb(230,230,230);margin-top:5%;">
+					<div class="col-md-12" style="margin-top:3%;background-color:rgb(236,236,236);">
+						<div class="row">
+							<div class="col-md-offset-9" style="margin:10px 10px 0px 0px;float:right;">
+								@if(Session::has('USER_INFO'))
+									<p class="account">{!! "Xin chào " . Session::get('USER_INFO')->user_name !!} </p>
+								@endif
+								<b>|</b><a href="{!! url('/K001/LogOut') !!}"><b> Log-out</b></a>
+							</div>
+					</div>
 					<div class="col-md-6 form-horizontal col-md-offset-3" style="border: 2px solid rgb(220,220,220);border-radius:10px; background-color:white;margin-top:20px;margin-bottom:20px;">
 						<div class="form-inline col-md-offset-1" style="margin-top:20px;">
 							<label class="label1" for="">Kiểu phòng:</label>  

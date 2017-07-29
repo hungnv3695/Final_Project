@@ -105,7 +105,7 @@
 	</style>
 </head>
 <body>
-<form id="myForm" method="GET">
+<form id="myForm">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12" style="margin-top:3%;background-color:rgb(236,236,236);">
@@ -210,6 +210,6 @@
 	</div>
 </form>
 </body>
-
+<meta name="csrf-token" content="{{ csrf_token() }}" />
 <script src="{{asset('Scripts/K004/K004_4.js')}}"></script>
 </html>

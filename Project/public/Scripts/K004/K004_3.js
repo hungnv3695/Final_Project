@@ -87,7 +87,6 @@ $(document).ready(function () {
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
             success: function (result) {
-
                 addData(result);
 
             },

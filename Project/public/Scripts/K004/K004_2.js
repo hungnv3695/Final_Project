@@ -9,18 +9,16 @@ $(document).ready(function () {
 
     //Start: HungNV : Update reservation status -> Processing
     $.ajax({
-        url: 'ChangeSttToProcessing',
+        url: '/K004_1/K004_2/ChangeSttToProcessing',
         method: 'GET',
         cache: false,
         dataType: 'json',
         data: {
             res_id: res_id,
             status: PROCESSING
-
         },
         contentType: 'application/json; charset=utf-8',
         success: function (result) {
-
         },
         error: function(){
             alert('error');

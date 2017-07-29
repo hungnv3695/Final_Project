@@ -29,15 +29,15 @@ $(document).ready(function () {
 
         styleUI : 'Bootstrap',
         colNames:['Id',
-            'Customer name',
-            'Identity card',
+            'Khách hàng',
+            'CMND',
             'Check-in',
             'Check-out',
-            'No.room',
-            'Email',
-            'Company',
-            'Phone',
-            'Status',
+            'Số phòng',
+            'E-mail',
+            'Công ty',
+            'Điện Thoại',
+            'Trạng thái',
             'Paid status'
         ],
         colModel: [
