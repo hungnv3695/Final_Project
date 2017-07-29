@@ -22,7 +22,7 @@
 <body>
         <div class="container">
             <div class="row">
-				<div class="col-md-6 col-md-offset-3" style="margin-top:3%;background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
+				<div class="col-md-6 col-md-offset-3" style="margin-top:2%;background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
 					<div class="row">
 						<div class="col-md-offset-9" style="margin:10px 10px 0px 0px;float:right;">
 							<b>|</b><a href="{!! url('/K001/LogOut') !!}"><b> Đăng xuất</b></a>
@@ -45,15 +45,15 @@
 						<div class="col-md-12" style="margin-top:20px;margin-bottom:20px;border: 2px solid rgb(220,220,220);border-radius:10px;">
 							<div class="form-inline col-md-offset-1" style="margin-top:20px;">
 								<label class="label1" for="">Tên tài khoản: </label>  
-								<input id="txtAccountName" name="txtAccountName" type="text" class="form-control input-md" size="20">
+								<input id="txtAccountName" name="txtAccountName" type="text" class="form-control input-md" maxlength="50" size="20" autofocus>
 							</div>
 							<div class="form-inline col-md-offset-1" style="margin-top:20px;">
 								<label class="label1" for="">Vị trí: </label>  
-								<input id="txtPosition" name="txtPosition" type="text" class="form-control input-md" size="20">
+								<input id="txtPosition" name="txtPosition" type="text" class="form-control input-md" maxlength="50" size="20">
 							</div>
 							<div class="form-inline col-md-offset-1" style="margin-top:20px;">
 								<label class="label1" for="">Trạng thái: </label>  
-								<input id="txtStatus" name="txtStatus" type="text" class="form-control input-md" size="20">
+								<input id="txtStatus" name="txtStatus" type="text" class="form-control input-md" maxlength="10" size="20">
 							</div>
 							<div class="form-inline col-md-offset-1" style="margin-top:20px;">
 								<label class="label1" for="">Ngày tạo: </label>  
@@ -66,23 +66,27 @@
 						<div class="col-md-12" style="margin-top:20px;margin-bottom:20px;border: 2px solid rgb(220,220,220);border-radius:10px;">
 							<div class="form-inline col-md-offset-1" style="margin-top:20px;">
 								<label class="label1" for="">Họ tên: </label>  
-								<input id="txtFullName" name="txtFullName" type="text" class="form-control input-md" size="20">
+								<input id="txtFullName" name="txtFullName" type="text" class="form-control input-md" maxlength="50" size="20" autofocus>
 							</div>
 							<div class="form-inline col-md-offset-1" style="margin-top:20px;">
 								<label class="label1" for="">Địa chỉ: </label>  
-								<input id="txtAddress" name="txtAddress" type="text" class="form-control input-md" size="20">
+								<input id="txtAddress" name="txtAddress" type="text" class="form-control input-md" maxlength="100" size="20">
 							</div>
 							<div class="form-inline col-md-offset-1" style="margin-top:20px;">
 								<label class="label1" for="">CMND: </label>  
-								<input id="txtIdCard" name="txtIdCard" type="text" class="form-control input-md" size="20">
+								<input id="txtIdCard" name="txtIdCard" type="text" class="form-control input-md" maxlength="12" size="20">
+							</div>
+							<div class="form-inline col-md-offset-1" style="margin-top:20px;">
+								<label class="label1" for="">Mã số thuế: </label>  
+								<input id="txtTaxcode" name="txtTaxcode" type="text" class="form-control input-md" maxlength="20" size="20">
 							</div>
 							<div class="form-inline col-md-offset-1" style="margin-top:20px;">
 								<label class="label1" for="">Điện thoại: </label>  
-								<input id="txtPhone" name="txtPhone" type="text" class="form-control input-md" size="20">
+								<input id="txtPhone" name="txtPhone" type="text" class="form-control input-md" maxlength="20" size="20">
 							</div>							
 							<div class="form-inline col-md-offset-1" style="margin-top:20px;margin-bottom:20px;">
 								<label class="label1" for="">Email: </label>  
-								<input id="txtEmail" name="txtEmail" type="text" class="form-control input-md" size="20">
+								<input id="txtEmail" name="txtEmail" type="text" class="form-control input-md" maxlength="50" size="20">
 							</div>
 						</div>
 					</div>
