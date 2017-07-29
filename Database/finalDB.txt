@@ -2,7 +2,9 @@ CREATE TABLE tbl_status(
 	status_id varchar(10) PRIMARY KEY,
 	status_type varchar(2),	
 	status_name varchar(50),
-	description varchar(255) 
+	description varchar(255),
+	update_ymd timestamp,
+	create_ymd timestamp 	
 ); 
 
 CREATE TABLE tbl_function(			
@@ -10,10 +12,10 @@ CREATE TABLE tbl_function(
     screen_id varchar(7),		
     screen_name varchar(50)  ,		
     screen_url varchar(1000) ,		
-    register_ymd varchar(8),		
+    create_ymd timestamp,		
     register_cd varchar(7) ,		
     register_nm varchar(20),		
-    last_update_ymd varchar(8),		
+    update_ymd timestamp,		
     last_register_cd varchar(7),		
     last_register_name varchar(20),	
 	PRIMARY KEY( func_id , screen_id) 
@@ -24,10 +26,10 @@ CREATE TABLE tbl_permission(
     group_cd varchar(7),		
     screen_id varchar(7),		
     use_flg varchar(1),		
-    register_ymd varchar(8),		
+    create_ymd timestamp ,		
     register_cd varchar(7),		
     register_nm varchar(20),		
-    last_update_ymd varchar(8),		
+    update_ymd timestamp,		
     last_register_cd varchar(7),		
     last_register_nm varchar(20)	
 );		
@@ -35,10 +37,10 @@ CREATE TABLE tbl_permission(
 CREATE TABLE tbl_group(		
     group_cd char(7) PRIMARY KEY ,		
     group_name varchar(50) ,		
-    register_ymd varchar(8) ,		
+    create_ymd timestamp,		
     register_cd varchar(7) ,		
     register_nm varchar(20),		
-    last_update_ymd varchar(8),		
+    update_ymd timestamp,		
     last_register_cd varchar(7),		
     last_register_nm varchar(20)	
 );		
@@ -55,10 +57,10 @@ CREATE TABLE tbl_user(
 	identity_card varchar(12) ,
 	tax_code varchar(20),
 	address varchar(100),
-    register_ymd varchar(8)  ,		
+    create_ymd timestamp,  		
     register_cd varchar(7),		
     register_nm varchar(20),		
-    last_update_ymd varchar(8),		
+    update_ymd timestamp,		
     last_register_cd varchar(7),		
     last_register_nm varchar(20)		
 );		
@@ -67,10 +69,10 @@ CREATE TABLE tbl_user_group(
     seq_no serial PRIMARY KEY,		
     user_id varchar(7),		
     group_cd varchar(7) ,		
-    register_ymd varchar(8) ,		
+    create_ymd timestamp,		
     register_cd varchar(7),		
     register_nm varchar(20),		
-    last_update_ymd varchar(8),		
+    update_ymd timestamp,		
     last_register_cd varchar(7),		
     last_register_nm varchar(20)	
 );		
@@ -82,7 +84,9 @@ CREATE TABLE tbl_room_type(
 	children integer,
 	description varchar(100) ,
 	 image_url varchar(100),
-	price numeric(11,2)
+	price numeric(11,2),
+	create_ymd timestamp,
+	update_ymd timestamp
 );
 
 CREATE TABLE tbl_room(
@@ -92,6 +96,8 @@ CREATE TABLE tbl_room(
 	status_id varchar(10) ,
 	room_number varchar(5) ,
 	note varchar, 
+	create_ymd timestamp,
+	update_ymd timestamp,
 	FOREIGN KEY (room_type_id) REFERENCES tbl_room_type(room_type_id),
 	FOREIGN KEY (status_id) REFERENCES tbl_status(status_id)
 );
@@ -103,6 +109,8 @@ CREATE TABLE tbl_room_accessory(
 	quanlity integer  ,
 	price numeric(11,2)  ,
 	description varchar(100) ,
+	create_ymd timestamp,
+	update_ymd timestamp
 	FOREIGN KEY (room_type_id) REFERENCES tbl_room_type(room_type_id)
 );
 
@@ -115,7 +123,9 @@ CREATE TABLE tbl_guest(
 	company varchar(50) ,
 	address varchar(100) ,
 	company_phone varchar(20),
-	country varchar(50)
+	country varchar(50),
+	create_ymd timestamp,
+	update_ymd timestamp
 );
 
 CREATE TABLE tbl_reservation(
@@ -130,7 +140,7 @@ CREATE TABLE tbl_reservation(
 	note varchar(200),
 	editer varchar(50),
 	update_ymd timestamp,
-	create_ymd varchar(8) ,
+	create_ymd timestamp ,
 	FOREIGN KEY (status_id) REFERENCES tbl_status(status_id),
 	FOREIGN KEY (guest_id) REFERENCES tbl_guest(id)	
 );
@@ -140,46 +150,55 @@ CREATE TABLE tbl_reservation_detail(
 	reservation_id integer,
 	room_id varchar(5),
 	price numeric(11,2),
-	create_ymd varchar(8),
+	customer_name varchar(50),
+	customer_identity_card varchar(12),
+	customer_phone varchar(20),
+	customer_email varchar(50),
+	update_ymd timestamp,
+	create_ymd timestamp ,
 	FOREIGN KEY (reservation_id) REFERENCES tbl_reservation(id),
 	FOREIGN KEY (room_id) REFERENCES tbl_room(room_id)
 );
 
 CREATE TABLE tbl_payment_type(
 	id serial PRIMARY KEY,
-	type_name varchar(50) 
+	type_name varchar(50),
+	create_ymd timestamp,
+	update_ymd timestamp
 );
 
 CREATE TABLE tbl_invoice(
 	id serial PRIMARY KEY,
 	payment_type_id integer,
+	reservation_id integer,
 	accountant_id varchar(20),
 	receptionist_id varchar(20),
 	guest_id integer,
-	tax_code varchar(10), 
-	create_ymd varchar(8),
-	amount numeric(11,2),	
+	tax_code varchar(10),
+	amount_total numeric(11,2),
+	update_ymd timestamp,
+	create_ymd timestamp ,
+	creater_nm varchar(50),
+	
+	FOREIGN KEY (reservation_id) REFERENCES tbl_reservation(id),
 	FOREIGN KEY (payment_type_id) REFERENCES tbl_payment_type(id),
 	FOREIGN KEY (accountant_id) REFERENCES tbl_user(user_id),
 	FOREIGN KEY (receptionist_id) REFERENCES tbl_user(user_id),
 	FOREIGN KEY (guest_id) REFERENCES tbl_guest(id)
 );
 
-CREATE TABLE tbl_room_invoice(
-	room_id varchar(5),
+CREATE TABLE tbl_invoice_detail(
+	id serial PRIMARY KEY,
+	room_number varchar(5),
 	invoice_id integer,
-	create_by integer,
-	PRIMARY KEY(room_id,invoice_id),
-	FOREIGN KEY (room_id) REFERENCES tbl_room(room_id),
-	FOREIGN KEY (invoice_id) REFERENCES tbl_invoice(id)
+	description varchar(100),
+	quantity integer,
+	price numeric(11,2),
+	amount_total numeric(11,2),
+	update_ymd timestamp,
+	create_ymd timestamp ,
+	FOREIGN KEY (invoice_id) REFERENCES tbl_invoice(id),
 );
 
-CREATE TABLE tbl_service_bill(
-	id serial PRIMARY KEY,
-	invoice_id integer,
-	service_name varchar(50) ,
-	unit varchar(20) ,
-	quanlity integer,
-	unit_price numeric(11,2),
-	FOREIGN KEY (invoice_id) REFERENCES tbl_invoice(id)
-);
+
+
