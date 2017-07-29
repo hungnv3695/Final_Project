@@ -50,6 +50,9 @@ Route::post('K011_1/K011_2/{userID}','K011Controller@getUpdateRequest');
 Route::get('/K011_1/K011_3','K011Controller@viewAddPage');
 Route::post('/K011_1/K011_3','K011Controller@addAccountRequest');
 
+Route::get('/K012','K012Controller@view');
+Route::post('/K012','K012Controller@getUpdateRequest');
+
 //Router  Group for Manager
 Route::middleware(['manager'])->group(function () {
 

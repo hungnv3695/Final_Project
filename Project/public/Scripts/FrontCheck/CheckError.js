@@ -21,5 +21,11 @@ function InvalidMsg(textbox) {
 
     }
 
+    if(textbox.type == 'email'){
+        if(textbox.validity.typeMismatch){
+            textbox.setCustomValidity('Nhập đúng định dạng email');
+        }
+    }
+
     return true;
 }
