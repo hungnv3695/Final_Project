@@ -30,7 +30,7 @@
 		margin: 0;
 	}
 	.label1{
-		width:100px;
+		width:110px;
 		text-align:right;
 	}
 	</style>
@@ -45,25 +45,25 @@
 						@if(Session::has('USER_INFO'))
 							<p class="account">{!! "Xin chào " . Session::get('USER_INFO')->user_name !!} </p>
 						@endif
-						<b>|</b><a href="{!! url('/K001/LogOut') !!}"><b> Log-out</b></a>
+						<b>|</b><a href="{!! url('/K001/LogOut') !!}"><b> Đăng xuất</b></a>
 					</div>
 					<div class="col-md-12">
-						<p class="brand-title" style="font-size:25px;">Reservation List</p>
+						<p class="brand-title" style="font-size:25px;">Danh sách đặt phòng</p>
 					</div>
 				</div>
             </div>
             <div class="col-md-10 col-md-offset-1" style="background-color:rgb(230,230,230);border:1px solid rgb(215,215,215); border-top:none;border-bottom:none;">
 				<div class="row">
 					<div class="form-inline col-md-offset-1" style="margin-top:20px;">
-						<label class="label1" for="">Customer name:</label>
-						<input id="txtFName" name="txtFName" type="text" class="form-control input-md" maxlength="50">
-						<label class="label1 col-md-offset-1" for="">Identity card:</label>
+						<label class="label1" for="">Tên khách hàng:</label>
+						<input id="txtFName" name="txtFName" type="text" class="form-control input-md" maxlength="50" autofocus>
+						<label class="label1 col-md-offset-1" for="">CMND:</label>
 						<input id="txtIdCard" name="txtIdCard" type="text" class="form-control input-md" maxlength="12">
-						<button id="btnSearch" class="btn btn-default col-md-offset-1" type="button"><b>Search</b></button>
+						<button id="btnSearch" class="btn btn-default col-md-offset-1" type="button"><b>Tìm</b></button>
 					</div>
 					<div class="form-inline col-md-offset-1" style="margin-top:20px;">
-						<label class="label1" for="">Status:</label>
-						<select id="cboStatus" name="cboStatus" class="form-control input-md" style="width:140px;"></select>
+						<label class="label1" for="">Trạng thái:</label>
+						<select id="cboStatus" name="cboStatus" class="form-control input-md" style="width:150px;"></select>
 					</div>
 					<div class="col-md-12"><hr></div>
 					<div class="col-md-12">
@@ -75,7 +75,7 @@
             <div class="col-md-10 col-md-offset-1" style="background-color:rgb(245,245,245);border:1px solid rgb(215,215,215);">
 				<div class="row">
 					<div class="col-md-2 col-md-offset-10 col-xs-7" style="margin-top:10px;margin-bottom:10px;">
-						<button id="btnBack" class="btn btn-danger" type="button">Back</button>
+						<button id="btnBack" class="btn btn-danger" type="button">Quay lại</button>
 					</div>
 				</div>
             </div>

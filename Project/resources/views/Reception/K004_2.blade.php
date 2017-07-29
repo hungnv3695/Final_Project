@@ -36,7 +36,7 @@
 			text-align:right;
 		}
 	</style>
-	<title>Reservation detail</title>
+	<title>Chi tiết đặt phòng</title>
 </head>
 <body>
 <div class="container">
@@ -47,10 +47,10 @@
 					@if(Session::has('USER_INFO'))
 					<p class="account">{!! "Xin chào " . Session::get('USER_INFO')->user_name !!} </p>
 					@endif
-					<b>|</b><a href="{!! url('/K001/LogOut') !!}"><b> Log-out</b></a>
+					<b>|</b><a href="{!! url('/K001/LogOut') !!}"><b> Đăng xuất</b></a>
 				</div>
 				<div class="col-md-12">
-					<p class="brand-title">Reservation Detail</p>
+					<p class="brand-title">Chi tiết đặt phòng</p>
 				</div>
 			</div>
 		</div>
@@ -62,39 +62,39 @@
 						<div class="row">
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1">Họ tên:</label>
-								<input id="fullnametxt" value="{{$name}}" name="fullnametxt" type="text" class="form-control input-md" size="15">
+								<input id="fullnametxt" value="{{$name}}" name="fullnametxt" type="text" class="form-control input-md" size="15" maxlength="50" autofocus>
 								<label class="label1">Địa chỉ:</label>
-								<input id="addresstxt" value="{{$address}}" name="addresstxt" type="text" class="form-control input-md" size="15">
+								<input id="addresstxt" value="{{$address}}" name="addresstxt" type="text" class="form-control input-md" size="15" maxlength="100">
 							</div>
 							<div class="form-inline" style="margin-top:10px;">
-								<label class="label1">CMT:</label>
-								<input id="idcardtxt" value="{{$idCard}}"  name="idcardtxt" type="text" class="form-control input-md" size="15">
+								<label class="label1">CMND:</label>
+								<input id="idcardtxt" value="{{$idCard}}"  name="idcardtxt" type="text" class="form-control input-md" size="15" maxlength="12">
 								<label class="label1">Quốc tịch:</label>
 								<select id="countrytxt" name="countrytxt"  style="width:161px;" class="form-control input-md">
-									<option value="England">England</option>
-									<option value="Korea">Korea</option>
-									<option value="Japan">Japan</option>
+									<option value="England">Tiếng Anh</option>
+									<option value="Korea">Hàn Quốc</option>
+									<option value="Japan">Nhật Bản</option>
 									<option value="VietNam" selected>Việt Nam</option>
 								</select>
 							</div>
 							<div class="form-inline" style="margin-top:10px;">
 								<label class="label1">Điện thoại:</label>
-								<input id="phonetxt" name="phonetxt" value="{{$phone}}" type="text" class="form-control input-md" size="15">
+								<input id="phonetxt" name="phonetxt" value="{{$phone}}" type="text" class="form-control input-md" size="15" maxlength="20">
 								<label class="label1">Công ty:</label>
-								<input id="companytxt" name="companytxt" value="{{$company}}" type="text" class="form-control input-md" size="15">
+								<input id="companytxt" name="companytxt" value="{{$company}}" type="text" class="form-control input-md" size="15" maxlength="50">
 							</div>
 							<div class="form-inline" style="margin-top:10px; margin-bottom:20px;">
 								<label class="label1">Email:</label>
-								<input id="emailtxt" name="emailtxt" value="{{$email}}" type="text" class="form-control input-md" size="15">
+								<input id="emailtxt" name="emailtxt" value="{{$email}}" type="text" class="form-control input-md" size="15" maxlength="50">
 							</div>
 						</div>
 					</div>
 					<div class="col-md-12" style="border: 2px solid rgb(220,220,220);border-radius:10px;margin:10px 0px 10px;">
 						<div class="row">
 							<div class="form-inline" style="margin-top:30px;">
-								<label class="label1">Check-in:</label>
+								<label class="label1">Nhận phòng:</label>
 								<input id="checkintxt" name="checkintxt" value="{{$check_in}}" type="text" class="form-control input-md" size="15">
-								<label class="label1">Check-out:</label>
+								<label class="label1">Trả phòng:</label>
 								<input id="checkouttxt" name="checkouttxt" value="{{$check_out}}" type="text" class="form-control input-md" size="15">
 							</div>
 							<div class="form-inline" style="margin-top:20px;">
@@ -137,8 +137,8 @@
 							<select class="form-control input-md" id="cboStatus" name="statuscbo" style="width:130px;">
 
 							</select>
-							<button class="btn btn-primary" value="btnSave" name="btnSave" id="btnSave" style="margin-left:20px;"><b>Save</b></button>
-							<button class="btn btn-danger" value="btnBack" name="btnBack" id="btnBack" style="margin-left:5px;"><b>Cancel</b></button>
+							<button class="btn btn-primary" value="btnSave" name="btnSave" id="btnSave" style="margin-left:20px;"><b>Lưu</b></button>
+							<button class="btn btn-danger" value="btnBack" name="btnBack" id="btnBack" style="margin-left:5px;"><b>Hủy bỏ</b></button>
 							<button class="roomlistBnt" type="button" name="loadTable" id="btnTable" style="display:none"></button>
 							<input id="res_id" name="res_id" type="text" value="{{$id}}" maxlength ="10" style="display:none">
 							<input id="guest_id" name="guest_id" type="text" value="{{$guest_id}}" maxlength ="10" style="display:none">

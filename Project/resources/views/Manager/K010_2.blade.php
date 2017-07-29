@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
 	<meta charset="UTF-8">
-	<title>View Room type</title>
+	<title>Xem kiểu phòng</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/index.css">
@@ -69,6 +69,11 @@
 			width: 25%;
 			float:left;
 		}
+		.col5
+		{
+			width: 10%;
+			float:left;
+		}
 	</style>
 </head>
 <body>
@@ -81,7 +86,7 @@
 						@if(Session::has('USER_INFO'))
 						<p class="account">{!! "Xin chào " . Session::get('USER_INFO')->user_name !!} </p>
 						@endif
-						<b>|</b><a href="{!! url('/K001/LogOut') !!}"><b> Log-out</b></a>
+						<b>|</b><a href="{!! url('/K001/LogOut') !!}"><b> Đăng xuất</b></a>
 					</div>
 					<div class="col-md-12">
 						<p class="brand-title">Xem kiểu phòng</p>
@@ -91,27 +96,27 @@
 			<div class="col-md-12" style="background-color:rgb(230,230,230);border:1px solid rgb(215,215,215); border-top:none;border-bottom:none;">
 				<div class="row">
 					<div class="col-md-12 form-inline" style="margin-top:20px;margin-bottom:10px;">
-						<label class="control-label">Chọn Kiểu phòng:</label>
-						<select id="txtRoomtype" name="txtRoomtype" class="form-control input-md" style="width:140px;">
+						<label class="control-label">Chọn kiểu phòng:</label>
+						<select id="txtRoomtype" name="txtRoomtype" class="form-control input-md" style="width:140px;" autofocus>
 							<option value="0">{!! " " !!}</option>
 							@foreach($roomtype as $data)
 								<option value="{!! array_get($data,'room_type_id') !!}" {!!(isset($roomTypeSelect[0]) && array_get($data,'type_name') == array_get($roomTypeSelect[0],'type_name') )? 'selected':''  !!} > {!! array_get($data,'type_name') !!}</option>
 							@endforeach
 						</select>
 						<input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
-						<button type="button" class="btn btn-default" value="bntEdit" id = "bntEdit" name="bntEdit"><b>Fix</b></button>
-						<button type="button" class="btn btn-default" value="btnAddNew" id = "btnAdd" name="btnAdd" onclick="window.location='{{ url("/K010_1") }}'" ><b>Add-new</b></button>
+						<button type="button" class="btn btn-default" value="bntEdit" id = "bntEdit" name="bntEdit"><b>Xem</b></button>
+						<button type="button" class="btn btn-default" value="btnAddNew" id = "btnAdd" name="btnAdd" onclick="window.location='{{ url("/K010_1") }}'" ><b>Thêm mới</b></button>
 						<hr style="border-top: 1px solid gray;">
 					</div>
 
 					<!--left-->
 					<div class="col-md-5 form-horizontal" style="margin:10px 30px 10px;border: 2px solid rgb(220,220,220);border-radius:10px;" id="leftDiv">
 							<div class="form-inline" style="margin-top:20px;">
-								<label class="label1" for="">ID: </label>
+								<label class="label1" for="">Mã: </label>
 								<input id="txtRoomTypeID" name="txtRoomTypeID" type="text" class="form-control input-md" size="10" maxlength="5" value= " {!! isset($roomTypeSelect[0])? array_get($roomTypeSelect[0],'room_type_id'):"" !!} " readonly >
 							</div>
 							<div class="form-inline" style="margin-top:20px;">
-								<label class="label1" for="">Tên loại Phòng:</label>
+								<label class="label1" for="">Tên loại phòng:</label>
 								<input id="txtFullname" name="txtFullname" type="text" class="form-control input-md" size="15" maxlength="30" value= " {!! isset($roomTypeSelect[0])? array_get($roomTypeSelect[0],'type_name'):"" !!} " oninvalid="InvalidMsg(this);" required>
 							</div>
 
@@ -123,12 +128,12 @@
 
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">Người lớn: </label>
-								<input id="txtAdult" name="txtAdult" type="number" class="form-control input-md" min="1" value= "{!! isset($roomTypeSelect[0])?(int) array_get($roomTypeSelect[0],'adult'):'0'!!}" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);" required>
+								<input id="txtAdult" name="txtAdult" type="number" class="form-control input-md" min="1" value= "{!! isset($roomTypeSelect[0])?(int) array_get($roomTypeSelect[0],'adult'):'1'!!}" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);" required>
 								<label class="control-label" for="">/người</label>
 							</div>
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">Trẻ em: </label>
-								<input id="txtChildren" name="txtChildren" type="number" class="form-control input-md" min="1" value= "{!!isset($roomTypeSelect[0])?(int) array_get($roomTypeSelect[0],'children'):'0'!!}" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);" required>
+								<input id="txtChildren" name="txtChildren" type="number" class="form-control input-md" min="1" value= "{!!isset($roomTypeSelect[0])?(int) array_get($roomTypeSelect[0],'children'):'1'!!}" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);" required>
 								<label class="control-label" for="">/người</label>
 							</div>
 							<div class="form-inline" style="margin-top:20px;margin-bottom:43px;">
@@ -144,7 +149,7 @@
 							<table class="table table-hover" style="margin-bottom:56px;" id="table">
 								<thead>
 								<tr>
-									<th class="col1">Stt</th>
+									<th class="col1">STT</th>
 									<th class="col2">Tên Thiết bị</th>
 									<th class="col3">Số Lượng</th>
 									<th class="col4">Giá</th>
@@ -161,15 +166,16 @@
 											<td class="col2"> <input id="txtNameAcc1" name="{!! "txtNameAcc" . $str !!}"   type="text" class="form-control input-md" maxlength="20"  value=" {!!array_get($data,'accessory_name')!!}"  oninvalid="InvalidMsg(this);" required ></td>
 											<td class="col3"> <input id="txtQuanlityAcc1" name="{!! "txtquanlityAcc" . $str !!}" type="number" class="form-control input-md" value="{!!(int)array_get($data,'quanlity') !!}" min="1" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required ></td>
 											<td class="col4"> <input id="txtPriceAcc1" name="{!! "txtPriceAcc" . $str !!}" type="number" class="form-control input-md" value="{!! (int)array_get($data,'price') !!}" min="0" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required  ></td>
+											<td class="col5"><label class="label2">.000(VND)</label></td>
 										</tr>
 										<?php $i++?>
 									@endforeach
 								@endif
 								</tbody>
 							</table>
-							<div class="form-inline col-md-offset-8" style="margin-bottom:20px;">
-								<button type="button" class="btn btn-primary col-md-offset-3" value="bntAdd" name="bntAdd" onclick="addAccessory()" ><b>Add</b></button>
-								<button type="button" class="btn btn-danger" value="bntDelete" name="bntDelete" onclick="deleteAccessory()" ><b>Delete</b></button>
+							<div class="form-inline col-md-offset-7" style="margin-bottom:20px;">
+								<button type="button" class="btn btn-primary col-md-offset-3" value="bntAdd" name="bntAdd" onclick="addAccessory()" ><b>Thêm thiết bị</b></button>
+								<button type="button" class="btn btn-danger" value="bntDelete" name="bntDelete" onclick="deleteAccessory()" ><b>Xóa</b></button>
 							</div>
 					</div>
 				</div>
@@ -178,8 +184,8 @@
 			<input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
 			<div class="col-md-12" style="background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
 					<div class="col-md-6 col-md-offset-9" style="margin-top:10px; margin-bottom:10px;">
-						<button type="submit" class="btn btn-success col-md-offset-2" value="bntSave" id="bntSave" name="bntSave" ><b>Save</b></button>
-						<button type="button" class="btn btn-danger" value="bntCancel" name="bntCancel" onclick="window.location='{{ url("/K002") }}'" ><b>Cancel</b></button>
+						<button type="submit" class="btn btn-success col-md-offset-2" value="bntSave" id="bntSave" name="bntSave" ><b>Lưu</b></button>
+						<button type="button" class="btn btn-danger" value="bntCancel" name="bntCancel" onclick="window.location='{{ url("/K002") }}'" ><b>Hủy bỏ</b></button>
 					</div>
 			</div>
 		</div>

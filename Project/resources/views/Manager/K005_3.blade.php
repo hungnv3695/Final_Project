@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
-    <title>Add room</title>
+    <title>Thêm phòng</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href=" {!! asset('plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css') !!}">
     <link rel="stylesheet" type="text/css" href=" {!! asset('css/index.css') !!}">
@@ -76,7 +76,7 @@
 					@if(Session::has('USER_INFO'))
 					<p class="account">{!! "Xin chào " . Session::get('USER_INFO')->user_name !!} </p>
 					@endif
-					<b>|</b><a href="{!! url('/K001/LogOut') !!}"><b> Log-out</b></a>
+					<b>|</b><a href="{!! url('/K001/LogOut') !!}"><b> Đăng xuất</b></a>
 				</div>
 				<div class="col-md-12">
 					<p class="brand-title">Thêm phòng</p>
@@ -90,7 +90,7 @@
 					<div class="col-md-5 form-horizontal" style="margin:10px 30px 10px;border: 2px solid rgb(220,220,220);border-radius:10px;">
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">Kiểu phòng: </label>
-								<select id="roomtype" name = "roomtype" class="form-control input-md" style="width:140px;">
+								<select id="roomtype" name = "roomtype" class="form-control input-md" style="width:140px;" autofocus>
 									@foreach($roomtype as $data)
 									<option value="{!! array_get($data,'room_type_id') !!}" {!!( array_get($data,'type_name') == array_get($roomTypeSelect[0],'type_name') )? 'selected':''  !!} > {!! array_get($data,'type_name') !!}</option>
 									@endforeach
@@ -99,7 +99,7 @@
 							</div>
 
 							<div class="form-inline" style="margin-top:20px;">
-								<label class="label1" for="">ID: </label>
+								<label class="label1" for="">Mã: </label>
 								<input id="txtRoomID" name="txtRoomID" type="text" class="form-control input-md" maxlength="5" onclick="setDisableRoomType()" oninvalid="InvalidMsg(this);" required  >
 							</div>
 							<div class="form-inline" style="margin-top:20px;">
@@ -119,8 +119,8 @@
 								</select>
 							</div>
 						<div class="form-inline col-md-offset-7" style="margin-top:115px;margin-bottom:20px;">
-							<button class="btn btn-primary" value="bntAdd" name="bntAdd" onclick="setDisableRoomType()"><b>Add</b></button>
-							<button type="button" class="btn btn-danger" value="bntCancel" name="bntCancel" style="margin-left:5px;" onclick="window.location='{{ url("/K005_1") }}'"><b>Cancel</b></button>
+							<button class="btn btn-primary" value="bntAdd" name="bntAdd" onclick="setDisableRoomType()"><b>Thêm</b></button>
+							<button type="button" class="btn btn-danger" value="bntCancel" name="bntCancel" style="margin-left:5px;" onclick="window.location='{{ url("/K005_1") }}'"><b>Hủy bỏ</b></button>
 						</div>
 					</div>
 					<input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
@@ -150,10 +150,10 @@
 						<table class="table table-hover">
 							<thead>
 							<tr>
-								<th class="col1">Stt</th>
-								<th class="col2">Accessory Name</th>
-								<th class="col3">Quanlity</th>
-								<th class="col4">Price </th>
+								<th class="col1">STT</th>
+								<th class="col2">Tên thiết bị</th>
+								<th class="col3">Số lượng</th>
+								<th class="col4">Giá </th>
 							</tr>
 							</thead>
 							@if(isset($accessory))

@@ -35,7 +35,7 @@
 	}
 	.label1
 	{
-		width : 80px;
+		width : 100px;
 		text-align:right;
 	}
 	table {
@@ -114,7 +114,7 @@
 						@if(Session::has('USER_INFO'))
 						<p class="account">{!! "Xin chào " . Session::get('USER_INFO')->user_name !!} </p>
 						@endif
-						<b>|</b><a href="{!! url('/K001/LogOut') !!}"><b> Log-out</b></a>
+						<b>|</b><a href="{!! url('/K001/LogOut') !!}"><b> Đăng xuất</b></a>
 					</div>
 					<div class="col-md-12">
 						<p class="brand-title">Đặt phòng trực tiếp</p>
@@ -129,12 +129,12 @@
 						<div class="col-md-12" style="width:450px;margin:0px 0px 10px;border: 2px solid rgb(220,220,220);border-radius:10px;">
 							<div class="row">
 								<div class="form-inline" style="margin-top:20px;">
-									<label class="label1">Check-in:</label>
-									<input id="txtCheckin" name="txtCheckin" type="text" class="form-control input-md" size="20" >
+									<label class="label1">Nhận phòng:</label>
+									<input id="txtCheckin" name="txtCheckin" type="text" placeholder="MM/DD/YYY" class="form-control input-md" size="20" autofocus>
 								</div>
 								<div class="form-inline" style="margin-top:10px;">
-									<label class="label1">Check-out:</label>
-									<input id="txtCheckout" name="txtCheckout" type="text" class="form-control input-md" size="20" >
+									<label class="label1">Trả phòng:</label>
+									<input id="txtCheckout" name="txtCheckout" type="text" placeholder="MM/DD/YYY" class="form-control input-md" size="20" >
 								</div>
 								<div class="form-inline" style="margin-top:10px;margin-bottom:20px;">
 									<label class="label1">Số người:</label>
@@ -142,7 +142,7 @@
 									<label class="label1">Số phòng:</label>
 									<input id="txtNumroom" name="txtNumroom" type="number" min="1" value="1" class="form-control input-md" size="5" style="width: 100px;">
 									<div class="col-md-10 col-md-offset-4">
-										<button class="roomlistBnt" id="btnSearch" value="bntAddRoom" name="bntAddRoom" style="margin-top:20px;"><b>Search</b></button>
+										<button class="btn btn-default" id="btnSearch" value="bntAddRoom" name="bntAddRoom" style="margin-top:20px;"><b>Tìm</b></button>
 
 									</div >
 									<div class="col-md-10" style="margin:20px 30px 75px;border: 2px solid rgb(200,200,200);">
@@ -159,21 +159,21 @@
 							<div class="row">
 								<div class="form-inline" style="margin-top:20px;">
 									<label class="label1">Họ tên:</label>
-									<input id="txtFullname" name="txtFullname" type="text" class="form-control input-md" size="15">
+									<input id="txtFullname" name="txtFullname" type="text" class="form-control input-md" size="15" maxlength="50">
 									<label class="label1">Email:</label>
-									<input id="txtEmail" name="txtEmail" type="text" class="form-control input-md" size="15">
+									<input id="txtEmail" name="txtEmail" type="text" class="form-control input-md" size="15" maxlength="50">
 								</div>
 								<div class="form-inline" style="margin-top:10px;">
-									<label class="label1">CMT:</label>
-									<input id="txtCmt" name="txtCmt" type="text" class="form-control input-md" size="15">
+									<label class="label1">CMND:</label>
+									<input id="txtCmt" name="txtCmt" type="text" class="form-control input-md" size="15" maxlength="12">
 									<label class="label1">Địa chỉ:</label>
-									<input id="txtAddress" name="txtAddress" type="text" class="form-control input-md" size="15">
+									<input id="txtAddress" name="txtAddress" type="text" class="form-control input-md" size="15" maxlength="100">
 								</div>
 								<div class="form-inline" style="margin-top:10px;margin-bottom:25px;">
 									<label class="label1">Điện thoại:</label>
-									<input id="txtPhone" name="txtPhone" type="text" class="form-control input-md" size="15">
+									<input id="txtPhone" name="txtPhone" type="text" class="form-control input-md" size="15" maxlength="20">
 									<label class="label1">Công ty:</label>
-									<input id="txtCompany" name="txtCompany" type="text" class="form-control input-md" size="15">
+									<input id="txtCompany" name="txtCompany" type="text" class="form-control input-md" size="15" maxlength="50">
 								</div>
 							</div>
 						</div>
@@ -201,8 +201,8 @@
 			<div class="col-md-12" style="background-color:rgb(236,236,236);">
 				<div class="row">
 					<div class="col-md-6 col-md-offset-9" style="margin-top:10px; margin-bottom:10px;">
-						<button class="btn btn-primary col-md-offset-2" id="btnBook" value="btnBook" name="btnSave"><b>Book now</b></button>
-						<button class="btn btn-danger" value="bntBack" name="bntBack"><b>Back</b></button>
+						<button class="btn btn-primary col-md-offset-2" id="btnBook" value="btnBook" name="btnSave"><b>Đặt ngay</b></button>
+						<button class="btn btn-danger" value="bntBack" name="bntBack"><b>Quay lại</b></button>
 					</div>
 				</div>
 			</div>

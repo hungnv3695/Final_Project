@@ -41,6 +41,15 @@ Route::post('/K010_2','K010Controller@updateRoomTypeRequest');
 Route::get('/K003','K003Controller@view');
 Route::post('/K003','K003Controller@getRoomStatusRequest');
 
+Route::get('/K011','K011Controller@view');
+Route::post('/K011','K011Controller@getViewAccountRequest');
+
+Route::get('K011_1/K011_2/{userID}','K011Controller@viewDetail');
+Route::post('K011_1/K011_2/{userID}','K011Controller@getUpdateRequest');
+
+Route::get('/K011_1/K011_3','K011Controller@viewAddPage');
+Route::post('/K011_1/K011_3','K011Controller@addAccountRequest');
+
 //Router  Group for Manager
 Route::middleware(['manager'])->group(function () {
 
