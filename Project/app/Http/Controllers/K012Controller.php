@@ -9,11 +9,14 @@
 namespace App\Http\Controllers;
 
 
+use App\Http\Common\Constants;
+use App\Http\Common\Message;
 use App\Http\DAO\K012DAO;
 use App\Models\User;
 use Illuminate\Http\Request;
 
 define('SESSION_USER_INFO','USER_INFO');
+define('CHANGE_PASS_MSG','ChangePassMSG');
 class K012Controller
 {
     public function view(){
@@ -49,8 +52,40 @@ class K012Controller
         $result = $k012DAO->updateInfo($user);
 
         if($result){
-            return redirect('/K012');
+            return redirect('/K012')->with( Constants::SUCCESS_MSG,Message::MSG0018);
         }
+
+    }
+
+    public function viewChangePasswordPage(){
+        if ( !session()->has(SESSION_USER_INFO) ){
+            return redirect('/K001');
+        }else{
+            $user = session()->get(SESSION_USER_INFO)->user_id;
+            return view('Common.K012_1',compact('user'));
+        }
+    }
+
+    public function changePasswordRequest(Request $request){
+        $user =  $request->txtAccountName;
+        $oldPass = $request->txtOldPwd;
+        $newPass = $request->txtNewPwd;
+
+        $k012DAO = new K012DAO();
+        $result = $k012DAO->checkPassword($user,$oldPass);
+
+        if(!$result) {
+            return back()->with(CHANGE_PASS_MSG, Message::MSG0015);
+        }else{
+            $result = $k012DAO->updatePassword($user,$newPass);
+            if($result){
+                return redirect('/K012')->with( Constants::SUCCESS_MSG,Message::MSG0016);
+            }else{
+                return back()->with(CHANGE_PASS_MSG, Message::MSG0017);
+            }
+
+        }
+
 
     }
 }

@@ -9,6 +9,7 @@
 namespace App\Http\DAO;
 
 
+use App\Http\Common\Constants;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
@@ -29,7 +30,7 @@ class K012DAO
                 'tbl_user.address',
                 'tbl_user.identity_card',
                 'tbl_user.delete_flg',
-                'tbl_user.register_ymd'
+                'tbl_user.create_ymd'
             ]);
 
         return  $result->toArray();
@@ -48,6 +49,27 @@ class K012DAO
         $userUpdate->address = $user->getAddress() ;
 
         $result = $userUpdate->saveOrFail();
+
+        return $result;
+    }
+
+    public function  checkPassword($userID, $password){
+        $result = User::where(Constants::TBL_USER_ID,$userID)
+            ->where(Constants::TBL_LOGIN_PWD,$password)
+            ->count();
+
+        if($result != 1){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    public function updatePassword($userID,$password){
+        $userUpdate = User::find($userID);
+        $userUpdate->login_pwd = $password;
+
+        $result= $userUpdate->saveOrFail();
 
         return $result;
     }

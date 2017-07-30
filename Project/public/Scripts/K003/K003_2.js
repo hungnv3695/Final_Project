@@ -200,6 +200,6 @@ $(document).ready(function(){
                 alert('error');
             }
         });
-        event.preventDefault(); 
+        event.preventDefault();
     });
 });

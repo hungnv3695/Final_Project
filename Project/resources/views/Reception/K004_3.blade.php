@@ -61,8 +61,13 @@
 						<div class="col-md-offset-3" style="margin-top:20px;">
 							<table id="jqGrid" style="border:1px solid gray;"></table>
 						</div>
+<<<<<<< HEAD
 						<div class="col-md-5 col-md-offset-6" style="margin-top:30px;margin-bottom:20px;">
 							<button class="btn btn-primary col-md-offset-1" id="btnSave" value="btnSave" name="btnSave"><b>Lưu</b></button>
+=======
+						<div class="col-md-6 col-md-offset-6" style="margin-top:30px;margin-bottom:20px;">
+							<button class="btn btn-primary col-md-offset-2" id="btnSave" value="btnSave" name="btnSave"><b>Lưu</b></button>
+>>>>>>> 0f2e6979cd429879c855bd3af76c51bcd460d6c7
 							<button class="btn btn-danger" id="btnBack" value="btnBack" name="btnBack"><b>Hủy bỏ</b></button>
 						</div>	
 					</div>

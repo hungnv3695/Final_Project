@@ -51,6 +51,8 @@ Route::get('/K011_1/K011_3','K011Controller@viewAddPage');
 Route::post('/K011_1/K011_3','K011Controller@addAccountRequest');
 
 Route::get('/K012','K012Controller@view');
+Route::get('/K012/K012_1','K012Controller@viewChangePasswordPage');
+Route::post('/K012/K012_1','K012Controller@changePasswordRequest');
 Route::post('/K012','K012Controller@getUpdateRequest');
 
 //Router  Group for Manager

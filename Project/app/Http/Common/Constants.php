@@ -62,5 +62,8 @@ class Constants
         const  USER_GROUP = "t_user_group";
         const  PERMISSION = " t_permission " ;
 
+        const SUCCESS_MSG = 'SuccessMSG';
+        const ERROR_MSG = 'ErrorMSG';
+
 
 }
