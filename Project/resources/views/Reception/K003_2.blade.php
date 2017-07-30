@@ -87,6 +87,9 @@
 	</style>
 </head>
 <body>
+<form id="myForm">
+
+
 <div class="container">
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1" style="margin-top:2%;background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
@@ -106,7 +109,7 @@
 				<div class="col-md-6" style="border-right:1px solid rgb(240,240,240);">
 					<div class="form-inline col-md-offset-1" style="margin-top:20px;">
 						<label class="label1">Ngày vào:</label>
-						<input id="txtCheckin" name="txtCheckin" type="text" placeholder="MM/DD/YYY" class="form-control input-md" size="20" autofocus>
+						<input id="txtCheckin" name="txtCheckin" type="text" placeholder="MM/DD/YYY" class="form-control input-md" size="20" >
 					</div>
 					<div class="form-inline" style="margin-top:10px;margin-bottom:20px;">
 						<label class="label1 col-md-offset-1">Ngày ra:</label>
@@ -201,6 +204,7 @@
 		</div>
 	</div>
 </div>
+</form>
 </body>
 <script src="{{asset('Scripts/K003/K003_2.js')}}"></script>
 </html>
