@@ -55,7 +55,7 @@ $(document).ready(function () {
         ],
         rownumbers: true,
         viewrecords: true,
-        height: 400,
+        height: 372,
         rowNum: 10,
         pager: "#jqGridPager",
         autowidth: true,

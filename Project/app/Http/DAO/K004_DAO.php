@@ -253,7 +253,7 @@ class K004_DAO{
         $strSQL .= '((r.check_in BETWEEN \'' . $check_in . '\' AND \'' .$check_out. '\') ';
         $strSQL .='OR (r.check_out BETWEEN \'' .$check_in. '\' AND \'' .$check_out .'\'))) ';
         $strSQL .='ORDER BY ro.room_number ASC';
-        dd($strSQL);
+
         $result = DB::select(DB::raw($strSQL));
 
         return $result;

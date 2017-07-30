@@ -66,4 +66,19 @@ class K003DAO
         return $result;
     }
 
+    public function getRoomTypeFree($check_in,$check_out){
+
+
+        $strSQL =   'select rt.room_type_id, rt.type_name, rt.price, count(rt.type_name) "Count", string_agg(ro.room_number,\' \') "list_room" from tbl_room ro ';
+       $strSQL .= 'join tbl_room_type rt on ro.room_type_id = rt.room_type_id ';
+       $strSQL .= 'where ro.status_id <> \'RO04\' AND ';
+       $strSQL .= 'ro.room_id NOT IN ( select rd.room_id from tbl_reservation_detail rd left join tbl_reservation r on rd.reservation_id = r.id where ';
+       $strSQL .= '(r.check_in BETWEEN \'' . $check_in . '\' AND \'' . $check_out . '\') OR (r.check_out BETWEEN \'' . $check_in . '\' AND \'' . $check_out . '\')) ';
+       $strSQL .= 'GROUP BY rt.room_type_id, rt.type_name, rt.price';
+
+        $result = DB::select($strSQL);
+        return $result;
+
+    }
+
 }

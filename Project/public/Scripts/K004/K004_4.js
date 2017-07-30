@@ -357,6 +357,7 @@ $(document).ready(function () {
             success: function (result) {
                 if(result==1){
                     alert('Đơn đặt phòng đã được tạo thành công');
+                    location.reload();
                 }
                 else if(result==0){
                     alert('Xảy ra lỗi khi tạo đơn đặt phòng');
