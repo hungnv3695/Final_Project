@@ -99,4 +99,5 @@ Route::get('/K004_4/insertResInfor','K004Controller@insertResInfor');
 //K003_2: Check-in
 Route::get('/K003_2','K003Controller@k003_2_View');
 Route::get('/K003_2/SearchRoomTypeFree','K003Controller@searchRoomTypeFree');
+Route::get('/K003_2/Checkin','K003Controller@checkIn');
 
