@@ -42,6 +42,13 @@ class Message
     const MSG0024 = "Thêm phòng thất bại. Xin vui lòng thử lại sau.";
     const MSG0025 = "Thêm phòng Thành công.";
     const MSG0026 = "Phòng đã tồn tại.";
+    const MSG0027 = "Thay đổi tài khoản thành công.";
+    const MSG0028 = "Đặt lại mật khẩu thành công.";
+    const MSG0029 = "Thay đổi tài khoản thất bại. Xin vui lòng thử lại sau.";
+    const MSG0030 = "Đặt lại mật khẩu thất bại. Xin vui lòng thử lại sau.";
+    const MSG0031 = "Tài khoản đã tồn tại.";
+    const MSG0032 = "Thêm tài khoản thành công";
+    const MSG0033 = "Thêm tài khoản thất bại";
 
 
 

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href=" {!! asset('plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css') !!}">
     <link rel="stylesheet" type="text/css" href=" {!! asset('css/index.css') !!}">
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <style>
         body{
             padding:0;
@@ -83,6 +84,12 @@
                     <p class="brand-title">Danh sách tài khoản</p>
                 </div>
             </div>
+            @if(Session()->has('SuccessMSG'))
+                <div class="alert alert-success">
+                    {!! Session()->get('SuccessMSG') !!}
+
+                </div>
+            @endif
         </div>
         <div class="col-md-8 col-md-offset-2" style="background-color:rgb(230,230,230);border:1px solid rgb(215,215,215); border-top:none;border-bottom:none;">
             <form class="form-inline col-md-offset-3" style="margin-top:20px;margin-bottom:20px;" method="post">
@@ -154,6 +161,6 @@
         </div>
     </div>
 </div>
-
+<script>  $("div.alert").delay(2000).slideUp(); </script>
 </body>
 </html>

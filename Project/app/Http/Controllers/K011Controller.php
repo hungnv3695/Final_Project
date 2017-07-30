@@ -9,6 +9,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Common\Constants;
+use App\Http\Common\Message;
 use App\Http\DAO\K011DAO;
 use App\Models\User;
 use App\Models\UserGroup;
@@ -49,6 +50,8 @@ class K011Controller extends Controller
     public function getUpdateRequest(Request $request , $userID){
         $k011DAO = new K011DAO();
         $result = false;
+        $successMSG = "";
+        $errorMSG ="";
 
         if ($request->bntSave){
             $pos = $request->Position;
@@ -63,6 +66,8 @@ class K011Controller extends Controller
             $user->setDelete($status);
 
             $result = $k011DAO->updateUser($user,$userGroup);
+            $successMSG = Message::MSG0027 ;
+            $errorMSG = Message::MSG0029;
 
 
         } elseif($request->btnReset){
@@ -72,14 +77,15 @@ class K011Controller extends Controller
             $user->setLock(UNLOCK);
 
             $result = $k011DAO->resetPass($user);
+            $successMSG = Message::MSG0028;
+            $errorMSG = Message::MSG0030;
 
         }
 
         if($result){
-            $acc = $k011DAO->getAccount();
-            return view('Manager.K011_1',compact('acc'));
+            return redirect('/K011')->with(Constants::SUCCESS_MSG,$successMSG);
         }else{
-            return 'sasa';
+            return back()->withInput()->with(Constants::ERROR_MSG,$errorMSG);
         }
     }
 
@@ -103,13 +109,12 @@ class K011Controller extends Controller
             $result = $k011DAO->createAccount($user,$userGroup);
 
             if($result){
-                $acc = $k011DAO->getAccount();
-                return view('Manager.K011_1',compact('acc'));
+                return redirect('/K011')->with(Constants::SUCCESS_MSG,Message::MSG0032 );
             }else{
-                return 'sasa';
+                return back()->withInput()->with(Constants::ERROR_MSG,Message::MSG0033);
             }
         }else{
-            return back()->withInput();
+            return back()->withInput()->with(Constants::ERROR_MSG,Message::MSG0031);
         }
 
 

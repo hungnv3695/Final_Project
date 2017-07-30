@@ -68,6 +68,10 @@
                         </select>
                     </div>
 
+                    <div class="Error">
+                        <label  id="ErrorMsg" for="" style="color:red;" > {!! Session::has('ErrorMSG')?Session::get('ErrorMSG'):"" !!} </label>
+                    </div>
+
                     <div class="form-inline col-md-offset-2" style="margin-top:20px;">
                         <label class="label1" for="">Địa chỉ: </label>
                         <textarea rows="3" cols="30" id="txtAddress" name="txtAddress" class="form-control" autofocus maxlength="100" style="background-color: rgb(236,236,236);"   readonly> {!! $acc[0]->address !!} </textarea>

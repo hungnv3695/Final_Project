@@ -129,9 +129,7 @@ class K005Controller extends Controller
         $result =  $this->updateRoom($room);
 
         if($result == true){
-            $room = $this->getRoomRequest();
-            $successMSG = Message::MSG0018;
-            return view('Manager.K005_1',compact('room','successMSG'));
+            return redirect('/K005_1')->with(Constants::SUCCESS_MSG,Message::MSG0018);
 
         }else{
             return back()->withInput()->with(Constants::ERROR_MSG,Message::MSG0023);
@@ -180,9 +178,7 @@ class K005Controller extends Controller
             $result =  $this->addRoom($room);
 
             if($result == true){
-                $room = $this->getRoomRequest();
-                $successMSG = Message::MSG0025;
-                return view('Manager.K005_1',compact('room','successMSG'));
+                return redirect('/K005_1')->with(Constants::SUCCESS_MSG,Message::MSG0025);
             }else{
                 return back()->withInput()->with(Constants::ERROR_MSG,Message::MSG0024);
             }

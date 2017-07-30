@@ -97,9 +97,9 @@
 							<p class="brand-title">Danh sách phòng</p>
 						</div>
 					</div>
-					@if(isset($successMSG))
+					@if(Session()->has('SuccessMSG'))
 						<div class="alert alert-success">
-							{!! $successMSG !!}
+							{!! Session()->get('SuccessMSG') !!}
 						</div>
 					@endif
 				</div>
