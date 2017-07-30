@@ -13,6 +13,7 @@ use App\Http\Common\DateTimeUtil;
 use App\Http\DAO\K003DAO;
 use App\Models\Guest;
 use App\Models\Reservation;
+use App\Models\ReservationDetail;
 use App\Models\Room;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -58,15 +59,17 @@ class K003Controller extends Controller
     public function checkIn(Request $request){
         $room_status = $request->room_status;
         $res_status = $request->res_status;
-        //$room_ = $request->
+        $room_status = $request->room_status;
+        $room_id = $request->cboRoomNo;
 
+        //Guest Model
         $guest = new Guest();
         $guest->setName(trim($request->txtFullname1));
         $guest->setPhone(trim($request->txtPhone1));
         $guest->setMail(trim($request->txtEmail1));
         $guest->setIdentityCard(trim($request->txtIdcard1));
 
-
+        //Reservation Model
         $reservation = new Reservation();
         $reservation->setCheckIn(DateTimeUtil::ConvertDateToString($request->txtCheckin));
         $reservation->setCheckOut(DateTimeUtil::ConvertDateToString($request->txtCheckout));
@@ -78,8 +81,16 @@ class K003Controller extends Controller
         $reservation->setCreateYmd(Carbon::now());
         $reservation->setNote($request->txtNote);
 
+        //Reservation_detail Model
+        $res_detail = new ReservationDetail();
+        $res_detail->setCreateYmd(Carbon::now());
+        $res_detail->setRoomId($room_id);
+
+        //Room Model
         $room = new Room();
         $room->setStatusID($room_status);
+        $room->setRoomID($room_id);
+
 
 
     }

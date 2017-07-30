@@ -201,13 +201,13 @@ class K004_DAO{
         $strSQL = 'select ro.room_id, ro.room_number, rt.room_type_id , rt.type_name from ';
         $strSQL .='tbl_room ro join tbl_room_type rt ';
         $strSQL .='ON ro.room_type_id = rt.room_type_id ';
-        $strSQL .='where UPPER(rt.type_name) = \'' . strtoupper(trim($type_name)) . '\'';
+        $strSQL .='where UPPER(rt.type_name) = \'' . strtoupper(trim($type_name)) . '\' AND ro.status_id <> \'RO04\' ';
         $strSQL .=' AND NOT ro.room_id IN (select rd.room_id from ';
         $strSQL .='tbl_reservation r join tbl_reservation_detail rd ON ';
         $strSQL .='r.id = rd.reservation_id where  r.id <> \'' . $res_id . '\' AND ';
         $strSQL .= '((r.check_in BETWEEN \'' . $check_in . '\' AND \'' .$check_out. '\') ';
         $strSQL .='OR (r.check_out BETWEEN \'' .$check_in. '\' AND \'' .$check_out .'\'))) ';
-        //dd($strSQL);
+
         $result = DB::select(DB::raw($strSQL));
 
         return $result;
@@ -279,24 +279,17 @@ class K004_DAO{
 
             $guestInsert->save();
 
-
             $resInsert->check_in = $res->getCheckIn();
             $resInsert->check_out = $res->getCheckOut();
             $resInsert->number_of_adult = $res->getNumberOfAdult();
             $resInsert->number_of_room = $res->getNumberOfRoom();
             $resInsert->guest_id = $guestInsert->id;
-
             $resInsert->status_id = $res->getStatusId();
             $resInsert->create_ymd = Carbon::now();
 
             $resInsert->editer = $res->getEditer();
 
             $resInsert->save();
-
-
-
-
-
 
         }catch(\Exception $e){
             DB::rollback();

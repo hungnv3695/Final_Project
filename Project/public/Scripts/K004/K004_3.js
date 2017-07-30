@@ -25,8 +25,8 @@ $(document).ready(function () {
             { name: 'item2', hidden: true, width: 130 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }}
         ],
         rownumbers: true,
-        height: 200,
-        width: 210,
+        height: 210,
+        width: 215,
         rowNum: 10,
         autoheight: true,
         loadonce: true,

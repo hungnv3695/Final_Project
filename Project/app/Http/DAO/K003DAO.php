@@ -9,7 +9,12 @@
 namespace App\Http\DAO;
 
 
+use App\Models\Guest;
+use App\Models\Reservation;
+use App\Models\ReservationDetail;
+use App\Models\Room;
 use Illuminate\Support\Facades\DB;
+use Mockery\Exception;
 
 class K003DAO
 {
@@ -77,6 +82,66 @@ class K003DAO
 
         $result = DB::select($strSQL);
         return $result;
+
+    }
+
+    /**
+     * @param Guest $guest
+     * @param Reservation $res
+     * @param Room $room
+     * @param ReservationDetail $res_detail
+     * @return int
+     */
+    public function createNewCheckin(Guest $guest, Reservation $res, Room $room, ReservationDetail $res_detail){
+        $resInsert = new Reservation();
+        $guestInsert = new Guest();
+        $roomUpdate = new Room();
+        $resDetailInsert = new ReservationDetail();
+
+
+
+        DB::beginTransaction();
+        try{
+            $guestInsert->name = $guest->getName();
+            $guestInsert->identity_card = $guest->getIdentityCard();
+            $guestInsert->phone = $guest->getPhone();
+            $guestInsert->mail = $guest->getMail();
+            //Insert new Guest to Database
+            $guestInsert->save();
+
+            $resInsert->check_in = $res->getCheckIn();
+            $resInsert->check_out = $res->getCheckOut();
+            $resInsert->number_of_adult = $res->getNumberOfAdult();
+            $resInsert->number_of_room = $res->getNumberOfRoom();
+            $resInsert->status_id = $res->getStatusId();
+            $resInsert->create_ymd = $res->getCreateYmd();
+            $resInsert->number_of_children = $res->getNumberOfChildren();
+            $resInsert->editer = $res->getEditer();
+            $resInsert->note = $res->getNote();
+            $resInsert->guest_id = $guestInsert->id;
+
+            //insert new reservation
+            $resInsert->save();
+
+            $res_detail->setReservationId($resInsert->id);
+            $resDetailInsert->reservation_id = $res_detail->getReservationId();
+            $resDetailInsert->room_id = $res_detail->getRoomId();
+            $resDetailInsert->create_ymd = $res_detail->getCreateYmd();
+
+            //Insert reservation detail
+            $resDetailInsert->save();
+
+            $roomUpdate->status_id = $room->getStatusID();
+            $roomUpdate = Room::find($room->getRoomID());
+            $roomUpdate->save();
+
+            DB::commit();
+            return 1;
+
+        }catch(\Exception $e){
+            DB::Rollback();
+            return 0;
+        }
 
     }
 
