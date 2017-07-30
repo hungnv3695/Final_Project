@@ -147,7 +147,7 @@
 								<tr>
 									<td class="col1">1</td>
 									<td class="col2"> <input id="txtNameAcc1" name="txtNameAcc" type="text" class="form-control input-md" maxlength="20"  oninvalid="InvalidMsg(this);" required ></td>
-									<td class="col3"> <input id="txtQuanlityAcc1" name="txtquanlityAcc" type="number" value="1" class="form-control input-md"  min="1" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required  ></td>
+									<td class="col3"> <input id="txtQuanlityAcc1" name="txtquantityAcc" type="number" value="1" class="form-control input-md"  min="1" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required  ></td>
 									<td class="col4"> <input id="txtPriceAcc1" name="txtPriceAcc" type="number" value="0" class="form-control input-md"  min="0" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required  ></td>
 									<td class="col5"><label class="label2">.000(VND)</label></td>
 								</tr>
@@ -162,7 +162,7 @@
 			</div>
 			<div class="col-md-12" style="background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
 				<div class="col-md-6 col-md-offset-9" style="margin-top:10px; margin-bottom:10px;">
-					<button type="submit" class="btn btn-success col-md-offset-2" id="bntSave" value="bntSave" name="bntSave"><b>Thêm</b></button>
+					<button type="submit" class="btn btn-success col-md-offset-2" id="bntAddType" value="bntSave" name="bntSave"><b>Thêm</b></button>
 					<button  type="button" class="btn btn-danger" value="bntCancel" name="bntCancel" onclick="window.location='{{ url("/K010_2") }}'" ><b>Hủy bỏ</b></button>
 				</div>
 			</div>

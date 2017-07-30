@@ -26,7 +26,7 @@ class K001Controller extends Controller
      */
     public function view(){
 
-        return view('Login.K001_1');
+        return view('Common.K001_1');
     }
 
     public function logOut(){

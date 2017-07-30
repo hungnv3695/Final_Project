@@ -102,7 +102,7 @@ class K005DAO
             ->orderBy( Constants::TBL_ACCESSORY_NAME)
             ->get([
                 Constants::TBL_ACCESSORY_NAME,
-                Constants::TBL_QUANLITY,
+                Constants::TBL_QUANTITY,
                 Constants::TBL_PRICE
             ]);
 

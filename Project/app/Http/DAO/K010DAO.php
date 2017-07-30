@@ -96,7 +96,7 @@ class K010DAO
 
             $accessoryAdd->room_type_id = $roomTypeID;
             $accessoryAdd->accessory_name =  array_get($accessory,Constants::NAME_ACC);
-            $accessoryAdd->quanlity = array_get($accessory,Constants::QUANLITY_ACC);
+            $accessoryAdd->quantity = array_get($accessory,Constants::QUANTITY_ACC);
             $accessoryAdd->price = array_get($accessory,Constants::PRICE_ACC);
 
             $result = $accessoryAdd->saveOrFail();
@@ -106,7 +106,7 @@ class K010DAO
                 $accessoryAdd = new Accessory();
                 $accessoryAdd->room_type_id = $roomTypeID;
                 $accessoryAdd->accessory_name =  array_get($accessory,Constants::NAME_ACC . $i);
-                $accessoryAdd->quanlity = array_get($accessory,Constants::QUANLITY_ACC . $i );
+                $accessoryAdd->quantity = array_get($accessory,Constants::QUANTITY_ACC . $i );
                 $accessoryAdd->price = array_get($accessory,Constants::PRICE_ACC . $i );
 
                 $result =  $accessoryAdd->saveOrFail();
@@ -146,7 +146,7 @@ class K010DAO
             ->orderBy( Constants::TBL_ACCESSORY_NAME)
             ->get([
                 Constants::TBL_ACCESSORY_NAME,
-                Constants::TBL_QUANLITY,
+                Constants::TBL_QUANTITY,
                 Constants::TBL_PRICE
             ]);
 

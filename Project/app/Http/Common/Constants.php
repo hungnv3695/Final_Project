@@ -47,13 +47,13 @@ class Constants
         const TBL_PRICE = 'price';
         const   TBL_STATUS_TYPE = 'status_type';
         const   TBL_ACCESSORY_NAME = 'accessory_name';
-        const   TBL_QUANLITY = 'quanlity';
+        const   TBL_QUANTITY = 'quantity';
         const   TBL_ADULT = 'adult';
         const  TBL_CHILDREN = 'children';
         const TBL_NOTE = 'note';
 
         const NAME_ACC = 'txtNameAcc';
-        const QUANLITY_ACC = 'txtquanlityAcc';
+        const QUANTITY_ACC = 'txtquantityAcc';
         const PRICE_ACC = 'txtPriceAcc';
 
         const TBL_FLOOR = 'floor';

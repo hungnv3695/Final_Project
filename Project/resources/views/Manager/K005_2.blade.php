@@ -161,7 +161,7 @@
 												<tr>
 													<td class="col1">{!! $i !!}</td>
 													<td class="col2">{!! array_get($data,'accessory_name') !!}</td>
-													<td class="col3">{!! array_get($data,'quanlity') !!}</td>
+													<td class="col3">{!! array_get($data,'quantity') !!}</td>
 													<td class="col4">{!! array_get($data,'price') !!}</td>
 												</tr>
 												<?php $i++?>
