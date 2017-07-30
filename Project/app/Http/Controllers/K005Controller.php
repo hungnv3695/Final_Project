@@ -130,9 +130,11 @@ class K005Controller extends Controller
 
         if($result == true){
             $room = $this->getRoomRequest();
-            return view('Manager.K005_1',compact('room'));
+            $successMSG = Message::MSG0018;
+            return view('Manager.K005_1',compact('room','successMSG'));
+
         }else{
-            return Message::MSG0004;
+            return back()->withInput()->with(Constants::ERROR_MSG,Message::MSG0023);
         }
 
     }
@@ -164,7 +166,7 @@ class K005Controller extends Controller
         $checkKey= $k005DAO->checkRoomKey($request->txtRoomID);
 
         if($checkKey == false){
-            return back()->withInput();
+            return back()->withInput()->with(Constants::ERROR_MSG,Message::MSG0026);
         } else{
 
             $room = new Room();
@@ -179,9 +181,10 @@ class K005Controller extends Controller
 
             if($result == true){
                 $room = $this->getRoomRequest();
-                return view('Manager.K005_1',compact('room'));
+                $successMSG = Message::MSG0025;
+                return view('Manager.K005_1',compact('room','successMSG'));
             }else{
-                return Message::MSG0004;
+                return back()->withInput()->with(Constants::ERROR_MSG,Message::MSG0024);
             }
 
         }

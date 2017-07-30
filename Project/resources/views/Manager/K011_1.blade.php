@@ -149,7 +149,7 @@
         </div>
         <div class="col-md-8 col-md-offset-2" style="background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
             <div class="col-md-2 col-md-offset-10" style="margin-top:10px; margin-bottom:10px;">
-                <button type="button" class="btn btn-danger col-md-offset-2" value="btnBack" name="btnBack"><b>Back</b></button>
+                <button type="button" class="btn btn-danger col-md-offset-2" value="btnBack" name="btnBack" onclick="window.location='{{ url("/K002") }}'" ><b>Back</b></button>
             </div>
         </div>
     </div>

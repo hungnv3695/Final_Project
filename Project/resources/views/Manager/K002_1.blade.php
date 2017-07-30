@@ -34,9 +34,10 @@
 							<div class="col-md-6 form-inline col-md-offset-3" style="border:3px solid rgb(220,220,220);border-radius:10px; background-color:white;margin-top:50px;margin-bottom:50px;">
 								<div class="col-md-8 col-md-offset-2" style="margin-top:20px;"><button type="button"  class="btn btn-primary btn-block" value="btnRoomtypeManagement" name="btnRoomtypeManagement"  onclick="window.location='{{ url("/K010_2") }}'" ><b>Quản lý loại phòng</b></button></div>
 								<div class="col-md-8 col-md-offset-2" style="margin-top:20px;"><button type="button"  class="btn btn-primary btn-block" value="btnRoomManagement" name="btnRoomManagement"  onclick="window.location='{{ url("/K005_1") }}'" ><b>Quản lý phòng </b></button></div>								
-								<div class="col-md-8 col-md-offset-2" style="margin-top:20px;"><button type="button" class="btn btn-primary btn-block" value="btnAccoutManagement" name="btnAccoutManagement" ><b>Quản lý tài khoản</b></button></div>							
-								<div class="col-md-8 col-md-offset-2" style="margin-top:20px;"><button type="button"  class="btn btn-primary btn-block" value="bntServiceManagement" name="bntServiceManagement"   onclick="window.location='{{ url("/K003") }}'"><b>Quản lý dịch vụ</b></button></div>							
-								<div class="col-md-8 col-md-offset-2" style="margin-top:20px;margin-bottom:20px;"><button type="button"  class="btn btn-primary btn-block" value="bntPageManagement" name="bntPageManagement"  ><b>Quản lý trang</b></button></div>						
+								<div class="col-md-8 col-md-offset-2" style="margin-top:20px;"><button type="button" class="btn btn-primary btn-block" value="btnAccoutManagement" name="btnAccoutManagement"  onclick="window.location='{{ url("/K011") }}'" ><b>Quản lý tài khoản</b></button></div>
+								<div class="col-md-8 col-md-offset-2" style="margin-top:20px;"><button type="button"  class="btn btn-primary btn-block" value="bntServiceManagement" name="bntServiceManagement" ><b>Quản lý dịch vụ</b></button></div>
+								<div class="col-md-8 col-md-offset-2" style="margin-top:20px;margin-bottom:20px;"><button type="button"  class="btn btn-primary btn-block" value="bntPageManagement" name="bntPageManagement"  ><b>Quản lý trang</b></button></div>
+								<div class="col-md-8 col-md-offset-2" style="margin-top:20px;"><button type="button" class="btn btn-primary btn-block" value="btnMyAccount" name="btnMyAccount"  onclick="window.location='{{ url("/K012") }}'" ><b>Thông tin của tôi</b></button></div>
 							</div>
 						</div>
 					</div>

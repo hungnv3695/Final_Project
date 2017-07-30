@@ -118,6 +118,11 @@
 										<label class="label1" for="">Ghi chú: </label>  
 										<textarea rows="3" cols="25" id="txtNote" class="form-control" name="txtNote" maxlength="100" onclick="setDisableRoomType()"  onkeydown="setDisableRoomType()"> {!! $roomDetail[0]->note !!}</textarea>
 									</div>
+
+									<div class="Error">
+										<label  id="ErrorMsg" for="" style="color:red;" > {!! Session::has('ErrorMSG')?Session::get('ErrorMSG'):"" !!} </label>
+									</div>
+
 									<div class="form-inline col-md-offset-6" style="margin-top:75px;margin-bottom:20px;">
 										<button class="btn btn-primary" value="bntSave" name="bntSave" onclick="setDisableRoomType()"><b>Lưu</b></button>
 										<button type="button" class="btn btn-danger" value="bntCancel" name="bntCancel" style="margin-left:5px;" onclick="window.location='{{ url("/K005_1") }}'"><b>Hủy bỏ</b></button>
