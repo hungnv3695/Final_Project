@@ -7,6 +7,20 @@ $(document).ready(function () {
     var room_number = $('#txtRoomNo').val();
     $res_id = $('#txtResId').val();
     var detail_id=[];
+    var checkin= $('#txtCheckIn').val();
+
+    var checkout = $('#txtCheckOut').val();
+
+    var d = new Date();
+
+    var month = d.getMonth()+1;
+    var day = d.getDate();
+
+    var dateNow = d.getFullYear() + '' +
+        ((''+month).length<2 ? '0' : '') + month + '' +
+        ((''+day).length<2 ? '0' : '') + day;
+
+
     $("#jqGrid").jqGrid({
         datatype: "local",
         mtype: "GET",
@@ -15,6 +29,7 @@ $(document).ready(function () {
         colNames:[
             '*',
             'No.Room',
+            ' ',
             ' '
         ],
         colModel: [
@@ -22,11 +37,14 @@ $(document).ready(function () {
                 return addCheckbox(options.rowId);
             }},
             { name: 'item1',  width: 135 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
-            { name: 'item2', hidden: true, width: 130 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }}
-        ],
+            { name: 'item2', hidden: true, width: 130 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
+            { name: 'item3',  width: 80 , align: "left",formatter: function (cellvalue, options){
+                return addLink(options.rowId);
+            } }
+            ],
         rownumbers: true,
         height: 210,
-        width: 215,
+        width: 300,
         rowNum: 10,
         autoheight: true,
         loadonce: true,
@@ -61,15 +79,32 @@ $(document).ready(function () {
             $("tr.jqgrow:even").css("background", "#F5F5F5");
             $("tr.jqgrow:odd").css("background", "#EEE8AA");
             checkroom($res_id);
+
+            //hiddenCheckin();
         }
 
     });
+    //Add Link for event Delete Rows
+    function addLink(id) {
+            return "<a href='#' id='checkin" + id + "' style='display: none' type='button' title='Check-in' \>Check-in</a>";
+    }
 
     $( ".ui-th-div" ).append( "<p>No.</p>" );
 
     function addCheckbox(id) {
         return "<input type='checkbox' id='"+ id + "' disabled='disabled'>" ;
     }
+    
+    // function hiddenCheckin() {
+    //     var count=jQuery("#jqGrid").jqGrid('getGridParam', 'records');
+    //
+    //     for(var i =1 ; i<= count; i++){
+    //         var ch =  $('input[id='+i+']').prop('checked');
+    //         if(!ch){
+    //             $("#checkin" + i).css('display','none');
+    //         }
+    //     }
+    // }
 
     function  searchData(res_id,check_in,check_out,type_name) {
 
@@ -130,6 +165,13 @@ $(document).ready(function () {
                                 detail_id.push(result[i].id);
                                 var a = j + 1;
                                 jQuery("#jqGrid").find('#'+ a +' input[type=checkbox]').prop('checked',true);
+                                if(checkin<=dateNow<=checkout){
+                                    var roomId = $('#jqGrid').jqGrid ('getCell', a , 'item2');
+                                    $("#checkin" + a).css("display","true");
+                                    $("#checkin" + a).attr('onclick', 'window.open(\'/K003_2?res_id='+ $res_id+ '&room_id='+roomId +'\')' );
+
+                                }
+
                                 break;
                             }
                     }
@@ -209,5 +251,6 @@ $(document).ready(function () {
         jQuery("#jqGrid").trigger("reloadGrid");
         searchData($res_id,$check_in,$check_out,$type_name);
         $('#btnSave').attr("disabled", false);
+
     });
 });

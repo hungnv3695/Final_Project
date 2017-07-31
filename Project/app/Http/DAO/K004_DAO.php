@@ -246,7 +246,7 @@ class K004_DAO{
         $strSQL = 'select ro.room_id, ro.room_number, rt.room_type_id , rt.type_name, rt.price from ';
         $strSQL .='tbl_room ro join tbl_room_type rt ';
         $strSQL .='ON ro.room_type_id = rt.room_type_id ';
-        $strSQL .='where ro.status_id <> \'RO04\' AND ';
+        $strSQL .='where ro.status_id = \'RO01\' AND ';
         $strSQL .=' NOT ro.room_id IN (select rd.room_id from ';
         $strSQL .='tbl_reservation r join tbl_reservation_detail rd ON ';
         $strSQL .='r.id = rd.reservation_id where  ';

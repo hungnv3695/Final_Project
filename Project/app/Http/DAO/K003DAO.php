@@ -75,7 +75,7 @@ class K003DAO
 
         $strSQL =   'select rt.room_type_id, rt.type_name, rt.price, count(rt.type_name) "Count", string_agg(ro.room_number,\' \') "list_room", string_agg(ro.room_id,\' \') "list_room_id" from tbl_room ro ';
        $strSQL .= 'join tbl_room_type rt on ro.room_type_id = rt.room_type_id ';
-       $strSQL .= 'where ro.status_id <> \'RO04\' AND ';
+       $strSQL .= 'where ro.status_id = \'RO01\' AND ';
        $strSQL .= 'ro.room_id NOT IN ( select rd.room_id from tbl_reservation_detail rd left join tbl_reservation r on rd.reservation_id = r.id where ';
        $strSQL .= '(r.check_in BETWEEN \'' . $check_in . '\' AND \'' . $check_out . '\') OR (r.check_out BETWEEN \'' . $check_in . '\' AND \'' . $check_out . '\')) ';
        $strSQL .= 'GROUP BY rt.room_type_id, rt.type_name, rt.price';
@@ -107,6 +107,7 @@ class K003DAO
             $guestInsert->phone = $guest->getPhone();
             $guestInsert->mail = $guest->getMail();
             //Insert new Guest to Database
+
             $guestInsert->save();
 
             $resInsert->check_in = $res->getCheckIn();
@@ -131,8 +132,8 @@ class K003DAO
             //Insert reservation detail
             $resDetailInsert->save();
 
-            $roomUpdate->status_id = $room->getStatusID();
             $roomUpdate = Room::find($room->getRoomID());
+            $roomUpdate->status_id = $room->getStatusID();
             $roomUpdate->save();
 
             DB::commit();
@@ -140,9 +141,24 @@ class K003DAO
 
         }catch(\Exception $e){
             DB::Rollback();
+            dd($e);
             return 0;
         }
 
+    }
+
+    public function selectResDetailInfor($res_id, $room_id){
+
+        $strSQL = 'select g.name, g.identity_card, g.phone, g.mail ,r.check_in, r.check_out, r.note ,ro.room_id, ro.room_number, rt.type_name, rt.price ' ;
+        $strSQL .= 'from tbl_reservation_detail rd ';
+        $strSQL .= 'left join tbl_reservation r on rd.reservation_id = r.id ';
+        $strSQL .= 'left join tbl_guest g on r.guest_id = g.id ';
+        $strSQL .= 'left join tbl_room ro on rd.room_id = ro.room_id ';
+        $strSQL .= 'left join tbl_room_type rt on ro.room_type_id = rt.room_type_id ';
+        $strSQL .= 'where rd.reservation_id = \''. $res_id . '\' and rd.room_id = \''. $room_id . '\' ';
+        //dd($strSQL);
+        $result = DB::select(DB::raw($strSQL));
+        return $result;
     }
 
 }
