@@ -133,9 +133,13 @@
 					</div>
 					<div class="form-inline col-md-offset-1" style="margin-top:10px;">
 						<label class="label1" for="">Số phòng: </label>
-						<select id="cboRoomNo" name="cboRoomNo" class="form-control input-md" style="width:180px;" readonly>
+						<select id="cboRoomNo" name="cboRoomNo" class="form-control input-md" style="width:90px;" readonly>
 
 						</select>
+					</div>
+					<div class="form-inline col-md-offset-1" style="margin-top:20px;">
+						<label class="label1">Số người:</label>
+						<input id="numofpeople" name="numofpeople" type="number" class="form-control input-md" min="1" style="width:180px;" readonly>
 					</div>
 					<div class="form-inline col-md-offset-1" style="margin-top: 10px;">
 						<label class="label1" for="">Tổng tiền:</label>
