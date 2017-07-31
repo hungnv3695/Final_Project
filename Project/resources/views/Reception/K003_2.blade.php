@@ -95,6 +95,9 @@
 		<div class="col-md-10 col-md-offset-1" style="margin-top:2%;background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
 			<div class="row">
 				<div class="col-md-offset-9" style="margin:10px 10px 0px 0px;float:right;">
+					@if(Session::has('USER_INFO'))
+						<p class="account">{!! "Xin chào " . Session::get('USER_INFO')->user_name !!} </p>
+					@endif
 					<b>|</b><a href="{!! url('/K001/LogOut') !!}"><b> Đăng xuất</b></a>
 				</div>
 				<div class="col-md-12">

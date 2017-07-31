@@ -25,6 +25,9 @@
             <div class="col-md-6 col-md-offset-3" style="margin-top:5%;background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
                 <div class="row">
                     <div class="col-md-offset-9" style="margin:10px 10px 0px 0px;float:right;">
+						@if(Session::has('USER_INFO'))
+							<p class="account">{!! "Xin chào " . Session::get('USER_INFO')->user_name !!} </p>
+						@endif
                         <b>|</b><a href="{!! url('/K001/LogOut') !!}"><b> Đăng xuất</b></a>
                     </div>
                     <div class="col-md-12">
@@ -40,7 +43,7 @@
                     </div>
                     <div class="form-inline col-md-offset-1" style="margin-top:20px;">
                         <label class="label1" for="">Mật khẩu cũ: </label>
-                        <input  id="txtOldPwd" name="txtOldPwd" type="password" class="form-control input-md" maxlength="50" size="20" oninvalid="InvalidMsg(this);" required  >
+                        <input  id="txtOldPwd" name="txtOldPwd" type="password" class="form-control input-md" maxlength="50" size="20" autofocus oninvalid="InvalidMsg(this);" required  >
                     </div>
                     <div class="form-inline col-md-offset-1" style="margin-top:20px;">
                         <label class="label1" for="">Mật khẩu mới: </label>
