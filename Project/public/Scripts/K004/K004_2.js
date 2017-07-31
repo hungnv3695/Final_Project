@@ -6,25 +6,51 @@ $(document).ready(function () {
     var check_in = $('#checkintxt').val();
     var check_out = $('#checkouttxt').val();
     var PROCESSING = "RS02";
+    var status = $('#status').val();
+    function GetUrlParameter(sParam) {
+        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
 
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : sParameterName[1];
+            }
+        }
+    };
     //Start: HungNV : Update reservation status -> Processing
-    $.ajax({
-        url: '/K004_1/K004_2/ChangeSttToProcessing',
-        method: 'GET',
-        cache: false,
-        dataType: 'json',
-        data: {
-            res_id: res_id,
-            status: PROCESSING
-        },
-        contentType: 'application/json; charset=utf-8',
-        success: function (result) {
-        },
-        error: function(){
-            alert('error');
+    function checkStatus() {
+
+        if(status != 'RS05'){
+            $.ajax({
+                url: '/K004_1/K004_2/ChangeSttToProcessing',
+                method: 'GET',
+                cache: false,
+                dataType: 'json',
+                data: {
+                    res_id: res_id,
+                    status: PROCESSING
+                },
+                contentType: 'application/json; charset=utf-8',
+                success: function (result) {
+                },
+                error: function(){
+                    alert('error');
+                }
+
+            });
+        }
+        else {
+            return;
         }
 
-    });
+
+
+    }
+    checkStatus();
     //End: Update reservation status -> Processing
 
     //JqGrid START
@@ -67,9 +93,14 @@ $(document).ready(function () {
             var rowData = jQuery(this).getRowData(rowId);
             var type_name = rowData['item0'];
             var no_room = rowData['item1'];
-            window.open('/K004_1/K004_2/K004_3?res_id=' + res_id + '&type_name=' + type_name + '&no_room=' + no_room
-                +"&check_in=" + check_in + "&check_out=" + check_out
-                , '_self');
+            if(status=='RS05'){
+                return;
+            }else {
+                window.open('/K004_1/K004_2/K004_3?res_id=' + res_id + '&type_name=' + type_name + '&no_room=' + no_room
+                    +"&check_in=" + check_in + "&check_out=" + check_out
+                    , '_self');
+            }
+
 
         },
         loadComplete: function(){
@@ -91,9 +122,9 @@ $(document).ready(function () {
 
     var res_id = $('#res_id').val();
     searchData(res_id);
-    loadStatus();
-    function loadStatus() {
-        var status = $('#status').val();
+    loadStatus(status);
+    function loadStatus(status) {
+
         $.ajax({
 
             url: 'GetStatus',
@@ -104,16 +135,35 @@ $(document).ready(function () {
             success: function (result) {
                 $("#cboStatus").empty();
                 $("#cboStatus").append($('<option></option>').val("").html(""));
-                for (i=0; i < result.length; i++){
-                    //add data for status combobox
-                    if(result[i].status_id == PROCESSING){
-                        $("#cboStatus").append($('<option selected></option>').val(result[i].status_id).html(result[i].status_name));
-                    }
-                    else{
-                        $("#cboStatus").append($('<option></option>').val(result[i].status_id).html(result[i].status_name));
-                    }
+                if(status=='RS05'){
+                    for (i=0; i < result.length; i++){
+                        //add data for status combobox
 
+                        if(result[i].status_id == status){
+
+                            $("#cboStatus").append($('<option selected></option>').val(result[i].status_id).html(result[i].status_name));
+                            $('#cboStatus').attr("disabled", true);
+                        }
+                        else{
+                            $("#cboStatus").append($('<option></option>').val(result[i].status_id).html(result[i].status_name));
+                        }
+
+                    }
                 }
+                else {
+                    for (i=0; i < result.length; i++){
+                        //add data for status combobox
+
+                        if(result[i].status_id == PROCESSING){
+                            $("#cboStatus").append($('<option selected></option>').val(result[i].status_id).html(result[i].status_name));
+                        }
+                        else{
+                            $("#cboStatus").append($('<option></option>').val(result[i].status_id).html(result[i].status_name));
+                        }
+
+                    }
+                }
+
             },
             error: function(){
                 alert('error');

@@ -57,7 +57,6 @@ class K003Controller extends Controller
     }
 
     public function checkIn(Request $request){
-        $room_status = $request->room_status;
         $res_status = $request->res_status;
         $room_status = $request->room_status;
         $room_id = $request->cboRoomNo;
@@ -74,9 +73,9 @@ class K003Controller extends Controller
         $reservation->setCheckIn(DateTimeUtil::ConvertDateToString($request->txtCheckin));
         $reservation->setCheckOut(DateTimeUtil::ConvertDateToString($request->txtCheckout));
         $reservation->setStatusId($res_status);
-        $reservation->setNumberOfAdult("");
-        $reservation->setNumberOfChildren("");
-        $reservation->setEditer("");
+        $reservation->setNumberOfAdult(1);
+        $reservation->setNumberOfChildren(1);
+        $reservation->setEditer('');
         $reservation->setNumberOfRoom(1);
         $reservation->setCreateYmd(Carbon::now());
         $reservation->setNote($request->txtNote);
@@ -88,8 +87,35 @@ class K003Controller extends Controller
 
         //Room Model
         $room = new Room();
+
         $room->setStatusID($room_status);
         $room->setRoomID($room_id);
+
+
+        $K003DAO = new K003DAO();
+        $result = $K003DAO->createNewCheckin($guest,  $reservation,  $room,  $res_detail);
+        if($result==1){
+            return response(1);
+        }else if ($result==0){
+            return response(0);
+        }
+
+    }
+
+    public function checkIsReservation(Request $request){
+        $res_id = $request->res_id;
+
+        if($res_id==""){
+            return response('Reception.K003_2');
+        }
+        else if($res_id != ""){
+            $room_id = $request->room_id;
+            $K003DAO = new K003DAO();
+            $result = $K003DAO->selectResDetailInfor($res_id, $room_id);
+            $result[0]->check_in = DateTimeUtil::ConvertStringToDate($result[0]->check_in);
+            $result[0]->check_out = DateTimeUtil::ConvertStringToDate($result[0]->check_out);
+            return response($result);
+        }
 
 
 

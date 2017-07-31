@@ -5,13 +5,31 @@ $(document).ready(function(){
     var jList=[];
     var ROOM_STATUS = "RO02";
     var RES_STATUS = "RS05";
+    var res_id = GetUrlParameter("res_id");
+    var room_id = GetUrlParameter("room_id");
+
+    function GetUrlParameter(sParam) {
+        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : sParameterName[1];
+            }
+        }
+    };
+
 
     jQuery('#txtCheckin').datetimepicker({
         format:'d/m/Y',
         onShow:function( ct ){
             this.setOptions({
                 minDate:0,
-                maxDate:jQuery('#txtCheckout').val()?jQuery('#txtCheckout').val():false
+                maxDate:0
             })
         },
         timepicker:false,
@@ -81,6 +99,62 @@ $(document).ready(function(){
         shrinkToFit: false
 
     });
+
+
+
+
+
+    function checkIsReservation($res_id) {
+        if($res_id != ""){
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: '/K003_2/CheckIsReservation',
+                method: 'GET',
+                cache: false,
+                dataType: 'json',
+                data: {
+                    res_id : $res_id,
+                    room_id : room_id
+                },
+                contentType: 'application/x-www-form-urlencoded',
+                success: function (result) {
+                    console.log(result[0].type_name);
+                    $("#txtCheckin").val(result[0].check_in);
+                    $("#txtCheckout").val(result[0].check_out);
+                    //$("#roomtype").text(result[0].type_name).prop('selected', true);
+                    $("#roomtype").append($('<option selected></option>').html(result[0].type_name));
+                    $("#cboRoomNo").append($('<option selected></option>').html(result[0].room_number));
+                    //$("#cboRoomNo").text(result[0].room_number);
+                    $("#txtNote").val(result[0].note);
+
+                    $("#txtFullname1").val(result[0].name);
+                    $("#txtIdcard1").val(result[0].identity_card);
+                    $("#txtPhone1").val(result[0].phone);
+                    $("#txtEmail1").val(result[0].mail);
+
+                    $("#txtFullname2").attr('readonly', false);
+                    $("#txtIdcard2").attr('readonly', false);
+                    $("#txtPhone2").attr('readonly', false);
+                    $("#txtEmail2").attr('readonly', false);
+
+
+                    return;
+
+                },
+                error: function(){
+                    alert('error');
+                }
+            });
+        }else{
+            return;
+        }
+    }
+    checkIsReservation(res_id);
+
+
+
     function addData(result){
         jList=[];
         console.log(result);
@@ -182,24 +256,78 @@ $(document).ready(function(){
         }
     });
 
-    $("#btnCheckin").click(function () {
-        $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            url: '/K003_2/Checkin',
-            method: 'GET',
-            cache: false,
-            dataType: 'json',
-            data: $("#myForm").serialize() + "$room_status=" + ROOM_STATUS + "&res_status=" + RES_STATUS ,
-            contentType: 'application/x-www-form-urlencoded',
-            success: function (result) {
-
-            },
-            error: function(){
-                alert('error');
-            }
-        });
+    $("#btnCheckin").click(function (event) {
         event.preventDefault();
+        if(res_id != ""){
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: '/K003_2/CheckinRes',
+                method: 'GET',
+                cache: false,
+                dataType: 'json',
+                data: $("#myForm").serialize() + "&room_status=" + ROOM_STATUS + "&res_status=" + RES_STATUS ,
+                contentType: 'application/x-www-form-urlencoded',
+                success: function (result) {
+                    if(result==1){
+                        alert('Check-in thành công');
+                        location.reload();
+                    }
+                    else if(result==0){
+                        alert('Xảy ra lỗi khi check-in');
+                    }
+                },
+                error: function(){
+                    alert('error');
+                }
+            });
+        }
+        else if(res_id == ""){
+
+            if( $("#txtCheckin").val() == "" || $("#txtCheckout").val() == ""){
+                alert('Chọn ngày vào và ngày ra trước khi ấn nút [Nhận phòng]');
+                return;
+            }
+            if ($("#roomtype").val() == "" || $("#cboRoomNo").val() == ""){
+                alert('Chọn kiểu phòng và sô phòng trước khi ấn nút [Nhận phòng]');
+                return;
+            }
+            if($("#txtFullname1").val() == "" || $("#txtIdcard1").val() == ""){
+                alert('Nhập tên người đặt và CMND trước khi ấn nút [Nhận phòng]');
+                return;
+            }
+            if($("#txtPhone1").val() == "" || $("#txtEmail1").val() == ""){
+                $("#txtPhone1").val("");
+                $("#txtEmail1").val("");
+            }
+
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: '/K003_2/Checkin',
+                method: 'GET',
+                cache: false,
+                dataType: 'json',
+                data: $("#myForm").serialize() + "&room_status=" + ROOM_STATUS + "&res_status=" + RES_STATUS ,
+                contentType: 'application/x-www-form-urlencoded',
+                success: function (result) {
+                    if(result==1){
+                        alert('Check-in thành công');
+                        location.reload();
+                    }
+                    else if(result==0){
+                        alert('Xảy ra lỗi khi check-in');
+                    }
+                },
+                error: function(){
+                    alert('error');
+                }
+            });
+
+        }
+        event.preventDefault();
+
     });
 });
