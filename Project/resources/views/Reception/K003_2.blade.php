@@ -95,6 +95,9 @@
 		<div class="col-md-10 col-md-offset-1" style="margin-top:2%;background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
 			<div class="row">
 				<div class="col-md-offset-9" style="margin:10px 10px 0px 0px;float:right;">
+					@if(Session::has('USER_INFO'))
+						<p class="account">{!! "Xin chào " . Session::get('USER_INFO')->user_name !!} </p>
+					@endif
 					<b>|</b><a href="{!! url('/K001/LogOut') !!}"><b> Đăng xuất</b></a>
 				</div>
 				<div class="col-md-12">
@@ -133,9 +136,13 @@
 					</div>
 					<div class="form-inline col-md-offset-1" style="margin-top:10px;">
 						<label class="label1" for="">Số phòng: </label>
-						<select id="cboRoomNo" name="cboRoomNo" class="form-control input-md" style="width:180px;" readonly>
+						<select id="cboRoomNo" name="cboRoomNo" class="form-control input-md" style="width:90px;" readonly>
 
 						</select>
+					</div>
+					<div class="form-inline col-md-offset-1" style="margin-top:20px;">
+						<label class="label1">Số người:</label>
+						<input id="numofpeople" name="numofpeople" type="number" class="form-control input-md" min="1" style="width:180px;" readonly>
 					</div>
 					<div class="form-inline col-md-offset-1" style="margin-top: 10px;">
 						<label class="label1" for="">Tổng tiền:</label>
