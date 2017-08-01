@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="{!! asset('plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css') !!}">
 	<link rel="stylesheet" type="text/css" href=" {!! asset('css/index.css') !!}">
+	<script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <style type="text/css">
 	body
 	{
@@ -51,18 +52,33 @@
 	}
 	.col2
 	{
-		width: 40%;
+		width: 32%;
 		float:left;
 	}
 	.col3
 	{
-		width: 25%;
+		width: 18%;
 		float:left;
 	}
 	.col4
 	{
-		width: 25%;
+		width: 23%;
 		float:left;
+	}
+	.col5
+	{
+		width: 10%;
+		float:left;
+	}
+	.Error
+	{
+		color: #D8000C;
+		background-color: #FFBABA;
+		height:40px;
+		line-height:40px;
+		opacity: 0.6;
+		border-radius:5px;
+		text-align:center;
 	}
 	</style>
 </head>
@@ -86,6 +102,11 @@
 					<div class="col-md-10 col-md-offset-1" style="background-color:rgb(230,230,230);border:1px solid rgb(215,215,215); border-top:none;">
 						<div class="row">
 							<div class="col-md-5 form-horizontal" style="margin:10px 30px 10px;border: 2px solid rgb(220,220,220);border-radius:10px;">
+									@if(Session::has('ErrorMSG'))
+										<div class="Error" style="margin-top:10px;">
+											<label id="ErrorMsg"> {!! Session::get('ErrorMSG')!!} </label>
+										</div>
+									@endif
 									<div class="form-inline" style="margin-top:20px;">
 										<label class="label1" for="">Kiểu phòng: </label>  
 											<select id="roomtype" name="roomtype" class="form-control input-md" style="width:140px;" autofocus>
@@ -117,13 +138,8 @@
 									<div class="form-inline" style="margin-top:20px;margin-bottom:20px;">
 										<label class="label1" for="">Ghi chú: </label>  
 										<textarea rows="3" cols="25" id="txtNote" class="form-control" name="txtNote" maxlength="100" onclick="setDisableRoomType()"  onkeydown="setDisableRoomType()"> {!! $roomDetail[0]->note !!}</textarea>
-									</div>
-
-									<div class="Error">
-										<label  id="ErrorMsg" for="" style="color:red;" > {!! Session::has('ErrorMSG')?Session::get('ErrorMSG'):"" !!} </label>
-									</div>
-
-									<div class="form-inline col-md-offset-6" style="margin-top:35px;margin-bottom:20px;">
+									</div>								
+									<div class="form-inline col-md-offset-7" style="margin-top:75px;margin-bottom:20px;">
 										<button class="btn btn-primary" value="bntSave" name="bntSave" onclick="setDisableRoomType()"><b>Lưu</b></button>
 										<button type="button" class="btn btn-danger" value="bntCancel" name="bntCancel" style="margin-left:5px;" onclick="window.location='{{ url("/K005_1") }}'"><b>Hủy bỏ</b></button>
 									</div>
@@ -168,6 +184,7 @@
 													<td class="col2">{!! array_get($data,'accessory_name') !!}</td>
 													<td class="col3">{!! array_get($data,'quantity') !!}</td>
 													<td class="col4">{!! array_get($data,'price') !!}</td>
+													<td class="col5"><label class="label2">.000(VND)</label></td>
 												</tr>
 												<?php $i++?>
 											@endforeach
@@ -196,6 +213,6 @@
             }
 		</script>
 		<script src="{!! asset('Scripts/FrontCheck/CheckError.js') !!}"> </script>
-
+		<script>  $("div.Error").delay(2000).slideUp(); </script>
 </body>
 </html>
