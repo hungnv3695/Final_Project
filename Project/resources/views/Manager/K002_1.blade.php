@@ -20,7 +20,7 @@
 					<div class="row">
 						<div class="col-md-offset-9" style="margin:10px 10px 0px 0px;float:right;">
 							@if(Session::has('USER_INFO'))
-								<p class="account">{!! "Xin chào " . Session::get('USER_INFO')->user_name !!} </p>
+								<p class="account">{!!. Session::get('USER_INFO')->user_name !!} </p>
 							@endif					
 							<b>|</b><a href="{!! url('/K001/LogOut') !!}"><b> Đăng xuất</b></a>
 						</div>
