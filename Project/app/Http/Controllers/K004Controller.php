@@ -193,24 +193,33 @@ class K004Controller extends Controller{
         $noroom     = $request->noroom ;
         $status     = $request->status;
 
+
         $K004_DAO = new K004_DAO();
         try{
-            DB::beginTransaction();
-            $update_guest = $K004_DAO->updateGuest($guest_id,$fullname,$address,$idcard,$country,$phonetxt,$company,$email);
 
+            $update_guest = $K004_DAO->updateGuest($guest_id,$fullname,$address,$idcard,$country,$phonetxt,$company,$email);
+            if($update_guest == 1){
                 $update_reservation = $K004_DAO->updateReservation($res_id,$check_in,$check_out,$numpeople,$noroom,$status);
                 if($update_reservation == 1){
-                    DB::commit();
+
                     return \response('1');
                 }
+                else if($update_reservation == 0){
+                    return \response('0');
+                }
+
+            }
+            else if($update_guest == 0){
+                return \response('0');
+            }
+
 
         } catch (\Exception $e){
-            DB::rollback();
-            //dd($e->getMessage());
-            return \response($e->getMessage());
+
+            return \response('0');
 
         }
-        return \response('1');
+
     }
 
 

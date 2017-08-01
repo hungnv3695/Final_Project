@@ -77,7 +77,7 @@ class K003DAO
        $strSQL .= 'join tbl_room_type rt on ro.room_type_id = rt.room_type_id ';
        $strSQL .= 'where ro.status_id = \'RO01\' AND ';
        $strSQL .= 'ro.room_id NOT IN ( select rd.room_id from tbl_reservation_detail rd left join tbl_reservation r on rd.reservation_id = r.id where ';
-       $strSQL .= '(r.check_in BETWEEN \'' . $check_in . '\' AND \'' . $check_out . '\') OR (r.check_out BETWEEN \'' . $check_in . '\' AND \'' . $check_out . '\')) ';
+       $strSQL .= '(rd.date_in BETWEEN \'' . $check_in . '\' AND \'' . $check_out . '\') OR (rd.date_out BETWEEN \'' . $check_in . '\' AND \'' . $check_out . '\')) ';
        $strSQL .= 'GROUP BY rt.room_type_id, rt.type_name, rt.price';
 
         $result = DB::select($strSQL);
@@ -128,6 +128,9 @@ class K003DAO
             $resDetailInsert->reservation_id = $res_detail->getReservationId();
             $resDetailInsert->room_id = $res_detail->getRoomId();
             $resDetailInsert->create_ymd = $res_detail->getCreateYmd();
+            $resDetailInsert->date_in = $res_detail->getDateIn();
+            $resDetailInsert->date_out = $res_detail->getDateOut();
+
 
             //Insert reservation detail
             $resDetailInsert->save();
@@ -141,15 +144,42 @@ class K003DAO
 
         }catch(\Exception $e){
             DB::Rollback();
-            dd($e);
+
             return 0;
         }
 
     }
+    public  function checkInReservation( Room $room, ReservationDetail $res_detail, $res_id){
+        $roomUpdate = new Room();
+        $resDetailInsert = new ReservationDetail();
+        DB::beginTransaction();
+        try{
+            $resDetailInsert = ReservationDetail::find($res_id);
 
+            $resDetailInsert->customer_name = $res_detail->getCustomerName();
+            $resDetailInsert->customer_identity_card = $res_detail->getCustomerIC();
+            $resDetailInsert->customer_phone = $res_detail->getCustomerPhone();
+            $resDetailInsert->customer_email = $res_detail->getCustomerEmail();
+            $resDetailInsert->update_ymd =$res_detail->getUpdateYmd();
+            $resDetailInsert->date_in = $res_detail->getDateIn();
+            $resDetailInsert->date_out = $res_detail->getDateOut();
+
+            //Insert reservation detail
+            $resDetailInsert->save();
+
+            $roomUpdate = Room::find($room->getRoomID());
+            $roomUpdate->status_id = $room->getStatusID();
+            $roomUpdate->save();
+            DB::commit();
+            return 1;
+        }catch(\Exception $e){
+            DB::Rollback();
+            return 0;
+        }
+    }
     public function selectResDetailInfor($res_id, $room_id){
 
-        $strSQL = 'select g.name, g.identity_card, g.phone, g.mail ,r.check_in, r.check_out, r.note ,ro.room_id, ro.room_number, rt.type_name, rt.price ' ;
+        $strSQL = 'select g.name, g.identity_card, g.phone, g.mail ,r.check_in, r.check_out, r.note ,ro.room_id, ro.room_number, rt.type_name, rt.room_type_id, rt.price ' ;
         $strSQL .= 'from tbl_reservation_detail rd ';
         $strSQL .= 'left join tbl_reservation r on rd.reservation_id = r.id ';
         $strSQL .= 'left join tbl_guest g on r.guest_id = g.id ';

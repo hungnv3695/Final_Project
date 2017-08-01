@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="{!! asset('plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css') !!} ">
     <link rel="stylesheet" type="text/css" href="{!! asset('css/index.css') !!} ">
+	<script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <style type="text/css">
         body
         {
@@ -16,6 +17,16 @@
             width : 150px;
             text-align:right;
         }
+		.Error
+		{
+			color: #D8000C;
+			background-color: #FFBABA;
+			height:40px;
+			line-height:40px;
+			opacity: 0.6;
+			border-radius:5px;
+			text-align:center;
+		}
     </style>
 </head>
 <body>
@@ -37,6 +48,11 @@
             </div>
             <div class="col-md-6 col-md-offset-3" style="background-color:rgb(230,230,230);border:1px solid rgb(215,215,215); border-top:none;border-bottom:none;">
                 <div class="col-md-12" style="margin-top:20px;margin-bottom:20px;border: 2px solid rgb(220,220,220);border-radius:10px;">
+					@if(Session::has('ErrorMSG'))
+						<div class="Error" style="margin-top:10px;">
+							<label id="ErrorMsg"> {!! Session::get('ErrorMSG')!!} </label>
+						</div>
+					@endif
                     <div class="form-inline col-md-offset-1" style="margin-top:20px;">
                         <label class="label1" for="">Tên tài khoản: </label>
                         <input id="txtAccountName" name="txtAccountName" type="text" class="form-control input-md" maxlength="50" size="20" value="{!! $user !!}" readonly>
@@ -54,10 +70,6 @@
                         <input id="txtConfirmNewPwd" name="txtConfirmNewPwd" type="password" class="form-control input-md" maxlength="50" size="20" oninvalid="InvalidMsg(this);" required  >
                     </div>
                 </div>
-                <div class="Error">
-                    <label  id="ErrorMsg" for="" style="color:red;" > {!! Session::has('ChangePassMSG')?Session::get('ChangePassMSG'):"" !!} </label>
-                </div>
-
             </div>
             <div class="col-md-6 col-md-offset-3" style="background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
                 <div class="form-inline col-md-offset-8" style="margin-top:10px;margin-bottom:10px;">
@@ -87,4 +99,5 @@
 </script>
 
 <script src="{!! asset('Scripts/FrontCheck/CheckError.js') !!}"> </script>
+<script>  $("div.Error").delay(2000).slideUp(); </script>
 </html>
