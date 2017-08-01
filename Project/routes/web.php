@@ -101,6 +101,4 @@ Route::get('/K003_2/Checkin','K003Controller@checkIn');
 Route::get('/K003_2/CheckIsReservation','K003Controller@checkIsReservation');
 
 // Booking
-Route::get('/book', function() {
-    return "This is Book Route.";
-});
+Route::get('/book', 'BookController@index');
