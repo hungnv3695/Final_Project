@@ -78,8 +78,11 @@
         <div class="col-md-8 col-md-offset-2" style="margin-top:3%;background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
             <div class="row">
                 <div class="col-md-offset-9" style="margin:10px 10px 0px 0px;float:right;">
-                    <b>|</b><a href="{!! url('/K001/LogOut') !!}"><b> Log-out</b></a>
-                </div>
+					@if(Session::has('USER_INFO'))
+						<b><a class="account" style="text-decoration:none;" href=" {{url("/K012")}}">{!!Session::get('USER_INFO')->user_name !!} </a></b>
+					@endif
+					<b>|</b><a href="{!! url('/K001/LogOut') !!}"><b> Đăng xuất</b></a>
+				</div>
                 <div class="col-md-12">
                     <p class="brand-title">Danh sách tài khoản</p>
                 </div>
@@ -101,10 +104,10 @@
                         <option value="G02" {!!  (isset($searchPos) && $searchPos == "G02") ? 'selected':''  !!} >Receptionist</option>
                         <option value="G03" {!!  (isset($searchPos) && $searchPos == "G03") ? 'selected':''  !!}>Accountant</option>
                     </select>
-                    <input id="searchtxt" name="searchtxt" type="text" class="form-control input-md" size="12" value="{!! isset($searchStr)?$searchStr:"" !!}">
-                    <button class="btn btn-default" value="btnSearch" name="btnSearch"><b>Search</b></button>
-                    <button class="btn btn-default" value="btbAdd" name="btnAdd" TYPE="button" onclick=" window.location='{!! url('/K011_1/K011_3') !!}' " > <b>Add</b></button>
-                    <button class="btn btn-default" value="btnListall" name="btnListall"><b>List all</b></button>
+                    <input id="searchtxt" name="searchtxt" placeholder="Tìm kiếm..." type="text" class="form-control input-md" size="12" value="{!! isset($searchStr)?$searchStr:"" !!}">
+                    <button class="btn btn-default" value="btnSearch" name="btnSearch"><b>Tìm</b></button>
+                    <button class="btn btn-default" value="btbAdd" name="btnAdd" TYPE="button" onclick=" window.location='{!! url('/K011_1/K011_3') !!}' " > <b>Thêm</b></button>
+                    <button class="btn btn-default" value="btnListall" name="btnListall"><b>Danh sách</b></button>
                 </div>
                 <input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
             </form>
@@ -116,7 +119,7 @@
             <table class="table table-hover">
                 <thead>
                 <tr>
-                    <th class="col1">Stt</th>
+                    <th class="col1">STT</th>
                     <th class="col2">Tên đăng nhập</th>
                     <th class="col3">Tên</th>
                     <th class="col4">Vị trí</th>
@@ -156,7 +159,7 @@
         </div>
         <div class="col-md-8 col-md-offset-2" style="background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
             <div class="col-md-2 col-md-offset-10" style="margin-top:10px; margin-bottom:10px;">
-                <button type="button" class="btn btn-danger col-md-offset-2" value="btnBack" name="btnBack" onclick="window.location='{{ url("/K002") }}'" ><b>Back</b></button>
+                <button type="button" class="btn btn-danger col-md-offset-1" value="btnBack" name="btnBack" onclick="window.location='{{ url("/K002") }}'" ><b>Quay lại</b></button>
             </div>
         </div>
     </div>

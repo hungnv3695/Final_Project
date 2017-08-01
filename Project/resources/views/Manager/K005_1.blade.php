@@ -89,7 +89,7 @@
 					<div class="row">
 						<div class="col-md-offset-9" style="margin:10px 10px 0px 0px;float:right;">
 							@if(Session::has('USER_INFO'))
-								<p class="account">{!! "Xin chào " . Session::get('USER_INFO')->user_name !!} </p>
+								<b><a class="account" style="text-decoration:none;" href=" {{url("/K012")}}">{!!Session::get('USER_INFO')->user_name !!} </a></b>
 							@endif
 							<b>|</b><a href="{!! url('/K001/LogOut') !!}"><b> Đăng xuất</b></a>
 						</div>
@@ -114,10 +114,6 @@
 								<option value="3" {!!  (isset($searchFloor) && $searchFloor == 3) ? 'selected':''  !!} > 3 </option>
 								<option value="4" {!!  (isset($searchFloor) && $searchFloor == 4) ? 'selected':''  !!} > 4 </option>
 								<option value="5" {!!  (isset($searchFloor) && $searchFloor == 5) ? 'selected':''  !!} > 5 </option>
-								<option value="6" {!!  (isset($searchFloor) && $searchFloor == 6) ? 'selected':''  !!} > 6 </option>
-								<option value="7" {!!  (isset($searchFloor) && $searchFloor == 7) ? 'selected':''  !!} > 7 </option>
-								<option value="8" {!!  (isset($searchFloor) && $searchFloor == 8) ? 'selected':''  !!} > 8 </option>
-								<option value="9" {!!  (isset($searchFloor) && $searchFloor == 9) ? 'selected':''  !!} > 9 </option>
 							</select>
 
 							<input id="searchtxt" name="searchtxt" type="text" class="form-control input-md" size="12" value="{!! isset($searchStr)?$searchStr:'' !!}">

@@ -76,6 +76,16 @@
 			width: 10%;
 			float:left;
 		}
+		.Error
+		{
+			color: #D8000C;
+			background-color: #FFBABA;
+			height:40px;
+			line-height:40px;
+			opacity: 0.6;
+			border-radius:5px;
+			text-align:center;
+		}
 	</style>
 </head>
 <body>
@@ -86,7 +96,7 @@
 				<div class="row">
 					<div class="col-md-offset-9" style="margin:10px 10px 0px 0px;float:right;">
 						@if(Session::has('USER_INFO'))
-						<p class="account">{!! "Xin chào " . Session::get('USER_INFO')->user_name !!} </p>
+						<b><a class="account" style="text-decoration:none;" href=" {{url("/K012")}}">{!!Session::get('USER_INFO')->user_name !!} </a></b>
 						@endif
 						<b>|</b><a href="{!! url('/K001/LogOut') !!}"><b> Đăng xuất</b></a>
 					</div>
@@ -99,6 +109,11 @@
 				<div class="row">
 					<!--left-->
 					<div class="col-md-5 form-horizontal" style="margin:10px 30px 10px;border: 2px solid rgb(220,220,220);border-radius:10px;">
+							@if(Session::has('ErrorMSG'))
+								<div class="Error" style="margin-top:10px;">
+									<label id="ErrorMsg"> {!! Session::get('ErrorMSG')!!} </label>
+								</div>
+							@endif
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">Mã: </label>
 								<input id="txtRoomTypeID" name="txtRoomTypeID" type="text" size="10" class="form-control input-md" maxlength="5" autofocus oninvalid="InvalidMsg(this);" required>
@@ -124,14 +139,14 @@
 								<input id="txtChildren" name="txtChildren" type="number" min="1" class="form-control input-md" value="1" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required>
 								<label class="control-label" for="">/người</label>
 							</div>
-							<div class="form-inline" style="margin-top:20px;margin-bottom:40px;">
+							<div class="form-inline" style="margin-top:20px;margin-bottom:30px;">
 								<label class="label1" for="">Miêu tả:</label>
 								<textarea rows="3" cols="30" id="descriptiontxt" name="descriptiontxt" class="form-control" maxlength="100"></textarea>
 							</div>
 					</div>
 					<!--right-->
 					<div class="col-md-6 form-horizontal" style="margin:10px 0px 10px;border: 2px solid rgb(220,220,220);border-radius:10px;">
-							<div class="col-md-12" style="margin-top:30px;margin-bottom:10px;">
+							<div class="col-md-12" style="margin-top:20px;margin-bottom:10px;">
 								<label>Thiết bị: </label>
 							</div>
 							<table class="table table-hover" style="margin-bottom:56px;" id="table">
@@ -159,9 +174,6 @@
 							</div>
 					</div>
 				</div>
-				<div class="Error">
-					<label  id="ErrorMsg" for="" style="color:red;" > {!! Session::has('ErrorMSG')?Session::get('ErrorMSG'):"" !!} </label>
-				</div>
 			</div>
 			<div class="col-md-12" style="background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
 				<div class="col-md-6 col-md-offset-9" style="margin-top:10px; margin-bottom:10px;">
@@ -176,5 +188,6 @@
 </div>
 <script src="{{asset('Scripts/K010/K010.js')}}"> </script>
 <script src="{!! asset('Scripts/FrontCheck/CheckError.js') !!}"> </script>
+<script>  $("div.Error").delay(2000).slideUp(); </script>
 </body>
 </html>
