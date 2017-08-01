@@ -158,6 +158,6 @@
 	<div class="posted-by">HOTEL : <a style="text-decoration: none;" href="{!! URL('/') !!}">HOME</a></div>
 </div>
 
-<script src="Scripts/FrontCheck/CheckError.js"> </script>
+<script src=" {!! asset('Scripts/FrontCheck/CheckError.js') !!}"> </script>
 </body>
 </html>

@@ -51,6 +51,8 @@ Route::get('/K011_1/K011_3','K011Controller@viewAddPage');
 Route::post('/K011_1/K011_3','K011Controller@addAccountRequest');
 
 Route::get('/K012','K012Controller@view');
+Route::get('/K012/K012_1','K012Controller@viewChangePasswordPage');
+Route::post('/K012/K012_1','K012Controller@changePasswordRequest');
 Route::post('/K012','K012Controller@getUpdateRequest');
 
 //Router  Group for Manager
@@ -95,4 +97,11 @@ Route::get('/K004_4','K004Controller@K004_4_View');
 Route::get('/K004_4/GetRoomType','K004Controller@getRoomType');
 Route::get('/K004_4/SearchRoomFree','K004Controller@searchRoomFree');
 Route::get('/K004_4/insertResInfor','K004Controller@insertResInfor');
+
+//K003_2: Check-in
+Route::get('/K003_2','K003Controller@k003_2_View');
+Route::get('/K003_2/SearchRoomTypeFree','K003Controller@searchRoomTypeFree');
+Route::get('/K003_2/Checkin','K003Controller@checkIn');
+Route::get('/K003_2/CheckIsReservation','K003Controller@checkIsReservation');
+
 

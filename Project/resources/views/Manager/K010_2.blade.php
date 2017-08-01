@@ -3,8 +3,9 @@
 	<meta charset="UTF-8">
 	<title>Xem kiểu phòng</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<link rel="stylesheet" type="text/css" href=" {!! asset('plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css') !!} ">
+	<link rel="stylesheet" type="text/css" href=" {!! asset('css/index.css') !!}">
+	<script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 	<style type="text/css">
 		body
 		{
@@ -18,6 +19,11 @@
 		}
 		.label2{
 			width:60px;
+			line-height:30px;
+		}
+		.lable3{
+			display: inline-block;
+			text-align: center;
 			line-height:30px;
 		}
 		table {
@@ -92,6 +98,12 @@
 						<p class="brand-title">Xem kiểu phòng</p>
 					</div>
 				</div>
+				@if(Session()->has('SuccessMSG'))
+					<div class="alert alert-success">
+						{!! Session()->get('SuccessMSG') !!}
+
+					</div>
+				@endif
 			</div>
 			<div class="col-md-12" style="background-color:rgb(230,230,230);border:1px solid rgb(215,215,215); border-top:none;border-bottom:none;">
 				<div class="row">
@@ -178,6 +190,11 @@
 								<button type="button" class="btn btn-danger" value="bntDelete" name="bntDelete" onclick="deleteAccessory()" ><b>Xóa</b></button>
 							</div>
 					</div>
+
+					<div class="Error">
+						<label  id="ErrorMsg" for="" style="color:red;" > {!! Session::has('ErrorMSG')?Session::get('ErrorMSG'):"" !!} </label>
+					</div>
+
 				</div>
 			</div>
 			<input type="hidden"  id="count" name = "count" value=""  />
@@ -218,5 +235,6 @@
 </script>
 
 <script src="{!! asset('Scripts/FrontCheck/CheckError.js') !!}"> </script>
+<script>  $("div.alert").delay(2000).slideUp(); </script>
 </body>
 </html>

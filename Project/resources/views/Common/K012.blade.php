@@ -3,8 +3,8 @@
     <meta charset="UTF-8">
     <title>Thông tin của tôi</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="{!! asset("plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css") !!} ">
+    <link rel="stylesheet" type="text/css" href=" {!! asset('css/index.css') !!}">
     <script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <style type="text/css">
         body
@@ -26,10 +26,19 @@
             <div class="col-md-6 col-md-offset-3" style="margin-top:3%;background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
                 <div class="row">
                     <div class="col-md-offset-9" style="margin:10px 10px 0px 0px;float:right;">
+						@if(Session::has('USER_INFO'))
+							<p class="account">{!! "Xin chào " . Session::get('USER_INFO')->user_name !!} </p>
+						@endif
                         <b>|</b><a href="{!! url('/K001/LogOut') !!}"><b> Đăng xuất</b></a>
                     </div>
                     <div class="col-md-12">
                         <p class="brand-title">Thông tin của tôi</p>
+
+                        @if(Session()->has('SuccessMSG'))
+                        <div class="alert alert-success">
+                            {!! Session()->get('SuccessMSG') !!}
+                        </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -74,11 +83,11 @@
                         <div class="form-inline col-md-offset-1" style="margin-top:20px;">
                             <label class="label1" for="">Ngày tạo: </label>
                             <?php
-                            $date = $user[0]->register_ymd;
+                            $date = $user[0]->create_ymd;
                             ?>
                             <input id="txtCreateDay" name="txtCreateDay" type="text" class="form-control input-md" size="20" value="{!! $date !!} " readonly>
                         </div>
-                        <div class="col-md-6 col-md-offset-3" style="margin-top:20px;margin-bottom:20px;"><button class="btn btn-primary btn-block" value="bntBack" name="bntBack"><b>Đổi mật khẩu</b></button></div>
+                        <div class="col-md-6 col-md-offset-3" style="margin-top:20px;margin-bottom:20px;"><button class="btn btn-primary btn-block" type="button" value="btnchangepass" name="btnchangepass" onclick="window.location='{{ url("/K012/K012_1") }}'" ><b>Đổi mật khẩu</b></button></div>
                     </div>
                 </div>
                 <div id="panel2">
@@ -113,13 +122,13 @@
             <div class="col-md-6 col-md-offset-3" style="background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
                 <div id="panel3">
                     <div class="form-inline col-md-offset-10" style="margin-top:10px;margin-bottom:10px;">
-                        <button type="button" class="btn btn-danger col-md-offset-5" value="bntBack" name="bntBack"><b>Back</b></button>
+                        <button type="button" class="btn btn-danger col-md-offset-5" value="bntBack" name="bntBack" onclick="window.location='{{ url("/K002") }}'" ><b>Back</b></button>
                     </div>
                 </div>
                 <div id="panel4">
                     <div class="form-inline col-md-offset-9" style="margin-top:10px;margin-bottom:10px;">
                         <button class="btn btn-success col-md-offset-2" value="bntSave" name="bntSave"><b>Lưu</b></button>
-                        <button type="button" class="btn btn-danger" value="bntBack" name="bntBack" style="margin-left:3px;"><b>Back</b></button>
+                        <button type="button" class="btn btn-danger" value="bntBack" name="bntBack" style="margin-left:3px;"  onclick="window.location='{{ url("/K002") }}'" ><b>Back</b></button>
                     </div>
                 </div>
             </div>
@@ -145,5 +154,6 @@
     })();
 </script>
 <script src="{!! asset('Scripts/FrontCheck/CheckError.js') !!}"> </script>
+<script>  $("div.alert").delay(2000).slideUp(); </script>
 </body>
 </html>

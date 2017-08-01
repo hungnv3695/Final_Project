@@ -55,7 +55,7 @@ $(document).ready(function () {
         ],
         rownumbers: true,
         viewrecords: true,
-        height: 400,
+        height: 372,
         rowNum: 10,
         pager: "#jqGridPager",
         autowidth: true,
@@ -70,7 +70,8 @@ $(document).ready(function () {
         ondblClickRow: function(rowId) {
             var rowData = jQuery(this).getRowData(rowId);
             var res_id = rowData['item0'];
-            window.open('K004_1/K004_2/?res_id=' + res_id , '_self');
+            var status = rowData['item9'];
+            window.open('K004_1/K004_2/?res_id=' + res_id + "&status="+status, '_self');
 
         },
         loadComplete: function(){

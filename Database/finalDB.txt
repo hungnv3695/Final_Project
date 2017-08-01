@@ -106,11 +106,11 @@ CREATE TABLE tbl_room_accessory(
 	id serial PRIMARY KEY,
 	room_type_id varchar(5),
 	accessory_name varchar(20) ,
-	quanlity integer  ,
+	quantity integer  ,
 	price numeric(11,2)  ,
 	description varchar(100) ,
 	create_ymd timestamp,
-	update_ymd timestamp
+	update_ymd timestamp,
 	FOREIGN KEY (room_type_id) REFERENCES tbl_room_type(room_type_id)
 );
 
@@ -149,7 +149,6 @@ CREATE TABLE tbl_reservation_detail(
 	id serial PRIMARY KEY,
 	reservation_id integer,
 	room_id varchar(5),
-	price numeric(11,2),
 	customer_name varchar(50),
 	customer_identity_card varchar(12),
 	customer_phone varchar(20),
@@ -197,7 +196,7 @@ CREATE TABLE tbl_invoice_detail(
 	amount_total numeric(11,2),
 	update_ymd timestamp,
 	create_ymd timestamp ,
-	FOREIGN KEY (invoice_id) REFERENCES tbl_invoice(id),
+	FOREIGN KEY (invoice_id) REFERENCES tbl_invoice(id)
 );
 
 

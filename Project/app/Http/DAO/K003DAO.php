@@ -9,7 +9,12 @@
 namespace App\Http\DAO;
 
 
+use App\Models\Guest;
+use App\Models\Reservation;
+use App\Models\ReservationDetail;
+use App\Models\Room;
 use Illuminate\Support\Facades\DB;
+use Mockery\Exception;
 
 class K003DAO
 {
@@ -63,6 +68,96 @@ class K003DAO
                 " ORDER BY room_number ";
 
         $result = DB::select($strSQL);
+        return $result;
+    }
+
+    public function getRoomTypeFree($check_in,$check_out){
+
+        $strSQL =   'select rt.room_type_id, rt.type_name, rt.price, count(rt.type_name) "Count", string_agg(ro.room_number,\' \') "list_room", string_agg(ro.room_id,\' \') "list_room_id" from tbl_room ro ';
+       $strSQL .= 'join tbl_room_type rt on ro.room_type_id = rt.room_type_id ';
+       $strSQL .= 'where ro.status_id = \'RO01\' AND ';
+       $strSQL .= 'ro.room_id NOT IN ( select rd.room_id from tbl_reservation_detail rd left join tbl_reservation r on rd.reservation_id = r.id where ';
+       $strSQL .= '(r.check_in BETWEEN \'' . $check_in . '\' AND \'' . $check_out . '\') OR (r.check_out BETWEEN \'' . $check_in . '\' AND \'' . $check_out . '\')) ';
+       $strSQL .= 'GROUP BY rt.room_type_id, rt.type_name, rt.price';
+
+        $result = DB::select($strSQL);
+        return $result;
+
+    }
+
+    /**
+     * @param Guest $guest
+     * @param Reservation $res
+     * @param Room $room
+     * @param ReservationDetail $res_detail
+     * @return int
+     */
+    public function createNewCheckin(Guest $guest, Reservation $res, Room $room, ReservationDetail $res_detail){
+        $resInsert = new Reservation();
+        $guestInsert = new Guest();
+        $roomUpdate = new Room();
+        $resDetailInsert = new ReservationDetail();
+
+
+
+        DB::beginTransaction();
+        try{
+            $guestInsert->name = $guest->getName();
+            $guestInsert->identity_card = $guest->getIdentityCard();
+            $guestInsert->phone = $guest->getPhone();
+            $guestInsert->mail = $guest->getMail();
+            //Insert new Guest to Database
+
+            $guestInsert->save();
+
+            $resInsert->check_in = $res->getCheckIn();
+            $resInsert->check_out = $res->getCheckOut();
+            $resInsert->number_of_adult = $res->getNumberOfAdult();
+            $resInsert->number_of_room = $res->getNumberOfRoom();
+            $resInsert->status_id = $res->getStatusId();
+            $resInsert->create_ymd = $res->getCreateYmd();
+            $resInsert->number_of_children = $res->getNumberOfChildren();
+            $resInsert->editer = $res->getEditer();
+            $resInsert->note = $res->getNote();
+            $resInsert->guest_id = $guestInsert->id;
+
+            //insert new reservation
+            $resInsert->save();
+
+            $res_detail->setReservationId($resInsert->id);
+            $resDetailInsert->reservation_id = $res_detail->getReservationId();
+            $resDetailInsert->room_id = $res_detail->getRoomId();
+            $resDetailInsert->create_ymd = $res_detail->getCreateYmd();
+
+            //Insert reservation detail
+            $resDetailInsert->save();
+
+            $roomUpdate = Room::find($room->getRoomID());
+            $roomUpdate->status_id = $room->getStatusID();
+            $roomUpdate->save();
+
+            DB::commit();
+            return 1;
+
+        }catch(\Exception $e){
+            DB::Rollback();
+            dd($e);
+            return 0;
+        }
+
+    }
+
+    public function selectResDetailInfor($res_id, $room_id){
+
+        $strSQL = 'select g.name, g.identity_card, g.phone, g.mail ,r.check_in, r.check_out, r.note ,ro.room_id, ro.room_number, rt.type_name, rt.price ' ;
+        $strSQL .= 'from tbl_reservation_detail rd ';
+        $strSQL .= 'left join tbl_reservation r on rd.reservation_id = r.id ';
+        $strSQL .= 'left join tbl_guest g on r.guest_id = g.id ';
+        $strSQL .= 'left join tbl_room ro on rd.room_id = ro.room_id ';
+        $strSQL .= 'left join tbl_room_type rt on ro.room_type_id = rt.room_type_id ';
+        $strSQL .= 'where rd.reservation_id = \''. $res_id . '\' and rd.room_id = \''. $room_id . '\' ';
+        //dd($strSQL);
+        $result = DB::select(DB::raw($strSQL));
         return $result;
     }
 

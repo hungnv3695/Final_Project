@@ -159,6 +159,9 @@
 							</div>
 					</div>
 				</div>
+				<div class="Error">
+					<label  id="ErrorMsg" for="" style="color:red;" > {!! Session::has('ErrorMSG')?Session::get('ErrorMSG'):"" !!} </label>
+				</div>
 			</div>
 			<div class="col-md-12" style="background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
 				<div class="col-md-6 col-md-offset-9" style="margin-top:10px; margin-bottom:10px;">
