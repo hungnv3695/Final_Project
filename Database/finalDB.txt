@@ -150,6 +150,8 @@ CREATE TABLE tbl_reservation_detail(
 	reservation_id integer,
 	room_id varchar(5),
 	customer_name varchar(50),
+	date_in varchar(8) ,
+	date_out varchar(8) ,
 	customer_identity_card varchar(12),
 	customer_phone varchar(20),
 	customer_email varchar(50),
