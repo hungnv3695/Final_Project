@@ -104,4 +104,7 @@ Route::get('/K003_2/SearchRoomTypeFree','K003Controller@searchRoomTypeFree');
 Route::get('/K003_2/Checkin','K003Controller@checkIn');
 Route::get('/K003_2/CheckIsReservation','K003Controller@checkIsReservation');
 
-
+// Booking
+Route::get('/book', function() {
+    return "This is Book Route.";
+});
