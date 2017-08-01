@@ -24,8 +24,11 @@
         <div class="col-md-6 col-md-offset-3" style="margin-top:6%;background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
             <div class="row">
                 <div class="col-md-offset-9" style="margin:10px 10px 0px 0px;float:right;">
-                    <b>|</b><a href="{!! url('/K001/LogOut') !!}"><b> Log-out</b></a>
-                </div>
+					@if(Session::has('USER_INFO'))
+						<b><a class="account" style="text-decoration:none;" href=" {{url("/K012")}}">{!!Session::get('USER_INFO')->user_name !!} </a></b>
+					@endif
+					<b>|</b><a href="{!! url('/K001/LogOut') !!}"><b> Đăng xuất</b></a>
+				</div>
                 <div class="col-md-12">
                     <p class="brand-title">Thêm tài khoản</p>
                 </div>
@@ -64,9 +67,9 @@
                 </div>
             </div>
         <div class="col-md-6 col-md-offset-3" style="background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
-            <div class="form-inline col-md-offset-9" style="margin-top:10px;margin-bottom:10px;">
-                <button class="btn btn-primary" value="bntAdd" name="bntAdd"><b>Add</b></button>
-                <button type="button" class="btn btn-danger" value="backCancel" name="backCancel" style="margin-left:5px;"><b>Cancel</b></button>
+            <div class="form-inline col-md-offset-8" style="margin-top:10px;margin-bottom:10px;">
+                <button class="btn btn-primary col-md-offset-2" value="bntAdd" name="bntAdd"><b>Thêm</b></button>
+                <button type="button" class="btn btn-danger" value="backCancel" name="backCancel" style="margin-left:5px;"><b>Hủy bỏ</b></button>
             </div>
         </div>
     </div>
