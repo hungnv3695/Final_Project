@@ -1,3 +1,10 @@
+INSERT INTO tbl_guest(id, name,phone,mail,identity_card,company,address,company_phone,country) VALUES('1','Vũ Trần Hoàng','126491311','hung@gmail','123456789','FPT','Hoa Lac','123456566','Vietnam');
+INSERT INTO tbl_guest(id, name,phone,mail,identity_card,company,address,company_phone,country) VALUES('2','Nguyễn Việt Hưng','841318413','hung@gmail','123456789','FPT','Hoa Lac','123456566','Vietnam');
+INSERT INTO tbl_guest(id, name,phone,mail,identity_card,company,address,company_phone,country) VALUES('3','Đặng Công Sơn','511974121','hung@gmail','123456789','FPT','Hoa Lac','123456566','Vietnam');
+INSERT INTO tbl_guest(id, name,phone,mail,identity_card,company,address,company_phone,country) VALUES('4','Trân Bá Quyền','648413161','hung@gmail','123456789','FPT','Hoa Lac','123456566','Vietnam');
+INSERT INTO tbl_guest(id, name,phone,mail,identity_card,company,address,company_phone,country) VALUES('5','Đang Đức Mạnh','884131988','hung@gmail','123456789','FPT','Hoa Lac','123456566','Vietnam');
+INSERT INTO tbl_guest(id, name,phone,mail,identity_card,company,address,company_phone,country) VALUES('6','Do Hong Khoi','651987841','hung@gmail','123456789','FPT','Hoa Lac','123456566','Vietnam');
+INSERT INTO tbl_guest(id, name,phone,mail,identity_card,company,address,company_phone,country) VALUES('7','Tran Dang Loi','484216848','hung@gmail','123456789','FPT','Hoa Lac','123456566','Vietnam');
 
 
 
@@ -47,16 +54,15 @@ INSERT INTO tbl_reservation( status_id,guest_id,check_in,check_out,number_of_roo
 INSERT INTO tbl_reservation( status_id,guest_id,check_in,check_out,number_of_room,number_of_adult,number_of_children,create_ymd) VALUES('RS01','6','20170912','20170014','2','2','0','20170801');
 INSERT INTO tbl_reservation( status_id,guest_id,check_in,check_out,number_of_room,number_of_adult,number_of_children,create_ymd) VALUES('RS01','7','20170913','20170918','1','2','0','20170801');
 
-INSERT INTO tbl_reservation_detail( reservation_id,room_id,date_in,date_out,customer_name,customer_identity_card,customer_phone,customer_email,update_ymd,create_ymd) VALUES('1','RO001','','','','','',',','');
-INSERT INTO tbl_reservation_detail( reservation_id,room_id,date_in,date_out,customer_name,customer_identity_card,customer_phone,customer_email,update_ymd,create_ymd) VALUES('2','RO002','','','','','',',','');
-INSERT INTO tbl_reservation_detail( reservation_id,room_id,date_in,date_out,customer_name,customer_identity_card,customer_phone,customer_email,update_ymd,create_ymd) VALUES('2','RO003','','','','','',',','');
-INSERT INTO tbl_reservation_detail( reservation_id,room_id,date_in,date_out,customer_name,customer_identity_card,customer_phone,customer_email,update_ymd,create_ymd) VALUES('3','RO001','','','','','',',','');
-INSERT INTO tbl_reservation_detail( reservation_id,room_id,date_in,date_out,customer_name,customer_identity_card,customer_phone,customer_email,update_ymd,create_ymd) VALUES('3','RO002','','','','','',',','');
-INSERT INTO tbl_reservation_detail( reservation_id,room_id,date_in,date_out,customer_name,customer_identity_card,customer_phone,customer_email,update_ymd,create_ymd) VALUES('3','RO003','','','','','',',','');
-INSERT INTO tbl_reservation_detail( reservation_id,room_id,date_in,date_out,customer_name,customer_identity_card,customer_phone,customer_email,update_ymd,create_ymd) VALUES('4','RO004','','','','','',',','');
-INSERT INTO tbl_reservation_detail( reservation_id,room_id,date_in,date_out,customer_name,customer_identity_card,customer_phone,customer_email,update_ymd,create_ymd) VALUES('4','RO005','','','','','',',','');
-INSERT INTO tbl_reservation_detail( reservation_id,room_id,date_in,date_out,customer_name,customer_identity_card,customer_phone,customer_email,update_ymd,create_ymd) VALUES('5','RO001','','','','','',',','');
-INSERT INTO tbl_reservation_detail( reservation_id,room_id,date_in,date_out,customer_name,customer_identity_card,customer_phone,customer_email,update_ymd,create_ymd) VALUES('6','RO002','','','','','',',','');
-INSERT INTO tbl_reservation_detail( reservation_id,room_id,date_in,date_out,customer_name,customer_identity_card,customer_phone,customer_email,update_ymd,create_ymd) VALUES('6','RO003','','','','','',',','');
-INSERT INTO tbl_reservation_detail( reservation_id,room_id,date_in,date_out,customer_name,customer_identity_card,customer_phone,customer_email,update_ymd,create_ymd) VALUES('7','RO004','','','','','',',','');
-
+INSERT INTO tbl_reservation_detail( reservation_id,room_id,date_in,date_out,customer_name,customer_identity_card,customer_phone,customer_email,update_ymd,create_ymd) VALUES('1','RO001','','','','','','','','');
+INSERT INTO tbl_reservation_detail( reservation_id,room_id,date_in,date_out,customer_name,customer_identity_card,customer_phone,customer_email,update_ymd,create_ymd) VALUES('2','RO002','','','','','','','','');
+INSERT INTO tbl_reservation_detail( reservation_id,room_id,date_in,date_out,customer_name,customer_identity_card,customer_phone,customer_email,update_ymd,create_ymd) VALUES('2','RO003','','','','','','','','');
+INSERT INTO tbl_reservation_detail( reservation_id,room_id,date_in,date_out,customer_name,customer_identity_card,customer_phone,customer_email,update_ymd,create_ymd) VALUES('3','RO001','','','','','','','','');
+INSERT INTO tbl_reservation_detail( reservation_id,room_id,date_in,date_out,customer_name,customer_identity_card,customer_phone,customer_email,update_ymd,create_ymd) VALUES('3','RO002','','','','','','','','');
+INSERT INTO tbl_reservation_detail( reservation_id,room_id,date_in,date_out,customer_name,customer_identity_card,customer_phone,customer_email,update_ymd,create_ymd) VALUES('3','RO003','','','','','','','','');
+INSERT INTO tbl_reservation_detail( reservation_id,room_id,date_in,date_out,customer_name,customer_identity_card,customer_phone,customer_email,update_ymd,create_ymd) VALUES('4','RO004','','','','','','','','');
+INSERT INTO tbl_reservation_detail( reservation_id,room_id,date_in,date_out,customer_name,customer_identity_card,customer_phone,customer_email,update_ymd,create_ymd) VALUES('4','RO005','','','','','','','','');
+INSERT INTO tbl_reservation_detail( reservation_id,room_id,date_in,date_out,customer_name,customer_identity_card,customer_phone,customer_email,update_ymd,create_ymd) VALUES('5','RO001','','','','','','','','');
+INSERT INTO tbl_reservation_detail( reservation_id,room_id,date_in,date_out,customer_name,customer_identity_card,customer_phone,customer_email,update_ymd,create_ymd) VALUES('6','RO002','','','','','','','','');
+INSERT INTO tbl_reservation_detail( reservation_id,room_id,date_in,date_out,customer_name,customer_identity_card,customer_phone,customer_email,update_ymd,create_ymd) VALUES('6','RO003','','','','','','','','');
+INSERT INTO tbl_reservation_detail( reservation_id,room_id,date_in,date_out,customer_name,customer_identity_card,customer_phone,customer_email,update_ymd,create_ymd) VALUES('7','RO004','','','','','','','','');
