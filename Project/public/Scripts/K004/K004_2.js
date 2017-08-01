@@ -263,8 +263,8 @@ $(document).ready(function () {
             success: function (result) {
                 if(result == '1'){
                     alert('Update Successfully');
-                }else {
-                    alert(result);
+                }else if(result == '0') {
+                    alert('Update Failed');
                 }
 
             },

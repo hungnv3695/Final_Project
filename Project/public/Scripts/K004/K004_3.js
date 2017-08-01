@@ -2,8 +2,10 @@
  * Created by Nguyen Viet Hung on 7/12/2017.
  */
 $(document).ready(function () {
+
     $('#btnSave').attr("disabled", true);
     var roList = [];
+    var cellStatus_id = "";
     var room_number = $('#txtRoomNo').val();
     $res_id = $('#txtResId').val();
     var detail_id=[];
@@ -30,6 +32,7 @@ $(document).ready(function () {
             '*',
             'No.Room',
             ' ',
+            ' ',
             ' '
         ],
         colModel: [
@@ -38,9 +41,11 @@ $(document).ready(function () {
             }},
             { name: 'item1',  width: 135 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
             { name: 'item2', hidden: true, width: 130 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
-            { name: 'item3',  width: 80 , align: "left",formatter: function (cellvalue, options){
-                return addLink(options.rowId);
-            } }
+            { name: 'item3', id:'item3', width: 80 , align: "left"
+                ,formatter: function (cellvalue, options){return addLink(options.rowId);}
+
+             },
+            {name:'item4', hidden: true}
             ],
         rownumbers: true,
         height: 210,
@@ -81,13 +86,20 @@ $(document).ready(function () {
             checkroom($res_id);
 
             //hiddenCheckin();
-        }
+        },
+        beforeSelectRow: function(rowid, e) {
+
+        },
+
 
     });
     //Add Link for event Delete Rows
     function addLink(id) {
-            return "<a href='#' id='checkin" + id + "' style='display: none' type='button' title='Check-in' \>Check-in</a>";
+            return "<a href='#' id='checkin" + id + "' style='display: none'  type='button' \></a>";
     }
+    // function changeLink(cellvalue, options, cell) {
+    //     return "<a href='#' id='checkout" + options.rowId + "' style='display: none' type='button' title='Check-out' \></a>";
+    // }
 
     $( ".ui-th-div" ).append( "<p>No.</p>" );
 
@@ -108,7 +120,7 @@ $(document).ready(function () {
 
     function  searchData(res_id,check_in,check_out,type_name) {
 
-        console.log($check_in,$check_out,$type_name);
+
         $.ajax({
             url: '/K004_1/K004_2/K004_3/GetRoomFree',
             method: 'GET',
@@ -135,7 +147,8 @@ $(document).ready(function () {
         for(var i = 0; i< result.length; i++){
             var x ={
                 item1: result[i].room_number,
-                item2: result[i].room_id
+                item2: result[i].room_id,
+                item4: result[i].status_id
             };
             jList.push(x);
         }
@@ -166,9 +179,28 @@ $(document).ready(function () {
                                 var a = j + 1;
                                 jQuery("#jqGrid").find('#'+ a +' input[type=checkbox]').prop('checked',true);
                                 if(checkin<=dateNow<=checkout){
+                                    cellStatus_id = $('#jqGrid').jqGrid ('getCell', a , 'item4');
                                     var roomId = $('#jqGrid').jqGrid ('getCell', a , 'item2');
-                                    $("#checkin" + a).css("display","true");
-                                    $("#checkin" + a).attr('onclick', 'window.open(\'/K003_2?res_id='+ $res_id+ '&room_id='+roomId +'\')' );
+                                    if(cellStatus_id == "RO02"){
+                                        // $("#checkin" + a).removeAttr( "onclick" );
+                                        // $("#checkin" + a).removeAttr( "title" );
+
+                                        $("#checkin" + a).css("display","true");
+                                        $("#checkin" + a).wrapInner('Check-out');
+                                        //$("#checkin" + a).attr('value','1');
+                                        $("#checkin" + a).attr('onclick', 'window.open(\'/K003_2?res_id='+ $res_id+ '&room_id='+roomId +'\')' );
+
+                                    }else{
+                                        // $("#checkin" + a).removeAttr( "onclick" );
+                                        // $("#checkin" + a).removeAttr( "title" );
+                                        $("#checkin" + a).css("display","true");
+                                        $("#checkin" + a).wrapInner('Check-in');
+                                        //$("#checkin" + a).attr('value','1');
+                                        $("#checkin" + a).attr('onclick', 'window.open(\'/K003_2?res_id='+ $res_id+ '&room_id='+roomId +'\')' );
+
+                                    }
+
+
 
                                 }
 
