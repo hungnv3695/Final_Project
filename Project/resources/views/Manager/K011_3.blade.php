@@ -63,9 +63,6 @@
 
                 </div>
             </div>
-
-
-
         <div class="col-md-6 col-md-offset-3" style="background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
             <div class="form-inline col-md-offset-9" style="margin-top:10px;margin-bottom:10px;">
                 <button class="btn btn-primary" value="bntAdd" name="bntAdd"><b>Add</b></button>
