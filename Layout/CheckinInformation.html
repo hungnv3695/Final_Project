@@ -24,69 +24,29 @@
 		height:1px; 
 		border: 0;
 	}
-	table {
-        width: 100%;
-		border:1px solid rgb(200,200,200);
-    }
-
-	thead, tbody, tr, td, th { display: block; }
-
-	tr:after {
-		content: ' ';
-		display: block;
-		visibility: hidden;
-		clear: both;
-	}
-
-	thead th {
-		height: 30px;
-
-		/*text-align: left;*/
-	}
-
-	tbody {
-		height: 190px;
-		overflow-y: auto;
-	}
-
-	thead {
-		/* fallback */
-	}
-
-	.col1
-	{	
-		width: 5%;
-		float:left;
-	}
-	.col2
+	.table-wrapper 
 	{
-		width: 20%;
-		float:left;
+		position:relative;
 	}
-	.col3
+	.table-scroll 
 	{
-		width: 20%;
-		float:left;
+		height:240px;
+		overflow:auto; 
+		margin-top:20px;	  
+		margin-bottom:20px;
 	}
-	.col4
+	.table-wrapper table 
 	{
-		width: 15%;
-		float:left;
+		width:100%;
 	}
-	.col5
+	.table-wrapper table thead th .text 
 	{
-		width: 10%;
-		float:left;
-	}
-	.col6
-	{
-		width: 18%;
-		float:left;
-	}
-	.col7
-	{
-		width: 12%;
-		float:left;
+		position:absolute;   
+		top:-20px;
+		z-index:2;
+		height:20px;
+		width:35%;
+		border:1px solid red;
 	}
 	</style>
 </head>
@@ -117,30 +77,34 @@
 					<button type="button" id="btnView" class="btn btn-default" style="margin-left:20px;"><b>Xem</b></button>
 				</div>
 				<div class="row"><hr></div>
-				<table class="table table-bordered" style="margin-bottom:20px;">
-					<thead>
-					<tr>
-					<th class="col1">STT</th>
-					<th class="col2">Người đặt</th>
-					<th class="col3">Người ở</th>
-					<th class="col4">Ngày nhận</th>
-					<th class="col5">Số phòng</th>
-					<th class="col6">Trạng thái phòng</th>
-					<th class="col7"></th>
-					</tr>
-					</thead>
-					<tbody>
-					<tr>
-					<td class="col1">1</td>
-					<td class="col2">Nguyễn Hữu Hoàng Tùng</td>
-					<td class="col3">Nguyễn Hữu Hoàng trung</td>
-					<td class="col4">06/05/2017</td>
-					<td class="col5">101</td>
-					<td class="col6">Not used</td>
-					<td class="col7"><a href="#"><b>Nhận phòng</b></a></td>
-					</tr>
-					</tbody>
-				</table>			
+				<div class="table-wrapper">
+					<div class="table-scroll">
+						<table class="table table-bordered">
+							<thead>
+							<tr>
+							<th>STT</th>
+							<th>Người đặt</th>
+							<th>Người ở</th>
+							<th>Ngày nhận</th>
+							<th>Số phòng</th>
+							<th>Trạng thái phòng</th>
+							<th></th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+							<td>1</td>
+							<td>Nguyễn Hữu Hoàng Tùng</td>
+							<td>Nguyễn Hữu Hoàng trung</td>
+							<td>06/05/2017</td>
+							<td>101</td>
+							<td>Not used</td>
+							<td><a href="#"><b>Nhận phòng</b></a></td>
+							</tr>					
+							</tbody>
+						</table>
+					</div>
+				</div>			
 			</div>
 			<div class="col-md-10 col-md-offset-1" style="background-color:rgb(245,245,245);border:1px solid rgb(215,215,215);">
 				<div class="row">
