@@ -22,6 +22,21 @@ $(document).ready(function () {
         ((''+month).length<2 ? '0' : '') + month + '' +
         ((''+day).length<2 ? '0' : '') + day;
 
+    var room_type_id = GetUrlParameter('room_type_id');
+    function GetUrlParameter(sParam) {
+        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : sParameterName[1];
+            }
+        }
+    };
 
     $("#jqGrid").jqGrid({
         datatype: "local",
@@ -32,7 +47,7 @@ $(document).ready(function () {
             '*',
             'No.Room',
             ' ',
-            ' ',
+            '...',
             ' '
         ],
         colModel: [
@@ -101,24 +116,14 @@ $(document).ready(function () {
     //     return "<a href='#' id='checkout" + options.rowId + "' style='display: none' type='button' title='Check-out' \></a>";
     // }
 
-    $( ".ui-th-div" ).append( "<p>No.</p>" );
+    //$( ".ui-th-div" ).append( "<p>No.</p>" );
 
     function addCheckbox(id) {
         return "<input type='checkbox' id='"+ id + "' disabled='disabled'>" ;
     }
     
-    // function hiddenCheckin() {
-    //     var count=jQuery("#jqGrid").jqGrid('getGridParam', 'records');
-    //
-    //     for(var i =1 ; i<= count; i++){
-    //         var ch =  $('input[id='+i+']').prop('checked');
-    //         if(!ch){
-    //             $("#checkin" + i).css('display','none');
-    //         }
-    //     }
-    // }
 
-    function  searchData(res_id,check_in,check_out,type_name) {
+    function  searchData(res_id,check_in,check_out,room_type_id) {
 
 
         $.ajax({
@@ -129,7 +134,7 @@ $(document).ready(function () {
                 res_id: $res_id,
                 check_in:  $check_in ,
                 check_out: $check_out,
-                type_name: $type_name
+                room_type_id: room_type_id
             },
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
@@ -178,7 +183,7 @@ $(document).ready(function () {
                                 detail_id.push(result[i].id);
                                 var a = j + 1;
                                 jQuery("#jqGrid").find('#'+ a +' input[type=checkbox]').prop('checked',true);
-                                if(checkin<=dateNow<=checkout){
+                                if(checkin<=dateNow && dateNow<=checkout){
                                     cellStatus_id = $('#jqGrid').jqGrid ('getCell', a , 'item4');
                                     var roomId = $('#jqGrid').jqGrid ('getCell', a , 'item2');
                                     if(cellStatus_id == "RO02"){
@@ -188,7 +193,7 @@ $(document).ready(function () {
                                         $("#checkin" + a).css("display","true");
                                         $("#checkin" + a).wrapInner('Check-out');
                                         //$("#checkin" + a).attr('value','1');
-                                        $("#checkin" + a).attr('onclick', 'window.open(\'/K003_2?res_id='+ $res_id+ '&room_id='+roomId +'\')' );
+                                        $("#checkin" + a).attr('onclick', 'window.open(\'/K003_2?res_id='+ $res_id+ '&room_id='+roomId +'\' , "_self" )' );
 
                                     }else{
                                         // $("#checkin" + a).removeAttr( "onclick" );
@@ -196,7 +201,7 @@ $(document).ready(function () {
                                         $("#checkin" + a).css("display","true");
                                         $("#checkin" + a).wrapInner('Check-in');
                                         //$("#checkin" + a).attr('value','1');
-                                        $("#checkin" + a).attr('onclick', 'window.open(\'/K003_2?res_id='+ $res_id+ '&room_id='+roomId +'\')' );
+                                        $("#checkin" + a).attr('onclick', 'window.open(\'/K003_2?res_id='+ $res_id+ '&room_id='+roomId +'\', "_self" )' );
 
                                     }
 
@@ -281,7 +286,7 @@ $(document).ready(function () {
         jQuery("#jqGrid").jqGrid("clearGridData");
         jQuery("#jqGrid")[0].refreshIndex();
         jQuery("#jqGrid").trigger("reloadGrid");
-        searchData($res_id,$check_in,$check_out,$type_name);
+        searchData($res_id,$check_in,$check_out,room_type_id);
         $('#btnSave').attr("disabled", false);
 
     });

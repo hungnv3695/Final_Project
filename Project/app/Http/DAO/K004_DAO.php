@@ -113,14 +113,14 @@ class K004_DAO{
 
     public function loadRoomType($res_id){
         $strSQL = 'SELECT ';
-        $strSQL .='rd.reservation_id, rt.type_name, COUNT(rt.room_type_id) "count", ';
+        $strSQL .='rd.reservation_id, rt.type_name,rt.room_type_id, COUNT(rt.room_type_id) "count", ';
         $strSQL .='sum (rt.price) "price", ';
         $strSQL .='string_agg(ro.room_number, \', \') "list_room" ';
         $strSQL .= 'from tbl_reservation_detail rd ';
         $strSQL .='JOIN tbl_room ro ON rd.room_id = ro.room_id ';
         $strSQL .='JOIN tbl_room_type rt ON ro.room_type_id = rt.room_type_id ';
         $strSQL .='WHERE rd.reservation_id = \'' . $res_id . '\'' ;
-        $strSQL .=' GROUP BY rd.reservation_id, rt.type_name  ';
+        $strSQL .=' GROUP BY rd.reservation_id, rt.type_name,rt.room_type_id  ';
         //dd($strSQL);
         $result = DB::select(DB::raw($strSQL));
         return $result;
@@ -228,16 +228,16 @@ class K004_DAO{
         return $result;
 
     }
-    public function selectRoomFree($res_id,$type_name,$check_in,$check_out){
+    public function selectRoomFree($res_id,$room_type_id,$check_in,$check_out){
         $strSQL = 'select ro.status_id, ro.room_id, ro.room_number, rt.room_type_id , rt.type_name from ';
         $strSQL .='tbl_room ro join tbl_room_type rt ';
         $strSQL .='ON ro.room_type_id = rt.room_type_id ';
-        $strSQL .='where UPPER(rt.type_name) = \'' . strtoupper(trim($type_name)) . '\' AND ro.status_id <> \'RO04\' ';
+        $strSQL .='where UPPER(rt.room_type_id) = \'' . strtoupper(trim($room_type_id)) . '\' AND ro.status_id <> \'RO04\' ';
         $strSQL .=' AND NOT ro.room_id IN (select rd.room_id from ';
         $strSQL .='tbl_reservation r join tbl_reservation_detail rd ON ';
         $strSQL .='r.id = rd.reservation_id where  r.id <> \'' . $res_id . '\' AND ';
         $strSQL .= '((r.check_in BETWEEN \'' . $check_in . '\' AND \'' .$check_out. '\') ';
-        $strSQL .='OR (r.check_out BETWEEN \'' .$check_in. '\' AND \'' .$check_out .'\'))) ';
+        $strSQL .='OR (r.check_out BETWEEN \'' .$check_in. '\' AND \'' .$check_out .'\')  OR (r.check_in < \''.$check_in.'\' AND r.check_out > \''.$check_out.'\') )) ';
 
         $result = DB::select(DB::raw($strSQL));
 
@@ -302,7 +302,7 @@ class K004_DAO{
         $guestInsert->address = $guest->getAddress();
         $guestInsert->company = $guest->getCompany();
 
-        $countRoom = count($roomIdList);
+
 
         DB::beginTransaction();
 

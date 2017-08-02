@@ -269,12 +269,12 @@ class K004Controller extends Controller{
      * @return \Illuminate\Contracts\Routing\ResponseFactory|Response
      */
     public function getRoomFree(Request $request){
-        $type_name = $request->type_name;
+        $room_type_id = $request->room_type_id;
         $res_id = $request->res_id;
         $check_in= $request->check_in;
         $check_out=$request->check_out;
         $K004_DAO = new K004_DAO();
-        $roomFree = $K004_DAO->selectRoomFree($res_id,$type_name,$check_in,$check_out);
+        $roomFree = $K004_DAO->selectRoomFree($res_id,$room_type_id,$check_in,$check_out);
         //dd($roomFree);
         return \response($roomFree);
 

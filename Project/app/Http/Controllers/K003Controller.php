@@ -70,7 +70,7 @@ class K003Controller extends Controller
             $res_detail->setCustomerName($request->txtFullname2);
             $res_detail->setCustomerIC($request->txtIdcard2);
             $res_detail->setCustomerPhone($request->txtPhone2);
-            $res_detail->setCustomerEmail($request->txtEmail1);
+            $res_detail->setCustomerEmail($request->txtEmail2);
             $res_detail->setUpdateYmd(Carbon::now());
             $res_detail->setDateIn(DateTimeUtil::ConvertDateToString($request->txtCheckin));
             $res_detail->setDateOut(DateTimeUtil::ConvertDateToString($request->txtCheckout));
@@ -82,7 +82,8 @@ class K003Controller extends Controller
             $room->setRoomID($room_id);
 
             $K003DAO = new K003DAO();
-            $result = $K003DAO->checkInReservation( $room, $res_detail, $res_id);
+
+            $result = $K003DAO->checkInReservation( $room, $res_detail, $res_id, $room_id);
 
             if($result==1){
                 return response(1);

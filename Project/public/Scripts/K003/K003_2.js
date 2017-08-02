@@ -106,6 +106,15 @@ $(document).ready(function(){
 
     function checkIsReservation($res_id) {
         if($res_id != ""){
+
+            $("#txtCheckin").attr('readonly', true);
+            $("#txtCheckout").attr('readonly', true);
+            $("#btnSearch").attr('disabled', 'disabled');
+            $("#txtFullname1").attr('readonly', true);
+            $("#txtIdcard1").attr('readonly', true);
+            $("#txtPhone1").attr('readonly', true);
+            $("#txtEmail1").attr('readonly', true);
+
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -236,7 +245,6 @@ $(document).ready(function(){
                     $("#cboRoomNo").append($('<option></option>').val(roomId[j]).html(roomNo[j]));
                 }
 
-
             }
         }
     });
@@ -256,7 +264,10 @@ $(document).ready(function(){
             }
         }
     });
-
+    $("#btnBack").click(function (event) {
+        event.preventDefault();
+        window.open('/K004_1/K004_2?res_id='+res_id, '_self');
+    });
     $("#btnCheckin").click(function (event) {
         event.preventDefault();
 
@@ -327,6 +338,7 @@ $(document).ready(function(){
                 success: function (result) {
                     if(result==1){
                         alert('Check-in thành công');
+                        window.open('/K004_1/K004_2?res_id='+res_id, '_self');
                         location.reload();
                     }
                     else if(result==0){

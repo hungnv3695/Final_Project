@@ -77,9 +77,10 @@ class K003DAO
        $strSQL .= 'join tbl_room_type rt on ro.room_type_id = rt.room_type_id ';
        $strSQL .= 'where ro.status_id = \'RO01\' AND ';
        $strSQL .= 'ro.room_id NOT IN ( select rd.room_id from tbl_reservation_detail rd left join tbl_reservation r on rd.reservation_id = r.id where ';
-       $strSQL .= '(rd.date_in BETWEEN \'' . $check_in . '\' AND \'' . $check_out . '\') OR (rd.date_out BETWEEN \'' . $check_in . '\' AND \'' . $check_out . '\')) ';
+       $strSQL .= '(rd.date_in >= \''.$check_in.'\' AND rd.date_in <= \''.$check_out.'\') OR (rd.date_out >= \''.$check_in.'\' AND rd.date_out < \''.$check_out.'\') ';
+       $strSQL .= 'OR (rd.date_in < \'' .$check_in. '\' AND rd.date_out > \'' .$check_out. '\'))';
        $strSQL .= 'GROUP BY rt.room_type_id, rt.type_name, rt.price';
-
+        //dd($strSQL);
         $result = DB::select($strSQL);
         return $result;
 
@@ -149,27 +150,43 @@ class K003DAO
         }
 
     }
-    public  function checkInReservation( Room $room, ReservationDetail $res_detail, $res_id){
-        $roomUpdate = new Room();
+    public  function checkInReservation( Room $room, ReservationDetail $res_detail, $res_id, $room_id){
+
         $resDetailInsert = new ReservationDetail();
+        $res = new Reservation();
+
         DB::beginTransaction();
         try{
-            $resDetailInsert = ReservationDetail::find($res_id);
 
-            $resDetailInsert->customer_name = $res_detail->getCustomerName();
-            $resDetailInsert->customer_identity_card = $res_detail->getCustomerIC();
-            $resDetailInsert->customer_phone = $res_detail->getCustomerPhone();
-            $resDetailInsert->customer_email = $res_detail->getCustomerEmail();
-            $resDetailInsert->update_ymd =$res_detail->getUpdateYmd();
-            $resDetailInsert->date_in = $res_detail->getDateIn();
-            $resDetailInsert->date_out = $res_detail->getDateOut();
+            $resDetailInsert::where('reservation_id', '=' ,$res_id )->where('room_id', '=' , $room_id)
+                ->update([
+                    'customer_name' => $res_detail->getCustomerName(),
 
-            //Insert reservation detail
-            $resDetailInsert->save();
+                    'customer_identity_card' => $res_detail->getCustomerIC(),
+
+                    'customer_phone' => $res_detail->getCustomerPhone(),
+
+                    'customer_email' => $res_detail->getCustomerEmail(),
+
+                    'update_ymd' => $res_detail->getUpdateYmd(),
+
+                    'date_in' => $res_detail->getDateIn(),
+
+                    'date_out' => $res_detail->getDateOut()
+                ]);
+
 
             $roomUpdate = Room::find($room->getRoomID());
             $roomUpdate->status_id = $room->getStatusID();
             $roomUpdate->save();
+
+            $res::where('id','=',$res_id)
+                ->update([
+                    'status_id' => 'RS05'
+                ]);
+
+
+
             DB::commit();
             return 1;
         }catch(\Exception $e){
