@@ -130,7 +130,7 @@
 							<div class="row">
 								<div class="form-inline" style="margin-top:20px;">
 									<label class="label1">Nhận phòng:</label>
-									<input id="txtCheckin" name="txtCheckin" type="text" placeholder="MM/DD/YYY" class="form-control input-md" size="20" autofocus>
+									<input id="txtCheckin" name="txtCheckin" type="text" placeholder="MM/DD/YYY" class="form-control input-md" size="20">
 								</div>
 								<div class="form-inline" style="margin-top:10px;">
 									<label class="label1">Trả phòng:</label>
@@ -178,18 +178,14 @@
 							</div>
 						</div>
 
-
-						<div class="form-inline"  class="col-md-12" style="border: 2px solid rgb(220,220,220);border-radius:10px;margin:250px 0px 20px;">
+						<label class="col-md-4 control-label" style="margin:10px 0px 0px -15px;">Xác nhận đặt phòng:</label>
+						<div class="col-md-12" style="border: 2px solid rgb(220,220,220);border-radius:10px;margin:5px 0px 20px 0px;">
 							<div class="row">
-								<label class="control-label" style="margin-top:-50px;">Xác nhận đặt phòng:</label>
-								<div class="form-inline" id="infor" class="col-md-12" >
-
+								<div class="col-md-12 form-inline" id="infor">
 								</div>
-								<div class="form-inline" class="col-md-12" style="margin-top: 20px;margin-bottom: 10px;">
-									<div class="row">
-										<label class="label1 col-md-offset-3">Tổng tiền:</label>
-										<input id="txtTotalprice" name="txtTotalprice" style="text-align: right" type="text" class="form-control input-md " size="15">
-									</div>
+								<div class="col-md-8 form-inline" style="margin-top: 20px;margin-bottom: 17px;">
+									<label class="label1 col-md-offset-3">Tổng tiền:</label>
+									<input id="txtTotalprice" name="txtTotalprice" style="text-align: right" type="text" class="form-control input-md " size="15">
 								</div>
 							</div>
 						</div>
