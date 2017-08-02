@@ -6,6 +6,9 @@ $(document).ready(function () {
     var check_in = $('#checkintxt').val();
     var check_out = $('#checkouttxt').val();
     var PROCESSING = "RS02";
+    var PROCESSED = "RS03";
+    var FINISH = "RS05";
+    var CANCELLED = "RS04";
     var status = $('#status').val();
     function GetUrlParameter(sParam) {
         var sPageURL = decodeURIComponent(window.location.search.substring(1)),
@@ -24,7 +27,7 @@ $(document).ready(function () {
     //Start: HungNV : Update reservation status -> Processing
     function checkStatus() {
 
-        if(status != 'RS05'){
+        if(status != FINISH && status != CANCELLED){
             $.ajax({
                 url: '/K004_1/K004_2/ChangeSttToProcessing',
                 method: 'GET',
@@ -136,29 +139,46 @@ $(document).ready(function () {
             success: function (result) {
                 $("#cboStatus").empty();
                 $("#cboStatus").append($('<option></option>').val("").html(""));
-                if(status=='RS05'){
+                if(status==FINISH){
                     for (i=0; i < result.length; i++){
                         //add data for status combobox
 
-                        if(result[i].status_id == status){
+                        if(result[i].status_id == FINISH){
 
                             $("#cboStatus").append($('<option selected></option>').val(result[i].status_id).html(result[i].status_name));
-                            $('#cboStatus').attr("disabled", true);
+                            //$('#cboStatus').attr("disabled", true);
                         }
-                        else{
+                        else if (result[i].status_id == PROCESSING){
                             $("#cboStatus").append($('<option></option>').val(result[i].status_id).html(result[i].status_name));
+
                         }
 
                     }
                 }
-                else {
+                else if (status == CANCELLED){
+                    for (i=0; i < result.length; i++){
+                        //add data for status combobox
+
+                        if(result[i].status_id == CANCELLED){
+
+                            $("#cboStatus").append($('<option selected></option>').val(result[i].status_id).html(result[i].status_name));
+                            //$('#cboStatus').attr("disabled", true);
+                        }
+                        else if (result[i].status_id == PROCESSING){
+                            $("#cboStatus").append($('<option></option>').val(result[i].status_id).html(result[i].status_name));
+
+                        }
+
+                    }
+                }
+                else if (status==PROCESSING) {
                     for (i=0; i < result.length; i++){
                         //add data for status combobox
 
                         if(result[i].status_id == PROCESSING){
                             $("#cboStatus").append($('<option selected></option>').val(result[i].status_id).html(result[i].status_name));
                         }
-                        else{
+                        else {
                             $("#cboStatus").append($('<option></option>').val(result[i].status_id).html(result[i].status_name));
                         }
 

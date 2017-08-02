@@ -103,11 +103,12 @@ $(document).ready(function () {
             //hiddenCheckin();
         },
         beforeSelectRow: function(rowid, e) {
-
+            //return false;
         },
 
 
     });
+    $("#jqGrid").unbind("contextmenu");
     //Add Link for event Delete Rows
     function addLink(id) {
             return "<a href='#' id='checkin" + id + "' style='display: none'  type='button' \></a>";
@@ -187,6 +188,7 @@ $(document).ready(function () {
                                     cellStatus_id = $('#jqGrid').jqGrid ('getCell', a , 'item4');
                                     var roomId = $('#jqGrid').jqGrid ('getCell', a , 'item2');
                                     if(cellStatus_id == "RO02"){
+
                                         // $("#checkin" + a).removeAttr( "onclick" );
                                         // $("#checkin" + a).removeAttr( "title" );
 
