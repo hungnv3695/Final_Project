@@ -12,6 +12,8 @@ namespace App\Http\Controllers;
 use App\Http\Common\DateTimeUtil;
 use App\Http\DAO\K003DAO;
 use App\Models\Guest;
+use App\Models\Invoice;
+use App\Models\InvoiceDetail;
 use App\Models\Reservation;
 use App\Models\ReservationDetail;
 use App\Models\Room;
@@ -60,45 +62,98 @@ class K003Controller extends Controller
         $res_status = $request->res_status;
         $room_status = $request->room_status;
         $room_id = $request->cboRoomNo;
+        $res_id = $request->res_id;
 
-        //Guest Model
-        $guest = new Guest();
-        $guest->setName(trim($request->txtFullname1));
-        $guest->setPhone(trim($request->txtPhone1));
-        $guest->setMail(trim($request->txtEmail1));
-        $guest->setIdentityCard(trim($request->txtIdcard1));
+        if($res_id != ""){//Check in cho reservation
 
-        //Reservation Model
-        $reservation = new Reservation();
-        $reservation->setCheckIn(DateTimeUtil::ConvertDateToString($request->txtCheckin));
-        $reservation->setCheckOut(DateTimeUtil::ConvertDateToString($request->txtCheckout));
-        $reservation->setStatusId($res_status);
-        $reservation->setNumberOfAdult(1);
-        $reservation->setNumberOfChildren(1);
-        $reservation->setEditer('');
-        $reservation->setNumberOfRoom(1);
-        $reservation->setCreateYmd(Carbon::now());
-        $reservation->setNote($request->txtNote);
+            //Reservation_detail Model
+            $res_detail = new ReservationDetail();
+            $res_detail->setCreateYmd(Carbon::now());
+            $res_detail->setRoomId($room_id);
+            $res_detail->setCustomerName($request->txtFullname2);
+            $res_detail->setCustomerIC($request->txtIdcard2);
+            $res_detail->setCustomerPhone($request->txtPhone2);
+            $res_detail->setCustomerEmail($request->txtEmail2);
+            $res_detail->setUpdateYmd(Carbon::now());
+            $res_detail->setDateIn(DateTimeUtil::ConvertDateToString($request->txtCheckin));
+            $res_detail->setDateOut(DateTimeUtil::ConvertDateToString($request->txtCheckout));
 
-        //Reservation_detail Model
-        $res_detail = new ReservationDetail();
-        $res_detail->setCreateYmd(Carbon::now());
-        $res_detail->setRoomId($room_id);
+            //Room Model
+            $room = new Room();
 
-        //Room Model
-        $room = new Room();
+            $room->setStatusID($room_status);
+            $room->setRoomID($room_id);
 
-        $room->setStatusID($room_status);
-        $room->setRoomID($room_id);
+            $K003DAO = new K003DAO();
 
+            $result = $K003DAO->checkInReservation( $room, $res_detail, $res_id, $room_id);
 
-        $K003DAO = new K003DAO();
-        $result = $K003DAO->createNewCheckin($guest,  $reservation,  $room,  $res_detail);
-        if($result==1){
-            return response(1);
-        }else if ($result==0){
-            return response(0);
+            if($result==1){
+                return response(1);
+            }else if ($result==0){
+                return response(0);
+            }
+
         }
+        else{ //Check in mới
+
+            //Guest Model
+            $guest = new Guest();
+            $guest->setName(trim($request->txtFullname1));
+            $guest->setPhone(trim($request->txtPhone1));
+            $guest->setMail(trim($request->txtEmail1));
+            $guest->setIdentityCard(trim($request->txtIdcard1));
+
+            //Reservation Model
+            $reservation = new Reservation();
+            $reservation->setCheckIn(DateTimeUtil::ConvertDateToString($request->txtCheckin));
+            $reservation->setCheckOut(DateTimeUtil::ConvertDateToString($request->txtCheckout));
+            $reservation->setStatusId($res_status);
+            $reservation->setNumberOfAdult($request->numofpeople);
+            $reservation->setNumberOfChildren(0);
+            $reservation->setEditer('');
+            $reservation->setNumberOfRoom(1);
+            $reservation->setCreateYmd(Carbon::now());
+            $reservation->setNote($request->txtNote);
+
+            //Reservation_detail Model
+            $res_detail = new ReservationDetail();
+            $res_detail->setCreateYmd(Carbon::now());
+            $res_detail->setRoomId($room_id);
+            $res_detail->setDateIn(DateTimeUtil::ConvertDateToString($request->txtCheckin));
+            $res_detail->setDateOut(DateTimeUtil::ConvertDateToString($request->txtCheckout));
+
+            //Room Model
+            $room = new Room();
+
+            $room->setStatusID($room_status);
+            $room->setRoomID($room_id);
+
+            $invoice = new Invoice();
+            $invoice->setAmountTotal($request->txtTotalprice);
+            $invoice->setCreateYmd(Carbon::now());
+            $invoice->setCreaterName('hungnv');//fix tam
+
+            $invoiceDetail = new InvoiceDetail();
+            $invoiceDetail->setRoomNumber($request->room_number);
+            $invoiceDetail->setDescription($request->room_type + ' (' + $request->room_number + ') ' + $request->txtNumOfDay + ' đêm'  );
+            $invoiceDetail->setQuantity(1);
+            $invoiceDetail->setPrice($request->price);
+            $invoiceDetail->setAmountTotal($request->txtTotalprice);
+            $invoiceDetail->setCreateYmd(Carbon::now());
+
+
+
+            $K003DAO = new K003DAO();
+            $result = $K003DAO->createNewCheckin($guest,  $reservation,  $room,  $res_detail, $invoice,$invoiceDetail);
+            if($result==1){
+                return response(1);
+            }else if ($result==0){
+                return response(0);
+            }
+        }
+
+
 
     }
 

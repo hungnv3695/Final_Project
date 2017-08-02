@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Bootstrap 3 Simple Tables</title>
+    <title>Lễ tân</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="{{asset('plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/index.css')}}">
@@ -17,32 +17,28 @@
 <body>
 <div class="container">
     <div class="row">
-        <div class="col-md-12 col-xs-12" style="background-color:rgb(215,215,215);margin-top:5%;">
-            <div class="col-md-12 col-xs-12">
-                <p class="brand-title" style="font-size:25px;">Reception List</p>
-            </div>
-            <div class="col-md-4 col-xs-12 col-md-offset-4" style="border:1px solid rgb(194,194,194); background-color:white;margin-top:20px;margin-bottom:70px;">
-                <form class="form-horizontal" style="margin-top:40px;margin-bottom:40px;">
-                    <fieldset>
-                        <div class="form-group">
-                            <div class="col-md-4 col-xs-4 col-md-offset-1"><button class="managerBnt" value="romm-sttBtn" name="romm-sttBtn" ><b>Room Status</b></button></div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-4 col-xs-4 col-md-offset-1"><button class="managerBnt" value="re-detailBnt" name="re-detailBnt" ><b>Reservation Detail</b></button></div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-4 col-xs-4 col-md-offset-1"><button class="managerBnt" value="room-mngBnt" name="room-mngBnt" ><b>Room Management</b></button></div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-4 col-xs-4 col-md-offset-1"><button class="managerBnt" value="serviceBnt" name="serviceBnt" ><b>Service</b></button></div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-4 col-xs-4 col-md-offset-1"><button class="managerBnt" value="accoutingBnt" name="accoutingBnt" ><b>Accouting</b></button></div>
-                        </div>
-                    </fieldset>
-                </form>
-            </div>
-        </div>
+            <div class="col-md-8 col-md-offset-2" style="margin-top:7%;background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
+					<div class="row">
+						<div class="col-md-offset-9" style="margin:10px 10px 0px 0px;float:right;">
+							@if(Session::has('USER_INFO'))
+								<b><a class="account" style="text-decoration:none;" href=" {{url("/K012")}}">{!!Session::get('USER_INFO')->user_name !!} </a></b>
+							@endif
+							<b>|</b><a href="{!! url('/K001/LogOut') !!}"><b> Đăng xuất</b></a>
+						</div>
+						<div class="col-md-12">
+							<p class="brand-title">Lễ tân</p>
+						</div>
+					</div>
+			</div>
+			<div class="col-md-8 col-md-offset-2" style="background-color:rgb(230,230,230);border:1px solid rgb(215,215,215); border-top:none;">
+               <div class="row">
+					<div class="col-md-6 form-inline col-md-offset-3" style="border:2px solid rgb(220,220,220);border-radius:10px; background-color:white;margin-top:50px;margin-bottom:50px;">
+                        <div class="col-md-8 col-md-offset-2" style="margin-top:40px;"><button type="button" class="btn btn-primary btn-block" value="btnRoomstatus" name="btnRoomstatus" onclick="window.location='{{ url("/K003") }}'"><b>Trạng thái phòng</b></button></div>
+						<div class="col-md-8 col-md-offset-2" style="margin-top:20px;"><button type="button" class="btn btn-primary btn-block" value="btnReservation" name="btnReservation" onclick="window.location='{{ url("/K004_4?res_id=") }}'"  ><b>Đặt phòng</b></button></div>
+						<div class="col-md-8 col-md-offset-2" style="margin-top:20px;margin-bottom:40px;"><button type="button" class="btn btn-primary btn-block" value="btnReservationList" name="btnReservationList" onclick="window.location='{{ url("/K004_1") }}'"><b>Danh sách đặt phòng</b></button></div>
+                    </div>
+                </div>
+			</div>
     </div>
 </div>
 </body>

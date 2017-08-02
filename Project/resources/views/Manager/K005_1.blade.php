@@ -114,10 +114,6 @@
 								<option value="3" {!!  (isset($searchFloor) && $searchFloor == 3) ? 'selected':''  !!} > 3 </option>
 								<option value="4" {!!  (isset($searchFloor) && $searchFloor == 4) ? 'selected':''  !!} > 4 </option>
 								<option value="5" {!!  (isset($searchFloor) && $searchFloor == 5) ? 'selected':''  !!} > 5 </option>
-								<option value="6" {!!  (isset($searchFloor) && $searchFloor == 6) ? 'selected':''  !!} > 6 </option>
-								<option value="7" {!!  (isset($searchFloor) && $searchFloor == 7) ? 'selected':''  !!} > 7 </option>
-								<option value="8" {!!  (isset($searchFloor) && $searchFloor == 8) ? 'selected':''  !!} > 8 </option>
-								<option value="9" {!!  (isset($searchFloor) && $searchFloor == 9) ? 'selected':''  !!} > 9 </option>
 							</select>
 
 							<input id="searchtxt" name="searchtxt" type="text" class="form-control input-md" size="12" value="{!! isset($searchStr)?$searchStr:'' !!}">

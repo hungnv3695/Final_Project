@@ -7,6 +7,8 @@ use App\Http\Common\Message;
 use App\Http\DAO\K001DAO;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\BookInfo;
 
 define('SESSION_NUMBER_LOGIN', 'NUMBER_LOGIN');
 define('SESSION_USER_INFO','USER_INFO');
@@ -75,6 +77,19 @@ class K001Controller extends Controller
                 //} elseif( strcmp( $userInfo[0]->group_cd, GROUP_RECEPTIONIST) == 0 ) {
                //     return view('Reception.K002_1');
                 //}
+
+                //send Email
+                //Mail::to('sondcse03564@fpt.edu.vn')->send(new BookInfo());
+
+                /*
+                $data = ['HoTen'=>'SonDC'];
+
+                Mail::send('Email.BookInfo',$data,function ($msg){
+
+                    $msg->from('sondcnd@gmail.com','SonDC');
+                    $msg->to('sondcse03564@fpt.edu.vn')->subject('Day la mail cua SonDC');
+                });
+                */
 
                 return redirect('/K002');
 

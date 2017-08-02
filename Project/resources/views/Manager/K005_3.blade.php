@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href=" {!! asset('plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css') !!}">
     <link rel="stylesheet" type="text/css" href=" {!! asset('css/index.css') !!}">
+	<script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <style type="text/css">
         body
         {
@@ -46,25 +47,40 @@
         }
 
         .col1
-        {
-            width: 10%;
-            float:left;
-        }
-        .col2
-        {
-            width: 30%;
-            float:left;
-        }
-        .col3
-        {
-            width: 30%;
-            float:left;
-        }
-        .col4
-        {
-            width: 30%;
-            float:left;
-        }
+	{
+		width: 10%;
+		float:left;
+	}
+	.col2
+	{
+		width: 32%;
+		float:left;
+	}
+	.col3
+	{
+		width: 18%;
+		float:left;
+	}
+	.col4
+	{
+		width: 23%;
+		float:left;
+	}
+	.col5
+	{
+		width: 10%;
+		float:left;
+	}
+	.Error
+	{
+		color: #D8000C;
+		background-color: #FFBABA;
+		height:40px;
+		line-height:40px;
+		opacity: 0.6;
+		border-radius:5px;
+		text-align:center;
+	}
     </style>
 </head>
 <body>
@@ -88,6 +104,11 @@
 				<!--left-->
 				<form class="addroom" method="POST" >
 					<div class="col-md-5 form-horizontal" style="margin:10px 30px 10px;border: 2px solid rgb(220,220,220);border-radius:10px;">
+							@if(Session::has('ErrorMSG'))
+								<div class="Error" style="margin-top:10px;">
+									<label id="ErrorMsg"> {!! Session::get('ErrorMSG')!!} </label>
+								</div>
+							@endif
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">Kiểu phòng: </label>
 								<select id="roomtype" name = "roomtype" class="form-control input-md" style="width:140px;" autofocus>
@@ -118,14 +139,10 @@
 									@endforeach
 								</select>
 							</div>
-
-						<div class="Error">
-							<label  id="ErrorMsg" for="" style="color:red;" > {!! Session::has('ErrorMSG')?Session::get('ErrorMSG'):"" !!} </label>
-						</div>
-
-						<div class="form-inline col-md-offset-7" style="margin-top:95px;margin-bottom:20px;">
-							<button class="btn btn-primary" value="bntAdd" name="bntAdd" onclick="setDisableRoomType()"><b>Thêm</b></button>
-							<button type="button" class="btn btn-danger" value="bntCancel" name="bntCancel" style="margin-left:5px;" onclick="window.location='{{ url("/K005_1") }}'"><b>Hủy bỏ</b></button>
+						<div class="form-inline col-md-offset-5" style="margin-top:115px;margin-bottom:20px;">
+							<button class="btn btn-success" value="bntAdd" name="bntAdd" onclick="setDisableRoomType()"><b>Thêm</b></button>
+							<button type="button" class="btn btn-primary" value="bntReset" name="bntReset" onclick="location.reload();" ><b>Tạo lại</b></button>
+							<button type="button" class="btn btn-danger" value="bntCancel" name="bntCancel" onclick="window.location='{{ url("/K005_1") }}'"><b>Hủy bỏ</b></button>
 						</div>
 					</div>
 					<input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
@@ -170,6 +187,7 @@
 										<td class="col2">{!! array_get($data,'accessory_name') !!}</td>
 										<td class="col3">{!! array_get($data,'quantity') !!}</td>
 										<td class="col4">{!! array_get($data,'price') !!}</td>
+										<td class="col5"><label class="label2">.000(VND)</label></td>
 									</tr>
 									<?php $i++?>
 								@endforeach
@@ -195,5 +213,6 @@
 </script>
 
 <script src="{!! asset('Scripts/FrontCheck/CheckError.js') !!}"> </script>
+<script>  $("div.Error").delay(2000).slideUp(); </script>
 </body>
 </html>

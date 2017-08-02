@@ -58,6 +58,7 @@
 						<input id="txtResId" name="txtResId" value="{{$txtResId}}" type="text" class="form-control" style="display: none;">
 						<input id="txtCheckIn" name="txtCheckIn" value="{{$txtCheckIn}}" type="text" class="form-control" style="display: none;">
 						<input id="txtCheckOut" name="txtCheckIn" value="{{$txtCheckOut}}" type="text" class="form-control" style="display: none;">
+						<input id="txtTypeId" name="txtTypeId" value="{{$txtCheckOut}}" type="text" class="form-control" style="display: none;">
 						<div class="col-md-offset-3" style="margin-top:20px;">
 							<table id="jqGrid" style="border:1px solid gray;"></table>
 						</div>
@@ -65,7 +66,7 @@
 
 						<div class="col-md-6 col-md-offset-6" style="margin-top:30px;margin-bottom:20px;">
 							<button class="btn btn-primary col-md-offset-2" id="btnSave" value="btnSave" name="btnSave"><b>Lưu</b></button>
-							<button class="btn btn-danger" id="btnBack" value="btnBack" name="btnBack"><b>Hủy bỏ</b></button>
+							<button class="btn btn-danger" id="btnBack" value="btnBack" name="btnBack"><b>Quay lại</b></button>
 						</div>	
 					</div>
 				</div>

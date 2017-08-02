@@ -9,6 +9,7 @@
 
 namespace App\Http\DAO;
 use App\Http\Common\Constants;
+use App\Http\Common\StringUtil;
 use App\Models\Guest;
 use App\Models\Reservation;
 use App\Models\ReservationDetail;
@@ -24,7 +25,7 @@ use Carbon\Carbon;
 use Mockery\Exception;
 
 
-class K004_DAO{
+class K004DAO{
     /**
      * @param $fname
      * @param $idCard
@@ -32,8 +33,8 @@ class K004_DAO{
      * @return mixed
      */
     public function selectReservation($fname, $idCard, $status){
-        $t1 = 'UPPER(g.name) LIKE \'%' . mb_strtoupper(trim($fname)) . '%\'';
-        $t2 = 'UPPER(g.identity_card) LIKE \'%' . strtoupper(trim($idCard)) . '%\'';
+        $t1 = 'UPPER(g.name) iLIKE \'%' . StringUtil::Trim($fname)  . '%\'';
+        $t2 = 'UPPER(g.identity_card) iLIKE \'%' . StringUtil::Trim($idCard) . '%\'';
         $t3 = 's.status_id = \'' . trim($status). '\'' ;
         $strSQL = 'SELECT ';
         $strSQL .=  'r.id, ';
@@ -113,14 +114,14 @@ class K004_DAO{
 
     public function loadRoomType($res_id){
         $strSQL = 'SELECT ';
-        $strSQL .='rd.reservation_id, rt.type_name, COUNT(rt.room_type_id) "count", ';
+        $strSQL .='rd.reservation_id, rt.type_name,rt.room_type_id, COUNT(rt.room_type_id) "count", ';
         $strSQL .='sum (rt.price) "price", ';
         $strSQL .='string_agg(ro.room_number, \', \') "list_room" ';
         $strSQL .= 'from tbl_reservation_detail rd ';
         $strSQL .='JOIN tbl_room ro ON rd.room_id = ro.room_id ';
         $strSQL .='JOIN tbl_room_type rt ON ro.room_type_id = rt.room_type_id ';
         $strSQL .='WHERE rd.reservation_id = \'' . $res_id . '\'' ;
-        $strSQL .=' GROUP BY rd.reservation_id, rt.type_name  ';
+        $strSQL .=' GROUP BY rd.reservation_id, rt.type_name,rt.room_type_id  ';
         //dd($strSQL);
         $result = DB::select(DB::raw($strSQL));
         return $result;
@@ -169,9 +170,21 @@ class K004_DAO{
         $strSQL .= 'country= \'' . $country .'\' ';
 	    $strSQL .= 'WHERE id = \'' . $guest_id . '\'';
 
-        DB::select(DB::raw($strSQL));
+        DB::beginTransaction();
+        try{
+            DB::select(DB::raw($strSQL));
+            DB::commit();
+            return 1;
+        }catch (\Exception $e){
+            DB::rollback();
+            return 0;
+        }
+
     }
 
+    public function updateDataInOut($check_in,$check_out,$res_id){
+
+    }
     public function updateReservation($res_id,$check_in,$check_out,$numpeople,$noroom,$status){
         $strSQL  = 'UPDATE public.tbl_reservation ';
         $strSQL .= 'SET status_id= \'' .$status . '\', ';
@@ -182,9 +195,28 @@ class K004_DAO{
         $strSQL .='update_ymd = CURRENT_TIMESTAMP(0) ';
         $strSQL .= 'WHERE id = \'' . $res_id . '\'' ;
 
-        DB::select(DB::raw($strSQL));
-        return 1;
+        DB::beginTransaction();
+        try{
+            DB::select(DB::raw($strSQL));
+
+            $strSQL  = 'UPDATE public.tbl_reservation_detail ';
+            $strSQL .= 'SET date_in= \'' .$check_in. '\' , date_out= \'' . $check_out . '\' ,';
+            $strSQL .= 'update_ymd = CURRENT_TIMESTAMP(0) ';
+            $strSQL .= 'WHERE reservation_id = \'' . $res_id . '\' ';
+
+            DB::select(DB::raw($strSQL));
+            DB::Commit();
+            return 1;
+        }catch(\Exception $e){
+            DB::rollback();
+            return 0;
+        }
+
+
+
     }
+
+
 
     public function updateSttProcessing(Reservation $res){
         $reservationUpdate = Reservation::find($res->getId());
@@ -197,16 +229,16 @@ class K004_DAO{
         return $result;
 
     }
-    public function selectRoomFree($res_id,$type_name,$check_in,$check_out){
-        $strSQL = 'select ro.room_id, ro.room_number, rt.room_type_id , rt.type_name from ';
+    public function selectRoomFree($res_id,$room_type_id,$check_in,$check_out){
+        $strSQL = 'select ro.status_id, ro.room_id, ro.room_number, rt.room_type_id , rt.type_name from ';
         $strSQL .='tbl_room ro join tbl_room_type rt ';
         $strSQL .='ON ro.room_type_id = rt.room_type_id ';
-        $strSQL .='where UPPER(rt.type_name) = \'' . strtoupper(trim($type_name)) . '\' AND ro.status_id <> \'RO04\' ';
+        $strSQL .='where UPPER(rt.room_type_id) = \'' . strtoupper(trim($room_type_id)) . '\' AND ro.status_id <> \'RO04\' ';
         $strSQL .=' AND NOT ro.room_id IN (select rd.room_id from ';
         $strSQL .='tbl_reservation r join tbl_reservation_detail rd ON ';
-        $strSQL .='r.id = rd.reservation_id where  r.id <> \'' . $res_id . '\' AND ';
+        $strSQL .='r.id = rd.reservation_id where  r.id <> \'' . $res_id . '\'  AND r.status_id <> \'RS04\' AND ';
         $strSQL .= '((r.check_in BETWEEN \'' . $check_in . '\' AND \'' .$check_out. '\') ';
-        $strSQL .='OR (r.check_out BETWEEN \'' .$check_in. '\' AND \'' .$check_out .'\'))) ';
+        $strSQL .='OR (r.check_out BETWEEN \'' .$check_in. '\' AND \'' .$check_out .'\')  OR (r.check_in < \''.$check_in.'\' AND r.check_out > \''.$check_out.'\') )) ';
 
         $result = DB::select(DB::raw($strSQL));
 
@@ -250,8 +282,8 @@ class K004_DAO{
         $strSQL .=' NOT ro.room_id IN (select rd.room_id from ';
         $strSQL .='tbl_reservation r join tbl_reservation_detail rd ON ';
         $strSQL .='r.id = rd.reservation_id where  ';
-        $strSQL .= '((r.check_in BETWEEN \'' . $check_in . '\' AND \'' .$check_out. '\') ';
-        $strSQL .='OR (r.check_out BETWEEN \'' .$check_in. '\' AND \'' .$check_out .'\'))) ';
+        $strSQL .= '((rd.date_in BETWEEN \'' . $check_in . '\' AND \'' .$check_out. '\') ';
+        $strSQL .='OR (rd.date_out BETWEEN \'' .$check_in. '\' AND \'' .$check_out .'\'))) ';
         $strSQL .='ORDER BY ro.room_number ASC';
 
         $result = DB::select(DB::raw($strSQL));
@@ -271,7 +303,7 @@ class K004_DAO{
         $guestInsert->address = $guest->getAddress();
         $guestInsert->company = $guest->getCompany();
 
-        $countRoom = count($roomIdList);
+
 
         DB::beginTransaction();
 

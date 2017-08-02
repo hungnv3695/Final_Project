@@ -205,7 +205,7 @@
 			<div class="row">
 				<div class="col-md-5 col-md-offset-9" style="margin-top:10px; margin-bottom:10px;">
 					<button class="btn btn-primary col-md-offset-1" id="btnCheckin" value="btnCheckin" name="btnSave"><b>Nhận phòng</b></button>
-					<button class="btn btn-danger" value="bntCancel" name="bntCancel"><b>Hủy bỏ</b></button>
+					<button class="btn btn-danger" id="btnBack" value="bntCancel" name="bntCancel"><b>Quay lại</b></button>
 				</div>
 			</div>
 		</div>

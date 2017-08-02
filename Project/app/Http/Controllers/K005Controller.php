@@ -60,7 +60,6 @@ class K005Controller extends Controller
     public function getRoomRequest(Request $request = null){
 
         $k005DAO = new K005DAO();
-        //dd($request);
 
         switch ($request){
 
@@ -71,7 +70,7 @@ class K005Controller extends Controller
                 break;
 
             //Neu nguoi dung click vao listall thi return ra All Room
-            case isset($request->listallBnt):
+            case isset($request->btnListall):
                 $room = $k005DAO->getRoom();
 
                 return view('Manager.K005_1',compact('room'));
@@ -79,7 +78,7 @@ class K005Controller extends Controller
 
             // Neu nguoi dung chon search button hoac
             //search floor thi se return ra room tuong ung
-            case isset($request->searchBnt) || isset($request->searchfloor):
+            case isset($request->btnSearch) || isset($request->searchfloor):
                 $searchStr = $request->searchtxt;
                 $searchFloor = $request->searchfloor;
 
