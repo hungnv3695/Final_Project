@@ -33,9 +33,9 @@
 			<div class="col-md-8 col-md-offset-2" style="background-color:rgb(230,230,230);border:1px solid rgb(215,215,215); border-top:none;">
                <div class="row">
 					<div class="col-md-6 form-inline col-md-offset-3" style="border:2px solid rgb(220,220,220);border-radius:10px; background-color:white;margin-top:50px;margin-bottom:50px;">
-                        <div class="col-md-8 col-md-offset-2" style="margin-top:40px;"><button type="button" class="btn btn-primary btn-block" value="btnRoomstatus" name="btnRoomstatus"><b>Trạng thái phòng</b></button></div>
-						<div class="col-md-8 col-md-offset-2" style="margin-top:20px;"><button type="button" class="btn btn-primary btn-block" value="btnReservation" name="btnReservation"><b>Đặt phòng</b></button></div>
-						<div class="col-md-8 col-md-offset-2" style="margin-top:20px;margin-bottom:40px;"><button type="button" class="btn btn-primary btn-block" value="btnReservationList" name="btnReservationList"><b>Danh sách đặt phòng</b></button></div>
+                        <div class="col-md-8 col-md-offset-2" style="margin-top:40px;"><button type="button" class="btn btn-primary btn-block" value="btnRoomstatus" name="btnRoomstatus" onclick="window.location='{{ url("/K003") }}'"><b>Trạng thái phòng</b></button></div>
+						<div class="col-md-8 col-md-offset-2" style="margin-top:20px;"><button type="button" class="btn btn-primary btn-block" value="btnReservation" name="btnReservation" onclick="window.location='{{ url("/K004_4?res_id=") }}'"  ><b>Đặt phòng</b></button></div>
+						<div class="col-md-8 col-md-offset-2" style="margin-top:20px;margin-bottom:40px;"><button type="button" class="btn btn-primary btn-block" value="btnReservationList" name="btnReservationList" onclick="window.location='{{ url("/K004_1") }}'"><b>Danh sách đặt phòng</b></button></div>
                     </div>
                 </div>
 			</div>
