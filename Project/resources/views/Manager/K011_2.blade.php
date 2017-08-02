@@ -80,7 +80,7 @@
 							</div>
 						</div>
 						<div class="form-inline col-md-offset-1" style="margin-bottom:10px;">
-							<button class="btn btn-primary col-md-offset-1" value="bntAdd"  id="bntSave" name="bntSave"><b>Lưu</b></button>
+							<button class="btn btn-success col-md-offset-1" value="bntAdd"  id="bntSave" name="bntSave"><b>Lưu</b></button>
 							<button class="btn btn-primary" value="btnReset" id="btnReset" name="btnReset"><b>Đặt lại mật khẩu</b></button>
 							<button type="button" class="btn btn-danger" value="btnCancel" name="backCancel" onclick="window.location='{{ url("/K011") }}'" ><b>Hủy bỏ</b></button>
 						</div>

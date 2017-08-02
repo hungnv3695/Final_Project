@@ -79,7 +79,7 @@
             </div>
         <div class="col-md-6 col-md-offset-3" style="background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
             <div class="form-inline col-md-offset-8" style="margin-top:10px;margin-bottom:10px;">
-                <button class="btn btn-primary col-md-offset-2" value="bntAdd" name="bntAdd"><b>Thêm</b></button>
+                <button class="btn btn-success col-md-offset-2" value="bntAdd" name="bntAdd"><b>Thêm</b></button>
                 <button type="button" class="btn btn-danger" value="backCancel" name="backCancel" style="margin-left:5px;" onclick="window.location='{{ url("/K011") }}'" ><b>Hủy bỏ</b></button>
             </div>
         </div>
