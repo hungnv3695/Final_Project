@@ -34,16 +34,14 @@
 <body>
         <div class="container">
             <div class="row">
-
 				<div class="col-md-10 col-md-offset-1" style="background-color:rgb(230,230,230);margin-top:5%;">
-					<div class="col-md-12" style="margin-top:3%;background-color:rgb(236,236,236);">
-						<div class="row">
-							<div class="col-md-offset-9" style="margin:10px 10px 0px 0px;float:right;">
-								@if(Session::has('USER_INFO'))
-									<b><a class="account" style="text-decoration:none;" href=" {{url("/K012")}}">{!!Session::get('USER_INFO')->user_name !!} </a></b>
-								@endif
-								<b>|</b><a href="{!! url('/K001/LogOut') !!}"><b> Log-out</b></a>
-							</div>
+					<div class="row">
+						<div class="col-md-offset-9" style="margin:10px 10px 0px 0px;float:right;">
+							@if(Session::has('USER_INFO'))
+								<b><a class="account" style="text-decoration:none;" href=" {{url("/K012")}}">{!!Session::get('USER_INFO')->user_name !!} </a></b>
+							@endif
+							<b>|</b><a href="{!! url('/K001/LogOut') !!}"><b> Log-out</b></a>
+						</div>
 					</div>
 					<div class="col-md-6 form-horizontal col-md-offset-3" style="border: 2px solid rgb(220,220,220);border-radius:10px; background-color:white;margin-top:20px;margin-bottom:20px;">
 						<div class="form-inline col-md-offset-1" style="margin-top:20px;">
@@ -58,13 +56,14 @@
 						<input id="txtResId" name="txtResId" value="{{$txtResId}}" type="text" class="form-control" style="display: none;">
 						<input id="txtCheckIn" name="txtCheckIn" value="{{$txtCheckIn}}" type="text" class="form-control" style="display: none;">
 						<input id="txtCheckOut" name="txtCheckIn" value="{{$txtCheckOut}}" type="text" class="form-control" style="display: none;">
+						<input id="txtTypeId" name="txtTypeId" value="{{$txtCheckOut}}" type="text" class="form-control" style="display: none;">
 						<div class="col-md-offset-3" style="margin-top:20px;">
 							<table id="jqGrid" style="border:1px solid gray;"></table>
 						</div>
 
 
 						<div class="col-md-6 col-md-offset-6" style="margin-top:30px;margin-bottom:20px;">
-							<button class="btn btn-primary col-md-offset-2" id="btnSave" value="btnSave" name="btnSave"><b>Lưu</b></button>
+							<button class="btn btn-success col-md-offset-2" id="btnSave" value="btnSave" name="btnSave"><b>Lưu</b></button>
 							<button class="btn btn-danger" id="btnBack" value="btnBack" name="btnBack"><b>Hủy bỏ</b></button>
 						</div>	
 					</div>

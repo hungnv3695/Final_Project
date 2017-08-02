@@ -2,8 +2,10 @@
  * Created by Nguyen Viet Hung on 7/12/2017.
  */
 $(document).ready(function () {
+
     $('#btnSave').attr("disabled", true);
     var roList = [];
+    var cellStatus_id = "";
     var room_number = $('#txtRoomNo').val();
     $res_id = $('#txtResId').val();
     var detail_id=[];
@@ -20,6 +22,21 @@ $(document).ready(function () {
         ((''+month).length<2 ? '0' : '') + month + '' +
         ((''+day).length<2 ? '0' : '') + day;
 
+    var room_type_id = GetUrlParameter('room_type_id');
+    function GetUrlParameter(sParam) {
+        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : sParameterName[1];
+            }
+        }
+    };
 
     $("#jqGrid").jqGrid({
         datatype: "local",
@@ -30,6 +47,7 @@ $(document).ready(function () {
             '*',
             'No.Room',
             ' ',
+            '...',
             ' '
         ],
         colModel: [
@@ -38,9 +56,11 @@ $(document).ready(function () {
             }},
             { name: 'item1',  width: 135 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
             { name: 'item2', hidden: true, width: 130 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
-            { name: 'item3',  width: 80 , align: "left",formatter: function (cellvalue, options){
-                return addLink(options.rowId);
-            } }
+            { name: 'item3', id:'item3', width: 80 , align: "left"
+                ,formatter: function (cellvalue, options){return addLink(options.rowId);}
+
+             },
+            {name:'item4', hidden: true}
             ],
         rownumbers: true,
         height: 210,
@@ -81,34 +101,32 @@ $(document).ready(function () {
             checkroom($res_id);
 
             //hiddenCheckin();
-        }
+        },
+        beforeSelectRow: function(rowid, e) {
+            //return false;
+        },
+
 
     });
+    $("#jqGrid").unbind("contextmenu");
     //Add Link for event Delete Rows
     function addLink(id) {
-            return "<a href='#' id='checkin" + id + "' style='display: none' type='button' title='Check-in' \>Check-in</a>";
+            return "<a href='#' id='checkin" + id + "' style='display: none'  type='button' \></a>";
     }
+    // function changeLink(cellvalue, options, cell) {
+    //     return "<a href='#' id='checkout" + options.rowId + "' style='display: none' type='button' title='Check-out' \></a>";
+    // }
 
-    $( ".ui-th-div" ).append( "<p>No.</p>" );
+    //$( ".ui-th-div" ).append( "<p>No.</p>" );
 
     function addCheckbox(id) {
         return "<input type='checkbox' id='"+ id + "' disabled='disabled'>" ;
     }
     
-    // function hiddenCheckin() {
-    //     var count=jQuery("#jqGrid").jqGrid('getGridParam', 'records');
-    //
-    //     for(var i =1 ; i<= count; i++){
-    //         var ch =  $('input[id='+i+']').prop('checked');
-    //         if(!ch){
-    //             $("#checkin" + i).css('display','none');
-    //         }
-    //     }
-    // }
 
-    function  searchData(res_id,check_in,check_out,type_name) {
+    function  searchData(res_id,check_in,check_out,room_type_id) {
 
-        console.log($check_in,$check_out,$type_name);
+
         $.ajax({
             url: '/K004_1/K004_2/K004_3/GetRoomFree',
             method: 'GET',
@@ -117,7 +135,7 @@ $(document).ready(function () {
                 res_id: $res_id,
                 check_in:  $check_in ,
                 check_out: $check_out,
-                type_name: $type_name
+                room_type_id: room_type_id
             },
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
@@ -135,7 +153,8 @@ $(document).ready(function () {
         for(var i = 0; i< result.length; i++){
             var x ={
                 item1: result[i].room_number,
-                item2: result[i].room_id
+                item2: result[i].room_id,
+                item4: result[i].status_id
             };
             jList.push(x);
         }
@@ -165,10 +184,30 @@ $(document).ready(function () {
                                 detail_id.push(result[i].id);
                                 var a = j + 1;
                                 jQuery("#jqGrid").find('#'+ a +' input[type=checkbox]').prop('checked',true);
-                                if(checkin<=dateNow<=checkout){
+                                if(checkin<=dateNow && dateNow<=checkout){
+                                    cellStatus_id = $('#jqGrid').jqGrid ('getCell', a , 'item4');
                                     var roomId = $('#jqGrid').jqGrid ('getCell', a , 'item2');
-                                    $("#checkin" + a).css("display","true");
-                                    $("#checkin" + a).attr('onclick', 'window.open(\'/K003_2?res_id='+ $res_id+ '&room_id='+roomId +'\')' );
+                                    if(cellStatus_id == "RO02"){
+
+                                        // $("#checkin" + a).removeAttr( "onclick" );
+                                        // $("#checkin" + a).removeAttr( "title" );
+
+                                        $("#checkin" + a).css("display","true");
+                                        $("#checkin" + a).wrapInner('Check-out');
+                                        //$("#checkin" + a).attr('value','1');
+                                        $("#checkin" + a).attr('onclick', 'window.open(\'/K003_2?res_id='+ $res_id+ '&room_id='+roomId +'\' , "_self" )' );
+
+                                    }else{
+                                        // $("#checkin" + a).removeAttr( "onclick" );
+                                        // $("#checkin" + a).removeAttr( "title" );
+                                        $("#checkin" + a).css("display","true");
+                                        $("#checkin" + a).wrapInner('Check-in');
+                                        //$("#checkin" + a).attr('value','1');
+                                        $("#checkin" + a).attr('onclick', 'window.open(\'/K003_2?res_id='+ $res_id+ '&room_id='+roomId +'\', "_self" )' );
+
+                                    }
+
+
 
                                 }
 
@@ -249,7 +288,7 @@ $(document).ready(function () {
         jQuery("#jqGrid").jqGrid("clearGridData");
         jQuery("#jqGrid")[0].refreshIndex();
         jQuery("#jqGrid").trigger("reloadGrid");
-        searchData($res_id,$check_in,$check_out,$type_name);
+        searchData($res_id,$check_in,$check_out,room_type_id);
         $('#btnSave').attr("disabled", false);
 
     });

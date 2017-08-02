@@ -75,7 +75,7 @@
             <div class="col-md-10 col-md-offset-1" style="background-color:rgb(245,245,245);border:1px solid rgb(215,215,215);">
 				<div class="row">
 					<div class="col-md-2 col-md-offset-10 col-xs-7" style="margin-top:10px;margin-bottom:10px;">
-						<button id="btnBack" class="btn btn-danger" type="button">Quay lại</button>
+						<button id="btnBack" class="btn btn-danger" type="button"><b>Quay lại</b></button>
 					</div>
 				</div>
             </div>

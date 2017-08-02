@@ -22,34 +22,6 @@ Route::post('/K001','K001Controller@getLoginRequest');
 Route::get('/K001/LogOut','K001Controller@logOut');
 Route::get('/K002', 'K002Controller@view');
 
-Route::get('/K005_1','K005Controller@viewRoom');
-Route::post('/K005_1' , 'K005Controller@getRoomRequest' );
-
-Route::get('/K005_1/K005_2/{roomId}','K005Controller@getViewRoomDetailRequest');
-Route::get('/K005_1/K005_2/{roomId}/{roomType}','K005Controller@getChangeRTRequest');
-
-Route::post('/K005_1/K005_2/{roomId}','K005Controller@updateRoomRequest');
-Route::get('/K005_1/K005_3','K005Controller@viewAddRoom');
-Route::post('/K005_1/K005_3','K005Controller@addRoomRequest');
-
-Route::get('/K010_1','K010Controller@viewAddRoomType');
-Route::post('/K010_1','K010Controller@addRoomTypeRequest');
-
-Route::get('/K010_2','K010Controller@viewRoomType');
-Route::post('/K010_2','K010Controller@updateRoomTypeRequest');
-
-Route::get('/K003','K003Controller@view');
-Route::post('/K003','K003Controller@getRoomStatusRequest');
-
-Route::get('/K011','K011Controller@view');
-Route::post('/K011','K011Controller@getViewAccountRequest');
-
-Route::get('K011_1/K011_2/{userID}','K011Controller@viewDetail');
-Route::post('K011_1/K011_2/{userID}','K011Controller@getUpdateRequest');
-
-Route::get('/K011_1/K011_3','K011Controller@viewAddPage');
-Route::post('/K011_1/K011_3','K011Controller@addAccountRequest');
-
 Route::get('/K012','K012Controller@view');
 Route::get('/K012/K012_1','K012Controller@viewChangePasswordPage');
 Route::post('/K012/K012_1','K012Controller@changePasswordRequest');
@@ -57,8 +29,30 @@ Route::post('/K012','K012Controller@getUpdateRequest');
 
 //Router  Group for Manager
 Route::middleware(['manager'])->group(function () {
+    Route::get('/K005_1','K005Controller@viewRoom');
+    Route::post('/K005_1' , 'K005Controller@getRoomRequest' );
 
+    Route::get('/K005_1/K005_2/{roomId}','K005Controller@getViewRoomDetailRequest');
+    Route::get('/K005_1/K005_2/{roomId}/{roomType}','K005Controller@getChangeRTRequest');
 
+    Route::post('/K005_1/K005_2/{roomId}','K005Controller@updateRoomRequest');
+    Route::get('/K005_1/K005_3','K005Controller@viewAddRoom');
+    Route::post('/K005_1/K005_3','K005Controller@addRoomRequest');
+
+    Route::get('/K010_1','K010Controller@viewAddRoomType');
+    Route::post('/K010_1','K010Controller@addRoomTypeRequest');
+
+    Route::get('/K010_2','K010Controller@viewRoomType');
+    Route::post('/K010_2','K010Controller@updateRoomTypeRequest');
+
+    Route::get('/K011','K011Controller@view');
+    Route::post('/K011','K011Controller@getViewAccountRequest');
+
+    Route::get('K011_1/K011_2/{userID}','K011Controller@viewDetail');
+    Route::post('K011_1/K011_2/{userID}','K011Controller@getUpdateRequest');
+
+    Route::get('/K011_1/K011_3','K011Controller@viewAddPage');
+    Route::post('/K011_1/K011_3','K011Controller@addAccountRequest');
 });
 
 //Router Group for Receptionist
@@ -99,9 +93,12 @@ Route::get('/K004_4/SearchRoomFree','K004Controller@searchRoomFree');
 Route::get('/K004_4/insertResInfor','K004Controller@insertResInfor');
 
 //K003_2: Check-in
+Route::get('/K003','K003Controller@view');
+Route::post('/K003','K003Controller@getRoomStatusRequest');
 Route::get('/K003_2','K003Controller@k003_2_View');
 Route::get('/K003_2/SearchRoomTypeFree','K003Controller@searchRoomTypeFree');
 Route::get('/K003_2/Checkin','K003Controller@checkIn');
 Route::get('/K003_2/CheckIsReservation','K003Controller@checkIsReservation');
 
-
+// Booking
+Route::get('/book', 'BookController@index');

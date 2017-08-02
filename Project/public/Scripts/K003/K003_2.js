@@ -106,6 +106,15 @@ $(document).ready(function(){
 
     function checkIsReservation($res_id) {
         if($res_id != ""){
+
+            $("#txtCheckin").attr('readonly', true);
+            $("#txtCheckout").attr('readonly', true);
+            $("#btnSearch").attr('disabled', 'disabled');
+            $("#txtFullname1").attr('readonly', true);
+            $("#txtIdcard1").attr('readonly', true);
+            $("#txtPhone1").attr('readonly', true);
+            $("#txtEmail1").attr('readonly', true);
+
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -123,10 +132,11 @@ $(document).ready(function(){
                     console.log(result[0].type_name);
                     $("#txtCheckin").val(result[0].check_in);
                     $("#txtCheckout").val(result[0].check_out);
-                    //$("#roomtype").text(result[0].type_name).prop('selected', true);
-                    $("#roomtype").append($('<option selected></option>').html(result[0].type_name));
-                    $("#cboRoomNo").append($('<option selected></option>').html(result[0].room_number));
+                    //$("#roomtype").text(result[0].type_name).prop('selected', true);room_type_id
+                    $("#roomtype").append($('<option selected></option>').val(result[0].room_type_id).html(result[0].type_name));
+                    $("#cboRoomNo").append($('<option selected></option>').val(result[0].room_id).html(result[0].room_number));
                     //$("#cboRoomNo").text(result[0].room_number);
+                    $("#numofpeople").val(result[0].number_of_adult);
                     $("#txtNote").val(result[0].note);
 
                     $("#txtFullname1").val(result[0].name);
@@ -235,7 +245,6 @@ $(document).ready(function(){
                     $("#cboRoomNo").append($('<option></option>').val(roomId[j]).html(roomNo[j]));
                 }
 
-
             }
         }
     });
@@ -255,15 +264,36 @@ $(document).ready(function(){
             }
         }
     });
-
+    $("#btnBack").click(function (event) {
+        event.preventDefault();
+        window.open('/K004_1/K004_2?res_id='+res_id, '_self');
+    });
     $("#btnCheckin").click(function (event) {
         event.preventDefault();
-        if(res_id != ""){
+
+        if( $("#txtCheckin").val() == "" || $("#txtCheckout").val() == ""){
+            alert('Chọn ngày vào và ngày ra trước khi ấn nút [Nhận phòng]');
+            return;
+        }
+        if ($("#roomtype").val() == "" || $("#cboRoomNo").val() == ""){
+            alert('Chọn kiểu phòng và sô phòng trước khi ấn nút [Nhận phòng]');
+            return;
+        }
+        if($("#txtFullname1").val() == "" || $("#txtIdcard1").val() == ""){
+            alert('Nhập tên người đặt và CMND trước khi ấn nút [Nhận phòng]');
+            return;
+        }
+        if($("#txtPhone1").val() == "" || $("#txtEmail1").val() == ""){
+            $("#txtPhone1").val("");
+            $("#txtEmail1").val("");
+        }
+
+        if(res_id == "" || res_id === undefined){
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: '/K003_2/CheckinRes',
+                url: '/K003_2/Checkin',
                 method: 'GET',
                 cache: false,
                 dataType: 'json',
@@ -283,23 +313,16 @@ $(document).ready(function(){
                 }
             });
         }
-        else if(res_id == ""){
+        else if(res_id != "" && res_id != undefined){
 
-            if( $("#txtCheckin").val() == "" || $("#txtCheckout").val() == ""){
-                alert('Chọn ngày vào và ngày ra trước khi ấn nút [Nhận phòng]');
+            if($("#txtFullname2").val() == "" || $("#txtIdcard2").val() == ""){
+                alert('Nhập tên người nhận và CMND trước khi ấn nút [Nhận phòng]');
                 return;
             }
-            if ($("#roomtype").val() == "" || $("#cboRoomNo").val() == ""){
-                alert('Chọn kiểu phòng và sô phòng trước khi ấn nút [Nhận phòng]');
-                return;
-            }
-            if($("#txtFullname1").val() == "" || $("#txtIdcard1").val() == ""){
-                alert('Nhập tên người đặt và CMND trước khi ấn nút [Nhận phòng]');
-                return;
-            }
-            if($("#txtPhone1").val() == "" || $("#txtEmail1").val() == ""){
-                $("#txtPhone1").val("");
-                $("#txtEmail1").val("");
+
+            if($("#txtPhone2").val() == "" || $("#txtEmail2").val() == ""){
+                $("#txtPhone2").val("");
+                $("#txtEmail2").val("");
             }
 
             $.ajax({
@@ -310,11 +333,12 @@ $(document).ready(function(){
                 method: 'GET',
                 cache: false,
                 dataType: 'json',
-                data: $("#myForm").serialize() + "&room_status=" + ROOM_STATUS + "&res_status=" + RES_STATUS ,
+                data: $("#myForm").serialize() + "&room_status=" + ROOM_STATUS + "&res_status=" + RES_STATUS + "&res_id=" + res_id + "&room_id=" + room_id,
                 contentType: 'application/x-www-form-urlencoded',
                 success: function (result) {
                     if(result==1){
                         alert('Check-in thành công');
+                        window.open('/K004_1/K004_2?res_id='+res_id, '_self');
                         location.reload();
                     }
                     else if(result==0){

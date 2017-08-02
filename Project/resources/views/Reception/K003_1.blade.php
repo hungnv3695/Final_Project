@@ -77,7 +77,7 @@
 				<form method="post" onsubmit="return checkDate();" style="margin-top:10px;">
 					<div class="col-md-12 form-inline">
 						<label class="control-label" for="date">Nhận phòng:</label>
-						<input class="form-control" id="date" name="checkin" autofocus placeholder="MM/DD/YYY" type="text"/>
+						<input class="form-control" id="date" name="checkin" placeholder="MM/DD/YYY" type="text"/>
 						<label class="control-label" for="date" style="margin-left:15px;">Trả phòng:</label>
 						<input class="form-control" id="date" name="checkout" placeholder="MM/DD/YYY" type="text"/>
 						<button class="btn btn-default" type = "submit" value="bnt101">Xem</button>
@@ -190,18 +190,16 @@
                     room.setAttribute('style','background-color:WHITE');
                     break;
                 case "1":
-                    room.setAttribute('style','background-color:RED');
+                    room.setAttribute('style','background-color:rgb(223,0,41)');
                     break;
                 case "2":
-                    room.setAttribute('style','background-color:YELLOW');
+                    room.setAttribute('style','background-color:rgb(249,244,0)');
                     break;
                 case "3":
-                    room.setAttribute('style','background-color:BLUE');
+                    room.setAttribute('style','background-color:rgb(27,79,147)');
                     break;
-
             }
         }
-
     }
 
 
