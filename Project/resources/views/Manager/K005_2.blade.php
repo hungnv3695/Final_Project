@@ -141,6 +141,7 @@
 									</div>								
 									<div class="form-inline col-md-offset-7" style="margin-top:75px;margin-bottom:20px;">
 										<button class="btn btn-primary" value="bntSave" name="bntSave" onclick="setDisableRoomType()"><b>Lưu</b></button>
+										<button type="button" class="btn btn-primary" value="bntReset" name="bntReset" onclick="location.reload();" ><b>Tạo lại</b></button>
 										<button type="button" class="btn btn-danger" value="bntCancel" name="bntCancel" style="margin-left:5px;" onclick="window.location='{{ url("/K005_1") }}'"><b>Hủy bỏ</b></button>
 									</div>
 									<input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
