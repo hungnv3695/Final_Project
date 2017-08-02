@@ -58,6 +58,7 @@
 						<input id="txtResId" name="txtResId" value="{{$txtResId}}" type="text" class="form-control" style="display: none;">
 						<input id="txtCheckIn" name="txtCheckIn" value="{{$txtCheckIn}}" type="text" class="form-control" style="display: none;">
 						<input id="txtCheckOut" name="txtCheckIn" value="{{$txtCheckOut}}" type="text" class="form-control" style="display: none;">
+						<input id="txtTypeId" name="txtTypeId" value="{{$txtCheckOut}}" type="text" class="form-control" style="display: none;">
 						<div class="col-md-offset-3" style="margin-top:20px;">
 							<table id="jqGrid" style="border:1px solid gray;"></table>
 						</div>

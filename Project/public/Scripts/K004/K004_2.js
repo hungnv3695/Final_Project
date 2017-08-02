@@ -6,6 +6,9 @@ $(document).ready(function () {
     var check_in = $('#checkintxt').val();
     var check_out = $('#checkouttxt').val();
     var PROCESSING = "RS02";
+    var PROCESSED = "RS03";
+    var FINISH = "RS05";
+    var CANCELLED = "RS04";
     var status = $('#status').val();
     function GetUrlParameter(sParam) {
         var sPageURL = decodeURIComponent(window.location.search.substring(1)),
@@ -24,7 +27,7 @@ $(document).ready(function () {
     //Start: HungNV : Update reservation status -> Processing
     function checkStatus() {
 
-        if(status != 'RS05'){
+        if(status != FINISH && status != CANCELLED){
             $.ajax({
                 url: '/K004_1/K004_2/ChangeSttToProcessing',
                 method: 'GET',
@@ -63,6 +66,7 @@ $(document).ready(function () {
             'Số lượng',
             'Giá',
             'Phòng',
+            ' '
 
 
         ],
@@ -70,7 +74,8 @@ $(document).ready(function () {
             { name: 'item0',  width: 130 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
             { name: 'item1',  width: 70, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
             { name: 'item2',  width: 100, align: "left", formatter:'currency', formatoptions:{decimalSeparator:".", thousandsSeparator: ",", decimalPlaces: 2}},
-            { name: 'item3',  width: 170, align: "right", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }}
+            { name: 'item3',  width: 170, align: "right", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
+            { name: 'item4' , hidden :true}
 
         ],
         rownumbers: true,
@@ -93,13 +98,12 @@ $(document).ready(function () {
             var rowData = jQuery(this).getRowData(rowId);
             var type_name = rowData['item0'];
             var no_room = rowData['item1'];
-            if(status=='RS05'){
-                return;
-            }else {
+            var room_type_id = rowData['item4'];
+
                 window.open('/K004_1/K004_2/K004_3?res_id=' + res_id + '&type_name=' + type_name + '&no_room=' + no_room
-                    +"&check_in=" + check_in + "&check_out=" + check_out
+                    +"&check_in=" + check_in + "&check_out=" + check_out + "&room_type_id=" + room_type_id
                     , '_self');
-            }
+
 
 
         },
@@ -135,29 +139,46 @@ $(document).ready(function () {
             success: function (result) {
                 $("#cboStatus").empty();
                 $("#cboStatus").append($('<option></option>').val("").html(""));
-                if(status=='RS05'){
+                if(status==FINISH){
                     for (i=0; i < result.length; i++){
                         //add data for status combobox
 
-                        if(result[i].status_id == status){
+                        if(result[i].status_id == FINISH){
 
                             $("#cboStatus").append($('<option selected></option>').val(result[i].status_id).html(result[i].status_name));
-                            $('#cboStatus').attr("disabled", true);
+                            //$('#cboStatus').attr("disabled", true);
                         }
-                        else{
+                        else if (result[i].status_id == PROCESSING){
                             $("#cboStatus").append($('<option></option>').val(result[i].status_id).html(result[i].status_name));
+
                         }
 
                     }
                 }
-                else {
+                else if (status == CANCELLED){
+                    for (i=0; i < result.length; i++){
+                        //add data for status combobox
+
+                        if(result[i].status_id == CANCELLED){
+
+                            $("#cboStatus").append($('<option selected></option>').val(result[i].status_id).html(result[i].status_name));
+                            //$('#cboStatus').attr("disabled", true);
+                        }
+                        else if (result[i].status_id == PROCESSING){
+                            $("#cboStatus").append($('<option></option>').val(result[i].status_id).html(result[i].status_name));
+
+                        }
+
+                    }
+                }
+                else if (status==PROCESSING) {
                     for (i=0; i < result.length; i++){
                         //add data for status combobox
 
                         if(result[i].status_id == PROCESSING){
                             $("#cboStatus").append($('<option selected></option>').val(result[i].status_id).html(result[i].status_name));
                         }
-                        else{
+                        else {
                             $("#cboStatus").append($('<option></option>').val(result[i].status_id).html(result[i].status_name));
                         }
 
@@ -203,7 +224,8 @@ $(document).ready(function () {
                 item0: result[i].type_name,
                 item1: result[i].count,
                 item2: result[i].price,
-                item3: result[i].list_room
+                item3: result[i].list_room,
+                item4: result[i].room_type_id
 
 
             };
