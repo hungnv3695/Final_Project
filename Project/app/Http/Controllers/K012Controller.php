@@ -83,9 +83,6 @@ class K012Controller
             }else{
                 return back()->with(CHANGE_PASS_MSG, Message::MSG0017);
             }
-
         }
-
-
     }
 }
