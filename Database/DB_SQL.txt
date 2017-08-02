@@ -1,4 +1,4 @@
-INSERT INTO tbl_guest(id, name,phone,mail,identity_card,company,address,company_phone,country) VALUES('1','Vũ Trần Hoàng','126491311','hung@gmail','123456789','FPT','Hoa Lac','123456566','Vietnam');
+﻿INSERT INTO tbl_guest(id, name,phone,mail,identity_card,company,address,company_phone,country) VALUES('1','Vũ Trần Hoàng','126491311','hung@gmail','123456789','FPT','Hoa Lac','123456566','Vietnam');
 INSERT INTO tbl_guest(id, name,phone,mail,identity_card,company,address,company_phone,country) VALUES('2','Nguyễn Việt Hưng','841318413','hung@gmail','123456789','FPT','Hoa Lac','123456566','Vietnam');
 INSERT INTO tbl_guest(id, name,phone,mail,identity_card,company,address,company_phone,country) VALUES('3','Đặng Công Sơn','511974121','hung@gmail','123456789','FPT','Hoa Lac','123456566','Vietnam');
 INSERT INTO tbl_guest(id, name,phone,mail,identity_card,company,address,company_phone,country) VALUES('4','Trân Bá Quyền','648413161','hung@gmail','123456789','FPT','Hoa Lac','123456566','Vietnam');
@@ -26,24 +26,47 @@ INSERT INTO tbl_status( status_id,status_type,status_name,description) VALUES('R
 INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO001','RT01','1','RO01','101');
 INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO002','RT01','1','RO01','102');
 INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO003','RT01','1','RO01','103');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO004','RT01','1','RO01','104');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO005','RT01','1','RO01','105');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO006','RT02','2','RO01','201');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO007','RT02','2','RO01','202');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO008','RT02','2','RO01','203');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO009','RT02','2','RO01','204');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO010','RT02','2','RO01','205');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO011','RT03','3','RO01','301');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO012','RT03','3','RO01','302');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO013','RT03','3','RO01','303');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO014','RT03','3','RO01','304');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO015','RT03','3','RO01','305');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO016','RT04','4','RO01','401');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO017','RT04','4','RO01','402');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO018','RT04','4','RO01','403');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO019','RT04','4','RO01','404');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO020','RT04','4','RO01','405');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO021','RT04','4','RO01','406');
+
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO004','RT01','2','RO01','201');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO005','RT01','2','RO01','202');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO006','RT02','2','RO01','203');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO007','RT02','2','RO01','204');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO008','RT02','2','RO01','205');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO009','RT02','2','RO01','206');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO010','RT02','2','RO01','207');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO011','RT03','2','RO01','208');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO012','RT03','2','RO01','209');
+
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO013','RT03','3','RO01','301');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO014','RT03','3','RO01','302');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO015','RT03','3','RO01','303');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO016','RT04','3','RO01','304');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO017','RT04','3','RO01','305');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO018','RT04','3','RO01','306');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO019','RT04','3','RO01','307');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO020','RT04','3','RO01','308');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO021','RT04','3','RO01','309');
+
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO022','RT01','4','RO01','401');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO023','RT03','4','RO01','402');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO024','RT02','4','RO01','403');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO025','RT04','4','RO01','404');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO026','RT04','4','RO01','405');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO027','RT03','4','RO01','406');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO028','RT04','4','RO01','407');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO029','RT03','4','RO01','408');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO030','RT04','4','RO01','409');
+
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO031','RT01','4','RO01','401');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO032','RT03','4','RO01','402');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO033','RT02','4','RO01','403');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO034','RT04','4','RO01','404');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO035','RT04','4','RO01','405');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO036','RT03','4','RO01','406');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO037','RT04','4','RO01','407');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO038','RT03','4','RO01','408');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO039','RT04','4','RO01','409');
+
 
 
 INSERT INTO tbl_reservation( id, status_id,guest_id,check_in,check_out,number_of_room,number_of_adult,number_of_children,note,editer,update_ymd,create_ymd) VALUES('1','RS01','1','20170825','20170829','1','2','0','','','2017/08/01','2017/08/01');

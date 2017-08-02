@@ -137,7 +137,7 @@
 							<select class="form-control input-md" id="cboStatus" name="statuscbo" style="width:130px;">
 
 							</select>
-							<button class="btn btn-primary" value="btnSave" name="btnSave" id="btnSave" style="margin-left:20px;"><b>Lưu</b></button>
+							<button class="btn btn-success" value="btnSave" name="btnSave" id="btnSave" style="margin-left:20px;"><b>Lưu</b></button>
 							<button class="btn btn-danger" value="btnBack" name="btnBack" id="btnBack" style="margin-left:5px;"><b>Quay lại</b></button>
 							<button class="roomlistBnt" type="button" name="loadTable" id="btnTable" style="display:none"></button>
 							<input id="res_id" name="res_id" type="text" value="{{$id}}" maxlength ="10" style="display:none">
