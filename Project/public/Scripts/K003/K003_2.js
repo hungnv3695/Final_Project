@@ -7,6 +7,9 @@ $(document).ready(function(){
     var RES_STATUS = "RS05";
     var res_id = GetUrlParameter("res_id");
     var room_id = GetUrlParameter("room_id");
+    var room_number = "";
+    var room_type = "";
+    var price = 0;
 
     function GetUrlParameter(sParam) {
         var sPageURL = decodeURIComponent(window.location.search.substring(1)),
@@ -234,7 +237,8 @@ $(document).ready(function(){
         var roomType = $("#roomtype").val();
         var roomNo = [];
         var roomId = [];
-
+        var room_type_id = $("#roomtype").val();
+        room_type =  $("#roomtype option[value='"+    room_type_id +"']").text()
         for (var i=0; i < jList.length; i++){
 
             if(roomType == jList[i].item0){
@@ -253,6 +257,9 @@ $(document).ready(function(){
         $("#txtTotalprice").val()=="";
         var roomType = $("#roomtype").val();
         var nights = $("#txtNumOfDay").val();
+        var roomVal =$("#cboRoomNo").val();
+        room_number = $("#cboRoomNo option[value='"+    roomVal+"']").text()
+
         if($("#cboRoomNo").val()==""){
             $("#txtTotalprice").val("");
             return;
@@ -261,6 +268,7 @@ $(document).ready(function(){
 
             if(roomType == jList[i].item0){
                 $("#txtTotalprice").val(Number(jList[i].item3) * nights );
+                price = Number(jList[i].item3);
             }
         }
     });
@@ -268,6 +276,8 @@ $(document).ready(function(){
         event.preventDefault();
         window.open('/K004_1/K004_2?res_id='+res_id, '_self');
     });
+
+
     $("#btnCheckin").click(function (event) {
         event.preventDefault();
 
@@ -297,7 +307,7 @@ $(document).ready(function(){
                 method: 'GET',
                 cache: false,
                 dataType: 'json',
-                data: $("#myForm").serialize() + "&room_status=" + ROOM_STATUS + "&res_status=" + RES_STATUS ,
+                data: $("#myForm").serialize() + "&room_status=" + ROOM_STATUS + "&res_status=" + RES_STATUS + "&room_number=" + room_number + "&room_type=" + room_type + "&price=" + price ,
                 contentType: 'application/x-www-form-urlencoded',
                 success: function (result) {
                     if(result==1){

@@ -33,8 +33,8 @@ class K004DAO{
      * @return mixed
      */
     public function selectReservation($fname, $idCard, $status){
-        $t1 = 'UPPER(g.name) LIKE \'%' . StringUtil::Trim($fname)  . '%\'';
-        $t2 = 'UPPER(g.identity_card) LIKE \'%' . StringUtil::Trim($idCard) . '%\'';
+        $t1 = 'UPPER(g.name) iLIKE \'%' . StringUtil::Trim($fname)  . '%\'';
+        $t2 = 'UPPER(g.identity_card) iLIKE \'%' . StringUtil::Trim($idCard) . '%\'';
         $t3 = 's.status_id = \'' . trim($status). '\'' ;
         $strSQL = 'SELECT ';
         $strSQL .=  'r.id, ';
@@ -236,7 +236,7 @@ class K004DAO{
         $strSQL .='where UPPER(rt.room_type_id) = \'' . strtoupper(trim($room_type_id)) . '\' AND ro.status_id <> \'RO04\' ';
         $strSQL .=' AND NOT ro.room_id IN (select rd.room_id from ';
         $strSQL .='tbl_reservation r join tbl_reservation_detail rd ON ';
-        $strSQL .='r.id = rd.reservation_id where  r.id <> \'' . $res_id . '\' AND ';
+        $strSQL .='r.id = rd.reservation_id where  r.id <> \'' . $res_id . '\'  AND r.status_id <> \'RS04\' AND ';
         $strSQL .= '((r.check_in BETWEEN \'' . $check_in . '\' AND \'' .$check_out. '\') ';
         $strSQL .='OR (r.check_out BETWEEN \'' .$check_in. '\' AND \'' .$check_out .'\')  OR (r.check_in < \''.$check_in.'\' AND r.check_out > \''.$check_out.'\') )) ';
 

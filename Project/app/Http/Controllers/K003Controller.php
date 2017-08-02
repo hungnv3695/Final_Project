@@ -12,6 +12,8 @@ namespace App\Http\Controllers;
 use App\Http\Common\DateTimeUtil;
 use App\Http\DAO\K003DAO;
 use App\Models\Guest;
+use App\Models\Invoice;
+use App\Models\InvoiceDetail;
 use App\Models\Reservation;
 use App\Models\ReservationDetail;
 use App\Models\Room;
@@ -61,7 +63,8 @@ class K003Controller extends Controller
         $room_status = $request->room_status;
         $room_id = $request->cboRoomNo;
         $res_id = $request->res_id;
-        if($res_id != ""){
+
+        if($res_id != ""){//Check in cho reservation
 
             //Reservation_detail Model
             $res_detail = new ReservationDetail();
@@ -92,7 +95,7 @@ class K003Controller extends Controller
             }
 
         }
-        else{
+        else{ //Check in mới
 
             //Guest Model
             $guest = new Guest();
@@ -126,9 +129,23 @@ class K003Controller extends Controller
             $room->setStatusID($room_status);
             $room->setRoomID($room_id);
 
+            $invoice = new Invoice();
+            $invoice->setAmountTotal($request->txtTotalprice);
+            $invoice->setCreateYmd(Carbon::now());
+            $invoice->setCreaterName('hungnv');//fix tam
+
+            $invoiceDetail = new InvoiceDetail();
+            $invoiceDetail->setRoomNumber($request->room_number);
+            $invoiceDetail->setDescription($request->room_type + ' (' + $request->room_number + ') ' + $request->txtNumOfDay + ' đêm'  );
+            $invoiceDetail->setQuantity(1);
+            $invoiceDetail->setPrice($request->price);
+            $invoiceDetail->setAmountTotal($request->txtTotalprice);
+            $invoiceDetail->setCreateYmd(Carbon::now());
+
+
 
             $K003DAO = new K003DAO();
-            $result = $K003DAO->createNewCheckin($guest,  $reservation,  $room,  $res_detail);
+            $result = $K003DAO->createNewCheckin($guest,  $reservation,  $room,  $res_detail, $invoice,$invoiceDetail);
             if($result==1){
                 return response(1);
             }else if ($result==0){
