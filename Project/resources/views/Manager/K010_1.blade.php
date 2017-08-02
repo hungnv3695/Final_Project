@@ -73,7 +73,7 @@
 		}
 		.col5
 		{
-			width: 10%;
+			width: 15%;
 			float:left;
 		}
 		.Error
@@ -149,13 +149,14 @@
 							<div class="col-md-12" style="margin-top:20px;margin-bottom:10px;">
 								<label>Thiết bị: </label>
 							</div>
-							<table class="table table-hover" style="margin-bottom:56px;" id="table">
+							<table class="table table-bordered" style="margin-bottom:56px;" id="table">
 								<thead>
 								<tr>
 									<th class="col1">STT</th>
 									<th class="col2">Tên thiết bị</th>
 									<th class="col3">Số lượng</th>
 									<th class="col4">Giá</th>
+									<th class="col5"></th>
 								</tr>
 								</thead>
 								<tbody>
