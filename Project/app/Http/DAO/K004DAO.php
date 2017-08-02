@@ -9,6 +9,7 @@
 
 namespace App\Http\DAO;
 use App\Http\Common\Constants;
+use App\Http\Common\StringUtil;
 use App\Models\Guest;
 use App\Models\Reservation;
 use App\Models\ReservationDetail;
@@ -24,7 +25,7 @@ use Carbon\Carbon;
 use Mockery\Exception;
 
 
-class K004_DAO{
+class K004DAO{
     /**
      * @param $fname
      * @param $idCard
@@ -32,8 +33,8 @@ class K004_DAO{
      * @return mixed
      */
     public function selectReservation($fname, $idCard, $status){
-        $t1 = 'UPPER(g.name) LIKE \'%' . mb_strtoupper(trim($fname)) . '%\'';
-        $t2 = 'UPPER(g.identity_card) LIKE \'%' . strtoupper(trim($idCard)) . '%\'';
+        $t1 = 'UPPER(g.name) LIKE \'%' . StringUtil::Trim($fname)  . '%\'';
+        $t2 = 'UPPER(g.identity_card) LIKE \'%' . StringUtil::Trim($idCard) . '%\'';
         $t3 = 's.status_id = \'' . trim($status). '\'' ;
         $strSQL = 'SELECT ';
         $strSQL .=  'r.id, ';
