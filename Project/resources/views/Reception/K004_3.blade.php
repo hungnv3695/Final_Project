@@ -34,7 +34,8 @@
 <body>
         <div class="container">
             <div class="row">
-				<div class="col-md-10 col-md-offset-1" style="background-color:rgb(230,230,230);margin-top:5%;">
+
+				<div class="col-md-10 col-md-offset-1" style="background-color:rgb(230,230,230);margin-top:4%;">
 					<div class="row">
 						<div class="col-md-offset-9" style="margin:10px 10px 0px 0px;float:right;">
 							@if(Session::has('USER_INFO'))
@@ -63,8 +64,8 @@
 
 
 						<div class="col-md-6 col-md-offset-6" style="margin-top:30px;margin-bottom:20px;">
-							<button class="btn btn-success col-md-offset-2" id="btnSave" value="btnSave" name="btnSave"><b>Lưu</b></button>
-							<button class="btn btn-danger" id="btnBack" value="btnBack" name="btnBack"><b>Hủy bỏ</b></button>
+							<button class="btn btn-primary col-md-offset-2" id="btnSave" value="btnSave" name="btnSave"><b>Lưu</b></button>
+							<button class="btn btn-danger" id="btnBack" value="btnBack" name="btnBack"><b>Quay lại</b></button>
 						</div>	
 					</div>
 				</div>

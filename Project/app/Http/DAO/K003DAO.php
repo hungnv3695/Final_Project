@@ -10,10 +10,13 @@ namespace App\Http\DAO;
 
 
 use App\Models\Guest;
+use App\Models\Invoice;
+use App\Models\InvoiceDetail;
 use App\Models\Reservation;
 use App\Models\ReservationDetail;
 use App\Models\Room;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rules\In;
 use Mockery\Exception;
 
 class K003DAO
@@ -93,11 +96,14 @@ class K003DAO
      * @param ReservationDetail $res_detail
      * @return int
      */
-    public function createNewCheckin(Guest $guest, Reservation $res, Room $room, ReservationDetail $res_detail){
+    public function createNewCheckin(Guest $guest, Reservation $res, Room $room, ReservationDetail $res_detail,
+                                     Invoice $invoice, InvoiceDetail $invoiceDetail){
         $resInsert = new Reservation();
         $guestInsert = new Guest();
         $roomUpdate = new Room();
         $resDetailInsert = new ReservationDetail();
+        $invoiceInsert = new Invoice();
+        $invoiceDetailInsert = new InvoiceDetail();
 
 
 
@@ -138,7 +144,17 @@ class K003DAO
 
             $roomUpdate = Room::find($room->getRoomID());
             $roomUpdate->status_id = $room->getStatusID();
+
             $roomUpdate->save();
+
+
+            $invoiceInsert->reservation_id = $resInsert->id;
+            $invoiceInsert->guest_id = $guestInsert->id;
+            //$invoiceInsert->amount_total
+
+            $invoiceInsert->save();
+
+
 
             DB::commit();
             return 1;

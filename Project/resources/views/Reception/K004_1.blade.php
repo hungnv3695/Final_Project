@@ -39,7 +39,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-10 col-md-offset-1" style="margin-top:1%;background-color:rgb(245,245,245);border:1px solid rgb(215,215,215);">
+            <div class="col-md-10 col-md-offset-1" style="margin-top:1%;background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
 				<div class="row">
 					<div class="col-md-offset-9" style="margin:10px 10px 0px 0px;float:right;">
 						@if(Session::has('USER_INFO'))
@@ -72,7 +72,7 @@
 					</div>
 				</div>
             </div>
-            <div class="col-md-10 col-md-offset-1" style="background-color:rgb(245,245,245);border:1px solid rgb(215,215,215);">
+            <div class="col-md-10 col-md-offset-1" style="background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
 				<div class="row">
 					<div class="col-md-2 col-md-offset-10 col-xs-7" style="margin-top:10px;margin-bottom:10px;">
 						<button id="btnBack" class="btn btn-danger" type="button"><b>Quay lại</b></button>

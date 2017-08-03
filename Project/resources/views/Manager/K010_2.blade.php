@@ -77,7 +77,7 @@
 		}
 		.col5
 		{
-			width: 10%;
+			width: 15%;
 			float:left;
 		}
 		.Error
@@ -178,6 +178,7 @@
 									<th class="col2">Tên Thiết bị</th>
 									<th class="col3">Số Lượng</th>
 									<th class="col4">Giá</th>
+									<th class="col5"></th>
 								</tr>
 								</thead>
 								<tbody>
