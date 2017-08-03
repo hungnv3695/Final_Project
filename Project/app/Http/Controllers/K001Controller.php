@@ -79,7 +79,7 @@ class K001Controller extends Controller
                 //}
 
                 //send Email
-                //Mail::to('sondcse03564@fpt.edu.vn')->send(new BookInfo());
+                Mail::to('sondcse03564@fpt.edu.vn')->send(new BookInfo());
 
                 /*
                 $data = ['HoTen'=>'SonDC'];

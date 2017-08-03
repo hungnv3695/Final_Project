@@ -11,7 +11,8 @@ class BookInfo extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $Oder;
+    public $guest;
+    public $reservarion;
 
     /**
      * Create a new message instance.

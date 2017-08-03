@@ -30,6 +30,7 @@ class K003Controller extends Controller
         return view('Reception.K003_1',compact('roomStatus'));
     }
 
+
     public function getRoomStatusRequest(Request $request){
         $checkIn = $request->checkin;
         $checkOut = $request->checkout;
