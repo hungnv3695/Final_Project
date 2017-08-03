@@ -364,4 +364,20 @@ $(document).ready(function(){
         event.preventDefault();
 
     });
+
+    $("#ckbsamepeople").click(function () {
+        if($("#ckbsamepeople").prop('checked') == true){
+            $("#txtFullname2").val($("#txtFullname1").val());
+            $("#txtIdcard2").val( $("#txtIdcard1").val());
+            $("#txtPhone2").val($("#txtPhone1").val());
+            $("#txtEmail2").val($("#txtEmail1").val());
+
+    }else{
+            $("#txtFullname2").val("");
+            $("#txtIdcard2").val("");
+            $("#txtPhone2").val("");
+            $("#txtEmail2").val("");
+    }
+
+    });
 });

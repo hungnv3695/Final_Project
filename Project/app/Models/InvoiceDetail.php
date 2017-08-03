@@ -9,17 +9,19 @@
 namespace App\Models;
 
 
-class InvoiceDetail
+use Illuminate\Database\Eloquent\Model;
+
+class InvoiceDetail extends Model
 {
-    private $id;
-    private $roomNumber;
-    private $invoiceId;
-    private $description;
-    private $quantity;
-    private $price;
-    private $amount_total;
-    private $updateYmd;
-    private $createYmd;
+    public $id;
+    public $roomNumber;
+    public $invoiceId;
+    public $description;
+    public $quantity;
+    public $price;
+    public $amount_total;
+    public $updateYmd;
+    public $createYmd;
 
     /**
      * @return mixed

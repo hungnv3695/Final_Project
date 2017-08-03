@@ -9,7 +9,9 @@
 namespace App\Models;
 
 
-class Invoice
+use Illuminate\Database\Eloquent\Model;
+
+class Invoice extends Model
 {
     private $id;
     private $paymentTypeId;
