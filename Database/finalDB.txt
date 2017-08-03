@@ -133,6 +133,8 @@ CREATE TABLE tbl_reservation(
 	status_id varchar(10), 
 	guest_id integer,
 	check_in varchar(8) ,
+	check_in_flag integer default 0,
+	check_out_flag integer default 0,
 	check_out varchar(8) ,
 	number_of_room integer,
 	number_of_adult integer ,
