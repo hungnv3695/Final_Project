@@ -99,6 +99,11 @@ Route::get('/K003_2','K003Controller@k003_2_View');
 Route::get('/K003_2/SearchRoomTypeFree','K003Controller@searchRoomTypeFree');
 Route::get('/K003_2/Checkin','K003Controller@checkIn');
 Route::get('/K003_2/CheckIsReservation','K003Controller@checkIsReservation');
+Route::get('/K003_2/SaveInforCustomer','K003Controller@saveInforCustomer');
+
+//K003_3: Check out;
+Route::get('/K003_3','K003Controller@k003_3_View');
+
 
 Route::get('/K013','K013Controller@view');
 

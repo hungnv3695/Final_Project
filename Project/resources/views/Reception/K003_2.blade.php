@@ -129,6 +129,10 @@
 						<input id="txtNumOfDay" name="txtNumOfDay" type="text" class="form-control input-md" size="18" readonly>
 					</div>
 					<div class="form-inline col-md-offset-1" style="margin-top:10px;">
+						<label class="label1">Số người:</label>
+						<input id="numofpeople" name="numofpeople" type="number"  class="form-control input-md" min="1" style="width:70px;" >
+					</div>
+					<div class="form-inline col-md-offset-1" style="margin-top:10px;">
 						<label class="label1" for="">Kiểu phòng: </label>
 						<select id="roomtype" name="roomtype" class="form-control input-md" style="width:180px;" readonly>
 
@@ -140,10 +144,7 @@
 
 						</select>
 					</div>
-					<div class="form-inline col-md-offset-1" style="margin-top:20px;">
-						<label class="label1">Số người:</label>
-						<input id="numofpeople" name="numofpeople" type="number" class="form-control input-md" min="1" style="width:180px;" readonly>
-					</div>
+
 					<div class="form-inline col-md-offset-1" style="margin-top: 10px;">
 						<label class="label1" for="">Tổng tiền:</label>
 						<input id="txtTotalprice" name="txtTotalprice" type="text" class="form-control input-md " size="10" readonly>
@@ -178,8 +179,7 @@
 						<input id="txtEmail1" name="txtEmail1" type="text" class="form-control input-md" size="20" maxlength="50">
 					</div>
 
-					<div class="form-inline" style="margin-top:30px;margin-bottom:20px; margin-left: 100px;">
-
+					<div class="form-inline" style="margin-top:30px;margin-bottom:45px; margin-left: 100px;">
 
 						<label >Người đặt và người nhận phòng là một:  </label>
 						<input type="checkbox" id="ckbsamepeople">
@@ -206,12 +206,17 @@
 						<label class="label1" for="">Email: </label>
 						<input id="txtEmail2" name="txtEmail2" type="text" class="form-control input-md" size="20" maxlength="50"  readonly>
 					</div>
+					<div class="form-inline col-md-offset-1" style="margin-top:-10px;margin-bottom:20px;">
+						<label class="label1" for="">Ghi chú: </label>
+						<textarea rows="3" cols="25" id="txtNote2" class="form-control" name="txtNote" maxlength="100"></textarea>
+					</div>
 				</div>
 			</div>
 		</div>
 		<div class="col-md-10 col-md-offset-1" style="background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
 			<div class="row">
-				<div class="col-md-5 col-md-offset-9" style="margin-top:10px; margin-bottom:10px;">
+				<div class="col-md-6 col-md-offset-8" style="margin-top:10px; margin-bottom:10px;">
+					<button class="btn btn-primary" id="btnSave" value="btnSave" name="btnSave" style="margin-left:0px"><b>Lưu</b></button>
 					<button class="btn btn-primary col-md-offset-1" id="btnCheckin" value="btnCheckin" name="btnSave"><b>Nhận phòng</b></button>
 					<button class="btn btn-danger" id="btnBack" value="bntCancel" name="bntCancel"><b>Quay lại</b></button>
 				</div>

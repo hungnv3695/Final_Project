@@ -80,10 +80,10 @@ class K003DAO
        $strSQL .= 'join tbl_room_type rt on ro.room_type_id = rt.room_type_id ';
        $strSQL .= 'where ro.status_id = \'RO01\' AND ';
        $strSQL .= 'ro.room_id NOT IN ( select rd.room_id from tbl_reservation_detail rd left join tbl_reservation r on rd.reservation_id = r.id where ';
-       $strSQL .= '(rd.date_in >= \''.$check_in.'\' AND rd.date_in <= \''.$check_out.'\') OR (rd.date_out >= \''.$check_in.'\' AND rd.date_out < \''.$check_out.'\') ';
-       $strSQL .= 'OR (rd.date_in < \'' .$check_in. '\' AND rd.date_out > \'' .$check_out. '\'))';
+       $strSQL .= '((rd.date_in >= \''.$check_in.'\' AND rd.date_in <= \''.$check_out.'\') OR (rd.date_out >= \''.$check_in.'\' AND rd.date_out <= \''.$check_out.'\') ';
+       $strSQL .= 'OR (rd.date_in < \'' .$check_in. '\' AND rd.date_out > \'' .$check_out. '\')) AND NOT (rd.check_in_flag = \'1\' AND rd.check_out_flag = \'1\')) ';
        $strSQL .= 'GROUP BY rt.room_type_id, rt.type_name, rt.price';
-        //dd($strSQL);
+
         $result = DB::select($strSQL);
         return $result;
 
@@ -205,6 +205,8 @@ class K003DAO
 
                     'customer_email' => $res_detail->getCustomerEmail(),
 
+                    'note' => $res_detail->getNote(),
+
                     'update_ymd' => $res_detail->getUpdateYmd(),
 
                     'date_in' => $res_detail->getDateIn(),
@@ -233,7 +235,8 @@ class K003DAO
     }
     public function selectResDetailInfor($res_id, $room_id){
 
-        $strSQL = 'select g.name, g.identity_card, g.phone, g.mail ,r.check_in, r.check_out, r.note ,ro.room_id, ro.room_number, rt.type_name, rt.room_type_id, rt.price ' ;
+        $strSQL = 'select g.name, g.identity_card, g.phone, g.mail ,r.check_in, r.check_out, r.note ,ro.room_id, ro.room_number, rt.type_name, rt.room_type_id, rt.price, r.number_of_adult, ' ;
+        $strSQL .= 'rd.customer_name, rd.customer_identity_card, rd.customer_phone, rd.customer_email, rd.note "note2" ';
         $strSQL .= 'from tbl_reservation_detail rd ';
         $strSQL .= 'left join tbl_reservation r on rd.reservation_id = r.id ';
         $strSQL .= 'left join tbl_guest g on r.guest_id = g.id ';
@@ -243,6 +246,39 @@ class K003DAO
         //dd($strSQL);
         $result = DB::select(DB::raw($strSQL));
         return $result;
+    }
+
+    public function updateCustomerInfor(ReservationDetail $res_detail){
+        $resDetailInsert = new ReservationDetail();
+        $res_id = $res_detail->getReservationId();
+        $room_id = $res_detail->getRoomId();
+        DB::beginTransaction();
+
+        try{
+
+            $resDetailInsert::where('reservation_id', '=' ,$res_id )->where('room_id', '=' , $room_id)
+                ->update([
+                    'customer_name' => $res_detail->getCustomerName(),
+
+                    'customer_identity_card' => $res_detail->getCustomerIC(),
+
+                    'customer_phone' => $res_detail->getCustomerPhone(),
+
+                    'customer_email' => $res_detail->getCustomerEmail(),
+
+                    'note' => $res_detail->getNote(),
+
+                    'update_ymd' => $res_detail->getUpdateYmd(),
+
+                ]);
+
+            DB::commit();
+            return 1;
+        }catch(\Exception $e){
+            DB::Rollback();
+            return 0;
+        }
+
     }
 
 }

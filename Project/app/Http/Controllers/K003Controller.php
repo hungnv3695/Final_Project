@@ -42,6 +42,7 @@ class K003Controller extends Controller
 
     }
 
+    #region K003_2
     public function k003_2_View(){
 
             return view('Reception.K003_2');
@@ -78,6 +79,7 @@ class K003Controller extends Controller
             $res_detail->setUpdateYmd(Carbon::now());
             $res_detail->setDateIn(DateTimeUtil::ConvertDateToString($request->txtCheckin));
             $res_detail->setDateOut(DateTimeUtil::ConvertDateToString($request->txtCheckout));
+            $res_detail->setNote($request->note2);
 
             //Room Model
             $room = new Room();
@@ -127,6 +129,7 @@ class K003Controller extends Controller
             $res_detail->setCustomerIC($request->txtIdcard2);
             $res_detail->setCustomerPhone($request->txtPhone2);
             $res_detail->setCustomerEmail($request->txtEmail2);
+            $res_detail->setNote($request->note2);
 
             //Room Model
             $room = new Room();
@@ -177,6 +180,43 @@ class K003Controller extends Controller
             return response($result);
         }
 
+
+
+    }
+
+    public function saveInforCustomer(Request $request){
+
+        $res_detail = new ReservationDetail();
+
+        $res_detail->setCustomerName($request->fullname2);
+        $res_detail->setCustomerPhone($request->phone2);
+        $res_detail->setCustomerIC($request->idCard2);
+        $res_detail->setCustomerEmail($request->email2);
+
+        $res_detail->setNote($request->note2);
+
+        $res_detail->setReservationId($request->res_id) ;
+        $res_detail->setRoomId($request->room_id);
+        $res_detail->setUpdateYmd(Carbon::now());
+
+
+
+        $K003DAO = new K003DAO();
+        $result = $K003DAO->updateCustomerInfor($res_detail);
+
+        if($result==1){
+            return response(1);
+        }else if ($result==0){
+            return response(0);
+        }
+
+    }
+
+    #endregion
+
+    public function k003_3_View(){
+
+        return view('Reception.K003_3');
 
 
     }

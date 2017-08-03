@@ -26,6 +26,24 @@ class ReservationDetail extends Model{
     private $dateIn;
     private $dateOut;
 
+    private $note;
+
+    /**
+     * @return mixed
+     */
+    public function getNote()
+    {
+        return $this->note;
+    }
+
+    /**
+     * @param mixed $note
+     */
+    public function setNote($note)
+    {
+        $this->note = $note;
+    }
+
     /**
      * @return mixed
      */

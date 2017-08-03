@@ -146,11 +146,20 @@ $(document).ready(function(){
                     $("#txtIdcard1").val(result[0].identity_card);
                     $("#txtPhone1").val(result[0].phone);
                     $("#txtEmail1").val(result[0].mail);
+                    //$("#numofpeople").val(result[0].number_of_adult);
 
                     $("#txtFullname2").attr('readonly', false);
                     $("#txtIdcard2").attr('readonly', false);
                     $("#txtPhone2").attr('readonly', false);
                     $("#txtEmail2").attr('readonly', false);
+
+
+                    $("#txtFullname2").val(result[0].customer_name);
+                    $("#txtIdcard2").val(result[0].customer_identity_card);
+                    $("#txtPhone2").val(result[0].customer_phone);
+                    $("#txtEmail2").val(result[0].customer_email);
+                    $("#txtNote2").val(result[0].note2);
+
 
 
                     return;
@@ -378,6 +387,51 @@ $(document).ready(function(){
             $("#txtPhone2").val("");
             $("#txtEmail2").val("");
     }
-
     });
+
+    $("#btnSave").click(function (event) {
+        event.preventDefault();
+
+        var fullname2 = $("#txtFullname2").val();
+        var idCard2 = $("#txtIdcard2").val();
+        var phone2 = $("#txtPhone2").val();
+        var email2 = $("#txtEmail2").val();
+
+        var note2 = $("#txtNote2").val();
+
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: '/K003_2/SaveInforCustomer',
+            method: 'GET',
+            cache: false,
+            dataType: 'json',
+            data: {
+                fullname2 : fullname2,
+                idCard2 : idCard2,
+                phone2 : phone2,
+                email2 : email2,
+                note2: note2,
+                res_id: res_id,
+                room_id: room_id
+            },
+            contentType: 'application/x-www-form-urlencoded',
+            success: function (result) {
+                if(result==1){
+                    alert('Lưu thông tin thành công');
+                    //location.reload();
+                }
+                else if(result==0){
+                    alert('Xảy ra lỗi khi lưu thay đổi');
+                }
+            },
+            error: function(){
+                alert('error');
+            }
+        });
+        event.preventDefault();
+
+
+    })
 });
