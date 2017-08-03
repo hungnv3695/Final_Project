@@ -520,14 +520,15 @@ h1{
 }
 p.brand-title{
 	font-family: 'Open Sans' , sans-serif;
-	font-size: 30px;
+	font-size: 25px;
 	font-weight: 600;
 	text-align: center;
 	color:rgb(16,54,103);
 	text-transform: uppercase;
 	letter-spacing: 4px;
-	height:80px;
-	line-height:80px;
+	line-height:30px;
+	margin-top:30px;
+	margin-bottom:20px;
 }
 hr{
 	border-color:gray;
@@ -569,5 +570,11 @@ hr{
 .roomlistBnt:hover{
 	background-color:rgb(236,236,236);
 	color:black;
+}
+p.account{
+	float:left;
+	margin-right:10px;
+	color:rgb(66,110,180);
+	font-weight: bold;
 }
 /*end restaurant*/
