@@ -16,7 +16,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 
 define('SESSION_USER_INFO','USER_INFO');
-define('CHANGE_PASS_MSG','ChangePassMSG');
+define('CHANGE_PASS_MSG','ErrorMSG');
 class K012Controller
 {
     public function view(){
@@ -70,8 +70,17 @@ class K012Controller
         $user =  $request->txtAccountName;
         $oldPass = $request->txtOldPwd;
         $newPass = $request->txtNewPwd;
+        $confirm = $request->txtConfirmNewPwd;
 
         $k012DAO = new K012DAO();
+
+
+        if ($oldPass==$newPass){
+            return back()->with(CHANGE_PASS_MSG, Message::MSG0034);
+        }elseif($newPass !=$confirm ){
+            return back()->with(CHANGE_PASS_MSG, Message::MSG0035);
+        }
+
         $result = $k012DAO->checkPassword($user,$oldPass);
 
         if(!$result) {

@@ -83,21 +83,6 @@
 
 </div>
 </body>
-
-<script>
-    function checkvalue() {
-        var newPass = document.getElementById('txtNewPwd').value;
-        var confirmPass = document.getElementById('txtConfirmNewPwd').value;
-
-        if(newPass != confirmPass){
-            document.getElementById("ErrorMsg").innerHTML = "Mật khẩu mới và xác nhận mật khẩu không trùng khớp";
-            return false;
-        }else{
-            return true;
-        }
-    }
-</script>
-
 <script src="{!! asset('Scripts/FrontCheck/CheckError.js') !!}"> </script>
 <script>  $("div.Error").delay(2000).slideUp(); </script>
 </html>

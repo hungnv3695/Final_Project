@@ -50,6 +50,11 @@ class Message
     const MSG0032 = "Thêm tài khoản thành công";
     const MSG0033 = "Thêm tài khoản thất bại";
 
+    const MSG0034 = "Mật khẩu mới trùng với mật khẩu cũ.";
+    const MSG0035 = "Mật khẩu mới và xác nhận mật khẩu không trùng khớp.";
+
+
+
 
 
 }
