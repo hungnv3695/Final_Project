@@ -98,6 +98,8 @@ class K003DAO
      */
     public function createNewCheckin(Guest $guest, Reservation $res, Room $room, ReservationDetail $res_detail,
                                      Invoice $invoice, InvoiceDetail $invoiceDetail){
+
+
         $resInsert = new Reservation();
         $guestInsert = new Guest();
         $roomUpdate = new Room();
@@ -106,9 +108,11 @@ class K003DAO
         $invoiceDetailInsert = new InvoiceDetail();
 
 
-
         DB::beginTransaction();
         try{
+
+
+
             $guestInsert->name = $guest->getName();
             $guestInsert->identity_card = $guest->getIdentityCard();
             $guestInsert->phone = $guest->getPhone();
@@ -137,6 +141,10 @@ class K003DAO
             $resDetailInsert->create_ymd = $res_detail->getCreateYmd();
             $resDetailInsert->date_in = $res_detail->getDateIn();
             $resDetailInsert->date_out = $res_detail->getDateOut();
+            $resDetailInsert->customer_name = $res_detail->getCustomerName();
+            $resDetailInsert->customer_identity_card = $res_detail->getCustomerIC();
+            $resDetailInsert->customer_phone = $res_detail->getCustomerPhone();
+            $resDetailInsert->customer_email = $res_detail->getCustomerPhone();
 
 
             //Insert reservation detail
@@ -150,10 +158,23 @@ class K003DAO
 
             $invoiceInsert->reservation_id = $resInsert->id;
             $invoiceInsert->guest_id = $guestInsert->id;
-            //$invoiceInsert->amount_total
+            $invoiceInsert->creater_nm = $invoice->getCreaterName();
+            $invoiceInsert->create_ymd = $invoice->getCreateYmd();
+            $invoiceInsert->amount_total = $invoice->getAmountTotal();
 
             $invoiceInsert->save();
 
+
+
+
+            $invoiceDetailInsert->invoice_id = $invoiceInsert->id;
+            $invoiceDetailInsert->description = $invoiceDetail->getDescription();
+            $invoiceDetailInsert->quantity = $invoiceDetail->getQuantity();
+            $invoiceDetailInsert->price = $invoiceDetail->getPrice();
+            $invoiceDetailInsert->amount_total = $invoiceDetail->getAmountTotal();
+            $invoiceDetailInsert->create_ymd = $invoiceDetail->getCreateYmd();
+
+            $invoiceDetailInsert->save();
 
 
             DB::commit();
