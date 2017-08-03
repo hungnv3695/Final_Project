@@ -177,7 +177,15 @@
 						<label class="label1" for="">Email: </label>
 						<input id="txtEmail1" name="txtEmail1" type="text" class="form-control input-md" size="20" maxlength="50">
 					</div>
+
+					<div class="form-inline" style="margin-top:30px;margin-bottom:20px; margin-left: 100px;">
+
+
+						<label >Người đặt và người nhận phòng là một:  </label>
+						<input type="checkbox" id="ckbsamepeople">
+					</div>
 				</div>
+
 			</div>
 			<div class="col-md-6">
 				<label class="control-label">Người nhận phòng</label>
