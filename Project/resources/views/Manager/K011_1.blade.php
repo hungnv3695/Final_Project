@@ -7,69 +7,40 @@
     <link rel="stylesheet" type="text/css" href=" {!! asset('css/index.css') !!}">
     <script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <style>
-        body{
-            padding:0;
-            margin:0;
-        }
-        table {
-            width: 100%;
-            border:1px solid rgb(200,200,200);
-        }
-
-        thead, tbody, tr, td, th { display: block; }
-
-        tr:after {
-            content: ' ';
-            display: block;
-            visibility: hidden;
-            clear: both;
-        }
-
-        thead th {
-            height: 30px;
-
-            /*text-align: left;*/
-        }
-
-        tbody {
-            height: 190px;
-            overflow-y: auto;
-        }
-
-        thead {
-            /* fallback */
-        }
-
-
-        tbody td, thead th {
-            width: 14%;
-            float: left;
-        }
-        .col1
-        {
-            width: 10%;
-            float:left;
-        }
-        .col2
-        {
-            width: 25%;
-            float:left;
-        }
-        .col3
-        {
-            width: 25%;
-            float:left;
-        }
-        .col4
-        {
-            width: 25%;
-            float:left;
-        }
-        .col5
-        {
-            width: 15%;
-            float:left;
-        }
+    body{
+        padding:0;
+        margin:0;
+    }
+	hr
+	{
+		background-color:rgb(215,215,215);
+		height:1px; 
+		border: 0;
+	}
+    .table-wrapper 
+	{
+		position:relative;
+	}
+	.table-scroll 
+	{
+		height:225px;
+		overflow:auto; 
+		margin-top:20px;	  
+		margin-bottom:20px;
+	}
+	.table-wrapper table 
+	{
+		width:100%;
+	}
+	.table-wrapper table thead th .text 
+	{
+		position:absolute;   
+		top:-20px;
+		z-index:2;
+		height:20px;
+		width:35%;
+		border:1px solid red;
+	}
     </style>
 </head>
 <body>
@@ -95,7 +66,7 @@
             @endif
         </div>
         <div class="col-md-8 col-md-offset-2" style="background-color:rgb(230,230,230);border:1px solid rgb(215,215,215); border-top:none;border-bottom:none;">
-            <form class="form-inline col-md-offset-3" style="margin-top:20px;margin-bottom:20px;" method="post">
+            <form class="form-inline col-md-offset-3" style="margin-top:20px;" method="post">
                 <div class="row">
                     <label class="control-label">Chức vụ:</label>
                     <select id="Position" name="Position" style="width:140px;" class="form-control input-md">
@@ -111,51 +82,55 @@
                 </div>
                 <input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
             </form>
-            <hr style="border-top: 1px solid gray;">
+            <div class="row"><hr></div>
             <?php $index =1;?>
             @if(isset($acc))
                 <label> {!! 'Kết quả: '. sizeof($acc) . ' bản ghi' !!} </label>
             @endif
-            <table class="table table-hover">
-                <thead>
-                <tr>
-                    <th class="col1">STT</th>
-                    <th class="col2">Tên đăng nhập</th>
-                    <th class="col3">Tên</th>
-                    <th class="col4">Vị trí</th>
-                    <th class="col5">Trạng thái</th>
-                </tr>
-                </thead>
+            <div class="table-wrapper">
+				<div class="table-scroll">
+					<table class="table table-bordered">
+						<thead>
+						<tr>
+							<th>STT</th>
+							<th>Tên đăng nhập</th>
+							<th>Tên</th>
+							<th>Vị trí</th>
+							<th>Trạng thái</th>
+						</tr>
+						</thead>
 
-                <tbody>
-                @if(isset($acc))
-                    @foreach($acc as $data)
-                        <tr>
-                        <td class="col1">{!! $index !!}</td>
-                        <td class="col2"> <a href="{!! url('K011_1/K011_2'). '/' . $data->user_id  !!}" >{!! $data->user_id !!} </a> </td>
-                        <td class="col3">{{$data->user_name}}</td>
-                        <td class="col4">
-                            <?php $group = $data->group_cd ;?>
-                            @if($group == 'G01') Manager
-                            @elseif ($group == 'G02') Receptionist
-                            @elseif ($group == 'G03') Accountant
-                            @else "";
-                            @endif
-                        </td>
-                        <td class="col5">
-                            <?php $status = $data->delete_flg;?>
-                            @if($status=='1') Không hoạt động
-                            @elseif ($data->acc_lock_flg == '1') Đang bị khóa
-                            @else Đang hoạt động
-                            @endif
-                        </td>
-                        </tr>
-                        <?php $index ++;?>
-                    @endforeach
-                @endif
-                </tbody>
+						<tbody>
+						@if(isset($acc))
+							@foreach($acc as $data)
+								<tr>
+								<td>{!! $index !!}</td>
+								<td> <a href="{!! url('K011_1/K011_2'). '/' . $data->user_id  !!}" >{!! $data->user_id !!} </a> </td>
+								<td>{{$data->user_name}}</td>
+								<td>
+									<?php $group = $data->group_cd ;?>
+									@if($group == 'G01') Manager
+									@elseif ($group == 'G02') Receptionist
+									@elseif ($group == 'G03') Accountant
+									@else "";
+									@endif
+								</td>
+								<td>
+									<?php $status = $data->delete_flg;?>
+									@if($status=='1') Không hoạt động
+									@elseif ($data->acc_lock_flg == '1') Đang bị khóa
+									@else Đang hoạt động
+									@endif
+								</td>
+								</tr>
+								<?php $index ++;?>
+							@endforeach
+						@endif
+						</tbody>
 
-            </table>
+					</table>
+				</div>	
+			</div>	
         </div>
         <div class="col-md-8 col-md-offset-2" style="background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
             <div class="col-md-2 col-md-offset-10" style="margin-top:10px; margin-bottom:10px;">

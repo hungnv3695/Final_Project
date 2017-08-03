@@ -38,70 +38,6 @@
 		width : 100px;
 		text-align:right;
 	}
-	table {
-        width: 100%;
-		border:1px solid rgb(200,200,200);
-    }
-
-	/*thead, tbody, tr, td, th { display: block; }*/
-
-	tr:after {
-		content: ' ';
-		display: block;
-		visibility: hidden;
-		clear: both;
-	}
-
-	thead th {
-		height: 30px;
-		/*text-align: left;*/
-	}
-
-	tbody {
-		height: 120px;
-		overflow-y: auto;
-	}
-	thead {
-		border-bottom : 1px solid rgb(200,200,200);
-	}
-
-	.col1
-	{
-		width: 10%;
-		float:left;
-	}
-	.col2
-	{
-		width:25%;
-		float:left;
-	}
-	.col3
-	{
-		width: 15%;
-		float:left;
-	}
-	.col4
-	{
-		width: 25%;
-		float:left;
-	}
-	.col5
-	{
-		width: 25%;
-		float:left;
-	}
-	.Bnt{
-		background-color:white;
-		color:gray;
-		width: 60px;
-		height:34px;
-		border-radius:5px;
-		border:1px solid rgb(200,200,200);
-	}
-	.Bnt:hover{
-		background-color:rgb(236,236,236);
-		color:black;
-	}
 	</style>
 </head>
 <body>
@@ -130,7 +66,7 @@
 							<div class="row">
 								<div class="form-inline" style="margin-top:20px;">
 									<label class="label1">Nhận phòng:</label>
-									<input id="txtCheckin" name="txtCheckin" type="text" placeholder="MM/DD/YYY" class="form-control input-md" size="20" autofocus>
+									<input id="txtCheckin" name="txtCheckin" type="text" placeholder="MM/DD/YYY" class="form-control input-md" size="20">
 								</div>
 								<div class="form-inline" style="margin-top:10px;">
 									<label class="label1">Trả phòng:</label>
@@ -178,18 +114,14 @@
 							</div>
 						</div>
 
-
-						<div class="form-inline"  class="col-md-12" style="border: 2px solid rgb(220,220,220);border-radius:10px;margin:250px 0px 20px;">
+						<label class="col-md-4 control-label" style="margin:10px 0px 0px -15px;">Xác nhận đặt phòng:</label>
+						<div class="col-md-12" style="border: 2px solid rgb(220,220,220);border-radius:10px;margin:5px 0px 20px 0px;">
 							<div class="row">
-								<label class="control-label" style="margin-top:-50px;">Xác nhận đặt phòng:</label>
-								<div class="form-inline" id="infor" class="col-md-12" >
-
+								<div class="col-md-12 form-inline" id="infor">
 								</div>
-								<div class="form-inline" class="col-md-12" style="margin-top: 20px;margin-bottom: 10px;">
-									<div class="row">
-										<label class="label1 col-md-offset-3">Tổng tiền:</label>
-										<input id="txtTotalprice" name="txtTotalprice" style="text-align: right" type="text" class="form-control input-md " size="15">
-									</div>
+								<div class="col-md-8 form-inline" style="margin-top: 20px;margin-bottom: 17px;">
+									<label class="label1 col-md-offset-3">Tổng tiền:</label>
+									<input id="txtTotalprice" name="txtTotalprice" style="text-align: right" type="text" class="form-control input-md " size="15">
 								</div>
 							</div>
 						</div>

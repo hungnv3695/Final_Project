@@ -16,59 +16,29 @@
 		width:80px;
 		text-align:right;
 	}
-	table {
-        width: 100%;
-		border:1px solid rgb(200,200,200);
-    }
-
-	thead, tbody, tr, td, th { display: block; }
-
-	tr:after {
-		content: ' ';
-		display: block;
-		visibility: hidden;
-		clear: both;
-	}
-
-	thead th {
-		height: 30px;
-
-		/*text-align: left;*/
-	}
-
-	tbody {
-		height: 110px;
-		overflow-y: auto;
-	}
-
-	thead {
-		/* fallback */
-	}
-
-	.col1
+	.table-wrapper 
 	{
-		width: 10%;
-		float:left;
+		position:relative;
 	}
-	.col2
+	.table-scroll 
 	{
-		width: 32%;
-		float:left;
+		height:142px;
+		overflow:auto; 
+		margin-top:20px;	  
+		margin-bottom:20px;
 	}
-	.col3
+	.table-wrapper table 
 	{
-		width: 18%;
-		float:left;
+		width:100%;
 	}
-	.col4
+	.table-wrapper table thead th .text 
 	{
-		width: 23%;
-		float:left;
-	}
-	.col5
-	{
-		width: 10%;
-		float:left;
+		position:absolute;   
+		top:-20px;
+		z-index:2;
+		height:20px;
+		width:35%;
+		border:1px solid red;
 	}
 	.Error
 	{
@@ -167,31 +137,36 @@
 										<label class="label1" for="">Miêu tả: </label>
 										<textarea rows="3" cols="30" id="txtDescription" name="notetxt"  class="form-control" autofocus maxlength="200" style="background-color: rgb(236,236,236);"   readonly>{!! array_get($roomTypeSelect[0],'description') !!} </textarea>
 									</div>
-									<table class="table table-hover">
-										<thead>
-										<tr>
-											<th class="col1">STT</th>
-											<th class="col2">Tên thiết bị</th>
-											<th class="col3">Số lượng</th>
-											<th class="col4">Giá </th>
-										</tr>
-										</thead>
-										@if(isset($accessory))
-											<tbody>
-											<?php $i = 1?>
-											@foreach($accessory as $data)
+									<div class="table-wrapper">
+										<div class="table-scroll">
+											<table class="table table-bordered">
+												<thead>
 												<tr>
-													<td class="col1">{!! $i !!}</td>
-													<td class="col2">{!! array_get($data,'accessory_name') !!}</td>
-													<td class="col3">{!! array_get($data,'quantity') !!}</td>
-													<td class="col4">{!! array_get($data,'price') !!}</td>
-													<td class="col5"><label class="label2">.000(VND)</label></td>
+													<th>STT</th>
+													<th>Tên thiết bị</th>
+													<th>Số lượng</th>
+													<th>Giá </th>
+													<th></th>
 												</tr>
-												<?php $i++?>
-											@endforeach
-											</tbody>
-										@endif
-									</table>
+												</thead>
+												@if(isset($accessory))
+													<tbody>
+													<?php $i = 1?>
+													@foreach($accessory as $data)
+														<tr>
+															<td>{!! $i !!}</td>
+															<td>{!! array_get($data,'accessory_name') !!}</td>
+															<td>{!! array_get($data,'quantity') !!}</td>
+															<td>{!! array_get($data,'price') !!}</td>
+															<td><label class="label2">.000(VND)</label></td>
+														</tr>
+														<?php $i++?>
+													@endforeach
+													</tbody>
+												@endif
+											</table>
+										</div>
+									</div>
 							</div>
 						</div>
 					</div>
