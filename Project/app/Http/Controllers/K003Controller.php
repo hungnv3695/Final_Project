@@ -123,6 +123,10 @@ class K003Controller extends Controller
             $res_detail->setRoomId($room_id);
             $res_detail->setDateIn(DateTimeUtil::ConvertDateToString($request->txtCheckin));
             $res_detail->setDateOut(DateTimeUtil::ConvertDateToString($request->txtCheckout));
+            $res_detail->setCustomerName($request->txtFullname2);
+            $res_detail->setCustomerIC($request->txtIdcard2);
+            $res_detail->setCustomerPhone($request->txtPhone2);
+            $res_detail->setCustomerEmail($request->txtEmail2);
 
             //Room Model
             $room = new Room();
