@@ -154,6 +154,7 @@ CREATE TABLE tbl_reservation_detail(
 	customer_name varchar(50),
 	date_in varchar(8) ,
 	date_out varchar(8) ,
+	note varchar(200),
 	customer_identity_card varchar(12),
 	customer_phone varchar(20),
 	customer_email varchar(50),
