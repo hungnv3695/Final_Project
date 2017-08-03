@@ -3,29 +3,29 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="form-group">
-                    <label for="checkin">Check in date</label>
+                    <label for="checkin"><b>Check in date</b></label>
                     <input type="text" class="form-control" id="checkin" placeholder="Check in date">
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-group">
-                    <label for="checkout">Check out date</label>
+                    <label for="checkout"><b>Check out date</b></label>
                     <input type="text" class="form-control" id="checkout" placeholder="Check out date">
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group">
-                    <label for="adult">Adult</label>
-                    <input type="number" class="form-control" id="adult">
+                    <label for="adult"><b>Adult</b></label>
+                    <input type="number" class="form-control" id="adult" min="0">
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group">
-                    <label for="child">Children</label>
-                    <input type="number" class="form-control" id="child">
+                    <label for="child"><b>Children</b></label>
+                    <input type="number" class="form-control" id="child" min="0">
                 </div>
             </div>
-            <div class="col-md-2 justify-content-center">
+            <div class="col-md-2 justify-content-center" style="margin-top:32px;">
                 <button class="btn btn-primary">Apply</button>
             </div>
         </div>
