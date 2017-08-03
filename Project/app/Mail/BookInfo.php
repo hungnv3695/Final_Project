@@ -33,6 +33,6 @@ class BookInfo extends Mailable
     {
         return $this->from('sondcnd@gmail.com')
             ->subject('Thông tin đặt phòng')
-            ->markdown('Email.BookInfo');
+            ->markdown('Email.BookInfoEmail');
     }
 }

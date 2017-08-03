@@ -65,6 +65,7 @@ Route::middleware(['manager'])->group(function () {
 //
 //
 //});
+
 //K004_1: Reservation_List
 Route::get('/K004_1','K004Controller@K004_1_View');
 Route::get('/K004_1/GetStatus','K004Controller@getReservationStatus');

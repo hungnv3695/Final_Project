@@ -27,5 +27,6 @@ function InvalidMsg(textbox) {
         }
     }
 
+
     return true;
 }

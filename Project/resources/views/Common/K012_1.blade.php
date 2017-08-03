@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="{!! asset('plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css') !!} ">
     <link rel="stylesheet" type="text/css" href="{!! asset('css/index.css') !!} ">
-	<script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
     <style type="text/css">
         body
         {
@@ -83,21 +83,6 @@
 
 </div>
 </body>
-
-<script>
-    function checkvalue() {
-        var newPass = document.getElementById('txtNewPwd').value;
-        var confirmPass = document.getElementById('txtConfirmNewPwd').value;
-
-        if(newPass != confirmPass){
-            document.getElementById("ErrorMsg").innerHTML = "Mật khẩu mới và xác nhận mật khẩu không trùng khớp";
-            return false;
-        }else{
-            return true;
-        }
-    }
-</script>
-
 <script src="{!! asset('Scripts/FrontCheck/CheckError.js') !!}"> </script>
 <script>  $("div.Error").delay(2000).slideUp(); </script>
 </html>
