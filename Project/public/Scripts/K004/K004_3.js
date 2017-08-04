@@ -54,9 +54,9 @@ $(document).ready(function () {
             { name: 'item0',  width: 40 , align: "left", sorttype: "text", sortable: false, formatter: function (cellvalue, options) {
                 return addCheckbox(options.rowId);
             }},
-            { name: 'item1',  width: 135 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
+            { name: 'item1',  width: 130 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
             { name: 'item2', hidden: true, width: 130 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
-            { name: 'item3', id:'item3', width: 80 , align: "left"
+            { name: 'item3', id:'item3', width: 70 , align: "left"
                 ,formatter: function (cellvalue, options){return addLink(options.rowId);}
 
              },
@@ -64,7 +64,7 @@ $(document).ready(function () {
             ],
         rownumbers: true,
         height: 210,
-        width: 300,
+        width: 280,
         rowNum: 10,
         autoheight: true,
         loadonce: true,
@@ -201,7 +201,7 @@ $(document).ready(function () {
                                         // $("#checkin" + a).removeAttr( "onclick" );
                                         // $("#checkin" + a).removeAttr( "title" );
                                         $("#checkin" + a).css("display","true");
-                                        $("#checkin" + a).wrapInner('Check-in');
+                                        $("#checkin" + a).wrapInner('Chi tiết');
                                         //$("#checkin" + a).attr('value','1');
                                         $("#checkin" + a).attr('onclick', 'window.open(\'/K003_2?res_id='+ $res_id+ '&room_id='+roomId +'\', "_self" )' );
 
