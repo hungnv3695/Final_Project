@@ -1,13 +1,12 @@
-<meta name="_token" content="{!! csrf_token() !!}"/>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 
 <head>
     <meta charset="UTF-8">
     <title>Thông tin nhận phòng</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/index.css">
-    <style type="text/css">
+    <link rel="stylesheet" type="text/css" href="{!! asset('plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css') !!} ">
+    <link rel="stylesheet" type="text/css" href="{!! asset('css/index.css') !!} ">
         <style type="text/css">
         body
         {
@@ -24,76 +23,36 @@
             height:1px;
             border: 0;
         }
-        table {
-            width: 100%;
-            border:1px solid rgb(200,200,200);
-        }
-
-        thead, tbody, tr, td, th { display: block; }
-
-        tr:after {
-            content: ' ';
-            display: block;
-            visibility: hidden;
-            clear: both;
-        }
-
-        thead th {
-            height: 30px;
-
-            /*text-align: left;*/
-        }
-
-        tbody {
-            height: 190px;
-            overflow-y: auto;
-        }
-
-        thead {
-            /* fallback */
-        }
-
-        .col1
+        .table-wrapper
         {
-            width: 5%;
-            float:left;
+            position:relative;
         }
-        .col2
+        .table-scroll
         {
-            width: 20%;
-            float:left;
+            height:240px;
+            overflow:auto;
+            margin-top:20px;
+            margin-bottom:20px;
         }
-        .col3
+        .table-wrapper table
         {
-            width: 20%;
-            float:left;
+            width:100%;
         }
-        .col4
+        .table-wrapper table thead th .text
         {
-            width: 15%;
-            float:left;
-        }
-        .col5
-        {
-            width: 10%;
-            float:left;
-        }
-        .col6
-        {
-            width: 18%;
-            float:left;
-        }
-        .col7
-        {
-            width: 12%;
-            float:left;
+            position:absolute;
+            top:-20px;
+            z-index:2;
+            height:20px;
+            width:35%;
+            border:1px solid red;
         }
     </style>
 </head>
 <body>
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-        <div class="col-md-10 col-md-offset-1" style="margin-top:5%;background-color:rgb(245,245,245);border:1px solid rgb(215,215,215);">
+        <div class="col-md-10 col-md-offset-1" style="margin-top:4%;background-color:rgb(245,245,245);border:1px solid rgb(215,215,215);">
             <div class="row">
                 <div class="col-md-offset-9" style="margin:10px 10px 0px 0px;float:right;">
                 <!--
@@ -109,47 +68,66 @@
             </div>
         </div>
         <div class="col-md-10 col-md-offset-1" style="background-color:rgb(230,230,230);border:1px solid rgb(215,215,215); border-top:none;border-bottom:none;">
-            <div class="form-inline" style="margin-top:20px;">
-                <label class="label1">Họ tên:</label>
-                <input id="txtFullName" name="txtFullName" type="text" class="form-control input-md" maxlength="50" autofocus>
-                <label class="label1">CMND:</label>
-                <input id="txtCMND" name="txtCMND" type="text" class="form-control input-md" maxlength="12">
-                <button type="button" id="btnView" class="btn btn-default" style="margin-left:20px;"><b>Xem</b></button>
-            </div>
+            <form method="post">
+                <div class="form-inline" style="margin-top:20px;">
+                    <label class="label1">Họ tên:</label>
+                    <input id="txtFullName" name="txtFullName" type="text" class="form-control input-md" maxlength="50" autofocus>
+                    <label class="label1">CMND:</label>
+                    <input id="txtCMND" name="txtCMND" type="text" class="form-control input-md" maxlength="12">
+                    <button id="btnView" class="btn btn-default" style="margin-left:20px;"><b>Xem</b></button>
+                </div>
+                <input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
+            </form>
+
             <div class="row"><hr></div>
-            <table class="table table-bordered" style="margin-bottom:20px;">
-                <thead>
-                <tr>
-                    <th class="col1">STT</th>
-                    <th class="col2">Người đặt</th>
-                    <th class="col3">Người ở</th>
-                    <th class="col4">Ngày nhận</th>
-                    <th class="col5">Số phòng</th>
-                    <th class="col6">Trạng thái phòng</th>
-                    <th class="col7"></th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td class="col1">1</td>
-                    <td class="col2">Nguyễn Hữu Hoàng Tùng</td>
-                    <td class="col3">Nguyễn Hữu Hoàng trung</td>
-                    <td class="col4">06/05/2017</td>
-                    <td class="col5">101</td>
-                    <td class="col6">Not used</td>
-                    <td class="col7"><a href="#"><b>Nhận phòng</b></a></td>
-                </tr>
-                </tbody>
-            </table>
+            <div class="table-wrapper">
+                <div class="table-scroll">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Người đặt</th>
+                            <th>CMND</th>
+                            <th>Người ở</th>
+                            <th>CMND</th>
+                            <th>Ngày nhận</th>
+                            <th>Ngày trả</th>
+                            <th>Phòng</th>
+                            <th>Trạng thái</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php $i = 1;?>
+                        @if(isset($checkInInfo))
+                            @foreach($checkInInfo as $data)
+                            <tr>
+                                <td>{!! $i !!}</td>
+                                <td>{!! $data->name !!}</td>
+                                <td>{!! $data->identity_card !!}</td>
+                                <td>{!! $data->customer_name !!}</td>
+                                <td>{!! $data->customer_identity_card !!}</td>
+                                <td>{!! $data->check_in !!}</td>
+                                <td>{!! $data->check_out !!}</td>
+                                <td>{!! $data->room_number !!}</td>
+                                <td>{!! $data->status !!}</td>
+                                <td><a href="#" style="text-decoration:underline;"><b>Nhận phòng</b></a></td>
+                            </tr>
+                            <?php $i++; ?>
+                            @endforeach
+                        @endif
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
         <div class="col-md-10 col-md-offset-1" style="background-color:rgb(245,245,245);border:1px solid rgb(215,215,215);">
             <div class="row">
                 <div class="col-md-3 col-md-offset-10" style="margin-top:10px;margin-bottom:10px;">
-                    <button id="btnBack" class="btn btn-danger col-md-offset-2" type="button"><b>Quay lại</b></button>
+                    <button type="button" id="btnBack" class="btn btn-danger col-md-offset-3" type="button"><b>Quay lại</b></button>
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 </body>

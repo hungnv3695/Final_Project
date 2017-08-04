@@ -101,7 +101,8 @@ Route::get('/K003_2/SearchRoomTypeFree','K003Controller@searchRoomTypeFree');
 Route::get('/K003_2/Checkin','K003Controller@checkIn');
 Route::get('/K003_2/CheckIsReservation','K003Controller@checkIsReservation');
 
-Route::get('/K013','K013Controller@view');
+Route::get('/K013','K013Controller@viewCheckIn');
+Route::post('/K013','K013Controller@getSearchRequest');
 
 // Booking
 Route::get('/book', 'BookController@index');
