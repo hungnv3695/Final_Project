@@ -67,7 +67,7 @@ CREATE TABLE tbl_user(
 
 CREATE TABLE tbl_user_group(			
     seq_no serial PRIMARY KEY,		
-    user_id varchar(7),		
+    user_id varchar(20),		
     group_cd varchar(7) ,		
     create_ymd timestamp,		
     register_cd varchar(7),		
