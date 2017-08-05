@@ -38,7 +38,7 @@ $(document).ready(function(){
         timepicker:false,
 
         onSelectDate: function (date) {
-            days();
+            //days();
         }
     });
     jQuery('#txtCheckout').datetimepicker({
@@ -51,7 +51,7 @@ $(document).ready(function(){
         timepicker:false,
 
         onSelectDate: function (date) {
-            days();
+            //days();
         }
     });
     $.datetimepicker.setLocale('vi');
@@ -66,6 +66,8 @@ $(document).ready(function(){
                 b = $("#txtCheckout").datetimepicker('getValue').getTime(),
                 c = 24*60*60*1000,
             diffDays = Math.round(Math.abs((a - b)/(c)));
+        // d = ('20/10/2017').datetimepicker('getValue').getTime();
+        // console.log(d);
         $("#txtNumOfDay").val(diffDays);
     }
 
@@ -230,6 +232,7 @@ $(document).ready(function(){
 
     $("#btnSearch").click(function (event) {
         event.preventDefault();
+        days();
         var check_in = $("#txtCheckin").val();
         var check_out = $("#txtCheckout").val();
         jQuery("#jqGrid").jqGrid("clearGridData");

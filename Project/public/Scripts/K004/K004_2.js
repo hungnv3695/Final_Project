@@ -24,6 +24,54 @@ $(document).ready(function () {
             }
         }
     };
+    //Datetimepicker
+    jQuery('#checkintxt').datetimepicker({
+        format:'d/m/Y',
+        onShow:function( ct ){
+            this.setOptions({
+                minDate:0,
+                maxDate:0
+            })
+        },
+        timepicker:false,
+
+        onSelectDate: function (date) {
+            //days();
+        }
+    });
+    jQuery('#checkouttxt').datetimepicker({
+        format:'d/m/Y',
+        onShow:function( ct ){
+            this.setOptions({
+                minDate:jQuery('#checkintxt').val()?jQuery('#checkintxt').val():false
+            })
+        },
+        timepicker:false,
+
+        onSelectDate: function (date) {
+            //days();
+        }
+    });
+    $.datetimepicker.setLocale('vi');
+
+    function days() {
+        var a,b,c;
+
+        if(($("#checkintxt").val()=="") || ($("#checkouttxt").val()=="")){
+            return;
+        }
+        a = $("#checkintxt").datetimepicker('getValue').getTime(),
+            b = $("#checkouttxt").datetimepicker('getValue').getTime(),
+            c = 24*60*60*1000,
+            diffDays = Math.round(Math.abs((a - b)/(c)));
+        // d = ('20/10/2017').datetimepicker('getValue').getTime();
+        // console.log(d);
+        $("#txtNight").val(diffDays);
+    }
+    days();
+    //End datetimepicker
+
+
     //Start: HungNV : Update reservation status -> Processing
     function checkStatus() {
 
@@ -74,7 +122,7 @@ $(document).ready(function () {
             { name: 'item0',  width: 130 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
             { name: 'item1',  width: 70, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
             { name: 'item2',  width: 100, align: "left", formatter:'currency', formatoptions:{decimalSeparator:".", thousandsSeparator: ",", decimalPlaces: 2}},
-            { name: 'item3',  width: 170, align: "right", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
+            { name: 'item3',  width: 170, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
             { name: 'item4' , hidden :true}
 
         ],
@@ -115,6 +163,11 @@ $(document).ready(function () {
             var colSum = $grid.jqGrid('getCol', 'item2', false, 'sum');
             $grid.jqGrid('footerData', 'set', { 'item2' : colSum });
             $grid.jqGrid('footerData', 'set', { 'item1' : "Total:" });
+            $grid.jqGrid('footerData', 'set', { 'item3' : "x " + $("#txtNight").val() + " đêm" } );
+            var total = colSum * $("#txtNight").val() * 1000;
+            total = (total + "").replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+            $("#txtTotal").val(total)
+
 
         }
 

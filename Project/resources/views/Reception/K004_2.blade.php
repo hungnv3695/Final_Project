@@ -18,6 +18,11 @@
 	</script>
 	<script type="text/ecmascript" src="{{asset('bootstrap-3.3.4-dist/js/bootstrap.min.js') }}"></script>
 
+	<link rel="stylesheet" type="text/css" media="screen" href="{{asset('datetimepicker-master/jquery.datetimepicker.css')}}" />
+	<script type="text/ecmascript" src="{{asset('datetimepicker-master/jquery.datetimepicker.min.js')}}"></script>
+	{{--<script type="text/ecmascript" src="{{asset('datetimepicker-master/jquery.js')}}"></script>--}}
+	<script type="text/ecmascript" src="{{asset('datetimepicker-master/build/jquery.datetimepicker.full.min.js')}}"></script>
+
 	<link rel="stylesheet" type="text/css" href="{{asset('css/index.css')}}">
     <style type="text/css">
 		body
@@ -99,9 +104,12 @@
 							</div>
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1">Số người:</label>
-								<input id="numofpeopletxt" name="numofpeopletxt" value="{{$nopeople}}" type="number" min="1" class="form-control input-md" size="15" style="width: 160px;">
+								<input id="numofpeopletxt" name="numofpeopletxt" value="{{$nopeople}}" type="number" min="1" class="form-control input-md" size="15" style="width: 80px;">
 								<label class="label1">Số phòng:</label>
-								<input id="noroomtxt" name="noroomtxt" value="{{$noroom}}" type="text" class="form-control input-md" size="15" readonly>
+								<input id="noroomtxt" name="noroomtxt" value="{{$noroom}}" type="text" class="form-control input-md" size="15" style="width: 75px;" readonly>
+
+								<label class="label1">Số đêm:</label>
+								<input id="txtNight" name="txtNight" type="text" class="form-control input-md" size="15" style="width: 80px;" readonly>
 							</div>
 							<label class="label1" style="margin-top:20px;">Ghi chú:</label>
 							<div class="col-md-12 form-inline" style="margin-top:5px; margin-left:7px;">
@@ -114,6 +122,12 @@
 				<div class="col-md-5" style="width:550px;margin:10px 0px 10px 10px;border: 2px solid rgb(220,220,220);border-radius:10px;">
 					<label>Danh sách phòng: </label>
 					<table id="jqGrid" style="border:1px solid black;"></table>
+
+					<div class="form-inline"  style="margin-left: 150px; margin-top: 10px" >
+						<label class="label1">Tổng tiền:</label>
+						<input id="txtTotal" name="txtTotal" type="text" class="form-control input-md"  style="width: 150px;font-weight: bold;" readonly>
+						<label class="label1" style="margin-left: -50px;  ">VNĐ</label>
+					</div>
 					<label style="margin-top:10px;">Thông tin thanh toán: </label>
 					<div class="col-md-12" style="border: 2px solid rgb(220,220,220);border-radius:10px;">
 						<div class="row">

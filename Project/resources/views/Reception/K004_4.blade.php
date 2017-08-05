@@ -119,9 +119,22 @@
 							<div class="row">
 								<div class="col-md-12 form-inline" id="infor">
 								</div>
-								<div class="col-md-8 form-inline" style="margin-top: 20px;margin-bottom: 17px;">
-									<label class="label1 col-md-offset-3">Tổng tiền:</label>
+
+								<div class="col-md-8 col-md-offset-3 form-inline" style="margin-top: 10px;margin-bottom: 10px;">
+
+									<label class="label1 col-md-offset-3">Tiền phòng:</label>
 									<input id="txtTotalprice" name="txtTotalprice" style="text-align: right" type="text" class="form-control input-md " size="15">
+									<b>VNĐ</b>
+								</div>
+								<div class="col-md-8 col-md-offset-3 form-inline" style="margin-top: 0px;">
+									<label class="label1 col-md-offset-3">Số đêm:</label>
+									<input id="txtNight" name="txtNight" style="text-align: right" type="text" class="form-control input-md " size="5">
+									<b>đêm</b>
+								</div>
+								<div class="col-md-8 col-md-offset-3 form-inline" style="margin-top: 10px;margin-bottom: 10px;">
+									<label class="label1 col-md-offset-3">Tổng tiền:</label>
+									<input id="txtTotal" name="txtTotal" style="text-align: right" type="text" class="form-control input-md " size="15">
+									<b>VNĐ</b>
 								</div>
 							</div>
 						</div>

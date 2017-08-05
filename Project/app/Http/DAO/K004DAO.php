@@ -275,16 +275,18 @@ class K004DAO{
     }
 
     public function getRoomFree($check_in,$check_out){
-        $strSQL = 'select ro.room_id, ro.room_number, rt.room_type_id , rt.type_name, rt.price from ';
-        $strSQL .='tbl_room ro join tbl_room_type rt ';
-        $strSQL .='ON ro.room_type_id = rt.room_type_id ';
-        $strSQL .='where ro.status_id = \'RO01\' AND ';
-        $strSQL .=' NOT ro.room_id IN (select rd.room_id from ';
-        $strSQL .='tbl_reservation r join tbl_reservation_detail rd ON ';
-        $strSQL .='r.id = rd.reservation_id where  ';
-        $strSQL .= '((rd.date_in BETWEEN \'' . $check_in . '\' AND \'' .$check_out. '\') ';
-        $strSQL .='OR (rd.date_out BETWEEN \'' .$check_in. '\' AND \'' .$check_out .'\'))) ';
-        $strSQL .='ORDER BY ro.room_number ASC';
+
+
+        $strSQL =   'select ro.room_id, ro.room_number, rt.room_type_id , rt.type_name, rt.price from tbl_room ro ';
+        $strSQL .=  'join tbl_room_type rt ON ro.room_type_id = rt.room_type_id where ro.status_id <> \'RO04\' ';
+        $strSQL .=  'AND  ro.room_id NOT IN ( select rd.room_id from tbl_reservation_detail rd ';
+        $strSQL .=  'left join tbl_reservation r on rd.reservation_id = r.id ';
+        $strSQL .=  'where ((rd.date_in >= \''.$check_in.'\' AND rd.date_in <= \''.$check_out.'\') ';
+        $strSQL .=  'OR (rd.date_out >= \''.$check_in.'\' AND rd.date_out <= \''.$check_out.'\') ';
+        $strSQL .=  'OR (rd.date_in < \''.$check_in.'\' AND rd.date_out > \''.$check_out.'\')) ';
+        $strSQL .=  'AND NOT (rd.check_in_flag = \'1\' AND rd.check_out_flag = \'1\')) ';
+        $strSQL .=  'ORDER BY ro.room_number ASC';
+        //dd($strSQL);
 
         $result = DB::select(DB::raw($strSQL));
 

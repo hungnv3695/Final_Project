@@ -13,16 +13,31 @@ use Illuminate\Database\Eloquent\Model;
 
 class InvoiceDetail extends Model
 {
-    public $id;
-    public $roomNumber;
-    public $invoiceId;
-    public $description;
-    public $quantity;
-    public $price;
-    public $amount_total;
-    public $updateYmd;
-    public $createYmd;
+    private $id;
+    private $roomNumber;
+    private $invoiceId;
+    private $desc;
+    private $quantity;
+    private $price;
+    private $amount_total;
+    private $updateYmd;
+    private $createYmd;
 
+    /**
+     * @return mixed
+     */
+    public function getDesc()
+    {
+        return $this->desc;
+    }
+
+    /**
+     * @param mixed $desc
+     */
+    public function setDesc($desc)
+    {
+        $this->desc = $desc;
+    }
     /**
      * @return mixed
      */
@@ -71,21 +86,6 @@ class InvoiceDetail extends Model
         $this->invoiceId = $invoiceId;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
-     * @param mixed $description
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-    }
 
     /**
      * @return mixed

@@ -34,25 +34,41 @@ $(document).ready(function () {
     });
     $.datetimepicker.setLocale('vi');
     //END Datetimepicker
+
+    //Tính số đêm
+    function days() {
+        var a,b,c;
+
+        if(($("#txtCheckin").val()=="") || ($("#txtCheckout").val()=="")){
+            return;
+        }
+        a = $("#txtCheckin").datetimepicker('getValue').getTime(),
+            b = $("#txtCheckout").datetimepicker('getValue').getTime(),
+            c = 24*60*60*1000,
+            diffDays = Math.round(Math.abs((a - b)/(c)));
+        // d = ('20/10/2017').datetimepicker('getValue').getTime();
+        // console.log(d);
+        $("#txtNight").val(diffDays);
+    }
+
+
     function addtextbox(result, i) {
         if(i == 0) {
-            $('#infor').append('<div class="form-inline" style="margin:10px 0px 0px 100px">'+
-                '<label class="label1">Kiểu phòng</label>' +
-                '<label class="label1">Số lượng</label>' +
-                '<label class="label1">Giá</label>'+
-                '</div>'
-            );
             $('#infor').append('<div id ="'+ i + '" ' + 'class="form-inline" style="margin:10px 0px 0px 100px">'
-                +'<input id=' + '"roomtype' + i + '" ' + 'class="form-control input-md" value="' + result[i].type_name + '" size="8" readonly>'
-                +'<input id=' + '"noroom'+ i + '" ' +  'class="form-control input-md"  type="number" value="0" style="width: 50px;"  size="8" readonly> '
-                +'<input id=' + '"price' + i +'" ' + 'class="form-control input-md"  value="0" style="width: 150px;text-align: right;"  size="8" readonly>'
+                +'<label class="label1">Kiểu phòng</label>'
+                +'<label class="label1">Số lượng</label>'
+                +'<label class="label1">Giá</label>' + '</div>'
+                +'<div id ="'+ i + '" ' + 'class="form-inline" style="margin:10px 0px 0px 100px">'
+                +'<input id=' + '"roomtype' + i + '" ' + 'class="form-control input-md" style="margin-left: 10px"  value="' + result[i].type_name + '" size="8" readonly>'
+                +'<input id=' + '"noroom'+ i + '" ' +  'class="form-control input-md"  type="number" value="0" style="width: 70px; margin-left: 25px"  size="8" readonly> '
+                +'<input id=' + '"price' + i +'" ' + 'class="form-control input-md"  value="0" style="width: 150px;text-align: right;margin-left: 25px"  size="8" readonly>'
                 +'</div>')
         }
         else {
             $('#infor').append('<div id ="'+ i + '" ' + 'class="form-inline" style="margin:0px 0px 0px 100px">'
-                +'<input id=' + '"roomtype' + i + '" ' + 'class="form-control input-md" value="' + result[i].type_name + '" size="8" readonly>'
-                +'<input id=' + '"noroom'+ i + '" ' +  'class="form-control input-md"  type="number" value="0" style="width: 50px;"  size="8" readonly> '
-                +'<input id=' + '"price' + i +'" ' + 'class="form-control input-md"  value="0" style="width: 150px;text-align: right;"  size="8" readonly>'
+                +'<input id=' + '"roomtype' + i + '" ' + 'class="form-control input-md" style="margin-left: 10px" value="' + result[i].type_name + '" size="8" readonly>'
+                +'<input id=' + '"noroom'+ i + '" ' +  'class="form-control input-md"  type="number" value="0" style="width: 70px;margin-left: 25px"  size="8" readonly> '
+                +'<input id=' + '"price' + i +'" ' + 'class="form-control input-md"  value="0" style="width: 150px;text-align: right;margin-left: 25px"  size="8" readonly>'
                 +'</div>')
         }
 
@@ -120,7 +136,7 @@ $(document).ready(function () {
         rownumbers: true,
         height: 200,
         width: 310,
-        rowNum: 10,
+
         autoheight: true,
         loadonce: true,
         resizable: true,
@@ -194,8 +210,20 @@ $(document).ready(function () {
     $( ".ui-th-div" ).append( "<p>No.</p>" );
     $(".clearsearchclass").hide();
 
+
     function addCheckbox(id) {
         return "<input type='checkbox' id='"+ id + "' disabled='disabled'>" ;
+    }
+    function  toNumber(total) {
+        if(total == 0 ){
+            return Number(total);
+        }
+
+        return Number((total).replace(/[^0-9\.]+/g,""));
+    }
+    function toCurrency(total) {
+        total = (total + "").replace(/(\d)(?=(\d{3})+(?!\d))/g, "1,");
+        return total;
     }
     //room number + 1
     function addToRoomType(id, nuoftype){
@@ -203,15 +231,23 @@ $(document).ready(function () {
         var ro_price = Number(jqgrid.jqGrid ('getCell', id, 'item4'));
         var tname = "";
         var no_room = Number($('#txtNumpeople').val());
+        var total = Number($("#txtTotal").val());
+        var nights = Number($("#txtNight").val());
         total_price = Number($("#txtTotalprice").val());
+        var txtprice = "";
+        var txttotal ="";
         for(var i = 0; i < nuoftype; i++){
             noroom = Number($("#noroom" + i).val());
             price = Number($("#price" + i).val());
             tname = $("#roomtype" + i).val();
             if (type_name == tname ){
                     $("#noroom" + i).val(noroom+1);
-                    $("#price" + i).val(price + ro_price);
-                    $("#txtTotalprice").val(total_price +  ro_price );
+                    txtprice = Number(price) + Number(ro_price);
+                    txttotal = Number(total_price) + Number(ro_price);
+                    $("#price" + i).val(txtprice);
+
+                    $("#txtTotalprice").val(txttotal);
+                    $("#txtTotal").val(nights * txttotal);
             }
 
         }
@@ -307,8 +343,23 @@ $(document).ready(function () {
     }
 
     $('#btnSearch').click(function(e){
+        days();
         var check_in = $('#txtCheckin').val();
         var check_out = $('#txtCheckout').val();
+
+        jQuery("#jqGrid").jqGrid("clearGridData");
+        jQuery("#jqGrid")[0].refreshIndex();
+        jQuery("#jqGrid").trigger("reloadGrid");
+        cList = [];
+
+        for (var i = 0; i < nuoftype; i++){
+            $('#noroom' + i).val(0);
+            $('#price' + i).val(0);
+        }
+
+        $("#txtTotal").val(0);
+        $("#txtTotalprice").val(0);
+
         if(check_in == "" || check_out==""){
             alert('Nhập ngày check-in, check out trước khi search');
             e.preventDefault();
@@ -370,6 +421,9 @@ $(document).ready(function () {
         event.preventDefault();
 
     });
+
+
+
 
 
 });

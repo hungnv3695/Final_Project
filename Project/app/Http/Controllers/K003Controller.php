@@ -143,8 +143,11 @@ class K003Controller extends Controller
             $invoice->setCreaterName('hungnv');//fix tam
 
             $invoiceDetail = new InvoiceDetail();
+
             $invoiceDetail->setRoomNumber($request->room_number);
-            $invoiceDetail->setDescription($request->room_type + ' (' + $request->room_number + ') ' + $request->txtNumOfDay + ' đêm'  );
+            //dd($request->room_type . ' (' . $request->room_number . ') ' . $request->txtNumOfDay . ' đêm'  );
+            $invoiceDetail->setDesc($request->room_type . ' (' . $request->room_number . ') ' . $request->txtNumOfDay . ' đêm'  );
+
             $invoiceDetail->setQuantity(1);
             $invoiceDetail->setPrice($request->price);
             $invoiceDetail->setAmountTotal($request->txtTotalprice);

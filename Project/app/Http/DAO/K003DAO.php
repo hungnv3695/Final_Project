@@ -168,12 +168,12 @@ class K003DAO
 
 
             $invoiceDetailInsert->invoice_id = $invoiceInsert->id;
-            $invoiceDetailInsert->description = $invoiceDetail->getDescription();
+            $invoiceDetailInsert->description = $invoiceDetail->getDesc();
             $invoiceDetailInsert->quantity = $invoiceDetail->getQuantity();
             $invoiceDetailInsert->price = $invoiceDetail->getPrice();
             $invoiceDetailInsert->amount_total = $invoiceDetail->getAmountTotal();
             $invoiceDetailInsert->create_ymd = $invoiceDetail->getCreateYmd();
-
+            //dd( $invoiceDetail);
             $invoiceDetailInsert->save();
 
 
