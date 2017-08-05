@@ -21,6 +21,11 @@ class K013Controller
         return view('Reception.K013_1');
     }
 
+    public function viewCheckOut(){
+        return view('Reception.K013_2');
+    }
+
+
     public function getSearchCheckInRequest(Request $request){
         $name = StringUtil::Trim($request->txtFullName) ;
         $identity = StringUtil::Trim($request->txtCMND) ;
@@ -28,6 +33,16 @@ class K013Controller
         $k013DAO = new K013DAO();
         $checkInInfo = $k013DAO->getCheckInInfo($name,$identity);
         return view('Reception.K013_1',compact('checkInInfo','name','identity'));
+    }
+
+    public  function getSearchCheckOutRequest(Request $request){
+        $room = StringUtil::Trim($request->txtRoomNo);
+        $name = StringUtil::Trim($request->txtFullName);
+
+        $k013DAO = new K013DAO();
+        $checkOutInfo = $k013DAO->getCheckOutInfo($room,$name);
+
+        return view('Reception.K013_2',compact('checkOutInfo','room','name'));
     }
 
 

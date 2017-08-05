@@ -71,9 +71,9 @@
             <form method="post">
                 <div class="form-inline" style="margin-top:20px;">
                     <label class="label1">Số phòng:</label>
-                    <input id="txtRoomNo" name="txtRoomNo" type="text" class="form-control input-md" maxlength="5" autofocus>
+                    <input id="txtRoomNo" name="txtRoomNo" type="text" class="form-control input-md" maxlength="5" value="{!! isset($room)?$room:'' !!}" autofocus>
                     <label class="label1">Họ tên:</label>
-                    <input id="txtFullName" name="txtFullName" type="text" class="form-control input-md" maxlength="50">
+                    <input id="txtFullName" name="txtFullName" type="text" class="form-control input-md" maxlength="50" value="{!! isset($name)?$name:'' !!}" >
                     <button id="btnView" class="btn btn-default" style="margin-left:20px;"><b>Xem</b></button>
                 </div>
                 <input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
@@ -96,16 +96,22 @@
                         </tr>
                         </thead>
                         <tbody>
+                        <?php $i = 1;?>
+                        @if(isset($checkOutInfo))
+                            @foreach($checkOutInfo as $data)
                         <tr>
-                            <td>1</td>
-                            <td>101</td>
-                            <td>Nguyễn Hữu Hoàng trung</td>
-                            <td>123456789123</td>
-                            <td>06/05/2017</td>
-                            <td>08/05/2017</td>
-                            <td>08/05/2017</td>
+                            <td>{!! $i !!}</td>
+                            <td>{!! $data->room_number !!}</td>
+                            <td>{!! $data->customer_name !!}</td>
+                            <td>{!! $data->customer_identity_card !!}</td>
+                            <td>{!! $data->date_in !!}</td>
+                            <td>{!! $data->date_out !!}</td>
+                            <td>{!! $data->status !!}</td>
                             <td><a href="#" style="text-decoration:underline;"><b>Trả phòng</b></a></td>
                         </tr>
+                        <?php $i++; ?>
+                            @endforeach
+                        @endif
                         </tbody>
                     </table>
                 </div>

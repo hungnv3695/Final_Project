@@ -65,4 +65,32 @@ class K013DAO
         $result = DB::select($query);
         return $result;
     }
+
+    public function getCheckOutInfo($room, $name = null){
+        $today = date("Y/m/d");
+        $query = " select ro.room_number , rs.customer_name, customer_identity_card , CAST(rs.date_in as date) , Cast( rs.date_out as date), ".
+            "	CASE                                                                                                                     ".
+            "		When rs.check_out_flag = 1 Then 'Đã trả phòng'                                                                       ".
+            "		ELSE 'Đang sử dụng'                                                                                                  ".
+            "	END AS Status                                                                                                            ".
+            "	from tbl_reservation r                                                                                                   ".
+            "		inner join tbl_reservation_detail rs                                                                                 ".
+            "			on r.id = rs.reservation_id                                                                                      ".
+            "		inner join tbl_room ro                                                                                               ".
+            "			on ro.room_id = rs.room_id                                                                                       ".
+            "	where (CAST(rs.date_in as Date) <= '".$today."' AND '".$today."' <=  CAST(rs.date_out as Date) )                         ".
+            "	AND rs.check_in_flag = '1' AND                                                                                            ";
+
+        if($room!=null){
+            $query .= " ro.room_number = '".$room."' " ;
+        }else{
+            $query .= " rs.customer_name ilike '%".$name."%' " ;
+        }
+
+        $query .=   "order by rs.reservation_id      ";
+
+
+        $result = DB::select($query);
+        return $result;
+    }
 }

@@ -142,7 +142,8 @@ class K001Controller extends Controller
                 $numberLogin =1;
             }
 
-            if($numberLogin > 3){
+            //dd($numberLogin);
+            if($numberLogin >= 2){
 
                 $loginDAO->setAccLock($userLogin->getUserID());
             } else{
