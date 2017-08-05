@@ -374,7 +374,25 @@ $(document).ready(function () {
     });
     $('#btnBook').click(function(event){
         event.preventDefault();
+        var invoiceList = "";
+        var p, r ,q;
+        var typeList =[];
+        var priceList = [];
+        var quantityList = [];
+        for(var i = 0 ; i < nuoftype; i ++ ){
+                r = $("#roomtype"+i).val();
+                q = $("#noroom"+i).val();
+                p =  $("#price"+i).val();
+                if((q !== undefined && q != 0) ){
+                    typeList.push(r);
+                    priceList.push(p);
+                    quantityList.push(q);
+                }
 
+        }
+
+        console.log(typeList);
+        var total = $("#txttotal").val();
         if($('#txtFullname').val().trim() == ""){
             alert('Nhập tên của khách hàng');
             return;
@@ -403,7 +421,7 @@ $(document).ready(function () {
             method: 'GET',
             cache: false,
             dataType: 'json',
-            data: $("#myForm").serialize() + "&cList=" + cList + "&status=" + PROCESSED ,
+            data: $("#myForm").serialize() + "&cList=" + cList + "&status=" + PROCESSED + "&tList=" + typeList + "&pList=" + priceList +"&qList=" + quantityList +"&pTotal=" + total ,
             contentType: 'application/x-www-form-urlencoded',
             success: function (result) {
                 if(result==1){

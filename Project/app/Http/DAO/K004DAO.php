@@ -331,6 +331,8 @@ class K004DAO{
         }
         $resdetail->setReservationId($resInsert->id);
         $resdetail->setCreateYmd(Carbon::now());
+        $resdetail->setDateIn($resInsert->check_in);
+        $resdetail->setDateOut($resInsert->date_out);
         //dd($resdetail->getRoomId());
 
         foreach ($roomIdList as $value){
@@ -339,6 +341,10 @@ class K004DAO{
             $resDetailInsert->create_ymd = $resdetail->getCreateYmd();
             $resDetailInsert->room_id = trim($value);
             $resDetailInsert->reservation_id = $resdetail->getReservationId();
+            $resDetailInsert->date_in = $resdetail->getDateIn();
+            $resDetailInsert->date_out = $resdetail->getDateOut();
+            $resDetailInsert->check_in_flag = 0;
+            $resDetailInsert->check_out_flag = 0;
             //dd($resDetailInsert->create_ymd,$resDetailInsert->room_id,$resDetailInsert->reservation_id);
 
             $resDetailInsert->save();

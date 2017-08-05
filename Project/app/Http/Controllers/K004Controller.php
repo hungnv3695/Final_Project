@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 use App\Http\DAO\K004DAO;
 use App\Models\Guest;
+use App\Models\Invoice;
 use App\Models\Reservation;
 use App\Models\Reservation_Model;
 use App\Models\ReservationDetail;
@@ -331,8 +332,14 @@ class K004Controller extends Controller{
     }
 
     public function insertResInfor(Request $request){
+
         $roomselect = $request->cList;
         $roomIdList = explode(',', $roomselect);
+        //dd($request->tList);
+        $typeList = explode(',', $request->tList);
+        $priceList = explode(',', $request->pList);
+        $quantityList = explode(',', $request->qList);
+
 
         $guest = new Guest();
         $guest->setName($request->txtFullname);
@@ -351,6 +358,13 @@ class K004Controller extends Controller{
         $res->setEditer($request->session()->get('USER_INFO')->user_id);
 
         $resdetail = new ReservationDetail();
+
+        //confirm Thay Lam
+        $invoice = new Invoice();
+        $invoice->setAmountTotal($request->txtTotalprice);
+        $invoice->setCreateYmd(Carbon::now());
+        $invoice->setCreaterName('hungnv');//fix tam
+
 
         $K004DAO = new K004DAO();
         $result = $K004DAO->createReservation($guest,$res,$resdetail,$roomIdList);

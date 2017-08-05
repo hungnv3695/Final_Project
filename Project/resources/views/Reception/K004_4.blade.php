@@ -118,6 +118,7 @@
 						<div class="col-md-12" style="border: 2px solid rgb(220,220,220);border-radius:10px;margin:5px 0px 20px 0px;">
 							<div class="row">
 								<div class="col-md-12 form-inline" id="infor">
+
 								</div>
 
 								<div class="col-md-8 col-md-offset-3 form-inline" style="margin-top: 10px;margin-bottom: 10px;">
