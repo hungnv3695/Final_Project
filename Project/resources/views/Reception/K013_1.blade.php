@@ -82,6 +82,9 @@
             <div class="row"><hr></div>
             <div class="table-wrapper">
                 <div class="table-scroll">
+                    @if(isset($checkInInfo))
+                        <label> {!! 'Kết quả: '. sizeof($checkInInfo) . ' bản ghi' !!} </label>
+                    @endif
                     <table class="table table-bordered">
                         <thead>
                         <tr>
