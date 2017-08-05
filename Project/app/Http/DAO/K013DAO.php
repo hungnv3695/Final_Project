@@ -55,12 +55,13 @@ class K013DAO
             "		inner join status as st                                                                                                                              ".
             "			on st.room_number = ro.room_number                                                                                                               ".
             "	WHERE (g.name ILIKE '%".$name."%' OR rs.customer_name ILIKE '%".$name."%')                                                                                           ".
-            "	AND CAST(r.check_out AS date) >= '".$today."'                                                                                                            ";
+            "	AND CAST(r.check_out AS date) >= '".$today."'                                                                                                            " .
+            " AND rs.check_in_flag = '0' " ;
 
         if($identity != null){
             $query .= "AND (g.identity_card ilike '%".$identity."%' OR rs.customer_identity_card ilike '%".$identity."%' )";
         }
-        $query .=    "	order by g.name, rs.customer_name ";
+        $query .=    "	order by CAST(r.check_in AS date), g.name, rs.customer_name ";
 
         $result = DB::select($query);
         return $result;
@@ -79,7 +80,7 @@ class K013DAO
             "		inner join tbl_room ro                                                                                               ".
             "			on ro.room_id = rs.room_id                                                                                       ".
             "	where (CAST(rs.date_in as Date) <= '".$today."' AND '".$today."' <=  CAST(rs.date_out as Date) )                         ".
-            "	AND rs.check_in_flag = '1' AND                                                                                            ";
+            "	AND rs.check_in_flag = '1' AND rs.check_out_flag <> '1' AND                                                                                           ";
 
         if($room!=null){
             $query .= " ro.room_number = '".$room."' " ;
