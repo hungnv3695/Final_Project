@@ -5,7 +5,7 @@ function InvalidMsg(textbox) {
 
 
     if (textbox.value == '') {
-        textbox.setCustomValidity('Các mục bắt buộc không được trống.');
+        textbox.setCustomValidity('Thông tin bắt buộc.');
     } else {
         textbox.setCustomValidity('');
     }
