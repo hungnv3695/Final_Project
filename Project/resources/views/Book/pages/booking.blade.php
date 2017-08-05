@@ -2,7 +2,7 @@
 @section('head')
     <link rel="stylesheet" type="text/css" href="{{asset('slick/slick.css')}}"/>
     <link rel="stylesheet" type="text/css" href="{{asset('slick/slick-theme.css')}}"/>
-
+	<link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{asset('/css/booking.css')}}">
 @endsection
 @section('body')
