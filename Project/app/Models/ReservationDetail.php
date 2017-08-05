@@ -28,6 +28,41 @@ class ReservationDetail extends Model{
 
     private $note;
 
+    private $checkInFlag;
+    private $checkOutFlag;
+
+    /**
+     * @return mixed
+     */
+    public function getCheckInFlag()
+    {
+        return $this->checkInFlag;
+    }
+
+    /**
+     * @param mixed $checkInFlag
+     */
+    public function setCheckInFlag($checkInFlag)
+    {
+        $this->checkInFlag = $checkInFlag;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCheckOutFlag()
+    {
+        return $this->checkOutFlag;
+    }
+
+    /**
+     * @param mixed $checkOutFlag
+     */
+    public function setCheckOutFlag($checkOutFlag)
+    {
+        $this->checkOutFlag = $checkOutFlag;
+    }
+
     /**
      * @return mixed
      */
