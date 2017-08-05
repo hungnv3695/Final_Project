@@ -9,8 +9,10 @@
 namespace App\Http\Controllers;
 
 
+use App\Http\Common\StringUtil;
 use App\Http\DAO\K013DAO;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 
 class K013Controller
@@ -19,9 +21,9 @@ class K013Controller
         return view('Reception.K013_1');
     }
 
-    public function getSearchRequest(Request $request){
-        $name = $request->txtFullName;
-        $identity = $request->txtCMND;
+    public function getSearchCheckInRequest(Request $request){
+        $name = StringUtil::Trim($request->txtFullName) ;
+        $identity = StringUtil::Trim($request->txtCMND) ;
 
         $k013DAO = new K013DAO();
         $checkInInfo = $k013DAO->getCheckInInfo($name,$identity);

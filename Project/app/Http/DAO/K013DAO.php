@@ -15,8 +15,6 @@ class K013DAO
 {
     public function getCheckInInfo($name, $identity = null){
         $today = date("Y/m/d");
-        $today= "2017/09/10";
-
         $query = "	WITH status AS(                                                                                                                                          ".
             "		WITH MyTable AS (                                                                                                                                    ".
             "			SELECT  ro.room_number , ro.status_id, mytb.date_in,mytb.date_out,mytb.check_out_flag,                                                           ".
@@ -40,7 +38,7 @@ class K013DAO
             "	GROUP BY room_number                                                                                                                                     ".
             "	ORDER BY room_number                                                                                                                                     ".
             "	)                                                                                                                                                        ".
-            "	SELECT  g.name, g.identity_card, rs.customer_name, rs.customer_identity_card ,CAST(r.check_in AS date),CAST(r.check_out AS date) ,  ro.room_number ,     ".
+            "	SELECT ro.room_id, r.id, g.name, g.identity_card, rs.customer_name, rs.customer_identity_card ,CAST(r.check_in AS date),CAST(r.check_out AS date) ,  ro.room_number ,     ".
             "	CASE                                                                                                                                                     ".
             "		when st.max = '3' then 'Đang sửa chữa'                                                                                                               ".
             "		when st.max = '2' then 'Đang sử dụng'                                                                                                                ".
@@ -62,7 +60,7 @@ class K013DAO
         if($identity != null){
             $query .= "AND (g.identity_card ilike '%".$identity."%' OR rs.customer_identity_card ilike '%".$identity."%' )";
         }
-        $query .=    "	order by g.name, rs.customer_name     ";
+        $query .=    "	order by g.name, rs.customer_name ";
 
         $result = DB::select($query);
         return $result;

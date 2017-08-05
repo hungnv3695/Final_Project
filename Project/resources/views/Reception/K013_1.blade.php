@@ -71,9 +71,9 @@
             <form method="post">
                 <div class="form-inline" style="margin-top:20px;">
                     <label class="label1">Họ tên:</label>
-                    <input id="txtFullName" name="txtFullName" type="text" class="form-control input-md" maxlength="50" autofocus>
+                    <input id="txtFullName" name="txtFullName" type="text" class="form-control input-md" maxlength="50" value="{!! isset($name)?$name:'' !!}" autofocus>
                     <label class="label1">CMND:</label>
-                    <input id="txtCMND" name="txtCMND" type="text" class="form-control input-md" maxlength="12">
+                    <input id="txtCMND" name="txtCMND" type="text" class="form-control input-md" value="{!! isset($identity)?$identity:'' !!}" maxlength="12">
                     <button id="btnView" class="btn btn-default" style="margin-left:20px;"><b>Xem</b></button>
                 </div>
                 <input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
@@ -111,7 +111,12 @@
                                 <td>{!! $data->check_out !!}</td>
                                 <td>{!! $data->room_number !!}</td>
                                 <td>{!! $data->status !!}</td>
-                                <td><a href="#" style="text-decoration:underline;"><b>Nhận phòng</b></a></td>
+                                @if($data->status == "Phòng Trống")
+                                    <td><a href="{!! url('K003_2/') . '?' .'resID='.$data->id . '&' . 'roomID=' . $data->room_id  !!}" style="text-decoration:underline;"><b>Nhận phòng</b></a></td>
+                                @else
+                                    <td></td>
+                                @endif
+
                             </tr>
                             <?php $i++; ?>
                             @endforeach
