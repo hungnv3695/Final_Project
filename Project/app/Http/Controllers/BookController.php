@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class BookController extends Controller
 {
     public function index() {
-        return view('Book.pages.booking');
+        return view('Confirm.pages.booking');
     }
 }
