@@ -99,7 +99,7 @@
 							</div>
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">Tầng: </label>
-								<input id="floortxt" name="floortxt" type="text" class="form-control input-md" onclick="setDisableRoomType()" oninvalid="InvalidMsg(this);" required  >
+								<input id="floortxt" name="floortxt" type="number" class="form-control input-md" onclick="setDisableRoomType()" oninput="InvalidMsg(this);" min="1" max="5"  oninvalid="InvalidMsg(this);" required  >
 							</div>
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">Trạng thái: </label>
