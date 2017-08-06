@@ -1,0 +1,1 @@
+@extends('Guest.Book.shared.master')

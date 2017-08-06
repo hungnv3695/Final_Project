@@ -1,13 +1,13 @@
-<!DOCTYPE html>
-<html>
+<meta name="_token" content="{!! csrf_token() !!}"/>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <title>Thông tin nhận phòng</title>
+    <title>Thông tin trả phòng</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="{!! asset('plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css') !!} ">
     <link rel="stylesheet" type="text/css" href="{!! asset('css/index.css') !!} ">
-        <style type="text/css">
+    <style type="text/css">
         body
         {
             padding: 0;
@@ -50,7 +50,7 @@
     </style>
 </head>
 <body>
-<div class="container-fluid">
+<div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1" style="margin-top:4%;background-color:rgb(245,245,245);border:1px solid rgb(215,215,215);">
             <div class="row">
@@ -63,17 +63,17 @@
                     <b>|</b><a href="{!! url('/K001/LogOut') !!}"><b> Đăng xuất</b></a>
                 </div>
                 <div class="col-md-12">
-                    <p class="brand-title">Thông tin nhận phòng</p>
+                    <p class="brand-title">Thông tin trả phòng</p>
                 </div>
             </div>
         </div>
         <div class="col-md-10 col-md-offset-1" style="background-color:rgb(230,230,230);border:1px solid rgb(215,215,215); border-top:none;border-bottom:none;">
             <form method="post">
                 <div class="form-inline" style="margin-top:20px;">
+                    <label class="label1">Số phòng:</label>
+                    <input id="txtRoomNo" name="txtRoomNo" type="text" class="form-control input-md" maxlength="5" value="{!! isset($room)?$room:'' !!}" autofocus>
                     <label class="label1">Họ tên:</label>
-                    <input id="txtFullName" name="txtFullName" type="text" class="form-control input-md" maxlength="50" value="{!! isset($name)?$name:'' !!}" autofocus>
-                    <label class="label1">CMND:</label>
-                    <input id="txtCMND" name="txtCMND" type="text" class="form-control input-md" value="{!! isset($identity)?$identity:'' !!}" maxlength="12">
+                    <input id="txtFullName" name="txtFullName" type="text" class="form-control input-md" maxlength="50" value="{!! isset($name)?$name:'' !!}" >
                     <button id="btnView" class="btn btn-default" style="margin-left:20px;"><b>Xem</b></button>
                 </div>
                 <input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
@@ -82,46 +82,37 @@
             <div class="row"><hr></div>
             <div class="table-wrapper">
                 <div class="table-scroll">
-                    @if(isset($checkInInfo))
-                        <label> {!! 'Kết quả: '. sizeof($checkInInfo) . ' bản ghi' !!} </label>
+                    @if(isset($checkOutInfo))
+                        <label> {!! 'Kết quả: '. sizeof($checkOutInfo) . ' bản ghi' !!} </label>
                     @endif
                     <table class="table table-bordered">
                         <thead>
                         <tr>
                             <th>STT</th>
-                            <th>Người đặt</th>
-                            <th>CMND</th>
+                            <th>Số phòng</th>
                             <th>Người ở</th>
                             <th>CMND</th>
                             <th>Ngày nhận</th>
                             <th>Ngày trả</th>
-                            <th>Phòng</th>
-                            <th>Trạng thái</th>
+                            <th>Trạng Thái</th>
                             <th></th>
                         </tr>
                         </thead>
                         <tbody>
                         <?php $i = 1;?>
-                        @if(isset($checkInInfo))
-                            @foreach($checkInInfo as $data)
-                            <tr>
-                                <td>{!! $i !!}</td>
-                                <td>{!! $data->name !!}</td>
-                                <td>{!! $data->identity_card !!}</td>
-                                <td>{!! $data->customer_name !!}</td>
-                                <td>{!! $data->customer_identity_card !!}</td>
-                                <td>{!! $data->check_in !!}</td>
-                                <td>{!! $data->check_out !!}</td>
-                                <td>{!! $data->room_number !!}</td>
-                                <td>{!! $data->status !!}</td>
-                                @if($data->status == "Phòng Trống")
-                                    <td><a href="{!! url('K003_2/') . '?' .'resID='.$data->id . '&' . 'roomID=' . $data->room_id  !!}" style="text-decoration:underline;"><b>Nhận phòng</b></a></td>
-                                @else
-                                    <td></td>
-                                @endif
-
-                            </tr>
-                            <?php $i++; ?>
+                        @if(isset($checkOutInfo))
+                            @foreach($checkOutInfo as $data)
+                        <tr>
+                            <td>{!! $i !!}</td>
+                            <td>{!! $data->room_number !!}</td>
+                            <td>{!! $data->customer_name !!}</td>
+                            <td>{!! $data->customer_identity_card !!}</td>
+                            <td>{!! $data->date_in !!}</td>
+                            <td>{!! $data->date_out !!}</td>
+                            <td>{!! $data->status !!}</td>
+                            <td><a href="#" style="text-decoration:underline;"><b>Trả phòng</b></a></td>
+                        </tr>
+                        <?php $i++; ?>
                             @endforeach
                         @endif
                         </tbody>
@@ -132,10 +123,11 @@
         <div class="col-md-10 col-md-offset-1" style="background-color:rgb(245,245,245);border:1px solid rgb(215,215,215);">
             <div class="row">
                 <div class="col-md-3 col-md-offset-10" style="margin-top:10px;margin-bottom:10px;">
-                    <button type="button" id="btnBack" class="btn btn-danger col-md-offset-3" type="button"><b>Quay lại</b></button>
+                    <button id="btnBack" class="btn btn-danger col-md-offset-2" type="button"><b>Quay lại</b></button>
                 </div>
             </div>
         </div>
+
     </div>
 </div>
 </body>

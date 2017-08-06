@@ -106,9 +106,11 @@ Route::get('/K003_2/SaveInforCustomer','K003Controller@saveInforCustomer');
 Route::get('/K003_3','K003Controller@k003_3_View');
 
 
-Route::get('/K013','K013Controller@viewCheckIn');
-Route::post('/K013','K013Controller@getSearchRequest');
+Route::get('/K013_1','K013Controller@viewCheckIn');
+Route::post('/K013_1','K013Controller@getSearchCheckInRequest');
+
+Route::get('/K013_2','K013Controller@viewCheckOut');
+Route::post('/K013_2','K013Controller@getSearchCheckOutRequest');
 
 // Booking
-Route::get('/book', 'BookController@index');
 Route::get('/LoadRoomType','BookController@loadRoomType');
