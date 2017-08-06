@@ -52,6 +52,7 @@ class Message
 
     const MSG0034 = "Mật khẩu mới trùng với mật khẩu cũ.";
     const MSG0035 = "Mật khẩu mới và xác nhận mật khẩu không trùng khớp.";
+    const MSG0036 = "Số phòng đã tồn tại.";
 
 
 

@@ -172,4 +172,24 @@ class K005DAO
 
     }
 
+    public function checkRoomNumber($roomNo, $roomID){
+        $result = Room::where(Constants::TBL_ROOM_NUMBER,$roomNo)
+            ->where(Constants::TBL_ROOM_ID,$roomID)
+            ->count();
+
+        if($result!=0){
+            return true;
+        }else{
+            $result = Room::where(Constants::TBL_ROOM_NUMBER,$roomNo)->count();
+
+            if($result!=0){
+                return false;
+            }else{
+                return true;
+            }
+        }
+
+
+    }
+
 }
