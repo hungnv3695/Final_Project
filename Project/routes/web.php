@@ -111,3 +111,4 @@ Route::post('/K013','K013Controller@getSearchRequest');
 
 // Booking
 Route::get('/book', 'BookController@index');
+Route::get('/LoadRoomType','BookController@loadRoomType');

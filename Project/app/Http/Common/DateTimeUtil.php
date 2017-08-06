@@ -18,4 +18,9 @@ class DateTimeUtil{
         return  (substr($str, 4, 4) .  substr($str, 2, 2).  substr($str, 0, 2));
 
     }
+    public static function ConvertDateToString2($str){
+        $str = (empty($str))?"":str_replace("/","",$str);
+        return  (substr($str, 0, 4) .  substr($str, 4, 2).  substr($str, 6, 2));
+
+    }
 }
