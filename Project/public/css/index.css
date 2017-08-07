@@ -124,7 +124,7 @@ hr.style12 {
 	border-radius:5px;
 }
 .sub-ct-col:hover a{
-	color:#00aeef ;
+	color:rgb(34,34,34);
 	background-color:#ffffff;
 }
 .sub-ct-col:hover img{
@@ -201,7 +201,7 @@ hr.style12 {
 
 .footer-distributed .footer-links{
 	color:  #cccccc;
-	margin: 20px 0 12px;
+	margin: 10px 0 12px;
 	padding: 0;
 }
 
@@ -273,6 +273,7 @@ hr.style12 {
 
 .footer-distributed .footer-right{
 	width: 20%;
+	margin-top:10px;
 }
 
 .footer-distributed .footer-company-about{
