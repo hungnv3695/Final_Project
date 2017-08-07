@@ -126,7 +126,7 @@
 	position: relative;
 }
 hr.style12 {
-	border-top: 1px dashed #8c8b8b;
+	border-top: 1px solid rgb(220,220,220);
     margin: 0;
 }
 
