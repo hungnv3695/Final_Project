@@ -175,8 +175,6 @@ CREATE TABLE tbl_invoice(
 	id serial PRIMARY KEY,
 	payment_type_id integer,
 	reservation_id integer,
-	accountant_id varchar(20),
-	receptionist_id varchar(20),
 	guest_id integer,
 	tax_code varchar(10),
 	amount_total numeric(11,2),
@@ -186,22 +184,21 @@ CREATE TABLE tbl_invoice(
 	
 	FOREIGN KEY (reservation_id) REFERENCES tbl_reservation(id),
 	FOREIGN KEY (payment_type_id) REFERENCES tbl_payment_type(id),
-	FOREIGN KEY (accountant_id) REFERENCES tbl_user(user_id),
-	FOREIGN KEY (receptionist_id) REFERENCES tbl_user(user_id),
 	FOREIGN KEY (guest_id) REFERENCES tbl_guest(id)
 );
 
 CREATE TABLE tbl_invoice_detail(
 	id serial PRIMARY KEY,
-	room_number varchar(5),
 	invoice_id integer,
-	description varchar(100),
+	item_id varchar(5),
 	quantity integer,
+	item_type varchar(50),
 	price numeric(11,2),
 	amount_total numeric(11,2),
 	update_ymd timestamp,
 	create_ymd timestamp ,
-	FOREIGN KEY (invoice_id) REFERENCES tbl_invoice(id)
+	FOREIGN KEY (invoice_id) REFERENCES tbl_invoice(id),
+	FOREIGN KEY (item_id) REFERENCES tbl_room(room_id)
 );
 
 

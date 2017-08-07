@@ -78,7 +78,7 @@
 								<option value="5" {!!  (isset($searchFloor) && $searchFloor == 5) ? 'selected':''  !!} > 5 </option>
 							</select>
 
-							<input id="searchtxt" name="searchtxt" type="text" placeholder="Tìm ki" class="form-control input-md" size="12" value="{!! isset($searchStr)?$searchStr:'' !!}">
+							<input id="searchtxt" name="searchtxt" type="text" placeholder="Tìm kiếm..." class="form-control input-md" size="12" value="{!! isset($searchStr)?$searchStr:'' !!}">
 							<button class="btn btn-default" value="btnSearch" name="btnSearch"><b>Tìm</b></button>
 							<button class="btn btn-default"  type="button"  value="btnAdd" name="btnAdd" onclick="window.location='{{ url("/K005_1/K005_3?roomTypeID=" . '0') }}'" > <b>Thêm mới</b></button>
 							<button class="btn btn-default" value="btnListall" name="btnListall"><b>Danh sách</b></button>
