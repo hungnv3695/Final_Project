@@ -41,6 +41,7 @@ class Constants
         const   TBL_ROOM_ID = 'room_id';
         const   TBL_ROOM_TYPE_ID = 'room_type_id';
         const   TBL_TYPE_NAME = 'type_name';
+        const   TBL_IMAGE_URL = 'image_url';
         const TBL_STATUS_ID = 'status_id';
         const TBL_STATUS_NAME = 'status_name';
         const TBL_DESCRIPTION = 'description';

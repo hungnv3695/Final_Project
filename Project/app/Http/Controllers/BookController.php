@@ -11,6 +11,9 @@ class BookController extends Controller
     public function index() {
         return view('Guest.Book.pages.booking');
     }
+    public function confirmView() {
+        return view('Guest.Book.pages.confirm');
+    }
 
     public function loadRoomType(Request $request){
         $check_in = DateTimeUtil::ConvertDateToString2($request->check_in);
@@ -19,5 +22,11 @@ class BookController extends Controller
         $BookOnlineDAO = new BookOnlineDAO();
         $result = $BookOnlineDAO->getRoomTypeFree($check_in,$check_out);
         return response($result);
+    }
+
+    public function loadRoomInfor(){
+        $BookOnlineDAO = new BookOnlineDAO();
+        $result = $BookOnlineDAO->getRoomTypeInfor();
+        return $result;
     }
 }

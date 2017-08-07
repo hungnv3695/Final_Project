@@ -9,6 +9,7 @@ namespace App\Http\DAO;
 use App\Http\Common\Constants;
 use App\User;
 use App\UserGroup;
+use App\Models\RoomType;
 use App\UserMaster;
 use Illuminate\Support\Facades\DB;
 class BookOnlineDAO {
@@ -24,5 +25,18 @@ class BookOnlineDAO {
 
         $result = DB::select($strSQL);
         return $result;
+    }
+
+    public function getRoomTypeInfor(){
+        $result = RoomType::get([
+            Constants::TBL_ROOM_TYPE_ID,
+            Constants::TBL_TYPE_NAME,
+            Constants::TBL_ADULT,
+            Constants::TBL_CHILDREN,
+            Constants::TBL_DESCRIPTION,
+            Constants::TBL_IMAGE_URL,
+            Constants::TBL_PRICE
+        ]);
+        return $result->toArray();
     }
 }

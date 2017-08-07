@@ -28,7 +28,14 @@ $(document).ready(function () {
     });
    // $.datetimepicker.setLocale('vi');
     //End Datetimepicker
-console.log(jQuery('#checkin').val());
+    function addslick() {
+        $('.multiple-items').slick({
+            infinite: true,
+            slidesToShow: 3,
+            slidesToScroll: 3
+        });
+    }
+
     function addCommas(nStr)
     {
         nStr += '';
@@ -104,9 +111,73 @@ console.log(jQuery('#checkin').val());
                     +'<b>  VNĐ / 1 đêm</b>'
                     +'</div>'
                 +'</div>')
+            // if(i == (count -1)){
+            //     $("#inforBook").append(
+            //         '<div class="col-md-2 col-md-offset-10 justify-content-center">'
+            //         +'<button class="btn btn-primary" style="width: 80px ;margin-botton:30px" id="btnNext" name="btnNext" > Next </button>'
+            //
+            //         +'</div>'
+            //
+            //     );
+            // }
         }
 
 
+    }
+
+
+    function  addRoomInfor(type_name,adult,children,description,img_url) {
+        $(".multiple-items").append(
+            '<div class="card" style="height: 320px;>'
+            +   '<div class="card-block" ">'
+            +       '<h4 class="card-title" id="infor0" ><h2 style="margin-left: 20px; margin-top: -5px">'+type_name+'</h2></h4>'
+            +        '<div class="row">'
+            +            '<div class="col-md-6">'
+            +                '<img style="margin-left: 10px;" src="'+img_url+'" class="rounded img-fluid">'
+            +            '</div>'
+            +            '<div class="col-md-6">'
+            +                '<div id="infor1"><h4><b>' + description +'</b></h4></div>'
+            +                '<div id="infor2"><h4><b>Max adult: '+adult+'</b></h4></div>'
+            +                '<div id="infor3"><h4><b>Max children: '+ children +'</b></h4></div>'
+            +            '</div>'
+            +        '</div>'
+            +    '</div>'
+            +'</div>'
+        );
+    }
+    loadRoomInfor();
+    function loadRoomInfor() {
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: 'LoadRoomInfor',
+            method: 'GET',
+            cache: false,
+            dataType: 'json',
+            contentType: 'application/x-www-form-urlencoded',
+            success: function (result) {
+                var type_name = "";
+                var adult = "";
+                var children = "";
+                var description = "";
+                var img_url = ""
+                console.log(result);
+                for(var i =0; i<result.length; i++){
+                    type_name = result[i].type_name;
+                    adult = result[i].adult;
+                    children = result[i].children;
+                    description = result[i].description;
+                    img_url = result[i].image_url;
+                    addRoomInfor(type_name,adult,children,description,img_url);
+                }
+                addslick();
+
+            },
+            error: function(){
+                alert('error');
+            }
+        });
     }
 
     function loadBookInfor(){
@@ -130,7 +201,7 @@ console.log(jQuery('#checkin').val());
                 count = result.length;
                 addTitle();
                 addInforBook(result, count);
-                alert('ssds');
+
 
             },
             error: function(){
@@ -157,7 +228,7 @@ console.log(jQuery('#checkin').val());
                     count = result.length;
                     addTitle();
                     addInforBook(result, count);
-                    alert('ssds');
+
 
                 },
                 error: function(){
@@ -170,6 +241,15 @@ console.log(jQuery('#checkin').val());
 
     $("#btnApply").click(function (e) {
 
+        if($("#checkin").val()==""){
+            $("#checkin").focus();
+            return;
+        }
+        if($("#checkout").val()==""){
+            $("#checkout").focus();
+            return;
+        }
+        $('#nextdiv').toggle(true);
         jQuery('#Infor div').html('');
         addTitle();
         loadBookInfor();
@@ -183,6 +263,7 @@ console.log(jQuery('#checkin').val());
         var value = $('input[id^="quanity"]').val();
         alert(value);
     })
+    $('#nextdiv').hide();
     $(document).on('keyup mouseup change ', 'input[name="quantity"]', function(){
 
         setTimeout(function() {}, 10);
@@ -226,8 +307,25 @@ console.log(jQuery('#checkin').val());
         }
 
 
-
-
-
     });
+
+
+
+    $("#btnNext").click(function (e) {
+        var quantity = 0;
+        for(var i = 0; i < count; i++){
+            quantity += Number($("#quantity" + i).val());
+
+        }
+        if(quantity == 0){
+            alert('ss');
+            return;
+        }
+        if(quantity > 0){
+            window.open('/ConfirmView','_self');
+        }
+
+
+        //e.preventDefault();
+    })
 });

@@ -38,7 +38,7 @@
                 </div>
             </div>
             <div class="col-md-2 justify-content-center" style="margin-top:26px;" id="btnApply">
-                <button class="btn btn-primary">Apply</button>
+                <button class="btn btn-primary" style="width: 80px">Apply</button>
             </div>
         </div>
         <div class="row" id="Infor">
@@ -48,6 +48,10 @@
             <div class="row" id="inforBook">
 
             </div>
+        </div>
+
+        <div class="col-md-12 col-md-offset-10 justify-content-center" style="margin-top:26px;" id="nextdiv" >
+            <button class="btn btn-primary" style="width: 80px" id="btnNext">Next</button>
         </div>
 
     </div>
