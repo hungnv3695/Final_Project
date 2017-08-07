@@ -68,7 +68,7 @@
 						</div>
 					</div>
 				</div>
-				<form  class="editroom" method="POST" >
+				<form  class="editroom" method="POST" onsubmit="return confirm('Bạn muốn thực hiện thay đổi này?');" >
 					<div class="col-md-10 col-md-offset-1" style="background-color:rgb(230,230,230);border:1px solid rgb(215,215,215); border-top:none;">
 						<div class="row">
 							<div class="col-md-5 form-horizontal" style="margin:10px 30px 10px;border: 2px solid rgb(220,220,220);border-radius:10px;">
@@ -92,7 +92,7 @@
 									</div>
 									<div class="form-inline" style="margin-top:20px;">
 										<label class="label1" for="">Tầng: </label>  
-										<input id="floortxt" name="floortxt" type="text" class="form-control input-md" size="10" value="{!! $roomDetail[0]->floor !!}"  onclick="setDisableRoomType() " oninvalid="InvalidMsg(this);" required  >
+										<input id="floortxt" name="floortxt" type="number" class="form-control input-md"  size="10" min="1" max="5" value="{!! $roomDetail[0]->floor !!}"  onclick="setDisableRoomType() " oninvalid="InvalidMsg(this);" required  >
 									</div>
 									<div class="form-inline" style="margin-top:20px;">
 										<label class="label1" for="">Trạng thái: </label>  
@@ -110,7 +110,7 @@
 										<textarea rows="3" cols="25" id="txtNote" class="form-control" name="txtNote" maxlength="100" onclick="setDisableRoomType()"  onkeydown="setDisableRoomType()"> {!! $roomDetail[0]->note !!}</textarea>
 									</div>								
 									<div class="form-inline col-md-offset-5" style="margin-top:75px;margin-bottom:20px;">
-										<button class="btn btn-success" value="bntSave" name="bntSave"  onclick="setDisableRoomType(); return confirm('Bạn muốn thực hiện thay đổi này?'); "><b>Lưu</b></button>
+										<button class="btn btn-success" value="bntSave" name="bntSave"  onclick="setDisableRoomType();  "><b>Lưu</b></button>
 										<button type="button" class="btn btn-primary" value="bntReset" name="bntReset" onclick="location.reload();" ><b>Tạo lại</b></button>
 										<button type="button" class="btn btn-danger" value="bntCancel" name="bntCancel" onclick="window.location='{{ url("/K005_1") }}'"><b>Hủy bỏ</b></button>
 									</div>
