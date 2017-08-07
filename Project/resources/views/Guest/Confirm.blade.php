@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+	<title>Xác nhận đặt phòng</title>
+	<link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{{asset('plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('plugins/font-awesome-4.7.0/css/font-awesome.min.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('plugins/animate/animate.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('css/index.css')}}">
+	<script type="text/ecmascript" src="{{asset('jqgrid/js/jquery-1.11.0.min.js') }}"></script>
+	<script src="{!! asset('Scripts/FrontCheck/CheckError.js') !!}"> </script>
+    <style type="text/css">
+
+	body
+	{
+		padding: 0;
+		margin: 0;
+	}
+	.navbar-inverse{
+		background-color:rgb(66,110,180);
+		border-radius:0;
+	}
+	.navbar-inverse .navbar-nav .nav-link{
+		color:#CCCCCC;
+		font-size:16px;
+	}
+	li{
+		margin-right:30px;
+		text-transform:uppercase;
+		color:#CCCCCC;
+	}
+	
+	.reservation-title{
+		height:50px;
+		background: rgb(70,140,190);
+	}
+	.reservation-title h4{
+		line-height:35px;
+		margin-left:20px;
+	}
+	.label1{
+		color:gray;
+		text-align:right;
+	}
+	.label2{
+		text-align:left;
+	}
+	.label3{
+		width:100px;
+		text-align:right;
+	}
+	</style>
+</head>
+<body>
+<form id="myForm">
+	<div class="page">
+		<!--header-->
+		<header>
+			<nav class="navbar navbar-inverse">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>                        
+						</button>
+						<a class="navbar-brand" href="#" style="margin-left:5px;">CompanyLogo</a>
+					</div>
+					<div class="collapse navbar-collapse" id="myNavbar">
+						<ul class="nav navbar-nav">
+							<li><a class="nav-link" href="#">Trang chủ <span class="sr-only">(current)</span></a></li>
+							<li><a class="nav-link" href="#">Phòng</a></li>
+							<li><a class="nav-link" href="#">Ảnh</a></li>
+						</ul>
+						<button href="#" class="btn btn-success navbar-btn navbar-right">Đăng nhập</button>
+					</div>
+				</div>
+			</nav>
+		</header>
+		<!--body-->
+		<div id="content">
+				<h3 align="center" style="color:rgb(70,140,190);"><b>Xác nhận đặt phòng</b></h3>
+				<div class="col-md-12">
+					<div class="row reservation-title">
+						<h4><b>Hồ sơ đặt phòng</b></h4>
+					</div>
+					<div class="row" style="border-bottom:1px solid rgb(220,220,220);">
+						<div class="col-md-7">
+							<div class="form-inline">
+								<h4 style="color:rgb(70,140,190);"><b>ANH DUONG HOTEL</b></h4>
+							</div>
+							<div class="col-md-3 form-horizontal">
+								<div class="form-group"><label class="label1">Địa chỉ</label></div>
+								<div class="form-group"><label class="label1">Thời gian mở cửa</label></div>
+								<div class="form-group"><label class="label1">Nhận phòng từ</label></div>
+								<div class="form-group"><label class="label1">Trả phòng trước</label></div>						
+							</div>
+							<div class="col-md-5">
+								<div class="form-group"><label class="label2">Đảo Tuần Châu, Hạ Long, Việt Nam</label></div>
+								<div class="form-group"><label class="label2">24/7</label></div>
+								<div class="form-group"><label class="label2">13:00</label></div>
+								<div class="form-group"><label class="label2">12:00</label></div>					
+							</div>
+						</div>
+					</div>
+					<div class="row" style="border-bottom:1px solid rgb(220,220,220);margin-bottom:20px;">
+						<div class="col-md-6">
+							<div class="col-md-12"style="border:2px solid rgb(220,220,220);margin-top:10px;margin-bottom:10px;">
+								<div class="col-md-12" style="margin-top:10px;">
+									<div class="col-md-4">
+										<div class="form-group">
+											<label style="font-size:120%;color:rgb(70,140,190);"><b>Kiểu phòng</b></label>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="form-group">
+											<label style="font-size:120%;color:rgb(70,140,190);"><b>Số lượng (Phòng)</b></label>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="form-group">
+											<label style="font-size:120%;color:rgb(70,140,190);"><b>Giá (VNĐ) </b></label>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-12" id="BookInfor">
+
+								</div>
+								<div class="col-md-12" style="margin-top:10px;">
+									<div class="col-md-4">
+										<div class="form-group">
+											<label style="font-size:120%;color:rgb(70,140,190);"><b>Tiền phòng</b></label>
+										</div>
+									</div>
+									<div class="col-md-4 col-md-offset-4">
+										<div class="form-group">
+											<label id="roomPrice"><b>$2</b></label>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div class="col-md-4">
+										<div class="form-group">
+											<label><b>Số đêm</b></label>
+										</div>
+									</div>
+									<div class="col-md-3 col-md-offset-4">
+										<div class="form-group">
+											<label id="nights"><b></b></label>
+											<label><b> (đêm)</b></label>
+										</div>
+									</div>
+
+								</div>
+								<div class="col-md-12">
+									<div class="col-md-4">
+										<div class="form-group">
+											<label><b>Không bao gồm VAT</b></label>
+										</div>
+									</div>
+									<div class="col-md-4 col-md-offset-4">
+										<div class="form-group">
+											<label><b>10%</b></label>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-12" style="margin-bottom:56px;">
+									<div class="col-md-4 col-md-offset-4">
+										<div class="form-group">
+											<label><b>Tổng tiền là:</b></label>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="form-group">
+											<label id="Total"><b></b></label>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="col-md-12" style="border:2px solid rgb(220,220,220);margin-top:10px;margin-bottom:10px;">
+								<label style="font-size:120%;color:rgb(70,140,190);margin-top:10px;"><b>Thông tin khách</b></label>
+								<div class="form-inline col-md-offset-1" style="margin-top:10px;">
+									<label class="label3" for="">Họ tên: </label>  
+									<input id="txtFullname" name="txtFullname" type="text" class="form-control input-md" size="20" maxlength="50" oninvalid="InvalidMsg(this);" required  >
+								</div>
+								<div class="form-inline col-md-offset-1" style="margin-top:10px;margin-bottom:20px;">
+									<label class="label3" for="">Email: </label>  
+									<input id="txtEmail" name="txtEmail" type="text" class="form-control input-md" size="20" maxlength="50">
+								</div>
+								<div class="form-inline col-md-offset-1" style="margin-top:10px;">
+									<label class="label3" for="">Điện thoại: </label>  
+									<input id="txtPhone" name="txtPhone" type="text" class="form-control input-md" size="20" maxlength="20">
+								</div>
+								<div class="form-inline col-md-offset-1" style="margin-top:10px;">
+									<label class="label3" for="">CMND: </label>  
+									<input id="txtIdcard" name="txtIdcard" type="text" class="form-control input-md" size="20" maxlength="12">
+								</div>
+								<div class="form-inline col-md-offset-1" style="margin-top:10px;">
+									<label class="label3" for="">Địa chỉ: </label>  
+									<input id="txtAddress" name="txtAddress" type="text" class="form-control input-md" size="20" maxlength="100">
+								</div>
+								<div class="form-inline col-md-offset-1" style="margin-top:10px;margin-bottom:10px;">
+									<label class="label3">Quốc tịch:</label>  
+									<select id="Country" name="Country" style="width:187px;" class="form-control input-md">
+									<option value="England">England</option>
+									<option value="Korea">Korea</option>
+									<option value="Japan">Japan</option>
+									<option value="Việt Nam" selected>Việt Nam</option>
+									</select>
+								</div>
+								
+								
+							</div>						
+						</div>						
+					</div>
+					<label class="label1" style="font-size:120%;"><b>Yêu cầu thêm</b></label>
+					<div class="col-md-12">
+						<div class="row"><textarea rows="3" cols="185" id="notetxt" name="notetxt" placeholder="Vui lòng ghi những thắc nhắc, yêu cầu của quý khách..." maxlength="100"></textarea></div>
+					</div>
+					<div class="col-md-2 col-md-offset-5" style="margin-top:10px;margin-bottom:10px;">
+						<button type="button" class="btn btn-primary btn-block" value="btnBook" id="btnBook" ><b>Đặt phòng</b></button>
+					</div>
+				</div>
+		</div>
+		<!--footer-->
+			<div class="col-md-12">
+				<div class="row">
+					<footer class="footer-distributed">
+
+						<div class="footer-left">
+
+							<h3>Company<span>logo</span></h3>
+
+							<p class="footer-links">
+								<a href="#">Home</a>
+								·
+								<a href="#">Blog</a>
+								·
+								<a href="#">Pricing</a>
+								·
+								<a href="#">About</a>
+								·
+								<a href="#">Faq</a>
+								·
+								<a href="#">Contact</a>
+							</p>
+
+							<p class="footer-company-name">Copyrigh &copy; Bản quyền thuộc về khách sạn Ánh Dương</p>
+						</div>
+
+						<div class="footer-center">
+
+							<div>
+								<i class="fa fa-map-marker"></i>
+								<p><span>Khách sạn Ánh Dương, Tuần Châu, Hạ Long  </span> Quảng Ninh, Việt Nam</p>
+							</div>
+
+							<div>
+								<i class="fa fa-phone"></i>
+								<p>01662451994</p>
+							</div>
+
+							<div>
+								<i class="fa fa-envelope"></i>
+								<p><a href="#">anhduonghotel.com.vn</a></p>
+							</div>
+
+						</div>
+
+						<div class="footer-right">
+
+							<p class="footer-company-about">
+								<span>About the company</span>
+								Anh Duong Hotel is located on Tuan Chau Island, with 40 rooms, restaurants meet the needs ~ 200 guests, outdoor bar on the 6th floor of the hotel. In addition to accommodation services, dining and hotel services also have a boat trip to Halong Bay.
+							</p>
+
+							<div class="footer-icons">
+
+								<a href="#"><i class="fa fa-facebook"></i></a>
+								<a href="#"><i class="fa fa-twitter"></i></a>
+								<a href="#"><i class="fa fa-linkedin"></i></a>
+								<a href="#"><i class="fa fa-github"></i></a>
+
+							</div>
+
+						</div>
+
+					</footer>
+				</div>
+			</div>
+	</div>
+</form>
+</body>
+<script src="{{asset('Scripts/BookOnline/Confirm.js')}}"></script>
+
+</html>

@@ -116,4 +116,5 @@ Route::post('/K013_2','K013Controller@getSearchCheckOutRequest');
 Route::get('/book','BookController@index');
 Route::get('/LoadRoomType','BookController@loadRoomType');
 Route::get('/LoadRoomInfor','BookController@loadRoomInfor');
-Route::get('/ConfirmView','BookController@confirmView');
+Route::get('/Book/ConfirmView','BookController@confirmView');
+Route::get('/Book/ConfirmView/BookRoomOnline','BookController@bookRoomOnline');
