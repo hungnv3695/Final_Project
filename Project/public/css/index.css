@@ -50,7 +50,9 @@
 	height: 0px !important;
 }
 .book-container{
-	background: rgba(30,87,153,0.2);
+	margin-top: 70px;
+	background: rgba(255, 255, 255,0.2);
+	border-radius: 10px;
 	width: 230px;
 	height: 100px;
 	padding: 20px;
@@ -62,9 +64,9 @@
 	border-color: #fff;
 }
 #btn-book, .btn-infomation{
-	background: #147eb9;
+	background: rgb(140, 110, 78);
 	color: #fff;
-	border-radius: 0;
+	border-radius: 10px;
 	float: right;
 	font-size: 35px;
 }
@@ -72,7 +74,7 @@
 	float: none;
 }
 #btn-book:hover, .btn-infomation:hover{
-    background: #00aeef;
+    background: rgb(34, 34, 34);
     color: #fff;
 }
 .datepicker-container > p{

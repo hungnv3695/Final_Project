@@ -20,18 +20,30 @@
 		margin: 0;
 	}
 	.navbar-inverse{
-		background-color:rgb(66,110,180);
+		background-color:rgba(0, 0, 0, 0.8);
+		opacity:0.9;
 		border-radius:0;
 		border:none;
+		height:60px;
 	}
 	.navbar-inverse .navbar-nav .nav-link{
 		color:#CCCCCC;
 		font-size:16px;
+		line-height:30px;
 	}
 	li{
 		margin-right:30px;
 		text-transform:uppercase;
 		color:#CCCCCC;
+	}
+	.login{		
+		color:#CCCCCC;
+		margin-top:18px;
+		font-size:110%;
+		margin-right:20px;
+	}
+	.login:hover{		
+		color:#FFFFFF;
 	}
 	</style>
 </head>
@@ -55,20 +67,20 @@
 								<li><a class="nav-link" href="#">Phòng</a></li>
 								<li><a class="nav-link" href="#">Ảnh</a></li>
 							</ul>
-							<button href="#" class="btn btn-success navbar-btn navbar-right">Đăng nhập</button>
+							<a href="#"><p class="login navbar-right">Đăng nhập</p></a>
 						</div>
 					</div>
 				</nav>
 				<div class="row">
 					<div class="col-sm-4 col-sm-offset-8 book-container">
-						<a href="book.blade.php"><button class="btn" id="btn-book">Book now</button></a>
+						<a href="book.blade.php"><button class="btn" id="btn-book">Book Now</button></a>
 					</div>
 				</div>
 		</div>
 		<div id="slides">
-			<img class="img-responsive" src="{{ asset("/img/example-slide-4.jpg") }}">
-			<img class="img-responsive" src="{{ asset("/img/example-slide-2.jpg") }}">
-			<img class="img-responsive" src="{{ asset("/img/IMG_9828.jpg") }}">
+			<img class="img-responsive" src="{{ asset("/img/Head01.jpg") }}">
+			<img class="img-responsive" src="{{ asset("/img/Head02.jpg") }}">
+			<img class="img-responsive" src="{{ asset("/img/Head03.jpg") }}">
 			<a id="scrollTo" href="#" class="slidesjs-next slidesjs-navigation slides-center"><i class="fa fa-2x fa-arrow-circle-down" aria-hidden="true"></i></a>
 			
 			<a href="#" class="slidesjs-previous slidesjs-navigation slides-left"><i class="fa fa-3x fa-angle-left" aria-hidden="true"></i></a>
