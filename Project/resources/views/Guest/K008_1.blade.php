@@ -8,62 +8,67 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset( '/plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css' )   }}">
 	<link rel="stylesheet" type="text/css" href="{{asset('/plugins/font-awesome-4.7.0/css/font-awesome.min.css' ) }}">
 	<link rel="stylesheet" type="text/css" href="{{asset('/plugins/animate/animate.css')}}">
-	<link rel="stylesheet" type="text/css" href="{{asset('/css/index.css')}}">
+	<link rel="stylesheet" type="text/css" href=" {!! asset('css/index.css') !!}">
 	<script type="text/javascript" src="{{ asset('/plugins/jquery/jquery-3.2.1.min.js') }}"></script>
 	<script type="text/javascript" src="{{asset( '/plugins/bootstrap-3.3.7-dist/js/bootstrap.min.js' )}}"></script>
 	<script type="text/javascript" src="{{ asset('/plugins/slide/jquery.slides.min.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('/js/myPlugin.js') }}"></script>
-</head>
+	<style type="text/css">
+	body
+	{
+		padding: 0;
+		margin: 0;
+	}
+	.navbar-inverse{
+		background-color:rgb(66,110,180);
+		border-radius:0;
+		border:none;
+	}
+	.navbar-inverse .navbar-nav .nav-link{
+		color:#CCCCCC;
+		font-size:16px;
+	}
+	li{
+		margin-right:30px;
+		text-transform:uppercase;
+		color:#CCCCCC;
+	}
+	</style>
 </head>
 <body>
 	<div id="page">
 	<header>
 		<div class="my-nav-container">
-			<div class="container">
-				<nav class="navbar navbar-default my-nav">
+				<nav class="navbar navbar-inverse">
 					<div class="container-fluid">
-						<div class="navbar-header height-navbar">
-							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-								<span class="sr-only">Toggle navigation</span>
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
 								<span class="icon-bar"></span>
 								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>                        
 							</button>
-							<a class="navbar-brand subtract-padding" href="#">
-								Company Logo
-							</a>
+							<a class="navbar-brand" href="#" style="margin-left:5px;">CompanyLogo</a>
 						</div>
-						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<div class="collapse navbar-collapse" id="myNavbar">
 							<ul class="nav navbar-nav">
-								<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tiếng Việt <span class="caret"></span></a>
-									<ul class="dropdown-menu">
-										<li><a href="#">China</a></li>
-										<li><a href="#">English</a></li>
-										<li><a href="#">Japanese</a></li>
-									</ul>
-								</li>
+								<li><a class="nav-link" href="#">Trang chủ <span class="sr-only">(current)</span></a></li>
+								<li><a class="nav-link" href="#">Phòng</a></li>
+								<li><a class="nav-link" href="#">Ảnh</a></li>
 							</ul>
-							<ul class="nav navbar-nav navbar-right">
-								<li><a href="#">Trang chủ</a></li>
-								<li><a href="#">Phòng</a></li>
-								<li><a href="#">Ảnh</a></li>
-								<li><a href="{!! url('/K001') !!}">Đăng nhập</a></li>
-							</ul>
-						</div><!-- /.navbar-collapse -->
-					</div><!-- /.container-fluid -->
+							<button href="#" class="btn btn-success navbar-btn navbar-right">Đăng nhập</button>
+						</div>
+					</div>
 				</nav>
 				<div class="row">
 					<div class="col-sm-4 col-sm-offset-8 book-container">
 						<a href="book.blade.php"><button class="btn" id="btn-book">Book now</button></a>
 					</div>
 				</div>
-			</div>
 		</div>
 		<div id="slides">
 			<img class="img-responsive" src="{{ asset("/img/example-slide-4.jpg") }}">
 			<img class="img-responsive" src="{{ asset("/img/example-slide-2.jpg") }}">
-			<img class="img-responsive" src="{{ asset("/img/IMG_9828") }}">
+			<img class="img-responsive" src="{{ asset("/img/IMG_9828.jpg") }}">
 			<a id="scrollTo" href="#" class="slidesjs-next slidesjs-navigation slides-center"><i class="fa fa-2x fa-arrow-circle-down" aria-hidden="true"></i></a>
 			
 			<a href="#" class="slidesjs-previous slidesjs-navigation slides-left"><i class="fa fa-3x fa-angle-left" aria-hidden="true"></i></a>
