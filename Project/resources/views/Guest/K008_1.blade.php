@@ -40,7 +40,7 @@
 		color:#CCCCCC;
 		margin-top:18px;
 		font-size:110%;
-		margin-right:20px;
+		margin-right:15px;
 	}
 	.login:hover{		
 		color:#FFFFFF;
@@ -49,160 +49,160 @@
 </head>
 <body>
 	<div id="page">
-	<header>
-		<div class="my-nav-container">
-				<nav class="navbar navbar-inverse">
-					<div class="container-fluid">
-						<div class="navbar-header">
-							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>                        
-							</button>
-							<a class="navbar-brand" href="#" style="margin-left:5px;">CompanyLogo</a>
+		<header>
+			<div class="my-nav-container">
+					<nav class="navbar navbar-inverse">
+						<div class="container-fluid">
+							<div class="navbar-header">
+								<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>                        
+								</button>
+								<a class="navbar-brand" href="#" style="margin-left:5px;">CompanyLogo</a>
+							</div>
+							<div class="collapse navbar-collapse" id="myNavbar">
+								<ul class="nav navbar-nav">
+									<li><a class="nav-link" href="#">Trang chủ <span class="sr-only">(current)</span></a></li>
+									<li><a class="nav-link" href="#">Phòng</a></li>
+									<li><a class="nav-link" href="#">Ảnh</a></li>
+								</ul>
+								<a href="#"><p class="login navbar-right">Đăng nhập</p></a>
+							</div>
 						</div>
-						<div class="collapse navbar-collapse" id="myNavbar">
-							<ul class="nav navbar-nav">
-								<li><a class="nav-link" href="#">Trang chủ <span class="sr-only">(current)</span></a></li>
-								<li><a class="nav-link" href="#">Phòng</a></li>
-								<li><a class="nav-link" href="#">Ảnh</a></li>
-							</ul>
-							<a href="#"><p class="login navbar-right">Đăng nhập</p></a>
+					</nav>
+					<div class="row">
+						<div class="col-sm-4 col-sm-offset-8 book-container">
+							<a href="book.blade.php"><button class="btn" id="btn-book">Book Now</button></a>
 						</div>
 					</div>
-				</nav>
-				<div class="row">
-					<div class="col-sm-4 col-sm-offset-8 book-container">
-						<a href="book.blade.php"><button class="btn" id="btn-book">Book Now</button></a>
-					</div>
-				</div>
-		</div>
-		<div id="slides">
-			<img class="img-responsive" src="{{ asset("/img/Head01.jpg") }}">
-			<img class="img-responsive" src="{{ asset("/img/Head02.jpg") }}">
-			<img class="img-responsive" src="{{ asset("/img/Head03.jpg") }}">
-			<a id="scrollTo" href="#" class="slidesjs-next slidesjs-navigation slides-center"><i class="fa fa-2x fa-arrow-circle-down" aria-hidden="true"></i></a>
-			
-			<a href="#" class="slidesjs-previous slidesjs-navigation slides-left"><i class="fa fa-3x fa-angle-left" aria-hidden="true"></i></a>
-			<a href="#" class="slidesjs-next slidesjs-navigation slides-right"><i class="fa fa-3x fa-angle-right" aria-hidden="true"></i></a>
-		</div>
-		<!-- script de scroll -->
-			<script type="text/javascript">
-				$("#scrollTo").click(function() {
-				    var targetDiv = $(this).attr('href');
-				    $('html, body').animate({
-				        scrollTop: $("#content").offset().top
-				    }, 1000);
-				});
-			</script>
-		<!-- END -->
-		<!-- xu ly phan slide anh -->
-			<script type="text/javascript">
-				$('#slides').slidesjs({
-					width: 940,
-					height: 528,
-					navigation: {
-						active: false,
-					},
-					pagination: {
-						active: false,
-					},
-					start: 1,
-					play: {
-						restartDelay: 5000,
-						auto: true,
-						effect: "fade",
-						swap: true,
-						interval: 5000
-					}
-				});
-				function fixSlides(){
-					$('.slidesjs-container').css("height",$('.slidesjs-container img').css("height"));
-					$('.slides-center').css("width", parseInt($('.slidesjs-container img').css("width")) + 'px');
-
-				}
-				$( document ).ready(function() {
-					fixSlides();
-				});
-				$( window ).resize(function() {
-					fixSlides();
-
-				});
-			</script>
-		<!--END-->
-	</header>
-	<div id="content">
-		<article>
-			<div style="display: none;">
-				<p id="infomation-text">
-					Chosen as the host for top international meetings and events, our hotel is the perfect venue in Hanoi for you to create memorable events. The Grand Ballroom can seat up to 420 banquet style. The Poolside Terrace is perfect for outdoor functions, and together with 13 private function rooms, offers superb facilities for any event. Our team of dedicated specialists is available to help you meticulously plan events of any scale.
-
-Hanoi Daewoo Hotel features the largest room inventory in the city, with 411 tastefully decorated rooms and 34 suites. Each spacious room features a large window overlooking the city, swimming pool, or scenic Thu Le Lake.Chosen as the host for top international meetings and events, our hotel is the perfect venue in Hanoi for you to create memorable events. The Grand Ballroom can seat up to 420 banquet style. The Poolside Terrace is perfect for outdoor functions, and together with 13 private function rooms, offers superb facilities for any event. Our team of dedicated specialists is available to help you meticulously plan events of any scale.
-
-Hanoi Daewoo Hotel features the largest room inventory in the city, with 411 tastefully decorated rooms and 34 suites. Each spacious room features a large window overlooking the city, swimming pool, or scenic Thu Le Lake.
-				</p>
 			</div>
-			<div class="infomation">
-				<hr class="style12">
-				<button class="btn btn-infomation i1">Read more</button>
-				<button class="btn btn-infomation i2" style="display: none">Close</button>
+			<div id="slides">
+				<img class="img-responsive" src="{{ asset("/img/Head01.jpg") }}">
+				<img class="img-responsive" src="{{ asset("/img/Head02.jpg") }}">
+				<img class="img-responsive" src="{{ asset("/img/Head03.jpg") }}">
+				<a id="scrollTo" href="#" class="slidesjs-next slidesjs-navigation slides-center"><i class="fa fa-2x fa-arrow-circle-down" aria-hidden="true"></i></a>
+				
+				<a href="#" class="slidesjs-previous slidesjs-navigation slides-left"><i class="fa fa-3x fa-angle-left" aria-hidden="true"></i></a>
+				<a href="#" class="slidesjs-next slidesjs-navigation slides-right"><i class="fa fa-3x fa-angle-right" aria-hidden="true"></i></a>
 			</div>
-			<div  style="margin: 25px 0 25px 0;" >
-				<div id="more" class="container">
-					<div class="row sub-ct-container">
-						<div class="col-sm-3 col-xs-6">
-							<div class="sub-ct-col">
-								<a href="#">Phòng ở</a>
-								<a href="#"> <img src='{{ asset("/img/tt.jpg ") }}' /> </a>
-							</div>
-						</div>
-						<div class="col-sm-3 col-xs-6 sub-ct-col">
-							<div class="sub-ct-col">
-								<a href="restaurant.blade.php">Ẩm Thực</a>
-								<a href="restaurant.blade.php"><img src="{{ asset("/img/ai.jpg ") }}"/></a>
-							</div>
-						</div>
-						<div class="col-sm-3 col-xs-6 sub-ct-col">
-							<div class="sub-ct-col">
-								<a href="#">Tours</a>
-								<a href="#"><img src="{{ asset("/img/ab.jpg ") }}"/></a>
-							</div>
-						</div>
-						<div class="col-sm-3 col-xs-6 sub-ct-col">
-							<div class="sub-ct-col">
-								<a href="#">Tours</a>
-								<a href="#"><img src="{{ asset("/img/ab.jpg ") }}"/></a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!--script xu ly dong mo thong tin -->
+			<!-- script de scroll -->
 				<script type="text/javascript">
-					$( document ).ready(function() {
-						$('.btn-infomation').click(function(){
-							if($('.i1').css('display') != 'none'){
-								myPlugin.showInfo();
-								$('.i1').css('display','none');
-								$('.i2').css('display','inline-block');
-							}else{
-								myPlugin.closeInfo();
-								$('.i1').css('display','inline-block');
-								$('.i2').css('display','none');
-							}
-						});
+					$("#scrollTo").click(function() {
+						var targetDiv = $(this).attr('href');
+						$('html, body').animate({
+							scrollTop: $("#content").offset().top
+						}, 1000);
 					});
 				</script>
-			<!-- End-->
-		</article>
-		<div class="social-bar">
-			<div class="container">
-				<a href="#"><i class="fa fa-2x fa-instagram" aria-hidden="true"></i></a>
-				<a href="#"><i class="fa fa-2x fa-facebook-square" aria-hidden="true"></i></a>
+			<!-- END -->
+			<!-- xu ly phan slide anh -->
+				<script type="text/javascript">
+					$('#slides').slidesjs({
+						width: 940,
+						height: 528,
+						navigation: {
+							active: false,
+						},
+						pagination: {
+							active: false,
+						},
+						start: 1,
+						play: {
+							restartDelay: 5000,
+							auto: true,
+							effect: "fade",
+							swap: true,
+							interval: 5000
+						}
+					});
+					function fixSlides(){
+						$('.slidesjs-container').css("height",$('.slidesjs-container img').css("height"));
+						$('.slides-center').css("width", parseInt($('.slidesjs-container img').css("width")) + 'px');
+
+					}
+					$( document ).ready(function() {
+						fixSlides();
+					});
+					$( window ).resize(function() {
+						fixSlides();
+
+					});
+				</script>
+			<!--END-->
+		</header>
+		<div id="content">
+			<article>
+				<div style="display: none;">
+					<p id="infomation-text">
+						Chosen as the host for top international meetings and events, our hotel is the perfect venue in Hanoi for you to create memorable events. The Grand Ballroom can seat up to 420 banquet style. The Poolside Terrace is perfect for outdoor functions, and together with 13 private function rooms, offers superb facilities for any event. Our team of dedicated specialists is available to help you meticulously plan events of any scale.
+
+	Hanoi Daewoo Hotel features the largest room inventory in the city, with 411 tastefully decorated rooms and 34 suites. Each spacious room features a large window overlooking the city, swimming pool, or scenic Thu Le Lake.Chosen as the host for top international meetings and events, our hotel is the perfect venue in Hanoi for you to create memorable events. The Grand Ballroom can seat up to 420 banquet style. The Poolside Terrace is perfect for outdoor functions, and together with 13 private function rooms, offers superb facilities for any event. Our team of dedicated specialists is available to help you meticulously plan events of any scale.
+
+	Hanoi Daewoo Hotel features the largest room inventory in the city, with 411 tastefully decorated rooms and 34 suites. Each spacious room features a large window overlooking the city, swimming pool, or scenic Thu Le Lake.
+					</p>
+				</div>
+				<div class="infomation">
+					<hr class="style12">
+					<button class="btn btn-infomation i1">Read more</button>
+					<button class="btn btn-infomation i2" style="display: none">Close</button>
+				</div>
+				<div  style="margin: 25px 0 25px 0;" >
+					<div id="more" class="container">
+						<div class="row sub-ct-container">
+							<div class="col-sm-3 col-xs-6">
+								<div class="sub-ct-col">
+									<a href="#">Phòng ở</a>
+									<a href="#"> <img src='{{ asset("/img/tt.jpg ") }}' /> </a>
+								</div>
+							</div>
+							<div class="col-sm-3 col-xs-6 sub-ct-col">
+								<div class="sub-ct-col">
+									<a href="restaurant.blade.php">Ẩm Thực</a>
+									<a href="restaurant.blade.php"><img src="{{ asset("/img/ai.jpg ") }}"/></a>
+								</div>
+							</div>
+							<div class="col-sm-3 col-xs-6 sub-ct-col">
+								<div class="sub-ct-col">
+									<a href="#">Tours</a>
+									<a href="#"><img src="{{ asset("/img/ab.jpg ") }}"/></a>
+								</div>
+							</div>
+							<div class="col-sm-3 col-xs-6 sub-ct-col">
+								<div class="sub-ct-col">
+									<a href="#">Tours</a>
+									<a href="#"><img src="{{ asset("/img/ab.jpg ") }}"/></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--script xu ly dong mo thong tin -->
+					<script type="text/javascript">
+						$( document ).ready(function() {
+							$('.btn-infomation').click(function(){
+								if($('.i1').css('display') != 'none'){
+									myPlugin.showInfo();
+									$('.i1').css('display','none');
+									$('.i2').css('display','inline-block');
+								}else{
+									myPlugin.closeInfo();
+									$('.i1').css('display','inline-block');
+									$('.i2').css('display','none');
+								}
+							});
+						});
+					</script>
+				<!-- End-->
+			</article>
+			<div class="social-bar">
+				<div class="container">
+					<a href="#"><i class="fa fa-2x fa-instagram" aria-hidden="true"></i></a>
+					<a href="#"><i class="fa fa-2x fa-facebook-square" aria-hidden="true"></i></a>
+				</div>
 			</div>
 		</div>
-	</div>
-	<footer class="footer-distributed">
+		<footer class="footer-distributed">
 
 			<div class="footer-left">
 
