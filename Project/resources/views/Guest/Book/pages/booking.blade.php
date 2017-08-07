@@ -9,8 +9,7 @@
 
     <!-- We support more than 40 localizations -->
     <script type="text/ecmascript" src="{{asset('jqgrid/js/i18n/grid.locale-en.js') }}"></script>
-    <!-- This is the Javascript file of jqGrid -->
-    <script type="text/ecmascript" src="{{asset('jqgrid/js/jquery.jqGrid.min.js')}}"></script>
+
     <!-- This is the localization file of the grid controlling messages, labels, etc.
     <!-- A link to a jQuery UI ThemeRoller theme, more than 22 built-in and many more custom -->
     <link rel="stylesheet" type="text/css" media="screen" href="{{asset('bootstrap-3.3.4-dist/css/bootstrap.min.css')}}" />

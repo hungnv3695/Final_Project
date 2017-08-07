@@ -3,13 +3,14 @@
     <meta charset="UTF-8">
 	<title>Xác nhận đặt phòng</title>
 	<link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="plugins/font-awesome-4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="plugins/animate/animate.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<link rel="stylesheet" type="text/css" href="{{asset('plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('plugins/font-awesome-4.7.0/css/font-awesome.min.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('plugins/animate/animate.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('css/index.css')}}">
+	<script type="text/ecmascript" src="{{asset('jqgrid/js/jquery-1.11.0.min.js') }}"></script>
+	<script src="{!! asset('Scripts/FrontCheck/CheckError.js') !!}"> </script>
     <style type="text/css">
+
 	body
 	{
 		padding: 0;
@@ -18,7 +19,6 @@
 	.navbar-inverse{
 		background-color:rgb(66,110,180);
 		border-radius:0;
-		border:none;
 	}
 	.navbar-inverse .navbar-nav .nav-link{
 		color:#CCCCCC;
@@ -37,8 +37,6 @@
 	.reservation-title h4{
 		line-height:35px;
 		margin-left:20px;
-		font-weight:bold;
-		color:#ffffff;
 	}
 	.label1{
 		color:gray;
@@ -54,6 +52,7 @@
 	</style>
 </head>
 <body>
+<form id="myForm">
 	<div class="page">
 		<!--header-->
 		<header>
@@ -83,7 +82,7 @@
 				<h3 align="center" style="color:rgb(70,140,190);"><b>Xác nhận đặt phòng</b></h3>
 				<div class="col-md-12">
 					<div class="row reservation-title">
-						<h4><b>Thông tin đặt phòng - from <span>...</span> to <span>...</span></b></h4>
+						<h4><b>Hồ sơ đặt phòng</b></h4>
 					</div>
 					<div class="row" style="border-bottom:1px solid rgb(220,220,220);">
 						<div class="col-md-7">
@@ -115,41 +114,27 @@
 									</div>
 									<div class="col-md-4">
 										<div class="form-group">
-											<label style="font-size:120%;color:rgb(70,140,190);"><b>Số lượng</b></label>
+											<label style="font-size:120%;color:rgb(70,140,190);"><b>Số lượng (Phòng)</b></label>
 										</div>
 									</div>
 									<div class="col-md-4">
 										<div class="form-group">
-											<label style="font-size:120%;color:rgb(70,140,190);"><b>Giá</b></label>
+											<label style="font-size:120%;color:rgb(70,140,190);"><b>Giá (VNĐ) </b></label>
 										</div>
 									</div>
 								</div>
-								<div class="col-md-12">
-									<div class="col-md-4">
-										<div class="form-group">
-											<span class="fa fa-home" style="margin-right:5px;"></span><label><b>Single</b></label>
-										</div>
-									</div>
-									<div class="col-md-4">
-										<div class="form-group">
-											<label><b>2</b></label>
-										</div>
-									</div>
-									<div class="col-md-4">
-										<div class="form-group">
-											<label><b>$2</b></label>
-										</div>
-									</div>
+								<div class="col-md-12" id="BookInfor">
+
 								</div>
 								<div class="col-md-12" style="margin-top:10px;">
 									<div class="col-md-4">
 										<div class="form-group">
-											<label style="font-size:120%;color:rgb(70,140,190);"><b>Total</b></label>
+											<label style="font-size:120%;color:rgb(70,140,190);"><b>Tiền phòng</b></label>
 										</div>
 									</div>
 									<div class="col-md-4 col-md-offset-4">
 										<div class="form-group">
-											<label><b>$2</b></label>
+											<label id="roomPrice"><b>$2</b></label>
 										</div>
 									</div>
 								</div>
@@ -159,38 +144,35 @@
 											<label><b>Số đêm</b></label>
 										</div>
 									</div>
-									<div class="col-md-4">
+									<div class="col-md-3 col-md-offset-4">
 										<div class="form-group">
-											<label><b>2</b></label>
+											<label id="nights"><b></b></label>
+											<label><b> (đêm)</b></label>
 										</div>
 									</div>
-									<div class="col-md-4">
-										<div class="form-group">
-											<label><b>$200</b></label>
-										</div>
-									</div>
+
 								</div>
 								<div class="col-md-12">
 									<div class="col-md-4">
 										<div class="form-group">
-											<label>Không bao gồm VAT</b></label>
+											<label><b>Không bao gồm VAT</b></label>
 										</div>
 									</div>
 									<div class="col-md-4 col-md-offset-4">
 										<div class="form-group">
-											<label><b>$200</b></label>
+											<label><b>10%</b></label>
 										</div>
 									</div>
 								</div>
 								<div class="col-md-12" style="margin-bottom:56px;">
 									<div class="col-md-4 col-md-offset-4">
 										<div class="form-group">
-											<label>Tổng tiền là:</b></label>
+											<label><b>Tổng tiền là:</b></label>
 										</div>
 									</div>
 									<div class="col-md-4">
 										<div class="form-group">
-											<label><b>$200</b></label>
+											<label id="Total"><b></b></label>
 										</div>
 									</div>
 								</div>
@@ -201,19 +183,19 @@
 								<label style="font-size:120%;color:rgb(70,140,190);margin-top:10px;"><b>Thông tin khách</b></label>
 								<div class="form-inline col-md-offset-1" style="margin-top:10px;">
 									<label class="label3" for="">Họ tên: </label>  
-									<input id="txtFullname1" name="txtFullname1" type="text" class="form-control input-md" size="20" maxlength="50">
+									<input id="txtFullname" name="txtFullname" type="text" class="form-control input-md" size="20" maxlength="50" oninvalid="InvalidMsg(this);" required  >
 								</div>
 								<div class="form-inline col-md-offset-1" style="margin-top:10px;margin-bottom:20px;">
 									<label class="label3" for="">Email: </label>  
-									<input id="txtEmail1" name="txtEmail1" type="text" class="form-control input-md" size="20" maxlength="50">
+									<input id="txtEmail" name="txtEmail" type="text" class="form-control input-md" size="20" maxlength="50">
 								</div>
 								<div class="form-inline col-md-offset-1" style="margin-top:10px;">
 									<label class="label3" for="">Điện thoại: </label>  
-									<input id="txtPhone1" name="txtPhone1" type="text" class="form-control input-md" size="20" maxlength="20">
+									<input id="txtPhone" name="txtPhone" type="text" class="form-control input-md" size="20" maxlength="20">
 								</div>
 								<div class="form-inline col-md-offset-1" style="margin-top:10px;">
 									<label class="label3" for="">CMND: </label>  
-									<input id="txtIdcard1" name="txtIdcard1" type="text" class="form-control input-md" size="20" maxlength="12">
+									<input id="txtIdcard" name="txtIdcard" type="text" class="form-control input-md" size="20" maxlength="12">
 								</div>
 								<div class="form-inline col-md-offset-1" style="margin-top:10px;">
 									<label class="label3" for="">Địa chỉ: </label>  
@@ -225,7 +207,7 @@
 									<option value="England">England</option>
 									<option value="Korea">Korea</option>
 									<option value="Japan">Japan</option>
-									<option value="VietNam" selected>Việt Nam</option>
+									<option value="Việt Nam" selected>Việt Nam</option>
 									</select>
 								</div>
 								
@@ -237,7 +219,9 @@
 					<div class="col-md-12">
 						<div class="row"><textarea rows="3" cols="185" id="notetxt" name="notetxt" placeholder="Vui lòng ghi những thắc nhắc, yêu cầu của quý khách..." maxlength="100"></textarea></div>
 					</div>
-					<div class="col-md-2 col-md-offset-5" style="margin-top:10px;margin-bottom:10px;"><button type="button" class="btn btn-primary btn-block" value="btnRoomstatus" name="btnRoomstatus" ><b>Đặt phòng</b></button></div>
+					<div class="col-md-2 col-md-offset-5" style="margin-top:10px;margin-bottom:10px;">
+						<button type="button" class="btn btn-primary btn-block" value="btnBook" id="btnBook" ><b>Đặt phòng</b></button>
+					</div>
 				</div>
 		</div>
 		<!--footer-->
@@ -307,5 +291,8 @@
 				</div>
 			</div>
 	</div>
+</form>
 </body>
+<script src="{{asset('Scripts/BookOnline/Confirm.js')}}"></script>
+
 </html>

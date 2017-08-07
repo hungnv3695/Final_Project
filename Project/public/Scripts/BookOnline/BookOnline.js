@@ -4,6 +4,11 @@
 $(document).ready(function () {
     var count= 0;
     var maxPick = 4;
+    var roType = [];
+    var roQuan = [];
+    var roPrice = [];
+    var nights = 0;
+
 
     //Start :Datetimepicker
         jQuery('#checkin').datetimepicker({
@@ -87,7 +92,7 @@ $(document).ready(function () {
             $("#inforBook").append(
                 '<div class="col-md-3">'
                     +'<div class="form-group">'
-                    +'<span class="fa fa-home" style="margin-right:5px;"></span><label class="label2"><b>'+result[i].type_name +'</b></label>'
+                    +'<span class="fa fa-home" style="margin-right:5px;"></span><label class="label2" id="room_type'+i+'"><b>'+result[i].type_name +'</b></label>'
                     +'</div>'
                 +'</div>'
                 +'<div class="col-md-3">'
@@ -310,19 +315,44 @@ $(document).ready(function () {
     });
 
 
+    function days() {
+        var a,b,c;
 
+        if(($("#checkin").val()=="") || ($("#checkout").val()=="")){
+            return;
+        }
+        a = $("#checkin").datetimepicker('getValue').getTime(),
+            b = $("#checkout").datetimepicker('getValue').getTime(),
+            c = 24*60*60*1000,
+            diffDays = Math.round(Math.abs((a - b)/(c)));
+
+        return diffDays;
+    }
     $("#btnNext").click(function (e) {
         var quantity = 0;
+        var countRoomBooked = 0;
+        var check_in = $("#checkin").val();
+        var check_out = $("#checkout").val();
+        var adult = $("#adult").val();
+        var children = $("#child").val();
+        console.log(check_in,check_out);
         for(var i = 0; i < count; i++){
             quantity += Number($("#quantity" + i).val());
-
+            if(Number($("#quantity" + i).val()) > 0 ){
+                roType.push($("#room_type"+i).text());
+                roQuan.push($("#quantity"+i).val());
+                roPrice.push($("#totalprice"+i).text().replace(".",""));
+                countRoomBooked +=1;
+            }
+            nights = days();
         }
         if(quantity == 0){
             alert('ss');
             return;
         }
         if(quantity > 0){
-            window.open('/ConfirmView','_self');
+            window.open('/Book/ConfirmView?roType=' +roType + "&roQuan=" + roQuan + "&roPrice=" + roPrice + "&nights=" + nights +
+                "&countRoom=" + countRoomBooked + "&check_in="+check_in+"&check_out="+check_out+"&adult="+adult+"&children="+children  ,'_blank');
         }
 
 
