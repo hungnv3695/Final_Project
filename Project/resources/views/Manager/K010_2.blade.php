@@ -210,7 +210,7 @@
 			<input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
 			<div class="col-md-12" style="background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
 					<div class="col-md-6 col-md-offset-9" style="margin-top:10px; margin-bottom:10px;">
-						<button type="submit" class="btn btn-success col-md-offset-2" value="bntSave" id="bntAddType" name="bntSave" ><b>Lưu</b></button>
+						<button class="btn btn-success col-md-offset-2" value="bntSave" id="bntAddType" name="bntSave" ><b>Lưu</b></button>
 						<button type="button" class="btn btn-danger" value="bntCancel" name="bntCancel" onclick="window.location='{{ url("/K002") }}'" ><b>Hủy bỏ</b></button>
 					</div>
 			</div>
@@ -237,7 +237,7 @@
             alert("Vui lòng chọn loại phòng và edit");
             return false;
         }else{
-            return true;
+            return confirm('Bạn muốn thực hiện thay đổi này?');
 		}
     }
 

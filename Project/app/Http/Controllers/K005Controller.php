@@ -125,30 +125,26 @@ class K005Controller extends Controller
         $room->setRoomNumber($request->txtRoomNo);
         $room->setNote($request->txtNote);
 
-        $result =  $this->updateRoom($room);
 
-        if($result == true){
-            return redirect('/K005_1')->with(Constants::SUCCESS_MSG,Message::MSG0018);
+        $k005DAO = new K005DAO();
 
+        $checkName = $k005DAO->checkRoomNumber($request->txtRoomNo,$roomID);
+
+        if(!$checkName){
+            return back()->withInput()->with(Constants::ERROR_MSG,Message::MSG0036);
         }else{
-            return back()->withInput()->with(Constants::ERROR_MSG,Message::MSG0023);
+            $result = $k005DAO->updateRoom($room);
+
+            if($result == true){
+                return redirect('/K005_1')->with(Constants::SUCCESS_MSG,Message::MSG0018);
+
+            }else{
+                return back()->withInput()->with(Constants::ERROR_MSG,Message::MSG0023);
+            }
         }
 
     }
 
-    /**
-     * Update room
-     * @param Room $room
-     * @param $accessory
-     * @return bool
-     */
-    private function updateRoom(Room $room ){
-        $k005DAO = new K005DAO();
-
-        $result = $k005DAO->updateRoom($room);
-
-        return $result;
-    }
 
     /**
      * get Add room Request
@@ -161,9 +157,11 @@ class K005Controller extends Controller
         $k005DAO = new K005DAO();
 
         $checkKey= $k005DAO->checkRoomKey($request->txtRoomID);
-
+        $checkName = $k005DAO->checkRoomNumber($request->txtRoomNo,$request->txtRoomID);
         if($checkKey == false){
             return back()->withInput()->with(Constants::ERROR_MSG,Message::MSG0026);
+        }elseif (!$checkName){
+            return back()->withInput()->with(Constants::ERROR_MSG,Message::MSG0036);
         } else{
 
             $room = new Room();
@@ -174,7 +172,7 @@ class K005Controller extends Controller
             $room->setRoomNumber($request->txtRoomNo);
 
 
-            $result =  $this->addRoom($room);
+            $result =  $k005DAO->addRoom($room);
 
             if($result == true){
                 return redirect('/K005_1')->with(Constants::SUCCESS_MSG,Message::MSG0025);
@@ -185,20 +183,4 @@ class K005Controller extends Controller
         }
 
     }
-
-    /**
-     * Add room
-     * @param $room
-     * @param $accessory
-     * @return bool
-     */
-    private function addRoom($room){
-        $k005DAO = new K005DAO();
-
-        $result = $k005DAO->addRoom($room);
-
-        return $result;
-    }
-
-
 }

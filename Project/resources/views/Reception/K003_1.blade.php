@@ -59,7 +59,7 @@
 <body>
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2" style="margin-top:2%;background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
+        <div class="col-md-8 col-md-offset-2" style="margin-top:1%;background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
 			<div class="row">
 				<div class="col-md-offset-9" style="margin:10px 10px 0px 0px;float:right;">
 					@if(Session::has('USER_INFO'))
@@ -73,7 +73,7 @@
 			</div>
         </div>
         <div class="col-md-8 col-md-offset-2" style="background-color:rgb(230,230,230);border:1px solid rgb(215,215,215); border-top:none;">
-            <div class="col-md-12" style="border:3px solid rgb(200,200,200); margin:20px 0px 20px 0px;border: 2px solid rgb(220,220,220);border-radius:10px;">
+            <div class="col-md-12" style="border:3px solid rgb(200,200,200); margin:15px 0px 15px 0px;border: 2px solid rgb(220,220,220);border-radius:10px;">
 				<form method="post" onsubmit="return checkDate();" style="margin-top:10px;">
 					<div class="col-md-12 form-inline">
 						<label class="control-label" for="date">Nhận phòng:</label>
@@ -133,13 +133,13 @@
                     <button class="btn btn-default active" value="bnt208" id="208" >208</button>
                     <button class="btn btn-default active" value="bnt209" id="209" >209</button>
                 </div>
-                <div class="col-md-12 form-inline" style="margin-bottom:30px;">
+                <div class="col-md-12 form-inline" style="margin-bottom:20px;">
                     <label class="label1">Tầng 1:</label>
                     <button class="btn btn-default active" value="bnt101" id="101" >101</button>
                     <button class="btn btn-default active" value="bnt102" id="102" >102</button>
                     <button class="btn btn-default active" value="bnt103" id="103" >103</button>
                 </div>
-                <div class="col-md-12 form-inline" style="margin-bottom:20px;">
+                <div class="col-md-12 form-inline" style="margin-bottom:10px;">
                     <div class="col-md-3">
                         <div class="Roomstatus" style="background-color:white;"></div>
                         <label class="label2">Phòng trống</label>
@@ -158,6 +158,13 @@
                     </div>
                 </div>
             </div>
+        </div>
+		<div class="col-md-8 col-md-offset-2" style="background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
+			<div class="row">
+				<div class="col-md-2 col-md-offset-10" style="margin-top:10px;margin-bottom:10px;">
+					<button id="btnBack" class="btn btn-danger" type="button"><b>Quay lại</b></button>
+				</div>
+			</div>
         </div>
     </div>
 </div>
