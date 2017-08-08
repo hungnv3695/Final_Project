@@ -8,6 +8,18 @@
 	.label2{
         line-height:40px;
     }
+	.btnApply
+	{
+		width:80px;
+		background: rgb(140, 110, 78);
+		color: #ffffff;
+		height:32px;
+		border-radius: 4px;
+		border:none;
+	}
+	.btnApply:hover
+	{
+		background: rgb(34, 34, 34);
 </style>
 
 <div class="pickroom">
@@ -38,7 +50,7 @@
                 </div>
             </div>
             <div class="col-md-2 justify-content-center" style="margin-top:26px;" id="btnApply">
-                <button class="btn btn-primary" style="width: 80px">Apply</button>
+                <button class="btnApply">Apply</button>
             </div>
         </div>
         <div class="row" id="Infor">

@@ -6,12 +6,12 @@
 .bg {
     width: 100%;
     height: 300px;
-    background: url('../img/hotelroom.jpg') fixed;
+    background: url('../img/Head03.jpg') fixed;
 }
 
 .slider {
     padding: 20px;
-    background: rgb(70,140,190);
+    background: rgb(140, 110, 78);
 }
 
 .pickroom {
