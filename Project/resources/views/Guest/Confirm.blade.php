@@ -3,10 +3,14 @@
     <meta charset="UTF-8">
 	<title>Xác nhận đặt phòng</title>
 	<link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="{{asset('plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css')}}">
-	<link rel="stylesheet" type="text/css" href="{{asset('plugins/font-awesome-4.7.0/css/font-awesome.min.css')}}">
-	<link rel="stylesheet" type="text/css" href="{{asset('plugins/animate/animate.css')}}">
-	<link rel="stylesheet" type="text/css" href="{{asset('css/index.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ asset( '/plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css' )   }}">
+	<link rel="stylesheet" type="text/css" href="{{asset('/plugins/font-awesome-4.7.0/css/font-awesome.min.css' ) }}">
+	<link rel="stylesheet" type="text/css" href="{{asset('/plugins/animate/animate.css')}}">
+	<link rel="stylesheet" type="text/css" href=" {!! asset('css/index.css') !!}">
+	<script type="text/javascript" src="{{ asset('/plugins/jquery/jquery-3.2.1.min.js') }}"></script>
+	<script type="text/javascript" src="{{asset( '/plugins/bootstrap-3.3.7-dist/js/bootstrap.min.js' )}}"></script>
+	<script type="text/javascript" src="{{ asset('/plugins/slide/jquery.slides.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('/js/myPlugin.js') }}"></script>
 	<script type="text/ecmascript" src="{{asset('jqgrid/js/jquery-1.11.0.min.js') }}"></script>
 	<script src="{!! asset('Scripts/FrontCheck/CheckError.js') !!}"> </script>
     <style type="text/css">
@@ -17,23 +21,45 @@
 			margin: 0;
 		}
 		.navbar-inverse{
-			background-color:rgb(66,110,180);
+			width:100%;
+			background-color:rgba(0, 0, 0, 0.8);
+			opacity:0.9;
 			border-radius:0;
 			border:none;
 		}
 		.navbar-inverse .navbar-nav .nav-link{
 			color:#CCCCCC;
 			font-size:16px;
+			line-height:30px;
 		}
 		li{
 			margin-right:30px;
 			text-transform:uppercase;
 			color:#CCCCCC;
 		}
-
+		.login{		
+			color:#CCCCCC;
+			margin-top:18px;
+			font-size:110%;
+			margin-right:15px;
+		}
+		.login:hover{		
+			color:#FFFFFF;
+		}
+		.logo{
+			width:150px;
+			height:150px;
+			opacity:0.9;
+			margin-left:60px;
+		}
+		.bg {
+			width: 100%;
+			height: 300px;
+			background: url('../img/Head02.jpg') fixed;
+		}
 		.reservation-title{
 			height:50px;
-			background: rgb(70,140,190);
+			background: rgb(140, 110, 78);
 		}
 		.reservation-title h4{
 			line-height:35px;
@@ -52,6 +78,17 @@
 			width:100px;
 			text-align:right;
 		}
+		.booking{
+			background: rgb(140, 110, 78);
+			color: #fff;
+			height:40px;
+			border-radius: 7px;
+			border:none;
+		}
+		.booking:hover{
+			background: rgb(34, 34, 34);
+			color: #fff;
+		}
 	</style>
 </head>
 <body>
@@ -59,7 +96,7 @@
 	<div class="page">
 		<!--header-->
 		<header>
-			<nav class="navbar navbar-inverse">
+			<nav class="navbar navbar-inverse"style="position:fixed;">
 				<div class="container-fluid">
 					<div class="navbar-header">
 						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -67,7 +104,7 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>                        
 						</button>
-						<a class="navbar-brand" href="#" style="margin-left:5px;">CompanyLogo</a>
+						<a class="navbar-brand" href="#"><img class="logo" src="../img/LogoAnhDuong.jpg"/></a>
 					</div>
 					<div class="collapse navbar-collapse" id="myNavbar">
 						<ul class="nav navbar-nav">
@@ -75,14 +112,15 @@
 							<li><a class="nav-link" href="#">Phòng</a></li>
 							<li><a class="nav-link" href="#">Ảnh</a></li>
 						</ul>
-						<button href="#" class="btn btn-success navbar-btn navbar-right">Đăng nhập</button>
+						<a href="{!! url('/K001/LogOut') !!}"><p class="login navbar-right">Đăng nhập</p></a>
 					</div>
 				</div>
 			</nav>
+			<div class="bg"></div>
 		</header>
 		<!--body-->
 		<div id="content">
-				<h3 align="center" style="color:rgb(70,140,190);"><b>Xác nhận đặt phòng</b></h3>
+				<h3 align="center" style="color:rgb(140, 110, 78);"><b>Xác nhận đặt phòng</b></h3>
 				<div class="col-md-12">
 					<div class="row reservation-title">
 						<h4><b>Thông tin đặt phòng - from <span id="spCheckin">...</span> to <span id="spCheckout">...</span></b></h4>
@@ -90,7 +128,7 @@
 					<div class="row" style="border-bottom:1px solid rgb(220,220,220);">
 						<div class="col-md-7">
 							<div class="form-inline">
-								<h4 style="color:rgb(70,140,190);"><b>ANH DUONG HOTEL</b></h4>
+								<h4 style="color:rgb(140, 110, 78);"><b>ANH DUONG HOTEL</b></h4>
 							</div>
 							<div class="col-md-3 form-horizontal">
 								<div class="form-group"><label class="label1">Địa chỉ</label></div>
@@ -108,31 +146,31 @@
 					</div>
 					<div class="row" style="border-bottom:1px solid rgb(220,220,220);margin-bottom:20px;">
 						<div class="col-md-6">
-							<div class="col-md-12"style="border:2px solid rgb(220,220,220);margin-top:10px;margin-bottom:10px;">
+							<div class="col-md-12"style="border:2px solid rgb(240,240,240);margin-top:10px;margin-bottom:10px;">
 								<div class="col-md-12" style="margin-top:10px;">
 									<div class="col-md-4">
 										<div class="form-group">
-											<label style="font-size:120%;color:rgb(70,140,190);"><b>Kiểu phòng</b></label>
+											<label style="font-size:120%;color:rgb(140, 110, 78);"><b>Kiểu phòng</b></label>
 										</div>
 									</div>
 									<div class="col-md-4">
 										<div class="form-group">
-											<label style="font-size:120%;color:rgb(70,140,190);"><b>Số lượng (Phòng)</b></label>
+											<label style="font-size:120%;color:rgb(140, 110, 78);"><b>Số lượng (Phòng)</b></label>
 										</div>
 									</div>
 									<div class="col-md-4">
 										<div class="form-group">
-											<label style="font-size:120%;color:rgb(70,140,190);"><b>Giá (VNĐ) </b></label>
+											<label style="font-size:120%;color:rgb(140, 110, 78);"><b>Giá (VNĐ) </b></label>
 										</div>
 									</div>
 								</div>
 								<div class="col-md-12" id="BookInfor">
 
 								</div>
-								<div class="col-md-12" style="margin-top:10px;">
+								<div class="col-md-12" style="margin-top:30px;">
 									<div class="col-md-4">
 										<div class="form-group">
-											<label style="font-size:120%;color:rgb(70,140,190);"><b>Tiền phòng</b></label>
+											<label style="font-size:120%;color:rgb(140, 110, 78);"><b>Tiền phòng</b></label>
 										</div>
 									</div>
 									<div class="col-md-4 col-md-offset-4">
@@ -167,10 +205,10 @@
 										</div>
 									</div>
 								</div>
-								<div class="col-md-12" style="margin-bottom:56px;">
+								<div class="col-md-12" style="margin-top:10px;margin-bottom:49px;">
 									<div class="col-md-4 col-md-offset-4">
 										<div class="form-group">
-											<label><b>Tổng tiền là:</b></label>
+											<label style="font-size:120%;color:rgb(140, 110, 78);"><b>Tổng tiền là:</b></label>
 										</div>
 									</div>
 									<div class="col-md-4">
@@ -182,31 +220,31 @@
 							</div>
 						</div>
 						<div class="col-md-6">
-							<div class="col-md-12" style="border:2px solid rgb(220,220,220);margin-top:10px;margin-bottom:10px;">
-								<label style="font-size:120%;color:rgb(70,140,190);margin-top:10px;"><b>Thông tin khách</b></label>
+							<div class="col-md-12" style="border:2px solid rgb(240,240,240);margin-top:10px;margin-bottom:10px;">
+								<label style="font-size:120%;color:rgb(140, 110, 78);margin-top:10px;"><b>Thông tin khách</b></label>
 								<div class="form-inline col-md-offset-1" style="margin-top:10px;">
 									<label class="label3" for="">Họ tên: </label>  
-									<input id="txtFullname" name="txtFullname" type="text" class="form-control input-md" size="20" maxlength="50" oninvalid="InvalidMsg(this);" required  >
+									<input id="txtFullname" name="txtFullname" type="text" class="form-control input-md" size="25" maxlength="50" oninvalid="InvalidMsg(this);" required  >
 								</div>
-								<div class="form-inline col-md-offset-1" style="margin-top:10px;margin-bottom:20px;">
+								<div class="form-inline col-md-offset-1" style="margin-top:15px;">
 									<label class="label3" for="">Email: </label>  
-									<input id="txtEmail" name="txtEmail" type="text" class="form-control input-md" size="20" maxlength="50">
+									<input id="txtEmail" name="txtEmail" type="text" class="form-control input-md" size="25" maxlength="50">
 								</div>
-								<div class="form-inline col-md-offset-1" style="margin-top:10px;">
+								<div class="form-inline col-md-offset-1" style="margin-top:15px;">
 									<label class="label3" for="">Điện thoại: </label>  
-									<input id="txtPhone" name="txtPhone" type="text" class="form-control input-md" size="20" maxlength="20">
+									<input id="txtPhone" name="txtPhone" type="text" class="form-control input-md" size="25" maxlength="20">
 								</div>
-								<div class="form-inline col-md-offset-1" style="margin-top:10px;">
+								<div class="form-inline col-md-offset-1" style="margin-top:15px;">
 									<label class="label3" for="">CMND: </label>  
-									<input id="txtIdcard" name="txtIdcard" type="text" class="form-control input-md" size="20" maxlength="12">
+									<input id="txtIdcard" name="txtIdcard" type="text" class="form-control input-md" size="25" maxlength="12">
 								</div>
-								<div class="form-inline col-md-offset-1" style="margin-top:10px;">
+								<div class="form-inline col-md-offset-1" style="margin-top:15px;">
 									<label class="label3" for="">Địa chỉ: </label>  
-									<input id="txtAddress" name="txtAddress" type="text" class="form-control input-md" size="20" maxlength="100">
+									<input id="txtAddress" name="txtAddress" type="text" class="form-control input-md" size="25" maxlength="100">
 								</div>
-								<div class="form-inline col-md-offset-1" style="margin-top:10px;margin-bottom:10px;">
+								<div class="form-inline col-md-offset-1" style="margin-top:15px;margin-bottom:20px;">
 									<label class="label3">Quốc tịch:</label>  
-									<select id="Country" name="Country" style="width:187px;" class="form-control input-md">
+									<select id="Country" name="Country" style="width:220px;" class="form-control input-md">
 									<option value="England">England</option>
 									<option value="Korea">Korea</option>
 									<option value="Japan">Japan</option>
@@ -223,7 +261,7 @@
 						<div class="row"><textarea rows="3" cols="185" id="notetxt" name="notetxt" placeholder="Vui lòng ghi những thắc nhắc, yêu cầu của quý khách..." maxlength="100"></textarea></div>
 					</div>
 					<div class="col-md-2 col-md-offset-5" style="margin-top:10px;margin-bottom:10px;">
-						<button type="button" class="btn btn-primary btn-block" value="btnBook" id="btnBook" ><b>Đặt phòng</b></button>
+						<button type="button" class="booking btn-block" value="btnBook" id="btnBook" ><b>Đặt phòng</b></button>
 					</div>
 				</div>
 		</div>
