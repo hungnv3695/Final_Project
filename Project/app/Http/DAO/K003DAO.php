@@ -169,7 +169,8 @@ class K003DAO
 
 
             $invoiceDetailInsert->invoice_id = $invoiceInsert->id;
-            $invoiceDetailInsert->description = $invoiceDetail->getDesc();
+            $invoiceDetailInsert->item_id = $invoiceDetail->getItemId();
+            $invoiceDetailInsert->item_type = $invoiceDetail->getItemType();
             $invoiceDetailInsert->quantity = $invoiceDetail->getQuantity();
             $invoiceDetailInsert->price = $invoiceDetail->getPrice();
             $invoiceDetailInsert->amount_total = $invoiceDetail->getAmountTotal();

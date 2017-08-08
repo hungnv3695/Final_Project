@@ -40,13 +40,13 @@
             <div class="col-md-2">
                 <div class="form-group">
                     <label for="adult">Adult</label>
-                    <input type="number" class="form-control" id="adult" min="1">
+                    <input type="number" class="form-control" id="adult" min="1" value="1">
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group">
                     <label for="child">Children</label>
-                    <input type="number" class="form-control" id="child" min="0">
+                    <input type="number" class="form-control" id="child" min="0" value="0">
                 </div>
             </div>
             <div class="col-md-2 justify-content-center" style="margin-top:26px;" id="btnApply">

@@ -147,8 +147,8 @@
 
 					<div class="form-inline col-md-offset-1" style="margin-top: 10px;">
 						<label class="label1" for="">Tổng tiền:</label>
-						<input id="txtTotalprice" name="txtTotalprice" type="text" class="form-control input-md " size="10" readonly>
-						<label class="control-label" for="">x1000 VND</label>
+						<input id="txtTotalprice" name="txtTotalprice" type="text" class="form-control input-md " style=" text-align:right;" size="10" readonly>
+						<label class="control-label" for=""> VNĐ</label>
 					</div>
 					<div class="form-inline col-md-offset-1" style="margin-top:10px;margin-bottom:20px;">
 						<label class="label1" for="">Ghi chú: </label>

@@ -16,14 +16,13 @@ class Invoice extends Model
     private $id;
     private $paymentTypeId;
     private $reservationId;
-    private $accountant_id;
-    private $receptionistId;
     private $guestId;
     private $taxCode;
     private $amountTotal;
     private $updateYmd;
     private $createYmd;
     private $createrName;
+
     /**
      * @return mixed
      */
@@ -70,38 +69,6 @@ class Invoice extends Model
     public function setReservationId($reservationId)
     {
         $this->reservationId = $reservationId;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAccountantId()
-    {
-        return $this->accountant_id;
-    }
-
-    /**
-     * @param mixed $accountant_id
-     */
-    public function setAccountantId($accountant_id)
-    {
-        $this->accountant_id = $accountant_id;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getReceptionistId()
-    {
-        return $this->receptionistId;
-    }
-
-    /**
-     * @param mixed $receptionistId
-     */
-    public function setReceptionistId($receptionistId)
-    {
-        $this->receptionistId = $receptionistId;
     }
 
     /**
@@ -199,6 +166,7 @@ class Invoice extends Model
     {
         $this->createrName = $createrName;
     }
+
 
     /**
      * The table associated with the model.

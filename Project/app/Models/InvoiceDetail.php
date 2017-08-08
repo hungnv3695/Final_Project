@@ -14,9 +14,9 @@ use Illuminate\Database\Eloquent\Model;
 class InvoiceDetail extends Model
 {
     private $id;
-    private $roomNumber;
     private $invoiceId;
-    private $desc;
+    private $item_id;
+    private $item_type;
     private $quantity;
     private $price;
     private $amount_total;
@@ -24,20 +24,21 @@ class InvoiceDetail extends Model
     private $createYmd;
 
     /**
-     * @return mixed
+     * @return array
      */
-    public function getDesc()
+    public function getFillable()
     {
-        return $this->desc;
+        return $this->fillable;
     }
 
     /**
-     * @param mixed $desc
+     * @param array $fillable
      */
-    public function setDesc($desc)
+    public function setFillable($fillable)
     {
-        $this->desc = $desc;
+        $this->fillable = $fillable;
     }
+
     /**
      * @return mixed
      */
@@ -57,22 +58,6 @@ class InvoiceDetail extends Model
     /**
      * @return mixed
      */
-    public function getRoomNumber()
-    {
-        return $this->roomNumber;
-    }
-
-    /**
-     * @param mixed $roomNumber
-     */
-    public function setRoomNumber($roomNumber)
-    {
-        $this->roomNumber = $roomNumber;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getInvoiceId()
     {
         return $this->invoiceId;
@@ -86,6 +71,37 @@ class InvoiceDetail extends Model
         $this->invoiceId = $invoiceId;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getItemId()
+    {
+        return $this->item_id;
+    }
+
+    /**
+     * @param mixed $item_id
+     */
+    public function setItemId($item_id)
+    {
+        $this->item_id = $item_id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getItemType()
+    {
+        return $this->item_type;
+    }
+
+    /**
+     * @param mixed $item_type
+     */
+    public function setItemType($item_type)
+    {
+        $this->item_type = $item_type;
+    }
 
     /**
      * @return mixed
@@ -166,6 +182,7 @@ class InvoiceDetail extends Model
     {
         $this->createYmd = $createYmd;
     }
+
     /**
      * The table associated with the model.
      *

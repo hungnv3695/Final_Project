@@ -139,19 +139,19 @@ class K003Controller extends Controller
             $room->setRoomID($room_id);
 
             $invoice = new Invoice();
-            $invoice->setAmountTotal($request->txtTotalprice);
+            $invoice->setAmountTotal(str_replace(".","",$request->txtTotalprice));
             $invoice->setCreateYmd(Carbon::now());
             $invoice->setCreaterName('hungnv');//fix tam
 
+
+
             $invoiceDetail = new InvoiceDetail();
 
-            $invoiceDetail->setRoomNumber($request->room_number);
-            //dd($request->room_type . ' (' . $request->room_number . ') ' . $request->txtNumOfDay . ' đêm'  );
-            $invoiceDetail->setDesc($request->room_type . ' (' . $request->room_number . ') ' . $request->txtNumOfDay . ' đêm'  );
-
+            $invoiceDetail->setItemId($request->cboRoomNo);
+            $invoiceDetail->setItemType('Room');
             $invoiceDetail->setQuantity(1);
-            $invoiceDetail->setPrice($request->price);
-            $invoiceDetail->setAmountTotal($request->txtTotalprice);
+            $invoiceDetail->setPrice(str_replace(".","",$request->txtTotalprice));
+            $invoiceDetail->setAmountTotal(str_replace(".","",$request->txtTotalprice));
             $invoiceDetail->setCreateYmd(Carbon::now());
 
 

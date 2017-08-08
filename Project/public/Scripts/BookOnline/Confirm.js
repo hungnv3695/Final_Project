@@ -9,7 +9,8 @@ $(document).ready(function () {
     var nights = GetUrlParameter('nights');
     var checkin = GetUrlParameter('check_in');
     var checkout = GetUrlParameter('check_out');
-
+    var adult = GetUrlParameter('adult');
+    var children = GetUrlParameter('children');
     var room_type = [];
     var room_quantity = [];
     var room_price = [];
@@ -94,7 +95,8 @@ $(document).ready(function () {
             cache: false,
             dataType: 'json',
             data: $("#myForm").serialize() + "&room_type=" + room_type + "&room_quantity=" + room_quantity +
-            "&room_price_total="+ room_price_total + "&check_in=" + checkin + "&check_out=" + checkout + "&countRoom="+countRoom,
+            "&room_price_total="+ room_price_total + "&check_in=" + checkin + "&check_out=" + checkout + "&countRoom="+countRoom
+            +"&adult="+adult+"&children="+children,
             contentType: 'application/x-www-form-urlencoded',
             success: function (result) {
             },

@@ -57,6 +57,7 @@ class BookController extends Controller
         $res->setNote($request->notetxt);
         $res->setCreateYmd(Carbon::now());
         $res->setStatusId('RS01');
+        $res->setNumberOfRoom($countRoom);
 
         $guest = new Guest();
         $guest->setName($request->txtFullname);

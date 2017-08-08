@@ -84,6 +84,7 @@ class BookOnlineDAO {
             $resInsert->check_in = $res->getCheckIn();
             $resInsert->check_out = $res->getCheckOut();
             $resInsert->number_of_adult = $res->getNumberOfAdult();
+            $resInsert->number_of_children = $res->getNumberOfChildren();
             $resInsert->number_of_room = $res->getNumberOfRoom();
             $resInsert->guest_id = $guestInsert->id;
             $resInsert->status_id = $res->getStatusId();
@@ -91,7 +92,7 @@ class BookOnlineDAO {
             $resInsert->create_ymd = $res->getCreateYmd();
 
             $resInsert->editer = $res->getEditer();
-
+            //dd($res);
             $resInsert->save();
 
             $res_detail->setReservationId($resInsert->id);
@@ -118,6 +119,7 @@ class BookOnlineDAO {
             DB::commit();
             return 1;
         }catch(\Exception $e){
+
             DB::rollback();
             return 0;
         }

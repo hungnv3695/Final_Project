@@ -1,5 +1,6 @@
 @extends('Guest.Book.shared.master')
 @section('head')
+
 	<link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="{{ asset( '/plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css' )   }}">
 	<link rel="stylesheet" type="text/css" href="{{asset('/plugins/font-awesome-4.7.0/css/font-awesome.min.css' ) }}">
@@ -10,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('slick/slick.css')}}"/>
     <link rel="stylesheet" type="text/css" href="{{asset('slick/slick-theme.css')}}"/>
     <link rel="stylesheet" type="text/css" href="{{asset('/css/booking.css')}}">
+    {{--<script type="text/ecmascript" src="{{asset('jqgrid/js/jquery-1.11.0.min.js') }}"></script>--}}
 
 @endsection
 @section('body')
@@ -29,7 +31,3 @@
 
 @endsection
 
-<script type="text/javascript">
-
-
-</script>

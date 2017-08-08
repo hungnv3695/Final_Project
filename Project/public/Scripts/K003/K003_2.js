@@ -10,6 +10,23 @@ $(document).ready(function(){
     var room_number = "";
     var room_type = "";
     var price = 0;
+    function addCommas(nStr)
+    {
+        nStr += '';
+        var rgx = /(\d+)(\d{3})/;
+        while (rgx.test(nStr)) {
+            nStr = nStr.replace(rgx, '$1' + '.' + '$2');
+        }
+        return nStr;
+    }
+
+    function removeCommas(nStr)
+    {
+        nStr+="";
+        nStr = nStr.replace(".","");
+        return nStr;
+    }
+
 
     function GetUrlParameter(sParam) {
         var sPageURL = decodeURIComponent(window.location.search.substring(1)),
@@ -279,7 +296,7 @@ $(document).ready(function(){
         for (var i=0; i < jList.length; i++){
 
             if(roomType == jList[i].item0){
-                $("#txtTotalprice").val(Number(jList[i].item3) * nights );
+                $("#txtTotalprice").val(addCommas(Number(jList[i].item3) * nights ));
                 price = Number(jList[i].item3);
             }
         }
