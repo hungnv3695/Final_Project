@@ -145,6 +145,7 @@ class K003DAO
             $resDetailInsert->customer_identity_card = $res_detail->getCustomerIC();
             $resDetailInsert->customer_phone = $res_detail->getCustomerPhone();
             $resDetailInsert->customer_email = $res_detail->getCustomerPhone();
+            $resDetailInsert->check_in_flag = $res_detail->getCheckInFlag();
 
 
             //Insert reservation detail
@@ -211,7 +212,9 @@ class K003DAO
 
                     'date_in' => $res_detail->getDateIn(),
 
-                    'date_out' => $res_detail->getDateOut()
+                    'date_out' => $res_detail->getDateOut(),
+
+                    'check_in_flag' => $res_detail->getCheckInFlag()
                 ]);
 
 

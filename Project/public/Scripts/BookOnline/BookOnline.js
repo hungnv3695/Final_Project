@@ -167,7 +167,7 @@ $(document).ready(function () {
                 var children = "";
                 var description = "";
                 var img_url = ""
-                console.log(result);
+                //console.log(result);
                 for(var i =0; i<result.length; i++){
                     type_name = result[i].type_name;
                     adult = result[i].adult;
@@ -206,7 +206,7 @@ $(document).ready(function () {
                 count = result.length;
                 addTitle();
                 addInforBook(result, count);
-
+                alert('2');
 
             },
             error: function(){
@@ -233,6 +233,7 @@ $(document).ready(function () {
                     count = result.length;
                     addTitle();
                     addInforBook(result, count);
+                    alert('1');
 
 
                 },
@@ -240,7 +241,7 @@ $(document).ready(function () {
                     alert('error');
                 }
             });
-        },60000)
+        },20000)
 
     }
 

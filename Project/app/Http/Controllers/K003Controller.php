@@ -80,6 +80,7 @@ class K003Controller extends Controller
             $res_detail->setDateIn(DateTimeUtil::ConvertDateToString($request->txtCheckin));
             $res_detail->setDateOut(DateTimeUtil::ConvertDateToString($request->txtCheckout));
             $res_detail->setNote($request->note2);
+            $res_detail->setCheckInFlag(1);
 
             //Room Model
             $room = new Room();
@@ -130,7 +131,7 @@ class K003Controller extends Controller
             $res_detail->setCustomerPhone($request->txtPhone2);
             $res_detail->setCustomerEmail($request->txtEmail2);
             $res_detail->setNote($request->note2);
-
+            $res_detail->setCheckInFlag(1);
             //Room Model
             $room = new Room();
 
