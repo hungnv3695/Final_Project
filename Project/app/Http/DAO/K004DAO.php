@@ -286,7 +286,7 @@ class K004DAO{
         $strSQL .=  'OR (rd.date_in < \''.$check_in.'\' AND rd.date_out > \''.$check_out.'\')) ';
         $strSQL .=  'AND NOT (rd.check_in_flag = \'1\' AND rd.check_out_flag = \'1\')) ';
         $strSQL .=  'ORDER BY ro.room_number ASC';
-        //dd($strSQL);
+        dd($strSQL);
 
         $result = DB::select(DB::raw($strSQL));
 

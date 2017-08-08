@@ -11,44 +11,47 @@
 	<script src="{!! asset('Scripts/FrontCheck/CheckError.js') !!}"> </script>
     <style type="text/css">
 
-	body
-	{
-		padding: 0;
-		margin: 0;
-	}
-	.navbar-inverse{
-		background-color:rgb(66,110,180);
-		border-radius:0;
-	}
-	.navbar-inverse .navbar-nav .nav-link{
-		color:#CCCCCC;
-		font-size:16px;
-	}
-	li{
-		margin-right:30px;
-		text-transform:uppercase;
-		color:#CCCCCC;
-	}
-	
-	.reservation-title{
-		height:50px;
-		background: rgb(70,140,190);
-	}
-	.reservation-title h4{
-		line-height:35px;
-		margin-left:20px;
-	}
-	.label1{
-		color:gray;
-		text-align:right;
-	}
-	.label2{
-		text-align:left;
-	}
-	.label3{
-		width:100px;
-		text-align:right;
-	}
+		body
+		{
+			padding: 0;
+			margin: 0;
+		}
+		.navbar-inverse{
+			background-color:rgb(66,110,180);
+			border-radius:0;
+			border:none;
+		}
+		.navbar-inverse .navbar-nav .nav-link{
+			color:#CCCCCC;
+			font-size:16px;
+		}
+		li{
+			margin-right:30px;
+			text-transform:uppercase;
+			color:#CCCCCC;
+		}
+
+		.reservation-title{
+			height:50px;
+			background: rgb(70,140,190);
+		}
+		.reservation-title h4{
+			line-height:35px;
+			margin-left:20px;
+			font-weight:bold;
+			color:#ffffff;
+		}
+		.label1{
+			color:gray;
+			text-align:right;
+		}
+		.label2{
+			text-align:left;
+		}
+		.label3{
+			width:100px;
+			text-align:right;
+		}
 	</style>
 </head>
 <body>
@@ -82,7 +85,7 @@
 				<h3 align="center" style="color:rgb(70,140,190);"><b>Xác nhận đặt phòng</b></h3>
 				<div class="col-md-12">
 					<div class="row reservation-title">
-						<h4><b>Hồ sơ đặt phòng</b></h4>
+						<h4><b>Thông tin đặt phòng - from <span id="spCheckin">...</span> to <span id="spCheckout">...</span></b></h4>
 					</div>
 					<div class="row" style="border-bottom:1px solid rgb(220,220,220);">
 						<div class="col-md-7">
