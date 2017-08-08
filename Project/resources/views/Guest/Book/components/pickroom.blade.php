@@ -17,9 +17,9 @@
 		border-radius: 4px;
 		border:none;
 	}
-	.btnApply:hover, .btnNext:hover
-	{
-		background: rgb(34, 34, 34);
+	.btnApply:hover, .btnNext:hover {
+        background: rgb(34, 34, 34);
+    }
 </style>
 
 <div class="pickroom">
