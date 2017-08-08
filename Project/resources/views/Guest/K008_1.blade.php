@@ -24,7 +24,6 @@
 		opacity:0.9;
 		border-radius:0;
 		border:none;
-		height:60px;
 	}
 	.navbar-inverse .navbar-nav .nav-link{
 		color:#CCCCCC;

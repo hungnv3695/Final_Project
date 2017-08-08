@@ -8,7 +8,7 @@
 	.label2{
         line-height:40px;
     }
-	.btnApply
+	.btnApply, .btnNext
 	{
 		width:80px;
 		background: rgb(140, 110, 78);
@@ -17,7 +17,7 @@
 		border-radius: 4px;
 		border:none;
 	}
-	.btnApply:hover
+	.btnApply:hover, .btnNext:hover
 	{
 		background: rgb(34, 34, 34);
 </style>
@@ -54,16 +54,15 @@
             </div>
         </div>
         <div class="row" id="Infor">
-            <div class="row" id="titleBook">
-
+            <div class="col-md-12" id="titleBook">
             </div>
-            <div class="row" id="inforBook">
-
+            <div class="col-md-12" id="inforBook">
             </div>
         </div>
-
-        <div class="col-md-12 col-md-offset-10 justify-content-center" style="margin-top:26px;" id="nextdiv" >
-            <button class="btn btn-primary" style="width: 80px" id="btnNext">Next</button>
+		<div class="row">
+			<div class="col-md-2 col-md-offset-10 justify-content-center" style="margin-top:20px;margin-bottom:20px;" id="nextdiv" >
+				<button class="btnNext" id="btnNext">Next</button>
+			</div>
         </div>
 
     </div>

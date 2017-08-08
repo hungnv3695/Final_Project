@@ -1,43 +1,50 @@
 <style type="text/css">
-	.bg-faded {
-		width:100%;
-		position:fixed;
+	.navbar-inverse {
 		background-color:rgba(0, 0, 0, 0.8);
 		opacity:0.9;
 		border-radius:0;
 		border:none;
-		height:60px;
 	}		
-	.navbar-light .navbar-nav .nav-link {
+	.navbar-inverse .navbar-nav .nav-link{
 		color:#CCCCCC;
 		font-size:16px;
 		line-height:30px;
-		margin-left:9px;
-		margin-right:41px;
-		text-transform:uppercase;
 	}
-	.navbar-light .navbar-nav .nav-link:hover{
+	li{
+		margin-right:50px;
+		text-transform:uppercase;
+		color:#CCCCCC;
+	}
+	.navbar-inverse .navbar-nav .nav-link:hover{
 		color:#FFFFFF;
 	}
 	.login{		
 		color:#CCCCCC;
 		margin-top:18px;
 		font-size:110%;
-		margin-right:15px;
+		margin-right:30px;
 	}
 	.login:hover{		
 		color:#FFFFFF;
 	}
+	.logo{
+		width:150px;
+		height:150px;
+		opacity:0.9;
+		margin-left:60px;
+	}
 </style>
 <div class="my-nav-container"style="position:fixed;">
-	<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+	<nav class="navbar-toggleable-md navbar-inverse">
 		<div class="navbar-header">
-			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>                        
 			</button>
-			<a class="navbar-brand" href="#" style="margin-left:5px;">CompanyLogo</a>
+			<a class="navbar-brand" href="#"><img class="logo" src="../img/LogoAnhDuong.jpg"/></a>
 		</div>
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav">
 				<li><a class="nav-link" href="#">Trang chủ <span class="sr-only">(current)</span></a></li>
 				<li><a class="nav-link" href="#">Phòng</a></li>
