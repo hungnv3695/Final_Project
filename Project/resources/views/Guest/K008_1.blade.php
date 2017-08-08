@@ -49,6 +49,7 @@
 		width:150px;
 		height:150px;
 		opacity:0.9;
+		margin-left:60px;
 	}
 	</style>
 </head>
@@ -64,7 +65,7 @@
 									<span class="icon-bar"></span>
 									<span class="icon-bar"></span>                        
 								</button>
-								<a class="navbar-brand" href="#" style="margin-left:60px;"><img class="logo" src="../img/LogoAnhDuong.jpg"/></a>
+								<a class="navbar-brand" href="#"><img class="logo" src="../img/LogoAnhDuong.jpg"/></a>
 							</div>
 							<div class="collapse navbar-collapse" id="myNavbar">
 								<ul class="nav navbar-nav">
