@@ -50,7 +50,9 @@
 	height: 0px !important;
 }
 .book-container{
-	background: rgba(30,87,153,0.2);
+	margin-top: 70px;
+	background: rgba(255, 255, 255,0.2);
+	border-radius: 10px;
 	width: 230px;
 	height: 100px;
 	padding: 20px;
@@ -62,9 +64,9 @@
 	border-color: #fff;
 }
 #btn-book, .btn-infomation{
-	background: #147eb9;
+	background: rgb(208,119,11);
 	color: #fff;
-	border-radius: 0;
+	border-radius: 10px;
 	float: right;
 	font-size: 35px;
 }
@@ -72,7 +74,7 @@
 	float: none;
 }
 #btn-book:hover, .btn-infomation:hover{
-    background: #00aeef;
+    background: rgb(34, 34, 34);
     color: #fff;
 }
 .datepicker-container > p{
@@ -122,7 +124,7 @@ hr.style12 {
 	border-radius:5px;
 }
 .sub-ct-col:hover a{
-	color:#00aeef ;
+	color:rgb(34,34,34);
 	background-color:#ffffff;
 }
 .sub-ct-col:hover img{
@@ -135,7 +137,7 @@ hr.style12 {
 	text-align:center;
 	font-size:20px;
 	line-height:36px;
-	background-color:#147eb9 ;
+	background-color:rgb(208,119,11);
 	color:#ffffff;
 	overflow:hidden;
 }
@@ -146,7 +148,7 @@ hr.style12 {
 .social-bar{
 	height: 35px;
 	font-size: 16px;
-	background-color: #147eb9
+	background-color: rgb(208,119,11);/*rgb(140, 110, 78);*/
 }
 .social-bar a {
 	color: #b1cfeb;
@@ -160,7 +162,7 @@ hr.style12 {
 }
 /*Phan footer*/
 .footer-distributed{
-	background-color: #292c2f;
+	background-color: rgb(34, 34, 34);
 	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
 	box-sizing: border-box;
 	width: 100%;
@@ -186,20 +188,20 @@ hr.style12 {
 /* The company logo */
 
 .footer-distributed h3{
-	color:  #ffffff;
+	color:  #cccccc;
 	font: normal 36px 'Cookie', cursive;
 	margin: 0;
 }
 
 .footer-distributed h3 span{
-	color:  #5383d3;
+	color:  #cccccc;
 }
 
 /* Footer links */
 
 .footer-distributed .footer-links{
-	color:  #ffffff;
-	margin: 20px 0 12px;
+	color:  #cccccc;
+	margin: 10px 0 12px;
 	padding: 0;
 }
 
@@ -210,7 +212,7 @@ hr.style12 {
 	color:  inherit;
 }
 .footer-distributed .footer-links a:hover{
-	color:  #5383d3;
+	color:  #ffffff;
 }
 
 .footer-distributed .footer-company-name{
@@ -228,7 +230,7 @@ hr.style12 {
 
 .footer-distributed .footer-center i{
 	background-color:  #33383b;
-	color: #ffffff;
+	color: #cccccc;
 	font-size: 25px;
 	width: 38px;
 	height: 38px;
@@ -246,7 +248,7 @@ hr.style12 {
 
 .footer-distributed .footer-center p{
 	display: inline-block;
-	color: #ffffff;
+	color: #cccccc;
 	vertical-align: middle;
 	margin:0;
 }
@@ -259,8 +261,11 @@ hr.style12 {
 }
 
 .footer-distributed .footer-center p a{
-	color:  #5383d3;
+	color:  #cccccc;
 	text-decoration: none;;
+}
+.footer-distributed .footer-center p a:hover{
+	color:  #ffffff;
 }
 
 
@@ -268,6 +273,7 @@ hr.style12 {
 
 .footer-distributed .footer-right{
 	width: 20%;
+	margin-top:10px;
 }
 
 .footer-distributed .footer-company-about{
@@ -280,7 +286,7 @@ hr.style12 {
 
 .footer-distributed .footer-company-about span{
 	display: block;
-	color:  #ffffff;
+	color:  #cccccc;
 	font-size: 14px;
 	font-weight: bold;
 	margin-bottom: 20px;
@@ -299,12 +305,18 @@ hr.style12 {
 	border-radius: 2px;
 
 	font-size: 20px;
-	color: #ffffff;
+	color: #cccccc;
 	text-align: center;
 	line-height: 35px;
 
 	margin-right: 3px;
 	margin-bottom: 5px;
+}
+.footer-distributed .footer-icons a:hover{
+	color: #ffffff;
+}
+.footer-distributed .footer-icons i{
+	line-height: 35px;
 }
 
 @media (max-width: 880px) {
@@ -420,7 +432,8 @@ hr.style12 {
 		width: 100%;
 		height: 40px;
 		font-size: 20px;
-		background: #00aeef;
+		background: rgb(208,119,11);
+		border-radius:0
 	}
 	.book-container{
 		height: 0px;

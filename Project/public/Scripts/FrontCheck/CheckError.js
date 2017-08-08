@@ -12,7 +12,7 @@ function InvalidMsg(textbox) {
 
     if (textbox.type == "number"){
         if (parseInt(textbox.value) != textbox.value){
-            textbox.setCustomValidity('Xin hãy nhập một số nguyên');
+            textbox.setCustomValidity('Xin hãy nhập một số nguyên >=' + textbox.min);
         } else if(textbox.value < textbox.min){
             textbox.setCustomValidity('Xin hãy nhập số nguyên >=' + textbox.min);
         } else{
