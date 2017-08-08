@@ -24,7 +24,6 @@
 		opacity:0.9;
 		border-radius:0;
 		border:none;
-		height:60px;
 	}
 	.navbar-inverse .navbar-nav .nav-link{
 		color:#CCCCCC;
@@ -45,6 +44,12 @@
 	.login:hover{		
 		color:#FFFFFF;
 	}
+	.logo{
+		width:150px;
+		height:150px;
+		opacity:0.9;
+		margin-left:60px;
+	}
 	</style>
 </head>
 <body>
@@ -59,7 +64,7 @@
 									<span class="icon-bar"></span>
 									<span class="icon-bar"></span>                        
 								</button>
-								<a class="navbar-brand" href="#" style="margin-left:5px;">CompanyLogo</a>
+								<a class="navbar-brand" href="#"><img class="logo" src="../img/LogoAnhDuong.jpg"/></a>
 							</div>
 							<div class="collapse navbar-collapse" id="myNavbar">
 								<ul class="nav navbar-nav">
