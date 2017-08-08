@@ -83,7 +83,7 @@ CREATE TABLE tbl_room_type(
 	adult integer,
 	children integer,
 	description varchar(100) ,
-	 image_url varchar(100),
+	image_url varchar(100),
 	price numeric(11,2),
 	create_ymd timestamp,
 	update_ymd timestamp

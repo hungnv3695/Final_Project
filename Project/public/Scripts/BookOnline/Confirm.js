@@ -7,6 +7,8 @@ $(document).ready(function () {
     var roQuan = GetUrlParameter('roQuan');
     var roPrice = GetUrlParameter('roPrice');
     var nights = GetUrlParameter('nights');
+    var checkin = GetUrlParameter('check_in');
+    var checkout = GetUrlParameter('check_out');
 
     var room_type = [];
     var room_quantity = [];
@@ -40,11 +42,9 @@ $(document).ready(function () {
 
     //Cắt chuỗi lấy thông tin từ URL
     function splitInfor(roType,roQuan,roPrice){
-        room_type = [];
-        room_quantity = [];
-        room_price = [];
-        room_price_total = 0;
 
+
+        room_price_total = 0;
         room_type = roType.split(",");
         room_quantity = roQuan.split(",");
         room_price = roPrice.split(",");
@@ -77,6 +77,9 @@ $(document).ready(function () {
             b = Number(nights),
             c = a * b;
         $("#Total").text(addCommas(c + (c*10/100)));
+
+        $("#spCheckin").text(checkin);
+        $("#spCheckout").text(checkout);
     }
     splitInfor(roType,roQuan,roPrice);
     //================================
@@ -90,7 +93,8 @@ $(document).ready(function () {
             method: 'GET',
             cache: false,
             dataType: 'json',
-            data: $("#myForm").serialize() + "&room_type=" + room_type + "&room_quantity" + room_quantity + "&room_price_total="+ room_price_total,
+            data: $("#myForm").serialize() + "&room_type=" + room_type + "&room_quantity=" + room_quantity +
+            "&room_price_total="+ room_price_total + "&check_in=" + checkin + "&check_out=" + checkout + "&countRoom="+countRoom,
             contentType: 'application/x-www-form-urlencoded',
             success: function (result) {
             },
