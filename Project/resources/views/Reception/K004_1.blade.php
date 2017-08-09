@@ -35,13 +35,19 @@
 		width:110px;
 		text-align:right;
 	}
+	hr
+	{
+		background-color:#898989;
+		height:1px; 
+		border: 0;
+	}
 	</style>
 </head>
 <body>
 
     <div class="container">
         <div class="row">
-            <div class="col-md-10 col-md-offset-1" style="margin-top:1%;background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
+            <div class="col-md-10 col-md-offset-1" style="margin-top:1%;background-color:#c3bfc0;border-bottom:1px solid #898989;">
 				<div class="row">
 					<div class="col-md-offset-9" style="margin:10px 10px 0px 0px;float:right;">
 						@if(Session::has('USER_INFO'))
@@ -54,7 +60,7 @@
 					</div>
 				</div>
             </div>
-            <div class="col-md-10 col-md-offset-1" style="background-color:rgb(230,230,230);border:1px solid rgb(215,215,215); border-top:none;border-bottom:none;">
+            <div class="col-md-10 col-md-offset-1" style="background-color:#c3bfc0;border-bottom:1px solid #898989;">
 				<div class="row">
 					<div class="form-inline col-md-offset-1" style="margin-top:20px;">
 						<label class="label1" for="">Tên khách hàng:</label>
@@ -67,14 +73,14 @@
 						<label class="label1" for="">Trạng thái:</label>
 						<select id="cboStatus" name="cboStatus" class="form-control input-md" style="width:150px;"></select>
 					</div>
-					<div class="col-md-12"><hr></div>
+					<div class="row"><div class="col-md-12"><hr></div></div>
 					<div class="col-md-12">
 						<table id="jqGrid" style="border:1px solid gray;"></table>
 						<div id="jqGridPager" style="height:40px;"></div>
 					</div>
 				</div>
             </div>
-            <div class="col-md-10 col-md-offset-1" style="background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
+            <div class="col-md-10 col-md-offset-1" style="background-color:#c3bfc0;margin-bottom:10px;">
 				<div class="row">
 					<div class="col-md-2 col-md-offset-10 col-xs-7" style="margin-top:10px;margin-bottom:10px;">
 						<button id="btnBack" class="btn btn-danger" type="button"><b>Quay lại</b></button>

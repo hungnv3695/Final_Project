@@ -37,7 +37,7 @@
         <div class="container">
             <div class="row">
 
-				<div class="col-md-10 col-md-offset-1" style="background-color:rgb(230,230,230);margin-top:4%;">
+				<div class="col-md-10 col-md-offset-1" style="background-color:#c3bfc0;margin-top:4%;">
 					<div class="row">
 						<div class="col-md-offset-9" style="margin:10px 10px 0px 0px;float:right;">
 							@if(Session::has('USER_INFO'))
@@ -46,7 +46,7 @@
 							<b>|</b><a class="logout" href="{!! url('/K001/LogOut') !!}"> Đăng xuất</a>
 						</div>
 					</div>
-					<div class="col-md-6 form-horizontal col-md-offset-3" style="border: 2px solid rgb(220,220,220);border-radius:10px; background-color:white;margin-top:20px;margin-bottom:20px;">
+					<div class="col-md-6 form-horizontal col-md-offset-3" style="border: 1px solid #898989;border-radius:10px; background-color:white;margin-top:20px;margin-bottom:20px;">
 						<div class="form-inline col-md-offset-1" style="margin-top:20px;">
 							<label class="label1" for="">Kiểu phòng:</label>  
 							<input id="txtRoomType" name="txtRoomType" value="{{$txtRoomType}}" type="text" size="15" class="form-control" readonly>
@@ -66,7 +66,7 @@
 
 
 						<div class="col-md-6 col-md-offset-6" style="margin-top:30px;margin-bottom:20px;">
-							<button class="btn btn-primary col-md-offset-2" id="btnSave" value="btnSave" name="btnSave"><b>Lưu</b></button>
+							<button class="btn btn-success col-md-offset-2" id="btnSave" value="btnSave" name="btnSave"><b>Lưu</b></button>
 							<button class="btn btn-danger" id="btnBack" value="btnBack" name="btnBack"><b>Quay lại</b></button>
 						</div>	
 					</div>

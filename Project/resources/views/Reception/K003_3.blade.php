@@ -94,7 +94,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-10 col-md-offset-1" style="margin-top:2%;background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
+            <div class="col-md-10 col-md-offset-1" style="margin-top:2%;background-color:#c3bfc0;border-bottom:1px solid #898989;">
                 <div class="row">
                     <div class="col-md-offset-9" style="margin:10px 10px 0px 0px;float:right;">
                         @if(Session::has('USER_INFO'))
@@ -107,11 +107,11 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-10 col-md-offset-1" style="background-color:rgb(230,230,230);border:1px solid rgb(215,215,215); border-top:none;border-bottom:none;">
+            <div class="col-md-10 col-md-offset-1" style="background-color:#c3bfc0;border-bottom:1px solid #898989;">
                 <!--top-->
                 <label class="control-label" style="margin-top:5px;">Thông tin đặt phòng</label>
-                <div class="col-md-12" style="border: 2px solid rgb(220,220,220);border-radius:10px;margin:5px 0px 20px 0px;">
-                    <div class="col-md-6" style="border-right:1px solid rgb(240,240,240);">
+                <div class="col-md-12" style="border: 1px solid #898989;border-radius:10px;margin:5px 0px 20px 0px;">
+                    <div class="col-md-6">
                         <div class="form-inline col-md-offset-1" style="margin-top:20px;">
                             <label class="label1">Ngày vào:</label>
                             <input id="txtCheckin" name="txtCheckin" type="text" placeholder="MM/DD/YYY" class="form-control input-md" size="20" >
@@ -124,7 +124,7 @@
                             <table id="jqGrid" style="border:1px solid gray;"></table>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6" style="border-left:1px solid #898989;">
                         <div class="form-inline col-md-offset-1" style="margin-top:20px;">
                             <label class="label1">Số đêm:</label>
                             <input id="txtNumOfDay" name="txtNumOfDay" type="text" class="form-control input-md" size="18" readonly>
@@ -162,7 +162,7 @@
                 <!--bottom-->
                 <div class="col-md-6">
                     <label class="control-label">Người đặt phòng</label>
-                    <div class="col-md-12" style="border: 2px solid rgb(220,220,220);border-radius:10px;margin-bottom:10px;">
+                    <div class="col-md-12" style="border: 1px solid #898989;border-radius:10px;margin-bottom:10px;">
                         <div class="form-inline col-md-offset-1" style="margin-top:20px;">
                             <label class="label1" for="">Họ tên: </label>
                             <input id="txtFullname1" name="txtFullname1" type="text" class="form-control input-md" size="20" maxlength="50">
@@ -190,7 +190,7 @@
                 </div>
                 <div class="col-md-6">
                     <label class="control-label">Người nhận phòng</label>
-                    <div class="col-md-12" style="border: 2px solid rgb(220,220,220);border-radius:10px;margin-bottom:10px;">
+                    <div class="col-md-12" style="border: 1px solid #898989;border-radius:10px;margin-bottom:10px;">
                         <div class="form-inline" style="margin-top:20px;">
                             <label class="label1 col-md-offset-1" for="">Họ tên: </label>
                             <input id="txtFullname2" name="txtFullname2" type="text" class="form-control input-md" size="20" maxlength="50" readonly>
@@ -214,11 +214,11 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-10 col-md-offset-1" style="background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
+            <div class="col-md-10 col-md-offset-1" style="background-color:#c3bfc0;margin-bottom:10px;">
                 <div class="row">
                     <div class="col-md-6 col-md-offset-8" style="margin-top:10px; margin-bottom:10px;">
-                        <button class="btn btn-primary" id="btnSave" value="btnSave" name="btnSave" style="margin-left:0px"><b>Lưu</b></button>
-                        <button class="btn btn-primary col-md-offset-1" id="btnCheckin" value="btnCheckin" name="btnSave"><b>Nhận phòng</b></button>
+                        <button class="btn btn-success col-md-offset-1" id="btnSave" value="btnSave" name="btnSave"><b>Lưu</b></button>
+                        <button class="btn btn-primary" id="btnCheckin" value="btnCheckin" name="btnSave"><b>Nhận phòng</b></button>
                         <button class="btn btn-danger" id="btnBack" value="bntCancel" name="bntCancel"><b>Quay lại</b></button>
                     </div>
                 </div>
