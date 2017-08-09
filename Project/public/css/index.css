@@ -573,7 +573,7 @@ a.account{
 	text-decoration:none;
 	float:left;
 	margin-right:10px;
-	color:rgb(178,34,34);
+	color:#070b31;
 	font-weight: bold;
 }
 .account i{
@@ -582,13 +582,13 @@ a.account{
 	margin-right: 5px;
 }
 a.account:hover{
-	color:rgb(128,0,0);
+	color:#2e4950;
 }
 a.logout{
 	text-decoration:none;
-	color:rgb(205,92,92);
+	color:#3b5762;
 	font-weight: bold;
 }a.logout:hover{
-	color:rgb(128,0,0);
+	color:#2e4950;
 }
 /*end restaurant*/

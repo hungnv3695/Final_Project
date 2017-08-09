@@ -4,6 +4,8 @@
     <title>Chi tiết phòng</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="{!! asset('plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css') !!}">
+	<link rel="stylesheet" type="text/css" href="{{asset('/plugins/font-awesome-4.7.0/css/font-awesome.min.css' ) }}">
+	<link rel="stylesheet" type="text/css" href="{{asset('/plugins/animate/animate.css')}}">
 	<link rel="stylesheet" type="text/css" href=" {!! asset('css/index.css') !!}">
 	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
     <style type="text/css">
@@ -55,13 +57,13 @@
 <body>
         <div class="container">
             <div class="row">
-				<div class="col-md-10 col-md-offset-1" style="margin-top:3%;background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
+				<div class="col-md-10 col-md-offset-1" style="margin-top:3%;background-color:#c3bfc0;border-bottom:1px solid #898989;">
 					<div class="row">
 						<div class="col-md-offset-9" style="margin:10px 10px 0px 0px;float:right;">
 							@if(Session::has('USER_INFO'))
-								<b><a class="account" style="text-decoration:none;" href=" {{url("/K012")}}">{!!Session::get('USER_INFO')->user_name !!} </a></b>
-							@endif
-							<b>|</b><a href="{!! url('/K001/LogOut') !!}"><b> Đăng xuất</b></a>
+							<b><a class="account" href=" {{url("/K012")}}"><i class="fa fa-user"></i>{!!Session::get('USER_INFO')->user_name !!} </a></b>
+							@endif					
+							<b>|</b><a class="logout" href="{!! url('/K001/LogOut') !!}"> Đăng xuất</a>
 						</div>
 						<div class="col-md-12">
 							<p class="brand-title">Chi tiết phòng</p>
@@ -69,9 +71,9 @@
 					</div>
 				</div>
 				<form  class="editroom" method="POST" onsubmit="return confirm('Bạn muốn thực hiện thay đổi này?');" >
-					<div class="col-md-10 col-md-offset-1" style="background-color:rgb(230,230,230);border:1px solid rgb(215,215,215); border-top:none;">
+					<div class="col-md-10 col-md-offset-1" style="background-color:#c3bfc0;">
 						<div class="row">
-							<div class="col-md-5 form-horizontal" style="margin:10px 30px 10px;border: 2px solid rgb(220,220,220);border-radius:10px;">
+							<div class="col-md-5 form-horizontal" style="margin:10px 30px 10px;border: 1px solid #898989;border-radius:10px;">
 									@if(Session::has('ErrorMSG'))
 										<div class="Error" style="margin-top:10px;">
 											<label id="ErrorMsg"> {!! Session::get('ErrorMSG')!!} </label>
@@ -117,7 +119,7 @@
 									<input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
 							</div>
 						<!--right-->
-							<div class="col-md-6 form-horizontal" style="margin:10px 0px 10px;border: 2px solid rgb(220,220,220);border-radius:10px;">
+							<div class="col-md-6 form-horizontal" style="margin:10px 0px 10px;border: 1px solid #898989;border-radius:10px;">
 									<div class="form-inline" style="margin-top:20px;">
 										<label class="label1" for="">Giá: </label>
 										<input id="txtPrice" name="txtPrice" type="text" class="form-control input-md" size="15" value = "{!! array_get($roomTypeSelect[0],'price') !!}" readonly>

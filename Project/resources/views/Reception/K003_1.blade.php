@@ -4,6 +4,8 @@
     <title>Trạng thái phòng</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href=" {!! asset('plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css') !!} ">
+	<link rel="stylesheet" type="text/css" href="{{asset('/plugins/font-awesome-4.7.0/css/font-awesome.min.css' ) }}">
+	<link rel="stylesheet" type="text/css" href="{{asset('/plugins/animate/animate.css')}}">
     <link rel="stylesheet" type="text/css" href=" {!! asset('css/index.css') !!}">
 
     <!--  jQuery -->
@@ -63,9 +65,9 @@
 			<div class="row">
 				<div class="col-md-offset-9" style="margin:10px 10px 0px 0px;float:right;">
 					@if(Session::has('USER_INFO'))
-					<b><a class="account" style="text-decoration:none;" href=" {{url("/K012")}}">{!!Session::get('USER_INFO')->user_name !!} </a></b>
-					@endif
-					<b>|</b><a href="{!! url('/K001/LogOut') !!}"><b> Đăng xuất</b></a>
+					<b><a class="account" href=" {{url("/K012")}}"><i class="fa fa-user"></i>{!!Session::get('USER_INFO')->user_name !!} </a></b>
+					@endif					
+					<b>|</b><a class="logout" href="{!! url('/K001/LogOut') !!}"> Đăng xuất</a>
 				</div>
 				<div class="col-md-12">
 					<p class="brand-title">Trạng thái phòng</p>

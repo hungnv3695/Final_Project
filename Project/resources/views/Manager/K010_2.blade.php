@@ -4,6 +4,8 @@
 	<title>Xem kiểu phòng</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href=" {!! asset('plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css') !!} ">
+	<link rel="stylesheet" type="text/css" href="{{asset('/plugins/font-awesome-4.7.0/css/font-awesome.min.css' ) }}">
+	<link rel="stylesheet" type="text/css" href="{{asset('/plugins/animate/animate.css')}}">
 	<link rel="stylesheet" type="text/css" href=" {!! asset('css/index.css') !!}">
 	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<style type="text/css">
@@ -96,13 +98,13 @@
 <div class="container">
 	<form class="editRoomType" method="post" id="editRoomType" onsubmit="return checkvalue();" >
 		<div class="row">
-			<div class="col-md-12" style="margin-top:2%;background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
+			<div class="col-md-12" style="margin-top:2%;background-color:#c3bfc0;border-bottom:1px solid #898989;">
 				<div class="row">
 					<div class="col-md-offset-9" style="margin:10px 10px 0px 0px;float:right;">
 						@if(Session::has('USER_INFO'))
-						<b><a class="account" style="text-decoration:none;" href=" {{url("/K012")}}">{!!Session::get('USER_INFO')->user_name !!} </a></b>
-						@endif
-						<b>|</b><a href="{!! url('/K001/LogOut') !!}"><b> Đăng xuất</b></a>
+						<b><a class="account" href=" {{url("/K012")}}"><i class="fa fa-user"></i>{!!Session::get('USER_INFO')->user_name !!} </a></b>
+						@endif					
+						<b>|</b><a class="logout" href="{!! url('/K001/LogOut') !!}"> Đăng xuất</a>
 					</div>
 					<div class="col-md-12">
 						<p class="brand-title">Xem kiểu phòng</p>
@@ -115,7 +117,7 @@
 					</div>
 				@endif
 			</div>
-			<div class="col-md-12" style="background-color:rgb(230,230,230);border:1px solid rgb(215,215,215); border-top:none;border-bottom:none;">
+			<div class="col-md-12" style="background-color:#c3bfc0;border-bottom:1px solid #898989;">
 				<div class="row">
 					<div class="col-md-12 form-inline" style="margin-top:20px;margin-bottom:10px;">
 						<label class="control-label">Chọn kiểu phòng:</label>
@@ -130,7 +132,7 @@
 						<button type="button" class="btn btn-default" value="btnAddNew" id = "btnAdd" name="btnAdd" onclick="window.location='{{ url("/K010_1") }}'" ><b>Thêm mới</b></button>
 					</div>					
 					<!--left-->
-					<div class="col-md-5 form-horizontal" style="margin:10px 30px 10px;border: 2px solid rgb(220,220,220);border-radius:10px;" id="leftDiv">
+					<div class="col-md-5 form-horizontal" style="margin:10px 30px 10px;border: 1px solid #898989;border-radius:10px;" id="leftDiv">
 							@if(Session::has('ErrorMSG'))
 								<div class="Error" style="margin-top:10px;">
 									<label id="ErrorMsg"> {!! Session::get('ErrorMSG')!!} </label>
@@ -167,7 +169,7 @@
 							</div>
 					</div>
 					<!--right-->
-					<div class="col-md-6 form-horizontal" style="margin:10px 0px 10px;border: 2px solid rgb(220,220,220);border-radius:10px;">
+					<div class="col-md-6 form-horizontal" style="margin:10px 0px 10px;border: 1px solid #898989;border-radius:10px;">
 							<div class="col-md-12" style="margin-top:20px;margin-bottom:10px;">
 								<label>Thiết Bị: </label>
 							</div>
@@ -208,7 +210,7 @@
 			</div>
 			<input type="hidden"  id="count" name = "count" value=""  />
 			<input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
-			<div class="col-md-12" style="background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
+			<div class="col-md-12" style="background-color:#c3bfc0;">
 					<div class="col-md-6 col-md-offset-9" style="margin-top:10px; margin-bottom:10px;">
 						<button class="btn btn-success col-md-offset-2" value="bntSave" id="bntAddType" name="bntSave" ><b>Lưu</b></button>
 						<button type="button" class="btn btn-danger" value="bntCancel" name="bntCancel" onclick="window.location='{{ url("/K002") }}'" ><b>Hủy bỏ</b></button>
