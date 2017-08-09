@@ -184,32 +184,34 @@ $(document).ready(function () {
                                 detail_id.push(result[i].id);
                                 var a = j + 1;
                                 jQuery("#jqGrid").find('#'+ a +' input[type=checkbox]').prop('checked',true);
-                                if(checkin<=dateNow && dateNow<=checkout){
-                                    cellStatus_id = $('#jqGrid').jqGrid ('getCell', a , 'item4');
-                                    var roomId = $('#jqGrid').jqGrid ('getCell', a , 'item2');
-                                    if(cellStatus_id == "RO02"){
+                                // if(checkin<=dateNow && dateNow<=checkout){
+                                //     cellStatus_id = $('#jqGrid').jqGrid ('getCell', a , 'item4');
+                                //
+                                //     if(cellStatus_id == "RO02"){
+                                //
+                                //         // $("#checkin" + a).removeAttr( "onclick" );
+                                //         // $("#checkin" + a).removeAttr( "title" );
+                                //
+                                //         $("#checkin" + a).css("display","true");
+                                //         $("#checkin" + a).wrapInner('Check-out');
+                                //         //$("#checkin" + a).attr('value','1');
+                                //         $("#checkin" + a).attr('onclick', 'window.open(\'/K003_2?res_id='+ $res_id+ '&room_id='+roomId +'\' , "_self" )' );
+                                //
+                                //     }else{
+                                //         // $("#checkin" + a).removeAttr( "onclick" );
+                                //         // $("#checkin" + a).removeAttr( "title" );
+                                //
+                                //     }
+                                //
+                                //
+                                // }
+                                var roomId = $('#jqGrid').jqGrid ('getCell', a , 'item2');
+                                $("#checkin" + a).css("display","true");
+                                $("#checkin" + a).wrapInner('Chi tiết');
+                                //$("#checkin" + a).attr('value','1');
+                                $("#checkin" + a).attr('onclick', 'window.open(\'/K003_2?res_id='+ $res_id+ '&room_id='+roomId +'\', "_self" )' );
 
-                                        // $("#checkin" + a).removeAttr( "onclick" );
-                                        // $("#checkin" + a).removeAttr( "title" );
 
-                                        $("#checkin" + a).css("display","true");
-                                        $("#checkin" + a).wrapInner('Check-out');
-                                        //$("#checkin" + a).attr('value','1');
-                                        $("#checkin" + a).attr('onclick', 'window.open(\'/K003_2?res_id='+ $res_id+ '&room_id='+roomId +'\' , "_self" )' );
-
-                                    }else{
-                                        // $("#checkin" + a).removeAttr( "onclick" );
-                                        // $("#checkin" + a).removeAttr( "title" );
-                                        $("#checkin" + a).css("display","true");
-                                        $("#checkin" + a).wrapInner('Chi tiết');
-                                        //$("#checkin" + a).attr('value','1');
-                                        $("#checkin" + a).attr('onclick', 'window.open(\'/K003_2?res_id='+ $res_id+ '&room_id='+roomId +'\', "_self" )' );
-
-                                    }
-
-
-
-                                }
 
                                 break;
                             }

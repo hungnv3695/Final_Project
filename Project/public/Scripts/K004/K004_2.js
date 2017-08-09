@@ -10,6 +10,23 @@ $(document).ready(function () {
     var FINISH = "RS05";
     var CANCELLED = "RS04";
     var status = $('#status').val();
+
+    function addCommas(nStr)
+    {
+        nStr += '';
+        var rgx = /(\d+)(\d{3})/;
+        while (rgx.test(nStr)) {
+            nStr = nStr.replace(rgx, '$1' + '.' + '$2');
+        }
+        return nStr;
+    }
+
+    function removeCommas(nStr)
+    {
+        nStr+="";
+        nStr = nStr.replace(".","");
+        return nStr;
+    }
     function GetUrlParameter(sParam) {
         var sPageURL = decodeURIComponent(window.location.search.substring(1)),
             sURLVariables = sPageURL.split('&'),
@@ -121,7 +138,7 @@ $(document).ready(function () {
         colModel: [
             { name: 'item0',  width: 130 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
             { name: 'item1',  width: 70, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
-            { name: 'item2',  width: 100, align: "left", formatter:'currency', formatoptions:{decimalSeparator:".", thousandsSeparator: ",", decimalPlaces: 2}},
+            { name: 'item2',  width: 100, align: "left", formatter:'integer', formatoptions:{thousandsSeparator: "."}},
             { name: 'item3',  width: 170, align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
             { name: 'item4' , hidden :true}
 
@@ -164,9 +181,9 @@ $(document).ready(function () {
             $grid.jqGrid('footerData', 'set', { 'item2' : colSum });
             $grid.jqGrid('footerData', 'set', { 'item1' : "Total:" });
             $grid.jqGrid('footerData', 'set', { 'item3' : "x " + $("#txtNight").val() + " đêm" } );
-            var total = colSum * $("#txtNight").val() * 1000;
-            total = (total + "").replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
-            $("#txtTotal").val(total)
+            var total = colSum * $("#txtNight").val();
+            //total = (total + "").replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+            $("#txtTotal").val(addCommas(total))
 
 
         }

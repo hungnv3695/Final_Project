@@ -51,6 +51,22 @@ $(document).ready(function () {
         $("#txtNight").val(diffDays);
     }
 
+    function addCommas(nStr)
+    {
+        nStr += '';
+        var rgx = /(\d+)(\d{3})/;
+        while (rgx.test(nStr)) {
+            nStr = nStr.replace(rgx, '$1' + '.' + '$2');
+        }
+        return nStr;
+    }
+
+    function removeCommas(nStr)
+    {
+        nStr+="";
+        nStr = nStr.replace(/\./g,"");
+        return nStr;
+    }
 
     function addtextbox(result, i) {
         if(i == 0) {
@@ -134,9 +150,9 @@ $(document).ready(function () {
             { name: 'item4', hidden: true }
         ],
         rownumbers: true,
-        height: 200,
-        width: 310,
-
+        height: 300,
+        width: 330,
+        rowNum: 1000,
         autoheight: true,
         loadonce: true,
         resizable: true,
@@ -198,7 +214,7 @@ $(document).ready(function () {
             for (var i=1; i <= count; i++){
                 celValue = jqgrid.jqGrid ('getCell', i, 'item2');
                 for(var j = 0; j < cList.length; j++){
-                    if(celValue == cList[j] ){
+                    if(celValue == cList[j].room_id ){
                         jQuery(this).find('#'+i+' input[type=checkbox]').prop('checked',true);
                     }
                 }
@@ -233,21 +249,23 @@ $(document).ready(function () {
         var no_room = Number($('#txtNumpeople').val());
         var total = Number($("#txtTotal").val());
         var nights = Number($("#txtNight").val());
-        total_price = Number($("#txtTotalprice").val());
+        total_price = $("#txtTotalprice").val();
         var txtprice = "";
         var txttotal ="";
+        var vat = 0;
         for(var i = 0; i < nuoftype; i++){
-            noroom = Number($("#noroom" + i).val());
-            price = Number($("#price" + i).val());
+            noroom =  Number(removeCommas($("#noroom" + i).val()));
+            price = Number(removeCommas($("#price" + i).val()));
             tname = $("#roomtype" + i).val();
             if (type_name == tname ){
                     $("#noroom" + i).val(noroom+1);
                     txtprice = Number(price) + Number(ro_price);
-                    txttotal = Number(total_price) + Number(ro_price);
-                    $("#price" + i).val(txtprice);
+                    txttotal = Number(removeCommas(total_price)) + Number(removeCommas(ro_price));
+                    $("#price" + i).val(addCommas(txtprice));
 
-                    $("#txtTotalprice").val(txttotal);
-                    $("#txtTotal").val(nights * txttotal);
+                    $("#txtTotalprice").val(addCommas(txttotal));
+                    vat = (nights * txttotal * 10 )/ 100
+                    $("#txtTotal").val(addCommas((nights * txttotal) + vat));
             }
 
         }
@@ -260,15 +278,24 @@ $(document).ready(function () {
         var ro_price = Number(jqgrid.jqGrid ('getCell', id, 'item4'));
         var tname = "";
         var no_room = Number($('#txtNumpeople').val());
-        total_price = Number($("#txtTotalprice").val());
+        total_price = $("#txtTotalprice").val();
+        var nights = Number($("#txtNight").val());
+        var txtprice = "";
+        var txttotal ="";
+        var vat = 0;
         for(var i = 0; i < nuoftype; i++){
             noroom = Number($("#noroom" + i).val());
-            price = Number($("#price" + i).val());
+            price = Number(removeCommas($("#price" + i).val()));
             tname = $("#roomtype" + i).val();
             if (type_name == tname ){
                 $("#noroom" + i).val(noroom - 1);
-                $("#price" + i).val(price - ro_price);
-                $("#txtTotalprice").val(total_price -  ro_price );
+                txtprice = Number(price) - Number(ro_price);
+                txttotal = Number(removeCommas(total_price)) - Number(removeCommas(ro_price));
+                $("#price" + i).val(addCommas(price - ro_price));
+                $("#txtTotalprice").val(addCommas(txttotal) );
+                vat = (nights * txttotal * 10 )/ 100
+                $("#txtTotal").val(addCommas((nights * txttotal) + vat));
+
             }
         }
     }
@@ -278,7 +305,7 @@ $(document).ready(function () {
         selRowId = jqgrid.jqGrid ('getGridParam', 'selrow');
         celValue = jqgrid.jqGrid ('getCell', selRowId, 'item2');
         for(var i = 0; i<cList.length; i++){
-            if(cList[i] == celValue){
+            if(cList[i].room_id == celValue){
                 cList.splice(i, 1);
             }
         }
@@ -288,13 +315,19 @@ $(document).ready(function () {
     function addcheckedtolist(){
         selRowId = jqgrid.jqGrid ('getGridParam', 'selrow');
         celValue = jqgrid.jqGrid ('getCell', selRowId, 'item2');
+        var pricePicked = jqgrid.jqGrid ('getCell', selRowId, 'item4');
+        var x = {
+            room_id : celValue,
+            price : pricePicked
+
+        }
         //cList.push(celValue);
         for(var i = 0; i<cList.length; i++){
-            if(cList[i] == celValue){
+            if(cList[i].room_id == celValue){
                 return;
             }
         }
-        cList.push(celValue);
+        cList.push(x);
     }
     //END: JQGRID : load room free
 
@@ -374,25 +407,31 @@ $(document).ready(function () {
     });
     $('#btnBook').click(function(event){
         event.preventDefault();
-        var invoiceList = "";
-        var p, r ,q;
-        var typeList =[];
+        // var invoiceList = "";
+        // var p, r ,q;
+        // var typeList =[];
+        // var priceList = [];
+        // var quantityList = [];
+        // for(var i = 0 ; i < nuoftype; i ++ ){
+        //         r = $("#roomtype"+i).val();
+        //         q = $("#noroom"+i).val();
+        //         p =  $("#price"+i).val();
+        //         if((q !== undefined && q != 0) ){
+        //             typeList.push(r);
+        //             priceList.push(p);
+        //             quantityList.push(q);
+        //         }
+        //
+        // }
+        var roomList = [];
         var priceList = [];
-        var quantityList = [];
-        for(var i = 0 ; i < nuoftype; i ++ ){
-                r = $("#roomtype"+i).val();
-                q = $("#noroom"+i).val();
-                p =  $("#price"+i).val();
-                if((q !== undefined && q != 0) ){
-                    typeList.push(r);
-                    priceList.push(p);
-                    quantityList.push(q);
-                }
-
+        for(var i = 0; i < cList.length; i++){
+            roomList.push(cList[i].room_id);
+            priceList.push(cList[i].price);
         }
 
-        console.log(typeList);
-        var total = $("#txttotal").val();
+        console.log(roomList,priceList);
+        var total = removeCommas($("#txtTotal").val());
         if($('#txtFullname').val().trim() == ""){
             alert('Nhập tên của khách hàng');
             return;
@@ -421,7 +460,8 @@ $(document).ready(function () {
             method: 'GET',
             cache: false,
             dataType: 'json',
-            data: $("#myForm").serialize() + "&cList=" + cList + "&status=" + PROCESSED + "&tList=" + typeList + "&pList=" + priceList +"&qList=" + quantityList +"&pTotal=" + total ,
+            data: $("#myForm").serialize() + "&status=" + PROCESSED + "&roomList=" + roomList
+            +"&priceList=" + priceList +"&pTotal=" + total ,
             contentType: 'application/x-www-form-urlencoded',
             success: function (result) {
                 if(result==1){

@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 use App\Http\DAO\K004DAO;
 use App\Models\Guest;
 use App\Models\Invoice;
+use App\Models\InvoiceDetail;
 use App\Models\Reservation;
 use App\Models\Reservation_Model;
 use App\Models\ReservationDetail;
@@ -12,6 +13,7 @@ use App\User;
 use Symfony\Component\HttpFoundation\Response;
 use App\Http\Common\DateTimeUtil;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class K004Controller extends Controller{
 
@@ -227,6 +229,7 @@ class K004Controller extends Controller{
     public function changeSttToProcessing(Request $request){
         $userid = $request->session()->get('USER_INFO')->user_id;
         //dd($userid);
+
         $res_id = $request->res_id;
         $status = $request->status;
 
@@ -333,13 +336,14 @@ class K004Controller extends Controller{
 
     public function insertResInfor(Request $request){
 
-        $roomselect = $request->cList;
-        $roomIdList = explode(',', $roomselect);
-        //dd($request->tList);
-        $typeList = explode(',', $request->tList);
-        $priceList = explode(',', $request->pList);
-        $quantityList = explode(',', $request->qList);
 
+
+
+        $totalPrice = $request->pTotal;
+        $roomList = explode(',', $request->roomList);
+        $priceList = explode(',', $request->priceList);
+
+       //dd($roomList,$priceList,$totalPrice);
 
         $guest = new Guest();
         $guest->setName($request->txtFullname);
@@ -347,7 +351,7 @@ class K004Controller extends Controller{
         $guest->setPhone($request->txtPhone);
         $guest->setMail($request->txtEmail);
         $guest->setAddress($request->txtAddress);
-        $guest->setAddress($request->txtCompany);
+        $guest->setCompany($request->txtCompany);
 
         $res = new Reservation();
         $res->setCheckIn(DateTimeUtil::ConvertDateToString($request->txtCheckin));
@@ -361,13 +365,20 @@ class K004Controller extends Controller{
 
         //confirm Thay Lam
         $invoice = new Invoice();
-        $invoice->setAmountTotal($request->txtTotalprice);
+        $invoice->setAmountTotal($totalPrice);
         $invoice->setCreateYmd(Carbon::now());
-        $invoice->setCreaterName('hungnv');//fix tam
+        $invoice->setCreaterName($request->session()->get('USER_INFO')->user_id);//fix tam
 
+        $invoiceDetail = new InvoiceDetail();
 
+        $invoiceDetail->setItemId($request->cboRoomNo);
+        $invoiceDetail->setItemType('Room');
+        $invoiceDetail->setQuantity(1);
+//        $invoiceDetail->setPrice(str_replace(".","",$request->txtTotalprice));
+//        $invoiceDetail->setAmountTotal(str_replace(".","",$request->txtTotalprice));
+        $invoiceDetail->setCreateYmd(Carbon::now());
         $K004DAO = new K004DAO();
-        $result = $K004DAO->createReservation($guest,$res,$resdetail,$roomIdList);
+        $result = $K004DAO->createReservation($guest,$res,$resdetail,$invoiceDetail,$invoice,$roomList,$priceList);
 
         return \response($result);
 
