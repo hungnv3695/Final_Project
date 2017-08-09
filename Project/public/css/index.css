@@ -569,10 +569,26 @@ hr{
 	background-color:rgb(236,236,236);
 	color:black;
 }
-p.account{
+a.account{
+	text-decoration:none;
 	float:left;
 	margin-right:10px;
-	color:rgb(66,110,180);
+	color:rgb(178,34,34);
 	font-weight: bold;
+}
+.account i{
+	font-size:20px;
+	line-height:15px;
+	margin-right: 5px;
+}
+a.account:hover{
+	color:rgb(128,0,0);
+}
+a.logout{
+	text-decoration:none;
+	color:rgb(205,92,92);
+	font-weight: bold;
+}a.logout:hover{
+	color:rgb(128,0,0);
 }
 /*end restaurant*/
