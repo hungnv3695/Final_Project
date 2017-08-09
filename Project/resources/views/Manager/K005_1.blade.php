@@ -4,6 +4,8 @@
     <title>Danh sách phòng</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="{{asset('plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('/plugins/font-awesome-4.7.0/css/font-awesome.min.css' ) }}">
+	<link rel="stylesheet" type="text/css" href="{{asset('/plugins/animate/animate.css')}}">
 	<link rel="stylesheet" type="text/css" href=" {{asset('css/index.css')}}">
 	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<style>
@@ -47,13 +49,13 @@
 <body>
         <div class="container">
             <div class="row">
-				<div class="col-md-8 col-md-offset-2" style="margin-top:3%;background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
+				<div class="col-md-8 col-md-offset-2" style="margin-top:3%;background-color:rgb(247,222,179);border:1px solid rgb(215,215,215);">
 					<div class="row">
 						<div class="col-md-offset-9" style="margin:10px 10px 0px 0px;float:right;">
 							@if(Session::has('USER_INFO'))
-								<b><a class="account" style="text-decoration:none;" href=" {{url("/K012")}}">{!!Session::get('USER_INFO')->user_name !!} </a></b>
-							@endif
-							<b>|</b><a href="{!! url('/K001/LogOut') !!}"><b> Đăng xuất</b></a>
+							<b><a class="account" href=" {{url("/K012")}}"><i class="fa fa-user"></i>{!!Session::get('USER_INFO')->user_name !!} </a></b>
+							@endif					
+							<b>|</b><a class="logout" href="{!! url('/K001/LogOut') !!}"> Đăng xuất</a>
 						</div>
 						<div class="col-md-12">
 							<p class="brand-title">Danh sách phòng</p>
@@ -65,7 +67,7 @@
 						</div>
 					@endif
 				</div>
-				<div class="col-md-8 col-md-offset-2" style="background-color:rgb(230,230,230);border:1px solid rgb(215,215,215); border-top:none;border-bottom:none;">
+				<div class="col-md-8 col-md-offset-2" style="background-color:rgb(250,222,179);border:1px solid rgb(215,215,215); border-top:none;border-bottom:none;">
 						<form class="form-inline col-md-offset-4" style="margin-top:20px;" method="POST" >	
 							<input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
 							<label class="control-label">Tầng:</label>
@@ -122,7 +124,7 @@
 							</div>
 						</div>
 				</div>
-				<div class="col-md-8 col-md-offset-2" style="background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
+				<div class="col-md-8 col-md-offset-2" style="background-color:rgb(247,222,179);border:1px solid rgb(215,215,215);">
 					<div class="col-md-3 col-md-offset-9" style="margin-top:10px; margin-bottom:10px;">
 						<button type="button" class="btn btn-danger col-md-offset-6" value="btnBack" name="btnBack" onclick="window.location='{{ url("/K002") }}'" ><b>Quay lại</b></button>
 					</div>
