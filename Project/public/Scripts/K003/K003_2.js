@@ -440,6 +440,7 @@ $(document).ready(function(){
             success: function (result) {
                 if(result==1){
                     alert('Lưu thông tin thành công');
+                    window.history.back()
                     //location.reload();
                 }
                 else if(result==0){

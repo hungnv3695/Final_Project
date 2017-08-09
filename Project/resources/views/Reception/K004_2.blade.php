@@ -127,7 +127,7 @@
 
 					<div class="form-inline"  style="margin-left: 150px; margin-top: 10px" >
 						<label class="label1">Tổng tiền:</label>
-						<input id="txtTotal" name="txtTotal" type="text" class="form-control input-md"  style="width: 150px;font-weight: bold;" readonly>
+						<input id="txtTotal" name="txtTotal" type="text" class="form-control input-md"  style="width: 110px;font-weight: bold;" readonly>
 						<label class="label1" style="margin-left: -50px;  ">VNĐ</label>
 					</div>
 					<label style="margin-top:10px;">Thông tin thanh toán: </label>

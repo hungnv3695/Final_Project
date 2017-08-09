@@ -11,6 +11,8 @@ namespace App\Http\DAO;
 use App\Http\Common\Constants;
 use App\Http\Common\StringUtil;
 use App\Models\Guest;
+use App\Models\Invoice;
+use App\Models\InvoiceDetail;
 use App\Models\Reservation;
 use App\Models\ReservationDetail;
 use App\Models\RoomType;
@@ -286,16 +288,18 @@ class K004DAO{
         $strSQL .=  'OR (rd.date_in < \''.$check_in.'\' AND rd.date_out > \''.$check_out.'\')) ';
         $strSQL .=  'AND NOT (rd.check_in_flag = \'1\' AND rd.check_out_flag = \'1\')) ';
         $strSQL .=  'ORDER BY ro.room_number ASC';
-        dd($strSQL);
+
 
         $result = DB::select(DB::raw($strSQL));
 
         return $result;
     }
 
-    public function createReservation(Guest $guest, Reservation $res,ReservationDetail $resdetail, $roomIdList){
+    public function createReservation(Guest $guest, Reservation $res,ReservationDetail $resdetail,
+                                      InvoiceDetail $invoiceDetail,Invoice $invoice, $roomList,$priceList){
         $guestInsert = new Guest();
         $resInsert = new Reservation();
+        $invoiceInsert = new Invoice();
 
 
         $guestInsert->name = $guest->getName();
@@ -304,6 +308,7 @@ class K004DAO{
         $guestInsert->mail = $guest->getMail();
         $guestInsert->address = $guest->getAddress();
         $guestInsert->company = $guest->getCompany();
+        $guestInsert->create_ymd = Carbon::now();
 
 
 
@@ -325,33 +330,60 @@ class K004DAO{
 
             $resInsert->save();
 
+            $resdetail->setReservationId($resInsert->id);
+            $resdetail->setCreateYmd(Carbon::now());
+            $resdetail->setDateIn($resInsert->check_in);
+            $resdetail->setDateOut($resInsert->check_out);
+            //dd($resdetail->getRoomId());
+
+            foreach ($roomList as $value){
+
+                $resDetailInsert = new ReservationDetail();
+                $resDetailInsert->create_ymd = $resdetail->getCreateYmd();
+                $resDetailInsert->room_id = trim($value);
+                $resDetailInsert->reservation_id = $resdetail->getReservationId();
+                $resDetailInsert->date_in = $resdetail->getDateIn();
+                $resDetailInsert->date_out = $resdetail->getDateOut();
+                $resDetailInsert->check_in_flag = 0;
+                $resDetailInsert->check_out_flag = 0;
+                //dd($resDetailInsert->create_ymd,$resDetailInsert->room_id,$resDetailInsert->reservation_id);
+
+                $resDetailInsert->save();
+            }
+
+
+            $invoiceInsert->reservation_id = $resInsert->id;
+            $invoiceInsert->guest_id = $guestInsert->id;
+            $invoiceInsert->creater_nm = $invoice->getCreaterName();
+            $invoiceInsert->create_ymd = $invoice->getCreateYmd();
+            $invoiceInsert->amount_total = $invoice->getAmountTotal();
+
+            $invoiceInsert->save();
+
+            for ($i = 0; $i < count($roomList); $i++){
+                $invoiceDetailInsert = new InvoiceDetail();
+
+                $invoiceDetailInsert->invoice_id = $invoiceInsert->id;
+                $invoiceDetailInsert->item_id = $roomList[$i];
+                $invoiceDetailInsert->item_type = $invoiceDetail->getItemType();
+                $invoiceDetailInsert->quantity = $invoiceDetail->getQuantity();
+                $invoiceDetailInsert->price = $priceList[$i];
+                $invoiceDetailInsert->amount_total = $priceList[$i];;
+                $invoiceDetailInsert->create_ymd = $invoiceDetail->getCreateYmd();
+                //dd( $invoiceDetail);
+                $invoiceDetailInsert->save();
+            }
+
+
+
+            DB::commit();
+            return 1;
+
         }catch(\Exception $e){
             DB::rollback();
             return 0;
         }
-        $resdetail->setReservationId($resInsert->id);
-        $resdetail->setCreateYmd(Carbon::now());
-        $resdetail->setDateIn($resInsert->check_in);
-        $resdetail->setDateOut($resInsert->date_out);
-        //dd($resdetail->getRoomId());
 
-        foreach ($roomIdList as $value){
-
-            $resDetailInsert = new ReservationDetail();
-            $resDetailInsert->create_ymd = $resdetail->getCreateYmd();
-            $resDetailInsert->room_id = trim($value);
-            $resDetailInsert->reservation_id = $resdetail->getReservationId();
-            $resDetailInsert->date_in = $resdetail->getDateIn();
-            $resDetailInsert->date_out = $resdetail->getDateOut();
-            $resDetailInsert->check_in_flag = 0;
-            $resDetailInsert->check_out_flag = 0;
-            //dd($resDetailInsert->create_ymd,$resDetailInsert->room_id,$resDetailInsert->reservation_id);
-
-            $resDetailInsert->save();
-        }
-
-        DB::commit();
-        return 1;
 
     }
 }

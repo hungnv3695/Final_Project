@@ -53,7 +53,8 @@ $(document).ready(function () {
 
     function removeCommas(nStr)
     {
-        nStr.replace(".","");
+        nStr += '';
+        nStr = nStr.replace(".","");
         return nStr;
     }
     function addTitle() {

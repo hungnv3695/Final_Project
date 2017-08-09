@@ -135,6 +135,10 @@
 									<b>đêm</b>
 								</div>
 								<div class="col-md-8 col-md-offset-3 form-inline" style="margin-top: 10px;margin-bottom: 10px;">
+									<label class="label1 col-md-offset-3">VAT:</label>
+									<label>10%</label>
+								</div>
+								<div class="col-md-8 col-md-offset-3 form-inline" style="margin-top: 0px;margin-bottom: 10px;">
 									<label class="label1 col-md-offset-3">Tổng tiền:</label>
 									<input id="txtTotal" name="txtTotal" style="text-align: right" type="text" class="form-control input-md " size="15">
 									<b>VNĐ</b>
