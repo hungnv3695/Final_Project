@@ -26,6 +26,15 @@ $(document).ready(function () {
         return nStr;
     }
 
+
+    function removeCommas(nStr)
+    {
+        nStr+="";
+        nStr = nStr.replace(/\./g,"");
+        return nStr;
+    }
+
+
     function GetUrlParameter(sParam) {
         var sPageURL = decodeURIComponent(window.location.search.substring(1)),
             sURLVariables = sPageURL.split('&'),
@@ -85,7 +94,7 @@ $(document).ready(function () {
     splitInfor(roType,roQuan,roPrice);
     //================================
     $("#btnBook").click(function () {
-
+        var total = removeCommas($("#Total").text());
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -95,8 +104,8 @@ $(document).ready(function () {
             cache: false,
             dataType: 'json',
             data: $("#myForm").serialize() + "&room_type=" + room_type + "&room_quantity=" + room_quantity +
-            "&room_price_total="+ room_price_total + "&check_in=" + checkin + "&check_out=" + checkout + "&countRoom="+countRoom
-            +"&adult="+adult+"&children="+children,
+            "&total="+ total + "&check_in=" + checkin + "&check_out=" + checkout + "&countRoom="+countRoom
+            +"&adult="+adult+"&children="+children + "&nights" + nights,
             contentType: 'application/x-www-form-urlencoded',
             success: function (result) {
             },

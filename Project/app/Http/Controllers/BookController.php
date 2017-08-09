@@ -39,7 +39,8 @@ class BookController extends Controller
     public function bookRoomOnline(Request $request){
         $room_type = explode(',', $request->room_type);
         $room_quantity = explode(',', $request->room_quantity);
-        $room_price_total = $request->room_price_total;
+        $total = $request->total;
+        $nights = $request->nights;
 
         $countRoom  = $request->countRoom;
         $check_in = DateTimeUtil::ConvertDateToString2($request->check_in);
@@ -53,7 +54,7 @@ class BookController extends Controller
         $res->setCheckOut($check_out);
         $res->setNumberOfAdult($request->adult);
         $res->setNumberOfChildren($request->children);
-        $res->setEditer('Hung');
+        $res->setEditer('GUEST');
         $res->setNote($request->notetxt);
         $res->setCreateYmd(Carbon::now());
         $res->setStatusId('RS01');
@@ -74,8 +75,20 @@ class BookController extends Controller
         $resDetail->setCheckOutFlag(0);
         $resDetail->setCreateYmd(Carbon::now());
 
+        $invoice = new Invoice();
+        $invoice->setAmountTotal($total);
+        $invoice->setCreateYmd(Carbon::now());
+        $invoice->setCreaterName('GUEST');
+
+        $invoiceDetail = new InvoiceDetail();
+
+        //$invoiceDetail->setItemId($request->cboRoomNo);
+        $invoiceDetail->setItemType('Room');
+        $invoiceDetail->setQuantity(1);
+        $invoiceDetail->setCreateYmd(Carbon::now());
+
         $bookOnlineDAO = new BookOnlineDAO();
-        $result = $bookOnlineDAO->createBook($res,$resDetail, $guest, $room_type, $room_quantity,$check_in,$check_out);
+        $result = $bookOnlineDAO->createBook($res,$resDetail, $guest,$invoice,$invoiceDetail, $room_type, $room_quantity,$check_in,$check_out,$nights);
 
         return response($result);
 

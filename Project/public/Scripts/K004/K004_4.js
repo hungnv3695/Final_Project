@@ -480,8 +480,4 @@ $(document).ready(function () {
 
     });
 
-
-
-
-
 });

@@ -8,6 +8,8 @@
 namespace App\Http\DAO;
 use App\Http\Common\Constants;
 use App\Models\Guest;
+use App\Models\Invoice;
+use App\Models\InvoiceDetail;
 use App\Models\Reservation;
 use App\Models\ReservationDetail;
 use App\User;
@@ -15,6 +17,8 @@ use App\UserGroup;
 use App\Models\RoomType;
 use App\UserMaster;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rules\In;
+
 class BookOnlineDAO {
     public function getRoomTypeFree($check_in, $check_out){
 
@@ -44,7 +48,7 @@ class BookOnlineDAO {
     }
 
     public function getRoomToBook($check_in, $check_out, $type_name){
-        $strSQL =   'select ro.room_id ';
+        $strSQL =   'select ro.room_id, rt.price ';
         $strSQL .=  'from tbl_room ro join tbl_room_type rt ON ro.room_type_id = rt.room_type_id ';
         $strSQL .=  'where ro.status_id <> \'RO04\' AND rt.type_name = \''.$type_name.'\' AND  ro.room_id ';
         $strSQL .=  'NOT IN ( select rd.room_id from tbl_reservation_detail rd ';
@@ -61,11 +65,14 @@ class BookOnlineDAO {
 
 
 
-    public function createBook(Reservation $res,ReservationDetail $res_detail, Guest $guest, $room_type, $room_quantity,$check_in,$check_out){
+    public function createBook(Reservation $res,ReservationDetail $res_detail, Guest $guest, Invoice $invoice, InvoiceDetail $invoiceDetail,
+                               $room_type, $room_quantity,$check_in,$check_out,$nights){
+
+        $roomList = [];
 
         $guestInsert = new Guest();
         $resInsert = new Reservation();
-        $resDetailInsert = new ReservationDetail();
+
 
 
         $guestInsert->name = $guest->getName();
@@ -95,12 +102,22 @@ class BookOnlineDAO {
             //dd($res);
             $resInsert->save();
 
+            $invoiceInsert = new Invoice();
+            $invoiceInsert->reservation_id = $resInsert->id;
+            $invoiceInsert->guest_id = $guestInsert->id;
+            $invoiceInsert->creater_nm = $invoice->getCreaterName();
+            $invoiceInsert->create_ymd = $invoice->getCreateYmd();
+            $invoiceInsert->amount_total = $invoice->getAmountTotal();
+
+            $invoiceInsert->save();
+
+
             $res_detail->setReservationId($resInsert->id);
             for ($i = 0; $i < count($room_type); $i++){
                 for($j = 0; $j < $room_quantity[$i]; $j++){
 
-                    $room_id = $this->getRoomToBook($check_in, $check_out, $room_type[$j]);
-                    $res_detail->setRoomId($room_id[0]->room_id);
+                    $roomInfor = $this->getRoomToBook($check_in, $check_out, $room_type[$j]);
+                    $res_detail->setRoomId($roomInfor[0]->room_id);
 
                     $resDetailInsert = new ReservationDetail();
                     $resDetailInsert->create_ymd = $res_detail->getCreateYmd();
@@ -113,8 +130,22 @@ class BookOnlineDAO {
 
                     $resDetailInsert->save();
 
+                    $invoiceDetailInsert = new InvoiceDetail();
+                    $invoiceDetailInsert->invoice_id = $invoiceInsert->id;
+                    $invoiceDetailInsert->item_id = $roomList[$i];
+                    $invoiceDetailInsert->item_type = $invoiceDetail->getItemType();
+                    $invoiceDetailInsert->quantity = $invoiceDetail->getQuantity();
+                    $invoiceDetailInsert->price = ($roomInfor[0]->price) * nights;
+                    $invoiceDetailInsert->amount_total = ($roomInfor[0]->price) * nights;
+                    $invoiceDetailInsert->create_ymd = $invoiceDetail->getCreateYmd();
+
+                    $invoiceDetailInsert->save();
+
                 }
             }
+
+
+
 
             DB::commit();
             return 1;

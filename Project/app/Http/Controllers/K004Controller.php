@@ -371,12 +371,12 @@ class K004Controller extends Controller{
 
         $invoiceDetail = new InvoiceDetail();
 
-        $invoiceDetail->setItemId($request->cboRoomNo);
+        //$invoiceDetail->setItemId($request->cboRoomNo);
         $invoiceDetail->setItemType('Room');
         $invoiceDetail->setQuantity(1);
-//        $invoiceDetail->setPrice(str_replace(".","",$request->txtTotalprice));
-//        $invoiceDetail->setAmountTotal(str_replace(".","",$request->txtTotalprice));
         $invoiceDetail->setCreateYmd(Carbon::now());
+
+
         $K004DAO = new K004DAO();
         $result = $K004DAO->createReservation($guest,$res,$resdetail,$invoiceDetail,$invoice,$roomList,$priceList);
 
