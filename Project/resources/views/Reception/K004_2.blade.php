@@ -48,7 +48,7 @@
 <body>
 <div class="container">
 	<div class="row">
-		<div class="col-md-12" style="margin-top:1%;background-color:rgb(236,236,236);border:1px solid rgb(215,215,215);">
+		<div class="col-md-12" style="margin-top:1%;background-color:#c3bfc0;border-bottom:1px solid #898989;">
 			<div class="row">
 				<div class="col-md-offset-9" style="margin:10px 10px 0px 0px;float:right;">
 					@if(Session::has('USER_INFO'))
@@ -61,11 +61,11 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-12" style="background-color:rgb(230,230,230);border:1px solid rgb(215,215,215); border-top:none;border-bottom:none;">
+		<div class="col-md-12" style="background-color:#c3bfc0;border-bottom:1px solid #898989;margin-bottom:10px;">
 			<div class="row">
 				<!--left-->
 				<div class="col-md-6">
-					<div class="col-md-12" style="border: 2px solid rgb(220,220,220);border-radius:10px;margin:10px 0px 10px;">
+					<div class="col-md-12" style="border: 1px solid #898989;border-radius:10px;margin:10px 0px 10px;">
 						<div class="row">
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1">Họ tên:</label>
@@ -96,7 +96,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-12" style="border: 2px solid rgb(220,220,220);border-radius:10px;margin:10px 0px 10px;">
+					<div class="col-md-12" style="border: 1px solid #898989;border-radius:10px;margin:10px 0px 10px;">
 						<div class="row">
 							<div class="form-inline" style="margin-top:30px;">
 								<label class="label1">Nhận phòng:</label>
@@ -114,14 +114,14 @@
 								<input id="txtNight" name="txtNight" type="text" class="form-control input-md" size="15" style="width: 80px;" readonly>
 							</div>
 							<label class="label1" style="margin-top:20px;">Ghi chú:</label>
-							<div class="col-md-12 form-inline" style="margin-top:5px; margin-left:7px;">
+							<div class="col-md-12 form-inline" style="margin:5px 0px 52px 7px;">
 								<textarea rows="4" cols="64" id="notetxt" value="{{$note}}" name="notetxt" maxlength="300"></textarea>
 							</div>
 						</div>
 					</div>
 				</div>
 				<!--right-->
-				<div class="col-md-5" style="width:550px;margin:10px 0px 10px 10px;border: 2px solid rgb(220,220,220);border-radius:10px;">
+				<div class="col-md-5" style="width:550px;margin:10px 0px 10px 10px;border: 1px solid #898989;border-radius:10px;">
 					<label>Danh sách phòng: </label>
 					<table id="jqGrid" style="border:1px solid black;"></table>
 

@@ -21,7 +21,7 @@
         }
         hr
         {
-            background-color:rgb(215,215,215);
+            background-color:#898989;
             height:1px;
             border: 0;
         }
@@ -54,7 +54,7 @@
 <body>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-10 col-md-offset-1" style="margin-top:4%;background-color:rgb(245,245,245);border:1px solid rgb(215,215,215);">
+        <div class="col-md-10 col-md-offset-1" style="margin-top:4%;background-color:#c3bfc0;border-bottom:1px solid #898989;">
             <div class="row">
                 <div class="col-md-offset-9" style="margin:10px 10px 0px 0px;float:right;">
 					@if(Session::has('USER_INFO'))
@@ -67,7 +67,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-10 col-md-offset-1" style="background-color:rgb(230,230,230);border:1px solid rgb(215,215,215); border-top:none;border-bottom:none;">
+        <div class="col-md-10 col-md-offset-1" style="background-color:#c3bfc0;border-bottom:1px solid #898989;">
             <form method="post">
                 <div class="form-inline" style="margin-top:20px;">
                     <label class="label1">Họ tên:</label>
@@ -129,7 +129,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-10 col-md-offset-1" style="background-color:rgb(245,245,245);border:1px solid rgb(215,215,215);">
+        <div class="col-md-10 col-md-offset-1" style="background-color:#c3bfc0;">
             <div class="row">
                 <div class="col-md-3 col-md-offset-10" style="margin-top:10px;margin-bottom:10px;">
                     <button type="button" id="btnBack" class="btn btn-danger col-md-offset-3" type="button"><b>Quay lại</b></button>
