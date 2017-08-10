@@ -57,7 +57,7 @@
 								<div class="col-md-10 col-md-offset-1" style="margin-top:20px;"><button type="button"  class="btnManager btn-block" value="btnRoomManagement" name="btnRoomManagement"  onclick="window.location='{{ url("/K005_1") }}'" ><p class="manager">Quản lý phòng </b></button></div>								
 								<div class="col-md-10 col-md-offset-1" style="margin-top:20px;"><button type="button" class="btnManager btn-block" value="btnAccoutManagement" name="btnAccoutManagement"  onclick="window.location='{{ url("/K011") }}'" ><p class="manager">Quản lý tài khoản</p></button></div>
 								<div class="col-md-10 col-md-offset-1" style="margin-top:20px;"><button type="button"  class="btnManager btn-block" value="bntServiceManagement" name="bntServiceManagement" ><p class="manager">Quản lý dịch vụ</p></button></div>
-								<div class="col-md-10 col-md-offset-1" style="margin-top:20px;margin-bottom:20px;"><button type="button"  class="btnManager btn-block" value="bntAccountManagement" name="bntAccountManagement" onclick="window.location='{{ url("/K012") }}'" ><p class="manager">Quản lý tài khoản</p></button></div>
+								<div class="col-md-10 col-md-offset-1" style="margin-top:20px;margin-bottom:20px;"><button type="button"  class="btnManager btn-block" value="bntMyaccount" name="bntMyaccount" onclick="window.location='{{ url("/K012") }}'" ><p class="manager">Thông tin của tôi</p></button></div>
 							</div>
 						</div>
 					</div>
