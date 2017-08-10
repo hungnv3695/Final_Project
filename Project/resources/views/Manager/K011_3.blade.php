@@ -57,11 +57,11 @@
 					@endif
                     <div class="form-inline col-md-offset-2" style="margin-top:20px;">
                         <label class="label1" for="">Tên đăng nhập: </label>
-                            <input id="txtUserName" name="txtUserName" type="text" class="form-control input-md" maxlength="20" size="20"/>
+                            <input id="txtUserName" name="txtUserName" type="text" class="form-control input-md" maxlength="20" size="20" oninvalid="InvalidMsg(this);" required />
                     </div>
                     <div class="form-inline col-md-offset-2" style="margin-top:20px;">
                         <label class="label1" for="">Họ tên: </label>
-                        <input id="txtFullName" name="txtFullName" type="text" class="form-control input-md" maxlength="50" size="20"/>
+                        <input id="txtFullName" name="txtFullName" type="text" class="form-control input-md" maxlength="50" size="20" oninvalid="InvalidMsg(this);" required  />
                     </div>
                     <div class="form-inline col-md-offset-2" style="margin-top:20px;">
                         <label class="label1" for="">Chức vụ: </label>
@@ -75,6 +75,7 @@
                         <label class="label1" for="">Trạng thái: </label>
                         <select id="Status" name="Status" style="width:195px;" class="form-control input-md">
                             <option value="0" selected>Hoạt Động</option>
+                            <option value="1" selected>Không Hoạt Động</option>
                         </select>
                     </div>
                 </div>
@@ -90,5 +91,6 @@
     </form>
 </div>
 </body>
+    <script src="{!! asset('Scripts/FrontCheck/CheckError.js') !!}"> </script>
 	<script>  $("div.Error").delay(2000).slideUp(); </script>
 </html>
