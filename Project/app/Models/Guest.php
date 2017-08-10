@@ -20,6 +20,40 @@ class Guest extends Model{
     private $address;
     private $companyPhone;
     private $country;
+    private $createYmd;
+    private $updateYmd;
+
+    /**
+     * @return mixed
+     */
+    public function getCreateYmd()
+    {
+        return $this->createYmd;
+    }
+
+    /**
+     * @param mixed $createYmd
+     */
+    public function setCreateYmd($createYmd)
+    {
+        $this->createYmd = $createYmd;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUpdateYmd()
+    {
+        return $this->updateYmd;
+    }
+
+    /**
+     * @param mixed $updateYmd
+     */
+    public function setUpdateYmd($updateYmd)
+    {
+        $this->updateYmd = $updateYmd;
+    }
     /**
      * @return mixed
      */

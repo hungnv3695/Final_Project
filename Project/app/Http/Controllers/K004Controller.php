@@ -338,7 +338,7 @@ class K004Controller extends Controller{
 
 
 
-
+        $nights = $request->nights;
         $totalPrice = $request->pTotal;
         $roomList = explode(',', $request->roomList);
         $priceList = explode(',', $request->priceList);
@@ -358,6 +358,7 @@ class K004Controller extends Controller{
         $res->setCheckOut(DateTimeUtil::ConvertDateToString($request->txtCheckout));
         $res->setNumberOfRoom($request->txtNumroom);
         $res->setNumberOfAdult($request->txtNumpeople);
+        $res->setNumberOfChildren(0);
         $res->setStatusId($request->status);
         $res->setEditer($request->session()->get('USER_INFO')->user_id);
 
@@ -378,7 +379,7 @@ class K004Controller extends Controller{
 
 
         $K004DAO = new K004DAO();
-        $result = $K004DAO->createReservation($guest,$res,$resdetail,$invoiceDetail,$invoice,$roomList,$priceList);
+        $result = $K004DAO->createReservation($guest,$res,$resdetail,$invoiceDetail,$invoice,$roomList,$priceList,$nights);
 
         return \response($result);
 

@@ -81,6 +81,7 @@ class BookOnlineDAO {
         $guestInsert->mail = $guest->getMail();
         $guestInsert->address = $guest->getAddress();
         $guestInsert->company = $guest->getCompany();
+        $guestInsert->create_ymd = $guest->getCreateYmd();
 
         DB::beginTransaction();
 
@@ -116,7 +117,7 @@ class BookOnlineDAO {
             for ($i = 0; $i < count($room_type); $i++){
                 for($j = 0; $j < $room_quantity[$i]; $j++){
 
-                    $roomInfor = $this->getRoomToBook($check_in, $check_out, $room_type[$j]);
+                    $roomInfor = $this->getRoomToBook($check_in, $check_out, $room_type[$i]);
                     $res_detail->setRoomId($roomInfor[0]->room_id);
 
                     $resDetailInsert = new ReservationDetail();
@@ -131,12 +132,16 @@ class BookOnlineDAO {
                     $resDetailInsert->save();
 
                     $invoiceDetailInsert = new InvoiceDetail();
+
                     $invoiceDetailInsert->invoice_id = $invoiceInsert->id;
-                    $invoiceDetailInsert->item_id = $roomList[$i];
+
+                    $invoiceDetailInsert->item_id = $roomInfor[0]->room_id;
+
                     $invoiceDetailInsert->item_type = $invoiceDetail->getItemType();
                     $invoiceDetailInsert->quantity = $invoiceDetail->getQuantity();
-                    $invoiceDetailInsert->price = ($roomInfor[0]->price) * nights;
-                    $invoiceDetailInsert->amount_total = ($roomInfor[0]->price) * nights;
+
+                    $invoiceDetailInsert->price = (int)($roomInfor[0]->price) * (int)$nights;
+                    $invoiceDetailInsert->amount_total = ($roomInfor[0]->price) * $nights;
                     $invoiceDetailInsert->create_ymd = $invoiceDetail->getCreateYmd();
 
                     $invoiceDetailInsert->save();
