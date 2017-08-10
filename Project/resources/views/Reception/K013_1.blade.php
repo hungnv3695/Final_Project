@@ -49,6 +49,12 @@
             width:35%;
             border:1px solid red;
         }
+		.table-bordered>thead>tr>th{
+			text-align:center;
+		}
+		.table>tbody>tr>td{
+			text-align:center;
+		}
     </style>
 </head>
 <body>
@@ -88,15 +94,25 @@
                     <table class="table table-bordered">
                         <thead>
                         <tr>
-                            <th>STT</th>
-                            <th>Người đặt</th>
-                            <th>CMND</th>
-                            <th>Người ở</th>
-                            <th>CMND</th>
-                            <th>Ngày nhận</th>
-                            <th>Ngày trả</th>
-                            <th>Phòng</th>
+                            <th></th>
+                            <th colspan="2">Người đặt</th>
+                            <th colspan="2">Người ở</th>
+                            <th>Ngày vào</th>
+                            <th>Ngày ra</th>
+                            <th>Tên phòng</th>
                             <th>Trạng thái</th>
+                            <th></th>
+                        </tr>
+						<tr>
+                            <th></th>
+							<th>Họ tên</th>
+							<th>CMND</th>
+							<th>Họ tên</th>
+							<th>CMND</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
                             <th></th>
                         </tr>
                         </thead>
@@ -123,7 +139,7 @@
                             </tr>
                             <?php $i++; ?>
                             @endforeach
-                        @endif
+                        @endif   
                         </tbody>
                     </table>
                 </div>
