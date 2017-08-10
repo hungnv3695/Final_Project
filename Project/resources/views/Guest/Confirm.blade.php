@@ -55,7 +55,7 @@
 		.bg {
 			width: 100%;
 			height: 300px;
-			background: asset{{'/img/Head02.jpg'}} fixed;
+			background: url('../img/Head02.jpg') fixed;
 		}
 		.reservation-title{
 			height:50px;
