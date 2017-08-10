@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Quản lý tiền thu của lễ tân</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="plugins/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="plugins/animate/animate.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<style>
+		body
+		{
+			padding:0;
+			margin:0;
+		}
+		hr
+		{
+			background-color:#898989;
+			height:1px; 
+			border: 0;
+		}
+		.table-wrapper 
+		{
+			position:relative;
+		}
+		.table-scroll 
+		{
+			height:225px;
+			overflow:auto; 
+			margin-top:20px;	  
+			margin-bottom:20px;
+		}
+		.table-wrapper table 
+		{
+			width:100%;
+		}
+		.table-wrapper table thead th .text 
+		{
+			position:absolute;   
+			top:-20px;
+			z-index:2;
+			height:20px;
+			width:35%;
+			border:1px solid red;
+		}
+	</style>   
+</head>
+<body>
+        <div class="container">
+            <div class="row">
+				<div class="col-md-8 col-md-offset-2" style="margin-top:3%;background-color:#c3bfc0;border-bottom:1px solid #898989;">
+					<div class="row">
+						<div class="col-md-offset-9" style="margin:10px 10px 0px 0px;float:right;">
+							<!--@if(Session::has('USER_INFO'))
+							<b><a class="account" href=" {{url("/K012")}}"><i class="fa fa-user"></i>{!!Session::get('USER_INFO')->user_name !!} </a></b>
+							@endif-->					
+							<b>|</b><a class="logout" href="{!! url('/K001/LogOut') !!}"> Đăng xuất</a>
+						</div>
+						<div class="col-md-12">
+							<p class="brand-title">Quản lý tiền thu của lễ tân</p>
+						</div>
+					</div>
+						<!--@if(Session()->has('SuccessMSG'))
+							<div class="alert alert-success">
+								{!! Session()->get('SuccessMSG') !!}
+							</div>
+						@endif-->
+				</div>
+				<div class="col-md-8 col-md-offset-2" style="background-color:#c3bfc0;border-bottom:1px solid #898989;">
+						<div class="row">
+							<div class="form-inline col-md-offset-1" style="margin-top:20px;">
+								<label class="control-label">Ngày:</label>
+								<input id="txtDate" name="txtDate" type="text" class="form-control input-md" placeholder="MM/DD/YYYY" size="20">
+								<button class="btn btn-default" value="btnSearch" name="btnSearch"><b>Tìm</b></button>
+							</div>
+						</div>
+						<div class="row"><hr></div>
+						<label>2 bản ghi</label>
+						<div class="table-wrapper">
+							<div class="table-scroll">
+								<table class="table table-bordered">
+									<thead>
+									  <tr>
+										<th></th>
+										<th>Tên nhân viên</th>
+										<th>Danh sách hóa đơn</th>
+										<th>Ngày</th>
+										<th>Tổng tiền</th>
+									  </tr>
+									</thead>
+									<tbody>
+									  <tr>
+										<td>1</td>
+										<td>Nguyễn Việt Hưng</td>
+										<td>111</td>
+										<td>12/08/2017</td>
+										<td>1500000</td>
+									  </tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+				</div>
+				<div class="col-md-8 col-md-offset-2" style="background-color:#c3bfc0;">
+					<div class="row">
+						<div class="col-md-3 col-md-offset-9" style="margin-top:10px; margin-bottom:10px;">
+							<button type="button" class="btn btn-danger col-md-offset-6" value="btnBack" name="btnBack"><b>Quay lại</b></button>
+						</div>
+					</div>
+				</div>
+            </div>
+        </div>
+		<script>  $("div.alert").delay(2000).slideUp(); </script>
+		
+</body>
+</html>
