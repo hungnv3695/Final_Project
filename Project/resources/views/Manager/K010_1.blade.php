@@ -21,8 +21,7 @@
 			text-align:right;
 		}
 		.label2{
-			width:60px;
-			line-height:30px;
+			line-height:29px;
 		}
 		table {
 			width: 100%;
@@ -160,7 +159,7 @@
 							<table class="table table-bordered" style="margin-bottom:56px;" id="table">
 								<thead>
 								<tr>
-									<th class="col1">STT</th>
+									<th class="col1"></th>
 									<th class="col2">Tên thiết bị</th>
 									<th class="col3">Số lượng</th>
 									<th class="col4">Giá</th>
@@ -169,7 +168,7 @@
 								</thead>
 								<tbody>
 								<tr>
-									<td class="col1">1</td>
+									<td class="col1" style="line-height:34px;">1</td>
 									<td class="col2"> <input id="txtNameAcc1" name="txtNameAcc" type="text" class="form-control input-md" maxlength="20"  oninvalid="InvalidMsg(this);" required ></td>
 									<td class="col3"> <input id="txtQuanlityAcc1" name="txtquantityAcc" type="number" value="1" class="form-control input-md"  min="1" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required  ></td>
 									<td class="col4"> <input id="txtPriceAcc1" name="txtPriceAcc" type="number" value="0" class="form-control input-md"  min="0" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required  ></td>
