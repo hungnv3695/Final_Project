@@ -107,12 +107,12 @@
                             <input id="txtIdCard" name="txtIdCard" type="text" class="form-control input-md" size="20" maxlength="12"  value="{!! $user[0]->identity_card !!}" oninvalid="InvalidMsg(this);" required >
                         </div>
                         <div class="form-inline col-md-offset-1" style="margin-top:20px;">
+                            <label class="label1" for="">Nơi cấp: </label>
+                            <input id="txtLocation" name="txtLocation" type="text" class="form-control input-md" size="20"  maxlength="20" value="{!! $user[0]->tax_code !!}"  oninvalid="InvalidMsg(this);" required >
+                        </div>
+						<div class="form-inline col-md-offset-1" style="margin-top:20px;">
                             <label class="label1" for="">Điện thoại: </label>
                             <input id="txtPhone" name="txtPhone" type="text" class="form-control input-md" size="20" maxlength="20"  value="{!! $user[0]->phone !!}" oninvalid="InvalidMsg(this);" required  >
-                        </div>
-                        <div class="form-inline col-md-offset-1" style="margin-top:20px;">
-                            <label class="label1" for="">Mã số thuế: </label>
-                            <input id="txtTax" name="txtTax" type="text" class="form-control input-md" size="20"  maxlength="20" value="{!! $user[0]->tax_code !!}"  oninvalid="InvalidMsg(this);" required >
                         </div>
                         <div class="form-inline col-md-offset-1" style="margin-top:20px;margin-bottom:20px;">
                             <label class="label1" for="">Email: </label>
