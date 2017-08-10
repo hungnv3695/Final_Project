@@ -78,6 +78,12 @@
 			width: 15%;
 			float:left;
 		}
+		.table-bordered>thead>tr>th{
+			text-align:center;
+		}
+		.table>tbody>tr>td{
+			text-align:center;
+		}
 		.Error
 		{
 			color: #D8000C;
@@ -121,7 +127,7 @@
 								<input id="txtRoomTypeID" name="txtRoomTypeID" type="text" size="10" class="form-control input-md" maxlength="5" autofocus oninvalid="InvalidMsg(this);" required>
 							</div>
 							<div class="form-inline" style="margin-top:20px;">
-								<label class="label1" for="">Tên loại phòng:</label>
+								<label class="label1" for="">Loại phòng:</label>
 								<input id="txtFullname" name="txtFullname" type="text" size="15" class="form-control input-md" maxlength="30" oninvalid="InvalidMsg(this);" required>
 							</div>
 

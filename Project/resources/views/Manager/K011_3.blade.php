@@ -15,7 +15,7 @@
             margin: 0;
         }
         .label1{
-            width:100px;
+            width:120px;
             text-align:right;
         }
 		.Error
@@ -64,11 +64,11 @@
                         <input id="txtFullName" name="txtFullName" type="text" class="form-control input-md" maxlength="50" size="20"/>
                     </div>
                     <div class="form-inline col-md-offset-2" style="margin-top:20px;">
-                        <label class="label1" for="">Chức vụ: </label>
+                        <label class="label1" for="">Nhóm người dùng: </label>
                         <select id="Position" name="Position" style="width:195px;" class="form-control input-md">
-                            <option value="G01" >Manager</option>
-                            <option value="G02" >Receptionist</option>
-                            <option value="G03" >Accountant</option>
+                            <option value="G01" >Quản lý</option>
+                            <option value="G02" >Lễ tân</option>
+                            <option value="G03" >Kế toán</option>
                         </select>
                     </div>
                     <div class="form-inline col-md-offset-2" style="margin-top:20px;margin-bottom:20px;">
@@ -82,7 +82,7 @@
         <div class="col-md-6 col-md-offset-3" style="background-color:#c3bfc0;">
             <div class="form-inline col-md-offset-8" style="margin-top:10px;margin-bottom:10px;">
                 <button class="btn btn-success col-md-offset-2" value="bntAdd" name="bntAdd"><b>Thêm</b></button>
-                <button type="button" class="btn btn-danger" value="backCancel" name="backCancel" style="margin-left:5px;" onclick="window.location='{{ url("/K011") }}'" ><b>Hủy bỏ</b></button>
+                <button type="button" class="btn btn-danger" value="backCancel" name="backCancel" onclick="window.location='{{ url("/K011") }}'" ><b>Hủy bỏ</b></button>
             </div>
         </div>
     </div>

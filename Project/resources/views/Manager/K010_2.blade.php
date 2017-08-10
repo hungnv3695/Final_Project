@@ -82,6 +82,12 @@
 			width: 15%;
 			float:left;
 		}
+		.table-bordered>thead>tr>th{
+			text-align:center;
+		}
+		.table>tbody>tr>td{
+			text-align:center;
+		}
 		.Error
 		{
 			color: #D8000C;
@@ -173,7 +179,7 @@
 							<div class="col-md-12" style="margin-top:20px;margin-bottom:10px;">
 								<label>Thiết Bị: </label>
 							</div>
-							<table class="table table-hover" style="margin-bottom:15px;" id="table">
+							<table class="table table-bordered" style="margin-bottom:15px;" id="table">
 								<thead>
 								<tr>
 									<th class="col1">STT</th>

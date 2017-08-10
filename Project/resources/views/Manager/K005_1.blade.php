@@ -44,6 +44,12 @@
 		width:35%;
 		border:1px solid red;
 	}
+	.table-bordered>thead>tr>th{
+		text-align:center;
+	}
+	.table>tbody>tr>td{
+		text-align:center;
+	}
 		</style>
 </head>
 <body>
@@ -95,8 +101,8 @@
 								<table class="table table-bordered">
 									<thead>
 									  <tr>
-										<th>STT</th>
-										<th>Số phòng</th>
+										<th></th>
+										<th>Tên phòng</th>
 										<th>Loại phòng</th>
 										<th>Tầng</th>
 										<th>Giá</th>
