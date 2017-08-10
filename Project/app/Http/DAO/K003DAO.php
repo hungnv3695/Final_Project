@@ -15,6 +15,7 @@ use App\Models\InvoiceDetail;
 use App\Models\Reservation;
 use App\Models\ReservationDetail;
 use App\Models\Room;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\In;
 use Mockery\Exception;
@@ -117,6 +118,7 @@ class K003DAO
             $guestInsert->identity_card = $guest->getIdentityCard();
             $guestInsert->phone = $guest->getPhone();
             $guestInsert->mail = $guest->getMail();
+            $guestInsert->create_ymd = Carbon::now();
             //Insert new Guest to Database
 
             $guestInsert->save();
@@ -164,8 +166,6 @@ class K003DAO
             $invoiceInsert->amount_total = $invoice->getAmountTotal();
 
             $invoiceInsert->save();
-
-
 
 
             $invoiceDetailInsert->invoice_id = $invoiceInsert->id;

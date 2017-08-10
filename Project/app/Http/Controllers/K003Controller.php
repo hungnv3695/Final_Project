@@ -65,6 +65,7 @@ class K003Controller extends Controller
         $room_status = $request->room_status;
         $room_id = $request->cboRoomNo;
         $res_id = $request->res_id;
+        $total_price = $request->total_price;
 
         if($res_id != ""){//Check in cho reservation
 
@@ -139,19 +140,18 @@ class K003Controller extends Controller
             $room->setRoomID($room_id);
 
             $invoice = new Invoice();
-            $invoice->setAmountTotal(str_replace(".","",$request->txtTotalprice));
+            $invoice->setAmountTotal((int)$total_price);
+            //dd($invoice->getAmountTotal());
             $invoice->setCreateYmd(Carbon::now());
-            $invoice->setCreaterName('hungnv');//fix tam
-
-
+            $invoice->setCreaterName($request->session()->get('USER_INFO')->user_id);//fix tam
 
             $invoiceDetail = new InvoiceDetail();
 
-            $invoiceDetail->setItemId($request->cboRoomNo);
+            $invoiceDetail->setItemId($room_id);
             $invoiceDetail->setItemType('Room');
             $invoiceDetail->setQuantity(1);
-            $invoiceDetail->setPrice(str_replace(".","",$request->txtTotalprice));
-            $invoiceDetail->setAmountTotal(str_replace(".","",$request->txtTotalprice));
+            $invoiceDetail->setPrice((int)$total_price);
+            $invoiceDetail->setAmountTotal((int)$total_price);
             $invoiceDetail->setCreateYmd(Carbon::now());
 
 

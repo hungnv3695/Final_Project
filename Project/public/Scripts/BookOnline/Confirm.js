@@ -105,9 +105,16 @@ $(document).ready(function () {
             dataType: 'json',
             data: $("#myForm").serialize() + "&room_type=" + room_type + "&room_quantity=" + room_quantity +
             "&total="+ total + "&check_in=" + checkin + "&check_out=" + checkout + "&countRoom="+countRoom
-            +"&adult="+adult+"&children="+children + "&nights" + nights,
+            +"&adult="+adult+"&children="+children + "&nights=" + nights,
             contentType: 'application/x-www-form-urlencoded',
             success: function (result) {
+                if(result == 1){
+                    console.log('Đặt phòng thành công');
+                    window.open();
+                }
+                else if(result == 0){
+                    alert('xảy ra lỗi');
+                }
             },
             error: function(){
                 alert('error');

@@ -67,17 +67,17 @@
 						<div class="col-md-12" style="width:450px;margin:0px 0px 10px;border: 1px solid #898989;border-radius:10px;">
 							<div class="row">
 								<div class="form-inline" style="margin-top:20px;">
-									<label class="label1">Nhận phòng:</label>
+									<label class="label1">Ngày vào:</label>
 									<input id="txtCheckin" name="txtCheckin" type="text" placeholder="MM/DD/YYY" class="form-control input-md" size="20">
 								</div>
 								<div class="form-inline" style="margin-top:10px;">
-									<label class="label1">Trả phòng:</label>
+									<label class="label1">Ngày ra:</label>
 									<input id="txtCheckout" name="txtCheckout" type="text" placeholder="MM/DD/YYY" class="form-control input-md" size="20" >
 								</div>
 								<div class="form-inline" style="margin-top:10px;margin-bottom:20px;">
 									<label class="label1">Số người:</label>
 									<input id="txtNumpeople" name="txtNumpeople" type="number" min="1" class="form-control input-md" size="5" style="width: 100px;">
-									<label class="label1">Số phòng:</label>
+									<label class="label1">Tên phòng:</label>
 									<input id="txtNumroom" name="txtNumroom" type="number" min="1" value="1" class="form-control input-md" size="5" style="width: 100px;">
 									<div class="col-md-10 col-md-offset-4">
 										<button class="btn btn-default" id="btnSearch" value="bntAddRoom" name="bntAddRoom" style="margin-top:20px;"><b>Tìm</b></button>

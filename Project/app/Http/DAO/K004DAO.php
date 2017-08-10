@@ -296,7 +296,7 @@ class K004DAO{
     }
 
     public function createReservation(Guest $guest, Reservation $res,ReservationDetail $resdetail,
-                                      InvoiceDetail $invoiceDetail,Invoice $invoice, $roomList,$priceList){
+                                      InvoiceDetail $invoiceDetail,Invoice $invoice, $roomList,$priceList,$nights){
         $guestInsert = new Guest();
         $resInsert = new Reservation();
         $invoiceInsert = new Invoice();
@@ -321,6 +321,7 @@ class K004DAO{
             $resInsert->check_in = $res->getCheckIn();
             $resInsert->check_out = $res->getCheckOut();
             $resInsert->number_of_adult = $res->getNumberOfAdult();
+            $resInsert->number_of_children = $res->getNumberOfChildren();
             $resInsert->number_of_room = $res->getNumberOfRoom();
             $resInsert->guest_id = $guestInsert->id;
             $resInsert->status_id = $res->getStatusId();
@@ -367,8 +368,8 @@ class K004DAO{
                 $invoiceDetailInsert->item_id = $roomList[$i];
                 $invoiceDetailInsert->item_type = $invoiceDetail->getItemType();
                 $invoiceDetailInsert->quantity = $invoiceDetail->getQuantity();
-                $invoiceDetailInsert->price = $priceList[$i];
-                $invoiceDetailInsert->amount_total = $priceList[$i];;
+                $invoiceDetailInsert->price = (int)$priceList[$i] * (int)$nights;
+                $invoiceDetailInsert->amount_total = (int)$priceList[$i] * (int)$nights;
                 $invoiceDetailInsert->create_ymd = $invoiceDetail->getCreateYmd();
                 //dd( $invoiceDetail);
                 $invoiceDetailInsert->save();

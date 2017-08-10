@@ -7,6 +7,8 @@ use App\Http\DAO\BookOnlineDAO;
 use App\Models\Guest;
 use App\Models\Reservation;
 use App\Models\ReservationDetail;
+use App\Models\Invoice;
+use App\Models\InvoiceDetail;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -67,6 +69,7 @@ class BookController extends Controller
         $guest->setAddress($request->txtAddress);
         $guest->setMail($request->txtEmail);
         $guest->setCountry($request->Country);
+        $guest->setCreateYmd(Carbon::now());
 
         $resDetail = new ReservationDetail();
         $resDetail->setDateIn($check_in);

@@ -14,6 +14,25 @@
             padding: 0;
             margin: 0;
         }
+		.btnReceptionist{
+			background: #426EB4;
+			color: #fff;
+			height:40px;
+			border-radius: 7px;
+			border:none;
+		}
+		.btnReceptionist:hover{
+			background: #1B4F93;
+			color: #fff;
+		}
+		p.receptionist{
+			font-family: Arial, Helvetica, sans-serif;
+			font-weight:100;
+			color:#FFFFFF;
+			font-size:16px;
+			line-height:35px;
+			letter-spacing:1.2px;
+		}
     </style>
 </head>
 <body>
@@ -34,10 +53,11 @@
 			</div>
 			<div class="col-md-8 col-md-offset-2" style="background-color:#c3bfc0;">
                <div class="row">
-					<div class="col-md-6 form-inline col-md-offset-3" style="border:1px solid #898989;border-radius:10px;margin-top:50px;margin-bottom:50px;">
-                        <div class="col-md-8 col-md-offset-2" style="margin-top:40px;"><button type="button" class="btn btn-primary btn-block" value="btnRoomstatus" name="btnRoomstatus" onclick="window.location='{{ url("/K003") }}'"><b>Trạng thái phòng</b></button></div>
-						<div class="col-md-8 col-md-offset-2" style="margin-top:20px;"><button type="button" class="btn btn-primary btn-block" value="btnReservation" name="btnReservation" onclick="window.location='{{ url("/K004_4?res_id=") }}'"  ><b>Đặt phòng</b></button></div>
-						<div class="col-md-8 col-md-offset-2" style="margin-top:20px;margin-bottom:40px;"><button type="button" class="btn btn-primary btn-block" value="btnReservationList" name="btnReservationList" onclick="window.location='{{ url("/K004_1") }}'"><b>Danh sách đặt phòng</b></button></div>
+					<div class="col-md-6 form-inline col-md-offset-3" style="border:1px solid #898989;border-radius:10px;margin-top:50px;margin-bottom:50px;">                       
+						<div class="col-md-10 col-md-offset-1" style="margin-top:20px;"><button type="button" class="btnReceptionist btn-block" value="btnReservation" name="btnReservation" onclick="window.location='{{ url("/K004_4?res_id=") }}'"  ><p class="receptionist">Đặt phòng khách sạn</p></button></div>
+						<div class="col-md-10 col-md-offset-1" style="margin-top:20px;"><button type="button" class="btnReceptionist btn-block" value="btnReservationList" name="btnReservationList" onclick="window.location='{{ url("/K004_1") }}'"><p class="receptionist">Danh sách đặt phòng</p></button></div>
+						<div class="col-md-10 col-md-offset-1" style="margin-top:20px;"><button type="button" class="btnReceptionist btn-block" value="btnCheckinInfo" name="btnCheckinInfo"><p class="receptionist">Thông tin nhận phòng</p></button></div>
+						<div class="col-md-10 col-md-offset-1" style="margin-top:20px;margin-bottom:20px;"><button type="button"  class="btnReceptionist btn-block" value="bntMyaccount" name="bntMyaccount" onclick="window.location='{{ url("/K012") }}'" ><p class="receptionist">Thông tin của tôi</p></button></div>
                     </div>
                 </div>
 			</div>

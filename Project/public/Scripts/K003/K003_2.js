@@ -309,7 +309,7 @@ $(document).ready(function(){
 
     $("#btnCheckin").click(function (event) {
         event.preventDefault();
-
+        var total_price = removeCommas($("#txtTotalprice").val());
         if( $("#txtCheckin").val() == "" || $("#txtCheckout").val() == ""){
             alert('Chọn ngày vào và ngày ra trước khi ấn nút [Nhận phòng]');
             return;
@@ -336,7 +336,8 @@ $(document).ready(function(){
                 method: 'GET',
                 cache: false,
                 dataType: 'json',
-                data: $("#myForm").serialize() + "&room_status=" + ROOM_STATUS + "&res_status=" + RES_STATUS + "&room_number=" + room_number + "&room_type=" + room_type + "&price=" + price ,
+                data: $("#myForm").serialize() + "&room_status=" + ROOM_STATUS + "&res_status=" + RES_STATUS + "&room_number=" + room_number +
+                "&room_type=" + room_type + "&price=" + price + "&total_price=" + total_price ,
                 contentType: 'application/x-www-form-urlencoded',
                 success: function (result) {
                     if(result==1){

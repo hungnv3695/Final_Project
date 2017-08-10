@@ -43,6 +43,12 @@
 		width:35%;
 		border:1px solid red;
 	}
+	.table-bordered>thead>tr>th{
+		text-align:center;
+	}
+	.table>tbody>tr>td{
+		text-align:center;
+	}
 	.Error
 	{
 		color: #D8000C;
@@ -96,7 +102,7 @@
 								<input id="txtRoomID" name="txtRoomID" type="text" class="form-control input-md" value="{!! old('txtRoomID') !!}" maxlength="5" onclick="setDisableRoomType()" oninvalid="InvalidMsg(this);" required  >
 							</div>
 							<div class="form-inline" style="margin-top:20px;">
-								<label class="label1" for="">Số phòng: </label>
+								<label class="label1" for="">Tên phòng: </label>
 								<input id="txtRoomNo" name="txtRoomNo" type="text" class="form-control input-md" value="{!! old('txtRoomNo') !!}" maxlength="5" onclick="setDisableRoomType()" oninvalid="InvalidMsg(this);" required >
 							</div>
 							<div class="form-inline" style="margin-top:20px;">
@@ -146,7 +152,7 @@
 								<table class="table table-bordered">
 									<thead>
 									<tr>
-										<th>STT</th>
+										<th></th>
 										<th>Tên thiết bị</th>
 										<th>Số lượng</th>
 										<th>Giá </th>

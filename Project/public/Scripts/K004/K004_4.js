@@ -407,24 +407,10 @@ $(document).ready(function () {
     });
     $('#btnBook').click(function(event){
         event.preventDefault();
-        // var invoiceList = "";
-        // var p, r ,q;
-        // var typeList =[];
-        // var priceList = [];
-        // var quantityList = [];
-        // for(var i = 0 ; i < nuoftype; i ++ ){
-        //         r = $("#roomtype"+i).val();
-        //         q = $("#noroom"+i).val();
-        //         p =  $("#price"+i).val();
-        //         if((q !== undefined && q != 0) ){
-        //             typeList.push(r);
-        //             priceList.push(p);
-        //             quantityList.push(q);
-        //         }
-        //
-        // }
+
         var roomList = [];
         var priceList = [];
+        var nights = $("#txtNight").val();
         for(var i = 0; i < cList.length; i++){
             roomList.push(cList[i].room_id);
             priceList.push(cList[i].price);
@@ -461,7 +447,7 @@ $(document).ready(function () {
             cache: false,
             dataType: 'json',
             data: $("#myForm").serialize() + "&status=" + PROCESSED + "&roomList=" + roomList
-            +"&priceList=" + priceList +"&pTotal=" + total ,
+            +"&priceList=" + priceList +"&pTotal=" + total + "&nights="+nights ,
             contentType: 'application/x-www-form-urlencoded',
             success: function (result) {
                 if(result==1){

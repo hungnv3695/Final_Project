@@ -43,6 +43,12 @@
 		width:35%;
 		border:1px solid red;
 	}
+	.table-bordered>thead>tr>th{
+		text-align:center;
+	}
+	.table>tbody>tr>td{
+		text-align:center;
+	}
     </style>
 </head>
 <body>
@@ -68,18 +74,18 @@
             @endif
         </div>
         <div class="col-md-8 col-md-offset-2" style="background-color:#c3bfc0;border-bottom:1px solid #898989;">
-            <form class="form-inline col-md-offset-3" style="margin-top:20px;" method="post">
+            <form class="form-inline col-md-offset-2" style="margin-top:20px;" method="post">
                 <div class="row">
-                    <label class="control-label">Chức vụ:</label>
+                    <label class="control-label">Nhóm người dùng:</label>
                     <select id="Position" name="Position" style="width:140px;" class="form-control input-md">
                         <option value="0" {!!  (isset($searchPos) && $searchPos == 0) ? 'selected':''  !!}></option>
-                        <option value="G01" {!!  (isset($searchPos) && $searchPos == "G01") ? 'selected':''  !!} >Manager</option>
-                        <option value="G02" {!!  (isset($searchPos) && $searchPos == "G02") ? 'selected':''  !!} >Receptionist</option>
-                        <option value="G03" {!!  (isset($searchPos) && $searchPos == "G03") ? 'selected':''  !!}>Accountant</option>
+                        <option value="G01" {!!  (isset($searchPos) && $searchPos == "G01") ? 'selected':''  !!} >Quản lý</option>
+                        <option value="G02" {!!  (isset($searchPos) && $searchPos == "G02") ? 'selected':''  !!} >Lễ tân</option>
+                        <option value="G03" {!!  (isset($searchPos) && $searchPos == "G03") ? 'selected':''  !!}>Kế toán</option>
                     </select>
                     <input id="searchtxt" name="searchtxt" placeholder="Tìm kiếm..." type="text" class="form-control input-md" size="12" value="{!! isset($searchStr)?$searchStr:"" !!}">
                     <button class="btn btn-default" value="btnSearch" name="btnSearch"><b>Tìm</b></button>
-                    <button class="btn btn-default" value="btbAdd" name="btnAdd" TYPE="button" onclick=" window.location='{!! url('/K011_1/K011_3') !!}' " > <b>Thêm</b></button>
+                    <button class="btn btn-default" value="btbAdd" name="btnAdd" TYPE="button" onclick=" window.location='{!! url('/K011_1/K011_3') !!}' " > <b>Thêm mới</b></button>
                     <button class="btn btn-default" value="btnListall" name="btnListall"><b>Danh sách</b></button>
                 </div>
                 <input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
@@ -94,7 +100,7 @@
 					<table class="table table-bordered">
 						<thead>
 						<tr>
-							<th>STT</th>
+							<th></th>
 							<th>Tên đăng nhập</th>
 							<th>Tên</th>
 							<th>Vị trí</th>
@@ -111,9 +117,9 @@
 								<td>{{$data->user_name}}</td>
 								<td>
 									<?php $group = $data->group_cd ;?>
-									@if($group == 'G01') Manager
-									@elseif ($group == 'G02') Receptionist
-									@elseif ($group == 'G03') Accountant
+									@if($group == 'G01') Quản lý
+									@elseif ($group == 'G02') Lễ tân
+									@elseif ($group == 'G03') Kế toán
 									@else "";
 									@endif
 								</td>

@@ -21,8 +21,7 @@
 			text-align:right;
 		}
 		.label2{
-			width:60px;
-			line-height:30px;
+			line-height:29px;
 		}
 		table {
 			width: 100%;
@@ -78,6 +77,12 @@
 			width: 15%;
 			float:left;
 		}
+		.table-bordered>thead>tr>th{
+			text-align:center;
+		}
+		.table>tbody>tr>td{
+			text-align:center;
+		}
 		.Error
 		{
 			color: #D8000C;
@@ -121,7 +126,7 @@
 								<input id="txtRoomTypeID" name="txtRoomTypeID" type="text" size="10" class="form-control input-md" maxlength="5" autofocus oninvalid="InvalidMsg(this);" required>
 							</div>
 							<div class="form-inline" style="margin-top:20px;">
-								<label class="label1" for="">Tên loại phòng:</label>
+								<label class="label1" for="">Loại phòng:</label>
 								<input id="txtFullname" name="txtFullname" type="text" size="15" class="form-control input-md" maxlength="30" oninvalid="InvalidMsg(this);" required>
 							</div>
 
@@ -154,7 +159,7 @@
 							<table class="table table-bordered" style="margin-bottom:56px;" id="table">
 								<thead>
 								<tr>
-									<th class="col1">STT</th>
+									<th class="col1"></th>
 									<th class="col2">Tên thiết bị</th>
 									<th class="col3">Số lượng</th>
 									<th class="col4">Giá</th>
@@ -163,7 +168,7 @@
 								</thead>
 								<tbody>
 								<tr>
-									<td class="col1">1</td>
+									<td class="col1" style="line-height:34px;">1</td>
 									<td class="col2"> <input id="txtNameAcc1" name="txtNameAcc" type="text" class="form-control input-md" maxlength="20"  oninvalid="InvalidMsg(this);" required ></td>
 									<td class="col3"> <input id="txtQuanlityAcc1" name="txtquantityAcc" type="number" value="1" class="form-control input-md"  min="1" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required  ></td>
 									<td class="col4"> <input id="txtPriceAcc1" name="txtPriceAcc" type="number" value="0" class="form-control input-md"  min="0" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required  ></td>

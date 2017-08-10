@@ -99,15 +99,15 @@
 					<div class="col-md-12" style="border: 1px solid #898989;border-radius:10px;margin:10px 0px 10px;">
 						<div class="row">
 							<div class="form-inline" style="margin-top:30px;">
-								<label class="label1">Nhận phòng:</label>
+								<label class="label1">Ngày vào:</label>
 								<input id="checkintxt" name="checkintxt" value="{{$check_in}}" type="text" class="form-control input-md" size="15">
-								<label class="label1">Trả phòng:</label>
+								<label class="label1">Ngày ra:</label>
 								<input id="checkouttxt" name="checkouttxt" value="{{$check_out}}" type="text" class="form-control input-md" size="15">
 							</div>
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1">Số người:</label>
 								<input id="numofpeopletxt" name="numofpeopletxt" value="{{$nopeople}}" type="number" min="1" class="form-control input-md" size="15" style="width: 80px;">
-								<label class="label1">Số phòng:</label>
+								<label class="label1">Tên phòng:</label>
 								<input id="noroomtxt" name="noroomtxt" value="{{$noroom}}" type="text" class="form-control input-md" size="15" style="width: 75px;" readonly>
 
 								<label class="label1">Số đêm:</label>
