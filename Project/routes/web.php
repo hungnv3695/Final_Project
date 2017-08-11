@@ -53,6 +53,8 @@ Route::middleware(['manager'])->group(function () {
 
     Route::get('/K011_1/K011_3','K011Controller@viewAddPage');
     Route::post('/K011_1/K011_3','K011Controller@addAccountRequest');
+
+    Route::get('/thanhtoan','ThanhToan@view');
 });
 
 //Router Group for Receptionist

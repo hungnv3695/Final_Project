@@ -1,0 +1,2 @@
+<a target="_blank" href="https://www.nganluong.vn/button_payment.php?receiver=sondcnd@gmail.com&product_name=Khách Sạn&price=2000&return_url=''&comments=''">
+    <img src="https://www.nganluong.vn/css/newhome/img/button/pay-sm.png"border="0" /></a>

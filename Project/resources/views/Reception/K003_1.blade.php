@@ -78,9 +78,9 @@
             <div class="col-md-12" style="border:3px solid rgb(200,200,200); margin:15px 0px 15px 0px;border: 1px solid #898989;border-radius:10px;">
 				<form method="post" onsubmit="return checkDate();" style="margin-top:10px;">
 					<div class="col-md-12 form-inline">
-						<label class="control-label" for="date">Nhận phòng:</label>
+						<label class="control-label" for="date">Ngày vào:</label>
 						<input class="form-control" id="date" name="checkin" placeholder="MM/DD/YYY" type="text"/>
-						<label class="control-label" for="date" style="margin-left:15px;">Trả phòng:</label>
+						<label class="control-label" for="date" style="margin-left:15px;">Ngày ra:</label>
 						<input class="form-control" id="date" name="checkout" placeholder="MM/DD/YYY" type="text"/>
 						<button class="btn btn-default" type = "submit" value="bnt101">Xem</button>
 						<input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />

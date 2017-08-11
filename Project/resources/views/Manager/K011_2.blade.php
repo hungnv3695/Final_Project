@@ -91,27 +91,27 @@
 						<div class="col-md-12 form-horizontal" style="margin:20px 0px 20px;border: 1px solid #898989;border-radius:10px;">
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">Họ tên: </label>
-								<input id="txtFullName" name="txtFullName" type="text" class="form-control input-md" size="20" value="{!! $acc[0]->user_name !!}" readonly />
+								<input id="txtFullName" name="txtFullName" type="text" class="form-control input-md" size="25" value="{!! $acc[0]->user_name !!}" readonly />
 							</div>
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">Địa chỉ: </label>
-								<input id="txtAddress" type="text" name="txtAddress" class="form-control" size="20" maxlength="100"  value="{!! $acc[0]->address !!}" readonly />  
+								<input id="txtAddress" type="text" name="txtAddress" class="form-control" size="25" maxlength="100"  value="{!! $acc[0]->address !!}" readonly />  
 							</div>
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">Điện thoại: </label>
-								<input id="txtPhone" name="txtPhone" type="text" class="form-control input-md" size="20" value="{!! $acc[0]->phone !!}" readonly />
+								<input id="txtPhone" name="txtPhone" type="text" class="form-control input-md" size="25" value="{!! $acc[0]->phone !!}" readonly />
 							</div>
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">Email: </label>
-								<input id="txtEmail" name="txtEmail" type="text" class="form-control input-md" size="20" value="{!! $acc[0]->mail !!}" readonly />
+								<input id="txtEmail" name="txtEmail" type="text" class="form-control input-md" size="25" value="{!! $acc[0]->mail !!}" readonly />
 							</div>
 							<div class="form-inline" style="margin-top:20px;">	
 								<label class="label1" for="">CMND: </label>
-								<input id="txtCMT" name="txtCMT" type="text" class="form-control input-md" size="20" readonly value="{!! $acc[0]->identity_card !!}"/>
+								<input id="txtCMT" name="txtCMT" type="text" class="form-control input-md" size="25" readonly value="{!! $acc[0]->identity_card !!}"/>
 							</div>
 							<div class="form-inline" style="margin-top:20px;margin-bottom:20px;">
-								<label class="label1" for="">Mã số thuế: </label>
-								<input id="txtMST" name="txtCMT" type="text" class="form-control input-md" size="20" value="{!! $acc[0]->tax_code !!}" readonly />
+								<label class="label1" for="">Nơi cấp: </label>
+								<input id="txtLocation" name="txtLocation" type="text" class="form-control input-md" size="25" value="{!! $acc[0]->tax_code !!}" readonly />
 							</div>
 						</div>
                     </div>

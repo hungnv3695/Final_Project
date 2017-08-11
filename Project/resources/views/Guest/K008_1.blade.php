@@ -3,7 +3,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Ngha nghi</title>
+	<title>Khách sạn Ánh Dương</title>
 	<link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="{{ asset( '/plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css' )   }}">
 	<link rel="stylesheet" type="text/css" href="{{asset('/plugins/font-awesome-4.7.0/css/font-awesome.min.css' ) }}">
@@ -78,7 +78,7 @@
 					</nav>
 					<div class="row">
 						<div class="col-sm-4 col-sm-offset-8 book-container">
-							<a href="book.blade.php"><button class="btn" id="btn-book">Book Now</button></a>
+							<button  type="button" class="btn" id="btn-book" onclick="window.location='{{ url("/book") }}'" >Book Now</button>
 						</div>
 					</div>
 			</div>
@@ -140,11 +140,7 @@
 			<article>
 				<div style="display: none;">
 					<p id="infomation-text">
-						Chosen as the host for top international meetings and events, our hotel is the perfect venue in Hanoi for you to create memorable events. The Grand Ballroom can seat up to 420 banquet style. The Poolside Terrace is perfect for outdoor functions, and together with 13 private function rooms, offers superb facilities for any event. Our team of dedicated specialists is available to help you meticulously plan events of any scale.
-
-	Hanoi Daewoo Hotel features the largest room inventory in the city, with 411 tastefully decorated rooms and 34 suites. Each spacious room features a large window overlooking the city, swimming pool, or scenic Thu Le Lake.Chosen as the host for top international meetings and events, our hotel is the perfect venue in Hanoi for you to create memorable events. The Grand Ballroom can seat up to 420 banquet style. The Poolside Terrace is perfect for outdoor functions, and together with 13 private function rooms, offers superb facilities for any event. Our team of dedicated specialists is available to help you meticulously plan events of any scale.
-
-	Hanoi Daewoo Hotel features the largest room inventory in the city, with 411 tastefully decorated rooms and 34 suites. Each spacious room features a large window overlooking the city, swimming pool, or scenic Thu Le Lake.
+						Khách sạn Ánh Dương tọa lạc tại phường Tuần Châu thuộc thành phố Hạ Long, cách trung tâm thương mại Vincom Plaza Hạ Long 11 km, cách bãi biển 12 phút đi bộ. Bảo tàng Quảng Ninh nằm trong bán kính 12 km từ khách sạn Ánh Dương, trong khi trung tâm thương mại Hạ Long Marine Plaza cách chỗ nghỉ 5 km. Sân bay quốc tế Cát Bi cách đó 29 km.Khách sạn Ánh Dương có nhà hàng riêng nằm trong khuôn viên nơi nghỉ để phục vụ du khách. Phòng nghỉ ở đây có TV màn hình phẳng. Một số phòng cho tầm nhìn ra quang cảnh biển hoặc thành phố. Các phòng còn đi kèm phòng tắm riêng với bồn tắm/vòi sen, dép, đồ vệ sinh cá nhân miễn phí và máy sấy tóc. Du khách có thể sử dụng Wi-Fi miễn phí tại khách sạn.
 					</p>
 				</div>
 				<div class="infomation">
@@ -164,19 +160,19 @@
 							<div class="col-sm-3 col-xs-6 sub-ct-col">
 								<div class="sub-ct-col">
 									<a href="restaurant.blade.php">Ẩm Thực</a>
-									<a href="restaurant.blade.php"><img src="{{ asset("/img/ai.jpg ") }}"/></a>
+									<a href="restaurant.blade.php"><img src="{{ asset("/img/Restaurant-4.jpg ") }}"/></a>
 								</div>
 							</div>
 							<div class="col-sm-3 col-xs-6 sub-ct-col">
 								<div class="sub-ct-col">
-									<a href="#">Tours</a>
-									<a href="#"><img src="{{ asset("/img/ab.jpg ") }}"/></a>
+									<a href="#">Dịch vụ</a>
+									<a href="#"><img src="{{ asset("/img/View-bien-1.jpg ") }}"/></a>
 								</div>
 							</div>
 							<div class="col-sm-3 col-xs-6 sub-ct-col">
 								<div class="sub-ct-col">
-									<a href="#">Tours</a>
-									<a href="#"><img src="{{ asset("/img/ab.jpg ") }}"/></a>
+									<a href="#">Ảnh</a>
+									<a href="#"><img src="{{ asset("/img/Anh-Duong-hotel.jpg ") }}"/></a>
 								</div>
 							</div>
 						</div>
@@ -210,9 +206,7 @@
 		<footer class="footer-distributed">
 
 			<div class="footer-left">
-
-				<h3>Company<span>logo</span></h3>
-
+				<img src="{{ asset('img/map.jpg') }}"/>
 				<p class="footer-links">
 					<a href="#">Home</a>
 					·

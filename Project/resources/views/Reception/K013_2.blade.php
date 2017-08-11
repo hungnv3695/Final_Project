@@ -49,6 +49,12 @@
             width:35%;
             border:1px solid red;
         }
+		.table-bordered>thead>tr>th{
+			text-align:center;
+		}
+		.table>tbody>tr>td{
+			text-align:center;
+		}
     </style>
 </head>
 <body>
@@ -70,7 +76,7 @@
         <div class="col-md-10 col-md-offset-1" style="background-color:#c3bfc0;border-bottom:1px solid #898989;">
             <form method="post">
                 <div class="form-inline" style="margin-top:20px;">
-                    <label class="label1">Số phòng:</label>
+                    <label class="label1">Tên phòng:</label>
                     <input id="txtRoomNo" name="txtRoomNo" type="text" class="form-control input-md" maxlength="5" value="{!! isset($room)?$room:'' !!}" autofocus>
                     <label class="label1">Họ tên:</label>
                     <input id="txtFullName" name="txtFullName" type="text" class="form-control input-md" maxlength="50" value="{!! isset($name)?$name:'' !!}" >
@@ -92,8 +98,8 @@
                             <th>Số phòng</th>
                             <th>Người ở</th>
                             <th>CMND</th>
-                            <th>Ngày nhận</th>
-                            <th>Ngày trả</th>
+                            <th>Ngày vào</th>
+                            <th>Ngày ra</th>
                             <th>Trạng Thái</th>
                             <th></th>
                         </tr>

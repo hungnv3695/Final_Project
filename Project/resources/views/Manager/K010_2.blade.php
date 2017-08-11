@@ -20,8 +20,7 @@
 			text-align:right;
 		}
 		.label2{
-			width:60px;
-			line-height:30px;
+			line-height:29px;
 		}
 		.lable3{
 			display: inline-block;
@@ -81,6 +80,12 @@
 		{
 			width: 15%;
 			float:left;
+		}
+		.table-bordered>thead>tr>th{
+			text-align:center;
+		}
+		.table>tbody>tr>td{
+			text-align:center;
 		}
 		.Error
 		{
@@ -143,7 +148,7 @@
 								<input id="txtRoomTypeID" name="txtRoomTypeID" type="text" class="form-control input-md" size="10" maxlength="5" value= " {!! isset($roomTypeSelect[0])? array_get($roomTypeSelect[0],'room_type_id'):"" !!} " readonly >
 							</div>
 							<div class="form-inline" style="margin-top:20px;">
-								<label class="label1" for="">Tên loại phòng:</label>
+								<label class="label1" for="">Loại phòng:</label>
 								<input id="txtFullname" name="txtFullname" type="text" class="form-control input-md" size="15" maxlength="30" value= " {!! isset($roomTypeSelect[0])? array_get($roomTypeSelect[0],'type_name'):"" !!} " oninvalid="InvalidMsg(this);" required>
 							</div>
 
@@ -173,10 +178,10 @@
 							<div class="col-md-12" style="margin-top:20px;margin-bottom:10px;">
 								<label>Thiết Bị: </label>
 							</div>
-							<table class="table table-hover" style="margin-bottom:15px;" id="table">
+							<table class="table table-bordered" style="margin-bottom:15px;" id="table">
 								<thead>
 								<tr>
-									<th class="col1">STT</th>
+									<th class="col1"></th>
 									<th class="col2">Tên Thiết bị</th>
 									<th class="col3">Số Lượng</th>
 									<th class="col4">Giá</th>
@@ -190,7 +195,7 @@
 										<tr>
 											<?php ($i==1)?$str="":$str=$i-1; ?>
 
-											<td class="col1">{!! $i !!}</td>
+											<td class="col1" style="line-height:34px;">{!! $i !!}</td>
 											<td class="col2"> <input id="txtNameAcc1" name="{!! "txtNameAcc" . $str !!}"   type="text" class="form-control input-md" maxlength="20"  value=" {!!array_get($data,'accessory_name')!!}"  oninvalid="InvalidMsg(this);" required ></td>
 											<td class="col3"> <input id="txtQuanlityAcc1" name="{!! "txtquantityAcc" . $str !!}" type="number" class="form-control input-md" value="{!!(int)array_get($data,'quantity') !!}" min="1" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required ></td>
 											<td class="col4"> <input id="txtPriceAcc1" name="{!! "txtPriceAcc" . $str !!}" type="number" class="form-control input-md" value="{!! (int)array_get($data,'price') !!}" min="0" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required  ></td>
