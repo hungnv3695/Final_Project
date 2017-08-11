@@ -141,7 +141,7 @@ class K003Controller extends Controller
 
             $invoice = new Invoice();
             $invoice->setAmountTotal((int)$total_price);
-            //dd($invoice->getAmountTotal());
+            $invoice->setPaymentFlag(0); // check-in mới chưa thanh toán
             $invoice->setCreateYmd(Carbon::now());
             $invoice->setCreaterName($request->session()->get('USER_INFO')->user_id);//fix tam
 
@@ -218,11 +218,31 @@ class K003Controller extends Controller
 
     #endregion
 
-    public function k003_3_View(){
+    public function checkOut_View(){
 
-        return view('Reception.K003_3');
+        return view('Reception.Checkout');
 
+    }
 
+    public function loadResDetail(Request $request){
+        $resDetail_id = $request->resDetail_id;
+
+        $K003DAO = new K003DAO();
+        $result = $K003DAO->selectResDetail($resDetail_id);
+        $result[0]->date_in = DateTimeUtil::ConvertStringToDate($result[0]->date_in);
+        $result[0]->date_out = Carbon::now()->format('d/m/Y');
+        return response($result);
+    }
+
+    public function saveCheckOut(Request $request){
+        $room_id = $request->room_id;
+        $resDetail_id = $request->resDetail_id;
+        $res_id = $request->res_id;
+
+        $K003DAO = new K003DAO();
+        $result = $K003DAO->CheckoutInfor($room_id,$res_id,$resDetail_id);
+
+        return response($result);
     }
 
 }

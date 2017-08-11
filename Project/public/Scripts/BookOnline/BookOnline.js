@@ -12,15 +12,15 @@ $(document).ready(function () {
 
     //Start :Datetimepicker
         jQuery('#checkin').datetimepicker({
-            format:'Y/m/d',
-            onShow:function( ct ){
-                this.setOptions({
-                    maxDate:jQuery('#checkout').val()?jQuery('#checkout').val():'-1969/10/31',
-                    minDate:'-1969/12/25',
-                })
-            },
-            timepicker:false
-        });
+        format:'Y/m/d',
+        onShow:function( ct ){
+            this.setOptions({
+                maxDate:jQuery('#checkout').val()?jQuery('#checkout').val():'-1969/10/31',
+                minDate:'-1969/12/25',
+            })
+        },
+        timepicker:false
+    });
     jQuery('#checkout').datetimepicker({
         format:'Y/m/d',
         onShow:function( ct ){
@@ -31,6 +31,20 @@ $(document).ready(function () {
         },
         timepicker:false
     });
+    function days() {
+        var a,b,c;
+
+        if(($("#txtCheckin").val()=="") || ($("#txtCheckout").val()=="")){
+            return;
+        }
+        a = $("#txtCheckin").datetimepicker('getValue').getTime(),
+            b = $("#txtCheckout").datetimepicker('getValue').getTime(),
+            c = 24*60*60*1000,
+            diffDays = Math.round(Math.abs((a - b)/(c)));
+        // d = ('20/10/2017').datetimepicker('getValue').getTime();
+        // console.log(d);
+        return diffDays
+    }
    // $.datetimepicker.setLocale('vi');
     //End Datetimepicker
     function addslick() {

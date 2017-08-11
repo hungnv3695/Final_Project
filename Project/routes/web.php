@@ -103,8 +103,9 @@ Route::get('/K003_2/CheckIsReservation','K003Controller@checkIsReservation');
 Route::get('/K003_2/SaveInforCustomer','K003Controller@saveInforCustomer');
 
 //K003_3: Check out;
-Route::get('/K003_3','K003Controller@k003_3_View');
-
+Route::get('/Checkout','K003Controller@checkOut_View');
+Route::get('/Checkout/LoadResDetail','K003Controller@loadResDetail');
+Route::get('/Checkout/SaveCheckOut','K003Controller@saveCheckOut');
 
 Route::get('/K013_1','K013Controller@viewCheckIn');
 Route::post('/K013_1','K013Controller@getSearchCheckInRequest');

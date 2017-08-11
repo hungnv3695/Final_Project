@@ -99,6 +99,7 @@ class BookOnlineDAO {
             $resInsert->note = $res->getNote();
             $resInsert->create_ymd = $res->getCreateYmd();
 
+
             $resInsert->editer = $res->getEditer();
             //dd($res);
             $resInsert->save();
@@ -109,6 +110,7 @@ class BookOnlineDAO {
             $invoiceInsert->creater_nm = $invoice->getCreaterName();
             $invoiceInsert->create_ymd = $invoice->getCreateYmd();
             $invoiceInsert->amount_total = $invoice->getAmountTotal();
+            $invoiceInsert->payment_flag = $invoice->getPaymentFlag();
 
             $invoiceInsert->save();
 

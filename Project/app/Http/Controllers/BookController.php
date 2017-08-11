@@ -81,6 +81,7 @@ class BookController extends Controller
         $invoice = new Invoice();
         $invoice->setAmountTotal($total);
         $invoice->setCreateYmd(Carbon::now());
+        $invoice->setPaymentFlag(1);
         $invoice->setCreaterName('GUEST');
 
         $invoiceDetail = new InvoiceDetail();

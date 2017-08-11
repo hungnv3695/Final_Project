@@ -164,6 +164,7 @@ class K003DAO
             $invoiceInsert->creater_nm = $invoice->getCreaterName();
             $invoiceInsert->create_ymd = $invoice->getCreateYmd();
             $invoiceInsert->amount_total = $invoice->getAmountTotal();
+            $invoiceInsert->payment_flag = $invoice->getPaymentFlag();
 
             $invoiceInsert->save();
 
@@ -284,5 +285,75 @@ class K003DAO
         }
 
     }
+
+    public function selectResDetail($resDetail_id){
+        $strSQL = 'select ';
+        $strSQL .='rd.id, ';
+        $strSQL .='rd.date_in, ';
+        $strSQL .='rd.date_out, ';
+        $strSQL .='rd.customer_name, ';
+        $strSQL .='rd.customer_identity_card, ';
+        $strSQL .='rd.customer_phone, ';
+        $strSQL .='rd.customer_email, ';
+        $strSQL .='rd.note "resDetail_note", ';
+        $strSQL .='r.id, ';
+        $strSQL .='r.note "res_note", ';
+        $strSQL .='g.name, ';
+        $strSQL .='g.phone, ';
+        $strSQL .='g.mail, ';
+        $strSQL .='g.identity_card, ';
+        $strSQL .='ro.room_number, ';
+        $strSQL .='ro.room_id, ';
+        $strSQL .='rt.type_name, ';
+        $strSQL .='rt.room_type_id, ';
+        $strSQL .='i.amount_total "total_res", ';
+        $strSQL .='id.amount_total "total_room" ';
+
+        $strSQL .='from tbl_reservation_detail rd ';
+        $strSQL .='left join tbl_reservation r on rd.reservation_id = r.id ';
+        $strSQL .='left join tbl_guest g on r.guest_id = g.id ';
+        $strSQL .='left join tbl_room ro on rd.room_id = ro.room_id ';
+        $strSQL .='left join tbl_invoice i on r.id = i.reservation_id ';
+        $strSQL .='left join tbl_invoice_detail id on i.id = id.invoice_id ';
+        $strSQL .='left join tbl_room_type rt on ro.room_type_id = rt.room_type_id ';
+        $strSQL .='where rd.id = \'' .$resDetail_id .'\' ';
+
+        $result = DB::select(DB::raw($strSQL));
+        return $result;
+    }
+
+    public function saveCheckoutInfor($room_id, $res_id, $resDetail_id){
+        DB::beginTransaction();
+        try{
+            DB::table('tbl_room')
+                ->where('room_id', $room_id)
+                ->update([
+                    'status_id' => 'RO01'
+                ]);
+
+
+            DB::table('tbl_reservation_detail')
+                ->where('id', $resDetail_id)
+                ->update([
+                    'check_in_flag' => 1,
+                    'check_out_flag' => 1
+                ]);
+
+            DB::table('tbl_invoice')
+                ->where('reservation_id', $res_id)
+                ->update([
+                    'payment_flag' => '1'
+                    
+                ]);
+
+            DB::commit();
+            return 1;
+        }catch(\Exception $e){
+            DB::rollback();
+            return 0;
+        }
+
+    }
+
 
 }

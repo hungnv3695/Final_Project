@@ -22,6 +22,23 @@ class Invoice extends Model
     private $updateYmd;
     private $createYmd;
     private $createrName;
+    private $paymentFlag;
+
+    /**
+     * @return mixed
+     */
+    public function getPaymentFlag()
+    {
+        return $this->paymentFlag;
+    }
+
+    /**
+     * @param mixed $paymentFlag
+     */
+    public function setPaymentFlag($paymentFlag)
+    {
+        $this->paymentFlag = $paymentFlag;
+    }
 
     /**
      * @return mixed

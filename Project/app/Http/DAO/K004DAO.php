@@ -326,7 +326,6 @@ class K004DAO{
             $resInsert->guest_id = $guestInsert->id;
             $resInsert->status_id = $res->getStatusId();
             $resInsert->create_ymd = Carbon::now();
-
             $resInsert->editer = $res->getEditer();
 
             $resInsert->save();
@@ -358,6 +357,7 @@ class K004DAO{
             $invoiceInsert->creater_nm = $invoice->getCreaterName();
             $invoiceInsert->create_ymd = $invoice->getCreateYmd();
             $invoiceInsert->amount_total = $invoice->getAmountTotal();
+            $invoiceInsert->payment_flag = $invoice->getPaymentFlag();
 
             $invoiceInsert->save();
 

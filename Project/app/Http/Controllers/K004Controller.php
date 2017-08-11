@@ -368,6 +368,7 @@ class K004Controller extends Controller{
         $invoice = new Invoice();
         $invoice->setAmountTotal($totalPrice);
         $invoice->setCreateYmd(Carbon::now());
+        $invoice->setPaymentFlag(1);
         $invoice->setCreaterName($request->session()->get('USER_INFO')->user_id);//fix tam
 
         $invoiceDetail = new InvoiceDetail();

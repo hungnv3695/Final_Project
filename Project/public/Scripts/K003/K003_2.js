@@ -230,7 +230,7 @@ $(document).ready(function(){
             success: function (result) {
                 addData(result);
                 $("#roomtype").find('option').remove();
-                $("#roomtype").append($('<option selected></optionselected>').val("").html(""));
+                $("#roomtype").append($('<option selected></option>').val("").html(""));
                 for (i=0; i < jList.length; i++){
                     //add data for status combobox
                         $("#roomtype").append($('<option></option>').val(result[i].room_type_id).html(result[i].type_name));
