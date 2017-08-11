@@ -116,7 +116,7 @@
                             <td>{!! $data->date_in !!}</td>
                             <td>{!! $data->date_out !!}</td>
                             <td>{!! $data->status !!}</td>
-                            <td><a href="#" style="text-decoration:underline;"><b>Trả phòng</b></a></td>
+                            <td><a href="{!! url('/K003_3?') . 'resDetail_id =' .  $data->id  !!}" style="text-decoration:underline;"><b>Trả phòng</b></a></td>
                         </tr>
                         <?php $i++; ?>
                             @endforeach

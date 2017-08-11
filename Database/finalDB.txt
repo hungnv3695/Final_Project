@@ -181,7 +181,8 @@ CREATE TABLE tbl_invoice(
 	update_ymd timestamp,
 	create_ymd timestamp ,
 	creater_nm varchar(50),
-	
+	updater_nm varchar(50),
+	payment_flag integer,	
 	FOREIGN KEY (reservation_id) REFERENCES tbl_reservation(id),
 	FOREIGN KEY (payment_type_id) REFERENCES tbl_payment_type(id),
 	FOREIGN KEY (guest_id) REFERENCES tbl_guest(id)
