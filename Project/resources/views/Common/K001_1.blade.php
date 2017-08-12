@@ -145,7 +145,7 @@
 					</div>
 					<div class="row checkbox">
 						<span class="character-checkbox" onclick="showPassword()"></span>
-						<span class="label">Show password</span>
+						<span class="label">Hiển thị mật khẩu</span>
 					</div>
 					<input type="submit" value="Đăng nhập" class="btn btn-lg btn-primary btn-block" />
 				</form>
