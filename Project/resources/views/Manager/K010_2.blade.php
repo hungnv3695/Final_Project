@@ -216,10 +216,13 @@
 			<input type="hidden"  id="count" name = "count" value=""  />
 			<input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
 			<div class="col-md-12" style="background-color:#c3bfc0;margin-bottom:10px;">
-					<div class="col-md-6 col-md-offset-9" style="margin-top:10px; margin-bottom:10px;">
-						<button class="btn btn-success col-md-offset-2" value="bntSave" id="bntAddType" name="bntSave" ><b>Lưu</b></button>
+				<div class="row">
+					<!--left-->
+					<div class="col-md-3 col-md-offset-9" style="margin-top:10px; margin-bottom:10px;">
+						<button class="btn btn-success col-md-offset-4" value="bntSave" id="bntAddType" name="bntSave" ><b>Lưu</b></button>
 						<button type="button" class="btn btn-danger" value="bntCancel" name="bntCancel" onclick="window.location='{{ url("/K002") }}'" ><b>Hủy bỏ</b></button>
 					</div>
+				</div>
 			</div>
 		</div>
 	</form>
