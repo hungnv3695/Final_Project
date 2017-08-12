@@ -316,13 +316,14 @@ class K003DAO
         $strSQL .='left join tbl_invoice i on r.id = i.reservation_id ';
         $strSQL .='left join tbl_invoice_detail id on i.id = id.invoice_id ';
         $strSQL .='left join tbl_room_type rt on ro.room_type_id = rt.room_type_id ';
-        $strSQL .='where rd.id = \'' .$resDetail_id .'\' ';
+        $strSQL .='where rd.id = \'' .$resDetail_id .'\'  ';
+        $strSQL .='and id.item_id = rd.room_id';
 
         $result = DB::select(DB::raw($strSQL));
         return $result;
     }
 
-    public function saveCheckoutInfor($room_id, $res_id, $resDetail_id){
+    public function saveCheckoutInfor($room_id, $res_id, $resDetail_id, $user_id){
         DB::beginTransaction();
         try{
             DB::table('tbl_room')
@@ -342,8 +343,8 @@ class K003DAO
             DB::table('tbl_invoice')
                 ->where('reservation_id', $res_id)
                 ->update([
-                    'payment_flag' => '1'
-                    
+                    'payment_flag' => 1,
+                    'updater_nm' => $user_id
                 ]);
 
             DB::commit();

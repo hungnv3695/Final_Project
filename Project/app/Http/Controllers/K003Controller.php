@@ -231,6 +231,7 @@ class K003Controller extends Controller
         $result = $K003DAO->selectResDetail($resDetail_id);
         $result[0]->date_in = DateTimeUtil::ConvertStringToDate($result[0]->date_in);
         $result[0]->date_out = Carbon::now()->format('d/m/Y');
+       // dd($result[0]->total_price);
         return response($result);
     }
 
@@ -238,9 +239,9 @@ class K003Controller extends Controller
         $room_id = $request->room_id;
         $resDetail_id = $request->resDetail_id;
         $res_id = $request->res_id;
-
+        $user_id = $request->session()->get('USER_INFO')->user_id;
         $K003DAO = new K003DAO();
-        $result = $K003DAO->CheckoutInfor($room_id,$res_id,$resDetail_id);
+        $result = $K003DAO->saveCheckoutInfor($room_id,$res_id,$resDetail_id, $user_id);
 
         return response($result);
     }
