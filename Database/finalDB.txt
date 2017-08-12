@@ -202,5 +202,16 @@ CREATE TABLE tbl_invoice_detail(
 	FOREIGN KEY (item_id) REFERENCES tbl_room(room_id)
 );
 
+CREATE TABLE tbl_accountant(
+	id serial PRIMARY KEY,
+	payment_nm varchar(50),
+	payment_nm varchar(8), 
+	status integer,
+	total integer,
+	receiver_nm varchar(50),
+	update_ymd timestamp,
+	create_ymd timestamp
+)
+
 
 

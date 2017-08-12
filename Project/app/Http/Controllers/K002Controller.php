@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 
 define('GROUP_MANAGER' , 'G01');
 define('GROUP_RECEPTIONIST' , 'G02');
+define('GROUP_ACCOUNTANT' , 'G03');
 define('SESSION_USER_INFO','USER_INFO');
 
 class K002Controller extends Controller
@@ -21,7 +22,10 @@ class K002Controller extends Controller
             return view('Manager.K002_1');
         } elseif( strcmp( $groupcd, GROUP_RECEPTIONIST) == 0 ) {
             return view('Reception.K002_1');
-        }else{
+        }elseif (strcmp( $groupcd, GROUP_ACCOUNTANT) == 0){
+            return view('Accountant.Accountant');
+        }
+        else{
             return redirect('/K001');
         }
     }

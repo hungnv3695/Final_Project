@@ -69,7 +69,6 @@ class K013DAO
 
     public function getCheckOutInfo($room, $name = null){
         $today = date("Y/m/d");
-        $today = '2017-09-10';
         $query = " select rs.id, ro.room_number , rs.customer_name, customer_identity_card , CAST(rs.date_in as date) , Cast( rs.date_out as date), ".
             "	CASE                                                                                                                     ".
             "		When rs.check_out_flag = 1 Then 'Đã trả phòng'                                                                       ".
