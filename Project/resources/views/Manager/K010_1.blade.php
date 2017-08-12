@@ -184,9 +184,12 @@
 				</div>
 			</div>
 			<div class="col-md-12" style="background-color:#c3bfc0;">
-				<div class="col-md-6 col-md-offset-9" style="margin-top:10px; margin-bottom:10px;">
-					<button type="submit" class="btn btn-success col-md-offset-2" id="bntAddType" value="bntSave" name="bntSave"><b>Thêm</b></button>
-					<button  type="button" class="btn btn-danger" value="bntCancel" name="bntCancel" onclick="window.location='{{ url("/K010_2") }}'" ><b>Hủy bỏ</b></button>
+				<div class="row">
+						<!--left-->
+					<div class="col-md-4 col-md-offset-9" style="margin-top:10px; margin-bottom:10px;">
+						<button type="submit" class="btn btn-success col-md-offset-3" id="bntAddType" value="bntSave" name="bntSave"><b>Thêm</b></button>
+						<button  type="button" class="btn btn-danger" value="bntCancel" name="bntCancel" onclick="window.location='{{ url("/K010_2") }}'" ><b>Hủy bỏ</b></button>
+					</div>
 				</div>
 			</div>
 		</div>
