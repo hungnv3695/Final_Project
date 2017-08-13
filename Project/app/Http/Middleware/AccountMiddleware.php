@@ -25,7 +25,7 @@ class AccountMiddleware
     {
 
         if ( !session()->has(SESSION_USER_INFO) ){
-            return redirect('K001');
+            return redirect('Login');
         }else{
             $groupcd = session()->get(SESSION_USER_INFO)->group_cd;
 
