@@ -164,6 +164,7 @@ $(document).ready(function () {
             success: function (result) {
                 if(result == 1){
                     alert('check-out thành công');
+                    window.open('/checkoutList','_self')
                 }
                 else{
                     alert('check-out lỗi');
