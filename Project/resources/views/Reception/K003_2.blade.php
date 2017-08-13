@@ -210,7 +210,7 @@
 					</div>
 					<div class="form-inline col-md-offset-1" style="margin-top:15px;margin-bottom:20px;">
 						<label class="label1" for="">Ghi chú: </label>
-						<textarea rows="3" cols="25" id="txtNote2" class="form-control" name="txtNote" maxlength="100"></textarea>
+						<textarea rows="3" cols="25" id="txtNote2" class="form-control" name="txtNote2" maxlength="100"></textarea>
 					</div>
 				</div>
 			</div>

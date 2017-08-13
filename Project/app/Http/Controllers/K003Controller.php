@@ -120,6 +120,7 @@ class K003Controller extends Controller
             $reservation->setNumberOfRoom(1);
             $reservation->setCreateYmd(Carbon::now());
             $reservation->setNote($request->txtNote);
+            $reservation->setEditer($request->session()->get('USER_INFO')->user_id);
 
             //Reservation_detail Model
             $res_detail = new ReservationDetail();
@@ -131,8 +132,9 @@ class K003Controller extends Controller
             $res_detail->setCustomerIC($request->txtIdcard2);
             $res_detail->setCustomerPhone($request->txtPhone2);
             $res_detail->setCustomerEmail($request->txtEmail2);
-            $res_detail->setNote($request->note2);
+            $res_detail->setNote($request->txtNote2);
             $res_detail->setCheckInFlag(1);
+            //dd($res_detail);
             //Room Model
             $room = new Room();
 
@@ -153,7 +155,6 @@ class K003Controller extends Controller
             $invoiceDetail->setPrice((int)$total_price);
             $invoiceDetail->setAmountTotal((int)$total_price);
             $invoiceDetail->setCreateYmd(Carbon::now());
-
 
 
             $K003DAO = new K003DAO();

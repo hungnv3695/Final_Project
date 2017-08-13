@@ -183,7 +183,7 @@ $(document).ready(function () {
             $grid.jqGrid('footerData', 'set', { 'item3' : "x " + $("#txtNight").val() + " đêm" } );
             var total = colSum * $("#txtNight").val();
             //total = (total + "").replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
-            $("#txtTotal").val(addCommas(total))
+            $("#txtTotal").val(addCommas(total+(total*10/100)))
 
 
         }
@@ -191,7 +191,7 @@ $(document).ready(function () {
     });
 
 
-    $( ".ui-th-div" ).append("<p>No</p>");
+    $( ".ui-th-div" ).append("<p></p>");
     //Jqgrid END
 
     var res_id = $('#res_id').val();
