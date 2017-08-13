@@ -195,6 +195,7 @@ CREATE TABLE tbl_invoice_detail(
 	quantity integer,
 	item_type varchar(50),
 	price integer,
+	description varchar(100),
 	amount_total integer,
 	update_ymd timestamp,
 	create_ymd timestamp ,
