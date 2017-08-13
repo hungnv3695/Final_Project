@@ -81,14 +81,42 @@
 		}
 		.zoom-img{
 			overflow:hidden;
+			position: relative;
 		}
 		.zoom-img img{
-			width:100%;
+			display: block;
+			width: 100%;
+			height: auto;
 			transition:all 0.2s ease-in-out; 
-			height:220px;
 		}
-		.zoom-img:hover img{
-			transform:scale(1.2);
+		.overlay {
+			position: absolute;
+			cursor: pointer;			
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			height: 100%;
+			width: 100%;
+			opacity: 0;
+			transition: .5s ease;
+			background-color: rgb(140, 110, 78);
+		}
+		.zoom-img:hover .overlay {	
+			opacity: 0.8;
+		}
+		.intro {
+			position: relative;
+			float: left;
+			text-align: center;
+			text-align-last: center;
+			width: auto;
+			height: auto;
+			padding: 30px 20px;
+			line-height: 25px;
+			font-size: 15px;
+			color: #fff;
+			margin-bottom: 10px;
 		}
 		h3.roomtype{
 			color:rgb(140, 110, 78);
@@ -180,13 +208,15 @@
 		<div class="container-fluid">
 			<div class="col-md-12">
 				<div class="col-md-3 room-item">
-					<div class="zoom-img"><img src="img/single.jpg"></div>
-					<button type="button" class="room-detail" data-toggle="collapse" data-target="#info1"><p>Chi tiết phòng</p></button>
-					<div id="info1" class="collapse">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-						sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-					</div>
+					<div class="zoom-img">
+						<img src="img/single.jpg">
+						<div class="overlay">
+							<span class="intro">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+							sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+							</span>
+						</div>
+					</div>					
 					<h3 class="roomtype">Phòng đơn</h3>
 					<div class="form-inline">
 						<span class="item-price">Giá chỉ 100.000 VNĐ/đêm</span>
@@ -194,12 +224,14 @@
 					</div>
 				</div>
 				<div class="col-md-3 room-item">				
-					<div class="zoom-img"><img src="img/double.jpg"></div>
-					<button type="button" class="room-detail" data-toggle="collapse" data-target="#info2">Chi tiết phòng</button>
-					<div id="info2" class="collapse">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-						sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+					<div class="zoom-img">
+						<img src="img/double.jpg">
+						<div class="overlay">
+							<span class="intro">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+							sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+							</span>
+						</div>
 					</div>
 					<h3 class="roomtype">Phòng đôi</h3>
 					<div class="form-inline">
@@ -208,13 +240,15 @@
 					</div>
 				</div>
 				<div class="col-md-3 room-item">
-					<div class="zoom-img"><img src="img/twins.jpg"></div>
-					<button type="button" class="room-detail" data-toggle="collapse" data-target="#info3">Chi tiết phòng</button>
-					<div id="info3" class="collapse">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-						sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-					</div>
+					<div class="zoom-img">
+						<img src="img/twins.jpg">
+						<div class="overlay">
+							<span class="intro">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+							sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+							</span>
+						</div>
+					</div>	
 					<h3 class="roomtype">Phòng kép</h3>
 					<div class="form-inline">
 						<span class="item-price">Giá chỉ 300.000 VNĐ/đêm</span>
@@ -222,13 +256,15 @@
 					</div>
 				</div>
 				<div class="col-md-3 room-item">
-					<div class="zoom-img"><img src="img/extra.jpg"></div>
-					<button type="button" class="room-detail" data-toggle="collapse" data-target="#info4">Chi tiết phòng</button>
-					<div id="info4" class="collapse">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-						sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-					</div>
+					<div class="zoom-img">
+						<img src="img/extra.jpg">
+						<div class="overlay">
+							<span class="intro">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+							sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+							</span>
+						</div>
+					</div>	
 					<h3 class="roomtype">Phòng thêm</h3>
 					<div class="form-inline">
 						<span class="item-price">Giá chỉ 400.000 VNĐ/đêm</span>
