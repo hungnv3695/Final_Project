@@ -220,7 +220,7 @@
 					<!--left-->
 					<div class="col-md-3 col-md-offset-9" style="margin-top:10px; margin-bottom:10px;">
 						<button class="btn btn-success col-md-offset-4" value="bntSave" id="bntAddType" name="bntSave" ><b>Lưu</b></button>
-						<button type="button" class="btn btn-danger" value="bntCancel" name="bntCancel" onclick="window.location='{{ url("/SereparateGroup") }}'" ><b>Hủy bỏ</b></button>
+						<button type="button" class="btn btn-danger" value="bntCancel" name="bntCancel" onclick="window.location='{{ url("/SeparateGroup") }}'" ><b>Hủy bỏ</b></button>
 					</div>
 				</div>
 			</div>

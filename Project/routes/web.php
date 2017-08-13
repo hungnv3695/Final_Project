@@ -20,7 +20,7 @@ Route::get('/Login','LoginController@view');
 Route::post('/Login','LoginController@getLoginRequest');
 
 Route::get('/LogOut','LoginController@logOut');
-Route::get('/SereparateGroup', 'GroupSereparateController@view');
+Route::get('/SeparateGroup', 'SeparateGroupController@view');
 
 Route::get('/MyInfo','MyInfoController@view');
 Route::get('/MyInfo/ChangePassword','MyInfoController@viewChangePasswordPage');

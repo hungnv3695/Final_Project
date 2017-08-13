@@ -13,7 +13,7 @@ define('GROUP_RECEPTIONIST' , 'G02');
 define('GROUP_ACCOUNTANT' , 'G03');
 define('SESSION_USER_INFO','USER_INFO');
 
-class GroupSereparateController extends Controller
+class SeparateGroupController extends Controller
 {
     public function view(){
         $groupcd = session()->get(SESSION_USER_INFO)->group_cd;
