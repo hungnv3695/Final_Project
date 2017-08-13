@@ -86,7 +86,7 @@ class LoginController extends Controller
                 });
                 */
 
-                return redirect('/SereparateGroup');
+                return redirect('/SeparateGroup');
 
                 break;
         }
