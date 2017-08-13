@@ -6,7 +6,7 @@ $(document).ready(function () {
 
     var res_id = GetUrlParameter('res_id');
     var resDetail_id = GetUrlParameter('resDetail_id');
-
+    $('#btnSearch').attr("disabled", false);
     function addCommas(nStr)
     {
         nStr += '';
@@ -155,7 +155,7 @@ $(document).ready(function () {
             cache: false,
             dataType: 'json',
             data:{
-                room_id: $("#roomtype").val(),
+                room_id: $("#cboRoomNo").val(),
                 resDetail_id : resDetail_id,
                 res_id : res_id
             },
