@@ -13,7 +13,7 @@ define('GROUP_RECEPTIONIST' , 'G02');
 define('GROUP_ACCOUNTANT' , 'G03');
 define('SESSION_USER_INFO','USER_INFO');
 
-class K002Controller extends Controller
+class GroupSereparateController extends Controller
 {
     public function view(){
         $groupcd = session()->get(SESSION_USER_INFO)->group_cd;
@@ -26,7 +26,7 @@ class K002Controller extends Controller
             return view('Accountant.Accountant');
         }
         else{
-            return redirect('/K001');
+            return redirect('/Login');
         }
     }
 }

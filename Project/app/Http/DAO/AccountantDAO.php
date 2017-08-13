@@ -39,6 +39,7 @@ class AccountantDAO
 
     public function insertPayment(Accountant $acc){
 
+
         $accInsert = new Accountant();
         $accInsert->payment_nm = $acc->getName();
         $accInsert->payment_ymd = str_replace("-","",$acc->getDate());
@@ -48,6 +49,8 @@ class AccountantDAO
         $accInsert->receiver_total = $acc->getReceiveTotal();
 
         $result = $accInsert->saveOrFail();
+
+
 
         if($result){
             return true;

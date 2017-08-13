@@ -16,16 +16,16 @@ Route::get('AccessDeny',function (){
 
 Route::get('/','K008Controller@view');
 
-Route::get('/K001','K001Controller@view');
-Route::post('/K001','K001Controller@getLoginRequest');
+Route::get('/Login','LoginController@view');
+Route::post('/Login','LoginController@getLoginRequest');
 
-Route::get('/K001/LogOut','K001Controller@logOut');
-Route::get('/K002', 'K002Controller@view');
+Route::get('/LogOut','LoginController@logOut');
+Route::get('/SereparateGroup', 'GroupSereparateController@view');
 
-Route::get('/K012','K012Controller@view');
-Route::get('/K012/K012_1','K012Controller@viewChangePasswordPage');
-Route::post('/K012/K012_1','K012Controller@changePasswordRequest');
-Route::post('/K012','K012Controller@getUpdateRequest');
+Route::get('/K012','MyInfoController@view');
+Route::get('/K012/K012_1','MyInfoController@viewChangePasswordPage');
+Route::post('/K012/K012_1','MyInfoController@changePasswordRequest');
+Route::post('/K012','MyInfoController@getUpdateRequest');
 
 
 //Router Group for Accountant

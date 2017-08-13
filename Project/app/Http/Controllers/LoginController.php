@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Common\Constants;
 use App\Http\Common\Message;
-use App\Http\DAO\K001DAO;
+use App\Http\DAO\LoginDAO;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -17,10 +17,10 @@ define('GROUP_MANAGER' , 'G01');
 define('GROUP_RECEPTIONIST' , 'G02');
 
 /**
- * Class K001Controller
+ * Class LoginController
  * @package App\Http\Controllers
  */
-class K001Controller extends Controller
+class LoginController extends Controller
 {
     /**
      * show Login Form
@@ -28,12 +28,12 @@ class K001Controller extends Controller
      */
     public function view(){
 
-        return view('Common.K001_1');
+        return view('Common.Login');
     }
 
     public function logOut(){
         session()->flush();
-        return redirect('/K001');
+        return redirect('/Login');
     }
 
     /**
@@ -66,17 +66,12 @@ class K001Controller extends Controller
                 //・Sử dụng common function lấy ra toàn bộ các màn hình mà user có thể sử dụng được và
                 // quyền cao nhất của user với màn hình đấy.
                 //Data lấy được lưu trong login user info.
-                $loginDAO = new K001DAO();
+                $loginDAO = new LoginDAO();
                 $userInfo = $loginDAO->getUserInfo($userLogin->getUserID());
 
                 session()->forget(SESSION_NUMBER_LOGIN);
                 session()->put(SESSION_USER_INFO,$userInfo[0]);
 
-                //if( strcmp($userInfo[0]->group_cd, GROUP_MANAGER  ) == 0 ){
-                 //   return view('Manager.K002_1');
-                //} elseif( strcmp( $userInfo[0]->group_cd, GROUP_RECEPTIONIST) == 0 ) {
-               //     return view('Reception.K002_1');
-                //}
 
                 //send Email
                 //Mail::to('sondcse03564@fpt.edu.vn')->send(new BookInfo());
@@ -91,7 +86,7 @@ class K001Controller extends Controller
                 });
                 */
 
-                return redirect('/K002');
+                return redirect('/SereparateGroup');
 
                 break;
         }
@@ -105,7 +100,7 @@ class K001Controller extends Controller
     public function CheckAcc(User $userLogin){
 
         //２．Thực hiện chứng thực login với user ID và password đã được đăng ký vào bảng user.
-        $loginDAO = new K001DAO();
+        $loginDAO = new LoginDAO();
 
         $userLoginInfo = $loginDAO->getLoginUserInfo($userLogin->getUserID());
 

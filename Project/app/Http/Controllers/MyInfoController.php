@@ -17,7 +17,7 @@ use Illuminate\Http\Request;
 
 define('SESSION_USER_INFO','USER_INFO');
 define('CHANGE_PASS_MSG','ErrorMSG');
-class K012Controller
+class MyInfoController extends Controller
 {
     public function view(){
 
