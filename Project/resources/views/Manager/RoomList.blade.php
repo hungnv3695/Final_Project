@@ -59,9 +59,9 @@
 					<div class="row">
 						<div class="col-md-offset-9" style="margin:10px 10px 0px 0px;float:right;">
 							@if(Session::has('USER_INFO'))
-							<b><a class="account" href=" {{url("/K012")}}"><i class="fa fa-user"></i>{!!Session::get('USER_INFO')->user_name !!} </a></b>
+							<b><a class="account" href=" {{url("/MyInfo")}}"><i class="fa fa-user"></i>{!!Session::get('USER_INFO')->user_name !!} </a></b>
 							@endif					
-							<b>|</b><a class="logout" href="{!! url('/K001/LogOut') !!}"> Đăng xuất</a>
+							<b>|</b><a class="logout" href="{!! url('LogOut') !!}"> Đăng xuất</a>
 						</div>
 						<div class="col-md-12">
 							<p class="brand-title">Danh sách phòng</p>
@@ -88,7 +88,7 @@
 
 							<input id="searchtxt" name="searchtxt" type="text" placeholder="Tìm kiếm..." class="form-control input-md" size="12" value="{!! isset($searchStr)?$searchStr:'' !!}">
 							<button class="btn btn-default" value="btnSearch" name="btnSearch"><b>Tìm</b></button>
-							<button class="btn btn-default"  type="button"  value="btnAdd" name="btnAdd" onclick="window.location='{{ url("/K005_1/K005_3?roomTypeID=" . '0') }}'" > <b>Thêm mới</b></button>
+							<button class="btn btn-default"  type="button"  value="btnAdd" name="btnAdd" onclick="window.location='{{ url("/RoomList/AddRoom?roomTypeID=" . '0') }}'" > <b>Thêm mới</b></button>
 							<button class="btn btn-default" value="btnListall" name="btnListall"><b>Danh sách</b></button>
 						</form>
 						<div class="row"><hr></div>
@@ -115,7 +115,7 @@
 										@foreach($room as $data)
 											<tr>
 												<td> {{$index}} </td>
-												<td> <a href= {!! url('/K005_1/K005_2/' . $data->room_id) . '?roomTypeID=' . $data->room_type_id !!} > {{$data->room_number}}  </a>  </td>
+												<td> <a href= {!! url('/RoomList/ViewDetail/' . $data->room_id) . '?roomTypeID=' . $data->room_type_id !!} > {{$data->room_number}}  </a>  </td>
 												<td>{{$data->type_name}}</td>
 												<td>{{$data->floor}}</td>
 												<td>{{$data->price}}</td>
@@ -132,7 +132,7 @@
 				</div>
 				<div class="col-md-8 col-md-offset-2" style="background-color:#c3bfc0;">
 					<div class="col-md-3 col-md-offset-9" style="margin-top:10px; margin-bottom:10px;">
-						<button type="button" class="btn btn-danger col-md-offset-6" value="btnBack" name="btnBack" onclick="window.location='{{ url("/K002") }}'" ><b>Quay lại</b></button>
+						<button type="button" class="btn btn-danger col-md-offset-6" value="btnBack" name="btnBack" onclick="window.location='{{ url("/SereparateGroup") }}'" ><b>Quay lại</b></button>
 					</div>
 				</div>
             </div>

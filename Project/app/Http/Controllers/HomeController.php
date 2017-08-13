@@ -9,9 +9,9 @@
 namespace App\Http\Controllers;
 
 
-class K008Controller extends Controller
+class HomeController extends Controller
 {
     public function view(){
-        return view('Guest.K008_1');
+        return view('Guest.Home');
     }
 }

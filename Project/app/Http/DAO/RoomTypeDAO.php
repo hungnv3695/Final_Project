@@ -13,7 +13,7 @@ use App\Http\Common\Constants;
 use App\Models\Accessory;
 use App\Models\RoomType;
 
-class K010DAO
+class RoomTypeDAO
 {
     public function checkKey($roomTypeID){
         $result = RoomType::where(Constants::TBL_ROOM_TYPE_ID ,$roomTypeID)->count();

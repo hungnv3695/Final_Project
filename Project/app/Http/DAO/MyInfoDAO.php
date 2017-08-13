@@ -13,7 +13,7 @@ use App\Http\Common\Constants;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
-class K012DAO
+class MyInfoDAO
 {
     public function getInfo($userID){
         $result = DB::table('tbl_user')

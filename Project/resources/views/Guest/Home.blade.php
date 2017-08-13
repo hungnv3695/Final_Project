@@ -72,7 +72,7 @@
 									<li><a class="nav-link" href="#">Phòng</a></li>
 									<li><a class="nav-link" href="#">Ảnh</a></li>
 								</ul>
-								<a href="{!! url('/K001/LogOut') !!}"><p class="login navbar-right">Đăng nhập</p></a>
+								<a href="{!! url('/Login') !!}"><p class="login navbar-right">Đăng nhập</p></a>
 							</div>
 						</div>
 					</nav>
