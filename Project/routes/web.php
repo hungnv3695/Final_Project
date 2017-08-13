@@ -123,11 +123,11 @@ Route::get('/Checkout','K003Controller@checkOut_View');
 Route::get('/Checkout/LoadResDetail','K003Controller@loadResDetail');
 Route::get('/Checkout/SaveCheckOut','K003Controller@saveCheckOut');
 
-Route::get('/K013_1','K013Controller@viewCheckIn');
-Route::post('/K013_1','K013Controller@getSearchCheckInRequest');
+Route::get('/checkinList','K003Controller@viewCheckIn');
+Route::post('/checkinList','K003Controller@getSearchCheckInRequest');
 
-Route::get('/K013_2','K013Controller@viewCheckOut');
-Route::post('/K013_2','K013Controller@getSearchCheckOutRequest');
+Route::get('/checkoutList','K003Controller@viewCheckOut');
+Route::post('/checkoutList','K003Controller@getSearchCheckOutRequest');
 
 // Booking
 Route::get('/book','BookController@index');
