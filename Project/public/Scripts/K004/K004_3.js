@@ -209,7 +209,7 @@ $(document).ready(function () {
                                 $("#checkin" + a).css("display","true");
                                 $("#checkin" + a).wrapInner('Chi tiết');
                                 //$("#checkin" + a).attr('value','1');
-                                $("#checkin" + a).attr('onclick', 'window.open(\'/K003_2?res_id='+ $res_id+ '&room_id='+roomId +'\', "_self" )' );
+                                $("#checkin" + a).attr('onclick', 'window.open(\'/K003_2?res_id='+ $res_id+ '&room_id='+roomId + '&hidden=1' + '\', "_self" )' );
 
 
 

@@ -10,6 +10,7 @@ $(document).ready(function(){
     var room_number = "";
     var room_type = "";
     var price = 0;
+    var hidden = GetUrlParameter('hidden');
     function addCommas(nStr)
     {
         nStr += '';
@@ -127,6 +128,14 @@ $(document).ready(function(){
 
 
     function checkIsReservation($res_id) {
+        if(hidden == 1){
+            $("#btnCheckin").attr('disabled',true);
+
+        }
+        else{
+            $("#btnSave").attr('disabled',true);
+
+        }
         if($res_id != ""){
 
             $("#txtCheckin").attr('readonly', true);
@@ -303,7 +312,15 @@ $(document).ready(function(){
     });
     $("#btnBack").click(function (event) {
         event.preventDefault();
-        window.open('/K004_1/K004_2?res_id='+res_id, '_self');
+        if(hidden==1){
+            window.open('/K004_1/K004_2?res_id='+res_id, '_self');
+        }else if(hidden == 2){
+            window.open('/checkinList', '_self');
+        }else{
+            window.open('/SeparateGroup', '_self');
+        }
+
+
     });
 
 

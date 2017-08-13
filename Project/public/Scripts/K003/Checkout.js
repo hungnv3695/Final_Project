@@ -179,4 +179,7 @@ $(document).ready(function () {
         event.preventDefault();
     })
 
+    $("#btnBack").click(function () {
+        window.open('/checkoutList','_self');
+    })
 });
