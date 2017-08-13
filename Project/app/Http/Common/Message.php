@@ -54,6 +54,9 @@ class Message
     const MSG0035 = "Mật khẩu mới và xác nhận mật khẩu không trùng khớp.";
     const MSG0036 = "Số phòng đã tồn tại.";
 
+    const MSG0037 = "Cập nhật thành công";
+    const MSG0038 = "Vui lòng nhận đủ số tiền";
+
 
 
 

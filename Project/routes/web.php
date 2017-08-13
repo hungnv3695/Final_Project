@@ -27,6 +27,19 @@ Route::get('/K012/K012_1','K012Controller@viewChangePasswordPage');
 Route::post('/K012/K012_1','K012Controller@changePasswordRequest');
 Route::post('/K012','K012Controller@getUpdateRequest');
 
+
+//Router Group for Accountant
+
+Route::middleware(['accountant'])->group(function (){
+    Route::get('/AccountantList','AccountantController@view');
+    Route::post('/AccountantList','AccountantController@getAccountantList');
+
+    Route::get('/UpdatePayment','AccountantController@viewUpdate');
+    Route::post('/UpdatePayment','AccountantController@getUpdateRequest');
+});
+
+
+
 //Router  Group for Manager
 Route::middleware(['manager'])->group(function () {
     Route::get('/K005_1','K005Controller@viewRoom');
@@ -56,6 +69,7 @@ Route::middleware(['manager'])->group(function () {
 
     Route::get('/thanhtoan','ThanhToan@view');
 });
+
 
 //Router Group for Receptionist
 //Route::middleware(['receptionist'])->group(function () {

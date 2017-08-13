@@ -52,7 +52,9 @@ class Constants
         const   TBL_ADULT = 'adult';
         const  TBL_CHILDREN = 'children';
         const TBL_NOTE = 'note';
-
+        const TBL_PAYMENT_DATE = 'payment_ymd';
+        const TBL_PAYMENT_NAME = 'payment_nm';
+        const TBL_PAYMENT_STATUS = 'status';
         const NAME_ACC = 'txtNameAcc';
         const QUANTITY_ACC = 'txtquantityAcc';
         const PRICE_ACC = 'txtPriceAcc';

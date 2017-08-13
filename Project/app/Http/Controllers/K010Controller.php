@@ -92,6 +92,7 @@ class K010Controller extends Controller
         } else{
 
             $roomType = new RoomType();
+
             $roomType->setRoomTypeID($request->txtRoomTypeID);
             $roomType->setAdult($request->txtAdult);
             $roomType->setPrice($request->txtPrice);
