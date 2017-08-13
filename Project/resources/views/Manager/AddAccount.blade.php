@@ -38,9 +38,9 @@
             <div class="row">
                 <div class="col-md-offset-9" style="margin:10px 10px 0px 0px;float:right;">
 					@if(Session::has('USER_INFO'))
-					<b><a class="account" href=" {{url("/K012")}}"><i class="fa fa-user"></i>{!!Session::get('USER_INFO')->user_name !!} </a></b>
+					<b><a class="account" href=" {{url("/MyInfo")}}"><i class="fa fa-user"></i>{!!Session::get('USER_INFO')->user_name !!} </a></b>
 					@endif					
-					<b>|</b><a class="logout" href="{!! url('/K001/LogOut') !!}"> Đăng xuất</a>
+					<b>|</b><a class="logout" href="{!! url('/LogOut') !!}"> Đăng xuất</a>
 				</div>
                 <div class="col-md-12">
                     <p class="brand-title">Thêm tài khoản</p>
@@ -75,7 +75,7 @@
                         <label class="label1" for="">Trạng thái: </label>
                         <select id="Status" name="Status" style="width:195px;" class="form-control input-md">
                             <option value="0" selected>Hoạt Động</option>
-                            <option value="1" selected>Không Hoạt Động</option>
+                            <option value="1" >Không Hoạt Động</option>
                         </select>
                     </div>
                 </div>
@@ -83,7 +83,7 @@
         <div class="col-md-6 col-md-offset-3" style="background-color:#c3bfc0;">
             <div class="form-inline col-md-offset-8" style="margin-top:10px;margin-bottom:10px;">
                 <button class="btn btn-success col-md-offset-2" value="bntAdd" name="bntAdd"><b>Thêm</b></button>
-                <button type="button" class="btn btn-danger" value="backCancel" name="backCancel" onclick="window.location='{{ url("/K011") }}'" ><b>Hủy bỏ</b></button>
+                <button type="button" class="btn btn-danger" value="backCancel" name="backCancel" onclick="window.location='{{ url("/AccountList") }}'" ><b>Hủy bỏ</b></button>
             </div>
         </div>
     </div>

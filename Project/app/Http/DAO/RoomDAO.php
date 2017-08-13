@@ -18,7 +18,7 @@ use Illuminate\Support\Str;
 
 define('ROOM_STATUS','RO');
 
-class K005DAO
+class RoomDAO
 {
     public function getRoom($searchStr = null,$searchFloor = null){
         $searchStr =  StringUtil::Trim($searchStr);

@@ -107,9 +107,9 @@
 				<div class="row">
 					<div class="col-md-offset-9" style="margin:10px 10px 0px 0px;float:right;">
 						@if(Session::has('USER_INFO'))
-						<b><a class="account" href=" {{url("/K012")}}"><i class="fa fa-user"></i>{!!Session::get('USER_INFO')->user_name !!} </a></b>
+						<b><a class="account" href=" {{url("/MyInfo")}}"><i class="fa fa-user"></i>{!!Session::get('USER_INFO')->user_name !!} </a></b>
 						@endif					
-						<b>|</b><a class="logout" href="{!! url('/K001/LogOut') !!}"> Đăng xuất</a>
+						<b>|</b><a class="logout" href="{!! url('LogOut') !!}"> Đăng xuất</a>
 					</div>
 					<div class="col-md-12">
 						<p class="brand-title">Xem kiểu phòng</p>
@@ -134,7 +134,7 @@
 						</select>
 						<input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
 						<button type="button" class="btn btn-default" value="bntEdit" id = "bntEdit" name="bntEdit"><b>Xem</b></button>
-						<button type="button" class="btn btn-default" value="btnAddNew" id = "btnAdd" name="btnAdd" onclick="window.location='{{ url("/K010_1") }}'" ><b>Thêm mới</b></button>
+						<button type="button" class="btn btn-default" value="btnAddNew" id = "btnAdd" name="btnAdd" onclick="window.location='{{ url("/RoomTypeList/AddRoomType") }}'" ><b>Thêm mới</b></button>
 					</div>					
 					<!--left-->
 					<div class="col-md-5 form-horizontal" style="margin:10px 30px 10px;border: 1px solid #898989;border-radius:10px;" id="leftDiv">
@@ -220,7 +220,7 @@
 					<!--left-->
 					<div class="col-md-3 col-md-offset-9" style="margin-top:10px; margin-bottom:10px;">
 						<button class="btn btn-success col-md-offset-4" value="bntSave" id="bntAddType" name="bntSave" ><b>Lưu</b></button>
-						<button type="button" class="btn btn-danger" value="bntCancel" name="bntCancel" onclick="window.location='{{ url("/K002") }}'" ><b>Hủy bỏ</b></button>
+						<button type="button" class="btn btn-danger" value="bntCancel" name="bntCancel" onclick="window.location='{{ url("/SereparateGroup") }}'" ><b>Hủy bỏ</b></button>
 					</div>
 				</div>
 			</div>
@@ -234,7 +234,7 @@
 	var btn = document.getElementById('bntEdit');
 	var select = document.getElementById('txtRoomtype');
 	btn.onclick = function () {
-		Route = "{!!url('/K010_2')!!}" +"?roomTypeID=" + select.value ;
+		Route = "{!!url('/RoomtypeList')!!}" +"?roomTypeID=" + select.value ;
         window.location = Route
 
 		return true;

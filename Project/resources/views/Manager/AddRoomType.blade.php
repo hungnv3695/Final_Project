@@ -103,9 +103,9 @@
 				<div class="row">
 					<div class="col-md-offset-9" style="margin:10px 10px 0px 0px;float:right;">
 						@if(Session::has('USER_INFO'))
-						<b><a class="account" href=" {{url("/K012")}}"><i class="fa fa-user"></i>{!!Session::get('USER_INFO')->user_name !!} </a></b>
+						<b><a class="account" href=" {{url("/MyInfo")}}"><i class="fa fa-user"></i>{!!Session::get('USER_INFO')->user_name !!} </a></b>
 						@endif					
-						<b>|</b><a class="logout" href="{!! url('/K001/LogOut') !!}"> Đăng xuất</a>
+						<b>|</b><a class="logout" href="{!! url('/LogOut') !!}"> Đăng xuất</a>
 					</div>
 					<div class="col-md-12">
 						<p class="brand-title">Thêm kiểu phòng</p>
@@ -188,7 +188,7 @@
 						<!--left-->
 					<div class="col-md-4 col-md-offset-9" style="margin-top:10px; margin-bottom:10px;">
 						<button type="submit" class="btn btn-success col-md-offset-3" id="bntAddType" value="bntSave" name="bntSave"><b>Thêm</b></button>
-						<button  type="button" class="btn btn-danger" value="bntCancel" name="bntCancel" onclick="window.location='{{ url("/K010_2") }}'" ><b>Hủy bỏ</b></button>
+						<button  type="button" class="btn btn-danger" value="bntCancel" name="bntCancel" onclick="window.location='{{ url("/RoomtypeList") }}'" ><b>Hủy bỏ</b></button>
 					</div>
 				</div>
 			</div>

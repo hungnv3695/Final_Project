@@ -14,7 +14,7 @@ use App\Http\Common\StringUtil;
 use App\Models\User;
 use App\Models\UserGroup;
 use Illuminate\Support\Facades\DB;
-class K011DAO
+class AccountDAO
 {
     public function getAccount($searchStr = null,$searchPos = null){
         $searchStr =  StringUtil::Trim($searchStr);
@@ -106,7 +106,7 @@ class K011DAO
         $userAdd->user_id = $user->getUserID();
         $userAdd->user_name = $user->getUserName();
         $userAdd->acc_lock_flg = '0';
-        $userAdd->delete_flg = '0';
+        $userAdd->delete_flg = $user->getDelete();
         $userAdd->login_pwd = DEFAULT_PASS;
 
         $result  = $userAdd->saveOrFail();

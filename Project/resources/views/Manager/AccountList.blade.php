@@ -58,9 +58,9 @@
             <div class="row">
                 <div class="col-md-offset-9" style="margin:10px 10px 0px 0px;float:right;">
 					@if(Session::has('USER_INFO'))
-					<b><a class="account" href=" {{url("/K012")}}"><i class="fa fa-user"></i>{!!Session::get('USER_INFO')->user_name !!} </a></b>
+					<b><a class="account" href=" {{url("/MyInfo")}}"><i class="fa fa-user"></i>{!!Session::get('USER_INFO')->user_name !!} </a></b>
 					@endif					
-					<b>|</b><a class="logout" href="{!! url('/K001/LogOut') !!}"> Đăng xuất</a>
+					<b>|</b><a class="logout" href="{!! url('LogOut') !!}"> Đăng xuất</a>
 				</div>
                 <div class="col-md-12">
                     <p class="brand-title">Danh sách tài khoản</p>
@@ -85,7 +85,7 @@
                     </select>
                     <input id="searchtxt" name="searchtxt" placeholder="Tìm kiếm..." type="text" class="form-control input-md" size="12" value="{!! isset($searchStr)?$searchStr:"" !!}">
                     <button class="btn btn-default" value="btnSearch" name="btnSearch"><b>Tìm</b></button>
-                    <button class="btn btn-default" value="btbAdd" name="btnAdd" TYPE="button" onclick=" window.location='{!! url('/K011_1/K011_3') !!}' " > <b>Thêm mới</b></button>
+                    <button class="btn btn-default" value="btbAdd" name="btnAdd" TYPE="button" onclick=" window.location='{!! url('/AccountList/AddAccount') !!}' " > <b>Thêm mới</b></button>
                     <button class="btn btn-default" value="btnListall" name="btnListall"><b>Danh sách</b></button>
                 </div>
                 <input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
@@ -113,7 +113,7 @@
 							@foreach($acc as $data)
 								<tr>
 								<td>{!! $index !!}</td>
-								<td> <a href="{!! url('K011_1/K011_2'). '/' . $data->user_id  !!}" >{!! $data->user_id !!} </a> </td>
+								<td> <a href="{!! url('AccountList/viewDetail'). '/' . $data->user_id  !!}" >{!! $data->user_id !!} </a> </td>
 								<td>{{$data->user_name}}</td>
 								<td>
 									<?php $group = $data->group_cd ;?>
@@ -142,7 +142,7 @@
         </div>
         <div class="col-md-8 col-md-offset-2" style="background-color:#c3bfc0;">
             <div class="col-md-2 col-md-offset-10" style="margin-top:10px; margin-bottom:10px;">
-                <button type="button" class="btn btn-danger col-md-offset-1" value="btnBack" name="btnBack" onclick="window.location='{{ url("/K002") }}'" ><b>Quay lại</b></button>
+                <button type="button" class="btn btn-danger col-md-offset-1" value="btnBack" name="btnBack" onclick="window.location='{{ url("/SereparateGroup") }}'" ><b>Quay lại</b></button>
             </div>
         </div>
     </div>

@@ -10,36 +10,37 @@ namespace App\Http\Controllers;
 
 use App\Http\Common\Constants;
 use App\Http\Common\Message;
-use App\Http\DAO\K010DAO;
+
+use App\Http\DAO\RoomTypeDAO;
 use App\Models\RoomType;
 use Illuminate\Http\Request;
 
-class K010Controller extends Controller
+class RoomTypeController extends Controller
 {
     public function viewAddRoomType(){
-        return view('Manager.K010_1');
+        return view('Manager.AddRoomType');
     }
 
     public function viewRoomType(Request $request){
         $roomTypeID = $request->roomTypeID;
-        $k010Dao = new K010DAO();
+        $roomTypeDAO = new RoomTypeDAO();
 
         if ( strcmp($roomTypeID,'0') == 0 || $roomTypeID == null ){
-            $roomtype = $k010Dao->getRoomType();
-            return view('Manager.K010_2',compact('roomtype'));
+            $roomtype = $roomTypeDAO->getRoomType();
+            return view('Manager.RoomType',compact('roomtype'));
         } else{
 
-            $roomtype = $k010Dao->getRoomType();
+            $roomtype = $roomTypeDAO->getRoomType();
 
-            $roomTypeSelect = $k010Dao->getRoomTypeValue($roomTypeID);
-            $accessory =  $k010Dao->getAccessoryDetail($roomTypeID);
+            $roomTypeSelect = $roomTypeDAO->getRoomTypeValue($roomTypeID);
+            $accessory =  $roomTypeDAO->getAccessoryDetail($roomTypeID);
 
-            return view('Manager.K010_2',compact('roomtype','roomTypeSelect','accessory'));
+            return view('Manager.RoomType',compact('roomtype','roomTypeSelect','accessory'));
         }
     }
 
     public function updateRoomTypeRequest(Request $request){
-        $k010Dao = new K010DAO();
+        $roomTypeDAO = new RoomTypeDAO();
 
         $roomType = new RoomType();
         $roomType->setRoomTypeID($request->txtRoomTypeID);
@@ -68,13 +69,13 @@ class K010Controller extends Controller
         }
 
         //Neu ten ton tai thi hien thi la message loi
-        if(!$k010Dao->checkName($request->txtFullname,$request->txtRoomTypeID)){
+        if(!$roomTypeDAO->checkName($request->txtFullname,$request->txtRoomTypeID)){
             return back()->withInput()->with(Constants::ERROR_MSG,Message::MSG0019);
         }
 
-        $result = $k010Dao->updateRoomType($roomType,$accessory,$count);
+        $result = $roomTypeDAO->updateRoomType($roomType,$accessory,$count);
         if($result){
-            return redirect('/K010_2')->with( Constants::SUCCESS_MSG,Message::MSG0020);
+            return redirect('/RoomtypeList')->with( Constants::SUCCESS_MSG,Message::MSG0020);
         }else{
             return back()->withInput()->with(Constants::ERROR_MSG,Message::MSG0017);
         }
@@ -83,11 +84,11 @@ class K010Controller extends Controller
 
     public function addRoomTypeRequest(Request $request){
 
-        $k010Dao = new K010DAO();
+        $roomTypeDAO = new RoomTypeDAO();
 
-        if(!$k010Dao->checkKey($request->txtRoomTypeID)){
+        if(!$roomTypeDAO->checkKey($request->txtRoomTypeID)){
             return back()->withInput()->with(Constants::ERROR_MSG,Message::MSG0021);
-        }else if(!$k010Dao->checkName($request->txtFullname,$request->txtRoomTypeID)){
+        }else if(!$roomTypeDAO->checkName($request->txtFullname,$request->txtRoomTypeID)){
             return back()->withInput()->with(Constants::ERROR_MSG,Message::MSG0019);
         } else{
 
@@ -117,12 +118,12 @@ class K010Controller extends Controller
                 $accessory += array($str3 => $request->$str3 );
             }
 
-            $result = $k010Dao->addRoomType($roomType,$accessory,$count);
+            $result = $roomTypeDAO->addRoomType($roomType,$accessory,$count);
 
         }
 
         if ($result){
-            return redirect('/K010_2')->with( Constants::SUCCESS_MSG,Message::MSG0022);
+            return redirect('/RoomtypeList')->with( Constants::SUCCESS_MSG,Message::MSG0022);
         }else{
             return back()->withInput()->with(Constants::ERROR_MSG,Message::MSG0023);
         }

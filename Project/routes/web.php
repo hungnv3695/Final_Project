@@ -14,7 +14,7 @@ Route::get('AccessDeny',function (){
     return view('AccessDeny');
 });
 
-Route::get('/','K008Controller@view');
+Route::get('/','HomeController@view');
 
 Route::get('/Login','LoginController@view');
 Route::post('/Login','LoginController@getLoginRequest');
@@ -22,10 +22,10 @@ Route::post('/Login','LoginController@getLoginRequest');
 Route::get('/LogOut','LoginController@logOut');
 Route::get('/SereparateGroup', 'GroupSereparateController@view');
 
-Route::get('/K012','MyInfoController@view');
-Route::get('/K012/K012_1','MyInfoController@viewChangePasswordPage');
-Route::post('/K012/K012_1','MyInfoController@changePasswordRequest');
-Route::post('/K012','MyInfoController@getUpdateRequest');
+Route::get('/MyInfo','MyInfoController@view');
+Route::get('/MyInfo/ChangePassword','MyInfoController@viewChangePasswordPage');
+Route::post('/MyInfo/ChangePassword','MyInfoController@changePasswordRequest');
+Route::post('/MyInfo','MyInfoController@getUpdateRequest');
 
 
 //Router Group for Accountant
@@ -42,30 +42,30 @@ Route::middleware(['accountant'])->group(function (){
 
 //Router  Group for Manager
 Route::middleware(['manager'])->group(function () {
-    Route::get('/K005_1','K005Controller@viewRoom');
-    Route::post('/K005_1' , 'K005Controller@getRoomRequest' );
+    Route::get('/RoomList','RoomController@viewRoom');
+    Route::post('/RoomList' , 'RoomController@getRoomRequest' );
 
-    Route::get('/K005_1/K005_2/{roomId}','K005Controller@getViewRoomDetailRequest');
-    Route::get('/K005_1/K005_2/{roomId}/{roomType}','K005Controller@getChangeRTRequest');
+    Route::get('/RoomList/ViewDetail/{roomId}','RoomController@getViewRoomDetailRequest');
+    Route::get('/RoomList/ViewDetail/{roomId}/{roomType}','RoomController@getChangeRTRequest');
 
-    Route::post('/K005_1/K005_2/{roomId}','K005Controller@updateRoomRequest');
-    Route::get('/K005_1/K005_3','K005Controller@viewAddRoom');
-    Route::post('/K005_1/K005_3','K005Controller@addRoomRequest');
+    Route::post('/RoomList/ViewDetail/{roomId}','RoomController@updateRoomRequest');
+    Route::get('/RoomList/AddRoom','RoomController@viewAddRoom');
+    Route::post('/RoomList/AddRoom','RoomController@addRoomRequest');
 
-    Route::get('/K010_1','K010Controller@viewAddRoomType');
-    Route::post('/K010_1','K010Controller@addRoomTypeRequest');
+    Route::get('/RoomTypeList/AddRoomType','RoomTypeController@viewAddRoomType');
+    Route::post('/RoomTypeList/AddRoomType','RoomTypeController@addRoomTypeRequest');
 
-    Route::get('/K010_2','K010Controller@viewRoomType');
-    Route::post('/K010_2','K010Controller@updateRoomTypeRequest');
+    Route::get('/RoomtypeList','RoomTypeController@viewRoomType');
+    Route::post('/RoomtypeList','RoomTypeController@updateRoomTypeRequest');
 
-    Route::get('/K011','K011Controller@view');
-    Route::post('/K011','K011Controller@getViewAccountRequest');
+    Route::get('/AccountList','AccountController@view');
+    Route::post('/AccountList','AccountController@getViewAccountRequest');
 
-    Route::get('K011_1/K011_2/{userID}','K011Controller@viewDetail');
-    Route::post('K011_1/K011_2/{userID}','K011Controller@getUpdateRequest');
+    Route::get('AccountList/viewDetail/{userID}','AccountController@viewDetail');
+    Route::post('AccountList/viewDetail/{userID}','AccountController@getUpdateRequest');
 
-    Route::get('/K011_1/K011_3','K011Controller@viewAddPage');
-    Route::post('/K011_1/K011_3','K011Controller@addAccountRequest');
+    Route::get('/AccountList/AddAccount','AccountController@viewAddPage');
+    Route::post('/AccountList/AddAccount','AccountController@addAccountRequest');
 
     Route::get('/thanhtoan','ThanhToan@view');
 });
@@ -123,11 +123,11 @@ Route::get('/Checkout','K003Controller@checkOut_View');
 Route::get('/Checkout/LoadResDetail','K003Controller@loadResDetail');
 Route::get('/Checkout/SaveCheckOut','K003Controller@saveCheckOut');
 
-Route::get('/K013_1','K013Controller@viewCheckIn');
-Route::post('/K013_1','K013Controller@getSearchCheckInRequest');
+Route::get('/checkinList','K003Controller@viewCheckIn');
+Route::post('/checkinList','K003Controller@getSearchCheckInRequest');
 
-Route::get('/K013_2','K013Controller@viewCheckOut');
-Route::post('/K013_2','K013Controller@getSearchCheckOutRequest');
+Route::get('/checkoutList','K003Controller@viewCheckOut');
+Route::post('/checkoutList','K003Controller@getSearchCheckOutRequest');
 
 // Booking
 Route::get('/book','BookController@index');

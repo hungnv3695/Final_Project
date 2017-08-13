@@ -29,9 +29,9 @@
                 <div class="row">
                     <div class="col-md-offset-9" style="margin:10px 10px 0px 0px;float:right;">
 						@if(Session::has('USER_INFO'))
-						<b><a class="account" href=" {{url("/K012")}}"><i class="fa fa-user"></i>{!!Session::get('USER_INFO')->user_name !!} </a></b>
+						<b><a class="account" href=" {{url("/MyInfo")}}"><i class="fa fa-user"></i>{!!Session::get('USER_INFO')->user_name !!} </a></b>
 						@endif					
-						<b>|</b><a class="logout" href="{!! url('/K001/LogOut') !!}"> Đăng xuất</a>
+						<b>|</b><a class="logout" href="{!! url('/LogOut') !!}"> Đăng xuất</a>
                     </div>
                     <div class="col-md-12">
                         <p class="brand-title">Thông tin của tôi</p>
@@ -89,7 +89,7 @@
                             ?>
                             <input id="txtCreateDay" name="txtCreateDay" type="text" class="form-control input-md" size="27" value="{!! $date !!} " readonly>
                         </div>
-                        <div class="col-md-7 col-md-offset-3" style="margin-top:20px;margin-bottom:20px;"><button class="btn btn-primary btn-block" type="button" value="btnchangepass" name="btnchangepass" onclick="window.location='{{ url("/K012/K012_1") }}'" ><b>Đổi mật khẩu</b></button></div>
+                        <div class="col-md-7 col-md-offset-3" style="margin-top:20px;margin-bottom:20px;"><button class="btn btn-primary btn-block" type="button" value="btnchangepass" name="btnchangepass" onclick="window.location='{{ url("/MyInfo/ChangePassword") }}'" ><b>Đổi mật khẩu</b></button></div>
                     </div>
                 </div>
                 <div id="panel2">
@@ -124,13 +124,13 @@
             <div class="col-md-6 col-md-offset-3" style="background-color:#c3bfc0;margin-bottom:10px;">
                 <div id="panel3">
                     <div class="form-inline col-md-offset-10" style="margin-top:10px;margin-bottom:10px;">
-                        <button type="button" class="btn btn-danger col-md-offset-2" value="bntBack" name="bntBack" onclick="window.location='{{ url("/K002") }}'" ><b>Quay lại</b></button>
+                        <button type="button" class="btn btn-danger col-md-offset-2" value="bntBack" name="bntBack" onclick="window.location='{{ url("/SereparateGroup") }}'" ><b>Quay lại</b></button>
                     </div>
                 </div>
                 <div id="panel4">
                     <div class="form-inline col-md-offset-9" style="margin-top:10px;margin-bottom:10px;">
                         <button class="btn btn-success" value="bntSave" name="bntSave"><b>Lưu</b></button>
-                        <button type="button" class="btn btn-danger" value="bntBack" name="bntBack"  onclick="window.location='{{ url("/K002") }}'" ><b>Quay lại</b></button>
+                        <button type="button" class="btn btn-danger" value="bntBack" name="bntBack"  onclick="window.location='{{ url("/SereparateGroup") }}'" ><b>Quay lại</b></button>
                     </div>
                 </div>
             </div>

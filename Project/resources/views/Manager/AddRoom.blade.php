@@ -68,9 +68,9 @@
 			<div class="row">
 				<div class="col-md-offset-9" style="margin:10px 10px 0px 0px;float:right;">
 					@if(Session::has('USER_INFO'))
-					<b><a class="account" href=" {{url("/K012")}}"><i class="fa fa-user"></i>{!!Session::get('USER_INFO')->user_name !!} </a></b>
+					<b><a class="account" href=" {{url("/MyInfo")}}"><i class="fa fa-user"></i>{!!Session::get('USER_INFO')->user_name !!} </a></b>
 					@endif					
-					<b>|</b><a class="logout" href="{!! url('/K001/LogOut') !!}"> Đăng xuất</a>
+					<b>|</b><a class="logout" href="{!! url('LogOut') !!}"> Đăng xuất</a>
 				</div>
 				<div class="col-md-12">
 					<p class="brand-title">Thêm phòng</p>
@@ -120,7 +120,7 @@
 						<div class="form-inline col-md-offset-5" style="margin-top:115px;margin-bottom:20px;">
 							<button class="btn btn-success" value="bntAdd" name="bntAdd" onclick="setDisableRoomType()"><b>Thêm</b></button>
 							<button type="button" class="btn btn-primary" value="bntReset" name="bntReset" onclick="location.reload();" ><b>Tạo lại</b></button>
-							<button type="button" class="btn btn-danger" value="bntCancel" name="bntCancel" onclick="window.location='{{ url("/K005_1") }}'"><b>Hủy bỏ</b></button>
+							<button type="button" class="btn btn-danger" value="bntCancel" name="bntCancel" onclick="window.location='{{ url("/RoomList") }}'"><b>Hủy bỏ</b></button>
 						</div>
 					</div>
 					<input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
@@ -185,7 +185,7 @@
 <script >
     var select = document.getElementById('roomtype');
     select.onchange = function(){
-        Route = "{!!url('/K005_1/K005_3/')!!}" +"?roomTypeID=" + select.value ;
+        Route = "{!!url('/RoomList/AddRoom/')!!}" +"?roomTypeID=" + select.value ;
         window.location = Route
     };
 

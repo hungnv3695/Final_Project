@@ -11,35 +11,36 @@ namespace App\Http\Controllers;
 
 use App\Http\Common\Constants;
 use App\Http\Common\Message;
-use App\Http\DAO\K012DAO;
+use App\Http\DAO\MyInfoDAO;
 use App\Models\User;
 use Illuminate\Http\Request;
 
 define('SESSION_USER_INFO','USER_INFO');
 define('CHANGE_PASS_MSG','ErrorMSG');
+
 class MyInfoController extends Controller
 {
     public function view(){
 
         if ( !session()->has(SESSION_USER_INFO) ){
-           return redirect('/K001');
+           return redirect('/Login');
         }else{
             $user  = $this->getInfo();
-            return view('Common.K012',compact('user'));
+            return view('Common.MyInfo',compact('user'));
         }
     }
 
     public function getInfo(){
-        $k012DAO = new K012DAO();
+        $myInfoDAO = new MyInfoDAO();
         $userID = session()->get(SESSION_USER_INFO)->user_id;
 
-        $result = $k012DAO->getInfo($userID);
+        $result = $myInfoDAO->getInfo($userID);
         return $result;
     }
 
     public function getUpdateRequest(Request $request){
         $user = new User();
-        $k012DAO = new K012DAO();
+        $myInfoDAO = new MyInfoDAO();
 
         $user->setUserID($request->txtAccountName);
         $user->setUserName($request->txtFullName);
@@ -49,20 +50,20 @@ class MyInfoController extends Controller
         $user->setTaxCode($request->txtTax);
         $user->setMail($request->txtEmail);
 
-        $result = $k012DAO->updateInfo($user);
+        $result = $myInfoDAO->updateInfo($user);
 
         if($result){
-            return redirect('/K012')->with( Constants::SUCCESS_MSG,Message::MSG0018);
+            return redirect('/MyInfo')->with( Constants::SUCCESS_MSG,Message::MSG0018);
         }
 
     }
 
     public function viewChangePasswordPage(){
         if ( !session()->has(SESSION_USER_INFO) ){
-            return redirect('/K001');
+            return redirect('/Login');
         }else{
             $user = session()->get(SESSION_USER_INFO)->user_id;
-            return view('Common.K012_1',compact('user'));
+            return view('Common.ChangePassword',compact('user'));
         }
     }
 
@@ -72,7 +73,7 @@ class MyInfoController extends Controller
         $newPass = $request->txtNewPwd;
         $confirm = $request->txtConfirmNewPwd;
 
-        $k012DAO = new K012DAO();
+        $myInfoDAO = new MyInfoDAO();
 
 
         if ($oldPass==$newPass){
@@ -81,14 +82,14 @@ class MyInfoController extends Controller
             return back()->with(CHANGE_PASS_MSG, Message::MSG0035);
         }
 
-        $result = $k012DAO->checkPassword($user,$oldPass);
+        $result = $myInfoDAO->checkPassword($user,$oldPass);
 
         if(!$result) {
             return back()->with(CHANGE_PASS_MSG, Message::MSG0015);
         }else{
-            $result = $k012DAO->updatePassword($user,$newPass);
+            $result = $myInfoDAO->updatePassword($user,$newPass);
             if($result){
-                return redirect('/K012')->with( Constants::SUCCESS_MSG,Message::MSG0016);
+                return redirect('/MyInfo')->with( Constants::SUCCESS_MSG,Message::MSG0016);
             }else{
                 return back()->with(CHANGE_PASS_MSG, Message::MSG0017);
             }

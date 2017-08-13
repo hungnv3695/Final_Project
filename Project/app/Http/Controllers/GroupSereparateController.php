@@ -19,7 +19,7 @@ class GroupSereparateController extends Controller
         $groupcd = session()->get(SESSION_USER_INFO)->group_cd;
 
         if( strcmp($groupcd, GROUP_MANAGER  ) == 0 ){
-            return view('Manager.K002_1');
+            return view('Manager.ManagerHome');
         } elseif( strcmp( $groupcd, GROUP_RECEPTIONIST) == 0 ) {
             return view('Reception.K002_1');
         }elseif (strcmp( $groupcd, GROUP_ACCOUNTANT) == 0){

@@ -9,7 +9,7 @@
 namespace App\Http\Controllers;
 use App\Http\Common\Constants;
 use App\Http\Common\Message;
-use App\Http\DAO\K005DAO;
+use App\Http\DAO\RoomDAO;
 use App\Models\Accessory;
 use App\Models\Room;
 use Illuminate\Http\Request;
@@ -18,14 +18,14 @@ use Illuminate\Http\Request;
  * Class K005Controller
  * @package App\Http\Controllers
  */
-class K005Controller extends Controller
+class RoomController extends Controller
 {
     /**
      * View Room List
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function viewRoom(){
-        return view('Manager.K005_1');
+        return view('Manager.RoomList');
     }
 
     /**
@@ -36,19 +36,19 @@ class K005Controller extends Controller
     public  function viewAddRoom(Request $request){
         $roomTypeID = $request->roomTypeID;
 
-        $k005DAO = new K005DAO();
+        $roomDAO = new RoomDAO();
 
-        $roomtype = $k005DAO->getRoomType();
+        $roomtype = $roomDAO->getRoomType();
 
         if (strcmp($roomTypeID,'0') == 0 ){
             $roomTypeID = array_get($roomtype[0],Constants::TBL_ROOM_TYPE_ID);
         }
 
-        $roomTypeSelect = $k005DAO->getRoomTypeValue($roomTypeID);
-        $status = $k005DAO->getStatus();
-        $accessory =  $k005DAO->getAccessoryDetail($roomTypeID);
+        $roomTypeSelect = $roomDAO->getRoomTypeValue($roomTypeID);
+        $status = $roomDAO->getStatus();
+        $accessory =  $roomDAO->getAccessoryDetail($roomTypeID);
 
-            return view('Manager.K005_3',compact('roomtype','status','roomTypeSelect','accessory')) ;
+            return view('Manager.AddRoom',compact('roomtype','status','roomTypeSelect','accessory')) ;
 
     }
 
@@ -59,21 +59,21 @@ class K005Controller extends Controller
      */
     public function getRoomRequest(Request $request = null){
 
-        $k005DAO = new K005DAO();
+        $roomDAO = new RoomDAO();
 
         switch ($request){
 
             //Neu goi tu Router thi Return All Room
             case null:
-                $room = $k005DAO->getRoom();
+                $room = $roomDAO->getRoom();
                 return $room;
                 break;
 
             //Neu nguoi dung click vao listall thi return ra All Room
             case isset($request->btnListall):
-                $room = $k005DAO->getRoom();
+                $room = $roomDAO->getRoom();
 
-                return view('Manager.K005_1',compact('room'));
+                return view('Manager.RoomList',compact('room'));
                 break;
 
             // Neu nguoi dung chon search button hoac
@@ -82,9 +82,9 @@ class K005Controller extends Controller
                 $searchStr = $request->searchtxt;
                 $searchFloor = $request->searchfloor;
 
-                $room = $k005DAO->getRoom($searchStr,$searchFloor);
+                $room = $roomDAO->getRoom($searchStr,$searchFloor);
 
-                return view('Manager.K005_1',compact('room','searchStr','searchFloor'));
+                return view('Manager.RoomList',compact('room','searchStr','searchFloor'));
                 break;
         }
     }
@@ -98,15 +98,15 @@ class K005Controller extends Controller
     public function getViewRoomDetailRequest(Request $request, $roomID){
             $roomTypeID = $request->roomTypeID;
 
-            $k005DAO = new K005DAO();
+        $roomDAO = new RoomDAO();
 
-            $roomDetail = $k005DAO->getRoomDetail($roomID);
-            $roomTypeSelect = $k005DAO->getRoomTypeValue($roomTypeID);
-            $accessory =  $k005DAO->getAccessoryDetail($roomTypeID);
-            $roomtype = $k005DAO->getRoomType();
-            $status = $k005DAO->getStatus();
+            $roomDetail = $roomDAO->getRoomDetail($roomID);
+            $roomTypeSelect = $roomDAO->getRoomTypeValue($roomTypeID);
+            $accessory =  $roomDAO->getAccessoryDetail($roomTypeID);
+            $roomtype = $roomDAO->getRoomType();
+            $status = $roomDAO->getStatus();
 
-            return view('Manager.K005_2',compact('roomDetail', 'accessory','roomtype','status','roomTypeSelect'));
+            return view('Manager.RoomDetail',compact('roomDetail', 'accessory','roomtype','status','roomTypeSelect'));
     }
 
     /**
@@ -126,17 +126,17 @@ class K005Controller extends Controller
         $room->setNote($request->txtNote);
 
 
-        $k005DAO = new K005DAO();
+        $roomDAO = new RoomDAO();
 
-        $checkName = $k005DAO->checkRoomNumber($request->txtRoomNo,$roomID);
+        $checkName = $roomDAO->checkRoomNumber($request->txtRoomNo,$roomID);
 
         if(!$checkName){
             return back()->withInput()->with(Constants::ERROR_MSG,Message::MSG0036);
         }else{
-            $result = $k005DAO->updateRoom($room);
+            $result = $roomDAO->updateRoom($room);
 
             if($result == true){
-                return redirect('/K005_1')->with(Constants::SUCCESS_MSG,Message::MSG0018);
+                return redirect('/RoomList')->with(Constants::SUCCESS_MSG,Message::MSG0018);
 
             }else{
                 return back()->withInput()->with(Constants::ERROR_MSG,Message::MSG0023);
@@ -154,10 +154,10 @@ class K005Controller extends Controller
     public function addRoomRequest(Request $request){
 
 
-        $k005DAO = new K005DAO();
+        $roomDAO = new RoomDAO();
 
-        $checkKey= $k005DAO->checkRoomKey($request->txtRoomID);
-        $checkName = $k005DAO->checkRoomNumber($request->txtRoomNo,$request->txtRoomID);
+        $checkKey= $roomDAO->checkRoomKey($request->txtRoomID);
+        $checkName = $roomDAO->checkRoomNumber($request->txtRoomNo,$request->txtRoomID);
         if($checkKey == false){
             return back()->withInput()->with(Constants::ERROR_MSG,Message::MSG0026);
         }elseif (!$checkName){
@@ -172,10 +172,10 @@ class K005Controller extends Controller
             $room->setRoomNumber($request->txtRoomNo);
 
 
-            $result =  $k005DAO->addRoom($room);
+            $result =  $roomDAO->addRoom($room);
 
             if($result == true){
-                return redirect('/K005_1')->with(Constants::SUCCESS_MSG,Message::MSG0025);
+                return redirect('/RoomList')->with(Constants::SUCCESS_MSG,Message::MSG0025);
             }else{
                 return back()->withInput()->with(Constants::ERROR_MSG,Message::MSG0024);
             }

@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 
 
 use App\Http\Common\DateTimeUtil;
+use App\Http\Common\StringUtil;
 use App\Http\DAO\K003DAO;
 use App\Models\Guest;
 use App\Models\Invoice;
@@ -22,6 +23,35 @@ use Illuminate\Http\Request;
 
 class K003Controller extends Controller
 {
+    public function viewCheckIn(){
+        return view('Reception.CheckinList');
+    }
+
+    public function viewCheckOut(){
+        return view('Reception.CheckoutList');
+    }
+
+
+    public function getSearchCheckInRequest(Request $request){
+        $name = StringUtil::Trim($request->txtFullName) ;
+        $identity = StringUtil::Trim($request->txtCMND) ;
+
+        $checkIn = new K003DAO();
+        $checkInInfo = $checkIn->getCheckInInfo($name,$identity);
+        return view('Reception.CheckinList',compact('checkInInfo','name','identity'));
+    }
+
+    public  function getSearchCheckOutRequest(Request $request){
+        $room = StringUtil::Trim($request->txtRoomNo);
+        $name = StringUtil::Trim($request->txtFullName);
+
+        $checkOut = new K003DAO();
+        $checkOutInfo = $checkOut->getCheckOutInfo($room,$name);
+
+        return view('Reception.CheckoutList',compact('checkOutInfo','room','name'));
+    }
+
+
     public function view(){
 
         $k003 = new K003DAO();
@@ -29,7 +59,6 @@ class K003Controller extends Controller
 
         return view('Reception.K003_1',compact('roomStatus'));
     }
-
 
     public function getRoomStatusRequest(Request $request){
         $checkIn = $request->checkin;
