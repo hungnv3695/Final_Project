@@ -41,9 +41,9 @@
 					<div class="row">
 						<div class="col-md-offset-9" style="margin:10px 10px 0px 0px;float:right;">
 							@if(Session::has('USER_INFO'))
-							<b><a class="account" href=" {{url("/K012")}}"><i class="fa fa-user"></i>{!!Session::get('USER_INFO')->user_name !!} </a></b>
+							<b><a class="account" href=" {{url("/MyInfo")}}"><i class="fa fa-user"></i>{!!Session::get('USER_INFO')->user_name !!} </a></b>
 							@endif					
-							<b>|</b><a class="logout" href="{!! url('/K001/LogOut') !!}"> Đăng xuất</a>
+							<b>|</b><a class="logout" href="{!! url('/LogOut') !!}"> Đăng xuất</a>
 						</div>
 					</div>
 					<div class="col-md-6 form-horizontal col-md-offset-3" style="border: 1px solid #898989;border-radius:10px; background-color:white;margin-top:20px;margin-bottom:20px;">

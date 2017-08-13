@@ -46,9 +46,9 @@
 					<div class="row">
 						<div class="col-md-offset-9" style="margin:10px 10px 0px 0px;float:right;">
 							@if(Session::has('USER_INFO'))
-							<b><a class="account" href=" {{url("/K012")}}"><i class="fa fa-user"></i>{!!Session::get('USER_INFO')->user_name !!} </a></b>
+							<b><a class="account" href=" {{url("/MyInfo")}}"><i class="fa fa-user"></i>{!!Session::get('USER_INFO')->user_name !!} </a></b>
 							@endif
-							<b>|</b><a class="logout" href="{!! url('/K001/LogOut') !!}"> Đăng xuất</a>
+							<b>|</b><a class="logout" href="{!! url('/LogOut') !!}"> Đăng xuất</a>
 						</div>
 						<div class="col-md-12">
 							<p class="brand-title">Cập nhật tiền nộp</p>
@@ -84,7 +84,7 @@
 								</div>
 								<div class="form-inline col-md-offset-8" style="margin-top:50px;margin-bottom:10px;">
 									<button class="btn btn-success col-md-offset-1" value="btnSave" name="btnSave"><b>Lưu</b></button>
-									<button type="button" class="btn btn-danger" value="btnBack" name="btnBack"><b>Quay lại</b></button>
+									<button type="button" class="btn btn-danger" value="btnBack" name="btnBack" onclick="window.location='{{ url("/AccountantList") }}'"  ><b>Quay lại</b></button>
 								</div>
 							</div>
 						</div>

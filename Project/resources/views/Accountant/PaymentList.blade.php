@@ -131,7 +131,7 @@
 				<div class="col-md-8 col-md-offset-2" style="background-color:#c3bfc0;">
 					<div class="row">
 						<div class="col-md-3 col-md-offset-9" style="margin-top:10px; margin-bottom:10px;">
-							<button type="button" class="btn btn-danger col-md-offset-6" value="btnBack" name="btnBack"><b>Quay lại</b></button>
+							<button type="button" class="btn btn-danger col-md-offset-6" value="btnBack" name="btnBack" onclick="window.location='{{ url("/SeparateGroup") }}'"  ><b>Quay lại</b></button>
 						</div>
 					</div>
 				</div>
