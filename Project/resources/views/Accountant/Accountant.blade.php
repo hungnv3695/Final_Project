@@ -54,7 +54,7 @@
 					<div class="row">
 						<div class="col-md-6 form-inline col-md-offset-3" style="border:1px solid #898989;border-radius:10px;margin-top:50px;margin-bottom:50px;">
 							<div class="col-md-10 col-md-offset-1" style="margin-top:30px;"><button type="button" class="btnAccountant btn-block" value="btnBudgetmanager" name="btnBudgetmanager"  onclick="window.location='{{ url("/AccountantList") }}'" ><p class="accountant">Quản lý tiền thu</p></button></div>
-							<div class="col-md-10 col-md-offset-1" style="margin-top:20px;margin-bottom:30px;"><button type="button"  class="btnAccountant btn-block" value="bntMyaccount" name="bntMyaccount" onclick="window.location='{{ url("/K012") }}'" ><p class="accountant">Thông tin của tôi</p></button></div>
+							<div class="col-md-10 col-md-offset-1" style="margin-top:20px;margin-bottom:30px;"><button type="button"  class="btnAccountant btn-block" value="bntMyaccount" name="bntMyaccount" onclick="window.location='{{ url("/MyInfo") }}'" ><p class="accountant">Thông tin của tôi</p></button></div>
 						</div>
 					</div>
 				</div>

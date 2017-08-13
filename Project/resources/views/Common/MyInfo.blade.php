@@ -124,13 +124,13 @@
             <div class="col-md-6 col-md-offset-3" style="background-color:#c3bfc0;margin-bottom:10px;">
                 <div id="panel3">
                     <div class="form-inline col-md-offset-10" style="margin-top:10px;margin-bottom:10px;">
-                        <button type="button" class="btn btn-danger col-md-offset-2" value="bntBack" name="bntBack" onclick="window.location='{{ url("/SereparateGroup") }}'" ><b>Quay lại</b></button>
+                        <button type="button" class="btn btn-danger col-md-offset-2" value="bntBack" name="bntBack" onclick="window.location='{{ url("/SeparateGroup") }}'" ><b>Quay lại</b></button>
                     </div>
                 </div>
                 <div id="panel4">
                     <div class="form-inline col-md-offset-9" style="margin-top:10px;margin-bottom:10px;">
                         <button class="btn btn-success" value="bntSave" name="bntSave"><b>Lưu</b></button>
-                        <button type="button" class="btn btn-danger" value="bntBack" name="bntBack"  onclick="window.location='{{ url("/SereparateGroup") }}'" ><b>Quay lại</b></button>
+                        <button type="button" class="btn btn-danger" value="bntBack" name="bntBack"  onclick="window.location='{{ url("/SeparateGroup") }}'" ><b>Quay lại</b></button>
                     </div>
                 </div>
             </div>
