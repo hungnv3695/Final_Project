@@ -148,6 +148,7 @@ class K003DAO
             $resDetailInsert->customer_phone = $res_detail->getCustomerPhone();
             $resDetailInsert->customer_email = $res_detail->getCustomerPhone();
             $resDetailInsert->check_in_flag = $res_detail->getCheckInFlag();
+            $resDetailInsert->note = $res_detail->getNote();
 
 
 
@@ -161,7 +162,7 @@ class K003DAO
 
 
             $invoiceInsert->reservation_id = $resInsert->id;
-           // $invoiceInsert->guest_id = $guestInsert->id;
+            $invoiceInsert->guest_id = $guestInsert->id;
             $invoiceInsert->creater_nm = $invoice->getCreaterName();
             $invoiceInsert->create_ymd = $invoice->getCreateYmd();
             $invoiceInsert->amount_total = $invoice->getAmountTotal();
