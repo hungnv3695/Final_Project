@@ -413,8 +413,9 @@ class K003DAO
 
     public function saveCheckoutInfor($room_id, $res_id, $resDetail_id, $user_id){
         DB::beginTransaction();
+
         try{
-            DB::table('tbl_room')
+            $result = DB::table('tbl_room')
                 ->where('room_id', $room_id)
                 ->update([
                     'status_id' => 'RO01'
