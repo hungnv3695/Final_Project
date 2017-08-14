@@ -93,7 +93,8 @@ $(document).ready(function () {
     }
     splitInfor(roType,roQuan,roPrice);
     //================================
-    $("#btnBook").click(function () {
+    $("#btnBook").click(function (event) {
+        event.preventDefault();
         var total = removeCommas($("#Total").text());
         $.ajax({
             headers: {
@@ -120,7 +121,7 @@ $(document).ready(function () {
                 alert('error');
             }
         });
-
+        event.preventDefault();
     })
 
 
