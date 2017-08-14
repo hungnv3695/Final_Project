@@ -466,4 +466,9 @@ $(document).ready(function () {
 
     });
 
+    $("#btnBack").click(function () {
+        event.preventDefault();
+        window.open('/SeparateGroup','_self');
+    })
+
 });

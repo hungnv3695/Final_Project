@@ -103,7 +103,7 @@
 						<b>|</b><a class="logout" href="{!! url('/LogOut') !!}"> Đăng xuất</a>
                     </div>
                     <div class="col-md-12">
-                        <p class="brand-title">Nhận phòng</p>
+                        <p class="brand-title">Trả phòng</p>
                     </div>
                 </div>
             </div>

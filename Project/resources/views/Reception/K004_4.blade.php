@@ -153,7 +153,7 @@
 				<div class="row">
 					<div class="col-md-6 col-md-offset-9" style="margin-top:10px; margin-bottom:10px;">
 						<button class="btn btn-primary col-md-offset-2" id="btnBook" value="btnBook" name="btnSave"><b>Đặt ngay</b></button>
-						<button class="btn btn-danger" value="bntBack" name="bntBack"><b>Quay lại</b></button>
+						<button class="btn btn-danger" id= "btnBack" value="btnBack" name="btnBack"><b>Quay lại</b></button>
 					</div>
 				</div>
 			</div>

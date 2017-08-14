@@ -109,8 +109,8 @@ $(document).ready(function () {
             contentType: 'application/x-www-form-urlencoded',
             success: function (result) {
                 if(result == 1){
-                    console.log('Đặt phòng thành công');
-                    window.open();
+                    alert('Đặt phòng thành công');
+                    window.open('/','_self');
                 }
                 else if(result == 0){
                     alert('xảy ra lỗi');

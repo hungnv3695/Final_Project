@@ -80,9 +80,9 @@ class K003Controller extends Controller
     }
 
     public function searchRoomTypeFree(Request $request){
-        $check_in = DateTimeUtil::ConvertDateToString($request->check_in);
-        $check_out = DateTimeUtil::ConvertDateToString($request->check_out);
-
+        $check_in = DateTimeUtil::ConvertDateToString2($request->check_in);
+        $check_out = DateTimeUtil::ConvertDateToString2($request->check_out);
+        //dd($check_in,$check_out);
         $K003DAO = new K003DAO();
         $result = $K003DAO->getRoomTypeFree($check_in,$check_out);
 
@@ -107,8 +107,8 @@ class K003Controller extends Controller
             $res_detail->setCustomerPhone($request->txtPhone2);
             $res_detail->setCustomerEmail($request->txtEmail2);
             $res_detail->setUpdateYmd(Carbon::now());
-            $res_detail->setDateIn(DateTimeUtil::ConvertDateToString($request->txtCheckin));
-            $res_detail->setDateOut(DateTimeUtil::ConvertDateToString($request->txtCheckout));
+            $res_detail->setDateIn(DateTimeUtil::ConvertDateToString2($request->txtCheckin));
+            $res_detail->setDateOut(DateTimeUtil::ConvertDateToString2($request->txtCheckout));
             $res_detail->setNote($request->note2);
             $res_detail->setCheckInFlag(1);
 
@@ -140,8 +140,8 @@ class K003Controller extends Controller
 
             //Reservation Model
             $reservation = new Reservation();
-            $reservation->setCheckIn(DateTimeUtil::ConvertDateToString($request->txtCheckin));
-            $reservation->setCheckOut(DateTimeUtil::ConvertDateToString($request->txtCheckout));
+            $reservation->setCheckIn(DateTimeUtil::ConvertDateToString2($request->txtCheckin));
+            $reservation->setCheckOut(DateTimeUtil::ConvertDateToString2($request->txtCheckout));
             $reservation->setStatusId($res_status);
             $reservation->setNumberOfAdult($request->numofpeople);
             $reservation->setNumberOfChildren(0);
@@ -155,8 +155,8 @@ class K003Controller extends Controller
             $res_detail = new ReservationDetail();
             $res_detail->setCreateYmd(Carbon::now());
             $res_detail->setRoomId($room_id);
-            $res_detail->setDateIn(DateTimeUtil::ConvertDateToString($request->txtCheckin));
-            $res_detail->setDateOut(DateTimeUtil::ConvertDateToString($request->txtCheckout));
+            $res_detail->setDateIn(DateTimeUtil::ConvertDateToString2($request->txtCheckin));
+            $res_detail->setDateOut(DateTimeUtil::ConvertDateToString2($request->txtCheckout));
             $res_detail->setCustomerName($request->txtFullname2);
             $res_detail->setCustomerIC($request->txtIdcard2);
             $res_detail->setCustomerPhone($request->txtPhone2);

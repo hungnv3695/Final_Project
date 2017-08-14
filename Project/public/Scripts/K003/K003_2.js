@@ -46,7 +46,7 @@ $(document).ready(function(){
 
 
     jQuery('#txtCheckin').datetimepicker({
-        format:'d/m/Y',
+        format:'Y/m/d',
         onShow:function( ct ){
             this.setOptions({
                 minDate:0,
@@ -60,7 +60,7 @@ $(document).ready(function(){
         }
     });
     jQuery('#txtCheckout').datetimepicker({
-        format:'d/m/Y',
+        format:'Y/m/d',
         onShow:function( ct ){
             this.setOptions({
                 minDate:jQuery('#txtCheckin').val()?jQuery('#txtCheckin').val():false
@@ -359,7 +359,7 @@ $(document).ready(function(){
                 success: function (result) {
                     if(result==1){
                         alert('Check-in thành công');
-                        location.reload();
+                        window.open('/SeparateGroup','_self');
                     }
                     else if(result==0){
                         alert('Xảy ra lỗi khi check-in');
@@ -395,8 +395,7 @@ $(document).ready(function(){
                 success: function (result) {
                     if(result==1){
                         alert('Check-in thành công');
-                        window.open('/K004_1/K004_2?res_id='+res_id, '_self');
-                        location.reload();
+                        window.open('/SeparateGroup','_self');
                     }
                     else if(result==0){
                         alert('Xảy ra lỗi khi check-in');

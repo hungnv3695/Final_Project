@@ -221,7 +221,7 @@ $(document).ready(function () {
                 count = result.length;
                 addTitle();
                 addInforBook(result, count);
-                alert('2');
+
 
             },
             error: function(){
@@ -248,15 +248,13 @@ $(document).ready(function () {
                     count = result.length;
                     addTitle();
                     addInforBook(result, count);
-                    alert('1');
-
 
                 },
                 error: function(){
                     alert('error');
                 }
             });
-        },20000)
+        },60000)
 
     }
 
