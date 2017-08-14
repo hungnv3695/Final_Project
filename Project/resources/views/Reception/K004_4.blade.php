@@ -125,21 +125,22 @@
 
 								<div class="col-md-10 form-inline" style="margin-top:30px;margin-bottom:10px;">
 									<label class="label1 col-md-offset-3">Tiền phòng:</label>
-									<input id="txtTotalprice" name="txtTotalprice" style="text-align: right" type="text" class="form-control input-md " size="20">
+									<input id="txtTotalprice" name="txtTotalprice" style="text-align: right" type="text" class="form-control input-md " size="15">
 									<b>VNĐ</b>
 								</div>
 								<div class="col-md-10 form-inline" style="margin-top:10px;">
 									<label class="label1 col-md-offset-3">Số đêm:</label>
-									<input id="txtNight" name="txtNight" style="text-align: right" type="text" class="form-control input-md " size="10">
+									<input id="txtNight" name="txtNight" style="text-align: right" type="text" class="form-control input-md " size="2">
 									<b>đêm</b>
 								</div>
 								<div class="col-md-10 form-inline" style="margin-top:10px;">
-									<label class="label1 col-md-offset-3">VAT:</label>
-									<label>10%</label>
+									<label class="label1 col-md-offset-3">VAT (10%):</label>
+									<input id="txtVAT" name="txtVAT" style="text-align: right" type="text" class="form-control input-md " size="15">
+                                    <b>VNĐ</b>
 								</div>
 								<div class="col-md-10 form-inline" style="margin-top: 10px;margin-bottom: 30px;">
 									<label class="label1 col-md-offset-3">Tổng tiền:</label>
-									<input id="txtTotal" name="txtTotal" style="text-align: right" type="text" class="form-control input-md " size="20">
+									<input id="txtTotal" name="txtTotal" style="text-align: right" type="text" class="form-control input-md " size="15">
 									<b>VNĐ</b>
 								</div>
 							</div>

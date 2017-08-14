@@ -248,12 +248,7 @@ class K003DAO
             $invoiceInsert->guest_id = $guestInsert->id;
             $invoiceInsert->creater_nm = $invoice->getCreaterName();
             $invoiceInsert->create_ymd = $invoice->getCreateYmd();
-            $invoiceInsert->amount_total = $invoice->getAmountTotal();
-            $invoiceInsert->payment_flag = $invoice->getPaymentFlag();
-            $invoiceInsert->payment_type_id = (1);
-            $invoiceInsert->updater_nm = '111';
-            $invoiceInsert->update_ymd = Carbon::now();
-           //dd($invoice);
+
             $invoiceInsert->save();
 
 
@@ -263,8 +258,11 @@ class K003DAO
             $invoiceDetailInsert->quantity = $invoiceDetail->getQuantity();
             $invoiceDetailInsert->price = $invoiceDetail->getPrice();
             $invoiceDetailInsert->amount_total = $invoiceDetail->getAmountTotal();
+            $invoiceDetailInsert->room_id = $invoiceDetail->getRoomId();
+            $invoiceDetailInsert->payment_flag = $invoiceDetail->getPaymentFlag();
             $invoiceDetailInsert->create_ymd = $invoiceDetail->getCreateYmd();
-            //dd( $invoiceDetail);
+            $invoiceDetailInsert->creater_nm = $invoiceDetail->getCreaterName();
+
             $invoiceDetailInsert->save();
 
 

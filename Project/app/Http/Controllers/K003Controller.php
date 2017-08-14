@@ -166,24 +166,25 @@ class K003Controller extends Controller
             //dd($res_detail);
             //Room Model
             $room = new Room();
-
             $room->setStatusID($room_status);
             $room->setRoomID($room_id);
 
+            //Invoice Model
             $invoice = new Invoice();
-            $invoice->setAmountTotal((int)$total_price);
-            $invoice->setPaymentFlag(0); // check-in mới chưa thanh toán
             $invoice->setCreateYmd(Carbon::now());
-            $invoice->setCreaterName($request->session()->get('USER_INFO')->user_id);//fix tam
+            $invoice->setCreaterName($request->session()->get('USER_INFO')->user_id);
 
+            //Invoice Detail Model
             $invoiceDetail = new InvoiceDetail();
-
             $invoiceDetail->setItemId($room_id);
             $invoiceDetail->setItemType('Room');
             $invoiceDetail->setQuantity(1);
             $invoiceDetail->setPrice((int)$total_price);
-            $invoiceDetail->setAmountTotal((int)$total_price);
+            $invoiceDetail->setAmountTotal((int)$total_price + ((int)$total_price * 10 / 100));
+            $invoiceDetail->setRoomId($room_id);
+            $invoiceDetail->setPaymentFlag(0);
             $invoiceDetail->setCreateYmd(Carbon::now());
+            $invoiceDetail->setCreaterName($request->session()->get('USER_INFO')->user_id);
 
 
             $K003DAO = new K003DAO();

@@ -356,8 +356,6 @@ class K004DAO{
             $invoiceInsert->guest_id = $guestInsert->id;
             $invoiceInsert->creater_nm = $invoice->getCreaterName();
             $invoiceInsert->create_ymd = $invoice->getCreateYmd();
-            $invoiceInsert->amount_total = $invoice->getAmountTotal();
-            $invoiceInsert->payment_flag = $invoice->getPaymentFlag();
 
             $invoiceInsert->save();
 
@@ -369,9 +367,12 @@ class K004DAO{
                 $invoiceDetailInsert->item_type = $invoiceDetail->getItemType();
                 $invoiceDetailInsert->quantity = $invoiceDetail->getQuantity();
                 $invoiceDetailInsert->price = (int)$priceList[$i] * (int)$nights;
-                $invoiceDetailInsert->amount_total = (int)$priceList[$i] * (int)$nights;
+                $invoiceDetailInsert->amount_total = ((int)$priceList[$i] * (int)$nights) + ((int)$priceList[$i] * (int)$nights * 10 / 100 );
                 $invoiceDetailInsert->create_ymd = $invoiceDetail->getCreateYmd();
-                //dd( $invoiceDetail);
+                $invoiceDetailInsert->payment_flag = $invoiceDetail->getPaymentFlag();
+                $invoiceDetailInsert->room_id = $roomList[$i];
+                $invoiceDetailInsert->creater_nm = $invoiceDetail->getCreaterName();
+
                 $invoiceDetailInsert->save();
             }
 

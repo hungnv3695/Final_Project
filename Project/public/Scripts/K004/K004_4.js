@@ -14,7 +14,7 @@ $(document).ready(function () {
 
     //START: Set datetimepicker
     jQuery('#txtCheckin').datetimepicker({
-        format:'d/m/Y',
+        format:'Y/m/d',
         onShow:function( ct ){
             this.setOptions({
                 minDate:0?0:true,
@@ -24,7 +24,7 @@ $(document).ready(function () {
         timepicker:false
     });
     jQuery('#txtCheckout').datetimepicker({
-        format:'d/m/Y',
+        format:'Y/m/d',
         onShow:function( ct ){
             this.setOptions({
                 minDate:jQuery('#txtCheckin').val()?jQuery('#txtCheckin').val():false
@@ -265,6 +265,7 @@ $(document).ready(function () {
 
                     $("#txtTotalprice").val(addCommas(txttotal));
                     vat = (nights * txttotal * 10 )/ 100
+                    $("#txtVAT").val(addCommas(vat));
                     $("#txtTotal").val(addCommas((nights * txttotal) + vat));
             }
 
@@ -294,6 +295,7 @@ $(document).ready(function () {
                 $("#price" + i).val(addCommas(price - ro_price));
                 $("#txtTotalprice").val(addCommas(txttotal) );
                 vat = (nights * txttotal * 10 )/ 100
+                $("#txtVAT").val(addCommas(vat));
                 $("#txtTotal").val(addCommas((nights * txttotal) + vat));
 
             }
