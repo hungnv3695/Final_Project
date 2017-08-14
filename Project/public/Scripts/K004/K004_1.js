@@ -138,6 +138,10 @@ $(document).ready(function () {
         searchData($fullname,$idcard,$status);
     });
 
+    $("#btnBack").click(function () {
+        window.open('/SeparateGroup','_self');
+    })
+
     $.ajaxSetup({
         headers: { 'X-CSRF-Token' : $('meta[name=_token]').attr('content') }
     });
