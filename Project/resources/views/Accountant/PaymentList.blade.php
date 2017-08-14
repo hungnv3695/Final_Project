@@ -81,7 +81,7 @@
 						<div class="row">
 							<div class="form-inline col-md-offset-1" style="margin-top:20px;">
 								<label class="control-label">Ngày:</label>
-								<input class="form-control" id="date" name="date" placeholder="YYYY/MM/DD" type="text"/>
+								<input class="form-control" id="date" name="date" placeholder="YYYY/MM/DD" type="text" oninvalid="InvalidMsg(this);" required/>
 								<button class="btn btn-default" value="btnSearch" name="btnSearch"><b>Tìm</b></button>
 							</div>
 						</div>
@@ -95,7 +95,7 @@
                     <?php $index =1;?>
 						<div class="table-wrapper">
 							<div class="table-scroll">
-								<table class="table table-bordered">
+								<table class="table table-bordered" id="table">
 									<thead>
 									  <tr>
 										<th></th>
@@ -114,7 +114,7 @@
 												<td> {!! $data->updater_nm !!} </td>
 												<td>{{$data->count}}</td>
 												<td>{{$data->update_ymd}}</td>
-												<td>{{$data->sum}}</td>
+												<td id="{!! "price".$index !!}">{{(int)$data->sum}}</td>
 												@if($statusList[$index-1] == 1) <td>Đã thanh toán</td>
 												@else
 													<td> <a href= "{!! url('/UpdatePayment?name='. $data->updater_nm . '&date=' . $data->update_ymd . '&total=' . $data->sum   ) !!}" > Chưa Thanh Toán  </a> </td>
@@ -150,6 +150,32 @@
                 date_input.datepicker(options);
             })
 		</script>
+
+		<script>
+            function addCommas(nStr)
+            {
+                nStr += '';
+                var rgx = /(\d+)(\d{3})/;
+                while (rgx.test(nStr)) {
+                    nStr = nStr.replace(rgx, '$1' + '.' + '$2');
+                }
+                return nStr;
+            }
+
+            function formatMoney() {
+                var count = document.getElementById('table').rows.length - 1;
+
+                for(var i = 1; i<=count ;i ++){
+                    var name = 'price' + i;
+                    var txt = document.getElementById(name);
+                    txt.innerHTML = addCommas(txt.innerHTML);
+                }
+            }
+
+            formatMoney();
+
+		</script>
+		<script src="{!! asset('Scripts/FrontCheck/CheckError.js') !!}"> </script>
 		<script>  $("div.alert").delay(2000).slideUp(); </script>
 		
 </body>

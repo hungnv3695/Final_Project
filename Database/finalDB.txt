@@ -56,6 +56,7 @@ CREATE TABLE tbl_user(
 	mail varchar(50) ,
 	identity_card varchar(12) ,
 	tax_code varchar(20),
+	identity_card_location varchar(100),
 	address varchar(100),
     create_ymd timestamp,  		
     register_cd varchar(7),		

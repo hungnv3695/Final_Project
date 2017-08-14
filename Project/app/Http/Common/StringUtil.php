@@ -23,4 +23,9 @@ class StringUtil
         }
 
     }
+
+    public static function RemoveSpecialChar($string){
+            $string = str_replace('.','',$string);
+        return $string;
+    }
 }

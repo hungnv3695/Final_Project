@@ -67,7 +67,7 @@ class AccountDAO
                 'tbl_user.acc_lock_flg',
                 'tbl_user.phone',
                 'tbl_user.mail',
-                'tbl_user.tax_code',
+                'tbl_user.identity_card_location',
                 'tbl_user.address',
                 'tbl_user.identity_card',
                 'tbl_user.delete_flg'
