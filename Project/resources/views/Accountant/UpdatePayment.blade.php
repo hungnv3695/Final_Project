@@ -75,13 +75,14 @@
 								<div class="form-inline col-md-offset-1" style="margin-top:20px;">
 									<label class="label1">là:</label>
 									<input id="txtMoney" name="txtMoney" type="text" class="form-control input-md" readonly value="{!! isset($total)?(int)$total:"" !!}"  size="20">
-									<label class="control-label">.000 (VNĐ)</label>
+									<label class="control-label">(VNĐ)</label>
 								</div>
 								<div class="form-inline col-md-offset-1" style="margin-top:20px;">
 									<label class="label1">Số tiền đã nhận:</label>
-									<input id="txtMoneyReceived" name="txtMoneyReceived" type="text" class="form-control input-md" size="20">
-									<label class="control-label">.000 (VNĐ)</label>
+									<input id="txtMoneyReceived" name="txtMoneyReceived" oninput="formatCurency(this,1); " type="text" class="form-control input-md" size="20">
+									<label class="control-label">(VNĐ)</label>
 								</div>
+								<label class="control-label" for="" id="charMoney"></label>
 								<div class="form-inline col-md-offset-8" style="margin-top:50px;margin-bottom:10px;">
 									<button class="btn btn-success col-md-offset-1" value="btnSave" name="btnSave"><b>Lưu</b></button>
 									<button type="button" class="btn btn-danger" value="btnBack" name="btnBack" onclick="window.location='{{ url("/AccountantList") }}'"  ><b>Quay lại</b></button>
@@ -94,6 +95,26 @@
             </div>
         </div>
 
+		<script>
+            function addCommas(nStr)
+            {
+                nStr += '';
+                var rgx = /(\d+)(\d{3})/;
+                while (rgx.test(nStr)) {
+                    nStr = nStr.replace(rgx, '$1' + '.' + '$2');
+                }
+                return nStr;
+            }
+
+            function formatMoney() {
+
+                var txt = document.getElementById('txtMoney')
+                txt.value = addCommas(txt.value) ;
+            }
+
+            formatMoney();
+		</script>
+		<script src="{!! asset('Scripts/ReadNumber/readNumber.js') !!}"> </script>
 		<script>  $("div.Error").delay(2000).slideUp(); </script>
 </body>
 </html>

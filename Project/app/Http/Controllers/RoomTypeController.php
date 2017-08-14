@@ -11,6 +11,7 @@ namespace App\Http\Controllers;
 use App\Http\Common\Constants;
 use App\Http\Common\Message;
 
+use App\Http\Common\StringUtil;
 use App\Http\DAO\RoomTypeDAO;
 use App\Models\RoomType;
 use Illuminate\Http\Request;
@@ -45,7 +46,7 @@ class RoomTypeController extends Controller
         $roomType = new RoomType();
         $roomType->setRoomTypeID($request->txtRoomTypeID);
         $roomType->setAdult($request->txtAdult);
-        $roomType->setPrice($request->txtPrice);
+        $roomType->setPrice(StringUtil::RemoveSpecialChar($request->txtPrice) );
         $roomType->setChildren($request->txtChildren);
         $roomType->setDescription($request->descriptiontxt);
         $roomType->setName($request->txtFullname);
@@ -54,7 +55,7 @@ class RoomTypeController extends Controller
         $accessory = array(
             Constants::NAME_ACC => $request->txtNameAcc,
             Constants::QUANTITY_ACC => ($request->txtquantityAcc == null) ? '0':$request->txtquantityAcc,
-            Constants::PRICE_ACC =>  ($request-> txtPriceAcc ==null) ? '0':$request-> txtPriceAcc
+            Constants::PRICE_ACC =>  ($request-> txtPriceAcc ==null) ? '0':StringUtil::RemoveSpecialChar($request-> txtPriceAcc)
         );
 
         for($i=1; $i<$count; $i++){
@@ -64,7 +65,7 @@ class RoomTypeController extends Controller
             $str3 = Constants::QUANTITY_ACC . $i;
 
             $accessory += array($str1 => $request->$str1 );
-            $accessory += array($str2 => ($request->$str2 ==null)?'0':$request->$str2 );
+            $accessory += array($str2 => ($request->$str2 ==null)?'0':StringUtil::RemoveSpecialChar($request->$str2));
             $accessory += array($str3 => ($request->$str3 ==null)?'0':$request->$str3 );
         }
 
@@ -96,7 +97,7 @@ class RoomTypeController extends Controller
 
             $roomType->setRoomTypeID($request->txtRoomTypeID);
             $roomType->setAdult($request->txtAdult);
-            $roomType->setPrice($request->txtPrice);
+            $roomType->setPrice(StringUtil::RemoveSpecialChar($request->txtPrice));
             $roomType->setChildren($request->txtChildren);
             $roomType->setDescription($request->descriptiontxt);
             $roomType->setName($request->txtFullname);
@@ -105,7 +106,7 @@ class RoomTypeController extends Controller
             $accessory = array(
                 Constants::NAME_ACC => $request->txtNameAcc,
                 Constants::QUANTITY_ACC => $request->txtquantityAcc,
-                Constants::PRICE_ACC => $request-> txtPriceAcc
+                Constants::PRICE_ACC => StringUtil::RemoveSpecialChar($request-> txtPriceAcc)
             );
 
             for($i=1; $i<$count; $i++){
@@ -114,7 +115,7 @@ class RoomTypeController extends Controller
                 $str2 = Constants::PRICE_ACC .$i ;
                 $str3 = Constants::QUANTITY_ACC . $i;
                 $accessory += array($str1 => $request->$str1 );
-                $accessory += array($str2 => $request->$str2 );
+                $accessory += array($str2 => StringUtil::RemoveSpecialChar($request->$str2));
                 $accessory += array($str3 => $request->$str3 );
             }
 

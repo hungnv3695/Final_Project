@@ -24,6 +24,25 @@ class User extends Model
     private $identityCard;
     private $taxCode;
     private $address;
+    private $location;
+
+    /**
+     * @return mixed
+     */
+    public function getLocation()
+    {
+        return $this->location;
+    }
+
+    /**
+     * @param mixed $location
+     */
+    public function setLocation($location)
+    {
+        $this->location = $location;
+    }
+
+
 
     /**
      * @return mixed

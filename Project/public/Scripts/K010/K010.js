@@ -30,7 +30,7 @@ function addAccessory() {
     // grab the input from the first cell and update its ID and value
     var inp3 = new_row.cells[3].getElementsByTagName('input')[0];
     inp3.name += len-1;
-    inp3.id += len;
+    inp3.id +=len;
     inp3.value = '0';
 
     var tbody = table.getElementsByTagName('tbody')[0];
@@ -51,10 +51,10 @@ function deleteAccessory() {
 var btnAddRoomType =  document.getElementById("bntAddType");
 
 if (btnAddRoomType != null){
-    btnAddRoomType.onclick =  function () {
-        var table =document.getElementById('table');
-        document.getElementById('count').value = table.rows.length - 1;
-    }
+        btnAddRoomType.onclick =  function () {
+            var table =document.getElementById('table');
+            document.getElementById('count').value = table.rows.length - 1;
+        }
 }
 
 

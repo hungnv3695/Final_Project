@@ -8,6 +8,8 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('/plugins/animate/animate.css')}}">
 	<link rel="stylesheet" type="text/css" href=" {!! asset('css/index.css') !!}">
 	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+
 	<style type="text/css">
 		body
 		{
@@ -154,14 +156,17 @@
 
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">Giá: </label>
-								<input id="txtPrice" name="txtPrice" type="number" class="form-control input-md" default="0" min="0" value= "{!!isset($roomTypeSelect[0])?(int)array_get($roomTypeSelect[0],'price'):'0'!!}" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required >
-								<label class="control-label" for="">/đêm</label>
+								<input id="txtPrice" name="txtPrice" type="text" class="form-control input-md" default="0" min="0" oninput="formatCurency(this,1); "  oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required >
+								<label class="control-label" for="">(VND)</label>
+
 							</div>
 
+							<label class="control-label" for="" id="charMoney"></label>
+
 							<div class="form-inline" style="margin-top:20px;">
-								<label class="label1" for="">Người lớn: </label>
-								<input id="txtAdult" name="txtAdult" type="number" class="form-control input-md" min="1" value= "{!! isset($roomTypeSelect[0])?(int) array_get($roomTypeSelect[0],'adult'):'1'!!}" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);" required>
-								<label class="control-label" for="">/người</label>
+									<label class="label1" for="">Người lớn: </label>
+									<input id="txtAdult" name="txtAdult" type="number" class="form-control input-md" min="1" value= "{!! isset($roomTypeSelect[0])?(int) array_get($roomTypeSelect[0],'adult'):'1'!!}" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);" required>
+									<label class="control-label" for="">/người</label>
 							</div>
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">Trẻ em: </label>
@@ -198,8 +203,8 @@
 											<td class="col1" style="line-height:34px;">{!! $i !!}</td>
 											<td class="col2"> <input id="txtNameAcc1" name="{!! "txtNameAcc" . $str !!}"   type="text" class="form-control input-md" maxlength="20"  value=" {!!array_get($data,'accessory_name')!!}"  oninvalid="InvalidMsg(this);" required ></td>
 											<td class="col3"> <input id="txtQuanlityAcc1" name="{!! "txtquantityAcc" . $str !!}" type="number" class="form-control input-md" value="{!!(int)array_get($data,'quantity') !!}" min="1" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required ></td>
-											<td class="col4"> <input id="txtPriceAcc1" name="{!! "txtPriceAcc" . $str !!}" type="number" class="form-control input-md" value="{!! (int)array_get($data,'price') !!}" min="0" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required  ></td>
-											<td class="col5"><label class="label2">.000(VND)</label></td>
+											<td class="col4"> <input id="{!! "txtPriceAcc".$i!!}" name="{!! "txtPriceAcc" . $str !!}" type="text" class="form-control input-md" value=" {!!  (int)array_get($data,'price') !!}" min="0" oninput="formatCurency(this,0); " oninvalid="InvalidMsg(this);"  required  ></td>
+											<td class="col5"><label class="label2">(VND)</label></td>
 										</tr>
 										<?php $i++?>
 									@endforeach
@@ -228,7 +233,6 @@
 	</form>
 
 </div>
-<script src="{{asset('Scripts/K010/K010.js')}}"> </script>
 
 <script>
 	var btn = document.getElementById('bntEdit');
@@ -251,8 +255,36 @@
 		}
     }
 
+    window.onload = function(){
+        loadPrice(document.getElementById('txtPrice'),{!!isset($roomTypeSelect[0])?(int)array_get($roomTypeSelect[0],'price'):'0'!!},1);
+    }
+
+    function addCommas(nStr)
+    {
+        nStr += '';
+        var rgx = /(\d+)(\d{3})/;
+        while (rgx.test(nStr)) {
+            nStr = nStr.replace(rgx, '$1' + '.' + '$2');
+        }
+        return nStr;
+    }
+
+    function formatMoney() {
+		var count = document.getElementById('table').rows.length - 1;
+
+		for(var i = 1; i<=count ;i ++){
+            var name = 'txtPriceAcc' + i;
+            var txt = document.getElementById(name);
+            txt.value = addCommas(txt.value);
+        }
+    }
+
+    formatMoney();
+
 </script>
 
+<script src="{{asset('Scripts/K010/K010.js')}}"> </script>
+<script src="{!! asset('Scripts/ReadNumber/readNumber.js') !!}"> </script>
 <script src="{!! asset('Scripts/FrontCheck/CheckError.js') !!}"> </script>
 <script>  $("div.alert").delay(2000).slideUp(); </script>
 <script>  $("div.Error").delay(2000).slideUp(); </script>

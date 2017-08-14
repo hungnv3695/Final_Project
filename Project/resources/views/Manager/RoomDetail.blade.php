@@ -128,8 +128,8 @@
 							<div class="col-md-6 form-horizontal" style="margin:10px 0px 10px;border: 1px solid #898989;border-radius:10px;">
 									<div class="form-inline" style="margin-top:20px;">
 										<label class="label1" for="">Giá: </label>
-										<input id="txtPrice" name="txtPrice" type="text" class="form-control input-md" size="15" value = "{!! array_get($roomTypeSelect[0],'price') !!}" readonly>
-										<label class="control-label" for="">/đêm</label>
+										<input id="txtPrice" name="txtPrice" type="text" class="form-control input-md" size="15" value = "{!! (int)array_get($roomTypeSelect[0],'price') !!}" readonly>
+										<label class="control-label" for="">(VND)</label>
 									</div>
 									<div class="form-inline" style="margin-top:20px;">
 										<label class="label1" for="">Người lớn: </label>
@@ -147,7 +147,7 @@
 									</div>
 									<div class="table-wrapper">
 										<div class="table-scroll">
-											<table class="table table-bordered">
+											<table class="table table-bordered" id="table">
 												<thead>
 												<tr>
 													<th></th>
@@ -165,8 +165,8 @@
 															<td>{!! $i !!}</td>
 															<td>{!! array_get($data,'accessory_name') !!}</td>
 															<td>{!! array_get($data,'quantity') !!}</td>
-															<td>{!! array_get($data,'price') !!}</td>
-															<td><label class="label2">.000(VND)</label></td>
+															<td id="{!!"price" . $i !!}">{!! (int)array_get($data,'price') !!}</td>
+															<td><label class="label2">(VND)</label></td>
 														</tr>
 														<?php $i++?>
 													@endforeach
@@ -196,7 +196,33 @@
                 document.getElementById('txtroomType').value = select.value;
 
             }
+
+            function addCommas(nStr)
+            {
+                nStr += '';
+                var rgx = /(\d+)(\d{3})/;
+                while (rgx.test(nStr)) {
+                    nStr = nStr.replace(rgx, '$1' + '.' + '$2');
+                }
+                return nStr;
+            }
+
+            function formatMoney() {
+                var count = document.getElementById('table').rows.length - 1;
+				var txt = document.getElementById('txtPrice')
+				txt.value = addCommas(txt.value) ;
+
+                for(var i = 1; i<=count ;i ++){
+                    var name = 'price' + i;
+                    var txt = document.getElementById(name);
+                    txt.innerHTML = addCommas(txt.innerHTML);
+                }
+            }
+
+            formatMoney();
 		</script>
+
+
 		<script src="{!! asset('Scripts/FrontCheck/CheckError.js') !!}"> </script>
 		<script>  $("div.Error").delay(2000).slideUp(); </script>
 </body>

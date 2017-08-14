@@ -22,6 +22,7 @@ class MyInfoDAO
             ->get([
                 'tbl_user.user_id',
                 'tbl_user.user_name',
+                'tbl_user.identity_card_location',
                 'tbl_user_group.group_cd',
                 'tbl_user.acc_lock_flg',
                 'tbl_user.phone',
@@ -45,7 +46,7 @@ class MyInfoDAO
         $userUpdate->phone = $user->getPhone() ;
         $userUpdate->mail = $user->getMail() ;
         $userUpdate->identity_card = $user->getIdentityCard() ;
-        $userUpdate->tax_code = $user->getTaxCode()  ;
+        $userUpdate->identity_card_location = $user->getLocation();
         $userUpdate->address = $user->getAddress() ;
 
         $result = $userUpdate->saveOrFail();

@@ -11,6 +11,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Common\Constants;
 use App\Http\Common\Message;
+use App\Http\Common\StringUtil;
 use App\Http\DAO\AccountantDAO;
 use App\Models\Accountant;
 use Illuminate\Http\Request;
@@ -52,14 +53,14 @@ class AccountantController extends Controller
         $acc = new Accountant();
         $accountantDAO = new AccountantDAO();
 
-        if(strcmp($request->txtMoney,$request->txtMoneyReceived) != 0){
+        if(strcmp( StringUtil::RemoveSpecialChar($request->txtMoney) , StringUtil::RemoveSpecialChar($request->txtMoneyReceived) ) != 0){
             return back()->withInput()->with(Constants::ERROR_MSG,Message::MSG0038);
         }
 
         $acc->setName($request->txtPayer);
         $acc->setDate($request->txtDate);
-        $acc->setTotal($request->txtMoney);
-        $acc->setReceiveTotal($request->txtMoneyReceived);
+        $acc->setTotal(StringUtil::RemoveSpecialChar($request->txtMoney) );
+        $acc->setReceiveTotal(StringUtil::RemoveSpecialChar($request->txtMoneyReceived));
         $result  = $accountantDAO->insertPayment($acc);
 
 

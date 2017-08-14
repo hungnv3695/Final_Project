@@ -111,7 +111,7 @@
 							</div>
 							<div class="form-inline" style="margin-top:20px;margin-bottom:20px;">
 								<label class="label1" for="">Nơi cấp: </label>
-								<input id="txtLocation" name="txtLocation" type="text" class="form-control input-md" size="25" value="{!! $acc[0]->tax_code !!}" readonly />
+								<input id="txtLocation" name="txtLocation" type="text" class="form-control input-md" size="25" value="{!! $acc[0]->identity_card_location !!}" readonly />
 							</div>
 						</div>
                     </div>

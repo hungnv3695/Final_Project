@@ -47,7 +47,7 @@ class MyInfoController extends Controller
         $user->setAddress($request->txtAddress);
         $user->setIdentityCard($request->txtIdCard);
         $user->setPhone($request->txtPhone);
-        $user->setTaxCode($request->txtTax);
+        $user->setLocation($request->txtLocation);
         $user->setMail($request->txtEmail);
 
         $result = $myInfoDAO->updateInfo($user);

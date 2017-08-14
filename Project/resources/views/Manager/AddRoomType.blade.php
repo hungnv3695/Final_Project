@@ -132,9 +132,11 @@
 
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">Giá: </label>
-								<input id="txtPrice" name="txtPrice" type="number" class="form-control input-md" min="0" value="0"  oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required >
-								<label class="control-label" for="">/đêm</label>
+								<input id="txtPrice" name="txtPrice" type="text" class="form-control input-md" min="0" value="0"  oninput="formatCurency(this,1); " oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required >
+								<label class="control-label" for="">(VND)</label>
 							</div>
+
+							<label class="control-label" for="" id="charMoney"></label>
 
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">Người lớn: </label>
@@ -171,8 +173,8 @@
 									<td class="col1" style="line-height:34px;">1</td>
 									<td class="col2"> <input id="txtNameAcc1" name="txtNameAcc" type="text" class="form-control input-md" maxlength="20"  oninvalid="InvalidMsg(this);" required ></td>
 									<td class="col3"> <input id="txtQuanlityAcc1" name="txtquantityAcc" type="number" value="1" class="form-control input-md"  min="1" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required  ></td>
-									<td class="col4"> <input id="txtPriceAcc1" name="txtPriceAcc" type="number" value="0" class="form-control input-md"  min="0" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required  ></td>
-									<td class="col5"><label class="label2">.000(VND)</label></td>
+									<td class="col4"> <input id="txtPriceAcc1" name="txtPriceAcc" type="text" value="0" class="form-control input-md"  min="0" oninput="formatCurency(this,0); " oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required  ></td>
+									<td class="col5"><label class="label2">(VND)</label></td>
 								</tr>
 								</tbody>
 							</table>
@@ -199,6 +201,7 @@
 </div>
 <script src="{{asset('Scripts/K010/K010.js')}}"> </script>
 <script src="{!! asset('Scripts/FrontCheck/CheckError.js') !!}"> </script>
+<script src="{!! asset('Scripts/ReadNumber/readNumber.js') !!}"> </script>
 <script>  $("div.Error").delay(2000).slideUp(); </script>
 </body>
 </html>
