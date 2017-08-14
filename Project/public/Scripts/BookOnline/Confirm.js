@@ -83,13 +83,16 @@ $(document).ready(function () {
         $("#nights").text(nights);
 
         $("#roomPrice").text(addCommas(room_price_total));
+
         var a = Number(room_price_total),
             b = Number(nights),
             c = a * b;
+        $("#lbVAT").text(addCommas(c*10/100));
         $("#Total").text(addCommas(c + (c*10/100)));
 
         $("#spCheckin").text(checkin);
         $("#spCheckout").text(checkout);
+
     }
     splitInfor(roType,roQuan,roPrice);
     //================================

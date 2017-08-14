@@ -80,7 +80,7 @@ class BookOnlineDAO {
         $guestInsert->phone = $guest->getPhone();
         $guestInsert->mail = $guest->getMail();
         $guestInsert->address = $guest->getAddress();
-        $guestInsert->company = $guest->getCompany();
+        //$guestInsert->company = $guest->getCompany();
         $guestInsert->create_ymd = $guest->getCreateYmd();
 
         DB::beginTransaction();
@@ -95,22 +95,23 @@ class BookOnlineDAO {
             $resInsert->number_of_children = $res->getNumberOfChildren();
             $resInsert->number_of_room = $res->getNumberOfRoom();
             $resInsert->guest_id = $guestInsert->id;
+
             $resInsert->status_id = $res->getStatusId();
             $resInsert->note = $res->getNote();
             $resInsert->create_ymd = $res->getCreateYmd();
 
 
             $resInsert->editer = $res->getEditer();
-            //dd($res);
+
             $resInsert->save();
+
+
 
             $invoiceInsert = new Invoice();
             $invoiceInsert->reservation_id = $resInsert->id;
             $invoiceInsert->guest_id = $guestInsert->id;
             $invoiceInsert->creater_nm = $invoice->getCreaterName();
             $invoiceInsert->create_ymd = $invoice->getCreateYmd();
-            $invoiceInsert->amount_total = $invoice->getAmountTotal();
-            $invoiceInsert->payment_flag = $invoice->getPaymentFlag();
 
             $invoiceInsert->save();
 
@@ -136,15 +137,15 @@ class BookOnlineDAO {
                     $invoiceDetailInsert = new InvoiceDetail();
 
                     $invoiceDetailInsert->invoice_id = $invoiceInsert->id;
-
                     $invoiceDetailInsert->item_id = $roomInfor[0]->room_id;
-
+                    $invoiceDetailInsert->room_id = $roomInfor[0]->room_id;
                     $invoiceDetailInsert->item_type = $invoiceDetail->getItemType();
                     $invoiceDetailInsert->quantity = $invoiceDetail->getQuantity();
-
                     $invoiceDetailInsert->price = (int)($roomInfor[0]->price) * (int)$nights;
-                    $invoiceDetailInsert->amount_total = ($roomInfor[0]->price) * $nights;
+                    $invoiceDetailInsert->amount_total = (($roomInfor[0]->price) * $nights) + (($roomInfor[0]->price) * $nights * 10 / 100);
+                    $invoiceDetailInsert->payment_flag = $invoiceDetail->getPaymentFlag();
                     $invoiceDetailInsert->create_ymd = $invoiceDetail->getCreateYmd();
+                    $invoiceDetailInsert->creater_nm = $invoiceDetail->getCreaterName();
 
                     $invoiceDetailInsert->save();
 
@@ -157,7 +158,7 @@ class BookOnlineDAO {
             DB::commit();
             return 1;
         }catch(\Exception $e){
-
+            dd($e);
             DB::rollback();
             return 0;
         }

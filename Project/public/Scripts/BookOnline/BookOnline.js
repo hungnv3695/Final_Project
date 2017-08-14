@@ -366,7 +366,7 @@ $(document).ready(function () {
         }
         if(quantity > 0){
             window.open('/Book/ConfirmView?roType=' +roType + "&roQuan=" + roQuan + "&roPrice=" + roPrice + "&nights=" + nights +
-                "&countRoom=" + countRoomBooked + "&check_in="+check_in+"&check_out="+check_out+"&adult="+adult+"&children="+children  ,'_blank');
+                "&countRoom=" + countRoomBooked + "&check_in="+check_in+"&check_out="+check_out+"&adult="+adult+"&children="+children  ,'_self');
         }
 
 

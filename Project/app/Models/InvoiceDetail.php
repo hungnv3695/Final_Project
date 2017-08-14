@@ -19,24 +19,29 @@ class InvoiceDetail extends Model
     private $item_type;
     private $quantity;
     private $price;
+    private $description;
     private $amount_total;
+    private $roomId;
+    private $createrName;
+    private $updaterName;
     private $updateYmd;
     private $createYmd;
+    private $paymentFlag;
 
     /**
-     * @return array
+     * @return mixed
      */
-    public function getFillable()
+    public function getPaymentFlag()
     {
-        return $this->fillable;
+        return $this->paymentFlag;
     }
 
     /**
-     * @param array $fillable
+     * @param mixed $paymentFlag
      */
-    public function setFillable($fillable)
+    public function setPaymentFlag($paymentFlag)
     {
-        $this->fillable = $fillable;
+        $this->paymentFlag = $paymentFlag;
     }
 
     /**
@@ -138,6 +143,22 @@ class InvoiceDetail extends Model
     /**
      * @return mixed
      */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param mixed $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getAmountTotal()
     {
         return $this->amount_total;
@@ -149,6 +170,54 @@ class InvoiceDetail extends Model
     public function setAmountTotal($amount_total)
     {
         $this->amount_total = $amount_total;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRoomId()
+    {
+        return $this->roomId;
+    }
+
+    /**
+     * @param mixed $roomId
+     */
+    public function setRoomId($roomId)
+    {
+        $this->roomId = $roomId;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCreaterName()
+    {
+        return $this->createrName;
+    }
+
+    /**
+     * @param mixed $createrName
+     */
+    public function setCreaterName($createrName)
+    {
+        $this->createrName = $createrName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUpdaterName()
+    {
+        return $this->updaterName;
+    }
+
+    /**
+     * @param mixed $updaterName
+     */
+    public function setUpdaterName($updaterName)
+    {
+        $this->updaterName = $updaterName;
     }
 
     /**

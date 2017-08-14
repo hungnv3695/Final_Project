@@ -196,12 +196,12 @@
 								<div class="col-md-12">
 									<div class="col-md-4">
 										<div class="form-group">
-											<label><b>Không bao gồm VAT</b></label>
+											<label><b>VAT (10%)</b></label>
 										</div>
 									</div>
 									<div class="col-md-4 col-md-offset-4">
 										<div class="form-group">
-											<label><b>10%</b></label>
+											<label id="lbVAT"><b></b></label>
 										</div>
 									</div>
 								</div>

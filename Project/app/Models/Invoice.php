@@ -18,44 +18,10 @@ class Invoice extends Model
     private $reservationId;
     private $guestId;
     private $taxCode;
-    private $amountTotal;
     private $updateYmd;
     private $createYmd;
     private $createrName;
     private $updaterName;
-    private $paymentFlag;
-
-
-    /**
-     * @return mixed
-     */
-    public function getUpdaterName()
-    {
-        return $this->updaterName;
-    }
-
-    /**
-     * @param mixed $updaterName
-     */
-    public function setUpdaterName($updaterName)
-    {
-        $this->updaterName = $updaterName;
-    }
-    /**
-     * @return mixed
-     */
-    public function getPaymentFlag()
-    {
-        return $this->paymentFlag;
-    }
-
-    /**
-     * @param mixed $paymentFlag
-     */
-    public function setPaymentFlag($paymentFlag)
-    {
-        $this->paymentFlag = $paymentFlag;
-    }
 
     /**
      * @return mixed
@@ -140,22 +106,6 @@ class Invoice extends Model
     /**
      * @return mixed
      */
-    public function getAmountTotal()
-    {
-        return $this->amountTotal;
-    }
-
-    /**
-     * @param mixed $amountTotal
-     */
-    public function setAmountTotal($amountTotal)
-    {
-        $this->amountTotal = $amountTotal;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getUpdateYmd()
     {
         return $this->updateYmd;
@@ -200,6 +150,25 @@ class Invoice extends Model
     {
         $this->createrName = $createrName;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getUpdaterName()
+    {
+        return $this->updaterName;
+    }
+
+    /**
+     * @param mixed $updaterName
+     */
+    public function setUpdaterName($updaterName)
+    {
+        $this->updaterName = $updaterName;
+    }
+
+
+
 
 
     /**

@@ -79,9 +79,7 @@ class BookController extends Controller
         $resDetail->setCreateYmd(Carbon::now());
 
         $invoice = new Invoice();
-        $invoice->setAmountTotal($total);
         $invoice->setCreateYmd(Carbon::now());
-        $invoice->setPaymentFlag(1);
         $invoice->setCreaterName('GUEST');
 
         $invoiceDetail = new InvoiceDetail();
@@ -90,6 +88,8 @@ class BookController extends Controller
         $invoiceDetail->setItemType('Room');
         $invoiceDetail->setQuantity(1);
         $invoiceDetail->setCreateYmd(Carbon::now());
+        $invoiceDetail->setCreaterName('Guest');
+        $invoiceDetail->setPaymentFlag(1);
 
         $bookOnlineDAO = new BookOnlineDAO();
         $result = $bookOnlineDAO->createBook($res,$resDetail, $guest,$invoice,$invoiceDetail, $room_type, $room_quantity,$check_in,$check_out,$nights);
