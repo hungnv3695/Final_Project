@@ -148,7 +148,7 @@
         <div class="col-md-10 col-md-offset-1" style="background-color:#c3bfc0;">
             <div class="row">
                 <div class="col-md-3 col-md-offset-10" style="margin-top:10px;margin-bottom:10px;">
-                    <button type="button" id="btnBack" class="btn btn-danger col-md-offset-3" type="button"><b>Quay lại</b></button>
+                    <button type="button" id="btnBack" class="btn btn-danger col-md-offset-3" type="button" onclick="window.open('/SeparateGroup','_self')"><b>Quay lại</b></button>
                 </div>
             </div>
         </div>
