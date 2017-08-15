@@ -170,6 +170,6 @@
 
 </script>
 </body>
-<script src="{{asset('Scripts/K004/K004_2.js')}}"></script>
+<script src="{{asset('Scripts/Reservation/ReservationDetail.js')}}"></script>
 
 </html>

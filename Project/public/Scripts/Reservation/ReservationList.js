@@ -4,7 +4,7 @@
 $(document).ready(function () {
     $.ajax({
 
-        url: 'K004_1/GetStatus',
+        url: 'ReservationList/GetStatus',
         method: 'GET',
         cache: false,
         dataType: 'json',
@@ -71,7 +71,7 @@ $(document).ready(function () {
             var rowData = jQuery(this).getRowData(rowId);
             var res_id = rowData['item0'];
             var status = rowData['item9'];
-            window.open('K004_1/K004_2/?res_id=' + res_id , '_self');
+            window.open('ReservationList/ReservationDetail/?res_id=' + res_id , '_self');
 
         },
         loadComplete: function(){
@@ -103,7 +103,7 @@ $(document).ready(function () {
         jList = [];
         $.ajax({
 
-            url: 'K004_1/SearchReservation',
+            url: 'ReservationList/SearchReservation',
             method: 'GET',
             cache: false,
             data:{

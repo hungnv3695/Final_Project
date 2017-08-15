@@ -96,5 +96,5 @@
 
 </body>
 
-<script src="{{asset('Scripts/K004/K004_1.js')}}"></script>
+<script src="{{asset('Scripts/Reservation/ReservationList.js')}}"></script>
 </html>

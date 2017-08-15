@@ -95,7 +95,7 @@ $(document).ready(function () {
     function loadStatus() {
         $.ajax({
 
-            url: 'K004_4/GetRoomType',
+            url: 'BookOffline/GetRoomType',
             method: 'GET',
             cache: false,
             dataType: 'json',
@@ -338,7 +338,7 @@ $(document).ready(function () {
     function  checkroom(check_in, check_out) {
 
             $.ajax({
-                url: 'K004_4/SearchRoomFree',
+                url: 'BookOffline/SearchRoomFree',
                 method: 'GET',
                 cache: false,
                 dataType: 'json',
@@ -444,7 +444,7 @@ $(document).ready(function () {
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
-            url: '/K004_4/insertResInfor',
+            url: '/BookOffline/insertResInfor',
             method: 'GET',
             cache: false,
             dataType: 'json',

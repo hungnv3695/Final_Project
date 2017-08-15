@@ -94,7 +94,7 @@ $(document).ready(function () {
 
         if(status != FINISH && status != CANCELLED){
             $.ajax({
-                url: '/K004_1/K004_2/ChangeSttToProcessing',
+                url: '/ReservationList/ReservationDetail/ChangeSttToProcessing',
                 method: 'GET',
                 cache: false,
                 dataType: 'json',
@@ -165,7 +165,7 @@ $(document).ready(function () {
             var no_room = rowData['item1'];
             var room_type_id = rowData['item4'];
 
-                window.open('/K004_1/K004_2/K004_3?res_id=' + res_id + '&type_name=' + type_name + '&no_room=' + no_room
+                window.open('/ReservationList/ReservationDetail/ChangeBookedRoom?res_id=' + res_id + '&type_name=' + type_name + '&no_room=' + no_room
                     +"&check_in=" + check_in + "&check_out=" + check_out + "&room_type_id=" + room_type_id
                     , '_self');
 
@@ -271,7 +271,7 @@ $(document).ready(function () {
         jQuery("#jqGrid").trigger("reloadGrid");
         var total = 0;
         $.ajax({
-            url: '/K004_1/K004_2/LoadBookedRoom',
+            url: '/ReservationList/ReservationDetail/LoadBookedRoom',
             method: 'GET',
             cache: false,
             data:{
@@ -329,7 +329,7 @@ $(document).ready(function () {
 
         console.log(numpeople);
         $.ajax({
-            url: '/K004_1/K004_2/UpdateReservation',
+            url: '/ReservationList/ReservationDetail/UpdateReservation',
             method: 'GET',
             cache: false,
             data:{
@@ -367,7 +367,7 @@ $(document).ready(function () {
     });
 
     $( "#btnBack" ).click(function(){
-        window.open('/K004_1','_self')
+        window.open('/ReservationList','_self')
 
     });
 });

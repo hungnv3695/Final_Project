@@ -128,7 +128,7 @@ $(document).ready(function () {
 
 
         $.ajax({
-            url: '/K004_1/K004_2/K004_3/GetRoomFree',
+            url: '/ReservationList/ReservationDetail/ChangeBookedRoom/GetRoomFree',
             method: 'GET',
             cache: false,
             data:{
@@ -166,7 +166,7 @@ $(document).ready(function () {
     function  checkroom(res_id) {
 
         $.ajax({
-            url: '/K004_1/K004_2/K004_3/CheckRoom',
+            url: '/ReservationList/ReservationDetail/ChangeBookedRoom/CheckRoom',
             method: 'GET',
             cache: false,
             data:{
@@ -184,32 +184,12 @@ $(document).ready(function () {
                                 detail_id.push(result[i].id);
                                 var a = j + 1;
                                 jQuery("#jqGrid").find('#'+ a +' input[type=checkbox]').prop('checked',true);
-                                // if(checkin<=dateNow && dateNow<=checkout){
-                                //     cellStatus_id = $('#jqGrid').jqGrid ('getCell', a , 'item4');
-                                //
-                                //     if(cellStatus_id == "RO02"){
-                                //
-                                //         // $("#checkin" + a).removeAttr( "onclick" );
-                                //         // $("#checkin" + a).removeAttr( "title" );
-                                //
-                                //         $("#checkin" + a).css("display","true");
-                                //         $("#checkin" + a).wrapInner('Check-out');
-                                //         //$("#checkin" + a).attr('value','1');
-                                //         $("#checkin" + a).attr('onclick', 'window.open(\'/K003_2?res_id='+ $res_id+ '&room_id='+roomId +'\' , "_self" )' );
-                                //
-                                //     }else{
-                                //         // $("#checkin" + a).removeAttr( "onclick" );
-                                //         // $("#checkin" + a).removeAttr( "title" );
-                                //
-                                //     }
-                                //
-                                //
-                                // }
+
                                 var roomId = $('#jqGrid').jqGrid ('getCell', a , 'item2');
                                 $("#checkin" + a).css("display","true");
                                 $("#checkin" + a).wrapInner('Chi tiết');
                                 //$("#checkin" + a).attr('value','1');
-                                $("#checkin" + a).attr('onclick', 'window.open(\'/K003_2?res_id='+ $res_id+ '&room_id='+roomId + '&hidden=1' + '\', "_self" )' );
+                                $("#checkin" + a).attr('onclick', 'window.open(\'/CheckInDetail?res_id='+ $res_id+ '&room_id='+roomId + '&hidden=1' + '\', "_self" )' );
 
 
 
@@ -247,7 +227,7 @@ $(document).ready(function () {
         }
         else {
             $.ajax({
-                url: '/K004_1/K004_2/K004_3/SaveRoom',
+                url: '/ReservationList/ReservationDetail/ChangeBookedRoom/SaveRoom',
                 method: 'GET',
                 cache: false,
                 data:{
@@ -265,7 +245,7 @@ $(document).ready(function () {
                     else {
                         alert('Update Failed');
                     };
-                    window.open('/K004_1/K004_2?res_id=' + $res_id, "_self");
+                    window.open('/ReservationList/ReservationDetail?res_id=' + $res_id, "_self");
 
                 },
                 error: function(){
@@ -278,7 +258,7 @@ $(document).ready(function () {
     });
 
     $("#btnBack").click(function () {
-        window.open('/K004_1/K004_2?res_id=' + $res_id, "_self");
+        window.open('/ReservationList/ReservationDetail?res_id=' + $res_id, "_self");
     });
 
     $("#btnSearch").click(function() {
