@@ -74,7 +74,7 @@ class CheckInOutController extends Controller
     #region K003_2
     public function k003_2_View(){
 
-            return view('Reception.K003_2');
+            return view('Reception.Checkin');
 
 
     }
@@ -204,7 +204,7 @@ class CheckInOutController extends Controller
         $res_id = $request->res_id;
 
         if($res_id==""){
-            return response('Reception.K003_2');
+            return response('Reception.Checkin');
         }
         else if($res_id != ""){
             $room_id = $request->room_id;

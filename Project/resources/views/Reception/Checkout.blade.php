@@ -227,5 +227,5 @@
     </div>
 </form>
 </body>
-<script src="{{asset('Scripts/K003/Checkout.js')}}"></script>
+<script src="{{asset('Scripts/CheckInOut/Checkout.js')}}"></script>
 </html>
