@@ -110,26 +110,27 @@ Route::get('/K004_4/SearchRoomFree','K004Controller@searchRoomFree');
 Route::get('/K004_4/insertResInfor','K004Controller@insertResInfor');
 
 //K003_2: Check-in
-Route::get('/K003','K003Controller@view');
-Route::post('/K003','K003Controller@getRoomStatusRequest');
-Route::get('/K003_2','K003Controller@k003_2_View');
-Route::get('/K003_2/SearchRoomTypeFree','K003Controller@searchRoomTypeFree');
-Route::get('/K003_2/Checkin','K003Controller@checkIn');
-Route::get('/K003_2/CheckIsReservation','K003Controller@checkIsReservation');
-Route::get('/K003_2/SaveInforCustomer','K003Controller@saveInforCustomer');
+Route::get('/CheckInDetail','CheckInOutController@view');
+Route::post('/CheckInDetail','CheckInOutController@getRoomStatusRequest');
+
+Route::get('/CheckInDetail','CheckInOutController@viewCheckIn');
+Route::get('/CheckInDetail/SearchRoomTypeFree','CheckInOutController@searchRoomTypeFree');
+Route::get('/CheckInDetail/Checkin','CheckInOutController@checkIn');
+Route::get('/CheckInDetail/CheckIsReservation','CheckInOutController@checkIsReservation');
+Route::get('/CheckInDetail/SaveInforCustomer','CheckInOutController@saveInforCustomer');
 
 //K003_3: Check out;
-Route::get('/Checkout','K003Controller@checkOut_View');
-Route::get('/Checkout/LoadResDetail','K003Controller@loadResDetail');
-Route::get('/Checkout/SaveCheckOut','K003Controller@saveCheckOut');
-Route::get('/Checkout/LoadService','K003Controller@loadService');
+Route::get('/Checkout','CheckInOutController@checkOut_View');
+Route::get('/Checkout/LoadResDetail','CheckInOutController@loadResDetail');
+Route::get('/Checkout/SaveCheckOut','CheckInOutController@saveCheckOut');
+Route::get('/Checkout/LoadService','CheckInOutController@loadService');
 
 
-Route::get('/CheckinList','K003Controller@viewCheckIn');
-Route::post('/CheckinList','K003Controller@getSearchCheckInRequest');
+Route::get('/CheckinList','CheckInOutController@viewCheckInList');
+Route::post('/CheckinList','CheckInOutController@getSearchCheckInRequest');
 
-Route::get('/checkoutList','K003Controller@viewCheckOut');
-Route::post('/checkoutList','K003Controller@getSearchCheckOutRequest');
+Route::get('/checkoutList','CheckInOutController@viewCheckOut');
+Route::post('/checkoutList','CheckInOutController@getSearchCheckOutRequest');
 
 // Booking
 Route::get('/book','BookController@index');
