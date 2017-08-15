@@ -123,8 +123,8 @@ Route::get('/Checkout','K003Controller@checkOut_View');
 Route::get('/Checkout/LoadResDetail','K003Controller@loadResDetail');
 Route::get('/Checkout/SaveCheckOut','K003Controller@saveCheckOut');
 
-Route::get('/checkinList','K003Controller@viewCheckIn');
-Route::post('/checkinList','K003Controller@getSearchCheckInRequest');
+Route::get('/CheckinList','K003Controller@viewCheckIn');
+Route::post('/CheckinList','K003Controller@getSearchCheckInRequest');
 
 Route::get('/checkoutList','K003Controller@viewCheckOut');
 Route::post('/checkoutList','K003Controller@getSearchCheckOutRequest');

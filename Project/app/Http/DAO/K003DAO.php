@@ -79,7 +79,7 @@ class K003DAO
 
     public function getCheckOutInfo($room, $name = null){
         $today = date("Y/m/d");
-        $query = " select rs.id,rs.reservation_id, ro.room_number , rs.customer_name, customer_identity_card , CAST(rs.date_in as date) , Cast( rs.date_out as date), ".
+        $query = " select iv.id as invoice_id, rs.id,rs.reservation_id, ro.room_number , rs.customer_name, customer_identity_card , CAST(rs.date_in as date) , Cast( rs.date_out as date), ".
             "	CASE                                                                                                                     ".
             "		When rs.check_out_flag = 1 Then 'Đã trả phòng'                                                                       ".
             "		ELSE 'Đang sử dụng'                                                                                                  ".
@@ -89,6 +89,8 @@ class K003DAO
             "			on r.id = rs.reservation_id                                                                                      ".
             "		inner join tbl_room ro                                                                                               ".
             "			on ro.room_id = rs.room_id                                                                                       ".
+            "       inner join tbl_invoice iv                                                                                            ".
+            "           on r.id = iv.reservation_id                                                                                      ".
             "	where (CAST(rs.date_in as Date) <= '".$today."' AND '".$today."' <=  CAST(rs.date_out as Date) )                         ".
             "	AND rs.check_in_flag = '1' AND rs.check_out_flag <> '1' AND                                                                                           ";
 
