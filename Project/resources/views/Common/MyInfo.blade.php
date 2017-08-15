@@ -16,7 +16,7 @@
         }
         .label1
         {
-            width : 110px;
+            width : 120px;
             text-align:right;
         }
     </style>
@@ -62,13 +62,13 @@
                             <input id="txtAccountName" name="txtAccountName" type="text" class="form-control input-md" size="27" value="{!! $user[0]->user_id !!}"readonly >
                         </div>
                         <div class="form-inline col-md-offset-1" style="margin-top:20px;">
-                            <label class="label1" for="">Vị trí: </label>
+                            <label class="label1" for="">Nhóm người dùng: </label>
                             @if($user[0]->group_cd == 'G01')
-                                <input id="txtPosition" name="txtPosition" type="text" class="form-control input-md" size="27" value="Manager" readonly>
+                                <input id="txtPosition" name="txtPosition" type="text" class="form-control input-md" size="27" value="Quản lý" readonly>
                             @elseif($user[0]->group_cd == 'G02')
-                                <input id="txtPosition" name="txtPosition" type="text" class="form-control input-md" size="27" value="Receptionist" readonly>
+                                <input id="txtPosition" name="txtPosition" type="text" class="form-control input-md" size="27" value="Lễ tân" readonly>
                             @elseif($user[0]->group_cd == 'G03')
-                                <input id="txtPosition" name="txtPosition" type="text" class="form-control input-md" size="27" value="Accountant" readonly>
+                                <input id="txtPosition" name="txtPosition" type="text" class="form-control input-md" size="27" value="Kế toán" readonly>
                             @endif
                         </div>
                         <div class="form-inline col-md-offset-1" style="margin-top:20px;">
