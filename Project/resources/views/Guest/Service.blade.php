@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
 	<title>Dịch vụ</title>
 	<link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="plugins/font-awesome-4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="plugins/animate/animate.css">
+	<link rel="stylesheet" type="text/css" href="{!! asset('plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css') !!} ">
+	<link rel="stylesheet" type="text/css" href="{!! asset('plugins/font-awesome-4.7.0/css/font-awesome.min.css') !!} ">
+	<link rel="stylesheet" type="text/css" href="{!! asset('plugins/animate/animate.css') !!} ">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>	
-	<link rel="stylesheet" type="text/css" href="css/index.css">
-	<script type="text/javascript" src="plugins/slide/jquery.slides.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="{!! asset('css/index.css') !!} ">
+	<script type="text/javascript" src="{!! asset('plugins/slide/jquery.slides.min.js') !!} "></script>
     <style type="text/css">
 		body
 		{
@@ -79,14 +79,14 @@
                     </div>
                     <div class="collapse navbar-collapse" id="myNavbar">
                         <ul class="nav navbar-nav">
-                            <li><a class="nav-link" href="#">Trang chủ <span class="sr-only">(current)</span></a>
+                            <li><a class="nav-link" href="{!! url('/Home') !!}">Trang chủ <span class="sr-only">(current)</span></a>
                             </li>
-                            <li><a class="nav-link" href="#">Phòng</a>
+                            <li><a class="nav-link" href="{!! url('/Room') !!}">Phòng</a>
                             </li>
-                            <li><a class="nav-link" href="#">Ảnh</a>
+                            <li><a class="nav-link" href="{!! url('/Gallery') !!}">Ảnh</a>
                             </li>
                         </ul>
-                        <a href="{!! url('/K001/LogOut') !!}">
+                        <a href="{!! url('/Login') !!}">
                             <p class="login navbar-right">Đăng nhập</p>
                         </a>
                     </div>
