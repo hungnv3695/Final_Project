@@ -6,6 +6,50 @@ $(document).ready(function () {
 
     var res_id = GetUrlParameter('res_id');
     var resDetail_id = GetUrlParameter('resDetail_id');
+    var invoice_id = GetUrlParameter('invoice_id');
+    function addData(result){
+        var jList=[];
+        for(var i = 0; i< result.length; i++){
+            var x ={
+                item1: result[i].item_id,
+                item2: result[i].quantity,
+                item3: result[i].price,
+                item4: result[i].price * result[i].quantity ,
+
+
+
+            };
+            jList.push(x);
+        }
+        console.log(jList);
+        jQuery("#jqGrid").setGridParam({data: jList });
+        jQuery("#jqGrid")[0].refreshIndex();
+        jQuery("#jqGrid").trigger("reloadGrid");
+    }
+    function loadService(invoice_id,room_id){
+        $.ajax({
+            url: 'Checkout/LoadService',
+            method: 'GET',
+            cache: false,
+            dataType: 'json',
+            data:{
+                room_id: room_id,
+                invoice_id: invoice_id
+            },
+
+            contentType: 'application/json; charset=utf-8',
+            success: function (result) {
+                addData(result);
+            },
+            error: function(){
+                alert('error');
+            }
+
+        });
+    }
+
+
+
     $('#btnSearch').attr("disabled", false);
     function addCommas(nStr)
     {
@@ -60,7 +104,7 @@ $(document).ready(function () {
 
             $("#txtCheckin").datetimepicker({value:result[0].date_in ,  });
             $("#txtCheckout").datetimepicker({value:result[0].date_out ,  });
-            $("#txtTotalprice").val(addCommas(result[0].total_room));
+            $("#txtTotalprice").val(addCommas(result[0].total_res));
 
             $("#roomtype").append($('<option selected></option>').val(result[0].room_type_id).html(result[0].type_name));
             $("#cboRoomNo").append($('<option selected></option>').val(result[0].room_id).html(result[0].room_number));
@@ -90,6 +134,7 @@ $(document).ready(function () {
             // d = ('20/10/2017').datetimepicker('getValue').getTime();
             // console.log(d);
             $("#txtNumOfDay").val(diffDays);
+            loadService(invoice_id,result[0].room_id);
         },
         error: function(){
             alert('error');
@@ -120,11 +165,11 @@ $(document).ready(function () {
         styleUI : 'Bootstrap',
         colNames:[
             ' ',
-            'Kiểu phòng',
+            'Dịch vụ',
             'Số lượng',
-            'Giá',
-            ' ',
-            ' '
+            'Đơn giá',
+            'Thành tiền',
+            'Trạng thái'
 
         ],
         colModel: [
@@ -132,12 +177,12 @@ $(document).ready(function () {
             { name: 'item1',search : false,  width: 90 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
             { name: 'item2',search : false,  width: 90 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
             { name: 'item3',search : false,  width: 90 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
-            { name: 'item4',hidden:true},
+            { name: 'item4',search : false,  width: 90 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
             { name: 'item5',hidden:true}
         ],
         rownumbers: true,
         height: 200,
-        width: 310,
+        width: 400,
         rowNum: 10,
         autoheight: true,
         loadonce: true,
@@ -146,6 +191,7 @@ $(document).ready(function () {
         shrinkToFit: false
 
     });
+
     
     $("#btnCheckout").click(function (event) {
         event.preventDefault();

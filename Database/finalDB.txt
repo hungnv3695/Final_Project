@@ -203,7 +203,7 @@ CREATE TABLE tbl_invoice_detail(
 	create_ymd timestamp ,
 	payment_flag integer,
 	FOREIGN KEY (invoice_id) REFERENCES tbl_invoice(id),
-	FOREIGN KEY (item_id) REFERENCES tbl_room(room_id)
+	FOREIGN KEY (room_id) REFERENCES tbl_room(room_id)
 );
 
 CREATE TABLE tbl_accountant(

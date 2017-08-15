@@ -114,14 +114,13 @@
                     <div class="col-md-6">
                         <div class="form-inline col-md-offset-1" style="margin-top:20px;">
                             <label class="label1">Ngày vào:</label>
-                            <input id="txtCheckin" name="txtCheckin" type="text" placeholder="MM/DD/YYY" class="form-control input-md" size="20" readonly>
+                            <input id="txtCheckin" name="txtCheckin" type="text"  class="form-control input-md" size="20" readonly>
                         </div>
                         <div class="form-inline" style="margin-top:10px;margin-bottom:20px;">
                             <label class="label1 col-md-offset-1">Ngày ra:</label>
-                            <input id="txtCheckout" name="txtCheckout" type="text" placeholder="MM/DD/YYY" class="form-control input-md" size="20" readonly>
-                            <button class="btn btn-default col-md-offset-1" id="btnSearch" value="bntSearch" name="bntCancel"><b>Tìm</b></button>
+                            <input id="txtCheckout" name="txtCheckout" type="text"  class="form-control input-md" size="20" readonly>
                         </div>
-                        <div class="col-md-10" style="margin:20px 30px 10px;border: 2px solid rgb(200,200,200);">
+                        <div class="col-md-12" style="margin:0px 0px 10px;border: 2px solid rgb(200,200,200);">
                             <table id="jqGrid" style="border:1px solid gray;"></table>
                         </div>
                     </div>

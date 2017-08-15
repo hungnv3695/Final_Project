@@ -334,7 +334,7 @@ class K003DAO
         $strSQL .= 'left join tbl_room ro on rd.room_id = ro.room_id ';
         $strSQL .= 'left join tbl_room_type rt on ro.room_type_id = rt.room_type_id ';
         $strSQL .= 'where rd.reservation_id = \''. $res_id . '\' and rd.room_id = \''. $room_id . '\' ';
-        //dd($strSQL);
+
         $result = DB::select(DB::raw($strSQL));
         return $result;
     }
@@ -392,8 +392,7 @@ class K003DAO
         $strSQL .='ro.room_id, ';
         $strSQL .='rt.type_name, ';
         $strSQL .='rt.room_type_id, ';
-        $strSQL .='i.amount_total "total_res", ';
-        $strSQL .='id.amount_total "total_room" ';
+        $strSQL .='id.amount_total "total_res" ';
 
         $strSQL .='from tbl_reservation_detail rd ';
         $strSQL .='left join tbl_reservation r on rd.reservation_id = r.id ';
@@ -404,7 +403,7 @@ class K003DAO
         $strSQL .='left join tbl_room_type rt on ro.room_type_id = rt.room_type_id ';
         $strSQL .='where rd.id = \'' .$resDetail_id .'\'  ';
         $strSQL .='and id.item_id = rd.room_id';
-
+        //dd($strSQL);
         $result = DB::select(DB::raw($strSQL));
         return $result;
     }
@@ -441,6 +440,19 @@ class K003DAO
             return 0;
         }
 
+    }
+
+    function getService($invoice_id, $room_id){
+        $result = DB::table('tbl_invoice_detail')
+            ->join('tbl_room','tbl_invoice_detail.room_id','=','tbl_room.room_id')
+            ->where('tbl_invoice_detail.invoice_id','=',$invoice_id)->where('tbl_invoice_detail.room_id','=',$room_id)->get([
+                'tbl_room.room_number',
+                'tbl_invoice_detail.item_id',
+                'tbl_invoice_detail.quantity',
+                'tbl_invoice_detail.price',
+                'tbl_invoice_detail.payment_flag'
+        ]);
+        return  $result->toArray();
     }
 
 

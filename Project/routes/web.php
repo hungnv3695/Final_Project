@@ -122,6 +122,8 @@ Route::get('/K003_2/SaveInforCustomer','K003Controller@saveInforCustomer');
 Route::get('/Checkout','K003Controller@checkOut_View');
 Route::get('/Checkout/LoadResDetail','K003Controller@loadResDetail');
 Route::get('/Checkout/SaveCheckOut','K003Controller@saveCheckOut');
+Route::get('/Checkout/LoadService','K003Controller@loadService');
+
 
 Route::get('/checkinList','K003Controller@viewCheckIn');
 Route::post('/checkinList','K003Controller@getSearchCheckInRequest');
