@@ -65,7 +65,7 @@
 #btn-book, .btn-infomation{
 	background: rgb(140, 110, 78);
 	color: #fff;
-	border-radius: 10px;
+	border-radius: 5px;
 	float: right;
 	font-size: 35px;
 }
@@ -105,11 +105,14 @@
 	z-index: 99;
 }
 .btn-infomation{
-	font-size: 22px;
+	font-size: 21px;
+	border-radius: 0;
+	margin-left:1.5%;
 }
 #infomation-text{
-	margin: 20px 0;
-	font-weight: bold;
+	margin: 10px;
+	font-size:15px;
+	line-height:25px;
 	z-index: -9999;
 	position: relative;
 }
@@ -181,7 +184,7 @@ hr.style12 {
 /* Footer left */
 
 .footer-distributed .footer-left{
-	width: 40%;
+	width: 35%;
 }
 
 /* The company logo */
@@ -224,7 +227,7 @@ hr.style12 {
 /* Footer Center */
 
 .footer-distributed .footer-center{
-	width: 35%;
+	width: 40%;
 }
 
 .footer-distributed .footer-center i{
@@ -249,6 +252,7 @@ hr.style12 {
 	display: inline-block;
 	color: #cccccc;
 	vertical-align: middle;
+	line-height:30px;
 	margin:0;
 }
 
@@ -272,7 +276,7 @@ hr.style12 {
 
 .footer-distributed .footer-right{
 	width: 20%;
-	margin-top:10px;
+	margin-top:5px;
 }
 
 .footer-distributed .footer-company-about{
@@ -286,7 +290,7 @@ hr.style12 {
 .footer-distributed .footer-company-about span{
 	display: block;
 	color:  #cccccc;
-	font-size: 14px;
+	font-size: 17px;
 	font-weight: bold;
 	margin-bottom: 20px;
 }
