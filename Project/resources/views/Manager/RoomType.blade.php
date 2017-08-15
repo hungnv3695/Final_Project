@@ -75,12 +75,12 @@
 		}
 		.col4
 		{
-			width: 25%;
+			width: 29%;
 			float:left;
 		}
 		.col5
 		{
-			width: 15%;
+			width: 11%;
 			float:left;
 		}
 		.table-bordered>thead>tr>th{
@@ -98,6 +98,9 @@
 			opacity: 0.6;
 			border-radius:5px;
 			text-align:center;
+		}
+		.charMoney{
+			font-weight:100;
 		}
 	</style>
 </head>
@@ -158,12 +161,11 @@
 								<label class="label1" for="">Giá: </label>
 								<input id="txtPrice" name="txtPrice" type="text" class="form-control input-md" default="0" min="0" oninput="formatCurency(this,1); "  oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required >
 								<label class="control-label" for="">(VND)</label>
-
 							</div>
-
-							<label class="control-label" for="" id="charMoney"></label>
-
-							<div class="form-inline" style="margin-top:20px;">
+							<div class="form-inline" style="margin-top:10px;">
+								<label class="charMoney control-label" for="" id="charMoney"></label>
+							</div>
+							<div class="form-inline" style="margin-top:10px;">
 									<label class="label1" for="">Người lớn: </label>
 									<input id="txtAdult" name="txtAdult" type="number" class="form-control input-md" min="1" value= "{!! isset($roomTypeSelect[0])?(int) array_get($roomTypeSelect[0],'adult'):'1'!!}" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);" required>
 									<label class="control-label" for="">/người</label>

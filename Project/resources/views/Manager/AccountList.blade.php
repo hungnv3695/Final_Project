@@ -103,7 +103,7 @@
 							<th></th>
 							<th>Tên đăng nhập</th>
 							<th>Tên</th>
-							<th>Vị trí</th>
+							<th>Nhóm người dùng</th>
 							<th>Trạng thái</th>
 						</tr>
 						</thead>

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+
 <head>
-	<meta charset="UTF-8">
-	<title>Ẩm thực</title>
-	<link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Thư viện ảnh</title>
+    <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="plugins/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="plugins/animate/animate.css">
@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <script type="text/javascript" src="plugins/slide/jquery.slides.min.js"></script>
     <style type="text/css">
-		body {
+        body {
             padding: 0;
             margin: 0;
         }
@@ -54,60 +54,31 @@
             opacity: 0.9;
             margin-left: 60px;
         }
-		#myCarousel{
-            width: 100%;
+        
+        .photo-title {
+            margin-top: 0;
+            height: 215px;
+            background: url('img/photobg.jpg') fixed;
+            opacity: 0.3;
+            border: none;
         }
-		.carousel-inner{
-			height:400px;
-		}
-		.page-title{
-			display:inline-block;
-			margin-top:20px;
-			width:auto;
-			margin-left: 50px;
-		}
-        .page-title h4 {
-			float:left;
+        
+        h3 {
+            font-family: 'Enriqueta', arial, serif !important;
             color: rgb(140, 110, 78);
-            margin-right: 10px;
+            margin-left: 70px;
         }
-		h4.home-page:hover {
-			color:#BD6B09;
+        
+        #myCarousel{
+            width: 90%;
+            margin: 20px 5% 20px;
         }
-		.culinary-item{
-			margin:20px 0 70px;
-		}
-		.zoom-img{
-			overflow:hidden;
-		}
-		.zoom-img img{
-			padding :5px;
-			border:1px solid rgba(140, 110, 78,0.5);
-			width:100%;
-			transition:all 0.2s ease-in-out; 
-		}
-		.zoom-img:hover img{
-			transform:scale(1.2); 
-		}
-		h3{
-			text-transform:uppercase;
-			color:rgb(140, 110, 78);
-		}
-		.bar-infor{
-			display:block;
-			line-height:30px;
-			font-size:16px;
-			margin-top:30px;
-		}
-		.open-time{
-			display:block;			
-			color:rgb(140, 110, 78);
-			font-size:16px;
-		}
-	</style>
+    </style>
 </head>
+
 <body>
-	<div id="page">
+    <div class="page">
+        <!--header-->
         <header>
             <div class="my-nav-container" style="position:fixed;">
                 <nav class="navbar navbar-inverse">
@@ -137,7 +108,12 @@
                     </div>
                 </nav>
             </div>
-			<div id="myCarousel" class="carousel slide" data-ride="carousel">
+        </header>
+        <!--body-->
+        <div id="content">
+            <div align="center" class="photo-title"></div>
+            <h3>Thư viện ảnh</h3>
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
                     <!-- Indicators -->
                     <ol class="carousel-indicators">
                         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -148,15 +124,15 @@
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner">
                         <div class="item active">
-                            <img src="img/bar1.jpg" style="width:100%;">
+                            <img src="img/bg2.jpg" style="width:100%;">
                         </div>
 
                         <div class="item">
-                            <img src="img/bar2.jpg" style="width:100%;">
+                            <img src="img/Restaurant-4.jpg" style="width:100%;">
                         </div>
 
                         <div class="item">
-                            <img src="img/bar1.jpg" style="width:100%;">
+                            <img src="img/PhotoLib3.jpg" style="width:100%;">
                         </div>
                     </div>
 
@@ -170,46 +146,15 @@
                         <span class="sr-only">Next</span>
                     </a>
                 </div>
-        </header>
-		<div id="content">
-			<div class="page-title">
-				<a href="#"><h4 class="home-page">Trang chủ</h4></a>
-				<h4>> Ẩm thực</h4> 
-			</div>
-			<div class="container-fluid">
-				<div class="col-md-12">
-					<div class="col-md-4 culinary-item">
-						<div class="zoom-img"><img src="img/bar2.jpg"></div>
-					</div>
-					<div class="col-md-8">
-						<h3>Anh Duong Restaurant</h3>
-						<p class="bar-infor">
-							Nằm dưới tầng 1 của khách sạn, phục vụ ăn uống và lễ tiệc, cưới hỏi. Nhà hàng Ánh Dương là một không gian thơ mộng và đẹp mắt, nằm cạnh ngay bờ biển sẽ đem đến cho quý khách một cảm giác thật ấn tượng. Hãy thưởng thức những bữa ăn tuyệt vời tại nhà hàng Ánh Dương với những món ăn hải sản,rừng núi mang phong cách ẩm thực Á-Âu. Đặc biệt có phục vụ tiệc buffet vào mỗi buổi sáng. 
-						</p>
-						<span class="open-time" style="margin-top:70px;">Giờ mở cửa: từ 6:00 AM đến 9:00 PM</span>
-					</div>
-				</div>
-				<div class="col-md-12">
-					<div class="col-md-4 culinary-item">
-						<div class="zoom-img"><img src="img/bar1.jpg"></div>
-					</div>
-					<div class="col-md-8">
-						<h3>Anh Duong bar</h3>
-						<p class="bar-infor">
-							Nằm trên tầng 7 của khách sạn, phục vụ coffee và những thức uống tuyệt hạng từ những bartender chuyên nghiệp. Quầy bar Ánh Dương, một địa điểm lý tưởng mà quý khách có thể thưởng thức những đồ uống, bia, rượu trong một không gian hoàn toàn thư giãn và thoải mái.
-						</p>
-						<span class="open-time" style="margin-top:100px;">Giờ mở cửa: từ 6:00 AM đến 12:00 PM</span>
-					</div>
-				</div>
-			</div>
-			<div class="social-bar">
+            <!--END-->
+            <div class="social-bar">
                 <div class="container">
                     <a href="#"><i class="fa fa-2x fa-instagram" aria-hidden="true"></i></a>
                     <a href="https://www.facebook.com/Kh%C3%A1ch-s%E1%BA%A1n-%C3%81nh-D%C6%B0%C6%A1ng-783173898529890/?hc_ref=ARQzOvF4ulUbYyC1fzXI-ioafOl4ovp52nwyddRyCbXKmVeaWW2YLcd1poIsx-1TDUg"><i class="fa fa-2x fa-facebook-square" aria-hidden="true"></i></a>
                 </div>
             </div>
         </div>
-		<!--footer-->
+        <!--footer-->
         <div class="col-md-12">
             <div class="row">
                 <footer class="footer-distributed">
@@ -259,4 +204,5 @@
         </div>
     </div>
 </body>
+
 </html>
