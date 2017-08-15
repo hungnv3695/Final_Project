@@ -133,8 +133,8 @@ Route::get('/Checkout/LoadService','CheckInOutController@loadService');
 Route::get('/CheckinList','CheckInOutController@viewCheckInList');
 Route::post('/CheckinList','CheckInOutController@getSearchCheckInRequest');
 
-Route::get('/checkoutList','CheckInOutController@viewCheckOut');
-Route::post('/checkoutList','CheckInOutController@getSearchCheckOutRequest');
+Route::get('/CheckoutList','CheckInOutController@viewCheckOut');
+Route::post('/CheckoutList','CheckInOutController@getSearchCheckOutRequest');
 
 // Booking
 Route::get('/book','BookController@index');
