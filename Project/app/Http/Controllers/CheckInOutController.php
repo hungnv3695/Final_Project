@@ -11,7 +11,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Common\DateTimeUtil;
 use App\Http\Common\StringUtil;
-use App\Http\DAO\K003DAO;
+use App\Http\DAO\CheckInOutDAO;
 use App\Models\Guest;
 use App\Models\Invoice;
 use App\Models\InvoiceDetail;
@@ -21,7 +21,7 @@ use App\Models\Room;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
-class K003Controller extends Controller
+class CheckInOutController extends Controller
 {
     public function viewCheckIn(){
         return view('Reception.CheckinList');
@@ -36,7 +36,7 @@ class K003Controller extends Controller
         $name = StringUtil::Trim($request->txtFullName) ;
         $identity = StringUtil::Trim($request->txtCMND) ;
 
-        $checkIn = new K003DAO();
+        $checkIn = new CheckInOutDAO();
         $checkInInfo = $checkIn->getCheckInInfo($name,$identity);
         return view('Reception.CheckinList',compact('checkInInfo','name','identity'));
     }
@@ -45,7 +45,7 @@ class K003Controller extends Controller
         $room = StringUtil::Trim($request->txtRoomNo);
         $name = StringUtil::Trim($request->txtFullName);
 
-        $checkOut = new K003DAO();
+        $checkOut = new CheckInOutDAO();
         $checkOutInfo = $checkOut->getCheckOutInfo($room,$name);
 
         return view('Reception.CheckoutList',compact('checkOutInfo','room','name'));
@@ -54,7 +54,7 @@ class K003Controller extends Controller
 
     public function view(){
 
-        $k003 = new K003DAO();
+        $k003 = new CheckInOutDAO();
         $roomStatus = $k003->getStatusToDay(date("Y/m/d"));
 
         return view('Reception.K003_1',compact('roomStatus'));
@@ -64,7 +64,7 @@ class K003Controller extends Controller
         $checkIn = $request->checkin;
         $checkOut = $request->checkout;
 
-        $k003 = new K003DAO();
+        $k003 = new CheckInOutDAO();
         $roomStatus = $k003->getRoomStatus($checkIn,$checkOut);
 
         return view('Reception.K003_1',compact('roomStatus'));
@@ -83,8 +83,8 @@ class K003Controller extends Controller
         $check_in = DateTimeUtil::ConvertDateToString2($request->check_in);
         $check_out = DateTimeUtil::ConvertDateToString2($request->check_out);
         //dd($check_in,$check_out);
-        $K003DAO = new K003DAO();
-        $result = $K003DAO->getRoomTypeFree($check_in,$check_out);
+        $CheckInOutDAO = new CheckInOutDAO();
+        $result = $CheckInOutDAO->getRoomTypeFree($check_in,$check_out);
 
         return response($result);
     }
@@ -118,9 +118,9 @@ class K003Controller extends Controller
             $room->setStatusID($room_status);
             $room->setRoomID($room_id);
 
-            $K003DAO = new K003DAO();
+            $CheckInOutDAO = new CheckInOutDAO();
 
-            $result = $K003DAO->checkInReservation( $room, $res_detail, $res_id, $room_id);
+            $result = $CheckInOutDAO->checkInReservation( $room, $res_detail, $res_id, $room_id);
 
             if($result==1){
                 return response(1);
@@ -187,8 +187,8 @@ class K003Controller extends Controller
             $invoiceDetail->setCreaterName($request->session()->get('USER_INFO')->user_id);
 
 
-            $K003DAO = new K003DAO();
-            $result = $K003DAO->createNewCheckin($guest,  $reservation,  $room,  $res_detail, $invoice,$invoiceDetail);
+            $CheckInOutDAO = new CheckInOutDAO();
+            $result = $CheckInOutDAO->createNewCheckin($guest,  $reservation,  $room,  $res_detail, $invoice,$invoiceDetail);
             if($result==1){
                 return response(1);
             }else if ($result==0){
@@ -208,8 +208,8 @@ class K003Controller extends Controller
         }
         else if($res_id != ""){
             $room_id = $request->room_id;
-            $K003DAO = new K003DAO();
-            $result = $K003DAO->selectResDetailInfor($res_id, $room_id);
+            $CheckInOutDAO = new CheckInOutDAO();
+            $result = $CheckInOutDAO->selectResDetailInfor($res_id, $room_id);
             $result[0]->check_in = DateTimeUtil::ConvertStringToDate($result[0]->check_in);
             $result[0]->check_out = DateTimeUtil::ConvertStringToDate($result[0]->check_out);
             return response($result);
@@ -236,8 +236,8 @@ class K003Controller extends Controller
 
 
 
-        $K003DAO = new K003DAO();
-        $result = $K003DAO->updateCustomerInfor($res_detail);
+        $CheckInOutDAO = new CheckInOutDAO();
+        $result = $CheckInOutDAO->updateCustomerInfor($res_detail);
 
         if($result==1){
             return response(1);
@@ -258,8 +258,8 @@ class K003Controller extends Controller
     public function loadResDetail(Request $request){
         $resDetail_id = $request->resDetail_id;
 
-        $K003DAO = new K003DAO();
-        $result = $K003DAO->selectResDetail($resDetail_id);
+        $CheckInOutDAO = new CheckInOutDAO();
+        $result = $CheckInOutDAO->selectResDetail($resDetail_id);
         $result[0]->date_in = DateTimeUtil::ConvertStringToDate($result[0]->date_in);
         $result[0]->date_out = Carbon::now()->format('d/m/Y');
        // dd($result[0]->total_price);
@@ -271,8 +271,8 @@ class K003Controller extends Controller
         $resDetail_id = $request->resDetail_id;
         $res_id = $request->res_id;
         $user_id = $request->session()->get('USER_INFO')->user_id;
-        $K003DAO = new K003DAO();
-        $result = $K003DAO->saveCheckoutInfor($room_id,$res_id,$resDetail_id, $user_id);
+        $CheckInOutDAO = new CheckInOutDAO();
+        $result = $CheckInOutDAO->saveCheckoutInfor($room_id,$res_id,$resDetail_id, $user_id);
 
         return response($result);
     }
@@ -281,8 +281,8 @@ class K003Controller extends Controller
         $invoice_id = $request->invoice_id;
         $room_id = $request->room_id;
 
-        $K003DAO = new K003DAO();
-        $result = $K003DAO->getService($invoice_id,$room_id);
+        $CheckInOutDAO = new CheckInOutDAO();
+        $result = $CheckInOutDAO->getService($invoice_id,$room_id);
         return response($result);
     }
 }

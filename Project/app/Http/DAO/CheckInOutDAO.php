@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\In;
 use Mockery\Exception;
 
-class K003DAO
+class CheckInOutDAO
 {
 
     public function getCheckInInfo($name, $identity = null){
