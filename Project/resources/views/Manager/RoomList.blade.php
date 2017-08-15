@@ -85,7 +85,7 @@
 								<option value="4" {!!  (isset($searchFloor) && $searchFloor == 4) ? 'selected':''  !!} > 4 </option>
 								<option value="5" {!!  (isset($searchFloor) && $searchFloor == 5) ? 'selected':''  !!} > 5 </option>
 							</select>
-
+							<input type="hidden" name = "_token" value="{!! csrf_token() !!}"  />
 							<input id="searchtxt" name="searchtxt" type="text" placeholder="Tìm kiếm..." class="form-control input-md" size="12" value="{!! isset($searchStr)?$searchStr:'' !!}">
 							<button class="btn btn-default" value="btnSearch" name="btnSearch"><b>Tìm</b></button>
 							<button class="btn btn-default"  type="button"  value="btnAdd" name="btnAdd" onclick="window.location='{{ url("/RoomList/AddRoom?roomTypeID=" . '0') }}'" > <b>Thêm mới</b></button>
@@ -98,14 +98,14 @@
 						<?php $index =1;?>
 						<div class="table-wrapper">
 							<div class="table-scroll">
-								<table class="table table-bordered">
+								<table class="table table-bordered" id="table">
 									<thead>
 									  <tr>
 										<th></th>
 										<th>Tên phòng</th>
 										<th>Loại phòng</th>
 										<th>Tầng</th>
-										<th>Giá</th>
+										<th>Giá(VNDvagr)</th>
 										<th>Miêu tả</th>
 										<th>Trạng thái</th>
 									  </tr>
@@ -118,7 +118,7 @@
 												<td> <a href= {!! url('/RoomList/ViewDetail/' . $data->room_id) . '?roomTypeID=' . $data->room_type_id !!} > {{$data->room_number}}  </a>  </td>
 												<td>{{$data->type_name}}</td>
 												<td>{{$data->floor}}</td>
-												<td>{{$data->price}}</td>
+												<td id="{!! "price".$index !!}" >{{(int)$data->price}}</td>
 												<td> {{$data->description }}</td>
 												<td>{{$data->status_name}}</td>
 											</tr>
@@ -137,6 +137,28 @@
 				</div>
             </div>
         </div>
+		<script>
+            function addCommas(nStr)
+            {
+                nStr += '';
+                var rgx = /(\d+)(\d{3})/;
+                while (rgx.test(nStr)) {
+                    nStr = nStr.replace(rgx, '$1' + '.' + '$2');
+                }
+                return nStr;
+            }
+
+            function formatMoney() {
+                var count = document.getElementById('table').rows.length - 1;
+                for(var i = 1; i<=count ;i ++){
+                    var name = 'price' + i;
+                    var txt = document.getElementById(name);
+                    txt.innerHTML = addCommas(txt.innerHTML);
+                }
+            }
+
+            formatMoney();
+		</script>
 		<script>  $("div.alert").delay(2000).slideUp(); </script>
 </body>
 </html>
