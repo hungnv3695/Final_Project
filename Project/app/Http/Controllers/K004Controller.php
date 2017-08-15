@@ -354,8 +354,9 @@ class K004Controller extends Controller{
         $guest->setCompany($request->txtCompany);
 
         $res = new Reservation();
-        $res->setCheckIn(DateTimeUtil::ConvertDateToString($request->txtCheckin));
-        $res->setCheckOut(DateTimeUtil::ConvertDateToString($request->txtCheckout));
+        $res->setCheckIn(DateTimeUtil::ConvertDateToString2($request->txtCheckin));
+        $res->setCheckOut(DateTimeUtil::ConvertDateToString2($request->txtCheckout));
+
         $res->setNumberOfRoom($request->txtNumroom);
         $res->setNumberOfAdult($request->txtNumpeople);
         $res->setNumberOfChildren(0);
@@ -366,17 +367,15 @@ class K004Controller extends Controller{
 
         //confirm Thay Lam
         $invoice = new Invoice();
-        $invoice->setAmountTotal($totalPrice);
         $invoice->setCreateYmd(Carbon::now());
-        $invoice->setPaymentFlag(1);
         $invoice->setCreaterName($request->session()->get('USER_INFO')->user_id);//fix tam
 
         $invoiceDetail = new InvoiceDetail();
-
-        //$invoiceDetail->setItemId($request->cboRoomNo);
         $invoiceDetail->setItemType('Room');
         $invoiceDetail->setQuantity(1);
         $invoiceDetail->setCreateYmd(Carbon::now());
+        $invoiceDetail->setCreaterName($request->session()->get('USER_INFO')->user_id);
+        $invoiceDetail->setPaymentFlag(1);
 
 
         $K004DAO = new K004DAO();
