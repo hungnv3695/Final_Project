@@ -277,4 +277,12 @@ class K003Controller extends Controller
         return response($result);
     }
 
+    public function loadService(Request $request){
+        $invoice_id = $request->invoice_id;
+        $room_id = $request->room_id;
+
+        $K003DAO = new K003DAO();
+        $result = $K003DAO->getService($invoice_id,$room_id);
+        return response($result);
+    }
 }
