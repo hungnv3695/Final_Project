@@ -61,11 +61,11 @@
 								<input id="txtUserName" name="txtUserName" type="text" class="form-control input-md" size="20" value="{!! $acc[0]->user_id !!}" autofocus readonly />
 							</div>
 							<div class="form-inline col-md-offset-1" style="margin-top:20px;">
-								<label class="label1" for="">Chức vụ: </label>
+								<label class="label1" for="">Nhóm người dùng: </label>
 								<select id="Position" name="Position" style="width:195px;" class="form-control input-md">
-									<option value="G01" {!!  ($acc[0]->group_cd == "G01") ? 'selected':''  !!} >Manager</option>
-									<option value="G02" {!!  ($acc[0]->group_cd == "G02") ? 'selected':''  !!} >Receptionist</option>
-									<option value="G03" {!!  ($acc[0]->group_cd == "G03") ? 'selected':''  !!}>Accountant</option>
+									<option value="G01" {!!  ($acc[0]->group_cd == "G01") ? 'selected':''  !!} >Quản lý</option>
+									<option value="G02" {!!  ($acc[0]->group_cd == "G02") ? 'selected':''  !!} >Lễ tân</option>
+									<option value="G03" {!!  ($acc[0]->group_cd == "G03") ? 'selected':''  !!}>Kế toán</option>
 								</select>
 							</div>
 							<div class="form-inline col-md-offset-1" style="margin-top:20px;margin-bottom:70px;">
