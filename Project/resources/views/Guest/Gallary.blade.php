@@ -1,235 +1,208 @@
 <!DOCTYPE html>
-<html ng-app="myApp">
+
 <head>
-	<meta charset="UTF-8">
-	<title>Book</title>
-	<link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="{{asset( '/plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css') }}">
-	<link rel="stylesheet" type="text/css" href=" {{ asset('/plugins/font-awesome-4.7.0/css/font-awesome.min.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{asset( ' /plugins/animate/animate.cs' )}}s">
-	<link rel="stylesheet" type="text/css" href=" {{asset('/css/index.css')}}">
-	<script src="{{asset('/plugins/jquery/jquery-3.2.1.min.js')}}"></script>
-	<script src="{{asset( '/plugins/bootstrap-3.3.7-dist/js/bootstrap.min.js' ) }}"></script>
-	<script src=" {{asset('/bower_components/moment/moment.js')}}"></script>
-	<script src="{{ asset('/bower_components/angular/angular.js') }}"></script>
-	<script src="{{asset(' /bower_components/angular-bootstrap/ui-bootstrap-tpls.js ' )}}"></script>
-	<script src=" {{asset('/js/myPlugin.js') }}"></script>
-	<script src=" {{asset('/js/Controller/bookCtr.js' )}}"></script>
+    <meta charset="UTF-8">
+    <title>Thư viện ảnh</title>
+    <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="plugins/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="plugins/animate/animate.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script type="text/javascript" src="plugins/slide/jquery.slides.min.js"></script>
+    <style type="text/css">
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        
+        .navbar-inverse {
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            opacity: 0.9;
+            border-radius: 0;
+            border: none;
+        }
+        
+        .navbar-inverse .navbar-nav .nav-link {
+            color: #CCCCCC;
+            font-size: 16px;
+            line-height: 30px;
+        }
+        
+        li {
+            margin-right: 30px;
+            text-transform: uppercase;
+            color: #CCCCCC;
+        }
+        
+        .login {
+            color: #CCCCCC;
+            margin-top: 18px;
+            font-size: 110%;
+            margin-right: 15px;
+        }
+        
+        .login:hover {
+            color: #FFFFFF;
+        }
+        
+        .logo {
+            width: 150px;
+            height: 150px;
+            opacity: 0.9;
+            margin-left: 60px;
+        }
+        
+        .photo-title {
+            margin-top: 0;
+            height: 215px;
+            background: url('img/photobg.jpg') fixed;
+            opacity: 0.3;
+            border: none;
+        }
+        
+        h3 {
+            font-family: 'Enriqueta', arial, serif !important;
+            color: rgb(140, 110, 78);
+            margin-left: 70px;
+        }
+        
+        #myCarousel{
+            width: 90%;
+            margin: 20px 5% 20px;
+        }
+    </style>
 </head>
-</head>
+
 <body>
-	<div id="page">
-	<header>
-		<div class="my-nav-container">
-			<div class="container">
-				<nav class="navbar navbar-default my-nav">
-					<div class="container-fluid">
-						<div class="navbar-header height-navbar">
-							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-								<span class="sr-only">Toggle navigation</span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>
-							<a class="navbar-brand subtract-padding" href="#">
-								<img id="brand-img" width="151" height="100" src="http://www.daewoohotel.com/templates/main/images/logo.svg?58f85f07944e1">
-							</a>
-						</div>
-						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-							<ul class="nav navbar-nav">
-								<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tiếng Việt <span class="caret"></span></a>
-									<ul class="dropdown-menu">
-										<li><a href="#">China</a></li>
-										<li><a href="#">English</a></li>
-										<li><a href="#">Japanese</a></li>
-									</ul>
-								</li>
-							</ul>
-							<ul class="nav navbar-nav navbar-right">
-								<li><a href="index.blade.php">Trang chủ</a></li>
-								<li><a href="#">Phòng</a></li>
-								<li><a href="#">Ảnh</a></li>
-							</ul>
-						</div><!-- /.navbar-collapse -->
-					</div><!-- /.container-fluid -->
-				</nav>
-			</div>
-		</div>
-	</header>
-	<div id="content">
-		<article>
-			<div>
-				<img class="img-responsive" style="width: 100%" src=" {{asset( '/img/book.jpg' ) }}">
-			</div>
-			<div ng-controller="bookCtr">
-				<div class="option-panel-container ">
-					<div class="container container-fluid-for-small-screen">
-						<div class="row">
-							<div class="col-xs-12 col-sm-3 col-sm-push-6 col-sm-offset-1">
-								<button class="btn-apply-criterial" ng-init="isApplyCriterial=false" ng-click="isApplyCriterial=true">Apply Criterial</button>
-							</div>
-							<div class="col-xs-12 col-sm-3 col-sm-pull-4">
-								 <p class="checkInOut-label">Check in date</p>
-								 <p class="input-group">
-									<input type="text" class="form-control disabled" uib-datepicker-popup="{{checkInDate.format}}" ng-model="checkInDate.value" is-open="checkInDate.isOpen" datepicker-options="checkInDate" ng-required="true" alt-input-formats="altInputFormats" />
-									<span class="input-group-btn">
-										<button type="button" class="btn btn-default" ng-click="checkInDate.open()"><i class="glyphicon glyphicon-calendar"></i></button>
-									</span>
-								</p>
-							</div>
-							<div class="col-xs-12 col-sm-3 col-sm-pull-4">
-								<p class="checkInOut-label">Check out date</p>
-							 	<p class="input-group">
-									<input type="text" class="form-control disabled" uib-datepicker-popup="{{checkOutDate.format}}" ng-model="checkOutDate.value" is-open="checkOutDate.isOpen" datepicker-options="checkOutDate" ng-required="true" alt-input-formats="altInputFormats" />
-									<span class="input-group-btn">
-										<button type="button" class="btn btn-default" ng-click="checkOutDate.open()"><i class="glyphicon glyphicon-calendar"></i></button>
-									</span>
-								</p>
-							</div>
-						</div>
+    <div class="page">
+        <!--header-->
+        <header>
+            <div class="my-nav-container" style="position:fixed;">
+                <nav class="navbar navbar-inverse">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#"><img class="logo" src="img/LogoAnhDuong.jpg" />
+                            </a>
+                        </div>
+                        <div class="collapse navbar-collapse" id="myNavbar">
+                            <ul class="nav navbar-nav">
+                                <li><a class="nav-link" href="#">Trang chủ <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li><a class="nav-link" href="#">Phòng</a>
+                                </li>
+                                <li><a class="nav-link" href="#">Ảnh</a>
+                                </li>
+                            </ul>
+                            <a href="{!! url('/K001/LogOut') !!}">
+                                <p class="login navbar-right">Đăng nhập</p>
+                            </a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!--body-->
+        <div id="content">
+            <div align="center" class="photo-title"></div>
+            <h3>Thư viện ảnh</h3>
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                    </ol>
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <img src="img/bg2.jpg" style="width:100%;">
+                        </div>
+
+                        <div class="item">
+                            <img src="img/Restaurant-4.jpg" style="width:100%;">
+                        </div>
+
+                        <div class="item">
+                            <img src="img/PhotoLib3.jpg" style="width:100%;">
+                        </div>
+                    </div>
+
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            <!--END-->
+            <div class="social-bar">
+                <div class="container">
+                    <a href="#"><i class="fa fa-2x fa-instagram" aria-hidden="true"></i></a>
+                    <a href="https://www.facebook.com/Kh%C3%A1ch-s%E1%BA%A1n-%C3%81nh-D%C6%B0%C6%A1ng-783173898529890/?hc_ref=ARQzOvF4ulUbYyC1fzXI-ioafOl4ovp52nwyddRyCbXKmVeaWW2YLcd1poIsx-1TDUg"><i class="fa fa-2x fa-facebook-square" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div>
+        <!--footer-->
+        <div class="col-md-12">
+            <div class="row">
+                <footer class="footer-distributed">
+
+					<div class="footer-left">
+						<img src="img/map.jpg"/>
+						<p class="footer-links">
+							<a href="#">Trang chủ</a>
+							·
+							<a href="#"> Blog</a>
+							·
+							<a href="#"> Liên hệ</a>	
+						</p>
+						<p class="footer-company-name">Copyrigh &copy; Bản quyền thuộc về khách sạn Ánh Dương</p>
+					</div>
+
+					<div class="footer-center">
+
 						<div>
-							<div class="row row-of-room" ng-repeat="room in roomsObj.rooms">
-								<div class="col-xs-12 col-sm-2">
-									<div><i class="fa fa-home" aria-hidden="true"></i> Room {{$index + 1}}</div>
-								</div>
-								<div class="col-xs-12 col-sm-5">
-									<div class="col-xs-6 updown">
-										<div class="input-group">
-											<span class="input-group-addon" ng-click="roomsObj.removeAdult($index)"><i class="fa fa-minus" aria-hidden="true"></i></span>
-											<input type="text" class="form-control disabled" ng-value="room.adults">
-											<span class="input-group-addon" ng-click="roomsObj.addAdult($index)"><i class="fa fa-plus" aria-hidden="true"></i></span>
-										</div>	
-									</div>
-									<div class="col-xs-6">
-										Adults
-									</div>
-								</div>
-								<div class="col-xs-12 col-sm-5">
-									<div class="col-xs-6 updown">
-										<div class="input-group">
-											<span class="input-group-addon" ng-click="roomsObj.removeChildren($index)"><i class="fa fa-minus" aria-hidden="true"></i></span>
-											<input type="text" class="form-control disabled" ng-value="room.childrens">
-											<span class="input-group-addon" ng-click="roomsObj.addChildren($index)"><i class="fa fa-plus" aria-hidden="true"></i></span>
-										</div>	
-									</div>
-									<div class="col-xs-6">
-										Childrens <i class="fa fa-exclamation-circle" aria-hidden="true" tooltip-placement="bottom" uib-tooltip="(0-12 years)"></i>
-									</div>
-								</div>
-							</div>
-							<div ng-if="roomsObj.rooms.length > 1"><a href="javascript:void(0)" ng-click="roomsObj.deleteRoom()">Remove a room</a></div>
-							<div ng-if="roomsObj.rooms.length < resObj.maxRoom"><a href="javascript:void(0)" ng-click="roomsObj.addRoom()">Add room</a></div>
+							<i class="fa fa-map-marker"></i>
+							<p>Khách sạn Ánh Dương, Tuần Châu, Hạ Long, <br>Quảng Ninh, Việt Nam</p>
 						</div>
+
+						<div>
+							<i class="fa fa-phone"></i>
+							<p>01662451994</p>
+						</div>
+
+						<div>
+							<i class="fa fa-envelope"></i>
+							<p><a href="#">anhduonghotel.com.vn</a></p>
+						</div>
+
 					</div>
-				</div>
-				<div class="container container-fluid-for-small-screen" ng-if="isApplyCriterial" >
-					<div class="row">
-						<div class="col-xs-12 col-sm-5" ng-class="(roomsObj.selectRoom==-1)?'opacity':''">
-							<div ng-repeat="r in resObj.roomsSize" style="margin: 0px 0 15px 0;">
-								<div class="col-xs-12 top-rooms">{{r.name}}</div>
-								<div><img ng-src="{{r.img}}" class="img-responsive"></div>
-								<div class="room-bottom">
-									<div class="col-xs-12 col-sm-6">{{r.description}}</div>
-									<div class="col=sx-12 col-sm-6 room-price-add">
-										<div>{{roomsObj.nights * r.price}}$</div>
-										<div>{{roomsObj.nights}} nights, {{roomsObj.rooms[roomsObj.selectRoom].adults}} people</div>
-										<div><button class="btn btn-primary btn-add-room" ng-click="roomsObj.chooseRoom(r)">Add</button></div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-xs-12 col-sm-3 col-sm-offset-2">
-							<div ng-repeat="room in roomsObj.rooms">
-								<div class="room-select-detail" ng-if="room.selected">
-									<div class="col-xs-8 room-select-detail-room"><i class="fa fa-home" aria-hidden="true"></i> Room {{$index + 1}}</div>
-									<div class="col-xs-4 room-select-detail-price">{{roomsObj.nights * room.price}}$</div>
-									<div class="col-xs-11 col-xs-offset-1 room-select-detail-des">{{roomsObj.nights}} nights, {{room.adults}} people</div>
-									<div class="col-xs-11 col-xs-offset-1 room-select-detail-des">{{room.description}}</div>
-									<div style="text-align: right"><a href="javascript:void(0)" ng-click="roomsObj.removeSelectRoom($index)"><i class="fa fa-times" aria-hidden="true"></i> Remove</a></div>
-								</div>
-							</div>
-							<div class="room-select-choice" ng-if="roomsObj.selectRoom >= 0 ">
-								<div>Select room {{roomsObj.selectRoom + 1}} </div>
-							</div>
-							<div class="room-select-total">
-								<div class="col-xs-8 room-select-detail-room">Total</div>
-								<div class="col-xs-4 room-select-detail-price">{{roomsObj.total}}$</div>
 
-							</div>
-						</div>
+					<div class="footer-right">
+
+						<p class="footer-company-about">
+							<span>Về chúng tôi</span>
+							Khách sạn Ánh Dương tọa lạc tại phường Tuần Châu thuộc thành phố Hạ Long, cách trung tâm thương mại Vincom Plaza Hạ Long 11 km, cách bãi biển 12 phút đi bộ. Bảo tàng Quảng Ninh nằm trong bán kính 12 km từ khách sạn Ánh Dương, trong khi trung tâm thương mại Hạ Long Marine Plaza cách chỗ nghỉ 5 km. Sân bay quốc tế Cát Bi cách đó 29 km.
+						</p>
+
 					</div>
-				</div>
-			</div>
-		</article>
-		<div class="social-bar">
-			<div class="container">
-				<a href="#"><i class="fa fa-2x fa-instagram" aria-hidden="true"></i></a>
-				<a href="#"><i class="fa fa-2x fa-facebook-square" aria-hidden="true"></i></a>
-			</div>
-		</div>
-	</div>
-	<footer class="footer-distributed">
 
-			<div class="footer-left">
-
-				<h3>Company<span>logo</span></h3>
-
-				<p class="footer-links">
-					<a href="#">Home</a>
-					·
-					<a href="#">Blog</a>
-					·
-					<a href="#">Pricing</a>
-					·
-					<a href="#">About</a>
-					·
-					<a href="#">Faq</a>
-					·
-					<a href="#">Contact</a>
-				</p>
-
-				<p class="footer-company-name">Copyrigh &copy; Bản quyền thuộc về khách sạn Hà Nội Daewoo 2017</p>
-			</div>
-
-			<div class="footer-center">
-
-				<div>
-					<i class="fa fa-map-marker"></i>
-					<p><span>Khách sạn Hà Nội Daewoo, 360 Kim Mã, Ba Đình  </span> Hà Nội, Việt Nam</p>
-				</div>
-
-				<div>
-					<i class="fa fa-phone"></i>
-					<p>01639 919 633</p>
-				</div>
-
-				<div>
-					<i class="fa fa-envelope"></i>
-					<p><a href="#">nhanghimayhong.com</a></p>
-				</div>
-
-			</div>
-
-			<div class="footer-right">
-
-				<p class="footer-company-about">
-					<span>About the company</span>
-					Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
-				</p>
-
-				<div class="footer-icons">
-
-					<a href="#"><i class="fa fa-facebook"></i></a>
-					<a href="#"><i class="fa fa-twitter"></i></a>
-					<a href="#"><i class="fa fa-linkedin"></i></a>
-					<a href="#"><i class="fa fa-github"></i></a>
-
-				</div>
-
-			</div>
-
-		</footer>
-	</div>
+				</footer>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
