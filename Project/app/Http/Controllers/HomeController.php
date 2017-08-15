@@ -21,7 +21,7 @@ class HomeController extends Controller
         return view('Guest.Cuisine');
     }
     public function viewService(){
-        return view('Guest.Services');
+        return view('Guest.Service');
     }
     public function viewGallery(){
         return view('Guest.Gallary');

@@ -15,6 +15,7 @@ Route::get('AccessDeny',function (){
 });
 
 Route::get('/','HomeController@view');
+Route::get('/Home','HomeController@view');
 Route::get('/Room','HomeController@viewRoom');
 Route::get('/Cuisine','HomeController@viewCuisine');
 Route::get('/Services','HomeController@viewService');

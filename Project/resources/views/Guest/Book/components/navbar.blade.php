@@ -46,11 +46,11 @@
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav">
-				<li><a class="nav-link" href="#">Trang chủ <span class="sr-only">(current)</span></a></li>
-				<li><a class="nav-link" href="#">Phòng</a></li>
-				<li><a class="nav-link" href="#">Ảnh</a></li>
+				<li><a class="nav-link" href="{!!url('/Home')  !!}">Trang chủ <span class="sr-only">(current)</span></a></li>
+				<li><a class="nav-link" href="{!! url('/Room') !!}">Phòng</a></li>
+				<li><a class="nav-link" href="{!! url('/Gallery') !!}">Ảnh</a></li>
 			</ul>
-			<a href="{!! url('/K001/LogOut') !!}"><p class="login navbar-right">Đăng nhập</p></a>
+			<a href="{!! url('/Login') !!}"><p class="login navbar-right">Đăng nhập</p></a>
 		</div>
 	</nav>
 </div>
