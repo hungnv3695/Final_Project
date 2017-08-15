@@ -171,8 +171,8 @@
 							</div>
 							<div class="col-sm-3 col-xs-6 sub-ct-col">
 								<div class="sub-ct-col">
-									<a href="{!! url('/Services') !!}">Ảnh</a>
-									<a href="{!! url('/Services') !!}"><img src="{{ asset("/img/Anh-Duong-hotel.jpg ") }}"/></a>
+									<a href="{!! url('/Gallery') !!}">Ảnh</a>
+									<a href="{!! url('/Gallery') !!}"><img src="{{ asset("/img/Anh-Duong-hotel.jpg ") }}"/></a>
 								</div>
 							</div>
 						</div>
