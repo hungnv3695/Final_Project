@@ -150,7 +150,7 @@ $(document).ready(function(){
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: '/K003_2/CheckIsReservation',
+                url: '/CheckInDetail/CheckIsReservation',
                 method: 'GET',
                 cache: false,
                 dataType: 'json',
@@ -226,7 +226,7 @@ $(document).ready(function(){
     }
     function searchRoomType(check_in,check_out) {
         $.ajax({
-            url: 'K003_2/SearchRoomTypeFree',
+            url: 'CheckInDetail/SearchRoomTypeFree',
             method: 'GET',
             cache: false,
             dataType: 'json',
@@ -349,7 +349,7 @@ $(document).ready(function(){
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: '/K003_2/Checkin',
+                url: '/CheckInDetail/Checkin',
                 method: 'GET',
                 cache: false,
                 dataType: 'json',
@@ -386,7 +386,7 @@ $(document).ready(function(){
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: '/K003_2/Checkin',
+                url: '/CheckInDetail/Checkin',
                 method: 'GET',
                 cache: false,
                 dataType: 'json',
@@ -440,7 +440,7 @@ $(document).ready(function(){
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
-            url: '/K003_2/SaveInforCustomer',
+            url: '/CheckInDetail/SaveInforCustomer',
             method: 'GET',
             cache: false,
             dataType: 'json',

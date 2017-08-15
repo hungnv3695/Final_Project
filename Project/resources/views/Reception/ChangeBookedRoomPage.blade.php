@@ -76,5 +76,5 @@
 
 
 </body>
-<script src="{{asset('Scripts/K004/K004_3.js')}}"></script>
+<script src="{{asset('Scripts/Reservation/ChangeBookedRoom.js')}}"></script>
 </html>

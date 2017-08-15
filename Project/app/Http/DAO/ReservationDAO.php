@@ -27,7 +27,7 @@ use Carbon\Carbon;
 use Mockery\Exception;
 
 
-class K004DAO{
+class ReservationDAO{
     /**
      * @param $fname
      * @param $idCard

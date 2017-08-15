@@ -23,7 +23,7 @@ use Illuminate\Http\Request;
 
 class CheckInOutController extends Controller
 {
-    public function viewCheckIn(){
+    public function viewCheckInList(){
         return view('Reception.CheckinList');
     }
 
@@ -72,7 +72,7 @@ class CheckInOutController extends Controller
     }
 
     #region K003_2
-    public function k003_2_View(){
+    public function viewCheckIn(){
 
             return view('Reception.Checkin');
 

@@ -163,5 +163,5 @@
 </form>
 </body>
 <meta name="csrf-token" content="{{ csrf_token() }}" />
-<script src="{{asset('Scripts/K004/K004_4.js')}}"></script>
+<script src="{{asset('Scripts/Reservation/BookOffline.js')}}"></script>
 </html>
