@@ -89,34 +89,20 @@
 			height: auto;
 			transition:all 0.2s ease-in-out; 
 		}
-		.overlay {
-			position: absolute;
-			cursor: pointer;			
-			top: 0;
-			bottom: 0;
-			left: 0;
-			right: 0;
-			height: 100%;
-			width: 100%;
-			opacity: 0;
-			transition: .5s ease;
-			background-color: rgb(140, 110, 78);
+		.room-detail{
+			background:rgb(140, 110, 78);
+			color: #cccccc;
+			height:30px;
+			line-height:28px;
+			border:none;
+			border-bottom-left-radius:5px;
+			border-bottom-right-radius:5px;
 		}
-		.zoom-img:hover .overlay {	
-			opacity: 0.8;
+		.room-detail:hover{
+			color:#ffffff;
 		}
-		.intro {
-			position: relative;
-			float: left;
-			text-align: center;
-			text-align-last: center;
-			width: auto;
-			height: auto;
-			padding: 30px 20px;
-			line-height: 25px;
-			font-size: 15px;
-			color: #fff;
-			margin-bottom: 10px;
+		.text-intro{
+			margin:10px 0;
 		}
 		h3.roomtype{
 			color:rgb(140, 110, 78);
@@ -147,19 +133,7 @@
 		}
 		a.booking:hover{
 			background:#D2691E;
-		}
-		.room-detail{
-			background:rgb(140, 110, 78);
-			color: #cccccc;
-			height:30px;
-			line-height:28px;
-			border:none;
-			border-bottom-left-radius:5px;
-			border-bottom-right-radius:5px;
-		}
-		.room-detail:hover{
-			color:#ffffff;
-		}
+		}		
 	</style>
 </head>
 <body>
@@ -202,73 +176,65 @@
 		</div>
 		<h3 class="main-slogan">Phòng ở thượng hạng tại khách sạn Ánh Dương</h3>
 		<p class="room-introduce">
-			Khách sạn Ánh Dương cung cấp 45 phòng nghỉ rộng rãi và tiện nghi, được trang trí rất bài bản chuyên nghiệp với nội thất cao cấp.
+			Khách sạn Ánh Dương cung cấp 40 phòng nghỉ rộng rãi và tiện nghi, được trang trí rất bài bản chuyên nghiệp với nội thất cao cấp.
 			Trang thiết bị và dịch vụ đáp ứng với mọi nhu cầu <br>của từng khách hàng nhằm mang lại một kì nghỉ thư giãn, thoải mái và trải nghiệm khó quên.
 		</p>
 		<div class="container-fluid">
 			<div class="col-md-12">
-				<div class="col-md-3 room-item">
+				<div class="col-md-3 col-xs-6 room-item">
 					<div class="zoom-img">
 						<img src="img/single.jpg">
-						<div class="overlay">
-							<span class="intro">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-							sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-							</span>
+						<button type="button" class="room-detail" data-toggle="collapse" data-target="#intro1">Chi tiết phòng</button>
+						<div id="intro1" class="text-intro collapse">
+							Kiểu phòng có 1 giường đơn thông thường. Với đầy đủ các trang thiết bị cần thiết bị và phòng tắm riêng. Phù hợp với 1 khách hàng sử dụng.	.
 						</div>
 					</div>					
-					<h3 class="roomtype">Phòng đơn</h3>
+					<h3 class="roomtype">Phòng single</h3>
 					<div class="form-inline">
 						<span class="item-price">Giá chỉ 100.000 VNĐ/đêm</span>
-						<a class="booking" href="#">Đặt phòng</a>
+						<a class="booking" href="#">Đặt ngay</a>
 					</div>
 				</div>
-				<div class="col-md-3 room-item">				
+				<div class="col-md-3 col-xs-6 room-item">				
 					<div class="zoom-img">
 						<img src="img/double.jpg">
-						<div class="overlay">
-							<span class="intro">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-							sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-							</span>
+						<button type="button" class="room-detail" data-toggle="collapse" data-target="#intro2">Chi tiết phòng</button>
+						<div id="intro2" class="text-intro collapse">
+							Kiểu phòng có 1 giường đơn lớn. Với đầy đủ các trang thiết bị cần thiết bị và phòng tắm riêng. Thông thường dành cho những cặp vợ chồng hoặc dành cho những người có thể nằm chung với nhau.
 						</div>
 					</div>
-					<h3 class="roomtype">Phòng đôi</h3>
+					<h3 class="roomtype">Phòng double</h3>
 					<div class="form-inline">
 						<span class="item-price">Giá chỉ 200.000 VNĐ/đêm</span>
-						<a class="booking" href="#">Đặt phòng</a>
+						<a class="booking" href="#">Đặt ngay</a>
 					</div>
 				</div>
-				<div class="col-md-3 room-item">
+				<div class="col-md-3 col-xs-6 room-item">
 					<div class="zoom-img">
 						<img src="img/twins.jpg">
-						<div class="overlay">
-							<span class="intro">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-							sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-							</span>
+						<button type="button" class="room-detail" data-toggle="collapse" data-target="#intro3">Chi tiết phòng</button>
+						<div id="intro3" class="text-intro collapse">
+							Kiểu phòng có 2 giường đơn thông thường. Với đầy đủ các trang thiết bị cần thiết bị và phòng tắm riêng.  Thông thường dành cho những khách không ngủ chung giường với nhau.
 						</div>
 					</div>	
-					<h3 class="roomtype">Phòng kép</h3>
+					<h3 class="roomtype">Phòng twins</h3>
 					<div class="form-inline">
 						<span class="item-price">Giá chỉ 300.000 VNĐ/đêm</span>
-						<a class="booking" href="#">Đặt phòng</a>
+						<a class="booking" href="#">Đặt ngay</a>
 					</div>
 				</div>
-				<div class="col-md-3 room-item">
+				<div class="col-md-3 col-xs-6 room-item">
 					<div class="zoom-img">
 						<img src="img/extra.jpg">
-						<div class="overlay">
-							<span class="intro">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-							sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-							</span>
+						<button type="button" class="room-detail" data-toggle="collapse" data-target="#intro4">Chi tiết phòng</button>
+						<div id="intro4" class="text-intro collapse">
+							Kiểu phòng có 1 giường đơn cỡ lớn và 1 giường phụ bé bên cạnh được thiết kế nhỏ, gọn, nhẹ, để linh động di chuyển và xử lý. Với đầy đủ các trang thiết bị cần thiết bị và phòng tắm riêng.  Thông thường dành cho gia đình có con nhỏ.
 						</div>
 					</div>	
-					<h3 class="roomtype">Phòng thêm</h3>
+					<h3 class="roomtype">Phòng extra</h3>
 					<div class="form-inline">
 						<span class="item-price">Giá chỉ 400.000 VNĐ/đêm</span>
-						<a class="booking" href="#">Đặt phòng</a>
+						<a class="booking" href="#">Đặt ngay</a>
 					</div>
 				</div>
 			</div>
@@ -280,62 +246,49 @@
 			</div>
 		</div>
     </div>
-    <!--footer-->
-    <div class="col-md-12">
-        <div class="row">
-            <footer class="footer-distributed">
-                <div class="footer-left">
-                    <img src="img/map.jpg" />
-                    <p class="footer-links">
-                        <a href="#">Home</a> ·
-                        <a href="#">Blog</a> ·
-                        <a href="#">Pricing</a> ·
-                        <a href="#">About</a> ·
-                        <a href="#">Faq</a> ·
-                        <a href="#">Contact</a>
-                    </p>
+    <footer class="footer-distributed">
 
-                    <p class="footer-company-name">Copyrigh &copy; Bản quyền thuộc về khách sạn Ánh Dương</p>
-                </div>
+			<div class="footer-left">
+				<img src="img/map.jpg"/>
+				<p class="footer-links">
+					<a href="#">Trang chủ</a>
+					·
+					<a href="#"> Blog</a>
+					·
+					<a href="#"> Liên hệ</a>	
+				</p>
+				<p class="footer-company-name">Copyrigh &copy; Bản quyền thuộc về khách sạn Ánh Dương</p>
+			</div>
 
-                <div class="footer-center">
+			<div class="footer-center">
 
-                    <div>
-                        <i class="fa fa-map-marker"></i>
-                        <p><span>Khách sạn Ánh Dương, Tuần Châu, Hạ Long  </span> Quảng Ninh, Việt Nam</p>
-                    </div>
+				<div>
+					<i class="fa fa-map-marker"></i>
+					<p>Khách sạn Ánh Dương, Tuần Châu, Hạ Long, <br>Quảng Ninh, Việt Nam</p>
+				</div>
 
-                    <div>
-                        <i class="fa fa-phone"></i>
-                        <p>01662451994</p>
-                    </div>
+				<div>
+					<i class="fa fa-phone"></i>
+					<p>01662451994</p>
+				</div>
 
-                    <div>
-                        <i class="fa fa-envelope"></i>
-                        <p><a href="#">anhduonghotel.com.vn</a>
-                        </p>
-                    </div>
+				<div>
+					<i class="fa fa-envelope"></i>
+					<p><a href="#">anhduonghotel.com.vn</a></p>
+				</div>
 
-                </div>
+			</div>
 
-                <div class="footer-right">
+			<div class="footer-right">
 
-                    <p class="footer-company-about">
-                        <span>About the company</span> Anh Duong Hotel is located on Tuan Chau Island, with 40 rooms, restaurants meet the needs ~ 200 guests, outdoor bar on the 6th floor of the hotel. In addition to accommodation services, dining and hotel services also have a boat trip to Halong Bay.
-                    </p>
+				<p class="footer-company-about">
+					<span>Về chúng tôi</span>
+					Khách sạn Ánh Dương tọa lạc tại phường Tuần Châu thuộc thành phố Hạ Long, cách trung tâm thương mại Vincom Plaza Hạ Long 11 km, cách bãi biển 12 phút đi bộ. Bảo tàng Quảng Ninh nằm trong bán kính 12 km từ khách sạn Ánh Dương, trong khi trung tâm thương mại Hạ Long Marine Plaza cách chỗ nghỉ 5 km. Sân bay quốc tế Cát Bi cách đó 29 km.
+				</p>
 
-                    <div class="footer-icons">
+			</div>
 
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-linkedin"></i></a>
-                        <a href="#"><i class="fa fa-github"></i></a>
-
-                    </div>
-
-                </div>
-
-            </footer>
+		</footer>
         </div>
     </div>
 </div>
