@@ -15,7 +15,7 @@
             margin: 0;
         }
         .label1{
-            width:100px;
+            width:120px;
             text-align:right;
         }
 		.Error
@@ -81,7 +81,7 @@
 								</select>
 							</div>
 						</div>
-						<div class="form-inline col-md-offset-1" style="margin-bottom:10px;">
+						<div class="form-inline col-md-offset-2" style="margin-bottom:10px;">
 							<button class="btn btn-success col-md-offset-1" value="bntAdd"  id="bntSave" name="bntSave"><b>Lưu</b></button>
 							<button class="btn btn-primary" value="btnReset" id="btnReset" name="btnReset"><b>Đặt lại mật khẩu</b></button>
 							<button type="button" class="btn btn-danger" value="btnCancel" name="backCancel" onclick="window.location='{{ url("/AccountList") }}'" ><b>Hủy bỏ</b></button>
