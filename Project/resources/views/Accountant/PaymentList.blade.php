@@ -64,7 +64,7 @@
 							@if(Session::has('USER_INFO'))
 							<b><a class="account" href=" {{url("/K012")}}"><i class="fa fa-user"></i>{!!Session::get('USER_INFO')->user_name !!} </a></b>
 							@endif
-							<b>|</b><a class="logout" href="{!! url('/K001/LogOut') !!}"> Đăng xuất</a>
+							<b>|</b><a class="logout" href="{!! url('LogOut') !!}"> Đăng xuất</a>
 						</div>
 						<div class="col-md-12">
 							<p class="brand-title">Quản lý tiền thu của lễ tân</p>

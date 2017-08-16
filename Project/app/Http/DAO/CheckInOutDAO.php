@@ -428,7 +428,7 @@ class CheckInOutDAO
                     'check_out_flag' => 1
                 ]);
 
-            DB::table('tbl_invoice')
+            DB::table('tbl_invoice_detail')
                 ->where('reservation_id', $res_id)
                 ->update([
                     'payment_flag' => 1,
