@@ -68,9 +68,9 @@
 							</div>
 							<div class="collapse navbar-collapse" id="myNavbar">
 								<ul class="nav navbar-nav">
-									<li><a class="nav-link" href="#">Trang chủ <span class="sr-only">(current)</span></a></li>
-									<li><a class="nav-link" href="#">Phòng</a></li>
-									<li><a class="nav-link" href="#">Ảnh</a></li>
+									<li><a class="nav-link" href="{!! url('/Home') !!}">Trang chủ <span class="sr-only">(current)</span></a></li>
+									<li><a class="nav-link" href="{!! url('/Room') !!}">Phòng</a></li>
+									<li><a class="nav-link" href="{!! url('/Gallery') !!}">Ảnh</a></li>
 								</ul>
 								<a href="{!! url('/Login') !!}"><p class="login navbar-right">Đăng nhập</p></a>
 							</div>
@@ -153,26 +153,26 @@
 						<div class="row sub-ct-container">
 							<div class="col-sm-3 col-xs-6">
 								<div class="sub-ct-col">
-									<a href="#">Phòng ở</a>
-									<a href="#"> <img src='{{ asset("/img/tt.jpg ") }}' /> </a>
+									<a href="{!! url('/Room') !!}">Phòng ở</a>
+									<a href="{!! url('/Room') !!}"> <img src='{{ asset("/img/tt.jpg ") }}' /> </a>
 								</div>
 							</div>
 							<div class="col-sm-3 col-xs-6 sub-ct-col">
 								<div class="sub-ct-col">
-									<a href="restaurant.blade.php">Ẩm Thực</a>
-									<a href="restaurant.blade.php"><img src="{{ asset("/img/Restaurant-4.jpg ") }}"/></a>
+									<a href="{!! url('/Cuisine') !!}">Ẩm Thực</a>
+									<a href="{!! url('/Cuisine') !!}"><img src="{{ asset("/img/Restaurant-4.jpg ") }}"/></a>
 								</div>
 							</div>
 							<div class="col-sm-3 col-xs-6 sub-ct-col">
 								<div class="sub-ct-col">
-									<a href="#">Dịch vụ</a>
-									<a href="#"><img src="{{ asset("/img/View-bien-1.jpg ") }}"/></a>
+									<a href="{!! url('/Services') !!}">Dịch vụ</a>
+									<a href="{!! url('/Services') !!}"><img src="{{ asset("/img/View-bien-1.jpg ") }}"/></a>
 								</div>
 							</div>
 							<div class="col-sm-3 col-xs-6 sub-ct-col">
 								<div class="sub-ct-col">
-									<a href="#">Ảnh</a>
-									<a href="#"><img src="{{ asset("/img/Anh-Duong-hotel.jpg ") }}"/></a>
+									<a href="{!! url('/Gallery') !!}">Ảnh</a>
+									<a href="{!! url('/Gallery') !!}"><img src="{{ asset("/img/Anh-Duong-hotel.jpg ") }}"/></a>
 								</div>
 							</div>
 						</div>

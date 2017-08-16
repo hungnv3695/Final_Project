@@ -131,7 +131,7 @@
                                 <td>{!! $data->room_number !!}</td>
                                 <td>{!! $data->status !!}</td>
                                 @if($data->status == "Phòng Trống")
-                                    <td><a href="{!! url('K003_2/') . '?' .'res_id='.$data->id . '&' . 'room_id=' . $data->room_id . '&hidden=2' !!}" style="text-decoration:underline;"><b>Nhận phòng</b></a></td>
+                                    <td><a href="{!! url('CheckInDetail/') . '?' .'res_id='.$data->id . '&' . 'room_id=' . $data->room_id . '&hidden=2' !!}" style="text-decoration:underline;"><b>Nhận phòng</b></a></td>
                                 @else
                                     <td></td>
                                 @endif

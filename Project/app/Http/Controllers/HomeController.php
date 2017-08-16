@@ -14,4 +14,18 @@ class HomeController extends Controller
     public function view(){
         return view('Guest.Home');
     }
+    public function viewRoom(){
+        return view('Guest.Room');
+    }
+    public function viewCuisine(){
+        return view('Guest.Cuisine');
+    }
+    public function viewService(){
+        return view('Guest.Service');
+    }
+    public function viewGallery(){
+        return view('Guest.Gallary');
+    }
+
+
 }

@@ -15,6 +15,11 @@ Route::get('AccessDeny',function (){
 });
 
 Route::get('/','HomeController@view');
+Route::get('/Home','HomeController@view');
+Route::get('/Room','HomeController@viewRoom');
+Route::get('/Cuisine','HomeController@viewCuisine');
+Route::get('/Services','HomeController@viewService');
+Route::get('/Gallery','HomeController@viewGallery');
 
 Route::get('/Login','LoginController@view');
 Route::post('/Login','LoginController@getLoginRequest');
@@ -83,53 +88,54 @@ Route::middleware(['manager'])->group(function () {
 //});
 
 //K004_1: Reservation_List
-Route::get('/K004_1','K004Controller@K004_1_View');
-Route::get('/K004_1/GetStatus','K004Controller@getReservationStatus');
-Route::get('/K004_1/SearchReservation','K004Controller@getReservation');
-Route::post('/K004','K004Controller@postUserInfor');
+Route::get('/ReservationList','ReservationController@viewReservationList');
+Route::get('/ReservationList/GetStatus','ReservationController@getReservationStatus');
+Route::get('/ReservationList/SearchReservation','ReservationController@getReservation');
+Route::post('/K004','ReservationController@postUserInfor');
 
 //K004_2: Reservation_Detail
-Route::get('/K004_1/K004_2','K004Controller@K004_2_View');
-Route::get('/K004_1/K004_2','K004Controller@getGuest');
-Route::get('/K004_1/K004_2/GetReservationDetail','K004Controller@getReservationDetail');
-Route::get('/K004_1/K004_2/LoadBookedRoom','K004Controller@loadBookedRoom');
-Route::get('/K004_1/K004_2/GetStatus','K004Controller@getReservationStatus');
-Route::get('/K004_1/K004_2/UpdateReservation','K004Controller@updateReservation');
-Route::get('/K004_1/K004_2/ChangeSttToProcessing', 'K004Controller@changeSttToProcessing');
+Route::get('/ReservationList/ReservationDetail','ReservationController@viewReservationDetail');
+Route::get('/ReservationList/ReservationDetail','ReservationController@getGuest');
+Route::get('/ReservationList/ReservationDetail/GetReservationDetail','ReservationController@getReservationDetail');
+Route::get('/ReservationList/ReservationDetail/LoadBookedRoom','ReservationController@loadBookedRoom');
+Route::get('/ReservationList/ReservationDetail/GetStatus','ReservationController@getReservationStatus');
+Route::get('/ReservationList/ReservationDetail/UpdateReservation','ReservationController@updateReservation');
+Route::get('/ReservationList/ReservationDetail/ChangeSttToProcessing', 'ReservationController@changeSttToProcessing');
 
 //K004_3: Change Room Booked
-Route::get('/K004_1/K004_2/K004_3','K004Controller@K004_3_View');
-Route::get('/K004_1/K004_2/K004_3/GetRoomFree','K004Controller@getRoomFree');
-Route::get('/K004_1/K004_2/K004_3/CheckRoom','K004Controller@checkRoom');
-Route::get('/K004_1/K004_2/K004_3/SaveRoom','K004Controller@saveRoom');
+Route::get('/ReservationList/ReservationDetail/ChangeBookedRoom','ReservationController@viewChangeBookedRoom');
+Route::get('/ReservationList/ReservationDetail/ChangeBookedRoom/GetRoomFree','ReservationController@getRoomFree');
+Route::get('/ReservationList/ReservationDetail/ChangeBookedRoom/CheckRoom','ReservationController@checkRoom');
+Route::get('/ReservationList/ReservationDetail/ChangeBookedRoom/SaveRoom','ReservationController@saveRoom');
 
 //K004_4: Reservation Offline
-Route::get('/K004_4','K004Controller@K004_4_View');
-Route::get('/K004_4/GetRoomType','K004Controller@getRoomType');
-Route::get('/K004_4/SearchRoomFree','K004Controller@searchRoomFree');
-Route::get('/K004_4/insertResInfor','K004Controller@insertResInfor');
+Route::get('/BookOffline','ReservationController@viewBookOffline');
+Route::get('/BookOffline/GetRoomType','ReservationController@getRoomType');
+Route::get('/BookOffline/SearchRoomFree','ReservationController@searchRoomFree');
+Route::get('/BookOffline/insertResInfor','ReservationController@insertResInfor');
 
 //K003_2: Check-in
-Route::get('/K003','K003Controller@view');
-Route::post('/K003','K003Controller@getRoomStatusRequest');
-Route::get('/K003_2','K003Controller@k003_2_View');
-Route::get('/K003_2/SearchRoomTypeFree','K003Controller@searchRoomTypeFree');
-Route::get('/K003_2/Checkin','K003Controller@checkIn');
-Route::get('/K003_2/CheckIsReservation','K003Controller@checkIsReservation');
-Route::get('/K003_2/SaveInforCustomer','K003Controller@saveInforCustomer');
+Route::get('/CheckInDetail','CheckInOutController@view');
+Route::post('/CheckInDetail','CheckInOutController@getRoomStatusRequest');
+
+Route::get('/CheckInDetail','CheckInOutController@viewCheckIn');
+Route::get('/CheckInDetail/SearchRoomTypeFree','CheckInOutController@searchRoomTypeFree');
+Route::get('/CheckInDetail/Checkin','CheckInOutController@checkIn');
+Route::get('/CheckInDetail/CheckIsReservation','CheckInOutController@checkIsReservation');
+Route::get('/CheckInDetail/SaveInforCustomer','CheckInOutController@saveInforCustomer');
 
 //K003_3: Check out;
-Route::get('/Checkout','K003Controller@checkOut_View');
-Route::get('/Checkout/LoadResDetail','K003Controller@loadResDetail');
-Route::get('/Checkout/SaveCheckOut','K003Controller@saveCheckOut');
-Route::get('/Checkout/LoadService','K003Controller@loadService');
+Route::get('/Checkout','CheckInOutController@checkOut_View');
+Route::get('/Checkout/LoadResDetail','CheckInOutController@loadResDetail');
+Route::get('/Checkout/SaveCheckOut','CheckInOutController@saveCheckOut');
+Route::get('/Checkout/LoadService','CheckInOutController@loadService');
 
 
-Route::get('/CheckinList','K003Controller@viewCheckIn');
-Route::post('/CheckinList','K003Controller@getSearchCheckInRequest');
+Route::get('/CheckinList','CheckInOutController@viewCheckInList');
+Route::post('/CheckinList','CheckInOutController@getSearchCheckInRequest');
 
-Route::get('/checkoutList','K003Controller@viewCheckOut');
-Route::post('/checkoutList','K003Controller@getSearchCheckOutRequest');
+Route::get('/CheckoutList','CheckInOutController@viewCheckOut');
+Route::post('/CheckoutList','CheckInOutController@getSearchCheckOutRequest');
 
 // Booking
 Route::get('/book','BookController@index');

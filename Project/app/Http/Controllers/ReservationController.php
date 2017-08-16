@@ -1,6 +1,6 @@
 <?php
 namespace App\Http\Controllers;
-use App\Http\DAO\K004DAO;
+use App\Http\DAO\ReservationDAO;
 use App\Models\Guest;
 use App\Models\Invoice;
 use App\Models\InvoiceDetail;
@@ -15,26 +15,26 @@ use App\Http\Common\DateTimeUtil;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
-class K004Controller extends Controller{
+class ReservationController extends Controller{
 
     //region View K004_1, K004_2, K004_3
-    public function K004_1_View(){
+    public function viewReservationList(){
 
-        return view('Reception.K004_1');
+        return view('Reception.ReservationListPage');
     }
 
-    public function K004_2_View(){
+    public function viewReservationDetail(){
 
-        return view('Reception.K004_2');
+        return view('Reception.ReservationDetailPage');
     }
 
-    public function K004_3_View(Request $request){
+    public function viewChangeBookedRoom(Request $request){
         $res_id = $request->res_id;
         $check_in= DateTimeUtil::ConvertDateToString($request->check_in);
         $check_out=DateTimeUtil::ConvertDateToString($request->check_out);
         $type_name = $request->type_name;
         $no_room = $request->no_room;
-        return view("Reception.K004_3")->with([
+        return view("Reception.ChangeBookedRoomPage")->with([
             'txtRoomType' => $type_name,
             'txtRoomNo' => $no_room,
             'txtResId' => $res_id,
@@ -43,9 +43,9 @@ class K004Controller extends Controller{
         ]);
     }
 
-    public function K004_4_View(){
+    public function viewBookOffline(){
 
-        return view('Reception.K004_4');
+        return view('Reception.BookOfflinePage');
     }
     //endregion
 
@@ -56,8 +56,8 @@ class K004Controller extends Controller{
      * @return \Illuminate\Http\JsonResponse
      */
     public function getReservationStatus(){
-        $K004DAO = new K004DAO();
-        $status = $K004DAO->getStatus();
+        $ReservationDAO = new ReservationDAO();
+        $status = $ReservationDAO->getStatus();
         if($status==[]){
             $status = "";
             return response()->json($status);
@@ -78,8 +78,8 @@ class K004Controller extends Controller{
         $idCard = $request->idCard;
         $status = $request->status;
         //dd($idCard);
-        $K004DAO = new K004DAO();
-        $resList = $K004DAO->selectReservation($fname,$idCard,$status);
+        $ReservationDAO = new ReservationDAO();
+        $resList = $ReservationDAO->selectReservation($fname,$idCard,$status);
 
         //count record reservation
         $count=count($resList);
@@ -109,7 +109,7 @@ class K004Controller extends Controller{
      */
     public function getGuest(Request $request){
         if($request->res_id ==""){
-            return view("Reception.K004_2")->with([
+            return view("Reception.ReservationDetailPage")->with([
                 'id' => "",
                 'check_in' => "",
                 'check_out' => "",
@@ -128,12 +128,12 @@ class K004Controller extends Controller{
             ]);
         }
         $res_id = $request->res_id;
-        $K004DAO = new K004DAO();
-        $guest = $K004DAO->getGuestData($res_id);
-        $room = $K004DAO->getReservationDetail($res_id);
+        $ReservationDAO = new ReservationDAO();
+        $guest = $ReservationDAO->getGuestData($res_id);
+        $room = $ReservationDAO->getReservationDetail($res_id);
         $result = array_merge($guest,$room);
 
-        return view("Reception.K004_2")->with([
+        return view("Reception.ReservationDetailPage")->with([
             'id' => $result[0]->id,
             'guest_id' =>$result[0]->guest_id,
             'check_in' => DateTimeUtil::ConvertStringToDate($result[0]->check_in),
@@ -164,8 +164,8 @@ class K004Controller extends Controller{
      */
     public function loadBookedRoom(Request $request){
         $res_id = $request -> res_id;
-        $K004DAO = new K004DAO();
-        $room_type = $K004DAO->loadRoomType($res_id);
+        $ReservationDAO = new ReservationDAO();
+        $room_type = $ReservationDAO->loadRoomType($res_id);
 
         return \response($room_type);
     }
@@ -197,12 +197,12 @@ class K004Controller extends Controller{
         $status     = $request->status;
 
 
-        $K004DAO = new K004DAO();
+        $ReservationDAO = new ReservationDAO();
         try{
 
-            $update_guest = $K004DAO->updateGuest($guest_id,$fullname,$address,$idcard,$country,$phonetxt,$company,$email);
+            $update_guest = $ReservationDAO->updateGuest($guest_id,$fullname,$address,$idcard,$country,$phonetxt,$company,$email);
             if($update_guest == 1){
-                $update_reservation = $K004DAO->updateReservation($res_id,$check_in,$check_out,$numpeople,$noroom,$status);
+                $update_reservation = $ReservationDAO->updateReservation($res_id,$check_in,$check_out,$numpeople,$noroom,$status);
                 if($update_reservation == 1){
 
                     return \response('1');
@@ -238,10 +238,10 @@ class K004Controller extends Controller{
         $res->setEditer($userid);
         $res->setId($res_id);
 
-        $K004DAO = new K004DAO();
+        $ReservationDAO = new ReservationDAO();
 
         try{
-            $result = $K004DAO->updateSttProcessing($res);
+            $result = $ReservationDAO->updateSttProcessing($res);
             if($result){
 
                 return \response('1');
@@ -262,8 +262,8 @@ class K004Controller extends Controller{
      */
     public function checkRoom(Request $request){
         $res_id = $request->res_id;
-        $K004DAO = new K004DAO();
-        $resRoom = $K004DAO->selectRoomOfReservation($res_id);
+        $ReservationDAO = new ReservationDAO();
+        $resRoom = $ReservationDAO->selectRoomOfReservation($res_id);
         return \response($resRoom);
     }
 
@@ -277,8 +277,8 @@ class K004Controller extends Controller{
         $res_id = $request->res_id;
         $check_in= $request->check_in;
         $check_out=$request->check_out;
-        $K004DAO = new K004DAO();
-        $roomFree = $K004DAO->selectRoomFree($res_id,$room_type_id,$check_in,$check_out);
+        $ReservationDAO = new ReservationDAO();
+        $roomFree = $ReservationDAO->selectRoomFree($res_id,$room_type_id,$check_in,$check_out);
         //dd($roomFree);
         return \response($roomFree);
 
@@ -294,12 +294,12 @@ class K004Controller extends Controller{
         $detail_id = $request -> detail_id;
         $room_id = $request -> room_id;
         $count = count($detail_id);
-        $K004DAO = new K004DAO();
+        $ReservationDAO = new ReservationDAO();
 
         try{
 
             DB::beginTransaction();
-            $result = $K004DAO->updateRoomNumber($detail_id, $room_id, $count);
+            $result = $ReservationDAO->updateRoomNumber($detail_id, $room_id, $count);
             DB::commit();
             return \response($result);
 
@@ -318,8 +318,8 @@ class K004Controller extends Controller{
 
     //region K004_4
     public function getRoomType(){
-        $K004DAO = new K004DAO();
-        $room_type = $K004DAO->getRoomType();
+        $ReservationDAO = new ReservationDAO();
+        $room_type = $ReservationDAO->getRoomType();
 
         return \response($room_type);
 
@@ -328,8 +328,8 @@ class K004Controller extends Controller{
     public function searchRoomFree(Request $request){
         $check_in = DateTimeUtil::ConvertDateToString($request->check_in);
         $check_out = DateTimeUtil::ConvertDateToString($request->check_out);
-        $K004DAO = new K004DAO();
-        $result = $K004DAO->getRoomFree($check_in,$check_out);
+        $ReservationDAO = new ReservationDAO();
+        $result = $ReservationDAO->getRoomFree($check_in,$check_out);
         //dd($result);
         return \response($result);
     }
@@ -378,8 +378,8 @@ class K004Controller extends Controller{
         $invoiceDetail->setPaymentFlag(1);
 
 
-        $K004DAO = new K004DAO();
-        $result = $K004DAO->createReservation($guest,$res,$resdetail,$invoiceDetail,$invoice,$roomList,$priceList,$nights);
+        $ReservationDAO = new ReservationDAO();
+        $result = $ReservationDAO->createReservation($guest,$res,$resdetail,$invoiceDetail,$invoice,$roomList,$priceList,$nights);
 
         return \response($result);
 

@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\In;
 use Mockery\Exception;
 
-class K003DAO
+class CheckInOutDAO
 {
 
     public function getCheckInInfo($name, $identity = null){
@@ -428,7 +428,7 @@ class K003DAO
                     'check_out_flag' => 1
                 ]);
 
-            DB::table('tbl_invoice')
+            DB::table('tbl_invoice_detail')
                 ->where('reservation_id', $res_id)
                 ->update([
                     'payment_flag' => 1,

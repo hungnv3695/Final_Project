@@ -4,13 +4,13 @@
 	<meta charset="UTF-8">
 	<title>Ẩm thực</title>
 	<link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="plugins/font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="plugins/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="{!! asset('plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css') !!} ">
+    <link rel="stylesheet" type="text/css" href="{!! asset('plugins/font-awesome-4.7.0/css/font-awesome.min.css') !!} ">
+    <link rel="stylesheet" type="text/css" href="{!! asset('plugins/animate/animate.css') !!}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/index.css">
-    <script type="text/javascript" src="plugins/slide/jquery.slides.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{!! asset('css/index.css') !!} ">
+    <script type="text/javascript" src="{!! asset('plugins/slide/jquery.slides.min.js') !!} "></script>
     <style type="text/css">
 		body {
             padding: 0;
@@ -74,11 +74,7 @@
 		h4.home-page:hover {
 			color:#BD6B09;
         }
-		.culinary-introduce{
-			width:auto;
-			margin-left: 50px;
-		}
-		.culinary-item{
+		.Cuisine-item{
 			margin:20px 0 70px;
 		}
 		.zoom-img{
@@ -99,12 +95,14 @@
 		}
 		.bar-infor{
 			display:block;
+			line-height:30px;
+			font-size:16px;
 			margin-top:30px;
 		}
 		.open-time{
-			display:block;
-			margin-top:72px;
+			display:block;			
 			color:rgb(140, 110, 78);
+			font-size:16px;
 		}
 	</style>
 </head>
@@ -125,14 +123,14 @@
                         </div>
                         <div class="collapse navbar-collapse" id="myNavbar">
                             <ul class="nav navbar-nav">
-                                <li><a class="nav-link" href="#">Trang chủ <span class="sr-only">(current)</span></a>
+                                <li><a class="nav-link" href="{!! url('/Home') !!}">Trang chủ <span class="sr-only">(current)</span></a>
                                 </li>
-                                <li><a class="nav-link" href="#">Phòng</a>
+                                <li><a class="nav-link" href="{!! url('/Room') !!}">Phòng</a>
                                 </li>
-                                <li><a class="nav-link" href="#">Ảnh</a>
+                                <li><a class="nav-link" href="{!! url('/Gallery') !!}">Ảnh</a>
                                 </li>
                             </ul>
-                            <a href="{!! url('/K001/LogOut') !!}">
+                            <a href="{!! url('/Login') !!}">
                                 <p class="login navbar-right">Đăng nhập</p>
                             </a>
                         </div>
@@ -175,42 +173,32 @@
         </header>
 		<div id="content">
 			<div class="page-title">
-				<a href="#"><h4 class="home-page">Trang chủ</h4></a>
+				<a href="{!! url('/Home') !!}"><h4 class="home-page">Trang chủ</h4></a>
 				<h4>> Ẩm thực</h4> 
 			</div>
-			<p class="culinary-introduce">
-				Khách sạn Ánh Dương cung cấp 45 phòng nghỉ rộng rãi và tiện nghi, được trang trí rất bài bản chuyên nghiệp với nội thất cao cấp.
-				Trang thiết bị và dịch vụ đáp ứng với mọi nhu cầu <br>của từng khách hàng nhằm mang lại một kì nghỉ thư giãn, thoải mái và trải nghiệm khó quên.
-			</p>
 			<div class="container-fluid">
 				<div class="col-md-12">
-					<div class="col-md-4 culinary-item">
-						<div class="zoom-img"><img src="img/bar1.jpg"></div>
-					</div>
-					<div class="col-md-8">
-						<h3>Anh Duong bar</h3>
-						<p class="bar-infor">
-							Khách sạn Ánh Dương cung cấp 45 phòng nghỉ rộng rãi và tiện nghi, được trang trí rất bài bản chuyên nghiệp với nội thất cao cấp.
-							Trang thiết bị và dịch vụ đáp ứng với mọi nhu cầu <br>của từng khách hàng nhằm mang lại một kì nghỉ thư giãn, thoải mái và trải nghiệm khó quên.
-							Khách sạn Ánh Dương cung cấp 45 phòng nghỉ rộng rãi và tiện nghi, được trang trí rất bài bản chuyên nghiệp với nội thất cao cấp.
-							Trang thiết bị và dịch vụ đáp ứng với mọi nhu cầu <br>của từng khách hàng nhằm mang lại một kì nghỉ thư giãn, thoải mái và trải nghiệm khó quên.
-						</p>
-						<span class="open-time">Giờ mở cửa: từ 6:00 AM đến 11:00 PM</span>
-					</div>
-				</div>
-				<div class="col-md-12">
-					<div class="col-md-4 culinary-item">
+					<div class="col-md-4 Cuisine-item">
 						<div class="zoom-img"><img src="img/bar2.jpg"></div>
 					</div>
 					<div class="col-md-8">
 						<h3>Anh Duong Restaurant</h3>
 						<p class="bar-infor">
-							Khách sạn Ánh Dương cung cấp 45 phòng nghỉ rộng rãi và tiện nghi, được trang trí rất bài bản chuyên nghiệp với nội thất cao cấp.
-							Trang thiết bị và dịch vụ đáp ứng với mọi nhu cầu <br>của từng khách hàng nhằm mang lại một kì nghỉ thư giãn, thoải mái và trải nghiệm khó quên.
-							Khách sạn Ánh Dương cung cấp 45 phòng nghỉ rộng rãi và tiện nghi, được trang trí rất bài bản chuyên nghiệp với nội thất cao cấp.
-							Trang thiết bị và dịch vụ đáp ứng với mọi nhu cầu <br>của từng khách hàng nhằm mang lại một kì nghỉ thư giãn, thoải mái và trải nghiệm khó quên.
+							Nằm dưới tầng 1 của khách sạn, phục vụ ăn uống và lễ tiệc, cưới hỏi. Nhà hàng Ánh Dương là một không gian thơ mộng và đẹp mắt, nằm cạnh ngay bờ biển sẽ đem đến cho quý khách một cảm giác thật ấn tượng. Hãy thưởng thức những bữa ăn tuyệt vời tại nhà hàng Ánh Dương với những món ăn hải sản,rừng núi mang phong cách ẩm thực Á-Âu. Đặc biệt có phục vụ tiệc buffet vào mỗi buổi sáng. 
 						</p>
-						<span class="open-time">Giờ mở cửa: từ 6:00 AM đến 11:00 PM</span>
+						<span class="open-time" style="margin-top:70px;">Giờ mở cửa: từ 6:00 AM đến 9:00 PM</span>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<div class="col-md-4 Cuisine-item">
+						<div class="zoom-img"><img src="img/bar1.jpg"></div>
+					</div>
+					<div class="col-md-8">
+						<h3>Anh Duong bar</h3>
+						<p class="bar-infor">
+							Nằm trên tầng 7 của khách sạn, phục vụ coffee và những thức uống tuyệt hạng từ những bartender chuyên nghiệp. Quầy bar Ánh Dương, một địa điểm lý tưởng mà quý khách có thể thưởng thức những đồ uống, bia, rượu trong một không gian hoàn toàn thư giãn và thoải mái.
+						</p>
+						<span class="open-time" style="margin-top:100px;">Giờ mở cửa: từ 6:00 AM đến 12:00 PM</span>
 					</div>
 				</div>
 			</div>
@@ -225,58 +213,48 @@
         <div class="col-md-12">
             <div class="row">
                 <footer class="footer-distributed">
-                    <div class="footer-left">
-                        <img src="img/map.jpg" />
-                        <p class="footer-links">
-                            <a href="#">Home</a> ·
-                            <a href="#">Blog</a> ·
-                            <a href="#">Pricing</a> ·
-                            <a href="#">About</a> ·
-                            <a href="#">Faq</a> ·
-                            <a href="#">Contact</a>
-                        </p>
 
-                        <p class="footer-company-name">Copyrigh &copy; Bản quyền thuộc về khách sạn Ánh Dương</p>
-                    </div>
+					<div class="footer-left">
+						<img src="img/map.jpg"/>
+						<p class="footer-links">
+							<a href="#">Trang chủ</a>
+							·
+							<a href="#"> Blog</a>
+							·
+							<a href="#"> Liên hệ</a>	
+						</p>
+						<p class="footer-company-name">Copyrigh &copy; Bản quyền thuộc về khách sạn Ánh Dương</p>
+					</div>
 
-                    <div class="footer-center">
+					<div class="footer-center">
 
-                        <div>
-                            <i class="fa fa-map-marker"></i>
-                            <p><span>Khách sạn Ánh Dương, Tuần Châu, Hạ Long  </span> Quảng Ninh, Việt Nam</p>
-                        </div>
+						<div>
+							<i class="fa fa-map-marker"></i>
+							<p>Khách sạn Ánh Dương, Tuần Châu, Hạ Long, <br>Quảng Ninh, Việt Nam</p>
+						</div>
 
-                        <div>
-                            <i class="fa fa-phone"></i>
-                            <p>01662451994</p>
-                        </div>
+						<div>
+							<i class="fa fa-phone"></i>
+							<p>01662451994</p>
+						</div>
 
-                        <div>
-                            <i class="fa fa-envelope"></i>
-                            <p><a href="#">anhduonghotel.com.vn</a>
-                            </p>
-                        </div>
+						<div>
+							<i class="fa fa-envelope"></i>
+							<p><a href="#">anhduonghotel.com.vn</a></p>
+						</div>
 
-                    </div>
+					</div>
 
-                    <div class="footer-right">
+					<div class="footer-right">
 
-                        <p class="footer-company-about">
-                            <span>About the company</span> Anh Duong Hotel is located on Tuan Chau Island, with 40 rooms, restaurants meet the needs ~ 200 guests, outdoor bar on the 6th floor of the hotel. In addition to accommodation services, dining and hotel services also have a boat trip to Halong Bay.
-                        </p>
+						<p class="footer-company-about">
+							<span>Về chúng tôi</span>
+							Khách sạn Ánh Dương tọa lạc tại phường Tuần Châu thuộc thành phố Hạ Long, cách trung tâm thương mại Vincom Plaza Hạ Long 11 km, cách bãi biển 12 phút đi bộ. Bảo tàng Quảng Ninh nằm trong bán kính 12 km từ khách sạn Ánh Dương, trong khi trung tâm thương mại Hạ Long Marine Plaza cách chỗ nghỉ 5 km. Sân bay quốc tế Cát Bi cách đó 29 km.
+						</p>
 
-                        <div class="footer-icons">
+					</div>
 
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-linkedin"></i></a>
-                            <a href="#"><i class="fa fa-github"></i></a>
-
-                        </div>
-
-                    </div>
-
-                </footer>
+				</footer>
             </div>
         </div>
     </div>
