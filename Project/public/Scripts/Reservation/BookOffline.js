@@ -223,7 +223,7 @@ $(document).ready(function () {
 
 
     });
-    $( ".ui-th-div" ).append( "<p>No.</p>" );
+    $( ".ui-th-div" ).append( "<p></p>" );
     $(".clearsearchclass").hide();
 
 

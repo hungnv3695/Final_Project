@@ -394,6 +394,8 @@ class CheckInOutDAO
         $strSQL .='ro.room_id, ';
         $strSQL .='rt.type_name, ';
         $strSQL .='rt.room_type_id, ';
+        $strSQL .= 'i.id "invoice_id",' ;
+        $strSQL .= 'id.price, ';
         $strSQL .='id.amount_total "total_res" ';
 
         $strSQL .='from tbl_reservation_detail rd ';
@@ -405,16 +407,16 @@ class CheckInOutDAO
         $strSQL .='left join tbl_room_type rt on ro.room_type_id = rt.room_type_id ';
         $strSQL .='where rd.id = \'' .$resDetail_id .'\'  ';
         $strSQL .='and id.item_id = rd.room_id';
-        //dd($strSQL);
+//        /dd($strSQL);
         $result = DB::select(DB::raw($strSQL));
         return $result;
     }
 
-    public function saveCheckoutInfor($room_id, $res_id, $resDetail_id, $user_id){
+    public function saveCheckoutInfor($room_id, $resDetail_id, $user_id, $iList){
         DB::beginTransaction();
 
         try{
-            $result = DB::table('tbl_room')
+            DB::table('tbl_room')
                 ->where('room_id', $room_id)
                 ->update([
                     'status_id' => 'RO01'
@@ -428,12 +430,19 @@ class CheckInOutDAO
                     'check_out_flag' => 1
                 ]);
 
-            DB::table('tbl_invoice_detail')
-                ->where('reservation_id', $res_id)
-                ->update([
-                    'payment_flag' => 1,
-                    'updater_nm' => $user_id
-                ]);
+            for($i = 0; $i< count($iList); $i++){
+
+                DB::table('tbl_invoice_detail')
+                    ->where('id', $iList[$i])
+                    ->where('room_id', $room_id)
+                    ->update([
+                        'payment_flag' => 1,
+                        'updater_nm' => $user_id,
+                        'update_ymd' => Carbon::now()
+                    ]);
+
+            }
+
 
             DB::commit();
             return 1;
@@ -452,7 +461,9 @@ class CheckInOutDAO
                 'tbl_invoice_detail.item_id',
                 'tbl_invoice_detail.quantity',
                 'tbl_invoice_detail.price',
-                'tbl_invoice_detail.payment_flag'
+                'tbl_invoice_detail.payment_flag',
+                'tbl_invoice_detail.invoice_id',
+                'tbl_invoice_detail.id'
         ]);
         return  $result->toArray();
     }
