@@ -178,7 +178,7 @@ CREATE TABLE tbl_service(
 	price integer,
 	create_ymd timestamp,
 	update_ymd timestamp
-)
+);
 
 CREATE TABLE tbl_invoice(
 	id serial PRIMARY KEY,
@@ -217,7 +217,7 @@ CREATE TABLE tbl_invoice_detail(
 CREATE TABLE tbl_accountant(
 	id serial PRIMARY KEY,
 	payment_nm varchar(50),
-	payment_nm varchar(8), 
+	payment_ymd varchar(8), 
 	status integer,
 	total integer,
 	receiver_nm varchar(50),
