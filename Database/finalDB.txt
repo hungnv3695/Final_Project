@@ -172,6 +172,14 @@ CREATE TABLE tbl_payment_type(
 	update_ymd timestamp
 );
 
+CREATE TABLE tbl_service(
+	service_id varchar(5) PRIMARY KEY,
+	name varchar(10),
+	price integer,
+	create_ymd timestamp,
+	update_ymd timestamp
+)
+
 CREATE TABLE tbl_invoice(
 	id serial PRIMARY KEY,
 	payment_type_id integer,
@@ -216,6 +224,8 @@ CREATE TABLE tbl_accountant(
 	update_ymd timestamp,
 	create_ymd timestamp
 )
+
+
 
 
 

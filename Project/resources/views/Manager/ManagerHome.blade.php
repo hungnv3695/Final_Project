@@ -37,7 +37,7 @@
 <body>
         <div class="container">
             <div class="row">
-				<div class="col-md-8 col-md-offset-2" style="margin-top:5%;background-color:#c3bfc0;border-bottom:1px solid #898989; ">
+				<div class="col-md-8 col-md-offset-2" style="margin-top:6%;background-color:#c3bfc0;border-bottom:1px solid #898989; ">
 					<div class="row">
 						<div class="col-md-offset-9" style="margin:10px 10px 0px 0px;float:right;">
 							@if(Session::has('USER_INFO'))
@@ -52,12 +52,11 @@
 				</div>
 					<div class="col-md-8 col-md-offset-2" style="background-color:#c3bfc0;">
 						<div class="row">
-							<div class="col-md-6 form-inline col-md-offset-3" style="border:1px solid #898989;border-radius:10px;margin-top:30px;margin-bottom:30px;">
-								<div class="col-md-10 col-md-offset-1" style="margin-top:20px;"><button type="button"  class="btnManager btn-block" value="btnRoomtypeManagement" name="btnRoomtypeManagement"  onclick="window.location='{{ url("/RoomtypeList") }}'" ><p class="manager">Quản lý loại phòng</p></button></div>
+							<div class="col-md-6 form-inline col-md-offset-3" style="border:1px solid #898989;border-radius:10px;margin-top:40px;margin-bottom:40px;">
+								<div class="col-md-10 col-md-offset-1" style="margin-top:30px;"><button type="button"  class="btnManager btn-block" value="btnRoomtypeManagement" name="btnRoomtypeManagement"  onclick="window.location='{{ url("/RoomtypeList") }}'" ><p class="manager">Quản lý loại phòng</p></button></div>
 								<div class="col-md-10 col-md-offset-1" style="margin-top:20px;"><button type="button"  class="btnManager btn-block" value="btnRoomManagement" name="btnRoomManagement"  onclick="window.location='{{ url("/RoomList") }}'" ><p class="manager">Quản lý phòng </p></button></div>
 								<div class="col-md-10 col-md-offset-1" style="margin-top:20px;"><button type="button" class="btnManager btn-block" value="btnAccoutManagement" name="btnAccoutManagement"  onclick="window.location='{{ url("/AccountList") }}'" ><p class="manager">Quản lý tài khoản</p></button></div>
-								<div class="col-md-10 col-md-offset-1" style="margin-top:20px;"><button type="button"  class="btnManager btn-block" value="bntServiceManagement" name="bntServiceManagement" ><p class="manager">Quản lý dịch vụ</p></button></div>
-								<div class="col-md-10 col-md-offset-1" style="margin-top:20px;margin-bottom:20px;"><button type="button"  class="btnManager btn-block" value="bntMyaccount" name="bntMyaccount" onclick="window.location='{{ url("/MyInfo") }}'" ><p class="manager">Thông tin của tôi</p></button></div>
+								<div class="col-md-10 col-md-offset-1" style="margin-top:20px;margin-bottom:30px;"><button type="button"  class="btnManager btn-block" value="bntMyaccount" name="bntMyaccount" onclick="window.location='{{ url("/MyInfo") }}'" ><p class="manager">Thông tin của tôi</p></button></div>
 							</div>
 						</div>
 					</div>
