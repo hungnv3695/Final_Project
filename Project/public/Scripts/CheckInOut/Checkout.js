@@ -23,6 +23,7 @@ $(document).ready(function () {
             contentType: 'application/json; charset=utf-8',
             success: function (result) {
                 addData(result);
+
             },
             error: function(){
                 alert('error');
@@ -171,7 +172,22 @@ $(document).ready(function () {
         loadonce: true,
         resizable: true,
         forceFit: true,
-        shrinkToFit: false
+        shrinkToFit: false,
+        loadComplete: function () {
+            var  count=$("#jqGrid").jqGrid('getGridParam', 'records');
+            for(var i = 1; i <= count; i++){
+                var flag = $("#jqGrid").jqGrid('getCell', i , 'item5');
+
+                if(flag == 1){
+                    $("tr.jqgrow#" + i).css("background", "#00CC00");
+                }
+                else{
+                    $("tr.jqgrow#" +i).css("background", "#FF0000");
+                }
+
+            }
+
+        }
 
     });
     function addData(result){
