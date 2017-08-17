@@ -107,8 +107,8 @@ class CheckInOutController extends Controller
             $res_detail->setCustomerPhone($request->txtPhone2);
             $res_detail->setCustomerEmail($request->txtEmail2);
             $res_detail->setUpdateYmd(Carbon::now());
-            $res_detail->setDateIn(DateTimeUtil::ConvertDateToString2($request->txtCheckin));
-            $res_detail->setDateOut(DateTimeUtil::ConvertDateToString2($request->txtCheckout));
+            $res_detail->setDateIn(DateTimeUtil::ConvertDateToString($request->txtCheckin));
+            $res_detail->setDateOut(DateTimeUtil::ConvertDateToString($request->txtCheckout));
             $res_detail->setNote($request->note2);
             $res_detail->setCheckInFlag(1);
 

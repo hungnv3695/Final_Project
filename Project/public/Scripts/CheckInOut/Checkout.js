@@ -269,7 +269,7 @@ $(document).ready(function () {
     $("#btnCheckout").click(function (event) {
         event.preventDefault();
         getItemNoPaymentFlag();
-        alert($("#txtCheckout").val());
+        
         $.ajax({
             url: 'Checkout/SaveCheckOut',
             method: 'GET',

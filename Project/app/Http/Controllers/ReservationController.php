@@ -327,8 +327,8 @@ class ReservationController extends Controller{
     }
 
     public function searchRoomFree(Request $request){
-        $check_in = DateTimeUtil::ConvertDateToString($request->check_in);
-        $check_out = DateTimeUtil::ConvertDateToString($request->check_out);
+        $check_in = DateTimeUtil::ConvertDateToString2($request->check_in);
+        $check_out = DateTimeUtil::ConvertDateToString2($request->check_out);
         $ReservationDAO = new ReservationDAO();
         $result = $ReservationDAO->getRoomFree($check_in,$check_out);
         //dd($result);

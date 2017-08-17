@@ -289,7 +289,7 @@ class ReservationDAO{
         $strSQL .=  'AND NOT (rd.check_in_flag = \'1\' AND rd.check_out_flag = \'1\')) ';
         $strSQL .=  'ORDER BY ro.room_number ASC';
 
-
+        //dd($strSQL);
         $result = DB::select(DB::raw($strSQL));
 
         return $result;
