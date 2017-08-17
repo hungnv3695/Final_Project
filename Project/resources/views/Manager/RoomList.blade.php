@@ -105,7 +105,7 @@
 										<th>Tên phòng</th>
 										<th>Loại phòng</th>
 										<th>Tầng</th>
-										<th>Giá(VNDvagr)</th>
+										<th>Giá(VND)</th>
 										<th>Miêu tả</th>
 										<th>Trạng thái</th>
 									  </tr>
