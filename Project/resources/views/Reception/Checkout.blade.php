@@ -111,7 +111,7 @@
                 <!--top-->
                 <label class="control-label" style="margin-top:5px;">Thông tin đặt phòng</label>
                 <div class="col-md-12" style="border: 1px solid #898989;border-radius:10px;margin:5px 0px 20px 0px;">
-                    <div class="col-md-6">
+                    <div class="col-md-6" style="border-right:1px solid #898989;">
                         <div class="form-inline col-md-offset-1" style="margin-top:20px;">
                             <label class="label1">Ngày vào:</label>
                             <input id="txtCheckin" name="txtCheckin" type="text"  class="form-control input-md" size="20" readonly>
@@ -140,29 +140,29 @@
                             <b>VNĐ</b>
                         </div>
                     </div>
-                    <div class="col-md-6" style="border-left:1px solid #898989;">
+                    <div class="col-md-6">
                         <div class="form-inline col-md-offset-1" style="margin-top:20px;">
                             <label class="label1">Số đêm:</label>
                             <input id="txtNumOfDay" name="txtNumOfDay" type="number" style="width:100px" class="form-control input-md" size="6" >
                         </div>
-                        <div class="form-inline col-md-offset-1" style="margin-top:10px;">
+                        <div class="form-inline col-md-offset-1" style="margin-top:15px;">
                             <label class="label1">Số người:</label>
                             <input id="numofpeople" name="numofpeople" type="number"  class="form-control input-md" min="1" style="width:70px;" >
                         </div>
-                        <div class="form-inline col-md-offset-1" style="margin-top:10px;">
+                        <div class="form-inline col-md-offset-1" style="margin-top:15px;">
                             <label class="label1" for="">Kiểu phòng: </label>
                             <select id="roomtype" name="roomtype" class="form-control input-md" style="width:180px;" readonly>
 
                             </select>
                         </div>
-                        <div class="form-inline col-md-offset-1" style="margin-top:10px;">
-                            <label class="label1" for="">Số phòng: </label>
+                        <div class="form-inline col-md-offset-1" style="margin-top:15px;">
+                            <label class="label1" for="">Tên phòng: </label>
                             <select id="cboRoomNo" name="cboRoomNo" class="form-control input-md" style="width:90px;" readonly>
 
                             </select>
                         </div>
 
-                        <div class="form-inline col-md-offset-1" style="margin-top: 10px;">
+                        <div class="form-inline col-md-offset-1" style="margin-top: 15px;">
                             <label class="label1" for="">Tổng tiền:</label>
                             <input id="txtTotalprice" name="txtTotalprice" type="text" class="form-control input-md " style=" text-align:right;" size="10" readonly>
                             <label class="control-label" for=""> VNĐ</label>
@@ -170,7 +170,7 @@
 
                         </div>
 
-                        <div class="form-inline col-md-offset-1" style="margin-top:10px;margin-bottom:20px;">
+                        <div class="form-inline col-md-offset-1" style="margin-top:15px;">
                             <label class="label1" for="">Ghi chú: </label>
                             <textarea rows="3" cols="25" id="txtNote" class="form-control" name="txtNote" maxlength="100"></textarea>
                         </div>
@@ -235,8 +235,8 @@
             </div>
             <div class="col-md-10 col-md-offset-1" style="background-color:#c3bfc0;margin-bottom:10px;">
                 <div class="row">
-                    <div class="col-md-6 col-md-offset-9" style="margin-top:10px; margin-bottom:10px;">
-                        <button class="btn btn-primary" id="btnCheckout" value="btnCheckout" name="btnCheckout"><b>Trả phòng</b></button>
+                    <div class="col-md-3 col-md-offset-9" style="margin-top:10px; margin-bottom:10px;">
+                        <button class="btn btn-primary col-md-offset-1" id="btnCheckout" value="btnCheckout" name="btnCheckout"><b>Trả phòng</b></button>
                         <button class="btn btn-danger" id="btnBack" value="btnBack" name="btnBack"><b>Quay lại</b></button>
                     </div>
                 </div>
