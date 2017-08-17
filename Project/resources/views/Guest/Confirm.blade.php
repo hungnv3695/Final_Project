@@ -81,8 +81,9 @@
 		.booking{
 			background: rgb(140, 110, 78);
 			color: #fff;
-			height:40px;
-			border-radius: 7px;
+			height:35px;
+			font-size:15px;
+			border-radius: 5px;
 			border:none;
 		}
 		.booking:hover{
@@ -121,9 +122,9 @@
 		<!--body-->
 		<div id="content">
 				<h3 align="center" style="color:rgb(140, 110, 78);"><b>Xác nhận đặt phòng</b></h3>
-				<div class="col-md-12">
+				<div class="container-fluid">
 					<div class="row reservation-title">
-						<h4><b>Thông tin đặt phòng - from <span id="spCheckin">...</span> to <span id="spCheckout">...</span></b></h4>
+						<h4>Thông tin đặt phòng - from <span id="spCheckin">...</span> to <span id="spCheckout">...</span></h4>
 					</div>
 					<div class="row" style="border-bottom:1px solid rgb(220,220,220);">
 						<div class="col-md-7">
@@ -258,10 +259,16 @@
 					</div>
 					<label class="label1" style="font-size:120%;"><b>Yêu cầu thêm</b></label>
 					<div class="col-md-12">
-						<div class="row"><textarea rows="3" cols="185" id="notetxt" name="notetxt" placeholder="Vui lòng ghi những thắc nhắc, yêu cầu của quý khách..." maxlength="100"></textarea></div>
+						<div class="row" style="overflow-x: hidden;"><textarea rows="3" cols="185" id="notetxt" name="notetxt" placeholder="Vui lòng ghi những thắc nhắc, yêu cầu của quý khách..." maxlength="100"></textarea></div>
 					</div>
 					<div class="col-md-2 col-md-offset-5" style="margin-top:10px;margin-bottom:10px;">
-						<button class="booking btn-block" value="btnBook" id="btnBook" ><b>Đặt phòng</b></button>
+						<button class="booking btn-block" value="btnBook" id="btnBook" >Đặt phòng</button>
+					</div>
+				</div>
+				<div class="social-bar">
+					<div class="container">
+						<a href="#"><i class="fa fa-2x fa-instagram" aria-hidden="true"></i></a>
+						<a href="https://www.facebook.com/Kh%C3%A1ch-s%E1%BA%A1n-%C3%81nh-D%C6%B0%C6%A1ng-783173898529890/?hc_ref=ARQzOvF4ulUbYyC1fzXI-ioafOl4ovp52nwyddRyCbXKmVeaWW2YLcd1poIsx-1TDUg"><i class="fa fa-2x fa-facebook-square" aria-hidden="true"></i></a>
 					</div>
 				</div>
 		</div>

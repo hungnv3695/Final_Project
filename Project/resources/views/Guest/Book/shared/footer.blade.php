@@ -1,3 +1,9 @@
+<div class="social-bar">
+	<div class="container">
+		<a href="#"><i class="fa fa-2x fa-instagram" aria-hidden="true"></i></a>
+		<a href="https://www.facebook.com/Kh%C3%A1ch-s%E1%BA%A1n-%C3%81nh-D%C6%B0%C6%A1ng-783173898529890/?hc_ref=ARQzOvF4ulUbYyC1fzXI-ioafOl4ovp52nwyddRyCbXKmVeaWW2YLcd1poIsx-1TDUg"><i class="fa fa-2x fa-facebook-square" aria-hidden="true"></i></a>
+	</div>
+</div>
 <footer class="footer-distributed">
 
     <div class="footer-left">

@@ -10,7 +10,7 @@
     }
 	.btnApply, .btnNext
 	{
-		width:80px;
+		width:90px;
 		background: rgb(140, 110, 78);
 		color: #ffffff;
 		height:32px;
@@ -22,35 +22,35 @@
     }
 </style>
 
-<div class="pickroom">
+<div class="pickroom" style="margin-bottom:40px;">
     <div class="container">
         <div class="row">
             <div class="col-md-3">
                 <div class="form-group">
-                    <label for="checkin">Check in date</label>
+                    <label for="checkin">Ngày check-in</label>
                     <input type="text" class="form-control" id="checkin" placeholder="Check in date">
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-group">
-                    <label for="checkout">Check out date</label>
+                    <label for="checkout">Ngày check-out</label>
                     <input type="text" class="form-control" id="checkout" placeholder="Check out date">
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group">
-                    <label for="adult">Adult</label>
+                    <label for="adult">Người lớn</label>
                     <input type="number" class="form-control" id="adult" min="1" value="1">
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group">
-                    <label for="child">Children</label>
+                    <label for="child">Trẻ em</label>
                     <input type="number" class="form-control" id="child" min="0" value="0">
                 </div>
             </div>
             <div class="col-md-2 justify-content-center" style="margin-top:26px;" id="btnApply">
-                <button class="btnApply">Apply</button>
+                <button class="btnApply">Tìm phòng</button>
             </div>
         </div>
         <div class="row" id="Infor">
@@ -61,7 +61,7 @@
         </div>
 		<div class="row">
 			<div class="col-md-2 col-md-offset-10 justify-content-center" style="margin-top:20px;margin-bottom:20px;" id="nextdiv" >
-				<button class="btnNext" id="btnNext">Next</button>
+				<button class="btnNext" id="btnNext">Tiếp theo</button>
 			</div>
         </div>
 
