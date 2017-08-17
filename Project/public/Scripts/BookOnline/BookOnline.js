@@ -16,7 +16,7 @@ $(document).ready(function () {
         onShow:function( ct ){
             this.setOptions({
                 maxDate:jQuery('#checkout').val()?jQuery('#checkout').val():'-1969/10/31',
-                minDate:'-1969/12/25',
+                minDate:'-1969/12/28',
             })
         },
         timepicker:false

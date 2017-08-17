@@ -142,6 +142,11 @@ $(document).ready(function () {
         window.open('/SeparateGroup','_self');
     })
 
+    $(".container").on('keyup',function (e) {
+        if (e.which == 13)
+            $("#btnSearch").focus();
+    })
+
     $.ajaxSetup({
         headers: { 'X-CSRF-Token' : $('meta[name=_token]').attr('content') }
     });

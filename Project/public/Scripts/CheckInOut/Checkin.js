@@ -315,7 +315,7 @@ $(document).ready(function(){
         if(hidden==1){
             window.open('/ReservationList/ReservationDetail?res_id='+res_id, '_self');
         }else if(hidden == 2){
-            window.open('/checkinList', '_self');
+            window.open('/CheckinList', '_self');
         }else{
             window.open('/SeparateGroup', '_self');
         }

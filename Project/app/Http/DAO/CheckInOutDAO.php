@@ -414,7 +414,7 @@ class CheckInOutDAO
         return $result;
     }
 
-    public function saveCheckoutInfor($room_id, $resDetail_id, $user_id, $iList,$totalList){
+    public function saveCheckoutInfor($room_id, $resDetail_id, $user_id, $iList,$totalList,$date_out){
         DB::beginTransaction();
 
         try{
@@ -429,7 +429,8 @@ class CheckInOutDAO
                 ->where('id', $resDetail_id)
                 ->update([
                     'check_in_flag' => 1,
-                    'check_out_flag' => 1
+                    'check_out_flag' => 1,
+                    'date_out' => $date_out
                 ]);
             if($iList != ""){
                 for($i = 0; $i< count($iList); $i++){

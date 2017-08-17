@@ -246,4 +246,9 @@
 </form>
 </body>
 <script src="{{asset('Scripts/CheckInOut/Checkout.js')}}"></script>
+<script type="text/css">
+    .ui-jqgrid-btable {
+        cursor : pointer;
+    }
+</script>
 </html>

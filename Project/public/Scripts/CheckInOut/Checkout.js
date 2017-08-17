@@ -168,7 +168,8 @@ $(document).ready(function () {
 
         ],
         colModel: [
-            { name: 'item0',hidden:true,search : false,  width: 90 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
+
+            { name: 'item0',hidden:true,search : false, width: 90 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
             { name: 'item6',search : false,  width: 90 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
             { name: 'item2',search : false,  width: 90 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
             { name: 'item3',search : false,  width: 90 , align: "left", formatter:'integer', formatoptions:{thousandsSeparator: "."}},
@@ -200,7 +201,7 @@ $(document).ready(function () {
                 else{
                     colSum = (colSum) + parseInt((removeCommas($grid.jqGrid('getCell',i, 'item4'))));
 
-                    $("tr.jqgrow#" +i).css("background", "#FF3333");
+                    $("tr.jqgrow#" +i).css("background", "#FCDAD5");
                 }
 
             }
@@ -214,6 +215,8 @@ $(document).ready(function () {
         }
 
     });
+    // Custom formatter for a cell in a jqgrid row.
+
     function addData(result){
         var jList=[];
         for(var i = 0; i< result.length; i++){
@@ -266,7 +269,7 @@ $(document).ready(function () {
     $("#btnCheckout").click(function (event) {
         event.preventDefault();
         getItemNoPaymentFlag();
-
+        alert($("#txtCheckout").val());
         $.ajax({
             url: 'Checkout/SaveCheckOut',
             method: 'GET',
@@ -279,6 +282,7 @@ $(document).ready(function () {
                 res_id : res_id,
                 iList : iList,
                 totalList: totalList,
+                date_out: $("#txtCheckout").val()
             },
 
             contentType: 'application/json; charset=utf-8',
@@ -332,4 +336,8 @@ $(document).ready(function () {
         jQuery("#jqGrid").trigger("reloadGrid");
         event.preventDefault();
     })
+
+
+
+
 });

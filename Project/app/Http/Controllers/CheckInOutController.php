@@ -280,13 +280,13 @@ class CheckInOutController extends Controller
             $totalList = explode(',', $request->totalList);
         }
 
-        $invoice_id = $request->invoice_id;
+        $date_out = DateTimeUtil::ConvertDateToString($request->date_out);
         $room_id = $request->room_id;
         $resDetail_id = $request->resDetail_id;
         $res_id = $request->res_id;
         $user_id = $request->session()->get('USER_INFO')->user_id;
         $CheckInOutDAO = new CheckInOutDAO();
-        $result = $CheckInOutDAO->saveCheckoutInfor($room_id,$resDetail_id, $user_id, $iList,$totalList);
+        $result = $CheckInOutDAO->saveCheckoutInfor($room_id,$resDetail_id, $user_id, $iList,$totalList,$date_out);
 
         return response($result);
     }
