@@ -267,15 +267,26 @@ class CheckInOutController extends Controller
     }
 
     public function saveCheckOut(Request $request){
+        if($request->iList == ""){
+            $iList = "";
+        }
+        else{
+            $iList = explode(',', $request->iList);
+        }
+        if($request->totalList == ""){
+            $totalList = "";
+        }
+        else{
+            $totalList = explode(',', $request->totalList);
+        }
 
-        $iList = explode(',', $request->iList);
         $invoice_id = $request->invoice_id;
         $room_id = $request->room_id;
         $resDetail_id = $request->resDetail_id;
         $res_id = $request->res_id;
         $user_id = $request->session()->get('USER_INFO')->user_id;
         $CheckInOutDAO = new CheckInOutDAO();
-        $result = $CheckInOutDAO->saveCheckoutInfor($room_id,$resDetail_id, $user_id, $iList);
+        $result = $CheckInOutDAO->saveCheckoutInfor($room_id,$resDetail_id, $user_id, $iList,$totalList);
 
         return response($result);
     }

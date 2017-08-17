@@ -123,11 +123,27 @@
                         <div class="col-md-12" style="margin:0px 0px 10px;border: 2px solid rgb(200,200,200);">
                             <table id="jqGrid" style="border:1px solid gray;"></table>
                         </div>
+
+                        <div class="form-inline" style="margin-left: 170px">
+                            <label class="label1">Chi phí:</label>
+                            <input id="txtPrice" name="txtPrice" type="text" class="form-control input-md" size="6" style="width: 120px">
+                            <b>VNĐ</b>
+                        </div>
+                        <div class="form-inline" style="margin-left: 170px">
+                            <label class="label1">VAT(10%):</label>
+                            <input id="txtVAT" name="txtVAT" type="text" class="form-control input-md" size="6" style="width: 120px">
+                            <b>VNĐ</b>
+                        </div>
+                        <div class="form-inline" style="margin-left: 170px; margin-bottom: 20px">
+                            <label class="label1">Tổng tiền:</label>
+                            <input id="txtTotalPrice" name="txtTotalPrice" type="text" class="form-control input-md" size="6" style="width: 120px">
+                            <b>VNĐ</b>
+                        </div>
                     </div>
                     <div class="col-md-6" style="border-left:1px solid #898989;">
                         <div class="form-inline col-md-offset-1" style="margin-top:20px;">
                             <label class="label1">Số đêm:</label>
-                            <input id="txtNumOfDay" name="txtNumOfDay" type="text" class="form-control input-md" size="18" readonly>
+                            <input id="txtNumOfDay" name="txtNumOfDay" type="number" style="width:100px" class="form-control input-md" size="6" >
                         </div>
                         <div class="form-inline col-md-offset-1" style="margin-top:10px;">
                             <label class="label1">Số người:</label>
@@ -150,6 +166,8 @@
                             <label class="label1" for="">Tổng tiền:</label>
                             <input id="txtTotalprice" name="txtTotalprice" type="text" class="form-control input-md " style=" text-align:right;" size="10" readonly>
                             <label class="control-label" for=""> VNĐ</label>
+                            <button class="btn btn-danger" id="btnCalculate" value="btnCalculate" name="btnCalculate"><b>Tính lại</b></button>
+
                         </div>
 
                         <div class="form-inline col-md-offset-1" style="margin-top:10px;margin-bottom:20px;">
