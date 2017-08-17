@@ -24,7 +24,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/index.css')}}">
     <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-8">
     <meta charset="utf-8" />
-	<title>Reservation list</title>
+	<title>Danh sách đặt phòng</title>
 	<style>
 	body
 	{

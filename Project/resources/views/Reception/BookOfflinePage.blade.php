@@ -83,7 +83,7 @@
 										<button class="btn btn-default" id="btnSearch" value="bntAddRoom" name="bntAddRoom" style="margin-top:20px;"><b>Tìm</b></button>
 
 									</div >
-									<div class="col-md-10" style="margin:20px 30px 30px;border: 2px solid rgb(200,200,200);">
+									<div class="col-md-10" style="margin:20px 30px 51px;border: 2px solid rgb(200,200,200);">
 										<table id="jqGrid" style="border:1px solid gray;"></table>
 									</div>
 								</div>
@@ -123,7 +123,7 @@
 
 								</div>
 
-								<div class="col-md-10 form-inline" style="margin-top:30px;margin-bottom:10px;">
+								<div class="col-md-10 form-inline" style="margin-top:30px;">
 									<label class="label1 col-md-offset-3">Tiền phòng:</label>
 									<input id="txtTotalprice" name="txtTotalprice" style="text-align: right" type="text" class="form-control input-md " size="15" readonly>
 									<b>VNĐ</b>
@@ -138,7 +138,7 @@
 									<input id="txtVAT" name="txtVAT" style="text-align: right" type="text" class="form-control input-md " size="15" readonly>
                                     <b>VNĐ</b>
 								</div>
-								<div class="col-md-10 form-inline" style="margin-top: 10px;margin-bottom: 30px;">
+								<div class="col-md-10 form-inline" style="margin-top: 10px;margin-bottom: 20px;">
 									<label class="label1 col-md-offset-3">Tổng tiền:</label>
 									<input id="txtTotal" name="txtTotal" style="text-align: right" type="text" class="form-control input-md " size="15" readonly>
 									<b>VNĐ</b>
@@ -152,8 +152,8 @@
 			</div>
 			<div class="col-md-12" style="background-color:#c3bfc0;margin-bottom:10px;">
 				<div class="row">
-					<div class="col-md-6 col-md-offset-9" style="margin-top:10px; margin-bottom:10px;">
-						<button class="btn btn-primary col-md-offset-2" id="btnBook" value="btnBook" name="btnSave"><b>Đặt ngay</b></button>
+					<div class="col-md-4 col-md-offset-8" style="margin-top:10px; margin-bottom:10px;">
+						<button class="btn btn-primary col-md-offset-6" id="btnBook" value="btnBook" name="btnSave"><b>Đặt ngay</b></button>
 						<button class="btn btn-danger" id= "btnBack" value="btnBack" name="btnBack"><b>Quay lại</b></button>
 					</div>
 				</div>

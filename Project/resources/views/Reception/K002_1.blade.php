@@ -38,7 +38,7 @@
 <body>
 <div class="container">
     <div class="row">
-            <div class="col-md-8 col-md-offset-2" style="margin-top:7%;background-color:#c3bfc0;border-bottom:1px solid #898989;">
+            <div class="col-md-8 col-md-offset-2" style="margin-top:5%;background-color:#c3bfc0;border-bottom:1px solid #898989;">
 					<div class="row">
 						<div class="col-md-offset-9" style="margin:10px 10px 0px 0px;float:right;">
 							@if(Session::has('USER_INFO'))
@@ -51,7 +51,7 @@
 						</div>
 					</div>
 			</div>
-			<div class="col-md-8 col-md-offset-2" style="background-color:#c3bfc0;">
+			<div class="col-md-8 col-md-offset-2" style="background-color:#c3bfc0;margin-bottom:10px;">
                <div class="row">
 					<div class="col-md-6 form-inline col-md-offset-3" style="border:1px solid #898989;border-radius:10px;margin-top:50px;margin-bottom:50px;">
 						<div class="col-md-10 col-md-offset-1" style="margin-top:20px;"><button type="button" class="btnReceptionist btn-block" value="btnReceiveRoom" name="btnReceiveRoom"  onclick="window.location='{{ url("/CheckInDetail?res_id=") }}'" ><p class="receptionist">Nhận phòng</p></button></div>

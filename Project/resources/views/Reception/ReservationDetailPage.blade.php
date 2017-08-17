@@ -61,7 +61,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-12" style="background-color:#c3bfc0;border-bottom:1px solid #898989;margin-bottom:10px;">
+		<div class="col-md-12" style="background-color:#c3bfc0;margin-bottom:10px;">
 			<div class="row">
 				<!--left-->
 				<div class="col-md-6">
