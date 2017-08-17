@@ -154,7 +154,7 @@
 							<div class="col-sm-3 col-xs-6">
 								<div class="sub-ct-col">
 									<a href="{!! url('/Room') !!}">Phòng ở</a>
-									<a href="{!! url('/Room') !!}"> <img src='{{ asset("/img/tt.jpg ") }}' /> </a>
+									<a href="{!! url('/Room') !!}"> <img src='{{ asset("/img/twins2.jpg ") }}' /> </a>
 								</div>
 							</div>
 							<div class="col-sm-3 col-xs-6 sub-ct-col">
@@ -166,7 +166,7 @@
 							<div class="col-sm-3 col-xs-6 sub-ct-col">
 								<div class="sub-ct-col">
 									<a href="{!! url('/Services') !!}">Dịch vụ</a>
-									<a href="{!! url('/Services') !!}"><img src="{{ asset("/img/View-bien-1.jpg ") }}"/></a>
+									<a href="{!! url('/Services') !!}"><img src="{{ asset("/img/photo2.jpg ") }}"/></a>
 								</div>
 							</div>
 							<div class="col-sm-3 col-xs-6 sub-ct-col">

@@ -58,7 +58,7 @@
             width: 100%;
         }
 		.carousel-inner{
-			height:400px;
+			height:450px;
 		}
 		.page-title{
 			display:inline-block;
@@ -156,7 +156,7 @@
                         </div>
 
                         <div class="item">
-                            <img src="img/bar1.jpg" style="width:100%;">
+                            <img src="img/restaurant-img3.jpg" style="width:100%;">
                         </div>
                     </div>
 
@@ -179,7 +179,7 @@
 			<div class="container-fluid">
 				<div class="col-md-12">
 					<div class="col-md-4 Cuisine-item">
-						<div class="zoom-img"><img src="img/bar2.jpg"></div>
+						<div class="zoom-img"><img src="img/restaurant-img1.jpg"></div>
 					</div>
 					<div class="col-md-8">
 						<h3>Anh Duong Restaurant</h3>
