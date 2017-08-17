@@ -22,7 +22,7 @@
     }
 </style>
 
-<div class="pickroom">
+<div class="pickroom" style="margin-bottom:40px;">
     <div class="container">
         <div class="row">
             <div class="col-md-3">
