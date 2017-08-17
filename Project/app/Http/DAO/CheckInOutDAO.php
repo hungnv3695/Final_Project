@@ -392,11 +392,13 @@ class CheckInOutDAO
         $strSQL .='g.identity_card, ';
         $strSQL .='ro.room_number, ';
         $strSQL .='ro.room_id, ';
+        $strSQL .='rt.price "room_price", ';
         $strSQL .='rt.type_name, ';
         $strSQL .='rt.room_type_id, ';
         $strSQL .= 'i.id "invoice_id",' ;
         $strSQL .= 'id.price, ';
-        $strSQL .='id.amount_total "total_res" ';
+        $strSQL .='id.amount_total "total_res", ';
+        $strSQL .= 'id.payment_flag ';
 
         $strSQL .='from tbl_reservation_detail rd ';
         $strSQL .='left join tbl_reservation r on rd.reservation_id = r.id ';
@@ -412,7 +414,7 @@ class CheckInOutDAO
         return $result;
     }
 
-    public function saveCheckoutInfor($room_id, $resDetail_id, $user_id, $iList){
+    public function saveCheckoutInfor($room_id, $resDetail_id, $user_id, $iList,$totalList){
         DB::beginTransaction();
 
         try{
@@ -429,19 +431,22 @@ class CheckInOutDAO
                     'check_in_flag' => 1,
                     'check_out_flag' => 1
                 ]);
+            if($iList != ""){
+                for($i = 0; $i< count($iList); $i++){
 
-            for($i = 0; $i< count($iList); $i++){
+                    DB::table('tbl_invoice_detail')
+                        ->where('id', $iList[$i])
+                        ->where('room_id', $room_id)
+                        ->update([
+                            'payment_flag' => 1,
+                            'updater_nm' => $user_id,
+                            'update_ymd' => Carbon::now(),
+                            'amount_total' => $totalList[$i]
+                        ]);
 
-                DB::table('tbl_invoice_detail')
-                    ->where('id', $iList[$i])
-                    ->where('room_id', $room_id)
-                    ->update([
-                        'payment_flag' => 1,
-                        'updater_nm' => $user_id,
-                        'update_ymd' => Carbon::now()
-                    ]);
-
+                }
             }
+
 
 
             DB::commit();
@@ -454,18 +459,18 @@ class CheckInOutDAO
     }
 
     function getService($invoice_id, $room_id){
-        $result = DB::table('tbl_invoice_detail')
-            ->join('tbl_room','tbl_invoice_detail.room_id','=','tbl_room.room_id')
-            ->where('tbl_invoice_detail.invoice_id','=',$invoice_id)->where('tbl_invoice_detail.room_id','=',$room_id)->get([
-                'tbl_room.room_number',
-                'tbl_invoice_detail.item_id',
-                'tbl_invoice_detail.quantity',
-                'tbl_invoice_detail.price',
-                'tbl_invoice_detail.payment_flag',
-                'tbl_invoice_detail.invoice_id',
-                'tbl_invoice_detail.id'
-        ]);
-        return  $result->toArray();
+
+        $strSQL = 'select id.id, id.item_id, ';
+        $strSQL .= 'case when id.item_type = \'Room\' then (select room_number from tbl_room where room_id = id.item_id)  ';
+        $strSQL .= 'when id.item_type = \'Service\' then (select name from tbl_service where service_id = id.item_id) ';
+        $strSQL .= 'end  as "item_name", ';
+        $strSQL .= 'id.quantity,id.price,id.payment_flag ';
+        $strSQL .= 'from tbl_invoice_detail id join tbl_room ro on id.room_id = ro.room_id ';
+        $strSQL .= 'where invoice_id =  \'' . $invoice_id . '\' ';
+        $strSQL .= 'and id.room_id = \'' . $room_id . '\' ORDER BY id.payment_flag DESC';
+
+        $result = DB::select(DB::raw($strSQL));
+        return $result;
     }
 
 

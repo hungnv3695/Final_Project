@@ -2,9 +2,12 @@
  * Created by Nguyen Viet Hung on 8/3/2017.
  */
 $(document).ready(function () {
-    //var night = ;
+    var nights = 0;
+    var diffDays = 0;
+    var room_price;
     var iList = "";
     var idList = [];
+    var totalList = "";
     var res_id = GetUrlParameter('res_id');
     var resDetail_id = GetUrlParameter('resDetail_id');
     var invoice_id = GetUrlParameter('invoice_id');
@@ -48,7 +51,7 @@ $(document).ready(function () {
     function removeCommas(nStr)
     {
         nStr+="";
-        nStr = nStr.replace(".","");
+        nStr = nStr.replace(/\./g , "");
         return nStr;
     }
     jQuery('#txtCheckin').datetimepicker({
@@ -88,6 +91,21 @@ $(document).ready(function () {
 
             $("#txtCheckin").datetimepicker({value:result[0].date_in ,  });
             $("#txtCheckout").datetimepicker({value:result[0].date_out ,  });
+
+            var a,b,c;
+
+            if(($("#txtCheckin").val()=="") || ($("#txtCheckout").val()=="")){
+                return;
+            }
+            a = $("#txtCheckin").datetimepicker('getValue').getTime(),
+                b = $("#txtCheckout").datetimepicker('getValue').getTime(),
+                c = 24*60*60*1000,
+                diffDays = Math.round(Math.abs((a - b)/(c)));
+            // d = ('20/10/2017').datetimepicker('getValue').getTime();
+            room_price = result[0].room_price;
+            if(result[0].payment_flag == 1){
+                $("#btnCalculate").attr('disabled','disabled');
+            }
             $("#txtTotalprice").val(addCommas(result[0].price));
 
             $("#roomtype").append($('<option selected></option>').val(result[0].room_type_id).html(result[0].type_name));
@@ -106,18 +124,10 @@ $(document).ready(function () {
             $("#txtNote2").val(result[0].resDetail_note);
 
 
-            var a,b,c;
 
-            if(($("#txtCheckin").val()=="") || ($("#txtCheckout").val()=="")){
-                return;
-            }
-            a = $("#txtCheckin").datetimepicker('getValue').getTime(),
-                b = $("#txtCheckout").datetimepicker('getValue').getTime(),
-                c = 24*60*60*1000,
-                diffDays = Math.round(Math.abs((a - b)/(c)));
-            // d = ('20/10/2017').datetimepicker('getValue').getTime();
             // console.log(d);
             $("#txtNumOfDay").val(diffDays);
+
             loadService(invoice_id,result[0].room_id);
         },
         error: function(){
@@ -153,16 +163,18 @@ $(document).ready(function () {
             'Số lượng',
             'Đơn giá',
             'Thành tiền',
-            'Trạng thái'
+            'Trạng thái',
+            ''
 
         ],
         colModel: [
             { name: 'item0',hidden:true,search : false,  width: 90 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
-            { name: 'item1',search : false,  width: 90 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
+            { name: 'item6',search : false,  width: 90 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
             { name: 'item2',search : false,  width: 90 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
             { name: 'item3',search : false,  width: 90 , align: "left", formatter:'integer', formatoptions:{thousandsSeparator: "."}},
             { name: 'item4',search : false,  width: 90 , align: "left",formatter:'integer', formatoptions:{thousandsSeparator: "."}},
-            { name: 'item5', hidden:true}
+            { name: 'item5', hidden:true},
+            { name: 'item1', hidden:true}
         ],
         rownumbers: true,
         height: 200,
@@ -174,6 +186,10 @@ $(document).ready(function () {
         forceFit: true,
         shrinkToFit: false,
         loadComplete: function () {
+
+            var $grid = $('#jqGrid');
+            var colSum = 0;
+
             var  count=$("#jqGrid").jqGrid('getGridParam', 'records');
             for(var i = 1; i <= count; i++){
                 var flag = $("#jqGrid").jqGrid('getCell', i , 'item5');
@@ -182,10 +198,18 @@ $(document).ready(function () {
                     $("tr.jqgrow#" + i).css("background", "#00CC00");
                 }
                 else{
-                    $("tr.jqgrow#" +i).css("background", "#FF0000");
+                    colSum = (colSum) + parseInt((removeCommas($grid.jqGrid('getCell',i, 'item4'))));
+
+                    $("tr.jqgrow#" +i).css("background", "#FF3333");
                 }
 
             }
+            var VAT = colSum * 10 / 100;
+            var totalprice = colSum + VAT;
+            $("#txtPrice").val(addCommas(colSum));
+            $("#txtVAT").val(addCommas(VAT));
+            $("#txtTotalPrice").val(addCommas(totalprice));
+
 
         }
 
@@ -199,7 +223,8 @@ $(document).ready(function () {
                 item2: result[i].quantity,
                 item3: result[i].price,
                 item4: result[i].price * result[i].quantity ,
-                item5: result[i].payment_flag
+                item5: result[i].payment_flag,
+                item6: result[i].item_name
 
             };
             jList.push(x);
@@ -220,11 +245,16 @@ $(document).ready(function () {
 
             if(flag == 0){
                 var id = $("#jqGrid").jqGrid('getCell', i, 'item0');
+                var total = $("#jqGrid").jqGrid('getCell', i, 'item4');
+                var a = parseInt(removeCommas(total)) * 10 / 100;
+                var b  = parseInt(removeCommas(total)) + a;
                 if(iList==""){
                     iList = id;
+                    totalList = b;
                 }
                 else {
                     iList = iList + "," + id;
+                    totalList = totalList + "," + b;
                 }
 
             }
@@ -232,6 +262,7 @@ $(document).ready(function () {
         }
 
     }
+
     $("#btnCheckout").click(function (event) {
         event.preventDefault();
         getItemNoPaymentFlag();
@@ -246,14 +277,15 @@ $(document).ready(function () {
                 room_id: $("#cboRoomNo").val(),
                 resDetail_id : resDetail_id,
                 res_id : res_id,
-                iList : iList
+                iList : iList,
+                totalList: totalList,
             },
 
             contentType: 'application/json; charset=utf-8',
             success: function (result) {
                 if(result == 1){
                     alert('check-out thành công');
-                    //window.open('/checkoutList','_self')
+                    window.open('/CheckoutList','_self')
                 }
                 else{
                     alert('check-out lỗi');
@@ -268,7 +300,36 @@ $(document).ready(function () {
         event.preventDefault();
     })
 
-    $("#btnBack").click(function () {
-        window.open('/checkoutList','_self');
+    $("#btnBack").click(function (event) {
+        event.preventDefault();
+        window.open('/CheckoutList','_self');
+        event.preventDefault();
+    })
+
+    $("#btnCalculate").click(function (event) {
+        event.preventDefault();
+        nights = $("#txtNumOfDay").val();
+        var newTotal = "";
+        if(nights == 0){
+            $("#txtTotalprice").val(addCommas(room_price));
+            newTotal = $("#txtTotalprice").val();
+        }
+        else if (nights > 0){
+            $("#txtTotalprice").val(addCommas(room_price * nights));
+            newTotal = $("#txtTotalprice").val();
+        }
+
+        var  count=$("#jqGrid").jqGrid('getGridParam', 'records');
+        console.log(removeCommas(newTotal));
+        for(var i=1;i<=count;i++){
+            var room_id = $("#jqGrid").jqGrid('getCell', i, 'item1');
+            if(room_id == $('#cboRoomNo').val()){
+                $("#jqGrid").jqGrid('setCell', i, 'item3', removeCommas(newTotal));
+                $("#jqGrid").jqGrid('setCell', i, 'item4', removeCommas(newTotal));
+            }
+        }
+        jQuery("#jqGrid")[0].refreshIndex();
+        jQuery("#jqGrid").trigger("reloadGrid");
+        event.preventDefault();
     })
 });

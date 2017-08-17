@@ -242,6 +242,7 @@ class ReservationController extends Controller{
 
         try{
             $result = $ReservationDAO->updateSttProcessing($res);
+
             if($result){
 
                 return \response('1');

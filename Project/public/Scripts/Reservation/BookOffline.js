@@ -134,7 +134,7 @@ $(document).ready(function () {
         styleUI : 'Bootstrap',
         colNames:[
             '*',
-            'Số phòng',
+            'Phòng',
             ' ',
             'Kiểu phòng',
             ' '

@@ -313,7 +313,7 @@ $(document).ready(function(){
     $("#btnBack").click(function (event) {
         event.preventDefault();
         if(hidden==1){
-            window.open('/K004_1/K004_2?res_id='+res_id, '_self');
+            window.open('/ReservationList/ReservationDetail?res_id='+res_id, '_self');
         }else if(hidden == 2){
             window.open('/checkinList', '_self');
         }else{

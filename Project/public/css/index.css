@@ -52,8 +52,8 @@
 	margin-top: 70px;
 	background: rgba(255, 255, 255,0.2);
 	border-radius: 10px;
-	width: 230px;
-	height: 100px;
+	width: 220px;
+	height: 90px;
 	padding: 20px;
 }
 .book-container input{
@@ -67,7 +67,7 @@
 	color: #fff;
 	border-radius: 5px;
 	float: right;
-	font-size: 35px;
+	font-size: 26px;
 }
 .btn-infomation{
 	float: none;

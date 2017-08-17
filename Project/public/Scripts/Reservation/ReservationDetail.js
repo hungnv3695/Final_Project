@@ -104,6 +104,7 @@ $(document).ready(function () {
                 },
                 contentType: 'application/json; charset=utf-8',
                 success: function (result) {
+                    //loadStatus(result.status_id);
                 },
                 error: function(){
                     alert('error');
@@ -242,6 +243,19 @@ $(document).ready(function () {
                     }
                 }
                 else if (status==PROCESSING) {
+                    for (i=0; i < result.length; i++){
+                        //add data for status combobox
+
+                        if(result[i].status_id == PROCESSING){
+                            $("#cboStatus").append($('<option selected></option>').val(result[i].status_id).html(result[i].status_name));
+                        }
+                        else {
+                            $("#cboStatus").append($('<option></option>').val(result[i].status_id).html(result[i].status_name));
+                        }
+
+                    }
+                }
+                else {
                     for (i=0; i < result.length; i++){
                         //add data for status combobox
 

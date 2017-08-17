@@ -226,8 +226,8 @@ class ReservationDAO{
         $reservationUpdate->editer = $res->getEditer();
         $reservationUpdate->status_id = $res->getStatusId();
         $reservationUpdate->update_ymd = Carbon::now();
-        $result = $reservationUpdate->saveOrFail();
-
+        $reservationUpdate->saveOrFail();
+        $result = $reservationUpdate->status_id;
         return $result;
 
     }
