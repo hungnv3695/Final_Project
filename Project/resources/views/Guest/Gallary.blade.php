@@ -132,7 +132,7 @@
                         </div>
 
                         <div class="item">
-                            <img src="img/PhotoLib3.jpg" style="width:100%;">
+                            <img src="img/Photo2.jpg" style="width:100%;">
                         </div>
                     </div>
 
