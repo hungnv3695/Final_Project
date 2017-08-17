@@ -81,8 +81,9 @@
 		.booking{
 			background: rgb(140, 110, 78);
 			color: #fff;
-			height:40px;
-			border-radius: 7px;
+			height:35px;
+			font-size:15px;
+			border-radius: 5px;
 			border:none;
 		}
 		.booking:hover{
@@ -123,7 +124,7 @@
 				<h3 align="center" style="color:rgb(140, 110, 78);"><b>Xác nhận đặt phòng</b></h3>
 				<div class="col-md-12">
 					<div class="row reservation-title">
-						<h4><b>Thông tin đặt phòng - from <span id="spCheckin">...</span> to <span id="spCheckout">...</span></b></h4>
+						<h4>Thông tin đặt phòng - from <span id="spCheckin">...</span> to <span id="spCheckout">...</span></h4>
 					</div>
 					<div class="row" style="border-bottom:1px solid rgb(220,220,220);">
 						<div class="col-md-7">
@@ -261,7 +262,7 @@
 						<div class="row"><textarea rows="3" cols="185" id="notetxt" name="notetxt" placeholder="Vui lòng ghi những thắc nhắc, yêu cầu của quý khách..." maxlength="100"></textarea></div>
 					</div>
 					<div class="col-md-2 col-md-offset-5" style="margin-top:10px;margin-bottom:10px;">
-						<button class="booking btn-block" value="btnBook" id="btnBook" ><b>Đặt phòng</b></button>
+						<button class="booking btn-block" value="btnBook" id="btnBook" >Đặt phòng</button>
 					</div>
 				</div>
 		</div>
