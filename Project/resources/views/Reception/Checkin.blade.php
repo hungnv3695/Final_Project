@@ -128,28 +128,28 @@
 				<div class="col-md-6">
 					<div class="form-inline col-md-offset-1" style="margin-top:20px;">
 						<label class="label1">Số đêm:</label>
-						<input id="txtNumOfDay" name="txtNumOfDay" type="text" class="form-control input-md" size="20" readonly>
+						<input id="txtNumOfDay" name="txtNumOfDay" type="text" class="form-control input-md" size="6" readonly>
 					</div>
 					<div class="form-inline col-md-offset-1" style="margin-top:15px;">
 						<label class="label1">Số người:</label>
-						<input id="numofpeople" name="numofpeople" type="number"  class="form-control input-md" min="1" style="width:195px;" >
+						<input id="numofpeople" name="numofpeople" type="number"  class="form-control input-md" min="1" style="width:70px;" >
 					</div>
 					<div class="form-inline col-md-offset-1" style="margin-top:15px;">
 						<label class="label1" for="">Kiểu phòng: </label>
-						<select id="roomtype" name="roomtype" class="form-control input-md" style="width:195px;" readonly>
+						<select id="roomtype" name="roomtype" class="form-control input-md" style="width:180px;" readonly>
 
 						</select>
 					</div>
 					<div class="form-inline col-md-offset-1" style="margin-top:15px;">
 						<label class="label1" for="">Tên phòng: </label>
-						<select id="cboRoomNo" name="cboRoomNo" class="form-control input-md" style="width:120px;" readonly>
+						<select id="cboRoomNo" name="cboRoomNo" class="form-control input-md" style="width:90px;" readonly>
 
 						</select>
 					</div>
 
 					<div class="form-inline col-md-offset-1" style="margin-top: 15px;">
 						<label class="label1" for="">Tổng tiền:</label>
-						<input id="txtTotalprice" name="txtTotalprice" type="text" class="form-control input-md " style=" text-align:right;" size="15" readonly>
+						<input id="txtTotalprice" name="txtTotalprice" type="text" class="form-control input-md " style=" text-align:right;" size="10" readonly>
 						<label class="control-label" for=""> VNĐ</label>
 					</div>
 					<div class="form-inline col-md-offset-1" style="margin-top:15px;margin-bottom:20px;">
@@ -217,7 +217,7 @@
 		</div>
 		<div class="col-md-10 col-md-offset-1" style="background-color:#c3bfc0;margin-bottom:10px;">
 			<div class="row">
-				<div class="col-md-6 col-md-offset-8" style="margin-top:10px; margin-bottom:10px;">
+				<div class="col-md-5 col-md-offset-8" style="margin-top:10px; margin-bottom:10px;">
 					<button class="btn btn-success col-md-offset-1" id="btnSave" value="btnSave" name="btnSave"><b>Lưu</b></button>
 					<button class="btn btn-primary" id="btnCheckin" value="btnCheckin" name="btnSave"><b>Nhận phòng</b></button>
 					<button class="btn btn-danger" id="btnBack" value="bntCancel" name="bntCancel"><b>Quay lại</b></button>

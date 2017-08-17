@@ -77,13 +77,13 @@
 								<div class="form-inline" style="margin-top:10px;margin-bottom:20px;">
 									<label class="label1">Số người:</label>
 									<input id="txtNumpeople" name="txtNumpeople" type="number" min="1" value="1" class="form-control input-md" size="5" style="width: 100px;">
-									<label class="label1">Số phòng:</label>
+									<label class="label1">Tên phòng:</label>
 									<input id="txtNumroom" name="txtNumroom" type="number" min="1" value="1" class="form-control input-md" size="5" style="width: 100px;">
 									<div class="col-md-10 col-md-offset-4">
-										<button class="btn btn-default" id="btnSearch" value="bntAddRoom" name="bntAddRoom" style="margin-top:20px;"><b>Tìm</b></button>
+										<button class="btn btn-default" id="btnSearch" value="bntAddRoom" name="bntAddRoom" style="margin-top:20px;"><b>Tìm phòng</b></button>
 
 									</div >
-									<div class="col-md-10" style="margin:20px 30px 30px;border: 2px solid rgb(200,200,200);">
+									<div class="col-md-10" style="margin:20px 30px 51px;border: 2px solid rgb(200,200,200);">
 										<table id="jqGrid" style="border:1px solid gray;"></table>
 									</div>
 								</div>
@@ -97,21 +97,21 @@
 							<div class="row">
 								<div class="form-inline" style="margin-top:20px;">
 									<label class="label1">Họ tên:</label>
-									<input id="txtFullname" name="txtFullname" type="text" class="form-control input-md" size="15" maxlength="50">
+									<input id="txtFullname" name="txtFullname" type="text" class="form-control input-md" size="20" maxlength="50">
 									<label class="label1">Email:</label>
-									<input id="txtEmail" name="txtEmail" type="text" class="form-control input-md" size="15" maxlength="50">
+									<input id="txtEmail" name="txtEmail" type="text" class="form-control input-md" size="20" maxlength="50">
 								</div>
 								<div class="form-inline" style="margin-top:10px;">
 									<label class="label1">CMND:</label>
-									<input id="txtCmt" name="txtCmt" type="text" class="form-control input-md" size="15" maxlength="12">
+									<input id="txtCmt" name="txtCmt" type="text" class="form-control input-md" size="20" maxlength="12">
 									<label class="label1">Địa chỉ:</label>
-									<input id="txtAddress" name="txtAddress" type="text" class="form-control input-md" size="15" maxlength="100">
+									<input id="txtAddress" name="txtAddress" type="text" class="form-control input-md" size="20" maxlength="100">
 								</div>
 								<div class="form-inline" style="margin-top:10px;margin-bottom:25px;">
 									<label class="label1">Điện thoại:</label>
-									<input id="txtPhone" name="txtPhone" type="text" class="form-control input-md" size="15" maxlength="20">
+									<input id="txtPhone" name="txtPhone" type="text" class="form-control input-md" size="20" maxlength="20">
 									<label class="label1">Công ty:</label>
-									<input id="txtCompany" name="txtCompany" type="text" class="form-control input-md" size="15" maxlength="50">
+									<input id="txtCompany" name="txtCompany" type="text" class="form-control input-md" size="20" maxlength="50">
 								</div>
 							</div>
 						</div>
@@ -123,7 +123,7 @@
 
 								</div>
 
-								<div class="col-md-10 form-inline" style="margin-top:30px;margin-bottom:10px;">
+								<div class="col-md-10 form-inline" style="margin-top:30px;">
 									<label class="label1 col-md-offset-3">Tiền phòng:</label>
 									<input id="txtTotalprice" name="txtTotalprice" style="text-align: right" type="text" class="form-control input-md " size="15" readonly>
 									<b>VNĐ</b>
@@ -138,7 +138,7 @@
 									<input id="txtVAT" name="txtVAT" style="text-align: right" type="text" class="form-control input-md " size="15" readonly>
                                     <b>VNĐ</b>
 								</div>
-								<div class="col-md-10 form-inline" style="margin-top: 10px;margin-bottom: 30px;">
+								<div class="col-md-10 form-inline" style="margin-top: 10px;margin-bottom: 20px;">
 									<label class="label1 col-md-offset-3">Tổng tiền:</label>
 									<input id="txtTotal" name="txtTotal" style="text-align: right" type="text" class="form-control input-md " size="15" readonly>
 									<b>VNĐ</b>
@@ -152,8 +152,8 @@
 			</div>
 			<div class="col-md-12" style="background-color:#c3bfc0;margin-bottom:10px;">
 				<div class="row">
-					<div class="col-md-6 col-md-offset-9" style="margin-top:10px; margin-bottom:10px;">
-						<button class="btn btn-primary col-md-offset-2" id="btnBook" value="btnBook" name="btnSave"><b>Đặt ngay</b></button>
+					<div class="col-md-4 col-md-offset-8" style="margin-top:10px; margin-bottom:10px;">
+						<button class="btn btn-primary col-md-offset-6" id="btnBook" value="btnBook" name="btnSave"><b>Đặt ngay</b></button>
 						<button class="btn btn-danger" id= "btnBack" value="btnBack" name="btnBack"><b>Quay lại</b></button>
 					</div>
 				</div>
