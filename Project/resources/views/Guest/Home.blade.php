@@ -78,7 +78,7 @@
 					</nav>
 					<div class="row">
 						<div class="col-sm-4 col-sm-offset-8 book-container">
-							<button  type="button" class="btn" id="btn-book" onclick="window.location='{{ url("/book") }}'" >Book Now</button>
+							<button  type="button" class="btn" id="btn-book" onclick="window.location='{{ url("/book") }}'" >ĐẶT PHÒNG</button>
 						</div>
 					</div>
 			</div>
