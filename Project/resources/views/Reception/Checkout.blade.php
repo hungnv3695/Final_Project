@@ -156,7 +156,7 @@
                             </select>
                         </div>
                         <div class="form-inline col-md-offset-1" style="margin-top:15px;">
-                            <label class="label1" for="">Số phòng: </label>
+                            <label class="label1" for="">Tên phòng: </label>
                             <select id="cboRoomNo" name="cboRoomNo" class="form-control input-md" style="width:90px;" readonly>
 
                             </select>

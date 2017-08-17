@@ -94,7 +94,7 @@
                     <table class="table table-bordered">
                         <thead>
                         <tr>
-                            <th>STT</th>
+                            <th></th>
                             <th>Số phòng</th>
                             <th>Người ở</th>
                             <th>CMND</th>
