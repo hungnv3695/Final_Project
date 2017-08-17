@@ -8,7 +8,7 @@
 Cảm ơn quý khách hàng đã sử dụng dịch vụ của khách sạn Ánh Dương. <br>
 Chúng tôi xin trân trọng thông báo tới quý khách hàng thông tin chi tiết về đơn đặt phòng của quý khách. <br>
 
-Mã đăng ký:  **RS01**<br>
+Mã đăng ký:     **RS01**<br>
 Người đăng ký: Đặng Công Sơn <br>
 CMT: 163299229 <br>
 Ngày nhận phòng:2017/07/07 (Thứ Năm)  <br>
