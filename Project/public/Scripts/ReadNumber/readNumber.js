@@ -52,7 +52,9 @@ function dochangtrieu(so,daydu) {
 }
 
 function readNumber(so) {
-
+    if (so.toString() == ''){
+        document.getElementById('charMoney').innerHTML = "";
+    }
     if (so==0) return mangso[0];
     var chuoi = "", hauto = "";
     do {
@@ -64,8 +66,8 @@ function readNumber(so) {
             chuoi = dochangtrieu(ty,false) + hauto + chuoi;
         } hauto = " tỷ";
     } while (so>0);
-
-    document.getElementById('charMoney').innerHTML = "( " + chuoi + " )";
+    var chu = chuoi.substr(1,1).toUpperCase() + chuoi.substr(2,chuoi.length -1) ;
+    document.getElementById('charMoney').innerHTML = "( " + chu + " )";
 }
 
 function formatCurency(so,flag) {

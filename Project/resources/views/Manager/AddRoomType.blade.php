@@ -135,7 +135,7 @@
 
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">Giá: </label>
-								<input id="txtPrice" name="txtPrice" type="text" class="form-control input-md" min="0" value="0"  oninput="formatCurency(this,1); " oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required >
+								<input id="txtPrice" name="txtPrice" type="text" maxlength="13" class="form-control input-md" min="0" value="0"  oninput="formatCurency(this,1); " oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required >
 								<label class="control-label" for="">(VND)</label>
 							</div>
 
@@ -178,7 +178,7 @@
 									<td class="col1" style="line-height:34px;">1</td>
 									<td class="col2"> <input id="txtNameAcc1" name="txtNameAcc" type="text" class="form-control input-md" maxlength="20"  oninvalid="InvalidMsg(this);" required ></td>
 									<td class="col3"> <input id="txtQuanlityAcc1" name="txtquantityAcc" type="number" value="1" class="form-control input-md"  min="1" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required  ></td>
-									<td class="col4"> <input id="txtPriceAcc1" name="txtPriceAcc" type="text" value="0" class="form-control input-md"  min="0" oninput="formatCurency(this,0); " oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required  ></td>
+									<td class="col4"> <input id="txtPriceAcc1" name="txtPriceAcc" type="text" value="0" maxlength="13" class="form-control input-md"  min="0" oninput="formatCurency(this,0); " oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required  ></td>
 									<td class="col5"><label class="label2">(VND)</label></td>
 								</tr>
 								</tbody>

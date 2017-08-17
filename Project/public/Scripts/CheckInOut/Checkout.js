@@ -3,29 +3,12 @@
  */
 $(document).ready(function () {
     //var night = ;
-
+    var iList = "";
+    var idList = [];
     var res_id = GetUrlParameter('res_id');
     var resDetail_id = GetUrlParameter('resDetail_id');
     var invoice_id = GetUrlParameter('invoice_id');
-    function addData(result){
-        var jList=[];
-        for(var i = 0; i< result.length; i++){
-            var x ={
-                item1: result[i].item_id,
-                item2: result[i].quantity,
-                item3: result[i].price,
-                item4: result[i].price * result[i].quantity ,
 
-
-
-            };
-            jList.push(x);
-        }
-        console.log(jList);
-        jQuery("#jqGrid").setGridParam({data: jList });
-        jQuery("#jqGrid")[0].refreshIndex();
-        jQuery("#jqGrid").trigger("reloadGrid");
-    }
     function loadService(invoice_id,room_id){
         $.ajax({
             url: 'Checkout/LoadService',
@@ -40,6 +23,7 @@ $(document).ready(function () {
             contentType: 'application/json; charset=utf-8',
             success: function (result) {
                 addData(result);
+
             },
             error: function(){
                 alert('error');
@@ -104,7 +88,7 @@ $(document).ready(function () {
 
             $("#txtCheckin").datetimepicker({value:result[0].date_in ,  });
             $("#txtCheckout").datetimepicker({value:result[0].date_out ,  });
-            $("#txtTotalprice").val(addCommas(result[0].total_res));
+            $("#txtTotalprice").val(addCommas(result[0].price));
 
             $("#roomtype").append($('<option selected></option>').val(result[0].room_type_id).html(result[0].type_name));
             $("#cboRoomNo").append($('<option selected></option>').val(result[0].room_id).html(result[0].room_number));
@@ -164,7 +148,7 @@ $(document).ready(function () {
 
         styleUI : 'Bootstrap',
         colNames:[
-            ' ',
+            'ddd ',
             'Dịch vụ',
             'Số lượng',
             'Đơn giá',
@@ -173,12 +157,12 @@ $(document).ready(function () {
 
         ],
         colModel: [
-            { name: 'item0',hidden:true},
+            { name: 'item0',hidden:true,search : false,  width: 90 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
             { name: 'item1',search : false,  width: 90 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
             { name: 'item2',search : false,  width: 90 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
-            { name: 'item3',search : false,  width: 90 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
-            { name: 'item4',search : false,  width: 90 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
-            { name: 'item5',hidden:true}
+            { name: 'item3',search : false,  width: 90 , align: "left", formatter:'integer', formatoptions:{thousandsSeparator: "."}},
+            { name: 'item4',search : false,  width: 90 , align: "left",formatter:'integer', formatoptions:{thousandsSeparator: "."}},
+            { name: 'item5', hidden:true}
         ],
         rownumbers: true,
         height: 200,
@@ -188,29 +172,88 @@ $(document).ready(function () {
         loadonce: true,
         resizable: true,
         forceFit: true,
-        shrinkToFit: false
+        shrinkToFit: false,
+        loadComplete: function () {
+            var  count=$("#jqGrid").jqGrid('getGridParam', 'records');
+            for(var i = 1; i <= count; i++){
+                var flag = $("#jqGrid").jqGrid('getCell', i , 'item5');
+
+                if(flag == 1){
+                    $("tr.jqgrow#" + i).css("background", "#00CC00");
+                }
+                else{
+                    $("tr.jqgrow#" +i).css("background", "#FF0000");
+                }
+
+            }
+
+        }
 
     });
+    function addData(result){
+        var jList=[];
+        for(var i = 0; i< result.length; i++){
+            var x ={
+                item0: result[i].id,
+                item1: result[i].item_id,
+                item2: result[i].quantity,
+                item3: result[i].price,
+                item4: result[i].price * result[i].quantity ,
+                item5: result[i].payment_flag
 
-    
+            };
+            jList.push(x);
+        }
+        console.log(jList);
+        jQuery("#jqGrid").setGridParam({data: jList });
+        jQuery("#jqGrid")[0].refreshIndex();
+        jQuery("#jqGrid").trigger("reloadGrid");
+    }
+    function getItemNoPaymentFlag() {
+        var  count=$("#jqGrid").jqGrid('getGridParam', 'records');
+        idList = [];
+        iList = "";
+        var pList = "";
+        var total = "";
+        for(var i = 1; i <= count; i++){
+            var flag = $("#jqGrid").jqGrid('getCell', i , 'item5');
+
+            if(flag == 0){
+                var id = $("#jqGrid").jqGrid('getCell', i, 'item0');
+                if(iList==""){
+                    iList = id;
+                }
+                else {
+                    iList = iList + "," + id;
+                }
+
+            }
+
+        }
+
+    }
     $("#btnCheckout").click(function (event) {
         event.preventDefault();
+        getItemNoPaymentFlag();
+
         $.ajax({
             url: 'Checkout/SaveCheckOut',
             method: 'GET',
             cache: false,
             dataType: 'json',
             data:{
+                invoice_id : invoice_id,
                 room_id: $("#cboRoomNo").val(),
                 resDetail_id : resDetail_id,
-                res_id : res_id
+                res_id : res_id,
+                iList : iList
             },
 
             contentType: 'application/json; charset=utf-8',
             success: function (result) {
                 if(result == 1){
                     alert('check-out thành công');
-                    window.open('/checkoutList','_self')
+                    //window.open('/checkoutList','_self')
                 }
                 else{
                     alert('check-out lỗi');

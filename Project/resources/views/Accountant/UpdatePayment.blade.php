@@ -79,7 +79,7 @@
 								</div>
 								<div class="form-inline col-md-offset-1" style="margin-top:20px;">
 									<label class="label1">Số tiền đã nhận:</label>
-									<input id="txtMoneyReceived" name="txtMoneyReceived" oninput="formatCurency(this,1); " type="text" class="form-control input-md" size="20">
+									<input id="txtMoneyReceived" name="txtMoneyReceived" maxlength="13" oninput="formatCurency(this,1); " type="text" class="form-control input-md" size="20">
 									<label class="control-label">(VNĐ)</label>
 								</div>
 								<label class="control-label" for="" id="charMoney"></label>

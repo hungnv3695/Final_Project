@@ -159,7 +159,7 @@
 
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">Giá: </label>
-								<input id="txtPrice" name="txtPrice" type="text" class="form-control input-md" default="0" min="0" oninput="formatCurency(this,1); "  oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required >
+								<input id="txtPrice" name="txtPrice" type="text" maxlength="13" class="form-control input-md" default="0" min="0" oninput="formatCurency(this,1); "  oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required >
 								<label class="control-label" for="">(VND)</label>
 							</div>
 							<div class="form-inline" style="margin-top:10px;">
@@ -205,7 +205,7 @@
 											<td class="col1" style="line-height:34px;">{!! $i !!}</td>
 											<td class="col2"> <input id="txtNameAcc1" name="{!! "txtNameAcc" . $str !!}"   type="text" class="form-control input-md" maxlength="20"  value=" {!!array_get($data,'accessory_name')!!}"  oninvalid="InvalidMsg(this);" required ></td>
 											<td class="col3"> <input id="txtQuanlityAcc1" name="{!! "txtquantityAcc" . $str !!}" type="number" class="form-control input-md" value="{!!(int)array_get($data,'quantity') !!}" min="1" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required ></td>
-											<td class="col4"> <input id="{!! "txtPriceAcc".$i!!}" name="{!! "txtPriceAcc" . $str !!}" type="text" class="form-control input-md" value=" {!!  (int)array_get($data,'price') !!}" min="0" oninput="formatCurency(this,0); " oninvalid="InvalidMsg(this);"  required  ></td>
+											<td class="col4"> <input id="{!! "txtPriceAcc".$i!!}" name="{!! "txtPriceAcc" . $str !!}" type="text" maxlength="13" class="form-control input-md" value=" {!!  (int)array_get($data,'price') !!}" min="0" oninput="formatCurency(this,0); " oninvalid="InvalidMsg(this);"  required  ></td>
 											<td class="col5"><label class="label2">(VND)</label></td>
 										</tr>
 										<?php $i++?>
