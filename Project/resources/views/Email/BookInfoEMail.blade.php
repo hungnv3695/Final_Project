@@ -11,7 +11,7 @@ Chúng tôi xin trân trọng thông báo tới quý khách hàng thông tin chi
 Mã đăng ký:  **RS01**<br>
 Người đăng ký: Đặng Công Sơn <br>
 CMT: 163299229 <br>
-Ngày nhận phòng:2017/07/07 (Thứ Năm) <br>
+Ngày nhận phòng:2017/07/07 (Thứ Năm)  <br>
 Ngày trả phòng:2017/07/10 (Chủ Nhật) <br>
 Số đêm: 3 <br>
 Số lượng người: 2 <br>
