@@ -14,15 +14,16 @@ INSERT INTO tbl_room_type( room_type_id,type_name,description,price) VALUES('RT0
 INSERT INTO tbl_room_type( room_type_id,type_name,description,price) VALUES('RT04','Extra','Phòng có 2 giường đôi Queen size','400000');
 
 
-INSERT INTO tbl_status( status_id,status_type,status_name,description) VALUES('RS01','RS','New','');
-INSERT INTO tbl_status( status_id,status_type,status_name,description) VALUES('RS02','RS','Processing','');
-INSERT INTO tbl_status( status_id,status_type,status_name,description) VALUES('RS03','RS','Processed','');
-INSERT INTO tbl_status( status_id,status_type,status_name,description) VALUES('RS04','RS','Cancelled','');
-INSERT INTO tbl_status( status_id,status_type,status_name,description) VALUES('RS05','RS','Finish','');
-INSERT INTO tbl_status( status_id,status_type,status_name,description) VALUES('RO01','RO','Not in use','');
-INSERT INTO tbl_status( status_id,status_type,status_name,description) VALUES('RO02','RO','In use','');
-INSERT INTO tbl_status( status_id,status_type,status_name,description) VALUES('RO03','RO','Cleaning','');
-INSERT INTO tbl_status( status_id,status_type,status_name,description) VALUES('RO04','RO','Fixing','');
+INSERT INTO tbl_status( status_id,status_type,status_name,description) VALUES('RS01','RS','Chưa xử lý','');
+INSERT INTO tbl_status( status_id,status_type,status_name,description) VALUES('RS02','RS','Đang xử lý','');
+INSERT INTO tbl_status( status_id,status_type,status_name,description) VALUES('RS03','RS','Đã xử lý','');
+INSERT INTO tbl_status( status_id,status_type,status_name,description) VALUES('RS04','RS','Hủy bỏ','');
+INSERT INTO tbl_status( status_id,status_type,status_name,description) VALUES('RS05','RS','Kết thúc','');
+INSERT INTO tbl_status( status_id,status_type,status_name,description) VALUES('RO01','RO','Phòng trống','');
+INSERT INTO tbl_status( status_id,status_type,status_name,description) VALUES('RO02','RO','Đang sử dụng','');
+INSERT INTO tbl_status( status_id,status_type,status_name,description) VALUES('RO03','RO','Đạng dọn','');
+INSERT INTO tbl_status( status_id,status_type,status_name,description) VALUES('RO04','RO','Sửa chữa','');
+
 
 INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO001','RT01','1','RO01','P101');
 INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO002','RT01','1','RO01','P102');
@@ -89,24 +90,24 @@ INSERT INTO tbl_reservation_detail( reservation_id,room_id,date_in,date_out,cust
 INSERT INTO tbl_reservation_detail( reservation_id,room_id,date_in,date_out,customer_name,customer_identity_card,customer_phone,customer_email,note,check_in_flag,check_out_flag,update_ymd,create_ymd) VALUES('7','RO004','20170913','20170918','','','','','','0','0','2017/08/12','2017/08/12');
 
 
-INSERT INTO tbl_invoice( payment_type_id,reservation_id,guest_id,tax_code,amount_total,payment_flag,update_ymd,updater_nm,create_ymd,creater_nm) VALUES('','1','1','','440000','1','','','','');
-INSERT INTO tbl_invoice( payment_type_id,reservation_id,guest_id,tax_code,amount_total,payment_flag,update_ymd,updater_nm,create_ymd,creater_nm) VALUES('','2','2','','880000','1','','','','');
-INSERT INTO tbl_invoice( payment_type_id,reservation_id,guest_id,tax_code,amount_total,payment_flag,update_ymd,updater_nm,create_ymd,creater_nm) VALUES('','3','3','','1320000','1','','','','');
-INSERT INTO tbl_invoice( payment_type_id,reservation_id,guest_id,tax_code,amount_total,payment_flag,update_ymd,updater_nm,create_ymd,creater_nm) VALUES('','4','4','','880000','1','','','','');
-INSERT INTO tbl_invoice( payment_type_id,reservation_id,guest_id,tax_code,amount_total,payment_flag,update_ymd,updater_nm,create_ymd,creater_nm) VALUES('','5','5','','330000','1','','','','');
-INSERT INTO tbl_invoice( payment_type_id,reservation_id,guest_id,tax_code,amount_total,payment_flag,update_ymd,updater_nm,create_ymd,creater_nm) VALUES('','6','6','','440000','1','','','','');
-INSERT INTO tbl_invoice( payment_type_id,reservation_id,guest_id,tax_code,amount_total,payment_flag,update_ymd,updater_nm,create_ymd,creater_nm) VALUES('','7','7','','550000','1','','','','');
+INSERT INTO tbl_invoice( id,payment_type_id,reservation_id,guest_id,tax_code,amount_total,payment_flag,update_ymd,updater_nm,create_ymd,creater_nm) VALUES('1','1','1','1','','440000','1','2017/08/13','','2017/08/13','');
+INSERT INTO tbl_invoice( id,payment_type_id,reservation_id,guest_id,tax_code,amount_total,payment_flag,update_ymd,updater_nm,create_ymd,creater_nm) VALUES('2','1','2','2','','880000','1','2017/08/14','','2017/08/14','');
+INSERT INTO tbl_invoice( id,payment_type_id,reservation_id,guest_id,tax_code,amount_total,payment_flag,update_ymd,updater_nm,create_ymd,creater_nm) VALUES('3','1','3','3','','1320000','1','2017/08/15','','2017/08/15','');
+INSERT INTO tbl_invoice( id,payment_type_id,reservation_id,guest_id,tax_code,amount_total,payment_flag,update_ymd,updater_nm,create_ymd,creater_nm) VALUES('4','1','4','4','','880000','1','2017/08/16','','2017/08/16','');
+INSERT INTO tbl_invoice( id,payment_type_id,reservation_id,guest_id,tax_code,amount_total,payment_flag,update_ymd,updater_nm,create_ymd,creater_nm) VALUES('5','1','5','5','','330000','1','2017/08/17','','2017/08/17','');
+INSERT INTO tbl_invoice( id,payment_type_id,reservation_id,guest_id,tax_code,amount_total,payment_flag,update_ymd,updater_nm,create_ymd,creater_nm) VALUES('6','1','6','6','','440000','1','2017/08/18','','2017/08/18','');
+INSERT INTO tbl_invoice( id,payment_type_id,reservation_id,guest_id,tax_code,amount_total,payment_flag,update_ymd,updater_nm,create_ymd,creater_nm) VALUES('7','1','7','7','','550000','1','2017/08/19','','2017/08/19','');
 
 
-INSERT INTO tbl_invoice_detail( invoice_id,item_id,item_type,quantity,price,description,amount_total,update_ymd,create_ymd) VALUES('1','RO001','Room','1','400000','','400000','','');
-INSERT INTO tbl_invoice_detail( invoice_id,item_id,item_type,quantity,price,description,amount_total,update_ymd,create_ymd) VALUES('2','RO002','Room','1','400000','','400000','','');
-INSERT INTO tbl_invoice_detail( invoice_id,item_id,item_type,quantity,price,description,amount_total,update_ymd,create_ymd) VALUES('2','RO003','Room','1','400000','','400000','','');
-INSERT INTO tbl_invoice_detail( invoice_id,item_id,item_type,quantity,price,description,amount_total,update_ymd,create_ymd) VALUES('3','RO001','Room','1','400000','','400000','','');
-INSERT INTO tbl_invoice_detail( invoice_id,item_id,item_type,quantity,price,description,amount_total,update_ymd,create_ymd) VALUES('3','RO002','Room','1','400000','','400000','','');
-INSERT INTO tbl_invoice_detail( invoice_id,item_id,item_type,quantity,price,description,amount_total,update_ymd,create_ymd) VALUES('3','RO003','Room','1','400000','','400000','','');
-INSERT INTO tbl_invoice_detail( invoice_id,item_id,item_type,quantity,price,description,amount_total,update_ymd,create_ymd) VALUES('4','RO004','Room','1','400000','','400000','','');
-INSERT INTO tbl_invoice_detail( invoice_id,item_id,item_type,quantity,price,description,amount_total,update_ymd,create_ymd) VALUES('4','RO005','Room','1','400000','','400000','','');
-INSERT INTO tbl_invoice_detail( invoice_id,item_id,item_type,quantity,price,description,amount_total,update_ymd,create_ymd) VALUES('5','RO001','Room','1','300000','','300000','','');
-INSERT INTO tbl_invoice_detail( invoice_id,item_id,item_type,quantity,price,description,amount_total,update_ymd,create_ymd) VALUES('6','RO002','Room','1','200000','','200000','','');
-INSERT INTO tbl_invoice_detail( invoice_id,item_id,item_type,quantity,price,description,amount_total,update_ymd,create_ymd) VALUES('6','RO003','Room','1','200000','','200000','','');
-INSERT INTO tbl_invoice_detail( invoice_id,item_id,item_type,quantity,price,description,amount_total,update_ymd,create_ymd) VALUES('7','RO004','Room','1','500000','','500000','','');
+INSERT INTO tbl_invoice_detail( invoice_id,item_id,item_type,quantity,price,description,amount_total,update_ymd,create_ymd) VALUES('1','RO001','Room','1','400000','','400000','2017/08/13','2017/08/13');
+INSERT INTO tbl_invoice_detail( invoice_id,item_id,item_type,quantity,price,description,amount_total,update_ymd,create_ymd) VALUES('2','RO002','Room','1','400000','','400000','2017/08/13','2017/08/13');
+INSERT INTO tbl_invoice_detail( invoice_id,item_id,item_type,quantity,price,description,amount_total,update_ymd,create_ymd) VALUES('2','RO003','Room','1','400000','','400000','2017/08/13','2017/08/13');
+INSERT INTO tbl_invoice_detail( invoice_id,item_id,item_type,quantity,price,description,amount_total,update_ymd,create_ymd) VALUES('3','RO001','Room','1','400000','','400000','2017/08/13','2017/08/13');
+INSERT INTO tbl_invoice_detail( invoice_id,item_id,item_type,quantity,price,description,amount_total,update_ymd,create_ymd) VALUES('3','RO002','Room','1','400000','','400000','2017/08/13','2017/08/13');
+INSERT INTO tbl_invoice_detail( invoice_id,item_id,item_type,quantity,price,description,amount_total,update_ymd,create_ymd) VALUES('3','RO003','Room','1','400000','','400000','2017/08/13','2017/08/13');
+INSERT INTO tbl_invoice_detail( invoice_id,item_id,item_type,quantity,price,description,amount_total,update_ymd,create_ymd) VALUES('4','RO004','Room','1','400000','','400000','2017/08/13','2017/08/13');
+INSERT INTO tbl_invoice_detail( invoice_id,item_id,item_type,quantity,price,description,amount_total,update_ymd,create_ymd) VALUES('4','RO005','Room','1','400000','','400000','2017/08/13','2017/08/13');
+INSERT INTO tbl_invoice_detail( invoice_id,item_id,item_type,quantity,price,description,amount_total,update_ymd,create_ymd) VALUES('5','RO001','Room','1','300000','','300000','2017/08/13','2017/08/13');
+INSERT INTO tbl_invoice_detail( invoice_id,item_id,item_type,quantity,price,description,amount_total,update_ymd,create_ymd) VALUES('6','RO002','Room','1','200000','','200000','2017/08/13','2017/08/13');
+INSERT INTO tbl_invoice_detail( invoice_id,item_id,item_type,quantity,price,description,amount_total,update_ymd,create_ymd) VALUES('6','RO003','Room','1','200000','','200000','2017/08/13','2017/08/13');
+INSERT INTO tbl_invoice_detail( invoice_id,item_id,item_type,quantity,price,description,amount_total,update_ymd,create_ymd) VALUES('7','RO004','Room','1','500000','','500000','2017/08/13','2017/08/13');
