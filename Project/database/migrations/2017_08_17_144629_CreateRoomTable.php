@@ -21,8 +21,8 @@ class CreateRoomTable extends Migration
             $table->string('room_number',5)->nullable();
             $table->string('note',100)->nullable();
 
-            $table->timestamp('create_ymd');
-            $table->timestamp('update_ymd');
+            $table->timestamp('create_ymd')->nullable();
+            $table->timestamp('update_ymd')->nullable();
             $table->primary('room_id');
             $table->foreign('room_type_id')->references('room_type_id')->on('tbl_room_type')->onDelete('cascade');
             $table->foreign('status_id')->references('status_id')->on('tbl_status')->onDelete('cascade');

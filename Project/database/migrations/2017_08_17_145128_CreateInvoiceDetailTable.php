@@ -26,8 +26,8 @@ class CreateInvoiceDetailTable extends Migration
             $table->string('creater_nm',50)->nullable();
             $table->string('updater_nm',50)->nullable();
 
-            $table->timestamp('create_ymd');
-            $table->timestamp('update_ymd');
+            $table->timestamp('create_ymd')->nullable();
+            $table->timestamp('update_ymd')->nullable();
 
             $table->foreign('invoice_id')->references('id')->on('tbl_invoice')->onDelete('cascade');
             $table->foreign('room_id')->references('room_id')->on('tbl_room')->onDelete('cascade');

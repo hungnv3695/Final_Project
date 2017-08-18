@@ -19,8 +19,8 @@ class CreateStatusTable extends Migration
             $table->string('status_name',50)->nullable();
             $table->string('description',255)->nullable();
 
-            $table->timestamp('create_ymd');
-            $table->timestamp('update_ymd');
+            $table->timestamp('create_ymd')->nullable();
+            $table->timestamp('update_ymd')->nullable();
             $table->primary('status_id');
 
         });

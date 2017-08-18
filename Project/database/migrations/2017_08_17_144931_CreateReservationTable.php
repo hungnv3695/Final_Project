@@ -25,8 +25,8 @@ class CreateReservationTable extends Migration
             $table->string('note',200)->nullable();
             $table->string('editer',50)->nullable();
 
-            $table->timestamp('create_ymd');
-            $table->timestamp('update_ymd');
+            $table->timestamp('create_ymd')->nullable();
+            $table->timestamp('update_ymd')->nullable();
 
             $table->foreign('status_id')->references('status_id')->on('tbl_status')->onDelete('cascade');
             $table->foreign('guest_id')->references('id')->on('tbl_guest')->onDelete('cascade');

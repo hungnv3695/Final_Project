@@ -16,8 +16,8 @@ class CreatePaymentTypeTable extends Migration
         Schema::create('tbl_payment_type', function (Blueprint $table) {
             $table->increments('id');
             $table->string('type_name',10)->nullable();
-            $table->timestamp('create_ymd');
-            $table->timestamp('update_ymd');
+            $table->timestamp('create_ymd')->nullable();
+            $table->timestamp('update_ymd')->nullable();
         });
     }
 

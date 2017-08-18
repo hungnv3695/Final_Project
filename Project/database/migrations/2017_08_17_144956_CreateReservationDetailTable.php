@@ -27,8 +27,8 @@ class CreateReservationDetailTable extends Migration
             $table->string('customer_phone',20)->nullable();
             $table->string('customer_email',50)->nullable();
 
-            $table->timestamp('create_ymd');
-            $table->timestamp('update_ymd');
+            $table->timestamp('create_ymd')->nullable();
+            $table->timestamp('update_ymd')->nullable();
 
             $table->foreign('reservation_id')->references('id')->on('tbl_reservation')->onDelete('cascade');
             $table->foreign('room_id')->references('room_id')->on('tbl_room')->onDelete('cascade');
