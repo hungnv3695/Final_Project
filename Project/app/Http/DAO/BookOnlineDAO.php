@@ -16,6 +16,7 @@ use App\User;
 use App\UserGroup;
 use App\Models\RoomType;
 use App\UserMaster;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\In;
 
@@ -35,7 +36,7 @@ class BookOnlineDAO {
     }
 
     public function getRoomTypeInfor(){
-        $result = RoomType::get([
+        $result = RoomType::orderBy(Constants::TBL_ROOM_TYPE_ID)->get([
             Constants::TBL_ROOM_TYPE_ID,
             Constants::TBL_TYPE_NAME,
             Constants::TBL_ADULT,
@@ -82,6 +83,7 @@ class BookOnlineDAO {
         $guestInsert->address = $guest->getAddress();
         //$guestInsert->company = $guest->getCompany();
         $guestInsert->create_ymd = $guest->getCreateYmd();
+        $guestInsert->update_ymd = Carbon::now();
 
         DB::beginTransaction();
 
@@ -110,8 +112,10 @@ class BookOnlineDAO {
             $invoiceInsert = new Invoice();
             $invoiceInsert->reservation_id = $resInsert->id;
             $invoiceInsert->guest_id = $guestInsert->id;
+            $invoiceInsert->payment_type_id = 1;
             $invoiceInsert->creater_nm = $invoice->getCreaterName();
             $invoiceInsert->create_ymd = $invoice->getCreateYmd();
+            $invoiceInsert->update_ymd = Carbon::now();
 
             $invoiceInsert->save();
 

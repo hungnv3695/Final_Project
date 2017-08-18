@@ -21,10 +21,11 @@ $(document).ready(function(){
         return nStr;
     }
 
+
     function removeCommas(nStr)
     {
         nStr+="";
-        nStr = nStr.replace(".","");
+        nStr = nStr.replace(/\./g , "");
         return nStr;
     }
 
@@ -331,6 +332,8 @@ $(document).ready(function(){
             alert('Chọn ngày vào và ngày ra trước khi ấn nút [Nhận phòng]');
             return;
         }
+
+
         if ($("#roomtype").val() == "" || $("#cboRoomNo").val() == ""){
             alert('Chọn kiểu phòng và sô phòng trước khi ấn nút [Nhận phòng]');
             return;
