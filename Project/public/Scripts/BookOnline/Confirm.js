@@ -98,6 +98,7 @@ $(document).ready(function () {
     //================================
     $("#btnBook").click(function (event) {
         event.preventDefault();
+
         var total = removeCommas($("#Total").text());
         $.ajax({
             headers: {
