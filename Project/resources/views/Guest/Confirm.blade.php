@@ -322,5 +322,6 @@
 </form>
 </body>
 <script src="{{asset('Scripts/BookOnline/Confirm.js')}}"></script>
+<script src="{{asset('Scripts/FrontCheck/CheckError.js')}}"></script>
 
 </html>

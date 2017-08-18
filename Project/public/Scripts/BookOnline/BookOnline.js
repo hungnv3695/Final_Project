@@ -65,10 +65,11 @@ $(document).ready(function () {
         return nStr;
     }
 
+
     function removeCommas(nStr)
     {
-        nStr += '';
-        nStr = nStr.replace(".","");
+        nStr+="";
+        nStr = nStr.replace(/\./g , "");
         return nStr;
     }
     function addTitle() {
