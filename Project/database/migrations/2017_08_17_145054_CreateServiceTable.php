@@ -17,8 +17,8 @@ class CreateServiceTable extends Migration
             $table->string('service_id',5);
             $table->string('name',10)->nullable();
             $table->integer('price')->nullable();
-            $table->timestamp('create_ymd');
-            $table->timestamp('update_ymd');
+            $table->timestamp('create_ymd')->nullable();
+            $table->timestamp('update_ymd')->nullable();
             $table->primary('service_id');
 
         });

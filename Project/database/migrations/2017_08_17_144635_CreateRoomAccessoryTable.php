@@ -21,8 +21,8 @@ class CreateRoomAccessoryTable extends Migration
             $table->integer('price')->nullable();
             $table->string('description',100)->nullable();
 
-            $table->timestamp('create_ymd');
-            $table->timestamp('update_ymd');
+            $table->timestamp('create_ymd')->nullable();
+            $table->timestamp('update_ymd')->nullable();
 
             $table->foreign('room_type_id')->references('room_type_id')->on('tbl_room_type')->onDelete('cascade');
 
