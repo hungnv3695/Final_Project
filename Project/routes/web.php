@@ -128,7 +128,8 @@ Route::middleware(['receptionist'])->group(function () {
     Route::get('/CheckoutList','CheckInOutController@viewCheckOut');
     Route::post('/CheckoutList','CheckInOutController@getSearchCheckOutRequest');
 
-
+    //Invoice
+    Route::get('/Invoice','InvoiceController@viewInvoice');
 });
 
 

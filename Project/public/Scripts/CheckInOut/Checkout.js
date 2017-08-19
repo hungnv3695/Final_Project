@@ -337,7 +337,13 @@ $(document).ready(function () {
         event.preventDefault();
     })
 
+    $("#btnPrint").click(function (event) {
+        event.preventDefault();
+        var name = $("#txtFullname2").val();
 
+        window.open('/Invoice?name=' + name,'_self');
+        event.preventDefault();
+    })
 
 
 });
