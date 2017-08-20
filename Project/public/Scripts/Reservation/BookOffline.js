@@ -12,6 +12,26 @@ $(document).ready(function () {
     var total_price = 0//Tổng tiền
     var PROCESSED = "RS03";
 
+    var user_name = "";
+
+    function GetUserName() {
+        $.ajax({
+            url: 'Checkout/GetUserName',
+            method: 'GET',
+            cache: false,
+            dataType: 'json',
+
+            contentType: 'application/json; charset=utf-8',
+            success: function (result) {
+                user_name = result;
+            },
+            error: function(){
+                alert('error1');
+            }
+
+        });
+    }
+    GetUserName();
     //START: Set datetimepicker
     jQuery('#txtCheckin').datetimepicker({
         format:'Y/m/d',
@@ -317,8 +337,10 @@ $(document).ready(function () {
     function addcheckedtolist(){
         selRowId = jqgrid.jqGrid ('getGridParam', 'selrow');
         celValue = jqgrid.jqGrid ('getCell', selRowId, 'item2');
+        var room_number = jqgrid.jqGrid ('getCell', selRowId, 'item1');
         var pricePicked = jqgrid.jqGrid ('getCell', selRowId, 'item4');
         var x = {
+            room_number: room_number,
             room_id : celValue,
             price : pricePicked
 
@@ -454,7 +476,10 @@ $(document).ready(function () {
             success: function (result) {
                 if(result==1){
                     alert('Đơn đặt phòng đã được tạo thành công');
-                    location.reload();
+                    $("#btnPrint").attr('disabled',false);
+                    $("#btnBook").attr('disabled',true);
+                    $("#txtCheckin").attr('readonly',true);
+                    //location.reload();
                 }
                 else if(result==0){
                     alert('Xảy ra lỗi khi tạo đơn đặt phòng');
@@ -468,8 +493,29 @@ $(document).ready(function () {
 
     });
 
-    $("#btnBack").click(function () {
+    $("#btnPrint").click(function (event) {
         event.preventDefault();
+        var service = [];
+        var quantity = [];
+        var price = [];
+        var customerName = $("#txtFullname").val();
+        var nights = $("#txtNight").val();
+
+        for(var i = 0; i < cList.length; i++){
+            service.push(cList[i].room_number);
+            quantity.push(1);
+            price.push(cList[i].price * parseInt(nights));
+        }
+
+        console.log(service,price,quantity);
+        window.open('/Invoice?' + "service=" + service + "&quantity=" + quantity + "&price="+price +
+            "&cusName="+customerName + "&user_name="+encodeURIComponent(user_name),'_blank');
+        event.preventDefault();
+    })
+
+    $("#btnBack").click(function (event) {
+        event.preventDefault();
+
         window.open('/SeparateGroup','_self');
     })
 

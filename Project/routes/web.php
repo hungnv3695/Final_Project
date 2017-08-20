@@ -120,6 +120,7 @@ Route::middleware(['receptionist'])->group(function () {
     Route::get('/Checkout/LoadResDetail','CheckInOutController@loadResDetail');
     Route::get('/Checkout/SaveCheckOut','CheckInOutController@saveCheckOut');
     Route::get('/Checkout/LoadService','CheckInOutController@loadService');
+    Route::get('/Checkout/GetUserName','CheckInOutController@getUserName');
 
 
     Route::get('/CheckinList','CheckInOutController@viewCheckInList');

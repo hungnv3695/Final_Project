@@ -10,9 +10,10 @@ use Illuminate\Http\Request;
 
 class InvoiceController extends Controller{
     public function viewInvoice(Request $request){
+        $service = explode(',', $request->service);
+        $quantity = explode(',', $request->quantity);
+        $price = explode(',', $request->price);
 
-        return view("Reception.Invoice")->with([
-            'name' => $request->name,
-        ]);
+        return view("Reception.Invoice");
     }
 }

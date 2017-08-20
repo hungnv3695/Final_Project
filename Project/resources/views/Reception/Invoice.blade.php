@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="plugins/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="plugins/animate/animate.css">
     <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script type="text/ecmascript" src="{{asset('jqgrid/js/jquery-1.11.0.min.js') }}"></script>
     <style>
         body {
             margin: 0;
@@ -112,11 +113,25 @@
         }
 		p.director-name{
 			display:block;
-			margin-top:60px;
+			margin-top:100px;
 			font-size:17px;
 			font-style:italic;
 			letter-spacing:1px;
 		}
+        p.receptionist-name{
+            display:block;
+            margin-top:100px;
+            font-size:17px;
+            font-style:italic;
+            letter-spacing:1px;
+        }
+        p.customer-name{
+            display:block;
+            margin-top:100px;
+            font-size:17px;
+            font-style:italic;
+            letter-spacing:1px;
+        }
     </style>
 </head>
 
@@ -153,19 +168,19 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-12 article">
-                        <label class="label1 control-label">Họ tên người mua<span class="note" >(Buyer)</span> :</label><span class="fill-line"> {{ $name}}</span>
+                        <label class="label1 control-label">Họ tên người mua<span class="note" >(Buyer)</span> : </label> <span class="fill-line" id="cusName"></span>
                     </div>
                     <div class="col-xs-12 article" style="margin-top:10px;">
-                        <label class="label1 control-label">Tên đơn vị<span class="note">(Company name)</span> :</label>&nbsp;
+                        <label class="label1 control-label">Tên đơn vị<span class="note">(Company name)</span> : </label>&nbsp;
                     </div>
                     <div class="col-xs-12 article" style="margin-top:10px;">
-                        <label class="label1 control-label">Mã số thuế<span class="note">(Tax code)</span> :</label>&nbsp;
+                        <label class="label1 control-label">Mã số thuế<span class="note">(Tax code)</span> : </label>&nbsp;
                     </div>
                     <div class="col-xs-12 article" style="margin-top:10px;">
-                        <label class="label1 control-label">Địa chỉ<span class="note">(Address)</span> :</label>&nbsp;
+                        <label class="label1 control-label">Địa chỉ<span class="note">(Address)</span> : </label>&nbsp;
                     </div>
                     <div class="col-xs-12 article" style="margin-top:10px;">
-                        <label class="label1 control-label">Hình thức thanh toán<span class="note">(Payment)</span> :</label>&nbsp;
+                        <label class="label1 control-label">Hình thức thanh toán<span class="note">(Payment)</span> : </label>&nbsp;
                     </div>
                     <div class="col-xs-12 article" style="margin-top:10px;">
                         <label class="label1 control-label">Số tài khoản<span class="note">(Account No)</span> :</label>&nbsp;
@@ -202,79 +217,101 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <tr id ="0">
+                                    <td id="01"></td>
+                                    <td id="02"></td>
+                                    <td id="03"></td>
+                                    <td id="04"></td>
+                                    <td id="05"></td>
+                                    <td id="06"></td>
+                                </tr>
+                                <tr id ="1">
+                                    <td id="11"></td>
+                                    <td id="12"></td>
+                                    <td id="13"></td>
+                                    <td id="14"></td>
+                                    <td id="15"></td>
+                                    <td id="16"></td>
+                                </tr>
+                                <tr id ="2">
+                                    <td id="21"></td>
+                                    <td id="22"></td>
+                                    <td id="23"></td>
+                                    <td id="24"></td>
+                                    <td id="25"></td>
+                                    <td id="26"></td>
+                                </tr>
+                                <tr id ="3">
+                                    <td id="31"></td>
+                                    <td id="32"></td>
+                                    <td id="33"></td>
+                                    <td id="34"></td>
+                                    <td id="35"></td>
+                                    <td id="36"></td>
+                                </tr>
+                                <tr id ="4">
+                                    <td id="41"></td>
+                                    <td id="42"></td>
+                                    <td id="43"></td>
+                                    <td id="44"></td>
+                                    <td id="45"></td>
+                                    <td id="46"></td>
+                                </tr>
+                                <tr id ="5">
+                                    <td id="51"></td>
+                                    <td id="52"></td>
+                                    <td id="53"></td>
+                                    <td id="54"></td>
+                                    <td id="55"></td>
+                                    <td id="56"></td>
+                                </tr>
+                                <tr id ="6">
+                                    <td id="61"></td>
+                                    <td id="62"></td>
+                                    <td id="63"></td>
+                                    <td id="64"></td>
+                                    <td id="65"></td>
+                                    <td id="66"></td>
+                                </tr>
+                                <tr id ="7">
+                                    <td id="71"></td>
+                                    <td id="72"></td>
+                                    <td id="73"></td>
+                                    <td id="74"></td>
+                                    <td id="75"></td>
+                                    <td id="76"></td>
+                                </tr>
+                                <tr id ="8">
+                                    <td id="81"></td>
+                                    <td id="82"></td>
+                                    <td id="83"></td>
+                                    <td id="84"></td>
+                                    <td id="85"></td>
+                                    <td id="86"></td>
+                                </tr>
+                                <tr id ="9">
+                                    <td id="91"></td>
+                                    <td id="92"></td>
+                                    <td id="93"></td>
+                                    <td id="94"></td>
+                                    <td id="95"></td>
+                                    <td id="96"></td>
+                                </tr>
+
                                 <tr>
-                                    <td>1</td>
-                                    <td>Nguyễn Việt Hưng</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>100000000</td>
-                                    <td>Nothing</td>
+                                    <th colspan="4"><span class="line-right">Cộng tiền hàng<span class="note">(Total)<span> :</span>
+
+                                    <td id="totalPrice"></td>
                                 </tr>
                                 <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th colspan="5"><span class="line-right">Cộng tiền hàng<span class="note">(Total)<span> :</span>
+                                    <th colspan="4"><span class="line-left">Thuế suất GTGT<span class="note">(VAT rate)</span> : 10%</span><span class="line-right">Tiền thuế GTGT<span class="note">(VAT amount)</span> :</span>
                                     </th>
-                                    <td></td>
+                                    <td id="VAT"></td>
                                 </tr>
                                 <tr>
-                                    <th colspan="5"><span class="line-left">Thuế suất GTGT<span class="note">(VAT rate)</span> : ..........%</span><span class="line-right">Tiền thuế GTGT<span class="note">(VAT amount)</span> :</span>
-                                    </th>
-                                    <td></td>
+                                    <th colspan="4"><span class="line-right">Tổng cộng tiền thanh toán<span class="note">(Total)<span> : </span>
+
+                                    <td id="Total"></td>
                                 </tr>
                                 <tr>
                                     <th colspan="6" class="total-line"><span class="line-left">Số tiền viết bằng chữ :<br><span class="note">(Amount in words)</span></span>
@@ -282,17 +319,21 @@
                                 </tr>
                                 <tr>
                                     <th colspan="6" class="total-line">
-                                        <span class="col-xs-4 line-left" style="margin-bottom:80px;">Người mua hàng<span class="note">(Buyer)</span>
+                                        <span class="col-xs-4 line-left" style="margin-bottom:80px;">Khách hàng<span class="note">(Customer)</span>
                                         <br>
                                         <span class="note">Ký, ghi rõ họ tên</span>
                                         <br>
                                         <span style="font-weight:100;font-size:12px;"><i>(Sign & full name)</i></span>
+                                        <br>
+                                        <p class="customer-name"></p>
                                         </span>
-                                        <span class="col-xs-4 line-center" style="margin-bottom:80px;">Người bán hàng<span class="note">(Seller)</span>
+                                        <span class="col-xs-4 line-center" style="margin-bottom:80px;">Lễ tân khách sạn<span class="note">(Receptionist)</span>
                                         <br>
                                         <span class="note">Ký, ghi rõ họ tên</span>
                                         <br>
                                         <span style="font-weight:100;font-size:12px;"><i>(Sign & full name)</i></span>
+                                        <br>
+										<p class="receptionist-name"></p>
                                         </span>
                                         <span class="col-xs-4 line-right">Giám đốc<span class="note">(Director)</span>
                                         <br>
@@ -313,5 +354,5 @@
     </div>
 
 </body>
-
+<script src="{{asset('Scripts/Invoice/Invoice.js')}}"></script>
 </html>
