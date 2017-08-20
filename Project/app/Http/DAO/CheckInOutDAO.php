@@ -66,7 +66,8 @@ class CheckInOutDAO
             "			on st.room_number = ro.room_number                                                                                                               ".
             "	WHERE (g.name ILIKE '%".$name."%' OR rs.customer_name ILIKE '%".$name."%')                                                                                           ".
             "	AND CAST(r.check_out AS date) >= '".$today."'                                                                                                            " .
-            " AND rs.check_in_flag = '0' " ;
+            " AND rs.check_in_flag = '0' " .
+            " AND r.status_id <> 'RS04' ";
 
         if($identity != null){
             $query .= "AND (g.identity_card ilike '%".$identity."%' OR rs.customer_identity_card ilike '%".$identity."%' )";
