@@ -132,7 +132,7 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="#"><img class="logo" src="img/LogoAnhDuong.jpg" />
+                            <a class="navbar-brand" href="http://anhduonghotel.herokuapp.com/"><img class="logo" src="img/LogoAnhDuong.jpg" />
                             </a>
                         </div>
                         <div class="collapse navbar-collapse" id="myNavbar">
@@ -233,7 +233,7 @@
                     <div class="footer-left">
                         <img src="img/map.jpg" />
                         <p class="footer-links">
-                            <a href="#">Trang chủ</a> ·
+                            <a href="http://anhduonghotel.herokuapp.com/">Trang chủ</a> ·
                             <a href="#"> Blog</a> ·
                             <a href="#"> Liên hệ</a>
                         </p>
@@ -255,7 +255,7 @@
 
                         <div>
                             <i class="fa fa-envelope"></i>
-                            <p><a href="#">anhduonghotel.com.vn</a>
+                            <p><a href="http://anhduonghotel.herokuapp.com/">anhduonghotel.herokuapp.com</a>
                             </p>
                         </div>
 

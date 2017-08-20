@@ -171,7 +171,7 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="#"><img class="logo" src="img/LogoAnhDuong.jpg" />
+                            <a class="navbar-brand" href="http://anhduonghotel.herokuapp.com/"><img class="logo" src="img/LogoAnhDuong.jpg" />
                             </a>
                         </div>
                         <div class="collapse navbar-collapse" id="myNavbar">
@@ -215,7 +215,7 @@
                         <h3 class="roomtype">Phòng single</h3>
                         <div class="form-inline">
                             <span class="item-price">Giá chỉ 100.000 VNĐ/đêm</span>
-                            <a class="booking" href="#">Đặt ngay</a>
+                            <a class="booking" href="{!! url('/book') !!}">Đặt ngay</a>
                         </div>
                     </div>
                     <div class="col-md-3 col-xs-6 room-item">
@@ -229,7 +229,7 @@
                         <h3 class="roomtype">Phòng double</h3>
                         <div class="form-inline">
                             <span class="item-price">Giá chỉ 200.000 VNĐ/đêm</span>
-                            <a class="booking" href="#">Đặt ngay</a>
+                            <a class="booking" href="{!! url('/book') !!}">Đặt ngay</a>
                         </div>
                     </div>
                     <div class="col-md-3 col-xs-6 room-item">
@@ -243,7 +243,7 @@
                         <h3 class="roomtype">Phòng twins</h3>
                         <div class="form-inline">
                             <span class="item-price">Giá chỉ 300.000 VNĐ/đêm</span>
-                            <a class="booking" href="#">Đặt ngay</a>
+                            <a class="booking" href="{!! url('/book') !!}">Đặt ngay</a>
                         </div>
                     </div>
                     <div class="col-md-3 col-xs-6 room-item">
@@ -257,7 +257,7 @@
                         <h3 class="roomtype">Phòng extra</h3>
                         <div class="form-inline">
                             <span class="item-price">Giá chỉ 400.000 VNĐ/đêm</span>
-                            <a class="booking" href="#">Đặt ngay</a>
+                            <a class="booking" href="{!! url('/book') !!}">Đặt ngay</a>
                         </div>
                     </div>
                 </div>
@@ -274,7 +274,7 @@
             <div class="footer-left">
                 <img src="img/map.jpg" />
                 <p class="footer-links">
-                    <a href="#">Trang chủ</a> ·
+                    <a href="http://anhduonghotel.herokuapp.com/">Trang chủ</a> ·
                     <a href="#"> Blog</a> ·
                     <a href="#"> Liên hệ</a>
                 </p>
@@ -296,7 +296,7 @@
 
                 <div>
                     <i class="fa fa-envelope"></i>
-                    <p><a href="#">anhduonghotel.com.vn</a>
+                    <p><a href="http://anhduonghotel.herokuapp.com/">anhduonghotel.herokuapp.com</a>
                     </p>
                 </div>
 
