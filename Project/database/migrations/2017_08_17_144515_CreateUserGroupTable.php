@@ -22,8 +22,8 @@ class CreateUserGroupTable extends Migration
             $table->string('last_register_cd',7)->nullable();
             $table->string('last_register_nm',20)->nullable();
 
-            $table->timestamp('create_ymd');
-            $table->timestamp('update_ymd');
+            $table->timestamp('create_ymd')->nullable();
+            $table->timestamp('update_ymd')->nullable();
         });
     }
 

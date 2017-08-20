@@ -122,21 +122,22 @@
                         </div>
                         <div class="col-md-12" style="margin:0px 0px 10px;border: 2px solid rgb(200,200,200);">
                             <table id="jqGrid" style="border:1px solid gray;"></table>
+                            <div id="pager"></div>
                         </div>
 
                         <div class="form-inline" style="margin-left: 170px">
                             <label class="label1">Chi phí:</label>
-                            <input id="txtPrice" name="txtPrice" type="text" class="form-control input-md" size="6" style="width: 120px">
+                            <input id="txtPrice" name="txtPrice" type="text" class="form-control input-md" size="6" style="width: 120px; text-align:right;" readonly>
                             <b>VNĐ</b>
                         </div>
                         <div class="form-inline" style="margin-left: 170px">
                             <label class="label1">VAT(10%):</label>
-                            <input id="txtVAT" name="txtVAT" type="text" class="form-control input-md" size="6" style="width: 120px">
+                            <input id="txtVAT" name="txtVAT" type="text" class="form-control input-md" size="6" style="width: 120px; text-align:right;" readonly>
                             <b>VNĐ</b>
                         </div>
                         <div class="form-inline" style="margin-left: 170px; margin-bottom: 20px">
                             <label class="label1">Tổng tiền:</label>
-                            <input id="txtTotalPrice" name="txtTotalPrice" type="text" class="form-control input-md" size="6" style="width: 120px">
+                            <input id="txtTotalPrice" name="txtTotalPrice" type="text" class="form-control input-md" size="6" style="width: 120px; text-align:right;" readonly >
                             <b>VNĐ</b>
                         </div>
                     </div>
@@ -147,7 +148,7 @@
                         </div>
                         <div class="form-inline col-md-offset-1" style="margin-top:15px;">
                             <label class="label1">Số người:</label>
-                            <input id="numofpeople" name="numofpeople" type="number"  class="form-control input-md" min="1" style="width:70px;" >
+                            <input id="numofpeople" name="numofpeople" type="number"  class="form-control input-md" min="1" style="width:70px;" readonly>
                         </div>
                         <div class="form-inline col-md-offset-1" style="margin-top:15px;">
                             <label class="label1" for="">Kiểu phòng: </label>
@@ -184,19 +185,19 @@
                     <div class="col-md-12" style="border: 1px solid #898989;border-radius:10px;margin-bottom:10px;">
                         <div class="form-inline col-md-offset-1" style="margin-top:20px;">
                             <label class="label1" for="">Họ tên: </label>
-                            <input id="txtFullname1" name="txtFullname1" type="text" class="form-control input-md" size="20" maxlength="50">
+                            <input id="txtFullname1" name="txtFullname1" type="text" class="form-control input-md" size="20" maxlength="50" readonly>
                         </div>
                         <div class="form-inline col-md-offset-1" style="margin-top:10px;">
                             <label class="label1" for="">CMND: </label>
-                            <input id="txtIdcard1" name="txtIdcard1" type="text" class="form-control input-md" size="20" maxlength="12">
+                            <input id="txtIdcard1" name="txtIdcard1" type="text" class="form-control input-md" size="20" maxlength="12" readonly>
                         </div>
                         <div class="form-inline col-md-offset-1" style="margin-top:10px;">
                             <label class="label1" for="">Điện thoại: </label>
-                            <input id="txtPhone1" name="txtPhone1" type="text" class="form-control input-md" size="20" maxlength="20">
+                            <input id="txtPhone1" name="txtPhone1" type="text" class="form-control input-md" size="20" maxlength="20" readonly>
                         </div>
                         <div class="form-inline col-md-offset-1" style="margin-top:10px;margin-bottom:20px;">
                             <label class="label1" for="">Email: </label>
-                            <input id="txtEmail1" name="txtEmail1" type="text" class="form-control input-md" size="20" maxlength="50">
+                            <input id="txtEmail1" name="txtEmail1" type="text" class="form-control input-md" size="20" maxlength="50" readonly>
                         </div>
 
                         <div class="form-inline" style="margin-top:30px;margin-bottom:45px; margin-left: 100px;">
@@ -235,7 +236,8 @@
             </div>
             <div class="col-md-10 col-md-offset-1" style="background-color:#c3bfc0;margin-bottom:10px;">
                 <div class="row">
-                    <div class="col-md-3 col-md-offset-9" style="margin-top:10px; margin-bottom:10px;">
+                    <div class="col-md-5 col-md-offset-7" style="margin-top:10px; margin-bottom:10px;">
+                        <button class="btn btn-danger" id="btnPrint" value="btnPrint" name="btnPrint" disabled><b>In hóa đơn</b></button>
                         <button class="btn btn-primary col-md-offset-1" id="btnCheckout" value="btnCheckout" name="btnCheckout"><b>Trả phòng</b></button>
                         <button class="btn btn-danger" id="btnBack" value="btnBack" name="btnBack"><b>Quay lại</b></button>
                     </div>
@@ -246,9 +248,5 @@
 </form>
 </body>
 <script src="{{asset('Scripts/CheckInOut/Checkout.js')}}"></script>
-<script type="text/css">
-    .ui-jqgrid-btable {
-        cursor : pointer;
-    }
-</script>
+
 </html>

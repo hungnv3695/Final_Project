@@ -11,7 +11,26 @@ $(document).ready(function () {
     var res_id = GetUrlParameter('res_id');
     var resDetail_id = GetUrlParameter('resDetail_id');
     var invoice_id = GetUrlParameter('invoice_id');
+    var user_name = "";
 
+    function GetUserName() {
+        $.ajax({
+            url: 'Checkout/GetUserName',
+            method: 'GET',
+            cache: false,
+            dataType: 'json',
+
+            contentType: 'application/json; charset=utf-8',
+            success: function (result) {
+                user_name = result;
+            },
+            error: function(){
+                alert('error1');
+            }
+
+        });
+    }
+    GetUserName();
     function loadService(invoice_id,room_id){
         $.ajax({
             url: 'Checkout/LoadService',
@@ -170,8 +189,8 @@ $(document).ready(function () {
         colModel: [
 
             { name: 'item0',hidden:true,search : false, width: 90 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
-            { name: 'item6',search : false,  width: 90 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
-            { name: 'item2',search : false,  width: 90 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
+            { name: 'item6',search : false,  width: 120 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
+            { name: 'item2',search : false,  width: 70 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
             { name: 'item3',search : false,  width: 90 , align: "left", formatter:'integer', formatoptions:{thousandsSeparator: "."}},
             { name: 'item4',search : false,  width: 90 , align: "left",formatter:'integer', formatoptions:{thousandsSeparator: "."}},
             { name: 'item5', hidden:true},
@@ -179,13 +198,15 @@ $(document).ready(function () {
         ],
         rownumbers: true,
         height: 200,
-        width: 400,
+        width: 420,
         rowNum: 10,
         autoheight: true,
         loadonce: true,
         resizable: true,
         forceFit: true,
         shrinkToFit: false,
+        cellEdit:true,
+        cellsubmit: 'clientArray',
         loadComplete: function () {
 
             var $grid = $('#jqGrid');
@@ -215,6 +236,7 @@ $(document).ready(function () {
         }
 
     });
+   // jQuery("#jqGrid").jqGrid('navGrid', "#pager", { edit: true, add: false, del: false, search : false });
     // Custom formatter for a cell in a jqgrid row.
 
     function addData(result){
@@ -289,7 +311,8 @@ $(document).ready(function () {
             success: function (result) {
                 if(result == 1){
                     alert('check-out thành công');
-                    window.open('/CheckoutList','_self')
+                    $('#btnCheckout').attr('disabled',true);
+                    $('#btnPrint').attr('disabled',false);
                 }
                 else{
                     alert('check-out lỗi');
@@ -337,7 +360,24 @@ $(document).ready(function () {
         event.preventDefault();
     })
 
+    $("#btnPrint").click(function (event) {
+        event.preventDefault();
+        var name = $("#txtFullname2").val();
+        var count=$("#jqGrid").jqGrid('getGridParam', 'records');
+        var service = [];
+        var quantity = [];
+        var price = [];
+        var customerName = $("#txtFullname2").val();
+        for(var i = 1; i<= count; i++){
+            service.push($("#jqGrid").jqGrid('getCell', i, 'item6'));
+            quantity.push($("#jqGrid").jqGrid('getCell', i, 'item2'));
+            price.push(removeCommas($("#jqGrid").jqGrid('getCell', i, 'item3')));
+        }
 
+        window.open('/Invoice?' +"service=" + service + "&quantity=" + quantity + "&price="+price +
+           "&cusName="+customerName + "&user_name="+encodeURIComponent(user_name),'_blank');
+        event.preventDefault();
+    })
 
 
 });

@@ -263,10 +263,17 @@ class CheckInOutController extends Controller
         $result[0]->date_in = DateTimeUtil::ConvertStringToDate($result[0]->date_in);
         $result[0]->date_out = Carbon::now()->format('d/m/Y');
        // dd($result[0]->total_price);
+
         return response($result);
     }
+    public function getUserName(Request $request){
 
+        $user_name = $request->session()->get('USER_INFO')->user_name;
+
+        return response( json_encode($user_name));
+    }
     public function saveCheckOut(Request $request){
+
         if($request->iList == ""){
             $iList = "";
         }

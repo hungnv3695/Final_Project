@@ -21,8 +21,8 @@ class CreateInvoiceTable extends Migration
             $table->string('tax_code',10)->nullable();
             $table->string('creater_nm',50)->nullable();
             $table->string('updater_nm',50)->nullable();
-            $table->timestamp('create_ymd');
-            $table->timestamp('update_ymd');
+            $table->timestamp('create_ymd')->nullable();
+            $table->timestamp('update_ymd')->nullable();
             $table->foreign('reservation_id')->references('id')->on('tbl_reservation')->onDelete('cascade');
             $table->foreign('payment_type_id')->references('id')->on('tbl_payment_type')->onDelete('cascade');
             $table->foreign('guest_id')->references('id')->on('tbl_guest')->onDelete('cascade');
@@ -37,6 +37,6 @@ class CreateInvoiceTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('tbl_invoice');
     }
 }

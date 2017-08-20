@@ -64,7 +64,7 @@
 									<span class="icon-bar"></span>
 									<span class="icon-bar"></span>                        
 								</button>
-								<a class="navbar-brand" href="#"><img class="logo" src="../img/LogoAnhDuong.jpg"/></a>
+								<a class="navbar-brand" href="http://anhduonghotel.herokuapp.com/"><img class="logo" src="../img/LogoAnhDuong.jpg"/></a>
 							</div>
 							<div class="collapse navbar-collapse" id="myNavbar">
 								<ul class="nav navbar-nav">
@@ -78,14 +78,14 @@
 					</nav>
 					<div class="row">
 						<div class="col-sm-4 col-sm-offset-8 book-container">
-							<button  type="button" class="btn" id="btn-book" onclick="window.location='{{ url("/book") }}'" >ĐẶT PHÒNG</button>
+							<button  type="button" class="btn" id="btn-book" onclick="window.location='{{ url('/book') }}'" >ĐẶT PHÒNG</button>
 						</div>
 					</div>
 			</div>
 			<div id="slides">
-				<img class="img-responsive" src="{{ asset("/img/Head01.jpg") }}">
-				<img class="img-responsive" src="{{ asset("/img/Head02.jpg") }}">
-				<img class="img-responsive" src="{{ asset("/img/Head03.jpg") }}">
+				<img class="img-responsive" src='{{ asset("/img/Head01.jpg") }}'>
+				<img class="img-responsive" src='{{ asset("/img/Head02.jpg") }}'>
+				<img class="img-responsive" src='{{ asset("/img/Head03.jpg") }}'>
 				<a id="scrollTo" href="#" class="slidesjs-next slidesjs-navigation slides-center"><i class="fa fa-2x fa-arrow-circle-down" aria-hidden="true"></i></a>
 				
 				<a href="#" class="slidesjs-previous slidesjs-navigation slides-left"><i class="fa fa-3x fa-angle-left" aria-hidden="true"></i></a>
@@ -160,19 +160,19 @@
 							<div class="col-sm-3 col-xs-6 sub-ct-col">
 								<div class="sub-ct-col">
 									<a href="{!! url('/Cuisine') !!}">Ẩm Thực</a>
-									<a href="{!! url('/Cuisine') !!}"><img src="{{ asset("/img/Restaurant-4.jpg ") }}"/></a>
+									<a href="{!! url('/Cuisine') !!}"><img src='{{ asset("/img/Restaurant-4.jpg ") }}'/></a>
 								</div>
 							</div>
 							<div class="col-sm-3 col-xs-6 sub-ct-col">
 								<div class="sub-ct-col">
 									<a href="{!! url('/Services') !!}">Dịch vụ</a>
-									<a href="{!! url('/Services') !!}"><img src="{{ asset("/img/photo2.jpg ") }}"/></a>
+									<a href="{!! url('/Services') !!}"><img src='{{ asset("/img/photo2.jpg ") }}'/></a>
 								</div>
 							</div>
 							<div class="col-sm-3 col-xs-6 sub-ct-col">
 								<div class="sub-ct-col">
 									<a href="{!! url('/Gallery') !!}">Ảnh</a>
-									<a href="{!! url('/Gallery') !!}"><img src="{{ asset("/img/Anh-Duong-hotel.jpg ") }}"/></a>
+									<a href="{!! url('/Gallery') !!}"><img src='{{ asset("/img/Anh-Duong-hotel.jpg ") }}'/></a>
 								</div>
 							</div>
 						</div>
@@ -208,7 +208,7 @@
 			<div class="footer-left">
 				<img src="{{ asset('img/map.jpg') }}"/>
 				<p class="footer-links">
-					<a href="#">Trang chủ</a>
+					<a href="http://anhduonghotel.herokuapp.com/">Trang chủ</a>
 					·
 					<a href="#"> Blog</a>
 					·
@@ -231,7 +231,7 @@
 
 				<div>
 					<i class="fa fa-envelope"></i>
-					<p><a href="#">anhduonghotel.com.vn</a></p>
+					<p><a href="http://anhduonghotel.herokuapp.com/">anhduonghotel.herokuapp.com</a></p>
 				</div>
 
 			</div>

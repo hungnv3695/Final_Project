@@ -152,7 +152,8 @@
 			</div>
 			<div class="col-md-12" style="background-color:#c3bfc0;margin-bottom:10px;">
 				<div class="row">
-					<div class="col-md-4 col-md-offset-8" style="margin-top:10px; margin-bottom:10px;">
+					<div class="col-md-6 col-md-offset-6" style="margin-top:10px; margin-bottom:10px;">
+						<button class="btn btn-danger" id="btnPrint" value="btnPrint" name="btnPrint" disabled><b>In hóa đơn</b></button>
 						<button class="btn btn-primary col-md-offset-6" id="btnBook" value="btnBook" name="btnSave"><b>Đặt ngay</b></button>
 						<button class="btn btn-danger" id= "btnBack" value="btnBack" name="btnBack"><b>Quay lại</b></button>
 					</div>

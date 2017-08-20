@@ -281,7 +281,7 @@ $(document).ready(function () {
 
     $("input[id^='quantity']").each(function(input){
         var value = $('input[id^="quanity"]').val();
-        alert(value);
+
     })
     $('#nextdiv').hide();
     $(document).on('keyup mouseup change ', 'input[name="quantity"]', function(){
@@ -362,7 +362,6 @@ $(document).ready(function () {
             nights = days();
         }
         if(quantity == 0){
-            alert('ss');
             return;
         }
         if(quantity > 0){

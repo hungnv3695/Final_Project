@@ -20,8 +20,8 @@ class CreateAccountantTable extends Migration
             $table->integer('status')->nullable();
             $table->integer('total')->nullable();
             $table->string('receiver_nm',50)->nullable();
-            $table->timestamp('create_ymd');
-            $table->timestamp('update_ymd');
+            $table->timestamp('create_ymd')->nullable();
+            $table->timestamp('update_ymd')->nullable();
 
         });
     }
