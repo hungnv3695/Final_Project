@@ -69,7 +69,7 @@
             margin-left: 70px;
         }
         
-        #myCarousel{
+        #myCarousel {
             width: 90%;
             margin: 20px 5% 20px;
         }
@@ -113,39 +113,39 @@
         <div id="content">
             <div align="center" class="photo-title"></div>
             <h3>Thư viện ảnh</h3>
-                <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                    <!-- Indicators -->
-                    <ol class="carousel-indicators">
-                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#myCarousel" data-slide-to="1"></li>
-                        <li data-target="#myCarousel" data-slide-to="2"></li>
-                    </ol>
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ol>
 
-                    <!-- Wrapper for slides -->
-                    <div class="carousel-inner">
-                        <div class="item active">
-                            <img src="img/bg2.jpg" style="width:100%;">
-                        </div>
-
-                        <div class="item">
-                            <img src="img/Restaurant-4.jpg" style="width:100%;">
-                        </div>
-
-                        <div class="item">
-                            <img src="img/Photo2.jpg" style="width:100%;">
-                        </div>
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img src="img/bg2.jpg" style="width:100%;">
                     </div>
 
-                    <!-- Left and right controls -->
-                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                        <span class="glyphicon glyphicon-chevron-left"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                        <span class="glyphicon glyphicon-chevron-right"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
+                    <div class="item">
+                        <img src="img/Restaurant-4.jpg" style="width:100%;">
+                    </div>
+
+                    <div class="item">
+                        <img src="img/Photo2.jpg" style="width:100%;">
+                    </div>
                 </div>
+
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
             <!--END-->
             <div class="social-bar">
                 <div class="container">
@@ -159,47 +159,46 @@
             <div class="row">
                 <footer class="footer-distributed">
 
-					<div class="footer-left">
-						<img src="img/map.jpg"/>
-						<p class="footer-links">
-							<a href="#">Trang chủ</a>
-							·
-							<a href="#"> Blog</a>
-							·
-							<a href="#"> Liên hệ</a>	
-						</p>
-						<p class="footer-company-name">Copyrigh &copy; Bản quyền thuộc về khách sạn Ánh Dương</p>
-					</div>
+                    <div class="footer-left">
+                        <img src="img/map.jpg" />
+                        <p class="footer-links">
+                            <a href="#">Trang chủ</a> ·
+                            <a href="#"> Blog</a> ·
+                            <a href="#"> Liên hệ</a>
+                        </p>
+                        <p class="footer-company-name">Copyrigh &copy; Bản quyền thuộc về khách sạn Ánh Dương</p>
+                    </div>
 
-					<div class="footer-center">
+                    <div class="footer-center">
 
-						<div>
-							<i class="fa fa-map-marker"></i>
-							<p>Khách sạn Ánh Dương, Tuần Châu, Hạ Long, <br>Quảng Ninh, Việt Nam</p>
-						</div>
+                        <div>
+                            <i class="fa fa-map-marker"></i>
+                            <p>Khách sạn Ánh Dương, Tuần Châu, Hạ Long,
+                                <br>Quảng Ninh, Việt Nam</p>
+                        </div>
 
-						<div>
-							<i class="fa fa-phone"></i>
-							<p>01662451994</p>
-						</div>
+                        <div>
+                            <i class="fa fa-phone"></i>
+                            <p>01662451994</p>
+                        </div>
 
-						<div>
-							<i class="fa fa-envelope"></i>
-							<p><a href="#">anhduonghotel.com.vn</a></p>
-						</div>
+                        <div>
+                            <i class="fa fa-envelope"></i>
+                            <p><a href="#">anhduonghotel.com.vn</a>
+                            </p>
+                        </div>
 
-					</div>
+                    </div>
 
-					<div class="footer-right">
+                    <div class="footer-right">
 
-						<p class="footer-company-about">
-							<span>Về chúng tôi</span>
-							Khách sạn Ánh Dương tọa lạc tại phường Tuần Châu thuộc thành phố Hạ Long, cách trung tâm thương mại Vincom Plaza Hạ Long 11 km, cách bãi biển 12 phút đi bộ. Bảo tàng Quảng Ninh nằm trong bán kính 12 km từ khách sạn Ánh Dương, trong khi trung tâm thương mại Hạ Long Marine Plaza cách chỗ nghỉ 5 km. Sân bay quốc tế Cát Bi cách đó 29 km.
-						</p>
+                        <p class="footer-company-about">
+                            <span>Về chúng tôi</span> Khách sạn Ánh Dương tọa lạc tại phường Tuần Châu thuộc thành phố Hạ Long, cách trung tâm thương mại Vincom Plaza Hạ Long 11 km, cách bãi biển 12 phút đi bộ. Bảo tàng Quảng Ninh nằm trong bán kính 12 km từ khách sạn Ánh Dương, trong khi trung tâm thương mại Hạ Long Marine Plaza cách chỗ nghỉ 5 km. Sân bay quốc tế Cát Bi cách đó 29 km.
+                        </p>
 
-					</div>
+                    </div>
 
-				</footer>
+                </footer>
             </div>
         </div>
     </div>
