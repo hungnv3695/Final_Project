@@ -196,7 +196,7 @@ CREATE TABLE tbl_invoice(
 );
 
 CREATE TABLE tbl_invoice_detail(
-	id serial PRIMARY KEY,
+	serial PRIMARY KEY,
 	invoice_id integer,
 	item_id varchar(5),
 	item_type varchar(50),
@@ -221,6 +221,7 @@ CREATE TABLE tbl_accountant(
 	status integer,
 	total integer,
 	receiver_nm varchar(50),
+	receiver_total integer,
 	update_ymd timestamp,
 	create_ymd timestamp
 )

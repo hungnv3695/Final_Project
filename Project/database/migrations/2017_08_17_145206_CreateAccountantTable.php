@@ -14,12 +14,13 @@ class CreateAccountantTable extends Migration
     public function up()
     {
         Schema::create('tbl_accountant', function (Blueprint $table) {
-            $table->increments('5');
+            $table->increments('id');
             $table->string('payment_nm',50)->nullable();
             $table->string('payment_ymd',8)->nullable();
             $table->integer('status')->nullable();
             $table->integer('total')->nullable();
             $table->string('receiver_nm',50)->nullable();
+            $table->integer('receiver_total')->nullable();
             $table->timestamp('create_ymd')->nullable();
             $table->timestamp('update_ymd')->nullable();
 

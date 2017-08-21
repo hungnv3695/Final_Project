@@ -68,14 +68,14 @@ class Constants
         const SUCCESS_MSG = 'SuccessMSG';
         const ERROR_MSG = 'ErrorMSG';
 
-const GUEST_ID = 'guest_id';
-const CHECK_IN = 'check_in';
-const CHECK_OUT = 'check_out';
-const ADULT = 'adult';
-const CHILDREN = 'children';
-const NOTE = 'note';
-const ROOM_TYPE = 'room_type';
-const ROOM_QUANTITY = 'room_quantity';
-const NIGHT = 'nights';
+        const GUEST_ID = 'guest_id';
+        const CHECK_IN = 'check_in';
+        const CHECK_OUT = 'check_out';
+        const ADULT = 'adult';
+        const CHILDREN = 'children';
+        const NOTE = 'note';
+        const ROOM_TYPE = 'room_type';
+        const ROOM_QUANTITY = 'room_quantity';
+        const NIGHT = 'nights';
 
 }

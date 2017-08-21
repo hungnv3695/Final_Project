@@ -16,13 +16,17 @@ use Illuminate\Support\Facades\DB;
 class AccountantDAO
 {
     public function getAccountantList($date){
-        $query =   " select updater_nm , COUNT(id) , CAST(update_ymd as date) , SUM(amount_total) " .
-            "        from tbl_invoice " .
-        "            where CAST(update_ymd as date) = '".$date."' " .
-        "            and payment_flag = 1 ".
-        "            and updater_nm is not null ".
-        "            Group by updater_nm,update_ymd " .
-        "            order by updater_nm " ;
+        $query = " SELECT invoice_detail.updater_nm, count (invoice_detail.updater_nm), CAST(invoice_detail.update_ymd as date) ,SUM(invoice_detail.price) " .
+                " FROM tbl_invoice invoice  ".
+                " INNER JOIN tbl_invoice_detail invoice_detail ".
+                " ON invoice.id = invoice_detail.invoice_id ".
+                " WHERE CAST(invoice_detail.update_ymd as date) = '".$date."' ".
+                "         AND invoice_detail.payment_flag = 1 ".
+                "         AND invoice_detail.updater_nm IS NOT null  ".
+                " GROUP BY invoice_detail.updater_nm, invoice_detail.update_ymd ".
+                " ORDER BY invoice_detail.updater_nm ";
+
+
 
         $result = DB::select($query);
         return $result;
@@ -49,8 +53,6 @@ class AccountantDAO
         $accInsert->receiver_total = $acc->getReceiveTotal();
 
         $result = $accInsert->saveOrFail();
-
-
 
         if($result){
             return true;
