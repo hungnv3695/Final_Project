@@ -12,6 +12,7 @@ use App\Models\InvoiceDetail;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Payment\BaoKimPayment;
+use App\Http\Common\FileUtil;
 
 class BookController extends Controller
 {
@@ -44,14 +45,24 @@ class BookController extends Controller
         $checksum = $request->checksum;
         //verifyResponseUrl();
     }
-    public function saveBookingInfor(Request $request){
-        $verify = new BaoKimPayment();
-        $result = $verify->verifyResponseUrl();
-        if($result == true){
-            
-        }else if($result == false){
+    public function saveBookingInfor(Request $request, $infor){
+        $fileName = $infor . ".txt";
+        $result = FileUtil::readFile($fileName);
+        dd($result);
+//        $verify = new BaoKimPayment();
+//        $result = $verify->verifyResponseUrl();
 
-        }
+//        if($result == true){
+//            $status = $request->transaction_status;
+//            if($status==4 || $status == 13){
+//
+//            }
+//            else if ( $status == 5 || $status == 7 || $status == 8  ){
+//                return view('Guest.Confirm');
+//            }
+//        }else if($result == false){
+//
+//        }
     }
 
     public function bookRoomOnline(Request $request){
@@ -64,7 +75,8 @@ class BookController extends Controller
         $check_in = DateTimeUtil::ConvertDateToString2($request->check_in);
         $check_out = DateTimeUtil::ConvertDateToString2($request->check_out);
 
-
+        $dateNow = Carbon::now()->format('Ymd');
+        $fileName = "20170821" + "_" + "1";
         //Bao Kim Start
         $order_id = "2";
         $business = "sondcnd@gmail.com";
@@ -72,7 +84,7 @@ class BookController extends Controller
         $tax_fee = $total_amount * 10 / 100;
         $shipping_fee = 0;
         $order_description = "Thanh toán hóa đơn đặt phòng";
-        $url_success = "https://www.anhduonghotel.herokuapp.com/Success";//?check_in=".$check_in . "&check_out=" . $check_out;
+        $url_success = "https://www.anhduonghotel.herokuapp.com/Success/"+$fileName;//?check_in=".$check_in . "&check_out=" . $check_out;
         $url_cancel = "https://www.anhduonghotel.herokuapp.com";
         $url_detail = "";
         $baokim = new BaoKimPayment();

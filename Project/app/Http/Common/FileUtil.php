@@ -9,10 +9,14 @@
 namespace App\Http\Common;
 
 
+use Illuminate\Http\File;
+
 class FileUtil
 {
     public static function readFile($fileName){
-        $myfile = fopen($fileName, "r") or die("Unable to open file!");
+        $myfile = File::get(storage_path($fileName));
+        dd(storage_path($fileName));
+        //$myfile = fopen($fileName, "r") or die("Unable to open file!");
         $info = fgets($myfile);
         fclose($myfile);
 
