@@ -206,7 +206,7 @@
                 <div class="col-md-12">
                     <div class="col-md-3 col-xs-6 room-item">
                         <div class="zoom-img">
-                            <img src="img/single.jpg">
+                            <img src="img/double2.jpg">
                             <button type="button" class="room-detail" data-toggle="collapse" data-target="#intro1">Chi tiết phòng</button>
                             <div id="intro1" class="text-intro collapse">
                                 Kiểu phòng có 1 giường đơn thông thường. Với đầy đủ các trang thiết bị cần thiết bị và phòng tắm riêng. Phù hợp với 1 khách hàng sử dụng. .
@@ -220,7 +220,7 @@
                     </div>
                     <div class="col-md-3 col-xs-6 room-item">
                         <div class="zoom-img">
-                            <img src="img/double.jpg">
+                            <img src="img/double2.jpg">
                             <button type="button" class="room-detail" data-toggle="collapse" data-target="#intro2">Chi tiết phòng</button>
                             <div id="intro2" class="text-intro collapse">
                                 Kiểu phòng có 1 giường đơn lớn. Với đầy đủ các trang thiết bị cần thiết bị và phòng tắm riêng. Thông thường dành cho những cặp vợ chồng hoặc dành cho những người có thể nằm chung với nhau.
