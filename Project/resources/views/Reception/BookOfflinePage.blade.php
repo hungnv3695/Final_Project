@@ -46,7 +46,7 @@
 <form id="myForm">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-12" style="margin-top:3%;background-color:#c3bfc0;border-bottom:1px solid #898989;">
+			<div class="col-md-12" style="margin-top:2%;background-color:#c3bfc0;border-bottom:1px solid #898989;">
 				<div class="row">
 					<div class="col-md-offset-9" style="margin:10px 10px 0px 0px;float:right;">
 						@if(Session::has('USER_INFO'))
@@ -77,7 +77,7 @@
 								<div class="form-inline" style="margin-top:10px;margin-bottom:20px;">
 									<label class="label1">Số người:</label>
 									<input id="txtNumpeople" name="txtNumpeople" type="number" min="1" value="1" class="form-control input-md" size="5" style="width: 100px;">
-									<label class="label1">Tên phòng:</label>
+									<label class="label1">Số phòng:</label>
 									<input id="txtNumroom" name="txtNumroom" type="number" min="1" value="1" class="form-control input-md" size="5" style="width: 100px;">
 									<div class="col-md-10 col-md-offset-4">
 										<button class="btn btn-default" id="btnSearch" value="bntAddRoom" name="bntAddRoom" style="margin-top:20px;"><b>Tìm phòng</b></button>
@@ -153,8 +153,8 @@
 			<div class="col-md-12" style="background-color:#c3bfc0;margin-bottom:10px;">
 				<div class="row">
 					<div class="col-md-6 col-md-offset-6" style="margin-top:10px; margin-bottom:10px;">
-						<button class="btn btn-danger" id="btnPrint" value="btnPrint" name="btnPrint" disabled><b>In hóa đơn</b></button>
-						<button class="btn btn-primary col-md-offset-6" id="btnBook" value="btnBook" name="btnSave"><b>Đặt ngay</b></button>
+						<button class="btn btn-success col-md-offset-6" id="btnPrint" value="btnPrint" name="btnPrint" disabled><b>In hóa đơn</b></button>
+						<button class="btn btn-primary" id="btnBook" value="btnBook" name="btnSave"><b>Đặt ngay</b></button>
 						<button class="btn btn-danger" id= "btnBack" value="btnBack" name="btnBack"><b>Quay lại</b></button>
 					</div>
 				</div>
