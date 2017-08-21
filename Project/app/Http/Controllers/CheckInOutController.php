@@ -279,21 +279,32 @@ class CheckInOutController extends Controller
         }
         else{
             $iList = explode(',', $request->iList);
+
         }
+
         if($request->totalList == ""){
             $totalList = "";
         }
         else{
             $totalList = explode(',', $request->totalList);
         }
+        if($request->serList == "" || $request->serList == null){
+            $serList = "";
+        }
+        else{
+            $serList = explode(',', $request->serList);
+            $quanList = explode(',', $request->quanList);
+            $priList = explode(',', $request->priList);
+        }
 
+        $invoice_id = $request->invoice_id;
         $date_out = DateTimeUtil::ConvertDateToString($request->date_out);
         $room_id = $request->room_id;
         $resDetail_id = $request->resDetail_id;
         $res_id = $request->res_id;
         $user_id = $request->session()->get('USER_INFO')->user_id;
         $CheckInOutDAO = new CheckInOutDAO();
-        $result = $CheckInOutDAO->saveCheckoutInfor($room_id,$resDetail_id, $user_id, $iList,$totalList,$date_out);
+        $result = $CheckInOutDAO->saveCheckoutInfor($room_id,$resDetail_id, $user_id, $iList,$totalList,$date_out,$serList,$quanList,$priList,$invoice_id );
 
         return response($result);
     }

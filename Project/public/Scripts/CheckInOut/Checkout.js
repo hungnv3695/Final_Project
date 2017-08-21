@@ -2,11 +2,15 @@
  * Created by Nguyen Viet Hung on 8/3/2017.
  */
 $(document).ready(function () {
+    var serList = "";
+    var quanList = "";
+    var priList = "";
+    var jList=[];
     var nights = 0;
     var diffDays = 0;
     var room_price;
     var iList = "";
-    var idList = [];
+    var addList = [];
     var totalList = "";
     var res_id = GetUrlParameter('res_id');
     var resDetail_id = GetUrlParameter('resDetail_id');
@@ -183,6 +187,7 @@ $(document).ready(function () {
             'Đơn giá',
             'Thành tiền',
             'Trạng thái',
+            '',
             ''
 
         ],
@@ -194,7 +199,8 @@ $(document).ready(function () {
             { name: 'item3',search : false,  width: 90 , align: "left", formatter:'integer', formatoptions:{thousandsSeparator: "."}},
             { name: 'item4',search : false,  width: 90 , align: "left",formatter:'integer', formatoptions:{thousandsSeparator: "."}},
             { name: 'item5', hidden:true},
-            { name: 'item1', hidden:true}
+            { name: 'item1', hidden:true},
+            { name: 'item7', hidden:true},
         ],
         rownumbers: true,
         height: 200,
@@ -206,7 +212,10 @@ $(document).ready(function () {
         forceFit: true,
         shrinkToFit: false,
         cellEdit:true,
-        cellsubmit: 'clientArray',
+        add:true,
+        edit:true,
+        editable: true,
+
         loadComplete: function () {
 
             var $grid = $('#jqGrid');
@@ -233,14 +242,15 @@ $(document).ready(function () {
             $("#txtTotalPrice").val(addCommas(totalprice));
 
 
-        }
+        },
 
     });
+
    // jQuery("#jqGrid").jqGrid('navGrid', "#pager", { edit: true, add: false, del: false, search : false });
     // Custom formatter for a cell in a jqgrid row.
 
     function addData(result){
-        var jList=[];
+        jList=[];
         for(var i = 0; i< result.length; i++){
             var x ={
                 item0: result[i].id,
@@ -261,15 +271,17 @@ $(document).ready(function () {
     }
     function getItemNoPaymentFlag() {
         var  count=$("#jqGrid").jqGrid('getGridParam', 'records');
-        idList = [];
+        serList = "";
+        quanList = "";
+        priList = "";
         iList = "";
         var pList = "";
         var total = "";
         for(var i = 1; i <= count; i++){
             var flag = $("#jqGrid").jqGrid('getCell', i , 'item5');
-
+            var flagAdd = $("#jqGrid").jqGrid('getCell', i , 'item7');
             if(flag == 0){
-                var id = $("#jqGrid").jqGrid('getCell', i, 'item0');
+                var id = $.trim($("#jqGrid").jqGrid('getCell', i, 'item0'));
                 var total = $("#jqGrid").jqGrid('getCell', i, 'item4');
                 var a = parseInt(removeCommas(total)) * 10 / 100;
                 var b  = parseInt(removeCommas(total)) + a;
@@ -277,9 +289,25 @@ $(document).ready(function () {
                     iList = id;
                     totalList = b;
                 }
-                else {
+                else if(iList != "" && iList !== undefined && id != ""){
                     iList = iList + "," + id;
                     totalList = totalList + "," + b;
+                }
+                console.log(iList);
+            }
+
+            if(flagAdd == 1){
+                var ser = $("#jqGrid").jqGrid('getCell', i, 'item6');
+                var pri = $("#jqGrid").jqGrid('getCell', i, 'item3');
+                var quan = $("#jqGrid").jqGrid('getCell', i, 'item2');
+                if(serList==""||quanList==""||priList==""){
+                    serList = ser;
+                    quanList = quan;
+                    priList = pri;
+                }else {
+                    serList = serList + "," + ser;
+                    quanList = quanList + "," + quan;
+                    priList = priList + "," + pri;
                 }
 
             }
@@ -304,7 +332,10 @@ $(document).ready(function () {
                 res_id : res_id,
                 iList : iList,
                 totalList: totalList,
-                date_out: $("#txtCheckout").val()
+                date_out: $("#txtCheckout").val(),
+                serList : serList,
+                quanList : quanList,
+                priList : priList
             },
 
             contentType: 'application/json; charset=utf-8',
@@ -360,6 +391,32 @@ $(document).ready(function () {
         event.preventDefault();
     })
 
+    $("#btnAdd").click(function (event) {
+        event.preventDefault();
+
+        var sList = [];
+        var serviceAdd = $("#txtServiceAdd").val();
+        var quantityAdd = $("#txtQuanAdd").val();
+        var priceAdd = $("#txtAmountAdd").val();
+        if(serviceAdd == "" || quantityAdd == "" || priceAdd == ""){
+            return;
+        }else{
+            var x = {
+                item6 : serviceAdd,
+                item2 : quantityAdd,
+                item3 : priceAdd,
+                item4 : parseInt(quantityAdd) * parseInt(priceAdd),
+                item7 : 1,
+            }
+            jList.push(x);
+            jQuery("#jqGrid").setGridParam({data: jList });
+            jQuery("#jqGrid")[0].refreshIndex();
+            jQuery("#jqGrid").trigger("reloadGrid");
+        }
+
+        event.preventDefault();
+    })
+
     $("#btnPrint").click(function (event) {
         event.preventDefault();
         var name = $("#txtFullname2").val();
@@ -376,6 +433,7 @@ $(document).ready(function () {
 
         window.open('/Invoice?' +"service=" + service + "&quantity=" + quantity + "&price="+price +
            "&cusName="+customerName + "&user_name="+encodeURIComponent(user_name),'_blank');
+        window.open('/CheckoutList','_self');
         event.preventDefault();
     })
 

@@ -415,7 +415,8 @@ class CheckInOutDAO
         return $result;
     }
 
-    public function saveCheckoutInfor($room_id, $resDetail_id, $user_id, $iList,$totalList,$date_out){
+    public function saveCheckoutInfor($room_id, $resDetail_id, $user_id, $iList,$totalList,
+                                      $date_out,$serList,$quanList,$priList,$invoice_id ){
         DB::beginTransaction();
 
         try{
@@ -446,6 +447,26 @@ class CheckInOutDAO
                             'amount_total' => $totalList[$i]
                         ]);
 
+                }
+            }
+
+            if($serList != ""){
+                for($i = 0; $i < count($serList); $i++){
+                    DB::table('tbl_invoice_detail')
+                        ->insert([
+                            'invoice_id' => $invoice_id,
+                            'item_id' => $serList[$i],
+                            'item_type' => 'Service',
+                            'quantity' => $quanList[$i],
+                            'price' => (int)$priList[$i] * (int)$quanList[$i],
+                            'amount_total' => ((int)$priList[$i] * (int)$quanList[$i]) + ((int)$priList[$i] * (int)$quanList[$i] * 10 / 100),
+                            'room_id' => $room_id,
+                            'creater_nm' =>$user_id,
+                            'updater_nm' =>$user_id,
+                            'update_ymd' => Carbon::now(),
+                            'create_ymd' => Carbon::now(),
+                            'payment_flag' => 1,
+                        ]);
                 }
             }
 

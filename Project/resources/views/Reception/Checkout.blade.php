@@ -112,15 +112,20 @@
                 <label class="control-label" style="margin-top:5px;">Thông tin đặt phòng</label>
                 <div class="col-md-12" style="border: 1px solid #898989;border-radius:10px;margin:5px 0px 20px 0px;">
                     <div class="col-md-6" style="border-right:1px solid #898989;">
-                        <div class="form-inline col-md-offset-1" style="margin-top:20px;">
-                            <label class="label1">Ngày vào:</label>
-                            <input id="txtCheckin" name="txtCheckin" type="text"  class="form-control input-md" size="20" readonly>
+
+                        <div class="form-inline col-md-offset-1" style="margin-top:5px;">
+                            <label class="label1"style="margin-left: -10px">Dịch vụ:</label>
+                            <label class="label1" style="margin-left: 40px">Số lượng:</label>
+                            <label class="label1"style="margin-left: -20px">Giá:</label>
                         </div>
-                        <div class="form-inline" style="margin-top:10px;margin-bottom:20px;">
-                            <label class="label1 col-md-offset-1">Ngày ra:</label>
-                            <input id="txtCheckout" name="txtCheckout" type="text"  class="form-control input-md" size="20" readonly>
+                        <div class="form-inline col-md-offset-1" style="margin-left:25px;">
+                            <input id="txtServiceAdd" name="txtServiceAdd" type="text"  class="form-control input-md" size="10" >
+                            <input id="txtQuanAdd" name="txtQuanAdd" type="text"  class="form-control input-md" size="5" >
+                            <input id="txtAmountAdd" name="txtAmountAdd" type="text"  class="form-control input-md" size="8" >
+                            <button class="btn btn-danger" id="btnAdd" value="btnAdd" name="btnAdd"><b>Thêm</b></button>
                         </div>
-                        <div class="col-md-12" style="margin:0px 0px 10px;border: 2px solid rgb(200,200,200);">
+
+                        <div class="col-md-12" style="margin:10px -15px 20px;border: 2px solid rgb(200,200,200);">
                             <table id="jqGrid" style="border:1px solid gray;"></table>
                             <div id="pager"></div>
                         </div>
@@ -142,6 +147,14 @@
                         </div>
                     </div>
                     <div class="col-md-6">
+                        <div class="form-inline col-md-offset-1" style="margin-top:20px;">
+                            <label class="label1">Ngày vào:</label>
+                            <input id="txtCheckin" name="txtCheckin" type="text"  class="form-control input-md" size="20" readonly>
+                        </div>
+                        <div class="form-inline" style="margin-top:10px;margin-bottom:20px;">
+                            <label class="label1 col-md-offset-1">Ngày ra:</label>
+                            <input id="txtCheckout" name="txtCheckout" type="text"  class="form-control input-md" size="20" readonly>
+                        </div>
                         <div class="form-inline col-md-offset-1" style="margin-top:20px;">
                             <label class="label1">Số đêm:</label>
                             <input id="txtNumOfDay" name="txtNumOfDay" type="number" style="width:100px" class="form-control input-md" size="6" >
