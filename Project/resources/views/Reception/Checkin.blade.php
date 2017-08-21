@@ -132,7 +132,7 @@
 					</div>
 					<div class="form-inline col-md-offset-1" style="margin-top:15px;">
 						<label class="label1">Số người:</label>
-						<input id="numofpeople" name="numofpeople" type="number"  class="form-control input-md" min="1" style="width:70px;" >
+						<input id="numofpeople" name="numofpeople" type="number"  class="form-control input-md" min="1" value="1" style="width:70px;" >
 					</div>
 					<div class="form-inline col-md-offset-1" style="margin-top:15px;">
 						<label class="label1" for="">Kiểu phòng: </label>
