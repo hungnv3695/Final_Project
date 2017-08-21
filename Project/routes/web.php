@@ -14,6 +14,8 @@ Route::get('AccessDeny',function (){
     return view('AccessDeny');
 });
 
+Route::get('/thanhtoan','ThanhToan@view');
+
 Route::get('/','HomeController@view');
 Route::get('/Home','HomeController@view');
 Route::get('/Room','HomeController@viewRoom');
@@ -71,8 +73,6 @@ Route::middleware(['manager'])->group(function () {
 
     Route::get('/AccountList/AddAccount','AccountController@viewAddPage');
     Route::post('/AccountList/AddAccount','AccountController@addAccountRequest');
-
-    Route::get('/thanhtoan','ThanhToan@view');
 });
 
 
