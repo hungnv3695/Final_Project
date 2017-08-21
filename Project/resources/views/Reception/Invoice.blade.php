@@ -168,22 +168,22 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-12 article">
-                        <label class="label1 control-label">Họ tên người mua<span class="note" >(Buyer)</span> : </label> <span class="fill-line" id="cusName"></span>
+                        <label class="label1 control-label">Họ tên người mua<span class="note" >(Buyer)</span> : </label>&nbsp;&nbsp;<span class="fill-line" id="cusName"></span>
                     </div>
                     <div class="col-xs-12 article" style="margin-top:10px;">
-                        <label class="label1 control-label">Tên đơn vị<span class="note">(Company name)</span> : </label>&nbsp;
+                        <label class="label1 control-label">Tên đơn vị<span class="note">(Company name)</span> : </label>&nbsp;&nbsp;
                     </div>
                     <div class="col-xs-12 article" style="margin-top:10px;">
-                        <label class="label1 control-label">Mã số thuế<span class="note">(Tax code)</span> : </label>&nbsp;
+                        <label class="label1 control-label">Mã số thuế<span class="note">(Tax code)</span> : </label>&nbsp;&nbsp;
                     </div>
                     <div class="col-xs-12 article" style="margin-top:10px;">
-                        <label class="label1 control-label">Địa chỉ<span class="note">(Address)</span> : </label>&nbsp;
+                        <label class="label1 control-label">Địa chỉ<span class="note">(Address)</span> : </label>&nbsp;&nbsp;
                     </div>
                     <div class="col-xs-12 article" style="margin-top:10px;">
-                        <label class="label1 control-label">Hình thức thanh toán<span class="note">(Payment)</span> : </label>&nbsp;
+                        <label class="label1 control-label">Hình thức thanh toán<span class="note">(Payment)</span> : </label>&nbsp;&nbsp;
                     </div>
                     <div class="col-xs-12 article" style="margin-top:10px;">
-                        <label class="label1 control-label">Số tài khoản<span class="note">(Account No)</span> :</label>&nbsp;
+                        <label class="label1 control-label">Số tài khoản<span class="note">(Account No)</span> :</label>&nbsp;&nbsp;
                     </div>
                 </div>
             </div>
@@ -302,16 +302,19 @@
                                     <th colspan="4"><span class="line-right">Cộng tiền hàng<span class="note">(Total)<span> :</span>
 
                                     <td id="totalPrice"></td>
+                                    <td>VNĐ</td>
                                 </tr>
                                 <tr>
                                     <th colspan="4"><span class="line-left">Thuế suất GTGT<span class="note">(VAT rate)</span> : 10%</span><span class="line-right">Tiền thuế GTGT<span class="note">(VAT amount)</span> :</span>
                                     </th>
                                     <td id="VAT"></td>
+                                    <td>VNĐ</td>
                                 </tr>
                                 <tr>
                                     <th colspan="4"><span class="line-right">Tổng cộng tiền thanh toán<span class="note">(Total)<span> : </span>
 
                                     <td id="Total"></td>
+                                    <td>VNĐ</td>
                                 </tr>
                                 <tr>
                                     <th colspan="6" class="total-line"><span class="line-left">Số tiền viết bằng chữ :<br><span class="note">(Amount in words)</span></span>
@@ -319,7 +322,7 @@
                                 </tr>
                                 <tr>
                                     <th colspan="6" class="total-line">
-                                        <span class="col-xs-4 line-left" style="margin-bottom:80px;">Khách hàng<span class="note">(Customer)</span>
+                                        <span class="col-xs-4 line-left">Khách hàng<span class="note">(Customer)</span>
                                         <br>
                                         <span class="note">Ký, ghi rõ họ tên</span>
                                         <br>
@@ -327,7 +330,7 @@
                                         <br>
                                         <p class="customer-name"></p>
                                         </span>
-                                        <span class="col-xs-4 line-center" style="margin-bottom:80px;">Lễ tân khách sạn<span class="note">(Receptionist)</span>
+                                        <span class="col-xs-4 line-center">Lễ tân khách sạn<span class="note">(Receptionist)</span>
                                         <br>
                                         <span class="note">Ký, ghi rõ họ tên</span>
                                         <br>
