@@ -26,8 +26,7 @@ class FileUtil
             $value = explode(":",$data);
             $arr[$value[0]] = $value[1];
         }
-
-        dd($arr);
+        
         return $arr;
     }
 
