@@ -104,6 +104,8 @@ $(document).ready(function () {
             return;
         }
 
+        var roomPrice = removeCommas($("#roomPrice").text());
+
         var total = removeCommas($("#Total").text());
         $.ajax({
             headers: {
@@ -115,7 +117,7 @@ $(document).ready(function () {
             dataType: 'json',
             data: $("#myForm").serialize() + "&room_type=" + room_type + "&room_quantity=" + room_quantity +
             "&total="+ total + "&check_in=" + checkin + "&check_out=" + checkout + "&countRoom="+countRoom
-            +"&adult="+adult+"&children="+children + "&nights=" + nights,
+            +"&adult="+adult+"&children="+children + "&nights=" + nights + "&roomPrice="+roomPrice,
             contentType: 'application/x-www-form-urlencoded',
             success: function (result) {
                 if(result == 1){

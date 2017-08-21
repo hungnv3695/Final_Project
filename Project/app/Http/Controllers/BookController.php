@@ -11,6 +11,7 @@ use App\Models\Invoice;
 use App\Models\InvoiceDetail;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Payment\BaoKimPayment;
 
 class BookController extends Controller
 {
@@ -37,6 +38,12 @@ class BookController extends Controller
     public function confirmView() {
         return view('Guest.Confirm');
     }
+    public function BaoKimConfirm(Request $request){
+        $check_in = $request->check_in;
+        $check_out = $request->check_out;
+        $checksum = $request->checksum;
+        verifyResponseUrl();
+    }
 
     public function bookRoomOnline(Request $request){
         $room_type = explode(',', $request->room_type);
@@ -47,6 +54,23 @@ class BookController extends Controller
         $countRoom  = $request->countRoom;
         $check_in = DateTimeUtil::ConvertDateToString2($request->check_in);
         $check_out = DateTimeUtil::ConvertDateToString2($request->check_out);
+
+
+
+        //Bao Kim Start
+        $order_id = "";
+        $business = "sondcnd@gmail.com";
+        $total_amount = (int)$request->roomPrice;
+        $tax_fee = $total_amount * 10 / 100;
+        $shipping_fee = 0;
+        $order_description = "Thanh toán hóa đơn đặt phòng";
+        $url_success = "https://www.anhduonghotel.herokuapp.com/Book/BaoKimConfirm?check_in=".$check_in . "&check_out=" . $check_out;
+        $url_cancel = "https://www.anhduonghotel.herokuapp.com/Book/BaoKimConfirm";
+        $url_detail = "";
+        createRequestUrl($order_id, $business, $total_amount,
+            $shipping_fee, $tax_fee, $order_description,
+            $url_success, $url_cancel, $url_detail);
+        //Bao Kim End
 
 
         //$listRoom = $bookOnlineDAO->getRoomToBook($check_in, $check_out, $type_name, $countRoom);
