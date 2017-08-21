@@ -119,20 +119,50 @@
                     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                     <li data-target="#myCarousel" data-slide-to="1"></li>
                     <li data-target="#myCarousel" data-slide-to="2"></li>
+					<li data-target="#myCarousel" data-slide-to="3"></li>
+                    <li data-target="#myCarousel" data-slide-to="4"></li>
+					<li data-target="#myCarousel" data-slide-to="5"></li>
+                    <li data-target="#myCarousel" data-slide-to="6"></li>
+					<li data-target="#myCarousel" data-slide-to="7"></li>
+                    <li data-target="#myCarousel" data-slide-to="8"></li>
+					<li data-target="#myCarousel" data-slide-to="9"></li>
+                    <li data-target="#myCarousel" data-slide-to="10"></li>
                 </ol>
 
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner">
                     <div class="item active">
-                        <img src="img/bg2.jpg" style="width:100%;">
+                        <img src="img/Gallary/Head04.jpg" style="width:100%;">
                     </div>
-
                     <div class="item">
-                        <img src="img/Restaurant-4.jpg" style="width:100%;">
+                        <img src="img/Gallary/Head05.jpg" style="width:100%;">
                     </div>
-
                     <div class="item">
-                        <img src="img/Photo2.jpg" style="width:100%;">
+                        <img src="img/Gallary/Head09.jpg" style="width:100%;">
+                    </div>
+					<div class="item">
+                        <img src="img/Gallary/Head10.jpg" style="width:100%;">
+                    </div>
+					<div class="item">
+                        <img src="img/Gallary/Head00.jpg" style="width:100%;">
+                    </div>
+					<div class="item">
+                        <img src="img/Gallary/Head06.jpg" style="width:100%;">
+                    </div>
+					<div class="item">
+                        <img src="img/Gallary/Head07.jpg" style="width:100%;">
+                    </div>
+					<div class="item">
+                        <img src="img/Gallary/Head08.jpg" style="width:100%;">
+                    </div>
+					<div class="item">
+                        <img src="img/Head01.jpg" style="width:100%;">
+                    </div>
+					<div class="item">
+                        <img src="img/Head02.jpg" style="width:100%;">
+                    </div>
+					<div class="item">
+                        <img src="img/Head03.jpg" style="width:100%;">
                     </div>
                 </div>
 
