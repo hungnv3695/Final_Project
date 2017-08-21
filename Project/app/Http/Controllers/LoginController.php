@@ -46,7 +46,7 @@ class LoginController extends Controller
         $userLogin->setUserID($request->userID) ;
         $userLogin->setPassword($request->password);
 
-        $result = $this->CheckAcc($userLogin);
+        $result = $this->checkAcc($userLogin);
 
         switch ($result){
             case 1:
@@ -97,7 +97,7 @@ class LoginController extends Controller
      * @param User $userLogin
      * @return int
      */
-    public function CheckAcc(User $userLogin){
+    public function checkAcc(User $userLogin){
 
         //２．Thực hiện chứng thực login với user ID và password đã được đăng ký vào bảng user.
         $loginDAO = new LoginDAO();
