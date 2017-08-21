@@ -317,8 +317,11 @@
                                     <td>VNĐ</td>
                                 </tr>
                                 <tr>
-                                    <th colspan="6" class="total-line"><span class="line-left">Số tiền viết bằng chữ :<br><span class="note">(Amount in words)</span></span>
+                                    <th colspan="6" class="total-line"><span class="line-left">Số tiền viết bằng chữ :&nbsp;&nbsp; <br><span class="note">(Amount in words)</span></span>
+                                        <span id="charMoney" class="line-left"><h1><b></b></h1></span>
                                     </th>
+
+
                                 </tr>
                                 <tr>
                                     <th colspan="6" class="total-line">
@@ -358,4 +361,5 @@
 
 </body>
 <script src="{{asset('Scripts/Invoice/Invoice.js')}}"></script>
+<script src="{{asset('Scripts/ReadNumber/readNumber.js')}}"></script>
 </html>

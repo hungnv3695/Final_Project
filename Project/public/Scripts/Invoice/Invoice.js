@@ -31,7 +31,19 @@ $(document).ready(function () {
         }
         return nStr;
     }
-
+    function removeCommas(nStr)
+    {
+        nStr+="";
+        nStr = nStr.replace(/\./g,"");
+        return nStr;
+    }
+    function removeNgoac(nStr)
+    {
+        nStr+="";
+        nStr = nStr.replace(/\)/g,"");
+        nStr = nStr.replace(/\(/g,"");
+        return nStr;
+    }
     function getInforToDisplay(service,quantity,price) {
         var serviceList = service.split(',');
         var quanList = quantity.split(',');
@@ -64,6 +76,9 @@ $(document).ready(function () {
 
         $(".receptionist-name").text(user_name);
         $(".customer-name").text(customerName);
+
+        readNumber(removeCommas(total));
+        $("#charMoney").text(removeNgoac($("#charMoney").text()) + " đồng");
 
     }
     getInforToDisplay(service,quantity,price);
