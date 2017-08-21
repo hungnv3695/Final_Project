@@ -1,10 +1,10 @@
-﻿INSERT INTO tbl_guest( id,name,phone,mail,identity_card,company,address,company_phone,country) VALUES('1','Vũ Trần Hoàng','0126491311','hung@gmail','0126498784','FPT','Hoa Lac','123456566','Vietnam');
-INSERT INTO tbl_guest( id,name,phone,mail,identity_card,company,address,company_phone,country) VALUES('2','Nguyễn Việt Hưng','0841318413','hung@gmail','0189484546','FPT','Hoa Lac','123456566','Vietnam');
-INSERT INTO tbl_guest( id,name,phone,mail,identity_card,company,address,company_phone,country) VALUES('3','Đặng Công Sơn','0511974121','hung@gmail','0184328447','FPT','Hoa Lac','123456566','Vietnam');
-INSERT INTO tbl_guest( id,name,phone,mail,identity_card,company,address,company_phone,country) VALUES('4','Trân Bá Quyền','0648413161','hung@gmail','0126448484','FPT','Hoa Lac','123456566','Vietnam');
-INSERT INTO tbl_guest( id,name,phone,mail,identity_card,company,address,company_phone,country) VALUES('5','Đang Đức Mạnh','0884131988','hung@gmail','0124848447','FPT','Hoa Lac','123456566','Vietnam');
-INSERT INTO tbl_guest( id,name,phone,mail,identity_card,company,address,company_phone,country) VALUES('6','Do Hong Khoi','0651987841','hung@gmail','0135847474','FPT','Hoa Lac','123456566','Vietnam');
-INSERT INTO tbl_guest( id,name,phone,mail,identity_card,company,address,company_phone,country) VALUES('7','Tran Dang Loi','0484216848','hung@gmail','0139678563','FPT','Hoa Lac','123456566','Vietnam');
+﻿INSERT INTO tbl_guest( id,name,phone,mail,identity_card,company,address,company_phone,country) VALUES('1','Vũ Trần Hoàng','0126491311','hoang@gmail','0126498784','FPT','Hoa Lac','0125498486','Vietnam');
+INSERT INTO tbl_guest( id,name,phone,mail,identity_card,company,address,company_phone,country) VALUES('2','Nguyễn Việt Hưng','0841318413','hung@gmail','0189484546','FPT','Hoa Lac','0123484812','Vietnam');
+INSERT INTO tbl_guest( id,name,phone,mail,identity_card,company,address,company_phone,country) VALUES('3','Đặng Công Sơn','0511974121','son@gmail','0184328447','FPT','Hoa Lac','0122711242','Vietnam');
+INSERT INTO tbl_guest( id,name,phone,mail,identity_card,company,address,company_phone,country) VALUES('4','Trân Bá Quyền','0648413161','quyen@gmail','0126448484','FPT','Hoa Lac','0137827227','Vietnam');
+INSERT INTO tbl_guest( id,name,phone,mail,identity_card,company,address,company_phone,country) VALUES('5','Đang Đức Mạnh','0884131988','manh@gmail','0124848447','FPT','Hoa Lac','0179787857','Vietnam');
+INSERT INTO tbl_guest( id,name,phone,mail,identity_card,company,address,company_phone,country) VALUES('6','Do Hong Khoi','0651987841','khoi@gmail','0135847474','FPT','Hoa Lac','0145727727','Vietnam');
+INSERT INTO tbl_guest( id,name,phone,mail,identity_card,company,address,company_phone,country) VALUES('7','Tran Dang Loi','0484216848','loi@gmail','0139678563','FPT','Hoa Lac','0120477177','Vietnam');
 
 
 INSERT INTO tbl_room_type( room_type_id,type_name,adult,children,description,image_url,price,create_ymd,update_ymd) VALUES('RT01','Single','1','1','Phòng có 1 giường đơn','/img/single.jpg','400000','2017/08/20','2017/08/21');
