@@ -57,9 +57,9 @@
         
         .photo-title {
             margin-top: 0;
-            height: 215px;
-            background: url('img/photobg.jpg') fixed;
-            opacity: 0.3;
+            width: 100%;
+            height: 300px;
+            background: url('img/Head02.jpg') fixed;
             border: none;
         }
         
@@ -132,13 +132,13 @@
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner">
                     <div class="item active">
-                        <img src="img/Gallary/Head04.jpg" style="width:100%;">
+                        <img src="img/Gallary/Head09.jpg" style="width:100%;">
                     </div>
                     <div class="item">
                         <img src="img/Gallary/Head05.jpg" style="width:100%;">
                     </div>
                     <div class="item">
-                        <img src="img/Gallary/Head09.jpg" style="width:100%;">
+                        <img src="img/Gallary/Head04.jpg" style="width:100%;">
                     </div>
 					<div class="item">
                         <img src="img/Gallary/Head10.jpg" style="width:100%;">
