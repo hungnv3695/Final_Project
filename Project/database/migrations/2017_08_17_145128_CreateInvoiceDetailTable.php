@@ -25,7 +25,7 @@ class CreateInvoiceDetailTable extends Migration
             $table->string('room_id',5)->nullable();
             $table->string('creater_nm',50)->nullable();
             $table->string('updater_nm',50)->nullable();
-
+            $table->integer('payment_flag')->nullable();
             $table->timestamp('create_ymd')->nullable();
             $table->timestamp('update_ymd')->nullable();
 

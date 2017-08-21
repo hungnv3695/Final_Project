@@ -221,6 +221,7 @@ CREATE TABLE tbl_accountant(
 	status integer,
 	total integer,
 	receiver_nm varchar(50),
+	receiver_total integer,
 	update_ymd timestamp,
 	create_ymd timestamp
 )

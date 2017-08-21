@@ -45,6 +45,6 @@ class FileUtil
     }
 
     public static function deleteFile($fileName){
-        Storage::delete('BookInfo/'.$fileName);
+        Storage::delete('BookInfo/'. $fileName);
     }
 }
