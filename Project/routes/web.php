@@ -142,3 +142,4 @@ Route::get('/LoadRoomInfor','BookController@loadRoomInfor');
 Route::get('/Book/ConfirmView','BookController@confirmView');
 Route::get('/Book/ConfirmView/BookRoomOnline','BookController@bookRoomOnline');
 Route::get('/Book/BaoKimConfirm','BookController@baoKimConfirm');
+Route::get('/Success','BookController@saveBookingInfor');

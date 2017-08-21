@@ -42,7 +42,16 @@ class BookController extends Controller
         $check_in = $request->check_in;
         $check_out = $request->check_out;
         $checksum = $request->checksum;
-        verifyResponseUrl();
+        //verifyResponseUrl();
+    }
+    public function saveBookingInfor(Request $request){
+        $verify = new BaoKimPayment();
+        $result = $verify->verifyResponseUrl();
+        if($result == true){
+            
+        }else if($result == false){
+
+        }
     }
 
     public function bookRoomOnline(Request $request){
@@ -56,69 +65,72 @@ class BookController extends Controller
         $check_out = DateTimeUtil::ConvertDateToString2($request->check_out);
 
 
-
         //Bao Kim Start
-        $order_id = "";
+        $order_id = "2";
         $business = "sondcnd@gmail.com";
-        $total_amount = (int)$request->roomPrice;
+        $total_amount = 5000;//(int)$request->roomPrice;
         $tax_fee = $total_amount * 10 / 100;
         $shipping_fee = 0;
         $order_description = "Thanh toán hóa đơn đặt phòng";
-        $url_success = "https://www.anhduonghotel.herokuapp.com/Book/BaoKimConfirm?check_in=".$check_in . "&check_out=" . $check_out;
-        $url_cancel = "https://www.anhduonghotel.herokuapp.com/Book/BaoKimConfirm";
+        $url_success = "https://www.anhduonghotel.herokuapp.com/Success";//?check_in=".$check_in . "&check_out=" . $check_out;
+        $url_cancel = "https://www.anhduonghotel.herokuapp.com";
         $url_detail = "";
-        createRequestUrl($order_id, $business, $total_amount,
+        $baokim = new BaoKimPayment();
+        $result = $baokim->createRequestUrl($order_id, $business, $total_amount,
             $shipping_fee, $tax_fee, $order_description,
             $url_success, $url_cancel, $url_detail);
         //Bao Kim End
-
+        dd($result);
 
         //$listRoom = $bookOnlineDAO->getRoomToBook($check_in, $check_out, $type_name, $countRoom);
 
-        $res = new Reservation();
-        $res->setCheckIn($check_in);
-        $res->setCheckOut($check_out);
-        $res->setNumberOfAdult($request->adult);
-        $res->setNumberOfChildren($request->children);
-        $res->setEditer('GUEST');
-        $res->setNote($request->notetxt);
-        $res->setCreateYmd(Carbon::now());
-        $res->setStatusId('RS01');
-        $res->setNumberOfRoom($countRoom);
 
-        $guest = new Guest();
-        $guest->setName($request->txtFullname);
-        $guest->setIdentityCard($request->txtIdcard);
-        $guest->setPhone($request->txtPhone);
-        $guest->setAddress($request->txtAddress);
-        $guest->setMail($request->txtEmail);
-        $guest->setCountry($request->Country);
-        $guest->setCreateYmd(Carbon::now());
-
-        $resDetail = new ReservationDetail();
-        $resDetail->setDateIn($check_in);
-        $resDetail->setDateOut($check_out);
-        $resDetail->setCheckInFlag(0);
-        $resDetail->setCheckOutFlag(0);
-        $resDetail->setCreateYmd(Carbon::now());
-
-        $invoice = new Invoice();
-        $invoice->setCreateYmd(Carbon::now());
-        $invoice->setCreaterName('GUEST');
-
-        $invoiceDetail = new InvoiceDetail();
-
-        //$invoiceDetail->setItemId($request->cboRoomNo);
-        $invoiceDetail->setItemType('Room');
-        $invoiceDetail->setQuantity(1);
-        $invoiceDetail->setCreateYmd(Carbon::now());
-        $invoiceDetail->setCreaterName('Guest');
-        $invoiceDetail->setPaymentFlag(1);
-
-        $bookOnlineDAO = new BookOnlineDAO();
-        $result = $bookOnlineDAO->createBook($res,$resDetail, $guest,$invoice,$invoiceDetail, $room_type, $room_quantity,$check_in,$check_out,$nights);
-
-        return response($result);
+        //Comment start
+//        $res = new Reservation();
+//        $res->setCheckIn($check_in);
+//        $res->setCheckOut($check_out);
+//        $res->setNumberOfAdult($request->adult);
+//        $res->setNumberOfChildren($request->children);
+//        $res->setEditer('GUEST');
+//        $res->setNote($request->notetxt);
+//        $res->setCreateYmd(Carbon::now());
+//        $res->setStatusId('RS01');
+//        $res->setNumberOfRoom($countRoom);
+//
+//        $guest = new Guest();
+//        $guest->setName($request->txtFullname);
+//        $guest->setIdentityCard($request->txtIdcard);
+//        $guest->setPhone($request->txtPhone);
+//        $guest->setAddress($request->txtAddress);
+//        $guest->setMail($request->txtEmail);
+//        $guest->setCountry($request->Country);
+//        $guest->setCreateYmd(Carbon::now());
+//
+//        $resDetail = new ReservationDetail();
+//        $resDetail->setDateIn($check_in);
+//        $resDetail->setDateOut($check_out);
+//        $resDetail->setCheckInFlag(0);
+//        $resDetail->setCheckOutFlag(0);
+//        $resDetail->setCreateYmd(Carbon::now());
+//
+//        $invoice = new Invoice();
+//        $invoice->setCreateYmd(Carbon::now());
+//        $invoice->setCreaterName('GUEST');
+//
+//        $invoiceDetail = new InvoiceDetail();
+//
+//
+//        $invoiceDetail->setItemType('Room');
+//        $invoiceDetail->setQuantity(1);
+//        $invoiceDetail->setCreateYmd(Carbon::now());
+//        $invoiceDetail->setCreaterName('Guest');
+//        $invoiceDetail->setPaymentFlag(1);
+//
+//        $bookOnlineDAO = new BookOnlineDAO();
+//        $result = $bookOnlineDAO->createBook($res,$resDetail, $guest,$invoice,$invoiceDetail, $room_type, $room_quantity,$check_in,$check_out,$nights);
+//
+//        return response($result);
+        //Comment End
 
     }
 }
