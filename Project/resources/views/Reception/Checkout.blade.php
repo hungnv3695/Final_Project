@@ -167,7 +167,7 @@
                             <label class="label1" for="">Tổng tiền:</label>
                             <input id="txtTotalprice" name="txtTotalprice" type="text" class="form-control input-md " style=" text-align:right;" size="10" readonly>
                             <label class="control-label" for=""> VNĐ</label>
-                            <button class="btn btn-danger" id="btnCalculate" value="btnCalculate" name="btnCalculate"><b>Tính lại</b></button>
+                            <button class="btn btn-warning" id="btnCalculate" value="btnCalculate" name="btnCalculate"><b>Tính lại</b></button>
 
                         </div>
 
@@ -236,9 +236,9 @@
             </div>
             <div class="col-md-10 col-md-offset-1" style="background-color:#c3bfc0;margin-bottom:10px;">
                 <div class="row">
-                    <div class="col-md-5 col-md-offset-7" style="margin-top:10px; margin-bottom:10px;">
-                        <button class="btn btn-danger" id="btnPrint" value="btnPrint" name="btnPrint" disabled><b>In hóa đơn</b></button>
-                        <button class="btn btn-primary col-md-offset-1" id="btnCheckout" value="btnCheckout" name="btnCheckout"><b>Trả phòng</b></button>
+                    <div class="col-md-5 col-md-offset-8" style="margin-top:10px; margin-bottom:10px;">
+                        <button class="btn btn-success" id="btnPrint" value="btnPrint" name="btnPrint" disabled><b>In hóa đơn</b></button>
+                        <button class="btn btn-primary" id="btnCheckout" value="btnCheckout" name="btnCheckout"><b>Trả phòng</b></button>
                         <button class="btn btn-danger" id="btnBack" value="btnBack" name="btnBack"><b>Quay lại</b></button>
                     </div>
                 </div>

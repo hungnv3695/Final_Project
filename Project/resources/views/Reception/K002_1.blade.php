@@ -38,7 +38,7 @@
 <body>
 <div class="container">
     <div class="row">
-            <div class="col-md-8 col-md-offset-2" style="margin-top:5%;background-color:#c3bfc0;border-bottom:1px solid #898989;">
+            <div class="col-md-8 col-md-offset-2" style="margin-top:2%;background-color:#c3bfc0;border-bottom:1px solid #898989;">
 					<div class="row">
 						<div class="col-md-offset-9" style="margin:10px 10px 0px 0px;float:right;">
 							@if(Session::has('USER_INFO'))
