@@ -266,12 +266,22 @@ class CheckInOutController extends Controller
 
         return response($result);
     }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     */
     public function getUserName(Request $request){
 
         $user_name = $request->session()->get('USER_INFO')->user_name;
 
         return response( json_encode($user_name));
     }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     */
     public function saveCheckOut(Request $request){
 
         if($request->iList == ""){
@@ -290,6 +300,8 @@ class CheckInOutController extends Controller
         }
         if($request->serList == "" || $request->serList == null){
             $serList = "";
+            $quanList = "";
+            $priList  = "";
         }
         else{
             $serList = explode(',', $request->serList);
