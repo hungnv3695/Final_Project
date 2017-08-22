@@ -214,7 +214,7 @@
                         </div>
                         <h3 class="roomtype">Phòng single</h3>
                         <div class="form-inline">
-                            <span class="item-price">Giá chỉ 100.000 VNĐ/đêm</span>
+                            <span class="item-price">Giá chỉ 400.000 VNĐ/đêm</span>
                             <a class="booking" href="{!! url('/book') !!}">Đặt ngay</a>
                         </div>
                     </div>
@@ -228,7 +228,7 @@
                         </div>
                         <h3 class="roomtype">Phòng double</h3>
                         <div class="form-inline">
-                            <span class="item-price">Giá chỉ 200.000 VNĐ/đêm</span>
+                            <span class="item-price">Giá chỉ 600.000 VNĐ/đêm</span>
                             <a class="booking" href="{!! url('/book') !!}">Đặt ngay</a>
                         </div>
                     </div>
@@ -242,7 +242,7 @@
                         </div>
                         <h3 class="roomtype">Phòng twins</h3>
                         <div class="form-inline">
-                            <span class="item-price">Giá chỉ 300.000 VNĐ/đêm</span>
+                            <span class="item-price">Giá chỉ 700.000 VNĐ/đêm</span>
                             <a class="booking" href="{!! url('/book') !!}">Đặt ngay</a>
                         </div>
                     </div>
@@ -256,7 +256,7 @@
                         </div>
                         <h3 class="roomtype">Phòng extra</h3>
                         <div class="form-inline">
-                            <span class="item-price">Giá chỉ 400.000 VNĐ/đêm</span>
+                            <span class="item-price">Giá chỉ 900.000 VNĐ/đêm</span>
                             <a class="booking" href="{!! url('/book') !!}">Đặt ngay</a>
                         </div>
                     </div>
