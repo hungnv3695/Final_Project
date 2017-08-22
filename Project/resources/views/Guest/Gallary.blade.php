@@ -53,22 +53,22 @@
             height: 150px;
             opacity: 0.9;
             margin-left: 60px;
-        }
-        
-        .photo-title {
-            margin-top: 0;
-            width: 100%;
-            height: 300px;
-            background: url('img/Head02.jpg') fixed;
-            border: none;
-        }
-        
-        h3 {
-            font-family: 'Enriqueta', arial, serif !important;
-            color: rgb(140, 110, 78);
+        }             
+        .page-title {
+            display: inline-block;
+            margin-top: 190px;
+            width: auto;
             margin-left: 70px;
         }
         
+        .page-title h4 {
+            float: left;
+            color: rgb(140, 110, 78);
+            margin-right: 10px;
+        }
+        h4.home-page:hover {
+            color: #BD6B09;
+        }
         #myCarousel {
             width: 90%;
             margin: 20px 5% 20px;
@@ -110,9 +110,11 @@
             </div>
         </header>
         <!--body-->
-        <div id="content">
-            <div align="center" class="photo-title"></div>
-            <h3>Thư viện ảnh</h3>
+        <div id="content">           
+            <div class="page-title">
+                <a href="{!! url('/Home') !!}"><h4 class="home-page">Trang chủ</h4></a>
+                <h4>> Thư viện ảnh</h4>
+            </div>
             <div id="myCarousel" class="carousel slide" data-ride="carousel">
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
