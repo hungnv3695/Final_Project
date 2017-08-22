@@ -198,7 +198,7 @@ CREATE TABLE tbl_invoice(
 CREATE TABLE tbl_invoice_detail(
 	id serial PRIMARY KEY,
 	invoice_id integer,
-	item_id varchar(5),
+	item_id varchar(200),
 	item_type varchar(50),
 	quantity integer,	
 	price integer,

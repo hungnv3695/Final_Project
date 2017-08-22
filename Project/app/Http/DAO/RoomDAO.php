@@ -121,7 +121,8 @@ class RoomDAO
     }
 
     public function getRoomType(){
-        $result = RoomType::get([
+        $result = RoomType::orderBy(Constants::TBL_TYPE_NAME)
+        ->get([
            Constants::TBL_ROOM_TYPE_ID,
            Constants::TBL_TYPE_NAME,
            Constants::TBL_DESCRIPTION,
