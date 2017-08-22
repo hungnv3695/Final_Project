@@ -25,7 +25,7 @@ class Message
     //Error message for room type
     const MSG0010 = "Tên loại phòng không được để trống.";
     const MSG0011 = "Loại phòng này đã tồn tại.";
-    const MSG0012 = "Tên Thiết bị không được để trống.";
+    const MSG0012 = "Tên thiết bị không được để trống.";
     //---------------------------------
     const MSG0013 = "Hãy nhập dữ liệu.";
     const MSG0014 = "Dữ liệu nhập vào không đúng.";
@@ -37,10 +37,10 @@ class Message
     const MSG0019 = "Tên kiểu phòng đã tồn tại.";
     const MSG0020 = "Cập nhật kiểu phòng thành công.";
     const MSG0021 = "Mã kiểu phòng đã tồn tại.";
-    const MSG0022 = "Thêm kiểu phòng Thành công.";
+    const MSG0022 = "Thêm kiểu phòng thành công.";
     const MSG0023 = "Thêm kiểu phòng thất bại. Xin vui lòng thử lại sau.";
     const MSG0024 = "Thêm phòng thất bại. Xin vui lòng thử lại sau.";
-    const MSG0025 = "Thêm phòng Thành công.";
+    const MSG0025 = "Thêm phòng thành công.";
     const MSG0026 = "Phòng đã tồn tại.";
     const MSG0027 = "Thay đổi tài khoản thành công.";
     const MSG0028 = "Đặt lại mật khẩu thành công.";
@@ -52,7 +52,7 @@ class Message
 
     const MSG0034 = "Mật khẩu mới trùng với mật khẩu cũ.";
     const MSG0035 = "Mật khẩu mới và xác nhận mật khẩu không trùng khớp.";
-    const MSG0036 = "Số phòng đã tồn tại.";
+    const MSG0036 = "Tên phòng đã tồn tại.";
 
     const MSG0037 = "Cập nhật thành công";
     const MSG0038 = "Vui lòng nhận đủ số tiền";
