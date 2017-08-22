@@ -413,7 +413,9 @@ $(document).ready(function () {
             jQuery("#jqGrid")[0].refreshIndex();
             jQuery("#jqGrid").trigger("reloadGrid");
         }
-
+        $("#txtServiceAdd").val('');
+        $("#txtQuanAdd").val('');
+        $("#txtAmountAdd").val('');
         event.preventDefault();
     })
 
