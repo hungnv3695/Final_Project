@@ -37,6 +37,16 @@
 		line-height:35px;
 		letter-spacing:1.2px;
 	}
+	.Error
+	{
+		color: #D8000C;
+		background-color: #FFBABA;
+		height:40px;
+		line-height:40px;
+		opacity: 0.6;
+		border-radius:5px;
+		text-align:center;
+	}
 	</style>
 </head>
 <body>
@@ -56,15 +66,15 @@
 					</div>
 				</div>
 				<form method="post">
-					<div class="col-md-8 col-md-offset-2" style="background-color:#c3bfc0;">
-						@if(Session::has('ErrorMSG'))
-							<div class="Error" style="margin-top:10px;">
-								<label id="ErrorMsg"> {!! Session::get('ErrorMSG')!!} </label>
-							</div>
-						@endif
+					<div class="col-md-8 col-md-offset-2" style="background-color:#c3bfc0;">						
 						<div class="row">
 							<div class="col-md-8 form-inline col-md-offset-2" style="border:1px solid #898989;border-radius:10px;margin-top:20px;margin-bottom:30px;">
-								<div class="form-inline col-md-offset-1" style="margin-top:30px;">
+								@if(Session::has('ErrorMSG'))
+									<div class="Error" style="margin-top:10px;">
+										<label id="ErrorMsg"> {!! Session::get('ErrorMSG')!!} </label>
+									</div>
+								@endif
+								<div class="form-inline col-md-offset-1" style="margin-top:20px;">
 									<label class="label1">Ngày:</label>
 									<input id="txtDate" name="txtDate" type="text" class="form-control input-md" readonly value="{!! isset($date)?$date:"" !!}" size="25">
 								</div>
@@ -82,8 +92,10 @@
 									<input id="txtMoneyReceived" name="txtMoneyReceived" maxlength="13" oninput="formatCurency(this,1); " type="text" class="form-control input-md" size="20">
 									<label class="control-label">(VNĐ)</label>
 								</div>
-								<label class="control-label" for="" id="charMoney"></label>
-								<div class="form-inline col-md-offset-8" style="margin-top:50px;margin-bottom:10px;">
+								<div class="form-inline col-md-offset-1" style="margin-top:10px;">
+									<label class="control-label" for="" id="charMoney"></label>
+								</div>
+								<div class="form-inline col-md-offset-8" style="margin-top:30px;margin-bottom:10px;">
 									<button class="btn btn-success col-md-offset-1" value="btnSave" name="btnSave"><b>Lưu</b></button>
 									<button type="button" class="btn btn-danger" value="btnBack" name="btnBack" onclick="window.location='{{ url("/AccountantList") }}'"  ><b>Quay lại</b></button>
 								</div>
