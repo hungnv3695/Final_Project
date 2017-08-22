@@ -47,6 +47,9 @@
 		border-radius:5px;
 		text-align:center;
 	}
+	.charMoney{
+		font-weight:100;
+	}
 	</style>
 </head>
 <body>
@@ -93,7 +96,7 @@
 									<label class="control-label">(VNĐ)</label>
 								</div>
 								<div class="form-inline col-md-offset-1" style="margin-top:10px;">
-									<label class="control-label" for="" id="charMoney"></label>
+									<label class="charMoney control-label" for="" id="charMoney"></label>
 								</div>
 								<div class="form-inline col-md-offset-8" style="margin-top:30px;margin-bottom:10px;">
 									<button class="btn btn-success col-md-offset-1" value="btnSave" name="btnSave"><b>Lưu</b></button>
