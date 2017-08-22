@@ -234,7 +234,7 @@
                     </div>
                     <div class="col-md-3 col-xs-6 room-item">
                         <div class="zoom-img">
-                            <img src="img/twins.jpg">
+                            <img src="img/twins4.jpg">
                             <button type="button" class="room-detail" data-toggle="collapse" data-target="#intro3">Chi tiết phòng</button>
                             <div id="intro3" class="text-intro collapse">
                                 Kiểu phòng có 2 giường đơn thông thường. Với đầy đủ các trang thiết bị cần thiết bị và phòng tắm riêng. Thông thường dành cho những khách không ngủ chung giường với nhau.
