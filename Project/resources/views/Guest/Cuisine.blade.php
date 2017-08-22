@@ -59,11 +59,6 @@
         #myCarousel {
             width: 100%;
         }
-        
-        .carousel-inner {
-            height: 450px;
-        }
-        
         .page-title {
             display: inline-block;
             margin-top: 20px;
@@ -162,15 +157,15 @@
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner">
                     <div class="item active">
-                        <img src="img/bar1.jpg" style="width:100%;">
+                        <img src="img/Cuisine3.jpg" style="width:100%;">
                     </div>
 
                     <div class="item">
-                        <img src="img/bar2.jpg" style="width:100%;">
+                        <img src="img/Cuisine2.jpg" style="width:100%;">
                     </div>
 
                     <div class="item">
-                        <img src="img/restaurant-img3.jpg" style="width:100%;">
+                        <img src="img/Cuisine7.jpg" style="width:100%;">
                     </div>
                 </div>
 
@@ -193,8 +188,8 @@
             <div class="container-fluid">
                 <div class="col-md-12">
                     <div class="col-md-4 Cuisine-item">
-                        <div class="zoom-img"><img src="img/restaurant-img1.jpg">
-                        </div>
+                        <div class="zoom-img"><img src="img/Cuisine6.jpg">
+                    </div>
                     </div>
                     <div class="col-md-8">
                         <h3>Anh Duong Restaurant</h3>
@@ -206,7 +201,7 @@
                 </div>
                 <div class="col-md-12">
                     <div class="col-md-4 Cuisine-item">
-                        <div class="zoom-img"><img src="img/bar1.jpg">
+                        <div class="zoom-img"><img src="img/Cuisine8.jpg">
                         </div>
                     </div>
                     <div class="col-md-8">

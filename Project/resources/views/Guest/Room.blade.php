@@ -206,7 +206,7 @@
                 <div class="col-md-12">
                     <div class="col-md-3 col-xs-6 room-item">
                         <div class="zoom-img">
-                            <img src="img/single.jpg">
+                            <img src="img/double2.jpg">
                             <button type="button" class="room-detail" data-toggle="collapse" data-target="#intro1">Chi tiết phòng</button>
                             <div id="intro1" class="text-intro collapse">
                                 Kiểu phòng có 1 giường đơn thông thường. Với đầy đủ các trang thiết bị cần thiết bị và phòng tắm riêng. Phù hợp với 1 khách hàng sử dụng. .
@@ -214,13 +214,13 @@
                         </div>
                         <h3 class="roomtype">Phòng single</h3>
                         <div class="form-inline">
-                            <span class="item-price">Giá chỉ 100.000 VNĐ/đêm</span>
+                            <span class="item-price">Giá chỉ 400.000 VNĐ/đêm</span>
                             <a class="booking" href="{!! url('/book') !!}">Đặt ngay</a>
                         </div>
                     </div>
                     <div class="col-md-3 col-xs-6 room-item">
                         <div class="zoom-img">
-                            <img src="img/double.jpg">
+                            <img src="img/double2.jpg">
                             <button type="button" class="room-detail" data-toggle="collapse" data-target="#intro2">Chi tiết phòng</button>
                             <div id="intro2" class="text-intro collapse">
                                 Kiểu phòng có 1 giường đơn lớn. Với đầy đủ các trang thiết bị cần thiết bị và phòng tắm riêng. Thông thường dành cho những cặp vợ chồng hoặc dành cho những người có thể nằm chung với nhau.
@@ -228,13 +228,13 @@
                         </div>
                         <h3 class="roomtype">Phòng double</h3>
                         <div class="form-inline">
-                            <span class="item-price">Giá chỉ 200.000 VNĐ/đêm</span>
+                            <span class="item-price">Giá chỉ 600.000 VNĐ/đêm</span>
                             <a class="booking" href="{!! url('/book') !!}">Đặt ngay</a>
                         </div>
                     </div>
                     <div class="col-md-3 col-xs-6 room-item">
                         <div class="zoom-img">
-                            <img src="img/twins.jpg">
+                            <img src="img/twins4.jpg">
                             <button type="button" class="room-detail" data-toggle="collapse" data-target="#intro3">Chi tiết phòng</button>
                             <div id="intro3" class="text-intro collapse">
                                 Kiểu phòng có 2 giường đơn thông thường. Với đầy đủ các trang thiết bị cần thiết bị và phòng tắm riêng. Thông thường dành cho những khách không ngủ chung giường với nhau.
@@ -242,7 +242,7 @@
                         </div>
                         <h3 class="roomtype">Phòng twins</h3>
                         <div class="form-inline">
-                            <span class="item-price">Giá chỉ 300.000 VNĐ/đêm</span>
+                            <span class="item-price">Giá chỉ 700.000 VNĐ/đêm</span>
                             <a class="booking" href="{!! url('/book') !!}">Đặt ngay</a>
                         </div>
                     </div>
@@ -256,7 +256,7 @@
                         </div>
                         <h3 class="roomtype">Phòng extra</h3>
                         <div class="form-inline">
-                            <span class="item-price">Giá chỉ 400.000 VNĐ/đêm</span>
+                            <span class="item-price">Giá chỉ 900.000 VNĐ/đêm</span>
                             <a class="booking" href="{!! url('/book') !!}">Đặt ngay</a>
                         </div>
                     </div>

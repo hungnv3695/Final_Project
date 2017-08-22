@@ -53,22 +53,22 @@
             height: 150px;
             opacity: 0.9;
             margin-left: 60px;
-        }
-        
-        .photo-title {
-            margin-top: 0;
-            height: 215px;
-            background: url('img/photobg.jpg') fixed;
-            opacity: 0.3;
-            border: none;
-        }
-        
-        h3 {
-            font-family: 'Enriqueta', arial, serif !important;
-            color: rgb(140, 110, 78);
+        }             
+        .page-title {
+            display: inline-block;
+            margin-top: 190px;
+            width: auto;
             margin-left: 70px;
         }
         
+        .page-title h4 {
+            float: left;
+            color: rgb(140, 110, 78);
+            margin-right: 10px;
+        }
+        h4.home-page:hover {
+            color: #BD6B09;
+        }
         #myCarousel {
             width: 90%;
             margin: 20px 5% 20px;
@@ -110,29 +110,61 @@
             </div>
         </header>
         <!--body-->
-        <div id="content">
-            <div align="center" class="photo-title"></div>
-            <h3>Thư viện ảnh</h3>
+        <div id="content">           
+            <div class="page-title">
+                <a href="{!! url('/Home') !!}"><h4 class="home-page">Trang chủ</h4></a>
+                <h4>> Thư viện ảnh</h4>
+            </div>
             <div id="myCarousel" class="carousel slide" data-ride="carousel">
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
                     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                     <li data-target="#myCarousel" data-slide-to="1"></li>
                     <li data-target="#myCarousel" data-slide-to="2"></li>
+					<li data-target="#myCarousel" data-slide-to="3"></li>
+                    <li data-target="#myCarousel" data-slide-to="4"></li>
+					<li data-target="#myCarousel" data-slide-to="5"></li>
+                    <li data-target="#myCarousel" data-slide-to="6"></li>
+					<li data-target="#myCarousel" data-slide-to="7"></li>
+                    <li data-target="#myCarousel" data-slide-to="8"></li>
+					<li data-target="#myCarousel" data-slide-to="9"></li>
+                    <li data-target="#myCarousel" data-slide-to="10"></li>
                 </ol>
 
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner">
                     <div class="item active">
-                        <img src="img/bg2.jpg" style="width:100%;">
+                        <img src="img/Gallary/Head09.jpg" style="width:100%;">
                     </div>
-
                     <div class="item">
-                        <img src="img/Restaurant-4.jpg" style="width:100%;">
+                        <img src="img/Gallary/Head05.jpg" style="width:100%;">
                     </div>
-
                     <div class="item">
-                        <img src="img/Photo2.jpg" style="width:100%;">
+                        <img src="img/Gallary/Head04.jpg" style="width:100%;">
+                    </div>
+					<div class="item">
+                        <img src="img/Gallary/Head10.jpg" style="width:100%;">
+                    </div>
+					<div class="item">
+                        <img src="img/Gallary/Head00.jpg" style="width:100%;">
+                    </div>
+					<div class="item">
+                        <img src="img/Gallary/Head06.jpg" style="width:100%;">
+                    </div>
+					<div class="item">
+                        <img src="img/Gallary/Head07.jpg" style="width:100%;">
+                    </div>
+					<div class="item">
+                        <img src="img/Gallary/Head08.jpg" style="width:100%;">
+                    </div>
+					<div class="item">
+                        <img src="img/Head01.jpg" style="width:100%;">
+                    </div>
+					<div class="item">
+                        <img src="img/Head02.jpg" style="width:100%;">
+                    </div>
+					<div class="item">
+                        <img src="img/Head03.jpg" style="width:100%;">
                     </div>
                 </div>
 

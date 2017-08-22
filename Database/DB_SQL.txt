@@ -1,10 +1,30 @@
-﻿INSERT INTO tbl_guest( id,name,phone,mail,identity_card,company,address,company_phone,country) VALUES('1','Vũ Trần Hoàng','0126491311','hoang@gmail','0126498784','FPT','Hoa Lac','0125498486','Vietnam');
-INSERT INTO tbl_guest( id,name,phone,mail,identity_card,company,address,company_phone,country) VALUES('2','Nguyễn Việt Hưng','0841318413','hung@gmail','0189484546','FPT','Hoa Lac','0123484812','Vietnam');
-INSERT INTO tbl_guest( id,name,phone,mail,identity_card,company,address,company_phone,country) VALUES('3','Đặng Công Sơn','0511974121','son@gmail','0184328447','FPT','Hoa Lac','0122711242','Vietnam');
-INSERT INTO tbl_guest( id,name,phone,mail,identity_card,company,address,company_phone,country) VALUES('4','Trân Bá Quyền','0648413161','quyen@gmail','0126448484','FPT','Hoa Lac','0137827227','Vietnam');
-INSERT INTO tbl_guest( id,name,phone,mail,identity_card,company,address,company_phone,country) VALUES('5','Đang Đức Mạnh','0884131988','manh@gmail','0124848447','FPT','Hoa Lac','0179787857','Vietnam');
-INSERT INTO tbl_guest( id,name,phone,mail,identity_card,company,address,company_phone,country) VALUES('6','Do Hong Khoi','0651987841','khoi@gmail','0135847474','FPT','Hoa Lac','0145727727','Vietnam');
-INSERT INTO tbl_guest( id,name,phone,mail,identity_card,company,address,company_phone,country) VALUES('7','Tran Dang Loi','0484216848','loi@gmail','0139678563','FPT','Hoa Lac','0120477177','Vietnam');
+﻿INSERT INTO tbl_group(group_cd, group_name)VALUES ('G01', 'Quản lý');
+INSERT INTO tbl_group(group_cd, group_name)VALUES ('G02', 'Lễ tân');
+INSERT INTO tbl_group(group_cd, group_name)VALUES ('G03', 'Kế toán');
+INSERT INTO public.tbl_user(user_id, user_name, login_pwd, pwd_regs_ymd, acc_lock_flg, delete_flg, phone, mail, identity_card, tax_code, identity_card_location, address, register_cd, register_nm, last_register_cd, last_register_nm, create_ymd)
+VALUES ('sondc','Đặng Công Sơn','sondc','20170822', '0', '0','0129567876','sondc@gmail.com','2324564432', '','Nam Định','Hà Nội','', '', '', '', '2017/08/22');
+INSERT INTO public.tbl_user(user_id, user_name, login_pwd, pwd_regs_ymd, acc_lock_flg, delete_flg, phone, mail, identity_card, tax_code, identity_card_location, address, register_cd, register_nm, last_register_cd, last_register_nm, create_ymd)
+VALUES ('hungnv','Nguyễn Việt Hưng','hungnv','20170822', '0', '0','0129234763','hungnv@gmail.com','234543224', '','Hà Nội','Hà Nội','', '', '', '', '2017/08/22');
+INSERT INTO public.tbl_user(user_id, user_name, login_pwd, pwd_regs_ymd, acc_lock_flg, delete_flg, phone, mail, identity_card, tax_code, identity_card_location, address, register_cd, register_nm, last_register_cd, last_register_nm, create_ymd)
+VALUES ('quyentb','Trần Bá Quyền','quyentb','20170822', '0', '0','0129234577','quyentb@gmail.com','033122142', '','Vĩnh Phúc','Hà Nội','', '', '', '', '2017/08/22');
+INSERT INTO public.tbl_user(user_id, user_name, login_pwd, pwd_regs_ymd, acc_lock_flg, delete_flg, phone, mail, identity_card, tax_code, identity_card_location, address, register_cd, register_nm, last_register_cd, last_register_nm, create_ymd)
+VALUES ('manhdd','Đặng Đức Mạnh','manhdd','20170822', '0', '0','012924234','manhdd@gmail.com','16389473687', '','Thái Bình','Hà Nội','', '', '', '', '2017/08/22');
+INSERT INTO public.tbl_user(user_id, user_name, login_pwd, pwd_regs_ymd, acc_lock_flg, delete_flg, phone, mail, identity_card, tax_code, identity_card_location, address, register_cd, register_nm, last_register_cd, last_register_nm, create_ymd)
+VALUES ('hoangvt','Vũ Trần Hoàng','hoangvt','20170822', '0', '0','0129324557','hoangvt@gmail.com','114454667', '','Hà Nội','Hà Nội','', '', '', '', '2017/08/22');
+
+INSERT INTO tbl_user_group(user_id, group_cd, register_cd, register_nm, last_register_cd, last_register_nm, create_ymd)VALUES ('sondc','G01', '', '', '', '', '2017/08/22');
+INSERT INTO tbl_user_group(user_id, group_cd, register_cd, register_nm, last_register_cd, last_register_nm, create_ymd)VALUES ('hungnv','G02', '', '', '', '', '2017/08/22');
+INSERT INTO tbl_user_group(user_id, group_cd, register_cd, register_nm, last_register_cd, last_register_nm, create_ymd)VALUES ('quyentb','G03', '', '', '', '', '2017/08/22');
+INSERT INTO tbl_user_group(user_id, group_cd, register_cd, register_nm, last_register_cd, last_register_nm, create_ymd)VALUES ('manhdd','G01', '', '', '', '', '2017/08/22');
+INSERT INTO tbl_user_group(user_id, group_cd, register_cd, register_nm, last_register_cd, last_register_nm, create_ymd)VALUES ('hoangvt','G02', '', '', '', '', '2017/08/22');
+
+INSERT INTO tbl_guest(name,phone,mail,identity_card,company,address,company_phone,country) VALUES('Vũ Trần Hoàng','0126491311','hoang@gmail','0126498784','FPT','Hoa Lac','0125498486','Vietnam');
+INSERT INTO tbl_guest(name,phone,mail,identity_card,company,address,company_phone,country) VALUES('Nguyễn Việt Hưng','0841318413','hung@gmail','0189484546','FPT','Hoa Lac','0123484812','Vietnam');
+INSERT INTO tbl_guest(name,phone,mail,identity_card,company,address,company_phone,country) VALUES('Đặng Công Sơn','0511974121','son@gmail','0184328447','FPT','Hoa Lac','0122711242','Vietnam');
+INSERT INTO tbl_guest(name,phone,mail,identity_card,company,address,company_phone,country) VALUES('Trân Bá Quyền','0648413161','quyen@gmail','0126448484','FPT','Hoa Lac','0137827227','Vietnam');
+INSERT INTO tbl_guest(name,phone,mail,identity_card,company,address,company_phone,country) VALUES('Đang Đức Mạnh','0884131988','manh@gmail','0124848447','FPT','Hoa Lac','0179787857','Vietnam');
+INSERT INTO tbl_guest(name,phone,mail,identity_card,company,address,company_phone,country) VALUES('Do Hong Khoi','0651987841','khoi@gmail','0135847474','FPT','Hoa Lac','0145727727','Vietnam');
+INSERT INTO tbl_guest(name,phone,mail,identity_card,company,address,company_phone,country) VALUES('Tran Dang Loi','0484216848','loi@gmail','0139678563','FPT','Hoa Lac','0120477177','Vietnam');
 
 
 INSERT INTO tbl_room_type( room_type_id,type_name,adult,children,description,image_url,price,create_ymd,update_ymd) VALUES('RT01','Single','1','1','Phòng có 1 giường đơn','/img/single.jpg','400000','2017/08/20','2017/08/21');
@@ -23,57 +43,63 @@ INSERT INTO tbl_status( status_id,status_type,status_name,description) VALUES('R
 INSERT INTO tbl_status( status_id,status_type,status_name,description) VALUES('RO03','RO','Đạng dọn','');
 INSERT INTO tbl_status( status_id,status_type,status_name,description) VALUES('RO04','RO','Sửa chữa','');
 
-
 INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO001','RT01','1','RO01','P101');
 INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO002','RT01','1','RO01','P102');
 INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO003','RT01','1','RO01','P103');
 INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO004','RT01','1','RO01','P104');
 INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO005','RT01','1','RO01','P105');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO006','RT01','1','RO01','P106');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO007','RT01','1','RO01','P107');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO008','RT01','1','RO01','P108');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO009','RT01','1','RO01','P109');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO010','RT01','1','RO01','P110');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO011','RT02','2','RO01','P201');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO012','RT02','2','RO01','P202');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO013','RT02','2','RO01','P203');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO014','RT02','2','RO01','P204');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO015','RT02','2','RO01','P205');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO016','RT02','2','RO01','P206');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO017','RT02','2','RO01','P207');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO018','RT02','2','RO01','P208');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO019','RT02','2','RO01','P209');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO020','RT02','2','RO01','P210');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO021','RT03','3','RO01','P301');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO022','RT03','3','RO01','P302');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO023','RT03','3','RO01','P303');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO024','RT03','3','RO01','P304');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO025','RT03','3','RO01','P305');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO026','RT03','3','RO01','P306');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO027','RT03','3','RO01','P307');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO028','RT03','3','RO01','P308');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO029','RT03','3','RO01','P309');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO030','RT03','3','RO01','P310');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO031','RT04','4','RO01','P401');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO032','RT04','4','RO01','P402');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO033','RT04','4','RO01','P403');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO034','RT04','4','RO01','P404');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO035','RT04','4','RO01','P405');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO036','RT04','4','RO01','P406');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO037','RT04','4','RO01','P407');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO038','RT04','4','RO01','P408');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO039','RT04','4','RO01','P409');
-INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO040','RT04','4','RO01','P410');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO006','RT02','2','RO01','P201');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO007','RT02','2','RO01','P202');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO008','RT02','2','RO01','P203');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO009','RT02','2','RO01','P204');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO010','RT02','2','RO01','P205');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO011','RT02','2','RO01','P206');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO012','RT02','2','RO01','P207');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO013','RT02','2','RO01','P208');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO014','RT02','2','RO01','P209');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO015','RT02','2','RO01','P210');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO016','RT03','3','RO01','P301');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO017','RT03','3','RO01','P302');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO018','RT03','3','RO01','P303');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO019','RT03','3','RO01','P304');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO020','RT03','3','RO01','P305');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO021','RT03','3','RO01','P306');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO022','RT03','3','RO01','P307');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO023','RT03','3','RO01','P308');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO024','RT03','3','RO01','P309');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO025','RT03','3','RO01','P310');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO026','RT04','4','RO01','P401');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO027','RT04','4','RO01','P402');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO028','RT04','4','RO01','P403');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO029','RT04','4','RO01','P404');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO030','RT04','4','RO01','P405');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO031','RT04','4','RO01','P406');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO032','RT04','4','RO01','P407');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO033','RT04','4','RO01','P408');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO034','RT04','4','RO01','P409');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO035','RT04','4','RO01','P410');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO036','RT04','4','RO01','P501');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO037','RT04','4','RO01','P502');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO038','RT04','4','RO01','P503');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO039','RT04','4','RO01','P504');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO040','RT04','4','RO01','P505');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO041','RT04','4','RO01','P506');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO042','RT04','4','RO01','P507');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO043','RT04','4','RO01','P508');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO044','RT04','4','RO01','P509');
+INSERT INTO tbl_room( room_id,room_type_id,floor,status_id,room_number) VALUES('RO045','RT04','4','RO01','P510');
+
+INSERT INTO tbl_payment_type(type_name, create_ymd, update_ymd) VALUES ('Online', '2017/08/22','2017/08/22');
+INSERT INTO tbl_payment_type(type_name, create_ymd, update_ymd) VALUES ('Trả tiền trực tiếp', '2017/08/22','2017/08/22');
 
 
-
-INSERT INTO tbl_reservation( id, status_id,guest_id,check_in,check_out,number_of_room,number_of_adult,number_of_children,note,editer,update_ymd,create_ymd) VALUES('1','RS01','1','20170825','20170829','1','2','0','','','2017/08/01','2017/08/01');
-INSERT INTO tbl_reservation( id, status_id,guest_id,check_in,check_out,number_of_room,number_of_adult,number_of_children,note,editer,update_ymd,create_ymd) VALUES('2','RS01','2','20170826','20170830','2','3','0','','','2017/08/02','2017/08/02');
-INSERT INTO tbl_reservation( id, status_id,guest_id,check_in,check_out,number_of_room,number_of_adult,number_of_children,note,editer,update_ymd,create_ymd) VALUES('3','RS01','3','20170905','20170909','3','4','0','','','2017/08/03','2017/08/03');
-INSERT INTO tbl_reservation( id, status_id,guest_id,check_in,check_out,number_of_room,number_of_adult,number_of_children,note,editer,update_ymd,create_ymd) VALUES('4','RS01','4','20170901','20170905','2','3','0','','','2017/08/04','2017/08/04');
-INSERT INTO tbl_reservation( id, status_id,guest_id,check_in,check_out,number_of_room,number_of_adult,number_of_children,note,editer,update_ymd,create_ymd) VALUES('5','RS01','5','20170910','20170913','1','1','0','','','2017/08/05','2017/08/05');
-INSERT INTO tbl_reservation( id, status_id,guest_id,check_in,check_out,number_of_room,number_of_adult,number_of_children,note,editer,update_ymd,create_ymd) VALUES('6','RS01','6','20170912','20170914','2','2','0','','','2017/08/06','2017/08/06');
-INSERT INTO tbl_reservation( id, status_id,guest_id,check_in,check_out,number_of_room,number_of_adult,number_of_children,note,editer,update_ymd,create_ymd) VALUES('7','RS01','7','20170913','20170918','1','2','0','','','2017/08/07','2017/08/07');
+INSERT INTO tbl_reservation( status_id,guest_id,check_in,check_out,number_of_room,number_of_adult,number_of_children,note,editer,update_ymd,create_ymd) VALUES('RS01','1','20170825','20170829','1','2','0','','','2017/08/01','2017/08/01');
+INSERT INTO tbl_reservation( status_id,guest_id,check_in,check_out,number_of_room,number_of_adult,number_of_children,note,editer,update_ymd,create_ymd) VALUES('RS01','2','20170826','20170830','2','3','0','','','2017/08/02','2017/08/02');
+INSERT INTO tbl_reservation( status_id,guest_id,check_in,check_out,number_of_room,number_of_adult,number_of_children,note,editer,update_ymd,create_ymd) VALUES('RS01','3','20170905','20170909','3','4','0','','','2017/08/03','2017/08/03');
+INSERT INTO tbl_reservation( status_id,guest_id,check_in,check_out,number_of_room,number_of_adult,number_of_children,note,editer,update_ymd,create_ymd) VALUES('RS01','4','20170901','20170905','2','3','0','','','2017/08/04','2017/08/04');
+INSERT INTO tbl_reservation( status_id,guest_id,check_in,check_out,number_of_room,number_of_adult,number_of_children,note,editer,update_ymd,create_ymd) VALUES('RS01','5','20170910','20170913','1','1','0','','','2017/08/05','2017/08/05');
+INSERT INTO tbl_reservation( status_id,guest_id,check_in,check_out,number_of_room,number_of_adult,number_of_children,note,editer,update_ymd,create_ymd) VALUES('RS01','6','20170912','20170914','2','2','0','','','2017/08/06','2017/08/06');
+INSERT INTO tbl_reservation( status_id,guest_id,check_in,check_out,number_of_room,number_of_adult,number_of_children,note,editer,update_ymd,create_ymd) VALUES('RS01','7','20170913','20170918','1','2','0','','','2017/08/07','2017/08/07');
 
 INSERT INTO tbl_reservation_detail( reservation_id,room_id,date_in,date_out,customer_name,customer_identity_card,customer_phone,customer_email,note,check_in_flag,check_out_flag,update_ymd,create_ymd) VALUES('1','RO001','20170825','20170829','','','','','','0','0','2017/08/01','2017/08/01');
 INSERT INTO tbl_reservation_detail( reservation_id,room_id,date_in,date_out,customer_name,customer_identity_card,customer_phone,customer_email,note,check_in_flag,check_out_flag,update_ymd,create_ymd) VALUES('2','RO002','20170826','20170830','','','','','','0','0','2017/08/02','2017/08/02');
@@ -88,23 +114,23 @@ INSERT INTO tbl_reservation_detail( reservation_id,room_id,date_in,date_out,cust
 INSERT INTO tbl_reservation_detail( reservation_id,room_id,date_in,date_out,customer_name,customer_identity_card,customer_phone,customer_email,note,check_in_flag,check_out_flag,update_ymd,create_ymd) VALUES('6','RO003','20170912','20170914','','','','','','0','0','2017/08/11','2017/08/11');
 INSERT INTO tbl_reservation_detail( reservation_id,room_id,date_in,date_out,customer_name,customer_identity_card,customer_phone,customer_email,note,check_in_flag,check_out_flag,update_ymd,create_ymd) VALUES('7','RO004','20170913','20170918','','','','','','0','0','2017/08/12','2017/08/12');
 
-INSERT INTO tbl_invoice( id,payment_type_id,reservation_id,guest_id,tax_code,update_ymd,updater_nm,create_ymd,creater_nm) VALUES('1','1','1','1','','2017/08/13','','2017/08/13','');
-INSERT INTO tbl_invoice( id,payment_type_id,reservation_id,guest_id,tax_code,update_ymd,updater_nm,create_ymd,creater_nm) VALUES('2','1','2','2','','2017/08/14','','2017/08/14','');
-INSERT INTO tbl_invoice( id,payment_type_id,reservation_id,guest_id,tax_code,update_ymd,updater_nm,create_ymd,creater_nm) VALUES('3','1','3','3','','2017/08/15','','2017/08/15','');
-INSERT INTO tbl_invoice( id,payment_type_id,reservation_id,guest_id,tax_code,update_ymd,updater_nm,create_ymd,creater_nm) VALUES('4','1','4','4','','2017/08/16','','2017/08/16','');
-INSERT INTO tbl_invoice( id,payment_type_id,reservation_id,guest_id,tax_code,update_ymd,updater_nm,create_ymd,creater_nm) VALUES('5','1','5','5','','2017/08/17','','2017/08/17','');
-INSERT INTO tbl_invoice( id,payment_type_id,reservation_id,guest_id,tax_code,update_ymd,updater_nm,create_ymd,creater_nm) VALUES('6','1','6','6','','2017/08/18','','2017/08/18','');
-INSERT INTO tbl_invoice( id,payment_type_id,reservation_id,guest_id,tax_code,update_ymd,updater_nm,create_ymd,creater_nm) VALUES('7','1','7','7','','2017/08/19','','2017/08/19','');
+INSERT INTO tbl_invoice(payment_type_id,reservation_id,guest_id,tax_code,update_ymd,updater_nm,create_ymd,creater_nm) VALUES('1','1','1','1','','2017/08/13','','2017/08/13','');
+INSERT INTO tbl_invoice(payment_type_id,reservation_id,guest_id,tax_code,update_ymd,updater_nm,create_ymd,creater_nm) VALUES('2','1','2','2','','2017/08/14','','2017/08/14','');
+INSERT INTO tbl_invoice(payment_type_id,reservation_id,guest_id,tax_code,update_ymd,updater_nm,create_ymd,creater_nm) VALUES('3','1','3','3','','2017/08/15','','2017/08/15','');
+INSERT INTO tbl_invoice(payment_type_id,reservation_id,guest_id,tax_code,update_ymd,updater_nm,create_ymd,creater_nm) VALUES('4','1','4','4','','2017/08/16','','2017/08/16','');
+INSERT INTO tbl_invoice(payment_type_id,reservation_id,guest_id,tax_code,update_ymd,updater_nm,create_ymd,creater_nm) VALUES('5','1','5','5','','2017/08/17','','2017/08/17','');
+INSERT INTO tbl_invoice(payment_type_id,reservation_id,guest_id,tax_code,update_ymd,updater_nm,create_ymd,creater_nm) VALUES('6','1','6','6','','2017/08/18','','2017/08/18','');
+INSERT INTO tbl_invoice(payment_type_id,reservation_id,guest_id,tax_code,update_ymd,updater_nm,create_ymd,creater_nm) VALUES('7','1','7','7','','2017/08/19','','2017/08/19','');
 
-INSERT INTO tbl_invoice_detail( invoice_id,item_id,item_type,quantity,price,description,amount_total,room_id,payment_flag,creater_nm,updater_nm,update_ymd,create_ymd) VALUES('1','RO001','Room','1','400000','','440000','RO001','1','','','2017/08/13','2017/08/13');
-INSERT INTO tbl_invoice_detail( invoice_id,item_id,item_type,quantity,price,description,amount_total,room_id,payment_flag,creater_nm,updater_nm,update_ymd,create_ymd) VALUES('2','RO002','Room','1','400000','','440000','RO002','1','','','2017/08/14','2017/08/14');
-INSERT INTO tbl_invoice_detail( invoice_id,item_id,item_type,quantity,price,description,amount_total,room_id,payment_flag,creater_nm,updater_nm,update_ymd,create_ymd) VALUES('2','RO003','Room','1','400000','','440000','RO003','1','','','2017/08/15','2017/08/15');
-INSERT INTO tbl_invoice_detail( invoice_id,item_id,item_type,quantity,price,description,amount_total,room_id,payment_flag,creater_nm,updater_nm,update_ymd,create_ymd) VALUES('3','RO001','Room','1','400000','','440000','RO001','1','','','2017/08/16','2017/08/16');
-INSERT INTO tbl_invoice_detail( invoice_id,item_id,item_type,quantity,price,description,amount_total,room_id,payment_flag,creater_nm,updater_nm,update_ymd,create_ymd) VALUES('3','RO002','Room','1','400000','','440000','RO002','1','','','2017/08/17','2017/08/17');
-INSERT INTO tbl_invoice_detail( invoice_id,item_id,item_type,quantity,price,description,amount_total,room_id,payment_flag,creater_nm,updater_nm,update_ymd,create_ymd) VALUES('3','RO003','Room','1','400000','','440000','RO003','1','','','2017/08/18','2017/08/18');
-INSERT INTO tbl_invoice_detail( invoice_id,item_id,item_type,quantity,price,description,amount_total,room_id,payment_flag,creater_nm,updater_nm,update_ymd,create_ymd) VALUES('4','RO004','Room','1','400000','','440000','RO004','1','','','2017/08/19','2017/08/19');
-INSERT INTO tbl_invoice_detail( invoice_id,item_id,item_type,quantity,price,description,amount_total,room_id,payment_flag,creater_nm,updater_nm,update_ymd,create_ymd) VALUES('4','RO005','Room','1','400000','','440000','RO005','1','','','2017/08/20','2017/08/20');
-INSERT INTO tbl_invoice_detail( invoice_id,item_id,item_type,quantity,price,description,amount_total,room_id,payment_flag,creater_nm,updater_nm,update_ymd,create_ymd) VALUES('5','RO001','Room','1','300000','','330000','RO001','1','','','2017/08/21','2017/08/21');
-INSERT INTO tbl_invoice_detail( invoice_id,item_id,item_type,quantity,price,description,amount_total,room_id,payment_flag,creater_nm,updater_nm,update_ymd,create_ymd) VALUES('6','RO002','Room','1','200000','','220000','RO002','1','','','2017/08/22','2017/08/22');
-INSERT INTO tbl_invoice_detail( invoice_id,item_id,item_type,quantity,price,description,amount_total,room_id,payment_flag,creater_nm,updater_nm,update_ymd,create_ymd) VALUES('6','RO003','Room','1','200000','','220000','RO003','1','','','2017/08/23','2017/08/23');
-INSERT INTO tbl_invoice_detail( invoice_id,item_id,item_type,quantity,price,description,amount_total,room_id,payment_flag,creater_nm,updater_nm,update_ymd,create_ymd) VALUES('7','RO004','Room','1','500000','','550000','RO004','1','','','2017/08/24','2017/08/24');
+INSERT INTO tbl_invoice_detail( invoice_id,item_id,item_type,quantity,price,description,amount_total,room_id,payment_flag,creater_nm,updater_nm,update_ymd,create_ymd) VALUES('1','RO001','Room','1','400000','','440000','RO001','1','','','','2017/08/13');
+INSERT INTO tbl_invoice_detail( invoice_id,item_id,item_type,quantity,price,description,amount_total,room_id,payment_flag,creater_nm,updater_nm,update_ymd,create_ymd) VALUES('2','RO002','Room','1','400000','','440000','RO002','1','','','','2017/08/14');
+INSERT INTO tbl_invoice_detail( invoice_id,item_id,item_type,quantity,price,description,amount_total,room_id,payment_flag,creater_nm,updater_nm,update_ymd,create_ymd) VALUES('2','RO003','Room','1','400000','','440000','RO003','1','','','','2017/08/15');
+INSERT INTO tbl_invoice_detail( invoice_id,item_id,item_type,quantity,price,description,amount_total,room_id,payment_flag,creater_nm,updater_nm,update_ymd,create_ymd) VALUES('3','RO001','Room','1','400000','','440000','RO001','1','','','','2017/08/16');
+INSERT INTO tbl_invoice_detail( invoice_id,item_id,item_type,quantity,price,description,amount_total,room_id,payment_flag,creater_nm,updater_nm,update_ymd,create_ymd) VALUES('3','RO002','Room','1','400000','','440000','RO002','1','','','','2017/08/17');
+INSERT INTO tbl_invoice_detail( invoice_id,item_id,item_type,quantity,price,description,amount_total,room_id,payment_flag,creater_nm,updater_nm,update_ymd,create_ymd) VALUES('3','RO003','Room','1','400000','','440000','RO003','1','','','','2017/08/18');
+INSERT INTO tbl_invoice_detail( invoice_id,item_id,item_type,quantity,price,description,amount_total,room_id,payment_flag,creater_nm,updater_nm,update_ymd,create_ymd) VALUES('4','RO004','Room','1','400000','','440000','RO004','1','','','','2017/08/19');
+INSERT INTO tbl_invoice_detail( invoice_id,item_id,item_type,quantity,price,description,amount_total,room_id,payment_flag,creater_nm,updater_nm,update_ymd,create_ymd) VALUES('4','RO005','Room','1','400000','','440000','RO005','1','','','','2017/08/20');
+INSERT INTO tbl_invoice_detail( invoice_id,item_id,item_type,quantity,price,description,amount_total,room_id,payment_flag,creater_nm,updater_nm,update_ymd,create_ymd) VALUES('5','RO001','Room','1','300000','','330000','RO001','1','','','','2017/08/21');
+INSERT INTO tbl_invoice_detail( invoice_id,item_id,item_type,quantity,price,description,amount_total,room_id,payment_flag,creater_nm,updater_nm,update_ymd,create_ymd) VALUES('6','RO002','Room','1','200000','','220000','RO002','1','','','','2017/08/22');
+INSERT INTO tbl_invoice_detail( invoice_id,item_id,item_type,quantity,price,description,amount_total,room_id,payment_flag,creater_nm,updater_nm,update_ymd,create_ymd) VALUES('6','RO003','Room','1','200000','','220000','RO003','1','','','','2017/08/23');
+INSERT INTO tbl_invoice_detail( invoice_id,item_id,item_type,quantity,price,description,amount_total,room_id,payment_flag,creater_nm,updater_nm,update_ymd,create_ymd) VALUES('7','RO004','Room','1','500000','','550000','RO004','1','','','','2017/08/24');
