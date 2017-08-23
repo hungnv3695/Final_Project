@@ -96,13 +96,8 @@ $(document).ready(function () {
     }
     splitInfor(roType,roQuan,roPrice);
     //================================
-    $("#btnBook").click(function (event) {
+    $("#btnBook").closest('form').on('submit',function (event) {
         event.preventDefault();
-        if(($("#txtFullname").val() || $("#txtIdcard").val() || $("#txtPhone").val()
-        || $("#txtEmail").val()) == "") {
-            alert('Vui lòng điền đầy đủ thông tin trước khi nhận phòng');
-            return;
-        }
 
         var roomPrice = removeCommas($("#roomPrice").text());
 

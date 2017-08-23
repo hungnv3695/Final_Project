@@ -279,19 +279,19 @@
                                 </div>
                                 <div class="form-inline col-md-offset-1" style="margin-top:15px;">
                                     <label class="label3" for="">Email: </label>
-                                    <input id="txtEmail" name="txtEmail" type="text" class="form-control input-md" size="25" maxlength="50">
+                                    <input id="txtEmail" name="txtEmail" type="email" class="form-control input-md" size="25" maxlength="50" oninvalid="InvalidMsg(this);" required   >
                                 </div>
                                 <div class="form-inline col-md-offset-1" style="margin-top:15px;">
                                     <label class="label3" for="">Điện thoại: </label>
-                                    <input id="txtPhone" name="txtPhone" type="text" class="form-control input-md" size="25" maxlength="20">
+                                    <input id="txtPhone" name="txtPhone" type="text" class="form-control input-md" size="25" maxlength="20" oninvalid="InvalidMsg(this);" required  >
                                 </div>
                                 <div class="form-inline col-md-offset-1" style="margin-top:15px;">
                                     <label class="label3" for="">CMND: </label>
-                                    <input id="txtIdcard" name="txtIdcard" type="text" class="form-control input-md" size="25" maxlength="12">
+                                    <input id="txtIdcard" name="txtIdcard" type="text" class="form-control input-md" size="25" maxlength="12" oninvalid="InvalidMsg(this);" required  >
                                 </div>
                                 <div class="form-inline col-md-offset-1" style="margin-top:15px;">
                                     <label class="label3" for="">Địa chỉ: </label>
-                                    <input id="txtAddress" name="txtAddress" type="text" class="form-control input-md" size="25" maxlength="100">
+                                    <input id="txtAddress" name="txtAddress" type="text" class="form-control input-md" size="25" maxlength="100" oninvalid="InvalidMsg(this);" required >
                                 </div>
                                 <div class="form-inline col-md-offset-1" style="margin-top:15px;margin-bottom:20px;">
                                     <label class="label3">Quốc tịch:</label>
