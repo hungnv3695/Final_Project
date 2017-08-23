@@ -95,7 +95,7 @@
                         <thead>
                         <tr>
                             <th></th>
-                            <th>Số phòng</th>
+                            <th>Tên phòng</th>
                             <th>Người ở</th>
                             <th>CMND</th>
                             <th>Ngày vào</th>
