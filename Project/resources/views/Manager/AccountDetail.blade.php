@@ -34,7 +34,7 @@
 <div class="container">
     <div class="row">
 
-        <form class="update" method="post">
+        <form class="update" method="post" onsubmit="return confirm('Bạn muốn thực hiện thay đổi này?');"  >
             <div class="col-md-10 col-md-offset-1" style="margin-top:5%;background-color:#c3bfc0;border-bottom:1px solid #898989;">
                 <div class="row">
                     <div class="col-md-offset-9" style="margin:10px 10px 0px 0px;float:right;">
