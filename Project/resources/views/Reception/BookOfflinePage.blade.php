@@ -97,21 +97,21 @@
 							<div class="row">
 								<div class="form-inline" style="margin-top:20px;">
 									<label class="label1">Họ tên:</label>
-									<input id="txtFullname" name="txtFullname" type="text" class="form-control input-md" size="20" maxlength="50">
+									<input id="txtFullname" name="txtFullname" type="text" class="form-control input-md" size="20" maxlength="50" oninvalid="InvalidMsg(this);" required >
 									<label class="label1">Email:</label>
-									<input id="txtEmail" name="txtEmail" type="text" class="form-control input-md" size="20" maxlength="50">
+									<input id="txtEmail" name="txtEmail" type="email" class="form-control input-md" size="20" maxlength="50" oninvalid="InvalidMsg(this);" required >
 								</div>
 								<div class="form-inline" style="margin-top:10px;">
 									<label class="label1">CMND:</label>
-									<input id="txtCmt" name="txtCmt" type="text" class="form-control input-md" size="20" maxlength="12">
+									<input id="txtCmt" name="txtCmt" type="text" class="form-control input-md" size="20" maxlength="12" oninvalid="InvalidMsg(this);" required >
 									<label class="label1">Địa chỉ:</label>
-									<input id="txtAddress" name="txtAddress" type="text" class="form-control input-md" size="20" maxlength="100">
+									<input id="txtAddress" name="txtAddress" type="text" class="form-control input-md" size="20" maxlength="100" oninvalid="InvalidMsg(this);" required >
 								</div>
 								<div class="form-inline" style="margin-top:10px;margin-bottom:25px;">
 									<label class="label1">Điện thoại:</label>
-									<input id="txtPhone" name="txtPhone" type="text" class="form-control input-md" size="20" maxlength="20">
+									<input id="txtPhone" name="txtPhone" type="text" class="form-control input-md" size="20" maxlength="20" oninvalid="InvalidMsg(this);" required >
 									<label class="label1">Công ty:</label>
-									<input id="txtCompany" name="txtCompany" type="text" class="form-control input-md" size="20" maxlength="50">
+									<input id="txtCompany" name="txtCompany" type="text" class="form-control input-md" size="20" maxlength="50" oninvalid="InvalidMsg(this);" required >
 								</div>
 							</div>
 						</div>
@@ -165,4 +165,5 @@
 </body>
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 <script src="{{asset('Scripts/Reservation/BookOffline.js')}}"></script>
+<script src="{{asset('Scripts/FrontCheck/CheckError.js')}}"></script>
 </html>
