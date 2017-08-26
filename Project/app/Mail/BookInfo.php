@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Guest;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -11,18 +12,18 @@ class BookInfo extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $guest;
-    public $reservarion;
-
+    public $bookingInfo  = array();
+    public $detailRoomType = array();
     /**
-     * Create a new message instance.
-     *
-     * @return void
+     * BookInfo constructor.
+     * @param array $bookingInfo
      */
-    public function __construct()
+    public function __construct(array $bookingInfo, array $detailRoomType)
     {
-        //
+        $this->bookingInfo = $bookingInfo;
+        $this->detailRoomType = $detailRoomType;
     }
+
 
     /**
      * Build the message.

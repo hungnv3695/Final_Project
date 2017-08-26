@@ -275,23 +275,23 @@
                                 </label>
                                 <div class="form-inline col-md-offset-1" style="margin-top:10px;">
                                     <label class="label3" for="">Họ tên: </label>
-                                    <input id="txtFullname" name="txtFullname" type="text" class="form-control input-md" size="25" maxlength="50" oninvalid="InvalidMsg(this);" required>
+                                    <input id="txtFullname" name="txtFullname" type="text" class="form-control input-md" size="25" maxlength="50" oninvalid="this.setCustomValidity('Thông tin bắt buộc')" oninput="setCustomValidity('')" required>
                                 </div>
                                 <div class="form-inline col-md-offset-1" style="margin-top:15px;">
                                     <label class="label3" for="">Email: </label>
-                                    <input id="txtEmail" name="txtEmail" type="email" class="form-control input-md" size="25" maxlength="50" oninvalid="InvalidMsg(this);" required   >
+                                    <input id="txtEmail" name="txtEmail" type="email" class="form-control input-md" size="25" maxlength="50" oninvalid="(this.validity.typeMismatch)?this.setCustomValidity('Nhập đúng định dạng email'):this.setCustomValidity('Thông tin bắt buộc')"; oninput="(this.validity.typeMismatch)?this.setCustomValidity('Nhập đúng định dạng email'):this.setCustomValidity('')" required  >
                                 </div>
                                 <div class="form-inline col-md-offset-1" style="margin-top:15px;">
                                     <label class="label3" for="">Điện thoại: </label>
-                                    <input id="txtPhone" name="txtPhone" type="text" class="form-control input-md" size="25" maxlength="20" oninvalid="InvalidMsg(this);" required  >
+                                    <input id="txtPhone" name="txtPhone" type="text" class="form-control input-md" size="25" maxlength="20" oninvalid="this.setCustomValidity('Thông tin bắt buộc')" oninput="setCustomValidity('')" required  >
                                 </div>
                                 <div class="form-inline col-md-offset-1" style="margin-top:15px;">
                                     <label class="label3" for="">CMND: </label>
-                                    <input id="txtIdcard" name="txtIdcard" type="text" class="form-control input-md" size="25" maxlength="12" oninvalid="InvalidMsg(this);" required  >
+                                    <input id="txtIdcard" name="txtIdcard" type="text" class="form-control input-md" size="25" maxlength="12" oninvalid="this.setCustomValidity('Thông tin bắt buộc')" oninput="setCustomValidity('')" required  >
                                 </div>
                                 <div class="form-inline col-md-offset-1" style="margin-top:15px;">
                                     <label class="label3" for="">Địa chỉ: </label>
-                                    <input id="txtAddress" name="txtAddress" type="text" class="form-control input-md" size="25" maxlength="100" oninvalid="InvalidMsg(this);" required >
+                                    <input id="txtAddress" name="txtAddress" type="text" class="form-control input-md" size="25" maxlength="100" oninvalid="this.setCustomValidity('Thông tin bắt buộc')" oninput="setCustomValidity('')" required >
                                 </div>
                                 <div class="form-inline col-md-offset-1" style="margin-top:15px;margin-bottom:20px;">
                                     <label class="label3">Quốc tịch:</label>
