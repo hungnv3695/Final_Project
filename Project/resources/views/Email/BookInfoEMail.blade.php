@@ -8,7 +8,7 @@
 Cảm ơn quý khách hàng đã sử dụng dịch vụ của khách sạn Ánh Dương. <br>
 Chúng tôi xin thông báo tới quý khách hàng thông tin chi tiết về đơn đặt phòng. <br>
 
-Mã đăng ký: **{!! $bookingInfo[\App\Http\Common\Constants::RESERVATION_ID] !!}**<br>
+
 Người đăng ký: {!! $bookingInfo[\App\Http\Common\Constants::GUEST_NAME] !!} <br>
 CMT: {!! $bookingInfo[\App\Http\Common\Constants::CMND] !!} <br>
 Ngày nhận phòng:{!! $bookingInfo[\App\Http\Common\Constants::CHECK_IN] !!}   <br>
