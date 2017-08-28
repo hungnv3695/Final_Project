@@ -131,7 +131,7 @@ class BookController extends Controller
 
         $email = $request->txtEmail;
 
-        SendEmail::sendEmail($infor,$room_type,$room_quantity,$room_price,$email);
+//        SendEmail::sendEmail($infor,$room_type,$room_quantity,$room_price,$email);
 
         return response($result);
         //Comment End
