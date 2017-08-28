@@ -128,7 +128,7 @@
 				<div class="col-md-6">
 					<div class="form-inline col-md-offset-1" style="margin-top:20px;">
 						<label class="label1">Số đêm:</label>
-						<input id="txtNumOfDay" name="txtNumOfDay" type="text" class="form-control input-md" size="6" readonly oninvalid="this.setCustomValidity('Thông tin bắt buộc')" oninput="setCustomValidity('')" required>
+						<input id="txtNumOfDay" name="txtNumOfDay" type="text" class="form-control input-md" size="6" readonly>
 					</div>
 					<div class="form-inline col-md-offset-1" style="margin-top:15px;">
 						<label class="label1">Số người:</label>
@@ -136,13 +136,13 @@
 					</div>
 					<div class="form-inline col-md-offset-1" style="margin-top:15px;">
 						<label class="label1" for="">Kiểu phòng: </label>
-						<select id="roomtype" name="roomtype" class="form-control input-md" style="width:180px;" readonly oninvalid="this.setCustomValidity('Thông tin bắt buộc')" oninput="setCustomValidity('')" required>
+						<select id="roomtype" name="roomtype" class="form-control input-md" style="width:180px;" readonly>
 
 						</select>
 					</div>
 					<div class="form-inline col-md-offset-1" style="margin-top:15px;">
 						<label class="label1" for="">Tên phòng: </label>
-						<select id="cboRoomNo" name="cboRoomNo" class="form-control input-md" style="width:90px;" readonly oninvalid="this.setCustomValidity('Thông tin bắt buộc')" oninput="setCustomValidity('')" required>
+						<select id="cboRoomNo" name="cboRoomNo" class="form-control input-md" style="width:90px;" readonly>
 
 						</select>
 					</div>
@@ -166,19 +166,19 @@
 				<div class="col-md-12" style="border: 1px solid #898989;border-radius:10px;margin-bottom:10px;">
 					<div class="form-inline col-md-offset-1" style="margin-top:20px;">
 						<label class="label1" for="">Họ tên: </label>
-						<input id="txtFullname1" name="txtFullname1" type="text" class="form-control input-md" size="20" maxlength="50" oninvalid="this.setCustomValidity('Thông tin bắt buộc')" oninput="setCustomValidity('')" required>
+						<input id="txtFullname1" name="txtFullname1" type="text" class="form-control input-md" size="20" maxlength="50">
 					</div>
 					<div class="form-inline col-md-offset-1" style="margin-top:15px;">
 						<label class="label1" for="">CMND: </label>
-						<input id="txtIdcard1" name="txtIdcard1" type="text" class="form-control input-md" size="20" maxlength="12" oninvalid="this.setCustomValidity('Thông tin bắt buộc')" oninput="setCustomValidity('')" required>
+						<input id="txtIdcard1" name="txtIdcard1" type="text" class="form-control input-md" size="20" maxlength="12">
 					</div>
 					<div class="form-inline col-md-offset-1" style="margin-top:15px;">
 						<label class="label1" for="">Điện thoại: </label>
-						<input id="txtPhone1" name="txtPhone1" type="text" class="form-control input-md" size="20" maxlength="20" oninvalid="this.setCustomValidity('Thông tin bắt buộc')" oninput="setCustomValidity('')" required>
+						<input id="txtPhone1" name="txtPhone1" type="text" class="form-control input-md" size="20" maxlength="20">
 					</div>
 					<div class="form-inline col-md-offset-1" style="margin-top:15px;margin-bottom:20px;">
 						<label class="label1" for="">Email: </label>
-						<input id="txtEmail1" name="txtEmail1" type="text" class="form-control input-md" size="20" maxlength="50" >
+						<input id="txtEmail1" name="txtEmail1" type="text" class="form-control input-md" size="20" maxlength="50">
 					</div>
 
 					<div class="form-inline col-md-offset-2" style="margin-top:30px;margin-bottom:57px;">
@@ -194,19 +194,19 @@
 				<div class="col-md-12" style="border: 1px solid #898989;border-radius:10px;margin-bottom:10px;">
 					<div class="form-inline" style="margin-top:20px;">
 						<label class="label1 col-md-offset-1" for="">Họ tên: </label>
-						<input id="txtFullname2" name="txtFullname2" type="text" class="form-control input-md" size="20" maxlength="50" readonly oninvalid="this.setCustomValidity('Thông tin bắt buộc')" oninput="setCustomValidity('')" required>
+						<input id="txtFullname2" name="txtFullname2" type="text" class="form-control input-md" size="20" maxlength="50" readonly>
 					</div>
 					<div class="form-inline col-md-offset-1" style="margin-top:15px;">
 						<label class="label1" for="">CMND: </label>
-						<input id="txtIdcard2" name="txtIdcard2" type="text" class="form-control input-md" size="20" maxlength="12" readonly oninvalid="this.setCustomValidity('Thông tin bắt buộc')" oninput="setCustomValidity('')" required>
+						<input id="txtIdcard2" name="txtIdcard2" type="text" class="form-control input-md" size="20" maxlength="12" readonly>
 					</div>
 					<div class="form-inline col-md-offset-1" style="margin-top:15px;">
 						<label class="label1" for="">Điện thoại: </label>
-						<input id="txtPhone2" name="txtPhone2" type="text" class="form-control input-md" size="20" maxlength="20" readonly oninvalid="this.setCustomValidity('Thông tin bắt buộc')" oninput="setCustomValidity('')" required>
+						<input id="txtPhone2" name="txtPhone2" type="text" class="form-control input-md" size="20" maxlength="20" readonly>
 					</div>
 					<div class="form-inline col-md-offset-1" style="margin-top:15px;margin-bottom:20px;">
 						<label class="label1" for="">Email: </label>
-						<input id="txtEmail2" name="txtEmail2" type="text" class="form-control input-md" size="20" maxlength="50"  readonly >
+						<input id="txtEmail2" name="txtEmail2" type="text" class="form-control input-md" size="20" maxlength="50"  readonly>
 					</div>
 					<div class="form-inline col-md-offset-1" style="margin-top:15px;margin-bottom:20px;">
 						<label class="label1" for="">Ghi chú: </label>

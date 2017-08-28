@@ -429,72 +429,66 @@ $(document).ready(function () {
         checkroom(check_in,check_out);
 
     });
-    $('#btnBook').closest('form').on('submit',function (event){
+    $('#btnBook').click(function(event){
         event.preventDefault();
-        // if($('#txtFullname').val().trim() == ""){
-        //     alert('Nhập tên của khách hàng');
-        //     return;
-        // }else if($('#txtCmt').val().trim() == ""){
-        //     alert('Nhập chứng minh thư của khách hàng');
-        //     return;
-        // }else if($('#txtPhone').val().trim() == ""){
-        //     alert('Nhập số điện thoại của khách hàng');
-        //     return;
-        // }
-        //
-        // if(($("#txtCheckin").val()== "") || ($("#txtCheckout").val()== "") || ($("#txtNumpeople").val()== "") || ($("#txtNumroom").val()== "")){
-        //     alert('Làm ơn hoàn thành thông tin đặt phòng');
-        //     return;
-        // }
-        // if($("#txtNumroom").val()!= cList.length){
-        //     alert('Số lượng phòng chưa được chọn đủ');
-        //     return;
-        // }
-        var confirm = window.confirm('Xác nhận tạo đơn đặt phòng');
-        if (confirm == true){
-            var roomList = [];
-            var priceList = [];
-            var nights = $("#txtNight").val();
-            for(var i = 0; i < cList.length; i++){
-                roomList.push(cList[i].room_id);
-                priceList.push(cList[i].price);
-            }
 
-            console.log(roomList,priceList);
-            var total = removeCommas($("#txtTotal").val());
-
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                url: '/BookOffline/insertResInfor',
-                method: 'GET',
-                cache: false,
-                dataType: 'json',
-                data: $("#myForm").serialize() + "&status=" + PROCESSED + "&roomList=" + roomList
-                +"&priceList=" + priceList +"&pTotal=" + total + "&nights="+nights ,
-                contentType: 'application/x-www-form-urlencoded',
-                success: function (result) {
-                    if(result==1){
-                        alert('Đơn đặt phòng đã được tạo thành công');
-                        $("#btnPrint").attr('disabled',false);
-                        $("#btnBook").attr('disabled',true);
-                        $("#txtCheckin").attr('readonly',true);
-
-                    }
-                    else if(result==0){
-                        alert('Xảy ra lỗi khi tạo đơn đặt phòng');
-                    }
-                },
-                error: function(){
-                    alert('error');
-                }
-            });
+        var roomList = [];
+        var priceList = [];
+        var nights = $("#txtNight").val();
+        for(var i = 0; i < cList.length; i++){
+            roomList.push(cList[i].room_id);
+            priceList.push(cList[i].price);
         }
-        else if ( confirm == false){
+
+        console.log(roomList,priceList);
+        var total = removeCommas($("#txtTotal").val());
+        if($('#txtFullname').val().trim() == ""){
+            alert('Nhập tên của khách hàng');
+            return;
+        }else if($('#txtCmt').val().trim() == ""){
+            alert('Nhập chứng minh thư của khách hàng');
+            return;
+        }else if($('#txtPhone').val().trim() == ""){
+            alert('Nhập số điện thoại của khách hàng');
             return;
         }
 
+        if(($("#txtCheckin").val()== "") || ($("#txtCheckout").val()== "") || ($("#txtNumpeople").val()== "") || ($("#txtNumroom").val()== "")){
+            alert('Làm ơn hoàn thành thông tin đặt phòng');
+            return;
+        }
+        if($("#txtNumroom").val()!= cList.length){
+            alert('Số lượng phòng chưa được chọn đủ');
+            return;
+        }
+
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: '/BookOffline/insertResInfor',
+            method: 'GET',
+            cache: false,
+            dataType: 'json',
+            data: $("#myForm").serialize() + "&status=" + PROCESSED + "&roomList=" + roomList
+            +"&priceList=" + priceList +"&pTotal=" + total + "&nights="+nights ,
+            contentType: 'application/x-www-form-urlencoded',
+            success: function (result) {
+                if(result==1){
+                    alert('Đơn đặt phòng đã được tạo thành công');
+                    $("#btnPrint").attr('disabled',false);
+                    $("#btnBook").attr('disabled',true);
+                    $("#txtCheckin").attr('readonly',true);
+                    //location.reload();
+                }
+                else if(result==0){
+                    alert('Xảy ra lỗi khi tạo đơn đặt phòng');
+                }
+            },
+            error: function(){
+                alert('error');
+            }
+        });
         event.preventDefault();
 
     });

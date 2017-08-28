@@ -28,10 +28,13 @@ function InvalidMsg(textbox) {
         if(textbox.validity.typeMismatch){
             textbox.setCustomValidity('Nhập đúng định dạng email');
             flag = 1;
-        }else{
-            textbox.setCustomValidity('');
         }
     }
 
+
+    if(flag == 1){
+        return false;
+    }else{
         return true;
+    }
 }

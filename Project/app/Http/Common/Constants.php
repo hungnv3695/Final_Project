@@ -78,13 +78,4 @@ class Constants
         const ROOM_QUANTITY = 'room_quantity';
         const NIGHT = 'nights';
 
-        const RESERVATION_ID = 'reservation_id';
-        const GUEST_NAME = 'guest_name';
-        const CMND = 'cmnd';
-        const NUMBER_NIGHT = 'number_night';
-        const STT = 'stt';
-        const ROOM_TYPE_NAME = 'room_type_name';
-        const QUANTITY = 'quantity';
-        const PRICE = 'price';
-
 }
