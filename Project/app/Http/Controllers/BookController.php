@@ -11,8 +11,8 @@ use App\Models\Invoice;
 use App\Models\InvoiceDetail;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use App\Payment\BaoKimPayment;
-use App\Http\Common\FileUtil;
+use App\Http\Common\SendEmail;
+use App\Http\Common\Constants;
 
 class BookController extends Controller
 {
@@ -43,6 +43,7 @@ class BookController extends Controller
     public function bookRoomOnline(Request $request){
         $room_type = explode(',', $request->room_type);
         $room_quantity = explode(',', $request->room_quantity);
+        $room_price = explode(',', $request->roomPrice);
         $total = $request->total;
         $nights = $request->nights;
 
@@ -50,26 +51,7 @@ class BookController extends Controller
         $check_in = DateTimeUtil::ConvertDateToString2($request->check_in);
         $check_out = DateTimeUtil::ConvertDateToString2($request->check_out);
 
-//        $dateNow = Carbon::now()->format('Ymd');
-//        $fileName = "20170821" + "_" + "1";
-//        //Bao Kim Start
-//        $order_id = "2";
-//        $business = "sondcnd@gmail.com";
-//        $total_amount = 5000;//(int)$request->roomPrice;
-//        $tax_fee = $total_amount * 10 / 100;
-//        $shipping_fee = 0;
-//        $order_description = "Thanh toán hóa đơn đặt phòng";
-//        $url_success = "https://www.anhduonghotel.herokuapp.com/Success/"+$fileName;//?check_in=".$check_in . "&check_out=" . $check_out;
-//        $url_cancel = "https://www.anhduonghotel.herokuapp.com";
-//        $url_detail = "";
-//        $baokim = new BaoKimPayment();
-//        $result = $baokim->createRequestUrl($order_id, $business, $total_amount,
-//            $shipping_fee, $tax_fee, $order_description,
-//            $url_success, $url_cancel, $url_detail);
-//        //Bao Kim End
-//        dd($result);
 
-        //$listRoom = $bookOnlineDAO->getRoomToBook($check_in, $check_out, $type_name, $countRoom);
 
 
         //Comment start
@@ -115,6 +97,21 @@ class BookController extends Controller
 
         $bookOnlineDAO = new BookOnlineDAO();
         $result = $bookOnlineDAO->createBook($res,$resDetail, $guest,$invoice,$invoiceDetail, $room_type, $room_quantity,$check_in,$check_out,$nights);
+
+        $infor = array();
+        $infor[Constants::GUEST_NAME] = $request->txtFullname;
+        $infor[Constants::CMND] = $request->txtIdcard;
+        $infor[Constants::CHECK_IN] = $request->check_in;
+        $infor[Constants::CHECK_OUT] = $request->check_out;
+        $infor[Constants::NUMBER_NIGHT] = $request->nights;
+        $infor[Constants::ADULT] = $request->adult;
+        $infor[Constants::CHILDREN] = $request->children;
+        $infor[Constants::NOTE] = $request->notetxt;
+
+        $email = $request->txtEmail;
+
+        SendEmail::sendEmail($infor,$room_type,$room_quantity,$room_price,$email);
+
 
         return response($result);
         //Comment End
