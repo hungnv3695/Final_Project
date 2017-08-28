@@ -325,25 +325,9 @@ $(document).ready(function(){
     });
 
 
-    $("#btnCheckin").click(function (event) {
+    $("#btnCheckin").closest('form').on('submit',function (event) {
         event.preventDefault();
-        if( $("#txtCheckin").val() == "" || $("#txtCheckout").val() == ""){
-            alert('Chọn ngày vào và ngày ra trước khi ấn nút [Nhận phòng]');
-            return;
-        }
 
-        if ($("#roomtype").val() == "" || $("#cboRoomNo").val() == ""){
-            alert('Chọn kiểu phòng và sô phòng trước khi ấn nút [Nhận phòng]');
-            return;
-        }
-        if($("#txtFullname1").val() == "" || $("#txtIdcard1").val() == ""){
-            alert('Nhập tên người đặt và CMND trước khi ấn nút [Nhận phòng]');
-            return;
-        }
-        if($("#txtPhone1").val() == "" || $("#txtEmail1").val() == ""){
-            $("#txtPhone1").val("");
-            $("#txtEmail1").val("");
-        }
 
         var confirm = window.confirm('Xác nhận check-in');
         if(confirm==true){
