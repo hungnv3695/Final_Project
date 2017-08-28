@@ -107,7 +107,7 @@
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1">Số người:</label>
 								<input id="numofpeopletxt" name="numofpeopletxt" value="{{$nopeople}}" type="number" min="1" class="form-control input-md" size="15" style="width: 80px;">
-								<label class="label1">Số phòng:</label>
+								<label class="label1">Tên phòng:</label>
 								<input id="noroomtxt" name="noroomtxt" value="{{$noroom}}" type="text" class="form-control input-md" size="15" style="width: 75px;" readonly>
 
 								<label class="label1">Số đêm:</label>
@@ -125,7 +125,7 @@
 					<label>Danh sách phòng: </label>
 					<table id="jqGrid" style="border:1px solid black;"></table>
 
-					<div class="form-inline col-md-offset-4"  style="margin-top: 20px" >
+					<div class="form-inline col-md-12"  style="margin-left: 150px; margin-top: 10px" >
 						<label class="label1">Tổng tiền:</label>
 						<input id="txtTotal" name="txtTotal" type="text" class="form-control input-md"  style="width: 110px;font-weight: bold;" readonly>
 						<label class="label1" style="margin-left: -10px; width: 120px  ">VNĐ(+ 10% VAT)</label>

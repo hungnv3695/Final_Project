@@ -79,6 +79,10 @@ class CheckInOutController extends Controller
 
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     */
     public function searchRoomTypeFree(Request $request){
         $check_in = DateTimeUtil::ConvertDateToString2($request->check_in);
         $check_out = DateTimeUtil::ConvertDateToString2($request->check_out);
@@ -89,6 +93,10 @@ class CheckInOutController extends Controller
         return response($result);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     */
     public function checkIn(Request $request){
         $res_status = $request->res_status;
         $room_status = $request->room_status;
@@ -164,7 +172,7 @@ class CheckInOutController extends Controller
             $res_detail->setNote($request->txtNote2);
             $res_detail->setCheckInFlag(1);
             //dd($res_detail);
-            //Room Model
+
             $room = new Room();
             $room->setStatusID($room_status);
             $room->setRoomID($room_id);

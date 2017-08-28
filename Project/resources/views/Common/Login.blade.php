@@ -136,8 +136,8 @@
 					<h3 class="login-heading">Vui lòng đăng nhập</h3>
 					<hr class="colorgraph"><br>
 					<input type="hidden" name="_token" value="{!! csrf_token() !!}" />
-					<input type="text" class="form-control" autofocus name="userID" placeholder="Tên đăng nhập" size="30" value="{!! old('userID') !!}" oninvalid="this.setCustomValidity('Thông tin bắt buộc')" oninput="setCustomValidity('')"  required/>
-					<input type="password" id="key" autofocus class="form-control" name="password" placeholder="Mật khẩu" size="30" oninvalid="this.setCustomValidity('Thông tin bắt buộc')" oninput="setCustomValidity('')" required />
+					<input type="text" class="form-control" name="userID" placeholder="Tên đăng nhập" size="30" value="{!! old('userID') !!}" oninvalid="InvalidMsg(this);" required/>
+					<input type="password" id="key" class="form-control" name="password" placeholder="Mật khẩu" size="30" oninvalid="InvalidMsg(this);" required />
 					<div class="Error">
 						@if(Session::has('LoginErroMsg'))
 						<p style="color:red;">{!! Session::get('LoginErroMsg') !!} </p>

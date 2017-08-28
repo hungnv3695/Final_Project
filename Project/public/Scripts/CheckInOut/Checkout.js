@@ -318,49 +318,43 @@ $(document).ready(function () {
 
     $("#btnCheckout").click(function (event) {
         event.preventDefault();
-        var confirm = window.confirm('Xác nhận check-out');
-        if(confirm==true){
-            getItemNoPaymentFlag();
+        getItemNoPaymentFlag();
 
-            $.ajax({
-                url: 'Checkout/SaveCheckOut',
-                method: 'GET',
-                cache: false,
-                dataType: 'json',
-                data:{
-                    invoice_id : invoice_id,
-                    room_id: $("#cboRoomNo").val(),
-                    resDetail_id : resDetail_id,
-                    res_id : res_id,
-                    iList : iList,
-                    totalList: totalList,
-                    date_out: $("#txtCheckout").val(),
-                    serList : serList,
-                    quanList : quanList,
-                    priList : priList
-                },
+        $.ajax({
+            url: 'Checkout/SaveCheckOut',
+            method: 'GET',
+            cache: false,
+            dataType: 'json',
+            data:{
+                invoice_id : invoice_id,
+                room_id: $("#cboRoomNo").val(),
+                resDetail_id : resDetail_id,
+                res_id : res_id,
+                iList : iList,
+                totalList: totalList,
+                date_out: $("#txtCheckout").val(),
+                serList : serList,
+                quanList : quanList,
+                priList : priList
+            },
 
-                contentType: 'application/json; charset=utf-8',
-                success: function (result) {
-                    if(result == 1){
-                        alert('check-out thành công');
-                        $('#btnCheckout').attr('disabled',true);
-                        $('#btnPrint').attr('disabled',false);
-                    }
-                    else{
-                        alert('check-out lỗi');
-                    }
-
-                },
-                error: function(){
-                    alert('error');
+            contentType: 'application/json; charset=utf-8',
+            success: function (result) {
+                if(result == 1){
+                    alert('check-out thành công');
+                    $('#btnCheckout').attr('disabled',true);
+                    $('#btnPrint').attr('disabled',false);
+                }
+                else{
+                    alert('check-out lỗi');
                 }
 
-            });
-        }else if (confirm==false){
-            return;
-        }
+            },
+            error: function(){
+                alert('error');
+            }
 
+        });
         event.preventDefault();
     })
 
