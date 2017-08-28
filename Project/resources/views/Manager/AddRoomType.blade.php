@@ -126,16 +126,16 @@
 							@endif
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">Mã: </label>
-								<input id="txtRoomTypeID" name="txtRoomTypeID" type="text" size="10" class="form-control input-md" maxlength="5" autofocus oninvalid="InvalidMsg(this);" required>
+								<input id="txtRoomTypeID" name="txtRoomTypeID" type="text" size="10" class="form-control input-md" maxlength="5" oninvalid="this.setCustomValidity('Thông tin bắt buộc')" oninput="setCustomValidity('')" required>
 							</div>
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">Loại phòng:</label>
-								<input id="txtFullname" name="txtFullname" type="text" size="15" class="form-control input-md" maxlength="30" oninvalid="InvalidMsg(this);" required>
+								<input id="txtFullname" name="txtFullname" type="text" size="15" class="form-control input-md" maxlength="30" oninvalid="this.setCustomValidity('Thông tin bắt buộc')" oninput="setCustomValidity('')" required>
 							</div>
 
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">Giá: </label>
-								<input id="txtPrice" name="txtPrice" type="text" maxlength="13" class="form-control input-md" min="0" value="0"  oninput="formatCurency(this,1); " oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required >
+								<input id="txtPrice" name="txtPrice" type="text" maxlength="13" class="form-control input-md" min="0" value="0"  oninput="formatCurency(this,1); " oninvalid="this.setCustomValidity('Thông tin bắt buộc')"; oninput="this.setCustomValidity('')" required  >
 								<label class="control-label" for="">(VND)</label>
 							</div>
 
@@ -145,12 +145,12 @@
 
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">Người lớn: </label>
-								<input id="txtAdult" name="txtAdult" type="number" class="form-control input-md" min="1" value="1" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required>
+								<input id="txtAdult" name="txtAdult" type="number" class="form-control input-md" min="1" value="1" oninvalid="this.setCustomValidity('Xin hãy nhập số nguyên >= ' +this.min)"; oninput="(this.value < this.min)?this.setCustomValidity('Xin hãy nhập số nguyên >= ' +this.min ):this.setCustomValidity('')"  required>
 								<label class="control-label" for="">/người</label>
 							</div>
 							<div class="form-inline" style="margin-top:20px;">
 								<label class="label1" for="">Trẻ em: </label>
-								<input id="txtChildren" name="txtChildren" type="number" min="1" class="form-control input-md" value="1" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required>
+								<input id="txtChildren" name="txtChildren" type="number" min="1" class="form-control input-md" value="1" 	oninvalid="this.setCustomValidity('Xin hãy nhập số nguyên >= ' +this.min)"; oninput="(this.value < this.min)?this.setCustomValidity('Xin hãy nhập số nguyên >= ' +this.min ):this.setCustomValidity('')"  required>
 								<label class="control-label" for="">/người</label>
 							</div>
 							<div class="form-inline" style="margin-top:20px;margin-bottom:30px;">
@@ -176,9 +176,9 @@
 								<tbody>
 								<tr>
 									<td class="col1" style="line-height:34px;">1</td>
-									<td class="col2"> <input id="txtNameAcc1" name="txtNameAcc" type="text" class="form-control input-md" maxlength="20"  oninvalid="InvalidMsg(this);" required ></td>
-									<td class="col3"> <input id="txtQuanlityAcc1" name="txtquantityAcc" type="number" value="1" class="form-control input-md"  min="1" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required  ></td>
-									<td class="col4"> <input id="txtPriceAcc1" name="txtPriceAcc" type="text" value="0" maxlength="13" class="form-control input-md"  min="0" oninput="formatCurency(this,0); " oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"  required  ></td>
+									<td class="col2"> <input id="txtNameAcc1" name="txtNameAcc" type="text" class="form-control input-md" maxlength="20"  oninvalid="this.setCustomValidity('Thông tin bắt buộc')" oninput="setCustomValidity('')" required ></td>
+									<td class="col3"> <input id="txtQuanlityAcc1" name="txtquantityAcc" type="number" value="1" class="form-control input-md"  min="1" 	oninvalid="this.setCustomValidity('Xin hãy nhập số nguyên >= ' +this.min)"; oninput="(this.value < this.min)?this.setCustomValidity('Xin hãy nhập số nguyên >= ' +this.min ):this.setCustomValidity('')"  required></td>
+									<td class="col4"> <input id="txtPriceAcc1" name="txtPriceAcc" type="text" value="0" maxlength="13" class="form-control input-md"  min="0" oninput="formatCurency(this,0); " oninvalid="this.setCustomValidity('Thông tin bắt buộc')" oninput="setCustomValidity('')" required  ></td>
 									<td class="col5"><label class="label2">(VND)</label></td>
 								</tr>
 								</tbody>

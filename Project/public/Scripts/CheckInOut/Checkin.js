@@ -325,91 +325,81 @@ $(document).ready(function(){
     });
 
 
-    $("#btnCheckin").click(function (event) {
+    $("#btnCheckin").closest('form').on('submit',function (event) {
         event.preventDefault();
-        var total_price = removeCommas($("#txtTotalprice").val());
-        if( $("#txtCheckin").val() == "" || $("#txtCheckout").val() == ""){
-            alert('Chọn ngày vào và ngày ra trước khi ấn nút [Nhận phòng]');
-            return;
-        }
 
 
-        if ($("#roomtype").val() == "" || $("#cboRoomNo").val() == ""){
-            alert('Chọn kiểu phòng và sô phòng trước khi ấn nút [Nhận phòng]');
-            return;
-        }
-        if($("#txtFullname1").val() == "" || $("#txtIdcard1").val() == ""){
-            alert('Nhập tên người đặt và CMND trước khi ấn nút [Nhận phòng]');
-            return;
-        }
-        if($("#txtPhone1").val() == "" || $("#txtEmail1").val() == ""){
-            $("#txtPhone1").val("");
-            $("#txtEmail1").val("");
-        }
+        var confirm = window.confirm('Xác nhận check-in');
+        if(confirm==true){
+            var total_price = removeCommas($("#txtTotalprice").val());
 
-        if(res_id == "" || res_id === undefined){
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                url: '/CheckInDetail/Checkin',
-                method: 'GET',
-                cache: false,
-                dataType: 'json',
-                data: $("#myForm").serialize() + "&room_status=" + ROOM_STATUS + "&res_status=" + RES_STATUS + "&room_number=" + room_number +
-                "&room_type=" + room_type + "&price=" + price + "&total_price=" + total_price ,
-                contentType: 'application/x-www-form-urlencoded',
-                success: function (result) {
-                    if(result==1){
-                        alert('Check-in thành công');
-                        window.open('/SeparateGroup','_self');
+            if(res_id == "" || res_id === undefined){
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url: '/CheckInDetail/Checkin',
+                    method: 'GET',
+                    cache: false,
+                    dataType: 'json',
+                    data: $("#myForm").serialize() + "&room_status=" + ROOM_STATUS + "&res_status=" + RES_STATUS + "&room_number=" + room_number +
+                    "&room_type=" + room_type + "&price=" + price + "&total_price=" + total_price ,
+                    contentType: 'application/x-www-form-urlencoded',
+                    success: function (result) {
+                        if(result==1){
+                            alert('Check-in thành công');
+                            window.open('/SeparateGroup','_self');
+                        }
+                        else if(result==0){
+                            alert('Xảy ra lỗi khi check-in');
+                        }
+                    },
+                    error: function(){
+                        alert('error');
                     }
-                    else if(result==0){
-                        alert('Xảy ra lỗi khi check-in');
-                    }
-                },
-                error: function(){
-                    alert('error');
-                }
-            });
-        }
-        else if(res_id != "" && res_id != undefined){
-
-            if($("#txtFullname2").val() == "" || $("#txtIdcard2").val() == ""){
-                alert('Nhập tên người nhận và CMND trước khi ấn nút [Nhận phòng]');
-                return;
+                });
             }
+            else if(res_id != "" && res_id != undefined){
 
-            if($("#txtPhone2").val() == "" || $("#txtEmail2").val() == ""){
-                $("#txtPhone2").val("");
-                $("#txtEmail2").val("");
-            }
-
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                url: '/CheckInDetail/Checkin',
-                method: 'GET',
-                cache: false,
-                dataType: 'json',
-                data: $("#myForm").serialize() + "&room_status=" + ROOM_STATUS + "&res_status=" + RES_STATUS + "&res_id=" + res_id + "&room_id=" + room_id,
-                contentType: 'application/x-www-form-urlencoded',
-                success: function (result) {
-                    if(result==1){
-                        alert('Check-in thành công');
-                        window.open('/SeparateGroup','_self');
-                    }
-                    else if(result==0){
-                        alert('Xảy ra lỗi khi check-in');
-                    }
-                },
-                error: function(){
-                    alert('error');
+                if($("#txtFullname2").val() == "" || $("#txtIdcard2").val() == ""){
+                    alert('Nhập tên người nhận và CMND trước khi ấn nút [Nhận phòng]');
+                    return;
                 }
-            });
 
+                if($("#txtPhone2").val() == "" || $("#txtEmail2").val() == ""){
+                    $("#txtPhone2").val("");
+                    $("#txtEmail2").val("");
+                }
+
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url: '/CheckInDetail/Checkin',
+                    method: 'GET',
+                    cache: false,
+                    dataType: 'json',
+                    data: $("#myForm").serialize() + "&room_status=" + ROOM_STATUS + "&res_status=" + RES_STATUS + "&res_id=" + res_id + "&room_id=" + room_id,
+                    contentType: 'application/x-www-form-urlencoded',
+                    success: function (result) {
+                        if(result==1){
+                            alert('Check-in thành công');
+                            window.open('/SeparateGroup','_self');
+                        }
+                        else if(result==0){
+                            alert('Xảy ra lỗi khi check-in');
+                        }
+                    },
+                    error: function(){
+                        alert('error');
+                    }
+                });
+
+            }
+        }else if (confirm==false){
+            return;
         }
+
         event.preventDefault();
 
     });
@@ -438,39 +428,44 @@ $(document).ready(function(){
         var email2 = $("#txtEmail2").val();
 
         var note2 = $("#txtNote2").val();
+        var confirm = window.confirm('Xác nhận lưu thông tin');
+        if(confirm==true){
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: '/CheckInDetail/SaveInforCustomer',
+                method: 'GET',
+                cache: false,
+                dataType: 'json',
+                data: {
+                    fullname2 : fullname2,
+                    idCard2 : idCard2,
+                    phone2 : phone2,
+                    email2 : email2,
+                    note2: note2,
+                    res_id: res_id,
+                    room_id: room_id
+                },
+                contentType: 'application/x-www-form-urlencoded',
+                success: function (result) {
+                    if(result==1){
+                        alert('Lưu thông tin thành công');
+                        window.history.back()
+                        //location.reload();
+                    }
+                    else if(result==0){
+                        alert('Xảy ra lỗi khi lưu thay đổi');
+                    }
+                },
+                error: function(){
+                    alert('error');
+                }
+            });
+        } else if(confirm==false){
+            return;
+        }
 
-        $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            url: '/CheckInDetail/SaveInforCustomer',
-            method: 'GET',
-            cache: false,
-            dataType: 'json',
-            data: {
-                fullname2 : fullname2,
-                idCard2 : idCard2,
-                phone2 : phone2,
-                email2 : email2,
-                note2: note2,
-                res_id: res_id,
-                room_id: room_id
-            },
-            contentType: 'application/x-www-form-urlencoded',
-            success: function (result) {
-                if(result==1){
-                    alert('Lưu thông tin thành công');
-                    window.history.back()
-                    //location.reload();
-                }
-                else if(result==0){
-                    alert('Xảy ra lỗi khi lưu thay đổi');
-                }
-            },
-            error: function(){
-                alert('error');
-            }
-        });
         event.preventDefault();
 
 

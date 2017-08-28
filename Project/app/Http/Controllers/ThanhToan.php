@@ -21,7 +21,7 @@ class ThanhToan extends Controller
 
         $bookInfo = array();
 
-        //$bookInfo[Constants::RESERVATION_ID] = 'RS01';
+        $bookInfo[Constants::RESERVATION_ID] = 'RS01';
         $bookInfo[Constants::GUEST_NAME] = 'Đặng Công Sơn';
         $bookInfo[Constants::CMND] = '1679372973';
         $bookInfo[Constants::CHECK_IN] = '2017-08-25';
