@@ -32,6 +32,30 @@ INSERT INTO tbl_room_type( room_type_id,type_name,adult,children,description,ima
 INSERT INTO tbl_room_type( room_type_id,type_name,adult,children,description,image_url,price,create_ymd,update_ymd) VALUES('RT03','Twins','2','1','Phòng có 2 giường đơn','/img/twins.jpg','700000','2017/08/20','2017/08/21');
 INSERT INTO tbl_room_type( room_type_id,type_name,adult,children,description,image_url,price,create_ymd,update_ymd) VALUES('RT04','Extra','4','2','Phòng có 2 giường đôi Queen size','/img/extra.jpg','900000','2017/08/20','2017/08/21');
 
+INSERT INTO public.tbl_room_accessory(room_type_id, accessory_name, quantity, price, description, create_ymd, update_ymd)VALUES ('RT01','Giường đơn', '1','7500000','Giường đơn','2017/08/28','2017/08/28');
+INSERT INTO public.tbl_room_accessory(room_type_id, accessory_name, quantity, price, description, create_ymd, update_ymd)VALUES ('RT01','Bàn', '1','3000000','Bàn để đồ cỡ nhỏ','2017/08/28','2017/08/28');
+INSERT INTO public.tbl_room_accessory(room_type_id, accessory_name, quantity, price, description, create_ymd, update_ymd)VALUES ('RT01','Tủ lạnh', '1','3000000','Tủ lạnh LG 67 lít ','2017/08/28','2017/08/28');
+INSERT INTO public.tbl_room_accessory(room_type_id, accessory_name, quantity, price, description, create_ymd, update_ymd)VALUES ('RT01','Điều hòa', '1','7000000','Điều hòa LG','2017/08/28','2017/08/28');
+INSERT INTO public.tbl_room_accessory(room_type_id, accessory_name, quantity, price, description, create_ymd, update_ymd)VALUES ('RT01','Tủ quần áo', '1','5000000','Tủ quần áo','2017/08/28','2017/08/28');
+
+INSERT INTO public.tbl_room_accessory(room_type_id, accessory_name, quantity, price, description, create_ymd, update_ymd)VALUES ('RT02','Giường đôi', '1','13000000','Giường đôi','2017/08/28','2017/08/28');
+INSERT INTO public.tbl_room_accessory(room_type_id, accessory_name, quantity, price, description, create_ymd, update_ymd)VALUES ('RT02','Bàn', '1','3000000','Bàn để đồ cỡ nhỏ','2017/08/28','2017/08/28');
+INSERT INTO public.tbl_room_accessory(room_type_id, accessory_name, quantity, price, description, create_ymd, update_ymd)VALUES ('RT02','Tủ lạnh', '1','3000000','Tủ lạnh LG 67 lít ','2017/08/28','2017/08/28');
+INSERT INTO public.tbl_room_accessory(room_type_id, accessory_name, quantity, price, description, create_ymd, update_ymd)VALUES ('RT02','Điều hòa', '1','7000000','Điều hòa LG','2017/08/28','2017/08/28');
+INSERT INTO public.tbl_room_accessory(room_type_id, accessory_name, quantity, price, description, create_ymd, update_ymd)VALUES ('RT02','Tủ quần áo', '1','5000000','Tủ quần áo','2017/08/28','2017/08/28');
+
+INSERT INTO public.tbl_room_accessory(room_type_id, accessory_name, quantity, price, description, create_ymd, update_ymd)VALUES ('RT03','Giường đơn', '2','7500000','Giường đơn','2017/08/28','2017/08/28');
+INSERT INTO public.tbl_room_accessory(room_type_id, accessory_name, quantity, price, description, create_ymd, update_ymd)VALUES ('RT03','Bàn', '1','3000000','Bàn để đồ cỡ nhỏ','2017/08/28','2017/08/28');
+INSERT INTO public.tbl_room_accessory(room_type_id, accessory_name, quantity, price, description, create_ymd, update_ymd)VALUES ('RT03','Tủ lạnh', '1','3000000','Tủ lạnh LG 67 lít ','2017/08/28','2017/08/28');
+INSERT INTO public.tbl_room_accessory(room_type_id, accessory_name, quantity, price, description, create_ymd, update_ymd)VALUES ('RT03','Điều hòa', '1','7000000','Điều hòa LG','2017/08/28','2017/08/28');
+INSERT INTO public.tbl_room_accessory(room_type_id, accessory_name, quantity, price, description, create_ymd, update_ymd)VALUES ('RT03','Tủ quần áo', '1','5000000','Tủ quần áo','2017/08/28','2017/08/28');
+
+INSERT INTO public.tbl_room_accessory(room_type_id, accessory_name, quantity, price, description, create_ymd, update_ymd)VALUES ('RT04','Giường đôi', '2','13000000','Giường đôi','2017/08/28','2017/08/28');
+INSERT INTO public.tbl_room_accessory(room_type_id, accessory_name, quantity, price, description, create_ymd, update_ymd)VALUES ('RT04','Bàn', '1','3000000','Bàn để đồ cỡ nhỏ','2017/08/28','2017/08/28');
+INSERT INTO public.tbl_room_accessory(room_type_id, accessory_name, quantity, price, description, create_ymd, update_ymd)VALUES ('RT04','Tủ lạnh', '1','3000000','Tủ lạnh LG 67 lít ','2017/08/28','2017/08/28');
+INSERT INTO public.tbl_room_accessory(room_type_id, accessory_name, quantity, price, description, create_ymd, update_ymd)VALUES ('RT04','Điều hòa', '1','7000000','Điều hòa LG','2017/08/28','2017/08/28');
+INSERT INTO public.tbl_room_accessory(room_type_id, accessory_name, quantity, price, description, create_ymd, update_ymd)VALUES ('RT04','Tủ quần áo', '1','5000000','Tủ quần áo','2017/08/28','2017/08/28');
+
 
 INSERT INTO tbl_status( status_id,status_type,status_name,description) VALUES('RS01','RS','Chưa xử lý','');
 INSERT INTO tbl_status( status_id,status_type,status_name,description) VALUES('RS02','RS','Đang xử lý','');
