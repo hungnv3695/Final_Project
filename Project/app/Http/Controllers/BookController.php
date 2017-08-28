@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Common\DateTimeUtil;
+use App\Http\Common\Constants;
+use  App\Http\Common\SendEmail;
 use App\Http\DAO\BookOnlineDAO;
 use App\Models\Guest;
 use App\Models\Reservation;
@@ -11,8 +13,7 @@ use App\Models\Invoice;
 use App\Models\InvoiceDetail;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use App\Payment\BaoKimPayment;
-use App\Http\Common\FileUtil;
+
 
 class BookController extends Controller
 {
