@@ -21,7 +21,7 @@ Thông tin chi tiết các loại phòng đã đăng ký <br>
 
 |Stt|Loại phòng|Số lượng|Giá
 |:---------:|:---------:|:---------:|:---------:
-    @for($i=0;$i<sizeof($detailRoomType)-1;$i++)
+    @for($i=0;$i<sizeof($detailRoomType)-3;$i++)
 |{!!  array_get($detailRoomType[$i], \App\Http\Common\Constants::STT) !!}|{!! array_get($detailRoomType[$i], \App\Http\Common\Constants::ROOM_TYPE_NAME) !!}|{!! array_get($detailRoomType[$i], \App\Http\Common\Constants::QUANTITY) !!}|{!! array_get($detailRoomType[$i], \App\Http\Common\Constants::PRICE) !!}
 @endfor
 | | |Tổng tiền phòng:|{!! $detailRoomType["Total"] !!}|(VNĐ)
