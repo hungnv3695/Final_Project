@@ -116,6 +116,22 @@ class BookController extends Controller
         $bookOnlineDAO = new BookOnlineDAO();
         $result = $bookOnlineDAO->createBook($res,$resDetail, $guest,$invoice,$invoiceDetail, $room_type, $room_quantity,$check_in,$check_out,$nights);
 
+        $room_price = explode(',', $request->roomPrice);
+
+        $infor = array();
+        $infor[Constants::GUEST_NAME] = $request->txtFullname;
+        $infor[Constants::CMND] = $request->txtIdcard;
+        $infor[Constants::CHECK_IN] = $request->check_in;
+        $infor[Constants::CHECK_OUT] = $request->check_out;
+        $infor[Constants::NUMBER_NIGHT] = $request->nights;
+        $infor[Constants::ADULT] = $request->adult;
+        $infor[Constants::CHILDREN] = $request->children;
+        $infor[Constants::NOTE] = $request->notetxt;
+
+        $email = $request->txtEmail;
+
+        SendEmail::sendEmail($infor,$room_type,$room_quantity,$room_price,$email);
+
         return response($result);
         //Comment End
 
