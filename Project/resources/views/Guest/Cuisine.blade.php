@@ -201,7 +201,7 @@
                 </div>
                 <div class="col-md-12">
                     <div class="col-md-4 Cuisine-item">
-                        <div class="zoom-img"><img src="img/Cuisine8.jpg">
+                        <div class="zoom-img"><img src="img/bar4.jpg">
                         </div>
                     </div>
                     <div class="col-md-8">
