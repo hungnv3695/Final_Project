@@ -56,6 +56,7 @@ $(document).ready(function () {
 
         room_price_total = 0;
         room_type = roType.split(",");
+
         room_quantity = roQuan.split(",");
         room_price = roPrice.split(",");
 
@@ -78,6 +79,7 @@ $(document).ready(function () {
                 +'</div>'
             );
             room_price_total += Number(room_price[i]);
+
         }
 
         $("#nights").text(nights);

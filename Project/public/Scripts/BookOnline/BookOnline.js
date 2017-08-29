@@ -314,10 +314,10 @@ $(document).ready(function () {
         console.log(pick);
 
         if(pick < maxPick){
-            $("#" + totalId).text(addCommas(Number($("#" + id).val()) * Number($("#" + priceId).text().replace(".",""))));
+            $("#" + totalId).text(addCommas(Number($("#" + id).val()) * Number(removeCommas($("#" + priceId).text()))));
         }
         else if(pick == maxPick){
-            $("#" + totalId).text(addCommas(Number($("#" + id).val()) * Number($("#" + priceId).text().replace(".",""))));
+            $("#" + totalId).text(addCommas(Number($("#" + id).val()) * Number(removeCommas($("#" + priceId).text()))));
             for(var i = 0; i< count; i++){
                 $("#quantity"+i).attr("max", $("#quantity"+i).val());
             }
@@ -356,7 +356,7 @@ $(document).ready(function () {
             if(Number($("#quantity" + i).val()) > 0 ){
                 roType.push($("#room_type"+i).text());
                 roQuan.push($("#quantity"+i).val());
-                roPrice.push($("#totalprice"+i).text().replace(".",""));
+                roPrice.push(removeCommas($("#totalprice"+i).text()));
                 countRoomBooked +=1;
             }
             nights = days();
