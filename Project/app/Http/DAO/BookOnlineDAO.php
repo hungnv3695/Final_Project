@@ -59,7 +59,7 @@ class BookOnlineDAO {
         $strSQL .=  '    OR (rd.date_in < \''.$check_in.'\' AND rd.date_out > \''.$check_out.'\'))';
         $strSQL .=  'AND NOT (rd.check_in_flag = \'1\' AND rd.check_out_flag = \'1\')) ';
         $strSQL .=  'ORDER BY ro.room_number ASC limit 1' ;
-
+        //dd($strSQL);
         $result = DB::select($strSQL);
         return $result;
     }

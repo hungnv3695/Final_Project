@@ -318,6 +318,7 @@ $(document).ready(function () {
 
     $("#btnCheckout").click(function (event) {
         event.preventDefault();
+
         var confirm = window.confirm('Xác nhận check-out');
         if(confirm==true){
             getItemNoPaymentFlag();
@@ -345,11 +346,19 @@ $(document).ready(function () {
                     if(result == 1){
                         alert('check-out thành công');
                         $('#btnCheckout').attr('disabled',true);
-                        $('#btnPrint').attr('disabled',false);
                         $("#txtServiceAdd").attr('disabled',true);
+
+
+
                         $("#txtQuanAdd").attr('disabled',true);
                         $("#txtAmountAdd").attr('disabled',true);
                         $("#btnAdd").attr('disabled',true);
+                        if(serList.length == 0){
+                            $("#btnPrint").attr('readonly',true);
+                            window.open('/CheckoutList','_self');
+                        }else{
+                            $('#btnPrint').attr('disabled',false);
+                        }
                     }
                     else{
                         alert('check-out lỗi');
@@ -438,14 +447,20 @@ $(document).ready(function () {
         var price = [];
         var customerName = $("#txtFullname2").val();
         for(var i = 1; i<= count; i++){
-            service.push($("#jqGrid").jqGrid('getCell', i, 'item6'));
-            quantity.push($("#jqGrid").jqGrid('getCell', i, 'item2'));
-            price.push(removeCommas($("#jqGrid").jqGrid('getCell', i, 'item3')));
+            var flag = $("#jqGrid").jqGrid('getCell', i, 'item5');
+            if(flag != "1"){
+                service.push($("#jqGrid").jqGrid('getCell', i, 'item6'));
+                quantity.push($("#jqGrid").jqGrid('getCell', i, 'item2'));
+                price.push(removeCommas($("#jqGrid").jqGrid('getCell', i, 'item3')));
+            }
+
         }
 
         window.open('/Invoice?' +"service=" + service + "&quantity=" + quantity + "&price="+price +
-           "&cusName="+customerName + "&user_name="+encodeURIComponent(user_name),'_blank');
+            "&cusName="+customerName + "&user_name="+encodeURIComponent(user_name),'_blank');
         window.open('/CheckoutList','_self');
+
+
         event.preventDefault();
     })
 
