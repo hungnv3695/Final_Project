@@ -34,6 +34,6 @@ class BookInfo extends Mailable
     {
         return $this->from('anhduonghotel.auto.send@gmail.com')
             ->subject('Thông tin đặt phòng ')
-            ->markdown('Email.BookInfoEmail');
+            ->markdown('Email.BookInfoEMail');
     }
 }

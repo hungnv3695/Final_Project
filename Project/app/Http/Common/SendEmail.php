@@ -36,14 +36,14 @@ class SendEmail
             $roomType[Constants::STT] = $i+1;
             $roomType[Constants::ROOM_TYPE_NAME] = $room_type[$i];
             $roomType[Constants::QUANTITY] = $quantity[$i];
-            $roomType[Constants::PRICE] = $price[$i];
+            $roomType[Constants::PRICE] = number_format($price[$i], null, null, '.');
             array_push($detailRoomType,$roomType);
             $sum = $sum + (int)$price[$i];
         }
         $VAT = $sum * 10 / 100;
-        $detailRoomType['Total'] = $sum; // tinh toan tong so tien phai nop. bao gom VAT
-        $detailRoomType['VAT'] = $VAT;
-        $detailRoomType['TotalAmount'] = (int)$sum + (int)$VAT;
+        $detailRoomType['Total'] = number_format($sum, null, null, '.')   ; // tinh toan tong so tien phai nop. bao gom VAT
+        $detailRoomType['VAT'] =   number_format($VAT, null, null, '.');
+        $detailRoomType['TotalAmount'] = number_format((int)$sum + (int)$VAT, null, null, '.') ;
 
         //dd($detailRoomType);
         Mail::to($email)->send(new BookInfo($bookInfo,$detailRoomType));
