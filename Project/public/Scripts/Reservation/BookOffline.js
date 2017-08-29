@@ -431,25 +431,7 @@ $(document).ready(function () {
     });
     $('#btnBook').closest('form').on('submit',function (event){
         event.preventDefault();
-        // if($('#txtFullname').val().trim() == ""){
-        //     alert('Nhập tên của khách hàng');
-        //     return;
-        // }else if($('#txtCmt').val().trim() == ""){
-        //     alert('Nhập chứng minh thư của khách hàng');
-        //     return;
-        // }else if($('#txtPhone').val().trim() == ""){
-        //     alert('Nhập số điện thoại của khách hàng');
-        //     return;
-        // }
-        //
-        // if(($("#txtCheckin").val()== "") || ($("#txtCheckout").val()== "") || ($("#txtNumpeople").val()== "") || ($("#txtNumroom").val()== "")){
-        //     alert('Làm ơn hoàn thành thông tin đặt phòng');
-        //     return;
-        // }
-        // if($("#txtNumroom").val()!= cList.length){
-        //     alert('Số lượng phòng chưa được chọn đủ');
-        //     return;
-        // }
+
         var confirm = window.confirm('Xác nhận tạo đơn đặt phòng');
         if (confirm == true){
             var roomList = [];
@@ -480,6 +462,21 @@ $(document).ready(function () {
                         $("#btnPrint").attr('disabled',false);
                         $("#btnBook").attr('disabled',true);
                         $("#txtCheckin").attr('readonly',true);
+
+                        $("#txtCheckout").attr('disabled',true);
+                        $("#txtCheckin").attr('disabled',true);
+                        $("#txtFullname").attr('disabled',true);
+                        $("#txtEmail").attr('disabled',true);
+                        $("#txtCmt").attr('disabled',true);
+                        $("#txtAddress").attr('disabled',true);
+                        $("#txtPhone").attr('disabled',true);
+                        $("#txtCompany").attr('disabled',true);
+                        $("#btnSearch").attr('disabled',true);
+
+                        $("#txtNumpeople").attr('disabled',true);
+                        $("#txtNumroom").attr('disabled',true);
+
+
 
                     }
                     else if(result==0){

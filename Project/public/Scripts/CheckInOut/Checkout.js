@@ -346,6 +346,10 @@ $(document).ready(function () {
                         alert('check-out thành công');
                         $('#btnCheckout').attr('disabled',true);
                         $('#btnPrint').attr('disabled',false);
+                        $("#txtServiceAdd").attr('disabled',true);
+                        $("#txtQuanAdd").attr('disabled',true);
+                        $("#txtAmountAdd").attr('disabled',true);
+                        $("#btnAdd").attr('disabled',true);
                     }
                     else{
                         alert('check-out lỗi');

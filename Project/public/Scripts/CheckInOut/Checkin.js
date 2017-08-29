@@ -108,7 +108,7 @@ $(document).ready(function(){
             { name: 'item0',hidden:true},
             { name: 'item1',search : false,  width: 90 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
             { name: 'item2',search : false,  width: 90 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
-            { name: 'item3',search : false,  width: 90 , align: "left", sorttype: "text", sortable: true, searchoptions: { sopt: ['eq', 'bw', 'bn', 'cn', 'nc', 'ew', 'en'] }},
+            { name: 'item3',search : false,  width: 90 , align: "left",  formatter:'integer', formatoptions:{thousandsSeparator: "."}},
             { name: 'item4',hidden:true},
             { name: 'item5',hidden:true}
         ],

@@ -297,7 +297,7 @@ $(document).ready(function () {
                 addData(result);
             },
             error: function(){
-                alert('Update Error');
+                alert('Cập nhập lỗi');
             }
         });
     }
@@ -368,14 +368,14 @@ $(document).ready(function () {
             contentType: 'application/json; charset=utf-8',
             success: function (result) {
                 if(result == '1'){
-                    alert('Update Successfully');
+                    alert('Lưu thay đổi thành công');
                 }else if(result == '0') {
-                    alert('Update Failed');
+                    alert('Xảy ra lỗi khi lưu thay đổi');
                 }
 
             },
             error: function(){
-                alert('Update Error');
+                alert('Cập nhật lỗi');
             }
         });
     });

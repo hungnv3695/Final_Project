@@ -114,14 +114,14 @@
                     <div class="col-md-6" style="border-right:1px solid #898989;">
 
                         <div class="form-inline col-md-offset-1" style="margin-top:5px;">
-                            <label class="label1"style="margin-left: -10px">Dịch vụ:</label>
-                            <label class="label1" style="margin-left: 40px">Số lượng:</label>
-                            <label class="label1"style="margin-left: -20px">Giá:</label>
+                            <label class="label1"style="margin-left: -20px">Dịch vụ:</label>
+                            <label class="label1" style="margin-left: 15px">Số lượng:</label>
+                            <label class="label1"style="margin-left: -10px">Giá:</label>
                         </div>
                         <div class="form-inline col-md-offset-1" style="margin-left:25px;">
-                            <input id="txtServiceAdd" name="txtServiceAdd" type="text"  class="form-control input-md" size="10" >
-                            <input id="txtQuanAdd" name="txtQuanAdd" type="text"  class="form-control input-md" size="5" >
-                            <input id="txtAmountAdd" name="txtAmountAdd" type="text"  class="form-control input-md" size="8" >
+                            <input id="txtServiceAdd" name="txtServiceAdd" type="text"  class="form-control input-md" size="6" >
+                            <input id="txtQuanAdd" name="txtQuanAdd" type="number" min="0" class="form-control input-md"  style="width:100px">
+                            <input id="txtAmountAdd" name="txtAmountAdd" type="number" min="1000" step="1000"  class="form-control input-md" style="width:130px" >
                             <button class="btn btn-danger" id="btnAdd" value="btnAdd" name="btnAdd"><b>Thêm</b></button>
                         </div>
 
