@@ -36,11 +36,11 @@ class SendEmail
             $roomType[Constants::STT] = $i+1;
             $roomType[Constants::ROOM_TYPE_NAME] = $room_type[$i];
             $roomType[Constants::QUANTITY] = $quantity[$i];
-            $roomType[Constants::PRICE] = $price[$i];
+            $roomType[Constants::PRICE] = (int)$price[$i] * (int)$infor[Constants::NUMBER_NIGHT];
             array_push($detailRoomType,$roomType);
             $sum = $sum + (int)$price[$i];
         }
-        $VAT = $sum * 10 / 100;
+        $VAT = ($sum * (int)$infor[Constants::NUMBER_NIGHT]) * 10 / 100;
         $detailRoomType['Total'] = $sum; // tinh toan tong so tien phai nop. bao gom VAT
         $detailRoomType['VAT'] = $VAT;
         $detailRoomType['TotalAmount'] = (int)$sum + (int)$VAT;

@@ -13,6 +13,7 @@ use App\Models\Invoice;
 use App\Models\InvoiceDetail;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Mockery\Exception;
 
 
 class BookController extends Controller
@@ -117,7 +118,7 @@ class BookController extends Controller
         $bookOnlineDAO = new BookOnlineDAO();
         $result = $bookOnlineDAO->createBook($res,$resDetail, $guest,$invoice,$invoiceDetail, $room_type, $room_quantity,$check_in,$check_out,$nights);
 
-        $room_price = explode(',', $request->roomPrice);
+        $room_price = explode(',', $request->roPrice);
 
         $infor = array();
         $infor[Constants::GUEST_NAME] = $request->txtFullname;
@@ -131,7 +132,12 @@ class BookController extends Controller
 
         $email = $request->txtEmail;
 
-//        SendEmail::sendEmail($infor,$room_type,$room_quantity,$room_price,$email);
+        try{
+            SendEmail::sendEmail($infor,$room_type,$room_quantity,$room_price,$email);
+        }catch (\Exception $e){
+
+        }
+
 
         return response($result);
         //Comment End
