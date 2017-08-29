@@ -223,7 +223,7 @@
                             <img src="img/double2.jpg">
                             <button type="button" class="room-detail" data-toggle="collapse" data-target="#intro2">Chi tiết phòng</button>
                             <div id="intro2" class="text-intro collapse">
-                                Kiểu phòng có 1 giường đơn lớn. Với đầy đủ các trang thiết bị cần thiết bị và phòng tắm riêng. Thông thường dành cho những cặp vợ chồng hoặc dành cho những người có thể nằm chung với nhau.
+                                Kiểu phòng có 1 giường đôi. Với đầy đủ các trang thiết bị cần thiết bị và phòng tắm riêng. Thông thường dành cho những cặp vợ chồng hoặc dành cho những người có thể nằm chung với nhau.
                             </div>
                         </div>
                         <h3 class="roomtype">Phòng double</h3>
@@ -251,7 +251,7 @@
                             <img src="img/extra.jpg">
                             <button type="button" class="room-detail" data-toggle="collapse" data-target="#intro4">Chi tiết phòng</button>
                             <div id="intro4" class="text-intro collapse">
-                                Kiểu phòng có 1 giường đơn cỡ lớn và 1 giường phụ bé bên cạnh được thiết kế nhỏ, gọn, nhẹ, để linh động di chuyển và xử lý. Với đầy đủ các trang thiết bị cần thiết bị và phòng tắm riêng. Thông thường dành cho gia đình có con nhỏ.
+                                Kiểu phòng có 2 giường đôi. Với đầy đủ các trang thiết bị cần thiết bị và phòng tắm riêng. Thông thường dành cho gia đình có con nhỏ đi cùng.
                             </div>
                         </div>
                         <h3 class="roomtype">Phòng extra</h3>
