@@ -149,7 +149,7 @@ $(document).ready(function () {
 
     function  addRoomInfor(type_name,adult,children,description,img_url) {
         $(".multiple-items").append(
-            '<div class="card" style="height: 320px;>'
+            '<div class="card" style="height: 250px;>'
             +   '<div class="card-block" ">'
             +       '<h4 class="card-title" id="infor0" ><h2 style="margin-left: 20px; margin-top: -5px">'+type_name+'</h2></h4>'
             +        '<div class="row">'
