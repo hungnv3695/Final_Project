@@ -347,7 +347,7 @@
                                         <br>
                                         <span style="font-weight:100;font-size:12px;"><i>(Sign,stamp & full name)</i></span>
 										<br>
-										<p class="director-name">Nguyễn Hữu Hoàng Tùng</p>
+										<p class="director-name">Vũ Quý Đôn</p>
                                         </span>
                                     </th>
                                 </tr>

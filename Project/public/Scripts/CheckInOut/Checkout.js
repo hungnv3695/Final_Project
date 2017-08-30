@@ -353,7 +353,7 @@ $(document).ready(function () {
                         $("#txtQuanAdd").attr('disabled',true);
                         $("#txtAmountAdd").attr('disabled',true);
                         $("#btnAdd").attr('disabled',true);
-                        if(serList.length == 0){
+                        if(iList == ""){
                             $("#btnPrint").attr('readonly',true);
                             window.open('/CheckoutList','_self');
                         }else{
