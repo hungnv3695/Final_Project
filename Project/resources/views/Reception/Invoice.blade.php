@@ -65,8 +65,7 @@
         
         .table-scroll {
             overflow: auto;
-            margin-top: 20px;
-            margin-bottom: 20px;
+            margin-top: 20px;.
         }
         
         .table-wrapper table {

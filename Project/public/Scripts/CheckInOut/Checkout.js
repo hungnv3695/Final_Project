@@ -353,10 +353,10 @@ $(document).ready(function () {
                         $("#txtQuanAdd").attr('disabled',true);
                         $("#txtAmountAdd").attr('disabled',true);
                         $("#btnAdd").attr('disabled',true);
-                        if(iList == ""){
+                        if(iList == "" && serList == ""){
                             $("#btnPrint").attr('readonly',true);
                             window.open('/CheckoutList','_self');
-                        }else{
+                        }else if (iList != ""  || serList != "" ){
                             $('#btnPrint').attr('disabled',false);
                         }
                     }
